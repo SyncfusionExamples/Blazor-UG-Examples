@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="custom binding\**" />
+    <Compile Remove="Pages\Localization\**" />
+    <Content Remove="custom binding\**" />
+    <Content Remove="Pages\Localization\**" />
+    <EmbeddedResource Remove="custom binding\**" />
+    <EmbeddedResource Remove="Pages\Localization\**" />
+    <None Remove="custom binding\**" />
+    <None Remove="Pages\Localization\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\GSrowdata.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2-beta1" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="20.2.0.44" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.44" />
+    <PackageReference Include="Syncfusion.Licensing" Version="*" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,56 @@
+﻿@page "/ImmediateSearch"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Navigations
+<SearchingNavigation></SearchingNavigation>
+
+<SfGrid @ref="DefaultGrid" DataSource="@Orders" AllowSorting="true" AllowFiltering="true" AllowPaging="true">
+    <SfToolbar>
+        <ToolbarItems>
+            <ToolbarItem Type="ItemType.Input" Align="Syncfusion.Blazor.Navigations.ItemAlign.Right">
+                <Template>
+                    <SfTextBox Placeholder="Enter values to search" Input="OnInput"></SfTextBox>
+                    <span class="e-search-icon e-icons"></span>
+                </Template>
+            </ToolbarItem>
+        </ToolbarItems>
+    </SfToolbar>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.Verified) HeaderText="Freight" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    private SfGrid<Order> DefaultGrid;
+
+    public List<Order> Orders { get; set; }
+
+    public void OnInput(InputEventArgs args)
+    {
+        this.DefaultGrid.Search(args.Value);
+    }
+
+    public class Order
+    {
+        public int OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public bool Verified { get; set; }
+        public double? Freight { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Verified = (new bool[] { true, false })[new Random().Next(2)],
+            Freight = 2.1 * x,
+        }).ToList();
+    }
+}

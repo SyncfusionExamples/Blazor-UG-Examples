@@ -1,0 +1,107 @@
+@page "/Tab/ContentRenderModes/OnDynamic"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Grids
+<RenderModeRoute></RenderModeRoute>
+
+<SfTab LoadOn="ContentLoad.Dynamic" SelectedItem="@SelectedTab">
+    <TabItems>
+        <TabItem Disabled="@Disabled">
+            <HeaderTemplate>Login</HeaderTemplate>
+            <ContentTemplate>
+                <div class="login-form">
+                    <div class='wrap'>
+                        <div id="heading">Sign in to view the Grid</div>
+                        <div id="input-container">
+                            <div class="e-float-input e-input-group">
+                                <input type="text" @bind-value="@UserName" required />
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text">Username</label>
+                            </div>
+                            <div class="e-float-input e-input-group">
+                                <input type="password" @bind-value="@Password" required />
+                                <span class="e-float-line"></span>
+                                <label class="e-float-text">Password</label>
+                            </div>
+                        </div>
+                        <div class="button-contain">
+                            <SfButton @onclick="@OnClicked">Log in</SfButton>
+                        </div>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </TabItem>
+        <TabItem Disabled="@DisableTab">
+            <HeaderTemplate>Grid</HeaderTemplate>
+            <ContentTemplate>
+                <SfGrid DataSource="@Orders">
+                    <GridPageSettings></GridPageSettings>
+                    <GridColumns>
+                        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="130"></GridColumn>
+                        <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="yMd" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+                        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                    </GridColumns>
+                </SfGrid>
+            </ContentTemplate>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+@code {
+    private string UserName { get; set; } = "";
+    private string Password { get; set; } = "";
+    private Boolean DisableTab { get; set; } = true;
+    private Boolean Disabled { get; set; } = false;
+    private int SelectedTab { get; set; } = 0;
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 6).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            OrderDate = DateTime.Now.AddDays(-x),
+        }).ToList();
+    }
+
+    private void OnClicked()
+    {
+        if (this.UserName == "" && this.Password == "")
+        {
+            Console.WriteLine("clicked");
+        }
+        else if (this.UserName == "")
+        {
+            Console.WriteLine("Enter the username");
+        }
+        else if (this.Password == "")
+        {
+            Console.WriteLine("Enter the password");
+        }
+        else if (this.UserName.Length < 4)
+        {
+            Console.WriteLine("Username must be minimum 4 characters");
+        }
+        else
+        {
+            this.UserName = "";
+            this.Password = "";
+            this.DisableTab = false;
+            this.Disabled = true;
+            this.SelectedTab = 1;
+        }
+    }
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+    }
+}
+

@@ -1,0 +1,52 @@
+﻿@page "/paging"
+
+@using Syncfusion.Blazor.Grids
+
+<PageNavigation></PageNavigation>
+
+<SfGrid @ref="DefaultGrid" DataSource="@Orders" AllowPaging="true" Height="200">
+    <GridEvents OnLoad="Load" TValue="Order"></GridEvents>
+    <GridPageSettings PageCount="2"></GridPageSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Visible="false" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    private SfGrid<Order> DefaultGrid;
+    public int GridHeight;
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            OrderDate = DateTime.Now.AddDays(-x),
+        }).ToList();
+    }
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+    }
+
+    public void Load(object args)
+    {
+        var RowHeight = 37; //height of the each row
+        Int32.TryParse(this.DefaultGrid.Height, out GridHeight); //datagrid height
+        var PageSize = (this.DefaultGrid.PageSettings as GridPageSettings).PageSize; //initial page size
+        decimal PageResize = ((GridHeight) - (PageSize * RowHeight)) / RowHeight; //new page size is obtained here
+        #pragma warning disable BL0005
+        (this.DefaultGrid.PageSettings as GridPageSettings).PageSize = PageSize + (int)Math.Round(PageResize);
+        #pragma warning restore BL0005
+    }
+}

@@ -1,0 +1,109 @@
+@page "/Tab/ContentRenderModes/OnInit"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+<RenderModeRoute></RenderModeRoute>
+
+<SfTab LoadOn="ContentLoad.Init" SelectedItem="@SelectedTab">
+    <TabItems>
+        <TabItem>
+            <HeaderTemplate>Sign in</HeaderTemplate>
+            <ContentTemplate>
+                <div id="User details" style="padding:10px">
+                    <form id="formId1">
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <SfTextBox Placeholder="Enetr name" @bind-Value="UserName"></SfTextBox>
+                            </div>
+                            <div class="e-float-input">
+                                <SfTextBox Placeholder="Email" @bind-Value="MailAddress" Type="InputType.Email"></SfTextBox>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="text-align: center">
+                        <SfButton @onclick="@OnSignin">Sign in</SfButton>
+                        <SfButton @onclick="@OnSkip">Skip</SfButton>
+                        @if (EmptyField)
+                        {
+                            <div class="Error">* Please fill all fields</div>
+                        }
+                    </div>
+                </div>
+            </ContentTemplate>
+        </TabItem>
+        <TabItem>
+            <HeaderTemplate>Syncfusion Blazor</HeaderTemplate>
+            <ContentTemplate>
+                <p>You can check out our Syncfusion Blazor demo here - https://blazor.syncfusion.com/demos/ </p>
+                <br />
+                <p>Also user guide will be avail here - https://blazor.syncfusion.com/documentation/introduction/</p>
+            </ContentTemplate>
+        </TabItem>
+        <TabItem>
+            <HeaderTemplate>Feedback</HeaderTemplate>
+            <ContentTemplate>
+                <div id="Feedback_Form" style="padding:10px">
+                    <form id="formId2">
+                        <div class="form-group">
+                            <div class="e-float-input">
+                                <SfTextBox Placeholder="Enetr name" @bind-Value="UserName"></SfTextBox>
+                            </div>
+                            <div class="e-float-input">
+                                <SfTextBox @bind-Value="MailAddress" Placeholder="Email" Type="InputType.Email"></SfTextBox>
+                            </div>
+                            <div class="e-float-input">
+                                <SfTextBox @bind-Value="Comments" Placeholder="Share your comments"></SfTextBox>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="text-align: center">
+                        <SfButton @onclick="@OnSubmit">Submit</SfButton>
+                        @if (EmptyField)
+                        {
+                            <div class="Error">* Please fill all fields</div>
+                        }
+                    </div>
+                </div>
+            </ContentTemplate>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+@code {
+    private string UserName;
+    private string MailAddress;
+    private string Comments;
+    private int SelectedTab = 0;
+    public Boolean EmptyField { get; set; } = false;
+    private void OnSignin()
+    {
+        if (this.UserName == null || this.MailAddress == null)
+        {
+            EmptyField = true;
+        }
+        else
+        {
+            EmptyField = false;
+            this.SelectedTab = 1;
+        }
+    }
+    private void OnSkip()
+    {
+        this.SelectedTab = 1;
+    }
+    public void OnSubmit()
+    {
+        if (this.UserName == null || this.MailAddress == null || this.Comments == null)
+        {
+            EmptyField = true;
+        }
+        else
+        {
+            EmptyField = false;
+            this.UserName = null;
+            this.MailAddress = null;
+            this.Comments = null;
+        }
+    }
+}

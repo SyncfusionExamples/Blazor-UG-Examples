@@ -1,0 +1,79 @@
+@page "/Accordion/AddItemDynamic"
+
+@using Syncfusion.Blazor.Navigations
+<AccordionRoute></AccordionRoute>
+
+<SfAccordion @ref="@Accordion">
+    <AccordionEvents Clicked="OnClick"></AccordionEvents>
+    <AccordionItems>
+        <AccordionItem Expanded="true" Header="ASP.NET" Content="Microsoft ASP.NET is a set of technologies in the Microsoft .NET Framework for building Web applications and XML Web services. ASP.NET pages execute on the server and generate markup such as HTML, WML, or XML that is sent to a desktop or mobile browser. ASP.NET pages use a compiled,event-driven programming model that improves performance and enables the separation of application logic and user interface."></AccordionItem>
+        <AccordionItem Header="ASP.NET MVC" Content="The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller. The ASP.NET MVC framework provides an alternative to the ASP.NET Web Forms pattern for creating Web applications. The ASP.NET MVC framework is a lightweight, highly testable presentation framework that (as with Web Forms-based applications) is integrated with existing ASP.NET features, such as master pages and membership-based authentication."></AccordionItem>
+        <AccordionItem Header="JavaScript" Content="JavaScript (JS) is an interpreted computer programming language.It was originally implemented as part of web browsers so that client-side scripts could interact with the user, control the browser, communicate asynchronously, and alter the document content that was displayed.More recently, however, it has become common in both game development and the creation of desktop applications."></AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+@code{
+    SfAccordion Accordion;
+    public int Count { get; set; } = 0;
+    public class Items
+    {
+        public string Header { get; set; }
+        public string Content { get; set; }
+    }
+    public List<Items> ItemsData = new List<Items>
+    {
+            new Items {
+                Header = "ASP.NET Razor " ,
+                Content = "Razor is an ASP.NET programming syntax used to create dynamic web pages with the C# or Visual Basic .NET programming languages. Razor was in development in June 2010 and was released for Microsoft Visual Studio 2010 in January 2011. Razor is a simple-syntax view engine and was released as part of MVC 3 and the WebMatrix tool set. Side Code content"
+            },
+            new Items {
+                Header = "EmberJS" ,
+                Content = "EmberJS is an open-source JavaScript web framework, based on the Model–view–viewmodel (MVVM) pattern. It allows developers to create scalable single-page web applications by incorporating common idioms and best practices into the framework."
+            },
+            new Items {
+                Header = "Hypertext Markup Language" ,
+                Content = "Hypertext Markup Language (HTML) is the standard markup language for creating web pages and web applications. With Cascading Style Sheets (CSS) and JavaScript, it forms a triad of cornerstone technologies for the World Wide Web."
+            },
+            new Items {
+                Header = "HTML5" ,
+                Content = "HTML5 is a markup language used for structuring and presenting content on the World Wide Web. It is the fifth and current major version of the HTML standard."
+            },
+            new Items {
+                Header = "JavaScript" ,
+                Content = "JavaScript (JS) is an interpreted computer programming language."
+            },
+            new Items
+            {
+                Header = "JSP" ,
+                Content = "JavaServer Pages (JSP) is a technology that helps software developers create dynamically generated web pages based on HTML, XML, or other document types. Released in 1999 by Sun Microsystems, JSP is similar to PHP and ASP, but it uses the Java programming language."
+            },
+            new Items
+            {
+                Header = "Perl" ,
+                Content = "Perl is a family of high-level, general-purpose, interpreted, dynamic programming languages.  Perl was originally developed by Larry Wall in 1987 as a general-purpose Unix scripting language to make report processing easier."
+            },
+            new Items
+            {
+                Header = "PHP" ,
+                Content = "PHP is a server-side scripting language designed for web development but also used as a general-purpose programming language. Originally created by Rasmus Lerdorf in 1994, the PHP reference implementation is now produced by The PHP Group. PHP originally stood for Personal Home Page, but it now stands for the recursive acronym PHP: Hypertext Preprocessor"
+            },
+            new Items
+            {
+                Header = "Ruby" ,
+                Content = "Ruby is a dynamic, reflective, object-oriented, general-purpose programming language. It supports multiple programming paradigms, including functional, object-oriented, and imperative. It also has a dynamic type system and automatic memory management."
+            },
+            new Items
+            {
+                Header = "Typescript" ,
+                Content = "TypeScript is an open-source programming language developed and maintained by Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing to the language."
+            }
+    };
+    private void OnClick(AccordionClickArgs args)
+    {
+        Count++;
+        if (Count < 10)
+        {
+            this.ItemsData.Add(new Items() { Header = ItemsData[Count].Header, Content = ItemsData[Count].Content });
+        }
+    }
+}
