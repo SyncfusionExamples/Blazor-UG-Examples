@@ -1,0 +1,102 @@
+﻿@page "/CustomFormEditing"
+
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+
+<EditingNavigation></EditingNavigation>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="orderedit">OrderID</label>
+                    <input class="form-control" @bind="@(SelectedProduct.OrderID)" type="number" disabled />
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="customeredit">CustomerID</label>
+                    <SfTextBox ID="CustomerID" @bind-Value="@(SelectedProduct.CustomerID)"></SfTextBox>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="freightedit">Frieght</label>
+                    <SfNumericTextBox ID="Freight" TValue="double?" @bind-Value="@SelectedProduct.Freight"></SfNumericTextBox>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="countryedit">ShipCountry</label>
+                    <SfDropDownList ID="ShipCountry" @bind-Value="@SelectedProduct.ShipCountry" TItem="Country" TValue="string" DataSource="@Dropdown">
+                        <DropDownListFieldSettings Value="ShipCountry" Text="ShipCountry"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </div>
+            </div>
+        </div>
+        <SfButton @onclick="Save">Save</SfButton>
+    </div>
+    <div class="col-md-6">
+        <SfGrid DataSource="@Orders" AllowPaging="true" @ref="Grid" Height=315>
+            <GridEditSettings AllowEditing="true"></GridEditSettings>
+            <GridEvents RowSelected="RowSelectHandler" TValue="Order"></GridEvents>
+            <GridColumns>
+                <GridColumn Field=@nameof(Order.OrderID) HeaderText="OrderID" IsPrimaryKey="true" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(Order.CustomerID) HeaderText="CustomerID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" TextAlign="TextAlign.Right" Format="C2" Width="120"></GridColumn>
+                <GridColumn Field=@nameof(Order.ShipCountry) HeaderText="ShipCountry" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+            </GridColumns>
+        </SfGrid>
+    </div>
+</div>
+
+@code{
+    public List<Order> Orders { get; set; }
+    SfGrid<Order> Grid;
+    public Order SelectedProduct = new Order();
+    public class Country
+    {
+        public string ShipCountry { get; set; }
+    }
+    List<Country> Dropdown = new List<Country>
+{
+          new Country() { ShipCountry= "USA" },
+          new Country() { ShipCountry= "UK" },
+          new Country() { ShipCountry= "RUSSIA" },
+          new Country() { ShipCountry= "INDIA" },
+          new Country() { ShipCountry= "CHINA" },
+    };
+
+    void Save()
+    {
+        this.Grid.UpdateRow(1, SelectedProduct);
+    }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            ShipCountry = (new string[] { "USA", "UK", "CHINA", "RUSSIA", "INDIA" })[new Random().Next(5)]
+        }).ToList();
+    }
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public double? Freight { get; set; }
+        public string ShipCountry { get; set; }
+    }
+
+    public void RowSelectHandler(RowSelectEventArgs<Order> args)
+    {
+        SelectedProduct = args.Data;
+    }
+
+}

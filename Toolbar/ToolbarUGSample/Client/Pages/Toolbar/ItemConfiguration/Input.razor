@@ -1,0 +1,53 @@
+﻿@page "/Toolbar/ItemConfiguration/Input"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+<ItemRoute></ItemRoute>
+
+<SfToolbar>
+    <ToolbarItems>
+        <ToolbarItem Type="ItemType.Input">
+            <Template>
+                <SfNumericTextBox Width="150" Value=1 Format="c2"></SfNumericTextBox>
+            </Template>
+        </ToolbarItem>
+        <ToolbarItem></ToolbarItem>
+        <ToolbarItem Type="ItemType.Input">
+            <Template>
+                <SfDropDownList TValue="string" ID="Games" DataSource="@SportsData" Width="120" Index="2" TItem="Games">
+                    <DropDownListFieldSettings Value="Text"></DropDownListFieldSettings>
+                </SfDropDownList>
+            </Template>
+        </ToolbarItem>
+        <ToolbarItem></ToolbarItem>
+        <ToolbarItem Type="ItemType.Input">
+            <Template>
+                <SfCheckBox Checked="true" Label="CheckBox"></SfCheckBox>
+            </Template>
+        </ToolbarItem>
+        <ToolbarItem></ToolbarItem>
+        <ToolbarItem Type="ItemType.Input">
+            <Template>
+                <SfRadioButton Label="Radio" Name="default" Value="Radio" @bind-Checked="CheckedValue"></SfRadioButton>
+            </Template>
+        </ToolbarItem>
+    </ToolbarItems>
+</SfToolbar>
+
+@code {
+    public class Games
+    {
+        public string Id { get; set; }
+        public string Text { get; set; }
+    }
+    private string CheckedValue = "Radio";
+    List<Games> SportsData = new List<Games> {
+    new Games() { Id= "Game2", Text= "Badminton" },
+    new Games() { Id= "Game4", Text= "Cricket" },
+    new Games() { Id= "Game5", Text= "Football" },
+    new Games() { Id= "Game6", Text= "Golf" },
+    new Games() { Id= "Game10", Text= "Tennis"}
+  };
+}

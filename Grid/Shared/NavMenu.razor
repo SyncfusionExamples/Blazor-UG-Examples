@@ -1,0 +1,167 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">UGSamples</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Getting started
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ODataAdaptor">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> DataBinding
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="customAdaptor">
+                <span class="oi oi-plus" aria-hidden="true"></span> CustomBinding
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dataannotation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Data Annotation
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="AutoGeneration">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Columns
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="rowtemplate">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Row
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="disablehtml">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Cell
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="columntemplate">
+                <span class="oi oi-plus" aria-hidden="true"></span> Templates
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="grouping">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Grouping
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="filterinitial">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Filtering
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="sorting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Sorting
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Search">
+                <span class="oi oi-plus" aria-hidden="true"></span> Searching
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="NormalEditing">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Editing
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="paging">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Paging
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="widthAndHeight">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Scrolling
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="rowVirtualization">
+                <span class="oi oi-plus" aria-hidden="true"></span> Virtualization
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Selectionmode">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Selection
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="footer">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Aggregates
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="print">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Print
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RenderAdaptiveDialog">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> AdaptiveLayout
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="EnablePersistence">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> State Management
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RTL">
+                <span class="oi oi-plus" aria-hidden="true"></span> Globalization
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="buildintoolbar">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Toolbar
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pdfExport">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> PdfExport
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="excelcustomization">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ExcelExport
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="clipboard">
+                <span class="oi oi-plus" aria-hidden="true"></span> Clipboard
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="contextmenu">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ContextMenu
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="actionBegin">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Events
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="showhideediting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> How To
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

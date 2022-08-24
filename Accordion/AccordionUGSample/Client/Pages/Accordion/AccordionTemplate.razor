@@ -1,0 +1,52 @@
+@page "/Accordion/AccordionTemplate"
+
+@using Syncfusion.Blazor.Navigations
+<AccordionRoute></AccordionRoute>
+
+<SfAccordion>
+    <AccordionItems>
+        <AccordionItem>
+            <HeaderTemplate>
+                <div>Margeret Peacock</div>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div class='container'><img src='https://ej2.syncfusion.com/aspnetcore/css/tab/1.png' /><div class='content'><b>Margeret Peacock</b> was born on Saturday , 01 December 1990. Now lives at Coventry House Miner Rd., London,UK. Margeret Peacock holds a position of <b>Sales Coordinator</b> in our WA department, (Seattle USA). Joined our company on Saturday , 01 May 2010.</div></div>
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>
+                <div>Laura Callahan</div>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div class='container'><img src='https://ej2.syncfusion.com/aspnetcore/css/tab/2.png' /><div class='content'><b>Laura Callahan</b> was born on Tuesday , 06 November 1990. Now lives at Edgeham Hollow Winchester Way, London,UK. Laura Callahan holds a position of <b>Sales Coordinator</b> in our WA department, (Seattle USA). Joined our company on Saturday , 01 May 2010.</div></div>
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>
+                <div>Albert Dodsworth</div>
+            </HeaderTemplate>
+            <ContentTemplate>
+                <div class='container'><img src='https://ej2.syncfusion.com/aspnetcore/css/tab/9.png' /><div class='content'> <b>Albert Dodsworth</b> was born on Thursday , 19 October 1989. Now lives at 4726 - 11th Ave. N.E., Seattle,USA.Albert Dodsworth holds a position of <b>Sales Representative</b> in our WA department, (Seattle USA). Joined our company on Friday , 01 May 2009.</div></div>
+            </ContentTemplate>
+        </AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+<style>
+
+    img {
+        height: 40px;
+        width: 50px;
+        margin-top: 13px;
+    }
+
+    .container {
+        display: inline-flex;
+        width: auto;
+        padding: 0;
+    }
+
+    .content {
+        margin-left: 10px;
+    }
+</style>

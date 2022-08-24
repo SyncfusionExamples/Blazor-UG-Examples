@@ -1,0 +1,38 @@
+@page "/Tab/ContentRenderModes/OnDemand"
+
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Schedule
+<RenderModeRoute></RenderModeRoute>
+
+<SfTab LoadOn="ContentLoad.Demand">
+    <TabItems>
+        <TabItem>
+            <HeaderTemplate>Calendar</HeaderTemplate>
+            <ContentTemplate>
+                <SfCalendar TValue="DateTime" @bind-Value="@SelectedDate"></SfCalendar>
+            </ContentTemplate>
+        </TabItem>
+        <TabItem>
+            <HeaderTemplate>Scheduler</HeaderTemplate>
+            <ContentTemplate>
+                <SfSchedule TValue="AppointmentData" Height="450px" @bind-SelectedDate="@SelectedDate">
+                    <ScheduleViews>
+                        <ScheduleView Option="View.Day"></ScheduleView>
+                    </ScheduleViews>
+                </SfSchedule>
+            </ContentTemplate>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+@code {
+    private DateTime SelectedDate { get; set; } = new DateTime(2020, 1, 10);
+    public class AppointmentData
+    {
+        public int Id { get; set; }
+        public string Subject { get; set; }
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+    }
+}
