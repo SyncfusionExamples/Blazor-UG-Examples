@@ -1,0 +1,15 @@
+﻿@page "/HTMLAttributeSupport"
+
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton Content="@Content" HtmlAttributes="@submit"></SfButton>
+
+@code {
+    public string Content = "Submit";
+    private Dictionary<string, object> submit = new Dictionary<string, object>()
+     {
+        { "type", "submit"},
+        { "title", "Primary Button" }
+    };
+}

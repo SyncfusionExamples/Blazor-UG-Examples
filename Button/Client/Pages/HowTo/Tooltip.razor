@@ -1,0 +1,14 @@
+﻿@page "/Tooltip"
+
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton Content="@Content" HtmlAttributes="@primButton" IsPrimary="true"></SfButton>
+
+@code {
+    public string Content = "Button";
+    private Dictionary<string, object> primButton = new Dictionary<string, object>()
+    {
+        { "title", "Primary Button"}
+    };
+}

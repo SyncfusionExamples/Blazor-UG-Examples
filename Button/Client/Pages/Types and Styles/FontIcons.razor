@@ -1,0 +1,17 @@
+﻿@page "/FontIcons"
+
+@using Syncfusion.Blazor.Buttons
+<TypesRoute></TypesRoute>
+
+<SfButton IconCss="e-icons e-play-icon" IconPosition="IconPosition.Right">PLAY</SfButton>
+<SfButton IconCss="e-icons e-pause-icon">PAUSE</SfButton>
+
+<style>
+    .e-play-icon::before {
+        content: '\e324';
+    }
+
+    .e-pause-icon::before {
+        content: '\e326';
+    }
+</style>
