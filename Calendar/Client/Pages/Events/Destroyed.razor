@@ -1,0 +1,16 @@
+﻿@page "/Destroyed"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfCalendar TValue="DateTime">
+    <CalendarEvents TValue="DateTime?" Destroyed="DestroyHandler"></CalendarEvents>
+</SfCalendar>
+
+@code {
+
+    public void DestroyHandler(object args)
+    {
+        // Here, you can customize your code.
+    }
+}

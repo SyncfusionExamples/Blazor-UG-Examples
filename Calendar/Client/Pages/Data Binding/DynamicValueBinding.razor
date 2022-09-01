@@ -1,0 +1,21 @@
+﻿@page "/DynamicValueBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<p>Calendar value is: @DateValue</p>
+
+<SfCalendar TValue="DateTime?" Value="@DateValue">
+    <CalendarEvents TValue="DateTime?" ValueChange="@onChange"></CalendarEvents>
+</SfCalendar>
+
+@code {
+
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+
+    private void onChange(Syncfusion.Blazor.Calendars.ChangedEventArgs<DateTime?> args)
+    {
+        DateValue = args.Value;
+        StateHasChanged();
+    }
+}

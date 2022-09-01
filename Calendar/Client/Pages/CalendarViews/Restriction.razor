@@ -1,0 +1,11 @@
+﻿@page "/Restriction"
+
+@using Syncfusion.Blazor.Calendars
+<ViewsRoute></ViewsRoute>
+
+<SfCalendar TValue="DateTime?" Value='@DateValue' Start="CalendarView.Decade" Depth="CalendarView.Year"></SfCalendar>
+
+@code
+{
+    public DateTime DateValue { get; set; } = DateTime.Now;
+}

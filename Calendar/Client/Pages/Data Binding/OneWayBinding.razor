@@ -1,0 +1,17 @@
+﻿@page "/OneWayBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<SfCalendar TValue="DateTime?" Value="@DateValue"></SfCalendar>
+
+<button @onclick="@UpdateValue">Update Value</button>
+
+@code {
+    public DateTime? DateValue {get;set;} = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 28);
+
+    public void UpdateValue()
+    {
+        DateValue = DateTime.Now;
+    }
+}

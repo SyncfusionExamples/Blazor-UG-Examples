@@ -1,0 +1,15 @@
+﻿@page "/MultiSelection"
+
+@using Syncfusion.Blazor.SplitButtons
+<SelectionRoute></SelectionRoute>
+
+<SfButtonGroup Mode="Syncfusion.Blazor.SplitButtons.SelectionMode.Multiple">
+    <ButtonGroupButton @bind-Selected="@boldSelected" IconCss="bg-icons e-btngrp-bold">Bold</ButtonGroupButton>
+    <ButtonGroupButton @bind-Selected="@italicSelected" IconCss="bg-icons e-btngrp-italic e-icon-left">Italic</ButtonGroupButton>
+    <ButtonGroupButton IconCss="bg-icons e-btngrp-underline e-icon-left">Underline</ButtonGroupButton>
+</SfButtonGroup>
+
+@code {
+    private bool boldSelected = true;
+    private bool italicSelected = true;
+}
