@@ -1,0 +1,16 @@
+﻿@page "/OnRenderDayCell"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfCalendar TValue="DateTime">
+    <CalendarEvents TValue="DateTime?" OnRenderDayCell="onRenderDayCellHandler"></CalendarEvents>
+</SfCalendar>
+
+@code {
+
+    public void onRenderDayCellHandler(RenderDayCellEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

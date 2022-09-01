@@ -1,0 +1,22 @@
+﻿@page "/ShowDatesofOtherMonth"
+
+@using Syncfusion.Blazor.Calendars
+<HowToRoute></HowToRoute>
+
+<SfCalendar TValue="DateTime?"></SfCalendar>
+
+<style>
+    .e-control.e-calendar {
+        max-width: 260px;
+    }
+    .e-calendar .e-content tr.e-month-hide,
+    .e-calendar .e-content td.e-other-month>span.e-day {
+        display: block;
+    }
+
+    .e-calendar .e-content td.e-month-hide,
+    .e-calendar .e-content td.e-other-month {
+        pointer-events: auto;
+        touch-action: auto;
+    }
+</style>

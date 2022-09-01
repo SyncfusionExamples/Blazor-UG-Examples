@@ -1,0 +1,10 @@
+﻿@page "/InitialView"
+
+@using Syncfusion.Blazor.Calendars
+<ViewsRoute></ViewsRoute>
+
+<SfCalendar TValue="DateTime?" Value='@DateValue' Start="CalendarView.Year"></SfCalendar>
+
+@code {
+    public DateTime DateValue { get; set; } = DateTime.Now;
+}
