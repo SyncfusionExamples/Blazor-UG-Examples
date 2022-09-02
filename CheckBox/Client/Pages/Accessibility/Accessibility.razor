@@ -1,0 +1,15 @@
+﻿@page "/Accessibility"
+
+@using Syncfusion.Blazor.Buttons
+
+<SfCheckBox @bind-Checked="isChecked" Label="Checked State"></SfCheckBox>
+<br />
+<SfCheckBox @bind-Checked="isUnChecked" Label="Unchecked State"></SfCheckBox>
+<br />
+<SfCheckBox @bind-Checked="isMediateChecked" Indeterminate="true" Label="Intermediate State"></SfCheckBox>
+
+@code {
+    private bool isChecked = true;
+    private bool isUnChecked = false;
+    private bool isMediateChecked = false;
+}
