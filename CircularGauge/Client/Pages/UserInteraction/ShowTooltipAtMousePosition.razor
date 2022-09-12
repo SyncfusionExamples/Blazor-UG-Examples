@@ -1,0 +1,17 @@
+﻿@page "/ShowTooltipAtMousePosition"
+
+@using Syncfusion.Blazor.CircularGauge
+<UserRoute></UserRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="50">
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeTooltipSettings Enable="true" ShowAtMousePosition="true">
+            </CircularGaugeTooltipSettings>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

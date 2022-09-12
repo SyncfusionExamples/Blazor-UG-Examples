@@ -1,0 +1,48 @@
+﻿@page "/NeedleStartEndWidth"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis StartAngle="270" EndAngle="90" Radius="90%" Minimum="0" Maximum="100">
+            <CircularGaugeAxisLineStyle Width="3" Color="#1E7145">
+            </CircularGaugeAxisLineStyle>
+            <CircularGaugeAxisLabelStyle>
+                <CircularGaugeAxisLabelFont Color="#1E7145" Size="0px">
+                </CircularGaugeAxisLabelFont>
+            </CircularGaugeAxisLabelStyle>
+            <CircularGaugeAxisMajorTicks Interval="100"
+                                         Height="0"
+                                         Width="1">
+            </CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks Width="0"
+                                         Height="0">
+            </CircularGaugeAxisMinorTicks>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="70"
+                                      Radius="80%" Color="green" PointerWidth="2" NeedleStartWidth="4" NeedleEndWidth="4">
+                    <CircularGaugeCap Radius="8" Color="green">
+                    </CircularGaugeCap>
+                    <CircularGaugeNeedleTail Length="0%">
+                    </CircularGaugeNeedleTail>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeAnnotations>
+                <CircularGaugeAnnotation Angle="180" ZIndex="1">
+                    <ContentTemplate>
+                        <div class="custom-annotation">Customized Needle</div>
+                    </ContentTemplate>
+                </CircularGaugeAnnotation>
+            </CircularGaugeAnnotations>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>
+<style type="text/css">
+    .custom-annotation {
+        color: #757575;
+        font-family: Roboto;
+        font-size: 14px;
+        padding-top: 26px;
+    }
+</style>

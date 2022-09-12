@@ -1,0 +1,21 @@
+﻿@page "/TickPosition"
+
+@using Syncfusion.Blazor.CircularGauge
+<AxesRoute></AxesRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugeAxisMajorTicks Color="red"
+                                         Height="10" Width="3"
+                                         Position="Position.Inside"
+                                         Offset="5">
+            </CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks Color="green"
+                                         Height="5" Width="2"
+                                         Position="Position.Inside"
+                                         Offset="5">
+            </CircularGaugeAxisMinorTicks>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

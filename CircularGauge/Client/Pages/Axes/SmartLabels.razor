@@ -1,0 +1,25 @@
+﻿@page "/SmartLabels"
+
+@using Syncfusion.Blazor.CircularGauge
+<AxesRoute></AxesRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis Minimum="0"
+                           Maximum="12"
+                           EndAngle="360"
+                           StartAngle="0">
+            <CircularGaugeAxisLabelStyle Position="Position.Inside"
+                                HiddenLabel="HiddenLabel.First">
+            </CircularGaugeAxisLabelStyle>
+            <CircularGaugeAxisMajorTicks Interval="1"
+                                         Height="10"
+                                         Position="Position.Inside">
+            </CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks Interval="0.2"
+                                         Height="5"
+                                         Position="Position.Inside">
+            </CircularGaugeAxisMinorTicks>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

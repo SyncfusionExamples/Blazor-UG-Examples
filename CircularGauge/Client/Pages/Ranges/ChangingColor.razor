@@ -1,0 +1,20 @@
+﻿@page "/ChangingColor"
+
+@using Syncfusion.Blazor.CircularGauge
+<RangeRoute></RangeRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugeRanges>
+                <CircularGaugeRange Start="40"
+                                    End="80"
+                                    StartWidth="2"
+                                    EndWidth="20"
+                                    Color="blue"
+                                    Opacity="0.2">
+                </CircularGaugeRange>
+            </CircularGaugeRanges>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>
