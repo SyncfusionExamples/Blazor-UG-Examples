@@ -1,0 +1,25 @@
+﻿@page "/Navigation"
+
+@using Syncfusion.Blazor.Navigations
+<IconRoute></IconRoute>
+
+<div id="target">Right click/Touch hold to open the ContextMenu </div>
+<SfContextMenu Target="#target" TValue="MenuItem">
+    <MenuItems>
+        <MenuItem Text="Flipkart" Url="https://www.google.co.in/search?q=flipkart"></MenuItem>
+        <MenuItem Text="Amazon" Url="https://www.google.co.in/search?q=amazon"></MenuItem>
+        <MenuItem Text="Snapdeal" Url="https://www.google.co.in/search?q=snapdeal"></MenuItem>
+    </MenuItems>
+</SfContextMenu>
+
+<style>
+    #target {
+        border: 1px dashed;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+        text-align: justify;
+        color: gray;
+        user-select: none;
+    }
+</style>

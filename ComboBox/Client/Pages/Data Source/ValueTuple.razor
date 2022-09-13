@@ -1,0 +1,9 @@
+﻿@page "/ValueTuple"
+
+@using Syncfusion.Blazor.DropDowns;
+<SourceRoute></SourceRoute>
+
+<SfComboBox TItem="(DayOfWeek, string)" Width="250px" TValue="DayOfWeek"
+            DataSource="@(Enum.GetValues<DayOfWeek>().Select(e => (e, e.ToString())))">
+    <ComboBoxFieldSettings Value="Item1" Text="Item2" />
+</SfComboBox>
