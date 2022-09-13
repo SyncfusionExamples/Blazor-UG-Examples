@@ -1,0 +1,16 @@
+﻿@page "/ImageExport"
+
+@using Syncfusion.Blazor.CircularGauge
+<PrintExportRoute></PrintExportRoute>
+
+<button @onclick="ExportGauge">Export</button>
+<SfCircularGauge @ref="Gauge" AllowImageExport="true">
+</SfCircularGauge>
+
+@code {
+    SfCircularGauge Gauge;
+    void ExportGauge()
+    {
+        this.Gauge.Export(ExportType.PNG, "CircularGauge");
+    }
+}

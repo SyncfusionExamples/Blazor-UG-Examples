@@ -1,0 +1,26 @@
+﻿@page "/ChangeAnimationSettings"
+
+@using Syncfusion.Blazor.Navigations
+<HowToRoute></HowToRoute>
+
+<div id="target">Right click/Touch hold to open the Context Menu</div>
+<SfContextMenu Target="#target" TValue="MenuItem">
+    <MenuItems>
+        <MenuItem Text="Cut"></MenuItem>
+        <MenuItem Text="Copy"></MenuItem>
+        <MenuItem Text="Paste"></MenuItem>
+    </MenuItems>
+    <MenuAnimationSettings Effect="MenuEffect.FadeIn" Duration="800"></MenuAnimationSettings>
+</SfContextMenu>
+<style>
+    #target {
+        border: 1px dashed;
+        height: 250px;
+        padding: 10px;
+        position: relative;
+        text-align: center;
+        color: gray;
+        line-height: 17;
+        font-size: 14px;
+    }
+</style>
