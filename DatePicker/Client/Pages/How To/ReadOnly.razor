@@ -1,0 +1,10 @@
+﻿@page "/ReadOnly"
+
+@using Syncfusion.Blazor.Calendars
+<HowToRoute></HowToRoute>
+
+<SfDatePicker TValue="DateTime?" AllowEdit="false" Readonly=true Value="@DateValue"></SfDatePicker>
+
+@code {
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+}

@@ -1,0 +1,15 @@
+﻿@page "/TwoWayBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<p>DateRangePickers StarteDate and EndDate is: <strong>@StartValue</strong> and <strong>@EndValue</strong></p>
+
+<SfDateRangePicker TValue="DateTime?" @bind-StartDate="@StartValue" EndDate="@EndValue"></SfDateRangePicker>
+
+@code {
+
+    public DateTime? StartValue { get; set; } = DateTime.Now;
+
+    public DateTime? EndValue { get; set; } = DateTime.Now;
+}

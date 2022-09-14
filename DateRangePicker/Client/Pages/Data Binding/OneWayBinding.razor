@@ -1,0 +1,21 @@
+﻿@page "/OneWayBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<SfDateRangePicker TValue="DateTime?" StartDate="@StartValue" EndDate="@EndValue"></SfDateRangePicker>
+
+<button @onclick="@UpdateValue">Update Value</button>
+
+@code {
+
+    public DateTime? StartValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 28);
+
+    public DateTime? EndValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 28);
+
+    public void UpdateValue()
+    {
+        StartValue = new DateTime(DateTime.Now.Year + 1, DateTime.Now.Month, 28);
+        EndValue = new DateTime(DateTime.Now.Year + 1, DateTime.Now.Month + 1, 28);
+    }
+}

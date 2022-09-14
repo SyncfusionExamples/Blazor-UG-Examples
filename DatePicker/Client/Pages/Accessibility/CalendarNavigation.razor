@@ -1,0 +1,16 @@
+﻿@page "/CalendarNavigation"
+
+@using Syncfusion.Blazor.Calendars
+
+<SfDatePicker TValue="DateTime?" @onkeypress="@(e => KeyPressed(e))" @ref="DateObj"></SfDatePicker>
+
+@code {
+    public SfDatePicker<DateTime?> DateObj;
+    public void KeyPressed(KeyboardEventArgs args)
+    {
+        if (args.Key == "t")
+        {
+            this.DateObj.FocusOutAsync();
+        }
+    }
+}

@@ -1,0 +1,9 @@
+﻿@page "/DateFormat"
+
+@using Syncfusion.Blazor.Calendars
+
+<SfDatePicker TValue="DateTime?" Value='@DateValue' Format='yyyy-MM-dd'></SfDatePicker>
+
+@code {
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+}
