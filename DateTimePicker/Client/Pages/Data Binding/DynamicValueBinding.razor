@@ -1,0 +1,22 @@
+﻿@page "/DynamicValueBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<p>DateTimePicker value is: @DateValue</p>
+
+<SfDateTimePicker TValue="DateTime?" Value="@DateValue">
+    <DateTimePickerEvents TValue="DateTime?" ValueChange="@onChange">
+    </DateTimePickerEvents>
+</SfDateTimePicker>
+
+@code {
+
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+
+    private void onChange(Syncfusion.Blazor.Calendars.ChangedEventArgs<DateTime?> args)
+    {
+        DateValue = args.Value;
+        StateHasChanged();
+    }
+}
