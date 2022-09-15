@@ -1,0 +1,10 @@
+﻿@page "/StartView"
+
+@using Syncfusion.Blazor.Calendars
+<StartRoute></StartRoute>
+
+<SfDatePicker TValue="DateTime?" Value='@DateValue' Placeholder='Select a date' Start='CalendarView.Decade'></SfDatePicker>
+
+@code {
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+}

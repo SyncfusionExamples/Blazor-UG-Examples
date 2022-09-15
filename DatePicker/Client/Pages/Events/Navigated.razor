@@ -1,0 +1,15 @@
+﻿@page "/Navigated"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDatePicker TValue="DateTime?">
+    <DatePickerEvents TValue="DateTime?" Navigated="NavigateHandler"></DatePickerEvents>
+</SfDatePicker>
+@code {
+
+    public void NavigateHandler(NavigatedEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}
