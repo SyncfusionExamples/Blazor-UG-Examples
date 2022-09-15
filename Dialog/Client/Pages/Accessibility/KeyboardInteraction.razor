@@ -1,0 +1,44 @@
+﻿@page "/KeyboardInteraction"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton @onclick="@OpenDialog">Open Dialog</SfButton>
+
+<SfDialog Width="400px" Height="358px" ShowCloseIcon="true" @bind-Visible="@IsVisible">
+    <DialogTemplates>
+        <Header>
+            <div>Feedback</div>
+        </Header>
+        <Content>
+            <form>
+                <div class='form-group'>
+                    <label for='email'>Email:</label>
+                    <input type='email' class='form-control' id='email'>
+                </div>
+                <div class='form-group'></div>
+                <div class='form-group'>
+                    <label for='comment'>Comments:</label>
+                    <textarea style='resize: none;' class='form-control' rows='4' id='comment'></textarea>
+                </div>
+            </form>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Submit" IsPrimary="true" OnClick="@CloseDialog" />
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    private bool IsVisible { get; set; } = true;
+
+    private void OpenDialog()
+    {
+        this.IsVisible = true;
+    }
+
+    private void CloseDialog()
+    {
+        this.IsVisible = false;
+    }
+}
