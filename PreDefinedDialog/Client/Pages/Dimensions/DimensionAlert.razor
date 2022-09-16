@@ -1,0 +1,19 @@
+﻿@page "/DimensionAlert"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@inject SfDialogService DialogService
+<DimensionRoute></DimensionRoute>
+<div>
+    <SfButton @onclick="@AlertBtn">Alert</SfButton>
+</div>
+@code {
+    private async Task AlertBtn()
+    {
+        await DialogService.AlertAsync("Delete certain files to free up space to store more items.", "Not enough space", new DialogOptions()
+            {
+                Width = "300px",
+                Height = "200px",
+            });
+    }
+}

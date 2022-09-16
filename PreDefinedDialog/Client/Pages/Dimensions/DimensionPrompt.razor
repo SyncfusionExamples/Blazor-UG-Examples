@@ -1,0 +1,37 @@
+﻿@page "/DimensionPrompt"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@inject SfDialogService DialogService
+<DimensionRoute></DimensionRoute>
+<div>
+    <SfButton @onclick="@PromptBtn">Prompt</SfButton>
+</div>
+@code {
+    private async Task PromptBtn()
+    {
+        string promptText = await DialogService.PromptAsync(null, "Join Wi-Fi network", new DialogOptions()
+                {
+                    Width = "350px",
+                    Height = "210px",
+                    ChildContent = @<table class="Table">
+    <tbody>
+        <tr>
+            <td>SSID:</td>
+        </tr>
+        <tr>
+            <td><b>AndroidAP</b></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td>
+                <span class="e-input-group">
+                    <input type="password" id="password" name="Required" class="e-input">
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+        });
+    }
+}
