@@ -1,0 +1,20 @@
+﻿@page "/Navigations"
+
+@using Syncfusion.Blazor.SplitButtons
+<PopupRoute></PopupRoute>
+
+<SfDropDownButton IconCss="e-icons e-shopping" Content="Shop By">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Flipkart" Url="https://www.google.co.in/search?q=flipkart"></DropDownMenuItem>
+        <DropDownMenuItem Text="Amazon" Url="https://www.google.co.in/search?q=amazon"></DropDownMenuItem>
+        <DropDownMenuItem Text="Snapdeal" Url="https://www.google.co.in/search?q=snapdeal"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+
+    .e-shopping::before {
+        content: '\e7d0';
+    }
+
+</style>

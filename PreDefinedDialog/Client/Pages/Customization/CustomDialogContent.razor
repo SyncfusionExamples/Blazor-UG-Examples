@@ -1,0 +1,31 @@
+﻿@page "/CustomDialogContent"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Inputs
+<CustomRoute></CustomRoute>
+@inject SfDialogService DialogService
+    <div>
+        <SfButton @onclick="@PromptBtn">Prompt</SfButton>
+    </div>
+@code {
+    private async Task PromptBtn()
+    {
+        string promptText = await DialogService.PromptAsync(null, "Join Chat Group", new DialogOptions()
+            {
+              
+        ChildContent = @<table class="Table">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label>Enter your name: </label>
+                                </td>
+                                <td>
+                                <SfTextBox Value="text" Type="InputType.Text"></SfTextBox>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+        });
+    }
+}

@@ -1,0 +1,42 @@
+﻿@page "/AddRemoveItem"
+
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfDropDownButton Content="Paste Items" @ref="DropDownbuttonRef">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+<div>
+    <SfButton Content="Additem" IsPrimary="true" @onclick="addItem"></SfButton>
+
+    <SfButton Content="Removeitem" IsPrimary="true" @onclick="removeItem"></SfButton>
+</div>
+
+@code {
+    SfDropDownButton DropDownbuttonRef;
+
+    private void addItem()
+    {
+        DropDownbuttonRef.AddItems(dropdownbtnItems);
+    }
+
+    private void removeItem()
+    {
+        DropDownbuttonRef.RemoveItems(removeItems);
+    }
+
+    public List<DropDownMenuItem> dropdownbtnItems = new List<DropDownMenuItem>
+    {
+        new DropDownMenuItem{ Text="Paste Special" },
+        new DropDownMenuItem{ Text="Paste as Formula" },
+        new DropDownMenuItem{ Text="Paste as Hyperlink" }
+    };
+
+    public List<string> removeItems = new List<string>()
+    {
+       "Paste"
+    };
+}

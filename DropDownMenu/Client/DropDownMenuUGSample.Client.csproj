@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Pages\How To\AddRemoveItem.razor" />
+    <None Include="Pages\How To\ChangeCaretIcon.razor" />
+    <None Include="Pages\How To\CreateDropDownListInPopup.razor" />
+    <None Include="Pages\How To\CreateMenuWithRoundedCorner.razor" />
+    <None Include="Pages\How To\CreateRTLMenu.razor" />
+    <None Include="Pages\How To\CustomIconAndWidth.razor" />
+    <None Include="Pages\How To\DisableDropDownMenu.razor" />
+    <None Include="Pages\How To\GroupDropDownListView.razor" />
+    <None Include="Pages\How To\HideDropDownArrow.razor" />
+    <None Include="Pages\How To\HowToRoute.razor" />
+    <None Include="Pages\How To\OpenDialogOnPopupItemClick.razor" />
+    <None Include="Pages\How To\PositionPopupOpen.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.2.0.49" />
+    <PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="20.2.0.49" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.2.0.49" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\DropDownMenuUGSample.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

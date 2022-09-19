@@ -1,0 +1,47 @@
+﻿@page "/OpenDialogOnPopupItemClick"
+
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfDropDownButton Content="Settings" IconCss="e-icons e-setting-icon" CssClass="e-vertical" IconPosition="SplitButtonIconPosition.Top">
+    <DropDownButtonEvents ItemSelected="select"></DropDownButtonEvents>
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Help"></DropDownMenuItem>
+        <DropDownMenuItem Text="About"></DropDownMenuItem>
+        <DropDownMenuItem Text="Update"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+<SfDialog Content="@Content" Header="@Header" Width="250px" Height="150px" Visible="false" @ref="DialogObj">
+    <DialogPositionData X="300" Y="200"></DialogPositionData>
+    <DialogButtons>
+        <DialogButton Content="OK" IsPrimary="true" OnClick="@click"></DialogButton>
+        <DialogButton Content="Cancel" OnClick="@click"></DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    SfDialog DialogObj;
+    public string Content = "Are you sure want to update?";
+    public string Header = "Software Update";
+
+    private void click(object args)
+    {
+        DialogObj.Hide();
+    }
+
+    private void select(MenuEventArgs args)
+    {
+        if (args.Item.Text == "Update")
+        {
+            DialogObj.Show();
+        }
+    }
+}
+
+<style>
+    .e-setting-icon::before {
+        content: '\e679';
+    }
+</style>
