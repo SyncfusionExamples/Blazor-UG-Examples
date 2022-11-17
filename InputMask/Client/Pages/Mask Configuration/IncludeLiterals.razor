@@ -1,0 +1,28 @@
+﻿@page "/MaskConfiguration/IncludeLiterals"
+<MaskRoute></MaskRoute>
+
+@using Syncfusion.Blazor.Buttons
+
+<div class="example-content">
+    <label class="example-label">Mobile Number</label>
+    <SfMaskedTextBox Mask="(000)-000-0000" EnableLiterals="@includeLiterals" @bind-Value="@Value"></SfMaskedTextBox>
+    <SfCheckBox Label="Included Literals" @bind-Checked="@includeLiterals"></SfCheckBox>
+    <label class="example-label">Value : "@Value"</label>
+</div>
+@code
+{
+    public bool includeLiterals { get; set; } = true;
+    public string Value { get; set; } = "9867433221";
+}
+<style>
+
+    .example-content {
+        margin: 10px;
+        width: 200px;
+    }
+
+    .example-label {
+        margin: 5px;
+        padding-top: 3px;
+    }
+</style>

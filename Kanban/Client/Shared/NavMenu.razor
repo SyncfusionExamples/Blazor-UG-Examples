@@ -1,0 +1,87 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">KanbanUGSample</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <button onclick="toggleMenuItems('kanban')" class="btn btn-primary w-100">Kanban</button>
+    <ul class="nav flex-column hide" id="kanban">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="LocalData">
+                <span aria-hidden="true"></span> Data Binding
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="SingleKeyMapping">
+                <span aria-hidden="true"></span> Columns
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Header">
+                <span aria-hidden="true"></span> Cards
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RenderSwimlaneRow">
+                <span aria-hidden="true"></span> Swimlane
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ColumnDragDrop">
+                <span aria-hidden="true"></span> Drag and Drop
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="PreventTransition">
+                <span aria-hidden="true"></span> WorkFlow
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="DataSourceOrder">
+                <span aria-hidden="true"></span> Sorting
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="DefaultDialog">
+                <span aria-hidden="true"></span> Card Editing
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="AutoHeightWidth">
+                <span aria-hidden="true"></span> Dimensions
+            </NavLink>
+        </li>
+    </ul>
+    <nav class="flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="oi oi-plus" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="fetchdata">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
