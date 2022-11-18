@@ -1,0 +1,29 @@
+﻿@page "/SingleListBox"
+<DragDropRoute></DragDropRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfListBox TValue="string[]" DataSource="@GroupA" TItem="CountryCode" AllowDragAndDrop="true">
+    <ListBoxFieldSettings Text="Name" Value="Code" />
+</SfListBox>
+
+@code {
+    public List<CountryCode> GroupA = new List<CountryCode>
+    {
+        new CountryCode{ Name = "Australia", Code = "AU" },
+        new CountryCode{ Name = "Bermuda", Code = "BM" },
+        new CountryCode{ Name = "Canada", Code = "CA" },
+        new CountryCode{ Name = "Cameroon", Code = "CM" },
+        new CountryCode{ Name = "Denmark", Code = "DK" },
+        new CountryCode{ Name = "France", Code = "FR" },
+        new CountryCode{ Name = "Finland", Code = "FI" },
+        new CountryCode{ Name = "Germany", Code = "DE" },
+        new CountryCode{ Name = "Hong Kong", Code = "HK" }
+    };
+
+    public class CountryCode
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+}

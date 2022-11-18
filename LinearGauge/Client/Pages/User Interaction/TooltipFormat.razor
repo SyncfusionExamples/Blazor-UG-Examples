@@ -1,0 +1,17 @@
+﻿@page "/TooltipFormat"
+<UserRoute></UserRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugeTooltipSettings Enable="true" Format="{value}km">
+            </LinearGaugeTooltipSettings>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="80">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

@@ -1,0 +1,20 @@
+﻿@page "/TooltipTemplate"
+<UserRoute></UserRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeTooltipSettings Enable="true">
+        <TooltipTemplate>
+            <div style="height:100px;width:100px;">Pointer: 80</div>
+        </TooltipTemplate>
+    </LinearGaugeTooltipSettings>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="80">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
