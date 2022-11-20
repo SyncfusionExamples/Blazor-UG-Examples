@@ -1,0 +1,8 @@
+﻿@page "/MaskConfiguration/PromptCharacter"
+<MaskRoute></MaskRoute>
+
+<SfMaskedTextBox Mask="999-999-9999" PromptChar="@promptCharacter"></SfMaskedTextBox>
+
+@code {
+    public char promptCharacter { get; set; } = '#';
+}

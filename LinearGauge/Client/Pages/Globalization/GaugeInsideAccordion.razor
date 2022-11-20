@@ -1,0 +1,184 @@
+﻿@page "/GaugeInsideAccordion"
+<GlobalRoute></GlobalRoute>
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.LinearGauge
+@using Syncfusion.Blazor.Inputs
+
+<div class="control-section accordion-control-section">
+    <SfAccordion>
+        <AccordionEvents Created="Created" Expanded="Expand"></AccordionEvents>
+        <AccordionItems>
+            <AccordionItem Expanded="true">
+                <HeaderTemplate>Linear Gauge - Vertical</HeaderTemplate>
+                <ContentTemplate>
+                    @if (IsInitialRender)
+                    {
+                        <SfLinearGauge ID="GaugeOne" @ref="GaugeOne" Orientation="@GaugeOrientation" Width="100%" Background="transparent">
+                            <LinearGaugeTitleStyle FontWeight="499" FontFamily="inherit" />
+                            <LinearGaugeAxes>
+                                <LinearGaugeAxis Minimum="0" Maximum="100" OpposedPosition="true">
+                                    <LinearGaugeLine Width="5" />
+                                    <LinearGaugeMajorTicks Interval="20" Height="7" Width="1" Position="Position.Outside" />
+                                    <LinearGaugeMinorTicks Color="#9e9e9e" Interval="10" Height="3" Position="Position.Outside" />
+                                    <LinearGaugeAxisLabelStyle Position="Position.Outside">
+                                        <LinearGaugeAxisLabelFont FontFamily="inherit" />
+                                    </LinearGaugeAxisLabelStyle>
+                                    <LinearGaugeRanges>
+                                        <LinearGaugeRange Start="0" End="30" StartWidth="50" EndWidth="50" Color="#FB7D55" Offset="5" />
+                                        <LinearGaugeRange Start="30" End="65" StartWidth="50" EndWidth="50" Color="#ECC85B" Offset="5" />
+                                        <LinearGaugeRange Start="65" End="100" StartWidth="50" EndWidth="50" Color="#6FC78A" Offset="5" />
+                                    </LinearGaugeRanges>
+                                    <LinearGaugePointers>
+                                        <LinearGaugePointer Width="0" />
+                                    </LinearGaugePointers>
+                                </LinearGaugeAxis>
+                            </LinearGaugeAxes>
+                        </SfLinearGauge>
+                    }
+                </ContentTemplate>
+            </AccordionItem>
+            <AccordionItem>
+                <HeaderTemplate>Linear Gauge - Step Progress Bar</HeaderTemplate>
+                <ContentTemplate>
+                    @if (IsInitialRender)
+                    {
+                        <SfLinearGauge ID="GaugeTwo" @ref="GaugeTwo" Width="100%" Orientation="@GaugeOrientation" Background="transparent">
+                            <LinearGaugeTitleStyle FontWeight="499" FontFamily="inherit"></LinearGaugeTitleStyle>
+                            <LinearGaugeAxes>
+                                <LinearGaugeAxis Minimum="5" Maximum="20" OpposedPosition="true">
+                                    <LinearGaugeLine Width="5" />
+                                    <LinearGaugeMajorTicks Interval="5" Height="0" />
+                                    <LinearGaugeMinorTicks Interval="2.5" Height="0" />
+                                    <LinearGaugeAxisLabelStyle Offset="10">
+                                        <LinearGaugeAxisLabelFont FontFamily="inherit"></LinearGaugeAxisLabelFont>
+                                    </LinearGaugeAxisLabelStyle>
+                                    <LinearGaugePointers>
+                                        <LinearGaugePointer PointerValue="5" Height="15" Width="15" Color="#0DC9AB" Placement="Syncfusion.Blazor.LinearGauge.Placement.Near" MarkerType="MarkerType.Circle" Offset="7" />
+                                        <LinearGaugePointer PointerValue="10" Height="15" Width="15" Color="#0DC9AB" Placement="Syncfusion.Blazor.LinearGauge.Placement.Near" MarkerType="MarkerType.Circle" Offset="7" />
+                                        <LinearGaugePointer PointerValue="15" Height="15" Width="15" Color="#0DC9AB" Placement="Syncfusion.Blazor.LinearGauge.Placement.Near" MarkerType="MarkerType.Circle" Offset="7" />
+                                        <LinearGaugePointer PointerValue="20" Height="15" Width="15" Color="@DeliveredPointerColor" Placement="Syncfusion.Blazor.LinearGauge.Placement.Near" MarkerType="MarkerType.Circle" Offset="7" />
+                                    </LinearGaugePointers>
+                                    <LinearGaugeRanges>
+                                        <LinearGaugeRange Start="5" End="10" StartWidth="5" EndWidth="5" Color="#0DC9AB" />
+                                        <LinearGaugeRange Start="10" End="15" StartWidth="5" EndWidth="5" Color="#0DC9AB" />
+                                        <LinearGaugeRange Start="15" End="20" StartWidth="5" EndWidth="5" Color="@DeliveredPointerColor" />
+                                    </LinearGaugeRanges>
+                                </LinearGaugeAxis>
+                            </LinearGaugeAxes>
+                        </SfLinearGauge>
+                    }
+                </ContentTemplate>
+            </AccordionItem>
+            <AccordionItem>
+                <HeaderTemplate>Linear Gauge - Horizontal</HeaderTemplate>
+                <ContentTemplate>
+                    @if (IsInitialRender)
+                    {
+                        <SfLinearGauge ID="GaugeThree" @ref="GaugeThree" Orientation="Syncfusion.Blazor.LinearGauge.Orientation.Horizontal" Width="100%" Background="transparent">
+                            <LinearGaugeContainer Width="58" Type="ContainerType.RoundedRectangle">
+                                <LinearGaugeContainerBorder Width="5"></LinearGaugeContainerBorder>
+                                <LinearGaugeAxes>
+                                    <LinearGaugeAxis Minimum="0" Maximum="60">
+                                        <LinearGaugeLine Width="0" />
+                                        <LinearGaugeMajorTicks Interval="15" Height="0" />
+                                        <LinearGaugeMinorTicks Interval="5" Height="0" />
+                                        <LinearGaugeAxisLabelStyle>
+                                            <LinearGaugeAxisLabelFont Size="0"></LinearGaugeAxisLabelFont>
+                                        </LinearGaugeAxisLabelStyle>
+                                        <LinearGaugePointers>
+                                            <LinearGaugePointer Width="0" />
+                                        </LinearGaugePointers>
+                                        <LinearGaugeRanges>
+                                            <LinearGaugeRange Start="3" End="14" StartWidth="45" EndWidth="45" Color="#66BB6A" Offset="52" />
+                                            <LinearGaugeRange Start="16" End="29" StartWidth="45" EndWidth="45" Color="#66BB6A" Offset="52" />
+                                            <LinearGaugeRange Start="31" End="44" StartWidth="45" EndWidth="45" Color="#66BB6A" Offset="52" />
+                                        </LinearGaugeRanges>
+                                        <LinearGaugeAnnotations>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="60" X="0" Y="0" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div style="width: 16px;height: 37px;border: 5px solid @BorderColor;margin-left: 6px;margin-top: 12px;border-radius: 6px;" />
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="0" X="0" Y="0" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div style="width: 134px;font-size: 20px;margin-top: -47px;margin-left: 7px;color: @TextColor;">Charged: 75%</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                        </LinearGaugeAnnotations>
+                                    </LinearGaugeAxis>
+                                </LinearGaugeAxes>
+                            </LinearGaugeContainer>
+                        </SfLinearGauge>
+                    }
+                </ContentTemplate>
+            </AccordionItem>
+        </AccordionItems>
+    </SfAccordion>
+</div>
+<style>
+    @@-moz-document url-prefix() {
+        .e-accordion .e-content table {
+            border-collapse: initial;
+        }
+    }
+
+    .e-accordion table {
+        width: 100%;
+    }
+
+    #nested-accordion.e-accordion {
+        padding: 4px;
+    }
+
+    .e-accordion table th,
+    .e-accordion table td {
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .accordion-control-section {
+        margin: 0 10% 0 10%;
+        padding-bottom: 25px;
+    }
+
+    .source-link {
+        padding-bottom: 25px;
+    }
+</style>
+
+@code {
+    SfLinearGauge GaugeOne;
+    SfLinearGauge GaugeTwo;
+    SfLinearGauge GaugeThree;
+
+    public Syncfusion.Blazor.LinearGauge.Orientation GaugeOrientation = Syncfusion.Blazor.LinearGauge.Orientation.Vertical;
+    public string DeliveredPointerColor = "#E5E7EB";
+    public string BorderColor = "#E5E7EB";
+    public string TextColor = "#000000";
+
+    public bool IsInitialRender { get; set; }
+
+    public void Created(Object args)
+    {
+        IsInitialRender = true;
+    }
+
+    public async Task Expand(ExpandedEventArgs args)
+    {
+        if (args.Index == 0)
+        {
+            await GaugeOne.RefreshAsync();
+
+        }
+        else if (args.Index == 1)
+        {
+            await GaugeTwo.RefreshAsync();
+
+        }
+        else if (args.Index == 2)
+        {
+            await GaugeThree.RefreshAsync();
+        }
+    }
+}

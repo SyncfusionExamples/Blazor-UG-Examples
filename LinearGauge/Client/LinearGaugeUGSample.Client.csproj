@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.8" PrivateAssets="all" />
+    <PackageReference Include="Syncfusion.Blazor.Layouts" Version="20.3.0.57" />
+    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="20.3.0.57" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="20.3.0.57" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="20.3.0.57" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\LinearGaugeUGSample.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

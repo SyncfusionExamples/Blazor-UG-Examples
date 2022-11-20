@@ -1,0 +1,16 @@
+﻿@page "/CustomBarPointer"
+<PointerRoute></PointerRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="80" Type="Point.Bar" Width="20"
+                                    Color="#f44141">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

@@ -1,0 +1,10 @@
+﻿@page "/DataBindings/DataBinding"
+<BindingRoute></BindingRoute>
+
+<p>MaskedTextBox value is: @MaskValue</p>
+
+<SfMaskedTextBox @bind-Value="@MaskValue"></SfMaskedTextBox>
+
+@code {
+    public string MaskValue { get; set; } = "12345";
+}
