@@ -1,0 +1,36 @@
+﻿@page "/ChartTypes/AreaChart/MulticolorArea"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart Width="60%">
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.MultiColoredArea">
+            <ChartSegments>
+                <ChartSegment Value="2007" Color="blue" />
+                <ChartSegment Value="2009" Color="red" />
+                <ChartSegment Color="green"></ChartSegment>
+            </ChartSegments>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+        new ChartData{ X= 2005, Y= 28 },
+        new ChartData{ X= 2006, Y= 25},
+        new ChartData{ X= 2007, Y= 26 },
+        new ChartData{ X= 2008, Y= 27 },
+        new ChartData{ X= 2009, Y= 32},
+        new ChartData{ X= 2010, Y= 35 },
+        new ChartData{ X= 2011, Y= 25 }
+    };
+}

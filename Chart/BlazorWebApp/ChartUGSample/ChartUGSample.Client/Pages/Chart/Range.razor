@@ -1,0 +1,34 @@
+﻿@page "/Chart/Range"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<ChartsRoute></ChartsRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis IntervalType="IntervalType.Years" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="XValue" YName="YValue" Type="ChartSeriesType.Line">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public DateTime XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+        new ChartData { XValue = new DateTime(2016, 4, 1), YValue = 21 },
+        new ChartData { XValue = new DateTime(2016, 5, 1), YValue = 24 },
+        new ChartData { XValue = new DateTime(2016, 6, 1), YValue = 36 },
+        new ChartData { XValue = new DateTime(2016, 7, 1), YValue = 38 },
+        new ChartData { XValue = new DateTime(2016, 8, 1), YValue = 46 },
+        new ChartData { XValue = new DateTime(2016, 9, 1), YValue = 28 },
+        new ChartData { XValue = new DateTime(2016, 10, 1), YValue = 68 }
+    };
+}

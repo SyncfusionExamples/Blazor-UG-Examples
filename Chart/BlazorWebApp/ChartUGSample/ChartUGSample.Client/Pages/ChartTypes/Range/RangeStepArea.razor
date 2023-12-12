@@ -1,0 +1,47 @@
+﻿@page "/ChartTypes/Range/RangeStepArea"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@using System.Net.Http.Json
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart>
+    <ChartArea>
+        <ChartAreaBorder Width="0"></ChartAreaBorder>
+    </ChartArea>
+    <ChartTooltipSettings Enable="true" Format="Temperature : <b>${point.low} - ${point.high}</b>" Shared="true"></ChartTooltipSettings>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Format="dd MMM">
+        <ChartAxisMajorGridLines Width="0" />
+    </ChartPrimaryXAxis>
+    <ChartPrimaryYAxis LabelFormat="{value}˚C" Interval="5" Minimum="-5" Maximum="25">
+        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+        <ChartAxisMajorTickLines Width="0" />
+    </ChartPrimaryYAxis>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ChartPoints" XName="X" High="High" Low="Low" Opacity="0.5" Type="ChartSeriesType.RangeStepArea">
+            <ChartMarker Visible="false"></ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+    <ChartLegendSettings Visible="false" />
+</SfChart>
+
+@code {
+
+    public string BorderColor { get; set; }
+    public ChartData[] ChartPoints { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        ChartPoints = new ChartData[] { };
+        ChartPoints = await Http.GetFromJsonAsync<ChartData[]>(NavigationManager.BaseUri + "./range-data.json");
+    }
+
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double High { get; set; }
+        public double Low { get; set; }
+    }
+}

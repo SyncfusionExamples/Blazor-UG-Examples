@@ -1,0 +1,39 @@
+﻿@page "/ChartTypes/BarChart/PercentCustomStackedBar"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" DashArray="5,5" Fill="blue" Opacity="0.7" Type="ChartSeriesType.StackingBar100">
+            <ChartSeriesBorder Width="2" Color="black"></ChartSeriesBorder>
+        </ChartSeries>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue1" DashArray="5,5" Fill="green" Opacity="0.7" Type="ChartSeriesType.StackingBar100">
+            <ChartSeriesBorder Width="2" Color="black"></ChartSeriesBorder>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+        public double YValue1 { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46, YValue1=56 },
+        new ChartData { X= "GBR", YValue= 27, YValue1=17 },
+        new ChartData { X= "CHN", YValue= 26, YValue1=36 },
+        new ChartData { X= "UK", YValue= 56,  YValue1=16 },
+        new ChartData { X= "AUS", YValue= 12, YValue1=46 },
+        new ChartData { X= "IND", YValue= 26, YValue1=16 },
+        new ChartData { X= "DEN", YValue= 26, YValue1=12 },
+        new ChartData { X= "MEX", YValue= 34, YValue1=32},
+    };
+}

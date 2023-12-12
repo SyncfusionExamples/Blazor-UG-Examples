@@ -1,0 +1,35 @@
+﻿@page "/Tooltip/Modes"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart Title="Sales History of Product X">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartZoomSettings EnableSelectionZooming="true" Mode="ZoomMode.X"></ChartZoomSettings>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="X" YName="YValue" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> SalesReports = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46 },
+        new ChartData { X= "GBR", YValue= 27 },
+        new ChartData { X= "CHN", YValue= 26 },
+        new ChartData { X= "UK", YValue= 26 },
+        new ChartData { X= "AUS", YValue= 26 },
+        new ChartData { X= "IND", YValue= 26 },
+        new ChartData { X= "DEN", YValue= 26 },
+        new ChartData { X= "MEX", YValue= 26 },
+    };
+}

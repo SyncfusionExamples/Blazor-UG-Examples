@@ -1,0 +1,83 @@
+﻿@page "/HowTo/LazyLoad"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@using System.Collections.ObjectModel
+<HowToRoute></HowToRoute>
+<br/>
+@if (dataSource != null)
+{
+    <SfChart Title="Lazy Loading Chart">
+        <ChartEvents OnScrollChanged="@ScrollChange"></ChartEvents>
+        <ChartPrimaryXAxis>
+            <ChartAxisScrollbarSettings Enable="true" PointsLength="1000"></ChartAxisScrollbarSettings>
+        </ChartPrimaryXAxis>
+        <ChartSeriesCollection>
+            <ChartSeries DataSource="@dataSource" Fill="blue" XName="x" YName="y" Type="ChartSeriesType.Line">
+            </ChartSeries>
+        </ChartSeriesCollection>
+    </SfChart>
+}
+else
+{
+    <p>Chart Loading</p>
+}
+
+@code {
+
+    int count = 1;
+    Random random = new Random();
+    public ObservableCollection<ColumnChartData> dataSource;
+
+    protected override void OnInitialized()
+    {
+        dataSource = this.GetData();
+    }
+
+    public void ScrollChange(ScrollEventArgs e)
+    {
+        this.dataSource = GetRangeData(Convert.ToInt32(e.CurrentRange.Minimum), Convert.ToInt32(e.CurrentRange.Maximum));
+    }
+
+    public ObservableCollection<ColumnChartData> GetRangeData(int min, int max)
+    {
+        ObservableCollection<ColumnChartData> data = new ObservableCollection<ColumnChartData>();
+        for (; min <= max; min++)
+        {
+            data.Add(new ColumnChartData
+                {
+                    x = min,
+                    y = random.Next(10, 100)
+                });
+        }
+        return data;
+    }
+
+    public ObservableCollection<ColumnChartData> GetData()
+    {
+        ObservableCollection<ColumnChartData> data = new ObservableCollection<ColumnChartData>();
+        for (; count <= 100; count++)
+        {
+            data.Add(new ColumnChartData
+                {
+                    x = count++,
+                    y = random.Next(10, 100)
+                });
+        }
+        return data;
+    }
+
+    public class ColumnChartData
+    {
+        public double x
+        {
+            get;
+            set;
+        }
+        public double y
+        {
+            get;
+            set;
+        }
+    }
+}
