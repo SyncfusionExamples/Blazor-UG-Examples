@@ -1,0 +1,58 @@
+﻿@page "/Tooltip/Scrollbar"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart Title="Sales History of Product X">
+    <ChartPrimaryXAxis Title="Years" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime"
+                       Skeleton="yMMM" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+    </ChartPrimaryXAxis>
+
+    <ChartPrimaryYAxis Title="Profit ($)" RangePadding="ChartRangePadding.None">
+        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+    </ChartPrimaryYAxis>
+
+    <ChartLegendSettings Visible="false"></ChartLegendSettings>
+
+    <ChartZoomSettings EnableMouseWheelZooming="true" EnableScrollbar="true" EnablePinchZooming="true"
+                       EnableSelectionZooming="true"></ChartZoomSettings>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" Name="Warmest" XName="XValue" Width="2" Opacity="1"
+                     YName="YValue" Type="ChartSeriesType.Area">
+        </ChartSeries>
+    </ChartSeriesCollection>
+
+    <ChartArea>
+        <ChartAreaBorder Width="0"></ChartAreaBorder>
+    </ChartArea>
+</SfChart>
+
+@code {
+
+    public class ChartData
+    {
+        public DateTime XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> SalesReports = new List<ChartData>
+    {
+        new ChartData { XValue = new DateTime(2000, 02, 11), YValue = 14 },
+        new ChartData { XValue = new DateTime(2000, 09, 04), YValue = 20 },
+        new ChartData { XValue = new DateTime(2001, 02, 11), YValue = 25 },
+        new ChartData { XValue = new DateTime(2001, 09, 16), YValue = 21 },
+        new ChartData { XValue = new DateTime(2002, 02, 07), YValue = 13 },
+        new ChartData { XValue = new DateTime(2002, 09, 07), YValue = 18 },
+        new ChartData { XValue = new DateTime(2003, 02, 11), YValue = 24 },
+        new ChartData { XValue = new DateTime(2003, 09, 14), YValue = 23 },
+        new ChartData { XValue = new DateTime(2004, 02, 06), YValue = 19 },
+        new ChartData { XValue = new DateTime(2004, 09, 06), YValue = 31 },
+        new ChartData { XValue = new DateTime(2005, 02, 11), YValue = 39 },
+        new ChartData { XValue = new DateTime(2005, 09, 11), YValue = 50 },
+        new ChartData { XValue = new DateTime(2006, 02, 11), YValue = 24 },
+    };
+}

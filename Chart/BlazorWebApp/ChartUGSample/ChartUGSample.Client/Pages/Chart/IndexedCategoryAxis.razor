@@ -1,0 +1,43 @@
+﻿@page "/Chart/IndexedCategoryAxis"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<ChartsRoute></ChartsRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis IsIndexed="true" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports1" XName="X" YName="Y" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@WeatherReports2" XName="X" YName="Y" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class WeatherData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<WeatherData> WeatherReports1 = new List<WeatherData>
+    {
+        new WeatherData{ X= "Myanmar", Y= 7.3 },
+        new WeatherData{ X= "India", Y= 7.9 },
+        new WeatherData{ X= "Bangladesh", Y= 6.8 },
+        new WeatherData{ X= "Cambodia", Y=7.0 },
+        new WeatherData{ X= "China", Y= 6.9 }
+    };
+
+    public List<WeatherData> WeatherReports2 = new List<WeatherData>
+    {
+        new WeatherData{ X= "Poland", Y=2.7 },
+        new WeatherData{ X= "Australia", Y=2.5 },
+        new WeatherData{ X= "Singapore", Y=2.0 },
+        new WeatherData{ X= "Canada", Y=1.4 },
+        new WeatherData{ X= "Germany", Y=1.8 }
+    };
+}

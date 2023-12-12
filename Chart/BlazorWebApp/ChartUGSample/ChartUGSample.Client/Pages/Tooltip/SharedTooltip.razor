@@ -1,0 +1,70 @@
+﻿@page "/Tooltip/SharedTooltip"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart>
+    <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="yyyy" IntervalType="IntervalType.Years" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+    </ChartPrimaryXAxis>
+    <ChartPrimaryYAxis LabelFormat="{value}%" RangePadding="ChartRangePadding.None" Minimum="0" Maximum="100" Interval="20">
+        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+    </ChartPrimaryYAxis>
+    <ChartTooltipSettings Enable="true" Shared="true">
+        <Template>
+            @{
+                var data = context as List<ChartTooltipInfo>;
+                <div>
+                    <table style="width:100%;  border: 1px solid black;" class="table-borderless">
+                        <tr>
+                            <th colspan="2" bgcolor="#00FFFF">@data[0].X</th>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#00FFFF">Germany</td>
+                            <td bgcolor="#00FFFF">@data[0].Y</td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#00FFFF">England</td>
+                            <td bgcolor="#00FFFF">@data[1].Y</td>
+                        </tr>
+                    </table>
+                </div>
+            }
+        </Template>
+    </ChartTooltipSettings>
+    <ChartCrosshairSettings Enable="true" LineType="LineType.Vertical"></ChartCrosshairSettings>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ChartData" Name="Germany" XName="Period" Width="2"
+                     Opacity="1" YName="ENG_InflationRate" Type="ChartSeriesType.Line">
+            <ChartMarker Visible="true" Width="10" Height="10">
+            </ChartMarker>
+        </ChartSeries>
+        <ChartSeries DataSource="@ChartData" Name="England" XName="Period" Width="2"
+                     Opacity="1" YName="GER_InflationRate" Type="ChartSeriesType.Line">
+            <ChartMarker Visible="true" Width="10" Height="10">
+            </ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public List<LineChartData> ChartData = new List<LineChartData>
+    {
+        new LineChartData { Period = new DateTime(2005, 01, 01), ENG_InflationRate = 21, GER_InflationRate = 28 },
+        new LineChartData { Period = new DateTime(2006, 01, 01), ENG_InflationRate = 24, GER_InflationRate = 44 },
+        new LineChartData { Period = new DateTime(2007, 01, 01), ENG_InflationRate = 36, GER_InflationRate = 48 },
+        new LineChartData { Period = new DateTime(2008, 01, 01), ENG_InflationRate = 38, GER_InflationRate = 50 },
+        new LineChartData { Period = new DateTime(2009, 01, 01), ENG_InflationRate = 54, GER_InflationRate = 66 },
+        new LineChartData { Period = new DateTime(2010, 01, 01), ENG_InflationRate = 57, GER_InflationRate = 78 },
+        new LineChartData { Period = new DateTime(2011, 01, 01), ENG_InflationRate = 70, GER_InflationRate = 84 }
+    };
+    public class LineChartData
+    {
+        public DateTime Period { get; set; }
+        public double ENG_InflationRate { get; set; }
+        public double GER_InflationRate { get; set; }
+    }
+}

@@ -1,0 +1,81 @@
+﻿@page "/Selection/ExportChart"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts;
+@using Microsoft.AspNetCore.Components.Web;
+@using Syncfusion.PdfExport;
+<SelectRoute></SelectRoute>
+<br/>
+<div id="button">
+    @* <button onclick="@Exports">
+        Export
+    </button> *@
+    <Syncfusion.Blazor.Buttons.SfButton OnClick="Exports">Export</Syncfusion.Blazor.Buttons.SfButton>
+</div>
+
+<div id="chart">
+    <SfChart @ref="@chartInstance">
+        <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelIntersectAction="@Label" LabelRotation="-45">
+            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+        </ChartPrimaryXAxis>
+        <ChartPrimaryYAxis Minimum="0" Maximum="40" Interval="10" Title="Measurements (in Gigawatt)" LabelFormat="@Format">
+            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+            <ChartAxisMajorGridLines Width="2"></ChartAxisMajorGridLines>
+            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+        </ChartPrimaryYAxis>
+        <ChartSeriesCollection>
+            <ChartSeries DataSource="@ChartPoints" XName="Country" YName="GigaWatts" Type="ChartSeriesType.Column">
+                <ChartMarker>
+                    <ChartDataLabel Visible="true" Position="Syncfusion.Blazor.Charts.LabelPosition.Top">
+                        <ChartDataLabelFont FontWeight="600" Size="9px" Color="#ffffff"></ChartDataLabelFont>
+                    </ChartDataLabel>
+                </ChartMarker>
+            </ChartSeries>
+        </ChartSeriesCollection>
+        <ChartEvents OnExportComplete="ExportComplete"></ChartEvents>
+    </SfChart>
+</div>
+
+
+@code {
+    private SfChart chartInstance;
+    public string FileName { get; set; } = "Charts";
+    public string Format { get; set; } = "{value} GW";
+    public LabelIntersectAction Label { get; set; } = LabelIntersectAction.Trim;
+
+    public List<ExportData> ChartPoints { get; set; } = new List<ExportData>
+    {
+        new ExportData { Country="India", GigaWatts = 35.5 },
+        new ExportData { Country="China", GigaWatts = 18.3 },
+        new ExportData { Country="Italy", GigaWatts = 17.6 },
+        new ExportData { Country="Japan", GigaWatts = 13.6 },
+        new ExportData { Country="United state", GigaWatts = 12 },
+        new ExportData { Country="Spain", GigaWatts = 5.6 },
+        new ExportData { Country="France", GigaWatts = 4.6 },
+        new ExportData { Country="Australia", GigaWatts = 3.3 },
+        new ExportData { Country="Belgium", GigaWatts = 3 },
+        new ExportData { Country="United Kingdom", GigaWatts = 2.9 },
+    };
+
+    // public async Task ExportChart(MouseEventArgs args)
+    // {
+    //     await chartInstance.ExportAsync(ExportType.PDF, FileName, PdfPageOrientation.Landscape, false, true);
+    // }
+    public async Task Exports(MouseEventArgs args)
+    {
+        await chartInstance.ExportAsync(ExportType.PDF, FileName, PdfPageOrientation.Landscape, false, true);
+    }
+    public class ExportData
+    {
+        public string Country { get; set; }
+        public double GigaWatts { get; set; }
+    }
+
+    public void ExportComplete(ExportEventArgs exportEventArgs)
+    {
+        string base64 = exportEventArgs.Base64;
+    }
+}

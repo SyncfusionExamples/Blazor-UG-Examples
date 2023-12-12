@@ -1,0 +1,46 @@
+﻿@page "/Selection/Print"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor.Buttons
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart @ref="ChartObj" Title="Inflation - Consumer Price">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ConsumerDetails" XName="X" YName="YValue" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+<SfButton Id="button" Content="Print" @onclick="Print" IsPrimary="true" CssClass="e-flat"></SfButton>
+
+@code {
+
+    SfChart ChartObj;
+
+    private async Task Print(MouseEventArgs args)
+    {
+        await ChartObj.PrintAsync();
+    }
+
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> ConsumerDetails = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46 },
+        new ChartData { X= "GBR", YValue= 27 },
+        new ChartData { X= "CHN", YValue= 26 },
+        new ChartData { X= "UK", YValue= 36 },
+        new ChartData { X= "AUS", YValue= 15 },
+        new ChartData { X= "IND", YValue= 55 },
+        new ChartData { X= "DEN", YValue= 40 },
+        new ChartData { X= "MEX", YValue= 30 }
+    };
+}

@@ -1,0 +1,42 @@
+﻿@page "/ChartAxisLabels/EdgeLabelPlacement"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Sales Report">
+    <ChartPrimaryXAxis LabelPlacement="LabelPlacement.OnTicks" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+        <ChartAxisLabelStyle Size="18px" Color="red" />
+    </ChartPrimaryXAxis>
+
+    <ChartPrimaryYAxis Title="Sales in Millions">
+    </ChartPrimaryYAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MetalDetails" XName="X" YName="Y" Type="ChartSeriesType.Line">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> MetalDetails = new List<ChartData>
+    {
+        new ChartData { X= "2005", Y= 1.2},
+        new ChartData { X= "2006", Y= 1 },
+        new ChartData { X= "2007", Y= 1 },
+        new ChartData { X= "2008", Y= 0.2},
+        new ChartData { X= "2009", Y= 0.1},
+        new ChartData { X= "2010", Y= 1 },
+        new ChartData { X= "2011", Y= 0.1},
+        new ChartData { X= "2012", Y= 0.5},
+        new ChartData { X= "2013", Y= 0.2},
+        new ChartData { X= "2014", Y= 0.6},
+        new ChartData { X= "2015", Y= 0.9},
+    };
+}

@@ -1,0 +1,33 @@
+﻿@page "/Chart/RangePadding"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<ChartsRoute></ChartsRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryYAxis RangePadding="ChartRangePadding.Auto" />
+    <ChartPrimaryXAxis RangePadding="ChartRangePadding.Auto" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@Data" XName="XValue" YName="YValue" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public double XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> Data = new List<ChartData>
+    {
+        new ChartData { XValue = 10, YValue = 21 },
+        new ChartData { XValue = 20, YValue = 24 },
+        new ChartData { XValue = 30, YValue = 36 },
+        new ChartData { XValue = 40, YValue = 38 },
+        new ChartData { XValue = 50, YValue = 54 },
+        new ChartData { XValue = 60, YValue = 57 },
+        new ChartData { XValue = 70, YValue = 70 },
+    };
+}

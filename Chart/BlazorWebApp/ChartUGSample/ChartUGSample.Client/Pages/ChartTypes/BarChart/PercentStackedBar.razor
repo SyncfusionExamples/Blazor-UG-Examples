@@ -1,0 +1,37 @@
+﻿@page "/ChartTypes/BarChart/PercentStackedBar"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" Type="ChartSeriesType.StackingBar100">
+        </ChartSeries>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue1" Type="ChartSeriesType.StackingBar100">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+        public double YValue1 { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46, YValue1=56 },
+        new ChartData { X= "GBR", YValue= 27, YValue1=17 },
+        new ChartData { X= "CHN", YValue= 26, YValue1=36 },
+        new ChartData { X= "UK", YValue= 56,  YValue1=16 },
+        new ChartData { X= "AUS", YValue= 12, YValue1=46 },
+        new ChartData { X= "IND", YValue= 26, YValue1=16 },
+        new ChartData { X= "DEN", YValue= 26, YValue1=12 },
+        new ChartData { X= "MEX", YValue= 34, YValue1=32},
+    };
+}
