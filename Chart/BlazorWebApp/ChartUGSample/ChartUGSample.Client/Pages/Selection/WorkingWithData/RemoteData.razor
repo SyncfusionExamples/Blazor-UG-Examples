@@ -1,0 +1,18 @@
+﻿@page "/Selection/WorkingWithData/Remote"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Charts
+@using System.Dynamic
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart>
+    <SfDataManager Url="https://services.odata.org/V4/Northwind/Northwind.svc/Orders" Adaptor="Adaptors.ODataV4Adaptor"></SfDataManager>
+
+    <ChartPrimaryXAxis Title="Orders" ValueType="Syncfusion.Blazor.Charts.ValueType.Category"
+                       RangePadding="ChartRangePadding.Additional"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries XName="OrderID" YName="Freight" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
