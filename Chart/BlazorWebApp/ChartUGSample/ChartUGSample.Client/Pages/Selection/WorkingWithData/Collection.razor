@@ -1,0 +1,49 @@
+﻿@page "/Selection/WorkingWithData/Collection"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@using System.Collections.ObjectModel;
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart @ref="ChartObj" Title="Olympic Medal Counts - RIO" Width="450px">
+    <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1">
+        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+    </ChartPrimaryXAxis>
+    <ChartPrimaryYAxis Title="Medal Count" Maximum="50" Interval="10">
+        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+    </ChartPrimaryYAxis>
+    <ChartSeriesCollection>
+        <ChartSeries TooltipMappingName="MappingName" DataSource="@ChartPoints" XName="Country" YName="GoldMedal" Name="Gold" ColumnSpacing="0.1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    SfChart ChartObj;
+
+    public ObservableCollection<ColumnChartData> ChartPoints { get; set; }
+
+    public class ColumnChartData
+    {
+        public string Country { get; set; }
+        public double GoldMedal { get; set; }
+        public static ObservableCollection<ColumnChartData> GetData()
+        {
+            ObservableCollection<ColumnChartData> ChartPoints = new ObservableCollection<ColumnChartData>()
+            {
+                new ColumnChartData { Country = "GBR", GoldMedal = 27 },
+                new ColumnChartData { Country = "CHN", GoldMedal = 26 },
+                new ColumnChartData { Country = "AUS", GoldMedal = 8 },
+                new ColumnChartData { Country = "RUS", GoldMedal = 19 }
+            };
+            return ChartPoints;
+        }
+    }
+    protected override void OnInitialized()
+    {
+        this.ChartPoints = ColumnChartData.GetData();
+    }
+}
