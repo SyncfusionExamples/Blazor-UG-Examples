@@ -1,0 +1,115 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Buttons
+@using System.Collections.ObjectModel;
+@using System.ComponentModel;
+<div>
+    <div>
+        <SfButton ID="update" @onclick="UpdateRecord">Update Data</SfButton>
+    </div>
+    <SfGantt DataSource="@ObservableData" Toolbar="@(new List<string>() { "Cancel", "Edit", "Update" })">
+        <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+        </GanttTaskFields>
+        <GanttEditSettings AllowEditing="true"></GanttEditSettings>
+    </SfGantt>
+</div>
+@code {
+    public ObservableCollection<TaskData> ObservableData { get; set; }
+
+    protected override void OnInitialized()
+    {
+        ObservableData = ProjectNewData();
+    }
+
+    public void UpdateRecord()
+    {
+        if (ObservableData.Count() != 0)
+        {
+            var name = ObservableData.First();
+            name.TaskName = "Record Updated";
+        }
+    }
+
+    public static ObservableCollection<TaskData> ProjectNewData()
+    {
+        ObservableCollection<TaskData> Tasks = new ObservableCollection<TaskData>() {
+        new TaskData() { TaskID = 1, TaskName = "Product concept ", StartDate = new DateTime(2021, 04, 02), EndDate = new DateTime(2021, 04, 08), Duration = "5days" },
+        new TaskData() { TaskID = 2, TaskName = "Define the product usage", StartDate = new DateTime(2021, 04, 02), EndDate = new DateTime(2021, 04, 08), Duration = "3", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 3, TaskName = "Define the target audience", EndDate = new DateTime(2021, 04, 04), Progress = 40, ParentID = 1 },
+        new TaskData() { TaskID = 4, TaskName = "Prepare product sketch and notes", StartDate = new DateTime(2021, 04, 05), Duration = "2", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 5, TaskName = "Concept approval", StartDate = new DateTime(2021, 04, 08), EndDate = new DateTime(2021, 04, 08), Duration="0", ParentID = 1 },
+        new TaskData() { TaskID = 6, TaskName = "Market research", StartDate = new DateTime(2021, 04, 09), EndDate = new DateTime(2021, 04, 18), Duration = "4", Progress = 30 },
+        new TaskData() { TaskID = 7, TaskName = "Demand analysis", Duration = "4", Progress = 40, ParentID = 6 },
+        new TaskData() { TaskID = 8, TaskName = "Customer strength", StartDate = new DateTime(2021, 04, 09), EndDate = new DateTime(2021, 04, 12), Duration = "4", Progress = 30, ParentID = 7 },
+        new TaskData() { TaskID = 9, TaskName = "Market opportunity analysis", StartDate = new DateTime(2021, 04, 09), EndDate = new DateTime(2021, 04, 012), Duration="4", ParentID= 7 },
+        new TaskData() { TaskID = 10, TaskName = "Competitor analysis", StartDate = new DateTime(2021, 04, 15), EndDate = new DateTime(2021, 04, 18), Duration = "4", Progress = 30, ParentID= 6 },
+        new TaskData() { TaskID = 11, TaskName = "Product strength analysis", StartDate = new DateTime(2021, 04, 15), EndDate = new DateTime(2021, 04, 18), Duration = "4", Progress = 40, ParentID = 6 },
+        new TaskData() { TaskID = 12, TaskName = "Research completed", StartDate = new DateTime(2021, 04, 18), EndDate = new DateTime(2021, 04, 18), Duration = "0", Progress = 30, ParentID = 6 },
+        new TaskData() { TaskID = 13, TaskName = "Product design and development", StartDate = new DateTime(2021, 04, 19), EndDate = new DateTime(2021, 05, 16), Duration="20" },
+        new TaskData() { TaskID = 14, TaskName = "Functionality design", StartDate = new DateTime(2021, 04, 19), EndDate = new DateTime(2021, 04, 23), Duration = "3", Progress = 30, ParentID = 13 },
+        new TaskData() { TaskID = 15, TaskName = "Quality design", StartDate = new DateTime(2021, 04, 19), EndDate = new DateTime(2021, 04, 23), Duration = "3", Progress = 40, ParentID = 13 },
+        new TaskData() { TaskID = 16, TaskName = "Define reliability", StartDate = new DateTime(2021, 04, 24), EndDate = new DateTime(2021, 04, 25), Duration = "2", Progress = 30, ParentID = 13 },
+        new TaskData() { TaskID = 17, TaskName = "Identifying raw materials", StartDate = new DateTime(2021, 04, 24), EndDate = new DateTime(2021, 04, 25), Duration="2", ParentID=13 },
+        new TaskData() { TaskID = 18, TaskName = "Define cost plan", StartDate = new DateTime(2021, 04, 26), EndDate = new DateTime(2021, 04, 29), Duration = "2", Progress = 30, ParentID=13 },
+        new TaskData() { TaskID = 19, TaskName = "Estimate manufacturing cost", StartDate = new DateTime(2021, 04, 26), EndDate = new DateTime(2021, 04, 29), Duration = "2", Progress = 40, ParentID = 18 },
+        new TaskData() { TaskID = 20, TaskName = "Estimate selling cost", StartDate = new DateTime(2021, 04, 26), EndDate = new DateTime(2021, 04, 29), Duration = "2", Progress = 30, ParentID = 18 },
+        new TaskData() { TaskID = 21, TaskName = "Development of final design", StartDate = new DateTime(2021, 04, 30), EndDate = new DateTime(2021, 05, 08), Duration="7", ParentID=13 },
+        new TaskData() { TaskID = 22, TaskName = "Develop dimensions and design", StartDate = new DateTime(2021, 04, 30), EndDate = new DateTime(2021, 05, 01), Duration = "2", Progress = 30, ParentID=21 },
+        new TaskData() { TaskID = 23, TaskName = "Develop designs to meet industry", StartDate = new DateTime(2021, 05, 02), EndDate = new DateTime(2021, 05, 03), Duration = "2", Progress = 40, ParentID = 21 },
+        new TaskData() { TaskID = 24, TaskName = "Include all the details", StartDate = new DateTime(2021, 05, 06), EndDate = new DateTime(2021, 05, 08), Duration = "3", Progress = 30, ParentID = 21 },
+        new TaskData() { TaskID = 25, TaskName = "CAD - Computer Aided Design", StartDate = new DateTime(2021, 05, 09), EndDate = new DateTime(2021, 05, 13), Duration="3" },
+        new TaskData() { TaskID = 26, TaskName = "CAM - Computer Aided Manufacturing", StartDate = new DateTime(2021, 05, 14), EndDate = new DateTime(2021, 05, 16), Duration = "3", Progress = 30 },
+        new TaskData() { TaskID = 27, TaskName = "Finalize the design", StartDate = new DateTime(2021, 04, 16), EndDate = new DateTime(2021, 04, 16), Duration = "0", Progress = 40 },
+        new TaskData() { TaskID = 28, TaskName = "Prototype testing", StartDate = new DateTime(2021, 05, 17), EndDate = new DateTime(2021, 05, 22), Duration = "4", Progress = 30 },
+        new TaskData() { TaskID = 29, TaskName = "Include feedback", StartDate = new DateTime(2021, 05, 17), EndDate = new DateTime(2021, 05, 22), Duration="4" },
+        new TaskData() { TaskID = 30, TaskName = "Manufacturing", StartDate = new DateTime(2021, 05, 23), EndDate = new DateTime(2021, 05, 29), Duration = "5", Progress = 30 },
+        new TaskData() { TaskID = 31, TaskName = "Assembling material into finished goods", StartDate = new DateTime(2021, 05, 30), EndDate = new DateTime(2021, 06, 05), Duration = "5", Progress = 40 },
+        new TaskData() { TaskID = 32, TaskName = "Final product development", StartDate = new DateTime(2021, 06, 06), EndDate = new DateTime(2021, 06, 13), Duration = "6", Progress = 30 },
+        new TaskData() { TaskID =33, TaskName = "Important improvement", StartDate = new DateTime(2021, 06, 06), EndDate = new DateTime(2021, 06, 10), Duration="3", ParentID=32 },
+        new TaskData() { TaskID = 34, TaskName = "Customer testing and feedback", StartDate = new DateTime(2021, 06, 11), EndDate = new DateTime(2021, 06, 13), Duration = "3", Progress = 30, ParentID=32 },
+        new TaskData() { TaskID = 35, TaskName = "Final product development", StartDate = new DateTime(2021, 06, 14), EndDate = new DateTime(2021, 06, 19), Duration = "4", Progress = 40 },
+        new TaskData() { TaskID = 36, TaskName = "Important improvement", StartDate = new DateTime(2021, 06, 14), EndDate = new DateTime(2021, 06, 19), Duration = "4", Progress = 30, ParentID = 35 },
+        new TaskData() { TaskID = 37, TaskName = "Address any unforeseen issues", StartDate = new DateTime(2021, 06, 14), EndDate = new DateTime(2021, 06, 19), Duration = "4", Progress = 30, ParentID=35 },
+        new TaskData() { TaskID = 38, TaskName = "Finalize the product ", StartDate = new DateTime(2021, 06, 20), EndDate = new DateTime(2021, 07, 01), Duration = "8", Progress = 40 },
+        new TaskData() { TaskID = 39, TaskName = "Branding the product", StartDate = new DateTime(2021, 06, 20), EndDate = new DateTime(2021, 06, 25), Duration = "4", Progress = 30, ParentID = 38 },
+        new TaskData() { TaskID=40, TaskName="Marketing and presales", StartDate=new DateTime(2021,06,26), EndDate=new DateTime(2021,07,01), ParentID=38, Duration="4" }
+    };
+        return Tasks;
+    }
+
+    public class TaskData : INotifyPropertyChanged
+    {
+        public int TaskID { get; set; }
+        private string taskName { get; set; }
+        public string TaskName
+        {
+            get { return taskName; }
+            set
+            {
+                if (value != taskName)
+                {
+                    taskName = value;
+                    NotifyPropertyChanged("TaskName");
+                }
+            }
+        }
+
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string? Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+}
