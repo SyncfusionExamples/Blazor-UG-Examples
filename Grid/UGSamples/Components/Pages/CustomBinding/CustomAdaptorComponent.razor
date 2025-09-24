@@ -1,0 +1,52 @@
+﻿@page "/CustomComponentService"
+
+@using Syncfusion.Blazor;
+@using Syncfusion.Blazor.Data;
+@using Newtonsoft.Json
+@using static UGSamples.Components.Pages.CustomBinding.CAdapService;
+
+@inherits DataAdaptor<OrderServiceClass>
+
+<CascadingValue Value="@this">
+    @ChildContent
+</CascadingValue>
+
+@code {
+    [Parameter]
+    [JsonIgnore]
+    public RenderFragment ChildContent { get; set; }
+
+    // Performs data Read operation
+    public override object Read(DataManagerRequest dm, string key = null)
+    {
+        IEnumerable<OrderServiceClass> DataSource = (IEnumerable<OrderServiceClass>)Service.GetAllRecords();
+        if (dm.Search != null && dm.Search.Count > 0)
+        {
+            // Searching
+            DataSource = DataOperations.PerformSearching(DataSource, dm.Search);
+        }
+        if (dm.Sorted != null && dm.Sorted.Count > 0)
+        {
+            // Sorting
+            DataSource = DataOperations.PerformSorting(DataSource, dm.Sorted);
+        }
+        if (dm.Where != null && dm.Where.Count > 0)
+        {
+            // Filtering
+            DataSource = DataOperations.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
+        }
+        int count = DataSource.Cast<OrderServiceClass>().Count();
+        if (dm.Skip != 0)
+        {
+            //Paging
+            DataSource = DataOperations.PerformSkip(DataSource, dm.Skip);
+        }
+        if (dm.Take != 0)
+        {
+            DataSource = DataOperations.PerformTake(DataSource, dm.Take);
+        }
+        return dm.RequiresCounts ? new DataResult() { Result = DataSource, Count = count } : (object)DataSource;
+    }
+          
+
+}
