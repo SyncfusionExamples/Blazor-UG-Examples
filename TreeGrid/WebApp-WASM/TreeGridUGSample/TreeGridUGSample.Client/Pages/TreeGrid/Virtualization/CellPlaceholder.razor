@@ -1,0 +1,29 @@
+﻿@page "/treegrid/virtualization/cellplaceholder"
+@rendermode InteractiveWebAssembly
+@using TreeGridUGSample.Components.Data
+@using TreeGridUGSample.Components.Data;
+@using Syncfusion.Blazor.Grids
+<SfTreeGrid Height="300" Width="450" RowHeight="38" EnableVirtualMaskRow="true" DataSource="@TreeGridData" IdMapping="TaskID" TreeColumnIndex="1" ParentIdMapping="ParentID" EnableVirtualization="true" EnableColumnVirtualization="true">
+    <TreeGridPageSettings PageSize="40"></TreeGridPageSettings>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskID" HeaderText="Jersey No" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD1" HeaderText="Name" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD2" HeaderText="Year" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD3" HeaderText="Stint" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD4" HeaderText="TMID" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD5" HeaderText="LGID" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD6" HeaderText="GP" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field7" HeaderText="GS" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field8" HeaderText="Minutes" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field9" HeaderText="Points" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field10" HeaderText="ORebounds" TextAlign="TextAlign.Left" Width="150"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+@code {
+    private List<VirtualData> TreeGridData { get; set; } = new List<VirtualData>();
+    protected override void OnInitialized()
+    {
+        TreeGridData = VirtualData.GetTreeVirtualData();
+    }
+   
+}

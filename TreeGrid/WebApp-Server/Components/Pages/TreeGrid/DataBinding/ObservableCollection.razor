@@ -1,0 +1,58 @@
+﻿<h3>Observable Collection</h3>
+@page "/TreeGrid/DataBinding/observable-collection"
+@rendermode InteractiveServer  
+@using TreeGridUGSample.Components.Data
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Buttons
+@using System.Collections.ObjectModel
+
+<div style="margin-bottom:15px">
+    <SfButton CssClass="e-outline" OnClick="@(() => AddRecord())" Content="Add Data"></SfButton>
+    <SfButton CssClass="e-outline" Style="margin-left:5px" OnClick="@(() => DeleteRecord())" Content="Delete Data"></SfButton>
+    <SfButton CssClass="e-outline" Style="margin-left:5px" OnClick="@(() => UpdateRecord())" Content="Update Data"></SfButton>
+</div>
+
+<SfTreeGrid DataSource="@TreeGridData" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public ObservableCollection<TreeData.BusinessObject> TreeGridData { get; set; }
+    private int taskCounter = 6;
+
+    protected override void OnInitialized()
+    {
+        TreeGridData = TreeData.GetSelfDataSource();
+    }
+
+    public void AddRecord()
+    {
+        TreeGridData.Add(new TreeData.BusinessObject
+        {
+            TaskId = taskCounter++,
+            TaskName = "New Task",
+            Duration = 5,
+            Progress = 50,
+            Priority = "Normal",
+            ParentId = null
+        });
+    }
+
+    public void DeleteRecord()
+    {
+        if (TreeGridData.Any())
+            TreeGridData.Remove(TreeGridData.Last());
+    }
+
+    public void UpdateRecord()
+    {
+        if (TreeGridData.Any())
+            TreeGridData.First().TaskName = "Updated Task Name";
+    }
+}
