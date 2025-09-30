@@ -1,0 +1,86 @@
+﻿@page "/UnSelectMethod"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<style>
+    #diagram-space {
+        float: left;
+    }
+
+    #properties {
+        float: right;
+    }
+</style>
+
+<div id="diagram-space">
+    <SfDiagramComponent @ref="diagram" Width="600px" Height="600px" Nodes="nodes" Connectors="connectors">
+
+        <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
+    </SfDiagramComponent>
+</div>
+
+<div id="properties">
+    <SfButton Content="UnSelectMethod" OnClick="@UnSelectMethod" />
+</div>
+
+@code {
+    //Reference the diagram
+    public SfDiagramComponent diagram;
+    //Initialize the diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Initialize the diagram's connectors collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+            {
+                ID = "node1",
+                Width = 50,
+                Height = 50,
+                OffsetX = 350,
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "black" }
+            };
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                Width = 50,
+                Height = 50,
+                OffsetX = 450,
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "black" }
+            };
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1",
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                    }
+                },
+                TargetID = "node2",
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                },
+                Type = ConnectorSegmentType.Straight,
+            };
+        connectors.Add(Connector);
+        nodes.Add(node);
+        nodes.Add(node2);
+
+    }
+    //Method to unselect the selected objects
+    public void UnSelectMethod()
+    {
+        diagram.UnSelect(diagram.SelectionSettings.Nodes[0] as IDiagramObject);
+    }
+}

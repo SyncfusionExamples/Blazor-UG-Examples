@@ -1,0 +1,146 @@
+﻿@page "/"
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Diagram
+@using DiagramWithRemoteData.Controllers
+
+@*buttons to perform crud support*@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Read">Read</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Update">Update</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Insert">Insert</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="diagram-space" class="content-wrapper">
+    <SfDiagramComponent @ref="@diagram" Width="100%" Height="690px" ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
+        <DataSourceSettings ID="EmployeeID" ParentID="ReportsTo">
+            <SfDataManager Url="api/Data" Adaptor="Syncfusion.Blazor.Adaptors.WebApiAdaptor"></SfDataManager>
+
+
+        </DataSourceSettings>
+
+        <Layout Type="Syncfusion.Blazor.Diagram.LayoutType.HierarchicalTree" VerticalSpacing="75" HorizontalSpacing="75" GetLayoutInfo="GetLayoutInfo"></Layout>
+    </SfDiagramComponent>
+
+</div>
+@functions{
+        SfDiagramComponent? diagram;
+    public static List<EmployeeDetails> employeeDetails { get; set; }
+
+
+    Layout LayoutValue = new Layout() { };
+    private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
+    {
+        options.EnableSubTree = true;
+        options.Orientation = Orientation.Horizontal;
+        return options;
+    }
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node? node = obj as Node;
+        node.Width = 200;
+        node.Height = 100;
+        Dictionary<string, object> data = node.Data as Dictionary<string, object>;
+        if (data != null)
+        {
+            node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+{
+                new ShapeAnnotation()
+                {
+                    Content = $"Name:{data["Name"]}\nReportsTo:{data["ReportsTo"]}\nDesignation:{data["Designation"]}",
+                }
+            };
+        }
+    }
+    private void ConnectorCreating(IDiagramObject connector)
+    {
+        Connector? newConnector = connector as Connector;
+        newConnector!.TargetDecorator = new DecoratorSettings() { Shape = DecoratorShape.None };
+        newConnector.Type = ConnectorSegmentType.Orthogonal;
+        newConnector.Style = new ShapeStyle() { StrokeColor = "#6d6d6d" };
+        newConnector.Constraints = ConnectorConstraints.None;
+        newConnector.CornerRadius = 5;
+    }
+
+
+    public class EmployeeDetails
+    {
+        public int EmployeeID { get; set; }
+
+        public string ReportsTo { get; set; }
+
+        public string Name { get; set; }
+
+        public string Designation { get; set; }
+
+        public string Colour { get; set; }
+    }
+
+
+    public async void Read()
+    {
+        var data = await diagram.ReadDataAsync();
+    }
+
+    public async void Update()
+    {
+        EmployeeDetails employeeDetails1 = new EmployeeDetails()
+        {
+            EmployeeID = 6,
+            Name = "Michael",
+            Designation = "Team Lead",
+            ReportsTo = "1",
+            Colour = "Orange"
+        };
+        EmployeeDetails employeeDetails = new EmployeeDetails()
+        {
+            EmployeeID = 6,
+            Name = "Michael",
+            Designation = "Product Manager",
+            ReportsTo = "1",
+            Colour = "Green"
+        };
+        Dictionary<string, object> propoerties = new Dictionary<string, object>()
+        {
+            {"Designation","Product Manager" },
+                        {"Colour","Green" },
+            {"ReportsTo", "1" }
+        };
+        await diagram.UpdateDataAsync("EmployeeID", employeeDetails, "Employees");
+    }
+
+
+    public async void Insert()
+    {
+        EmployeeDetails employeeDetails = new EmployeeDetails()
+        {
+            EmployeeID = 11,
+            Name = "Alan",
+            Designation = "HR assistant",
+            ReportsTo = "9",
+            Colour = "Gray"
+        };
+        await diagram.InsertDataAsync(employeeDetails, "Employees");
+
+    }
+
+    public async void Delete()
+    {
+        await diagram.DeleteDataAsync("EmployeeID", 5);
+    }
+
+
+}
+

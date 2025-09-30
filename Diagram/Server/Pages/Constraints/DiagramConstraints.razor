@@ -1,0 +1,29 @@
+﻿@page "/DiagramConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize the diagram with constraints *@
+<SfDiagramComponent Height="600px" Nodes="@nodes"
+                    Constraints="@DiagramConstraints" />
+
+@code
+{
+    //sets the Diagram constraints...
+    DiagramConstraints DiagramConstraints = DiagramConstraints.Default & ~DiagramConstraints.PageEditable;
+    //Initialize the Nodes Collection.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                Height = 100,
+                Width = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+            };
+        nodes.Add(node);
+    }
+}

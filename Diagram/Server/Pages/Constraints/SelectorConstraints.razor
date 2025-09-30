@@ -1,0 +1,30 @@
+﻿@page "/SelectorConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@selectedItems" />
+
+@code
+{
+    DiagramObjectCollection<Node> nodes;
+    public DiagramSelectionSettings selectedItems = new DiagramSelectionSettings()
+        {
+            Constraints = SelectorConstraints.All & ~SelectorConstraints.Rotate
+        };
+
+    protected override void OnInitialized()
+    {
+        //Initialize the NodeCollection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                Height = 100,
+                Width = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+                OffsetX = 100,
+                OffsetY = 100,
+            };
+        nodes.Add(node);
+    }
+}

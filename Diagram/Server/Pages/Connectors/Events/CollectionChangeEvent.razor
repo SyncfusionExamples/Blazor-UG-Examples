@@ -1,0 +1,34 @@
+﻿@page "/CollectionChangeEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@Diagram"
+                    Width="100%"
+                    Height="700px"
+                   Connectors="@connectors"
+                    CollectionChanged="OnCollectionChanged">
+</SfDiagramComponent>
+
+@code{
+    SfDiagramComponent Diagram;
+    //Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+         Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Straight
+        };
+        connectors.Add(Connector);
+    }
+     //  Notify the Collection Changed event while changing the collection of the node or connector at run time.
+    private void OnCollectionChanged(CollectionChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

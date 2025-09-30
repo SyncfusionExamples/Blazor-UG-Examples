@@ -1,0 +1,33 @@
+﻿@page "/MouseEnterEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@Diagram"
+                    Width="100%"
+                    Height="700px"
+                    Connectors="@connectors"
+                    MouseEnter="OnMouseEnter">
+</SfDiagramComponent>
+
+@code{
+    SfDiagramComponent Diagram;
+    //Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+          Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Straight
+        };
+        connectors.Add(Connector);
+    }
+    private void OnMouseEnter(DiagramElementMouseEventArgs args)
+    {
+
+    }
+}

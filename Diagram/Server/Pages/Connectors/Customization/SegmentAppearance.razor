@@ -1,0 +1,49 @@
+﻿@page "/SegmentAppearance"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
+</SfDiagramComponent>
+
+@code
+{
+    //Define diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint()
+                {
+                    X = 100,
+                    Y = 100
+                },
+                TargetPoint = new DiagramPoint()
+                {
+                    X = 200,
+                    Y = 200
+                },
+                //Define shape style
+                Style = new ShapeStyle()
+                {
+                    StrokeColor = "red",
+                    StrokeWidth = 2,
+                    StrokeDashArray = "2,2"
+                },
+                Type = ConnectorSegmentType.Orthogonal,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6f409f",
+                        StrokeColor = "#6f409f",
+                        StrokeWidth = 1
+                    }
+                }
+            };
+        connectors.Add(Connector1);
+    }
+}

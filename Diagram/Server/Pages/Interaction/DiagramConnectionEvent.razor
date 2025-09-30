@@ -1,0 +1,74 @@
+﻿@page "/DiagramConnectionEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@NodeCollection" Connectors="@Connectors"
+                    ConnectionChanging="OnConnectionChanging"
+                    ConnectionChanged="OnConnectionChanged">
+</SfDiagramComponent>
+
+@code
+{
+    //Initailize the diagram's nodes collection
+    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    //Initailize the diagram's connectors collection
+    public DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                OffsetX = 100,
+                OffsetY = 200,
+                Height = 100,
+                Width = 100,
+                ID = "node1",
+            };
+        NodeCollection.Add(node1);
+
+        Node node2 = new Node()
+            {
+                OffsetX = 300,
+                OffsetY = 200,
+                Height = 100,
+                Width = 100,
+                ID = "node2",
+            };
+        NodeCollection.Add(node2);
+
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                //Source node id of the connector.
+                SourceID = "node1",
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                    }
+                },
+                //Target node id of the connector.
+                TargetID = "node2",
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                },
+                // Type of the connector
+                Type = ConnectorSegmentType.Straight,
+            };
+        Connectors.Add(Connector);
+    }
+    //Event to notify while creating the connection between the nodes in the diagram.
+    private void OnConnectionChanging(ConnectionChangingEventArgs args)
+    {
+        //sets true to cancel creating the connection betweent the nodes
+        args.Cancel = true;
+    }
+    //Event to notify once created the connection between the nodes in the diagram.
+    private void OnConnectionChanged(ConnectionChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

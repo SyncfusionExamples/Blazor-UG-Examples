@@ -1,0 +1,16 @@
+﻿@page "/ContextMenuItemClickedEvent"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px">
+    <ContextMenuSettings Show="true" ShowCustomMenuOnly="false" ContextMenuItemClicked="@ContextMenuItemClickHandler">
+    </ContextMenuSettings>
+</SfDiagramComponent>
+
+@code
+{
+    // Defines context menu and ContextMenuItemClicked event
+    public void ContextMenuItemClickHandler(DiagramMenuClickEventArgs arg)
+    {
+        //Action to be performed
+    }
+}

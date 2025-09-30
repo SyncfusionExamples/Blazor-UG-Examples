@@ -1,0 +1,106 @@
+﻿@page "/ExpandCollapseIconTemplate"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors">
+    <DiagramTemplates>
+            <DiagramExpandIconTemplate>
+                    @{
+                    <div style="height: 100%; width: 100%">
+                        <input type="button" value="Collapse" />
+                    </div>
+                    } 
+            </DiagramExpandIconTemplate>
+            <DiagramCollapseIconTemplate>
+                    @{
+                    <div style="height: 100%; width: 100%">
+                        <input type="button" value="Expand" />
+                    </div>
+                    } 
+            </DiagramCollapseIconTemplate>
+        </DiagramTemplates>
+    </SfDiagramComponent>
+        
+    @code {
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>(){};
+        Node node1 = new Node()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 100,
+            OffsetX = 300,
+            OffsetY = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
+                {
+                    Content="Node1"
+                }
+            },
+            ExpandIcon = new DiagramExpandIcon()
+            {
+                Shape = DiagramExpandIcons.Template,
+                Height = 20,
+                Width = 20,
+            },
+            CollapseIcon = new DiagramCollapseIcon()
+            {
+                Shape = DiagramCollapseIcons.Template,
+                Height = 20,
+                Width = 20,
+            },
+        };
+        nodes.Add(node1);
+        Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 100,
+            Height = 100,
+            OffsetX = 300,
+            OffsetY = 400,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
+                {
+                    Content="Node2"
+                }
+            },
+            ExpandIcon = new DiagramExpandIcon()
+            { 
+                
+                Shape = DiagramExpandIcons.Template,
+                Height = 20,
+                Width = 20,
+            },
+            CollapseIcon = new DiagramCollapseIcon()
+            {
+                Shape = DiagramCollapseIcons.Template,
+                Height = 20,
+                Width = 20,
+            },
+        };
+        nodes.Add(node2);
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1",
+                TargetID = "node2",
+            };
+        connectors.Add(connector1);
+    }
+}

@@ -1,0 +1,111 @@
+﻿@page "/MindmapOrientation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="diagram" Height="600px" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
+    <RulerSettings>
+        <HorizontalRuler></HorizontalRuler>
+        <VerticalRuler></VerticalRuler>
+    </RulerSettings>
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource">
+    </DataSourceSettings>
+    <Layout Type="LayoutType.MindMap" @bind-Orientation="SelectedOrientation" GetBranch="GetBranch" HorizontalSpacing="50">
+        <LayoutMargin Top="20" Left="20"></LayoutMargin>
+    </Layout>
+</SfDiagramComponent>
+
+@code {
+    private SfDiagramComponent? diagram;
+    public LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
+    public List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
+    {
+        new OrientationItem { Text = "Vertical", Value = LayoutOrientation.Vertical },
+        new OrientationItem { Text = "Horizontal", Value = LayoutOrientation.Horizontal },
+        new OrientationItem { Text = "Left to Right", Value = LayoutOrientation.LeftToRight },
+        new OrientationItem { Text = "Right to Left", Value = LayoutOrientation.RightToLeft }
+    };
+
+    public List<MindMapDetails> DataSource { get; set; } = new()
+    {
+        new MindMapDetails { Id = "1", Label = "Project Planning", ParentId = "", Branch = "Root" },
+        new MindMapDetails { Id = "2", Label = "Requirements", ParentId = "1", Branch = "Right" },
+        new MindMapDetails { Id = "3", Label = "Design", ParentId = "1", Branch = "Right" },
+        new MindMapDetails { Id = "5", Label = "Stakeholder Analysis", ParentId = "2", Branch = "SubRight" },
+        new MindMapDetails { Id = "6", Label = "Documentation", ParentId = "2", Branch = "SubRight" },
+        new MindMapDetails { Id = "7", Label = "UI Design", ParentId = "3", Branch = "SubRight" },
+        new MindMapDetails { Id = "8", Label = "Database Design", ParentId = "3", Branch = "SubRight" }
+    };
+
+    private BranchType GetBranch(IDiagramObject obj)
+    {
+        if (obj is not Node node)
+            return BranchType.Left;
+        if (node.Data is not MindMapDetails mindMapData || string.IsNullOrWhiteSpace(mindMapData.Branch))
+            return BranchType.Left;
+        return Enum.TryParse(mindMapData.Branch, out BranchType branchType) 
+            ? branchType 
+            : BranchType.SubLeft;
+    }
+
+    // Method triggered by button click at runtime to set diagram orientation to vertical.
+    private void ChangeLayoutOrientation()
+    {
+       diagram.Layout.Orientation = LayoutOrientation.Vertical;
+    }
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        if (obj is not Node node) 
+            return;
+        // Apply default node styling.
+        node.Height = 100;
+        node.Width = 100;
+        node.BackgroundColor = "#6BA5D7";
+        node.Style = new ShapeStyle 
+        { 
+            Fill = "#6495ED", 
+            StrokeWidth = 1, 
+            StrokeColor = "white" 
+        };
+        node.Shape = new BasicShape { Type = NodeShapes.Basic };
+        // Add annotation with label from data.
+        if (node.Data is MindMapDetails mindMapData && !string.IsNullOrWhiteSpace(mindMapData.Label))
+        {
+            node.Annotations = new DiagramObjectCollection<ShapeAnnotation>
+            {
+                new ShapeAnnotation { Content = mindMapData.Label }
+            };
+        }
+    }
+
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        if (obj is not Connector connector) 
+            return;
+        connector.Type = ConnectorSegmentType.Bezier;
+        connector.Style = new ShapeStyle 
+        { 
+            StrokeColor = "#6495ED", 
+            StrokeWidth = 2 
+        };
+        connector.TargetDecorator = new DecoratorSettings
+        {
+            Shape = DecoratorShape.None
+        };
+    }
+
+    public class OrientationItem
+    {
+        public string Text { get; set; } = string.Empty;
+        public LayoutOrientation Value { get; set; }
+    }
+
+    public class MindMapDetails
+    {
+        public string Id { get; set; } = string.Empty;
+        public string Label { get; set; } = string.Empty;
+        public string ParentId { get; set; } = string.Empty;
+        public string Branch { get; set; } = string.Empty;
+        public string Fill { get; set; } = string.Empty;
+    }
+}

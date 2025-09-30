@@ -1,0 +1,38 @@
+﻿@page "/MinMaxSize"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent diagram;
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes array.
+        Node node = new Node()
+            {
+                ID = "node",
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                //Minimum Size of the node
+                MinHeight = 50,
+                MinWidth = 50,
+                //Maximum Size of the node
+                MaxHeight = 200,
+                MaxWidth = 200,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            };
+        nodes.Add(node);
+    }
+}
+
+

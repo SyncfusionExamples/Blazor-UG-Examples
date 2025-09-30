@@ -1,0 +1,38 @@
+﻿@page "/BezierSegmentShape"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.Internal
+
+<SfDiagramComponent Width="1000px" Height="500px"  Connectors="@connectors" ></SfDiagramComponent>
+@code {
+    //Define the diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+     protected override void OnInitialized()
+    {
+        Connector connector = new Connector()
+            {
+                ID = "connector",
+                SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 300, Y =300 },
+                SourceDecorator = new DecoratorSettings() { Shape = DecoratorShape.Diamond },
+                Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 200, Y = 100}
+                ,
+                },
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 260, Y = 150}}
+            },
+                Type = ConnectorSegmentType.Bezier,
+                BezierConnectorSettings = new BezierConnectorSettings()
+                {
+                    ControlPointsVisibility = ControlPointsVisibility.All
+
+                },
+
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                SegmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.Square },
+            };
+        connectors.Add(connector);
+
+    }
+
+}

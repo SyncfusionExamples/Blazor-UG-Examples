@@ -1,0 +1,213 @@
+@page "/DiagramWithCustomAdaptor"
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Data
+
+@*buttons to perform crud support*@
+<div class="row" style="margin-bottom:20px">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Read">Read</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Update">Update</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Insert">Insert</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="diagram">
+    <div class="col-md-10">
+        <div id="diagram-space" class="content-wrapper">
+            <SfDiagramComponent ID="diagramControl" @ref="@diagram" Width="100%" Height="690px" ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
+                <DataSourceSettings ID="EmployeeID" ParentID="ReportsTo">
+                    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+                </DataSourceSettings>
+                <Layout Type="Syncfusion.Blazor.Diagram.LayoutType.HierarchicalTree" VerticalSpacing="75" HorizontalSpacing="75"></Layout>
+            </SfDiagramComponent>
+        </div>
+    </div>
+</div>
+@functions{
+    SfDiagramComponent? diagram;
+    public static List<EmployeeDetails> employeeDetails { get; set; }
+    public static List<EmployeeDetails> Details { get; set; } = new List<EmployeeDetails>();
+
+    Layout LayoutValue = new Layout() { };
+    private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
+    {
+        options.EnableSubTree = true;
+        options.Orientation = Orientation.Horizontal;
+        return options;
+    }
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node? node = obj as Node;
+        node!.Style = new ShapeStyle() { Fill = "#659be5", StrokeColor = "none", StrokeWidth = 2, };
+        node.BackgroundColor = "#659be5";
+        node.Width = 200;
+        node.Height = 100;
+        EmployeeDetails data = node.Data as EmployeeDetails;
+        if (data != null)
+        {
+            //node.ID = data.FirstName + data.EmployeeID;
+            node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
+                {
+                    ID = data.FirstName,
+                    Content = $"Name:{data.FirstName}\nReportsTo:{data.ReportsTo}\nDesignation:{data.Designation}\nCountry:{data.Country}",
+                    Style = new TextStyle(){FontSize = 15, Color = "white"}
+                }
+            };
+            node.Style = new ShapeStyle() { Fill = data.Color, StrokeColor = "none", StrokeWidth = 2, };
+        }
+    }
+    private void ConnectorCreating(IDiagramObject connector)
+    {
+        Connector? newConnector = connector as Connector;
+        newConnector!.TargetDecorator = new DecoratorSettings() { Shape = DecoratorShape.None };
+        newConnector.Type = ConnectorSegmentType.Orthogonal;
+        newConnector.Style = new ShapeStyle() { StrokeColor = "#6d6d6d" };
+        newConnector.Constraints = ConnectorConstraints.None;
+        newConnector.CornerRadius = 5;
+    }
+
+    protected override void OnInitialized()
+    {
+        Details = new List<EmployeeDetails>();
+        employeeDetails = new List<EmployeeDetails>() {
+            new EmployeeDetails { EmployeeID = "1", FirstName = "Andrew", Designation = "CEO", Country = "England", ReportsTo = "", Color = "Red" },
+            new EmployeeDetails { EmployeeID = "2", FirstName = "Nancy", Designation = "Product Manager", Country = "USA", ReportsTo = "1", Color = "Blue" },
+            new EmployeeDetails { EmployeeID = "3", FirstName = "Janet", Designation = "Product Manager", Country = "USA", ReportsTo = "1", Color = "Blue" },
+            new EmployeeDetails { EmployeeID = "4", FirstName = "Margaret", Designation = "Product Manager", Country = "USA", ReportsTo = "1", Color = "Blue" },
+            new EmployeeDetails { EmployeeID = "5", FirstName = "Steven", Designation = "Product Manager", Country = "England", ReportsTo = "1", Color = "Blue" },
+            new EmployeeDetails { EmployeeID = "7", FirstName = "Michael", Designation = "Team Lead", Country = "USA", ReportsTo = "5", Color = "Green" },
+            new EmployeeDetails { EmployeeID = "8", FirstName = "Robert", Designation = "Developer", Country = "England", ReportsTo = "5", Color = "Gray" },
+            new EmployeeDetails { EmployeeID = "9", FirstName = "Anne", Designation = "Developer", Country = "USA", ReportsTo = "5", Color = "Gray" },
+            new EmployeeDetails { EmployeeID = "6", FirstName = "Laura", Designation = "HR", Country = "USA", ReportsTo = "1", Color = "Purple" },
+        };
+
+    }
+
+    public class EmployeeDetails
+    {
+        public string EmployeeID { get; set; }
+
+        public string ReportsTo { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string Designation { get; set; }
+
+        public string Country { get; set; }
+
+        public string Color { get; set; }
+    }
+
+
+    // Implementing custom adaptor by extending the DataAdaptor class
+    public class CustomAdaptor : DataAdaptor
+    {
+        // Performs data Read operation
+        public override object Read(DataManagerRequest dm, string key = null)
+        {
+            IEnumerable<EmployeeDetails> DataSource = employeeDetails;
+            if (dm.Search != null && dm.Search.Count > 0)
+            {
+                // Searching
+                DataSource = DataOperations.PerformSearching(DataSource, dm.Search);
+            }
+            if (dm.Sorted != null && dm.Sorted.Count > 0)
+            {
+                // Sorting
+                DataSource = DataOperations.PerformSorting(DataSource, dm.Sorted);
+            }
+            if (dm.Where != null && dm.Where.Count > 0)
+            {
+                // Filtering
+                DataSource = DataOperations.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
+            }
+            int count = DataSource.Cast<EmployeeDetails>().Count();
+            if (dm.Skip != 0)
+            {
+                //Paging
+                DataSource = DataOperations.PerformSkip(DataSource, dm.Skip);
+            }
+            if (dm.Take != 0)
+            {
+                DataSource = DataOperations.PerformTake(DataSource, dm.Take);
+            }
+            return dm.RequiresCounts ? new DataResult() { Result = DataSource, Count = count } : (object)DataSource;
+        }
+
+        // Performs Insert operation
+        public override object Insert(DataManager dm, object value, string key)
+        {
+            employeeDetails.Insert(employeeDetails.Count, value as EmployeeDetails);
+            return value;
+        }
+
+        // Performs Remove operation
+        public override object Remove(DataManager dm, object value, string keyField, string key)
+        {
+            employeeDetails.Remove(employeeDetails.Where(or => or.EmployeeID == value.ToString()).FirstOrDefault());
+            return value;
+        }
+
+        // Performs Update operation
+        public override object Update(DataManager dm, object value, string keyField, string key)
+        {
+            var data = employeeDetails.Where(or => or.EmployeeID == (value as EmployeeDetails).EmployeeID).FirstOrDefault();
+            if (data != null)
+            {
+                data.EmployeeID = (value as EmployeeDetails).EmployeeID;
+                data.ReportsTo = (value as EmployeeDetails).ReportsTo;
+                data.FirstName = (value as EmployeeDetails).FirstName;
+                data.Designation = (value as EmployeeDetails).Designation;
+                data.Country = (value as EmployeeDetails).Country;
+                data.Color = (value as EmployeeDetails).Color;
+            }
+            return value;
+        }
+
+    }
+
+    public void Read()
+    {
+        Details = new List<EmployeeDetails>();
+        Details = diagram.ReadDataAsync().Result as List<EmployeeDetails>;
+    }
+
+    public async void Update()
+    {
+        EmployeeDetails employeeDetails = new EmployeeDetails { EmployeeID = "1", FirstName = "AndrewSimonds", Designation = "CEO", Country = "Australia", ReportsTo = "", Color = "Red" };
+        await diagram.UpdateDataAsync("EmployeeID", employeeDetails);
+    }
+
+    public async void Insert()
+    {
+        EmployeeDetails employeeDetails = new EmployeeDetails()
+        {
+            EmployeeID = "10",
+            FirstName = "Alan",
+            Designation = "HR assistant",
+            Country = "USA",
+            ReportsTo = "6",
+            Color = "Purple"
+        };
+        await diagram.InsertDataAsync(employeeDetails);
+
+    }
+
+    public async void Delete()
+    {
+        await diagram.DeleteDataAsync("EmployeeID", "6");
+    }
+}

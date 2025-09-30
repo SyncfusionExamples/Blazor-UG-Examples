@@ -1,0 +1,13 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Connectors="@connectors" Height="600px" InteractionController="@tool" />
+
+@code
+{
+    //Enable the single tool.
+    public DiagramInteractions tool = DiagramInteractions.DrawOnce;
+    //Defines diagram's connectors collection.
+    public DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+}

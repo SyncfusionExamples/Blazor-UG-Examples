@@ -1,0 +1,47 @@
+﻿@page "/RadientGradientStyle"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+                Style = new ShapeStyle()
+                {
+                    Fill = "37909A#",
+                    StrokeColor = "#024249",
+                    Gradient = new RadialGradientBrush()
+                    {
+                        //Center point of outer circle
+                        CX = 50,
+                        CY = 50,
+                        //Center point of inner circle
+                        FX = 50,
+                        FY = 50,
+                        GradientStops = new DiagramObjectCollection<GradientStop>()
+                    {
+                        new GradientStop() { Color = "#00555b", Offset = 45 },
+                        new GradientStop() { Color= "#37909A", Offset= 90 }
+                    },
+                    }
+                },
+            };
+        // Add node
+        nodes.Add(node);
+    }
+}

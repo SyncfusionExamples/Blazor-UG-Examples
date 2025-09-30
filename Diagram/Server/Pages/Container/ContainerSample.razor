@@ -1,0 +1,54 @@
+﻿@page "/ContainerSample"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    public SfDiagramComponent diagram;
+    //Initialize the node collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                Height = 60,
+                Width = 100,
+                OffsetX = 400,
+                OffsetY = 300,
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                {
+                    new ShapeAnnotation(){ Content = "Process"}
+                }
+            };
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                Height = 60,
+                Width = 100,
+                OffsetX = 600,
+                OffsetY = 300,
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                {
+                    new ShapeAnnotation(){ Content = "Process"}
+                }
+            };
+        Container container = new Container()
+            {
+                ID = "container",
+                Height = 300,
+                Width = 500,
+                OffsetX = 500,
+                OffsetY = 300,
+                Children = new string[] { "node1", "node2" }
+            };
+        nodes.Add(node1);
+        nodes.Add(node2);
+        nodes.Add(container);
+    }
+} 

@@ -1,0 +1,66 @@
+﻿@page "/RoutingConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating" Connectors="@connectors" Nodes="@nodes" Constraints="@diagramConstraints">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+@code
+{
+    // Enable routing constraints for the diagram.
+    DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Routing;
+    //Intialize the node collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Intialize the connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node() { ID = "Source", OffsetX = 90, OffsetY = 290, Width = 100, Height =100, Annotations= new DiagramObjectCollection<ShapeAnnotation>(){ new ShapeAnnotation() { Content="Source1" } }, Ports=new DiagramObjectCollection<PointPort>(){ new PointPort(){ ID="port1", Offset=new DiagramPoint() { X = 1, Y = 0.5 } } } },
+            new Node() { ID = "Target", OffsetX = 700, OffsetY = 304, Width = 100, Height = 100, Annotations= new DiagramObjectCollection<ShapeAnnotation>(){ new ShapeAnnotation() { Content="Target1" } }, Ports=new DiagramObjectCollection<PointPort>(){ new PointPort(){ ID="port1", Offset=new DiagramPoint() { X = 0, Y = 0.5 } } } },
+            new Node() { ID = "Source2", OffsetX = 120, OffsetY = 150, Width = 100, Height = 100,  Annotations= new DiagramObjectCollection<ShapeAnnotation>(){ new ShapeAnnotation() { Content="Source2" } }, },
+            new Node() { ID = "Target2", OffsetX = 490, OffsetY = 250, Width = 100, Height = 100,  Annotations= new DiagramObjectCollection<ShapeAnnotation>(){ new ShapeAnnotation() { Content="Target2" } } },
+            new Node() { ID = "Obstacle", OffsetX = 291, OffsetY = 300, Width = 100, Height = 100,  Annotations= new DiagramObjectCollection<ShapeAnnotation>(){ new ShapeAnnotation() { Content="Obstacle" } }, },
+        };
+        connectors = new DiagramObjectCollection<Connector>(){
+            new Connector()
+            {
+                ID = "connector1",
+                SourceID = "Source", TargetID = "Target",
+                Type = ConnectorSegmentType.Orthogonal,
+                // Disable the inherit routing for the connector
+                Constraints = ConnectorConstraints.Default & ~ConnectorConstraints.InheritRouting,
+                Annotations = new DiagramObjectCollection<PathAnnotation>(){ new PathAnnotation(){ Content = "Without Routing" } }
+            },
+            new Connector()
+            {
+                ID = "connector2",
+                SourceID = "Source2", TargetID = "Target2",
+                Type = ConnectorSegmentType.Orthogonal,
+                // Enable the routing for the connector
+                Constraints = (ConnectorConstraints.Default & ~ConnectorConstraints.InheritRouting) | ConnectorConstraints.Routing,
+                Annotations = new DiagramObjectCollection<PathAnnotation>(){ new PathAnnotation(){ Content = "With Routing" } }
+            }
+        };
+    }
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        if (obj is Node node)
+        {
+            node.Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" };
+        }
+    }
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        if (obj is Connector connector)
+        {
+            connector.Style = new ShapeStyle() { StrokeColor = "#6BA5D7", StrokeWidth = 1 };
+            connector.TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7", StrokeWidth = 1 }
+                };
+        }
+    }
+}

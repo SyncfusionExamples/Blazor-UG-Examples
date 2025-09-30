@@ -1,0 +1,28 @@
+﻿@page "/OrthogonalSegmentEditing"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px"  Height="500px" Connectors="@connectors">
+</SfDiagramComponent>
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent Diagram;
+    // Initialize diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+            // Enable the segment editing.
+            {
+                ID = "Connector2",
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                Type = ConnectorSegmentType.Orthogonal,
+                SourcePoint = new DiagramPoint { X = 400, Y = 100 },
+                TargetPoint = new DiagramPoint { X = 500, Y = 200 }
+            };
+        connectors.Add(Connector);
+    }
+}

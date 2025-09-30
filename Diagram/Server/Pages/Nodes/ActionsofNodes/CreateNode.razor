@@ -1,0 +1,88 @@
+﻿@page "/CreateNode"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors">
+    <SnapSettings Constraints="SnapConstraints.None" />
+</SfDiagramComponent>
+
+@code
+{
+    //Initailize the diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Initailize the diagram's connectors collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        // A node is created and stored in the nodes collection.
+        Node node = new Node()
+            {
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision },
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+
+            };
+        // Add node
+        nodes.Add(node);
+
+        Connector straightconnector = new Connector()
+            {
+                ID = "straight",
+                SourcePoint = new DiagramPoint() { X = 400, Y = 250 },
+                TargetPoint = new DiagramPoint() { X = 500, Y = 350 },
+                Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
+                },
+                Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new StraightSegment(){Point=new DiagramPoint(420,300)},
+            }
+            };
+
+        connectors.Add(straightconnector);
+
+        Connector orthogonalconnector = new Connector()
+            {
+                ID = "orthogonal",
+                SourcePoint = new DiagramPoint() { X = 250, Y = 500 },
+                TargetPoint = new DiagramPoint() { X = 350, Y = 650 },
+                Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
+                },
+                Type = ConnectorSegmentType.Orthogonal,
+            };
+
+        connectors.Add(orthogonalconnector);
+
+        Connector bezierconnector = new Connector()
+            {
+                ID = "bezier",
+                SourcePoint = new DiagramPoint() { X = 400, Y = 500 },
+                TargetPoint = new DiagramPoint() { X = 500, Y = 650 },
+                Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
+                },
+                Type = ConnectorSegmentType.Bezier,
+            };
+
+        connectors.Add(bezierconnector);
+
+    }
+}

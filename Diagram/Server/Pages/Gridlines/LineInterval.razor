@@ -1,0 +1,23 @@
+﻿@page "/LineInterval"
+
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px">
+    @* Customize the appearance of the grid lines *@
+    <SnapSettings Constraints="SnapConstraints.ShowLines">
+        <HorizontalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@LineInterval">
+        </HorizontalGridLines>
+        <VerticalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@LineInterval">
+        </VerticalGridLines>
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Sets the line intervals for the gridlines
+    public double[] LineInterval { get; set; } = new double[]
+    {
+        1.25, 14, 0.25, 15, 0.25, 15, 0.25, 15, 0.25, 15
+    };
+}

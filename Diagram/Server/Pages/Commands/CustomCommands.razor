@@ -1,0 +1,93 @@
+﻿@page "/CustomCommands"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+    @* Initializing the custom commands *@
+    <CommandManager>
+        <CommandManager Commands="@command" Execute="@CommandExecute" CanExecute="@canexe">
+        </CommandManager>
+    </CommandManager>
+</SfDiagramComponent>
+
+@code
+{
+    // Reference to diagram
+    SfDiagramComponent diagram;
+    DiagramObjectCollection<KeyboardCommand> command = new DiagramObjectCollection<KeyboardCommand>()
+    {
+        new KeyboardCommand()
+        {
+            Name = "CustomGroup",
+            Gesture = new KeyGesture() { Key = DiagramKeys.G, Modifiers = ModifierKeys.Control }
+        },
+        new KeyboardCommand()
+        {
+            Name = "CustomUngroup",
+            Gesture = new KeyGesture() { Key = DiagramKeys.U, Modifiers = ModifierKeys.Control }
+        },
+     };
+    // Defines diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                OffsetX = 100,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation() { Content = "Node" }
+            }
+            };
+        nodes.Add(node1);
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                OffsetX = 300,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation() { Content = "Node1" }
+            }
+            };
+        nodes.Add(node2);
+    }
+
+    public void canexe(CommandKeyArgs args)
+    {
+        args.CanExecute = true;
+    }
+
+    /// <summary>
+    /// Custom command execution event
+    /// </summary>
+    public void CommandExecute(CommandKeyArgs args)
+    {
+        if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.G)
+        {
+            //Custom command to group the selected nodes
+            diagram.Group();
+        }
+        if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.U)
+        {
+            DiagramSelectionSettings selector = diagram.SelectionSettings;
+            //Custom command to ungroup the selected items
+            if (selector.Nodes.Count > 0 && selector.Nodes[0] is NodeGroup)
+            {
+                if ((selector.Nodes[0] as NodeGroup).Children.Length > 0)
+                {
+                    diagram.Ungroup();
+                }
+            }
+        }
+    }
+}

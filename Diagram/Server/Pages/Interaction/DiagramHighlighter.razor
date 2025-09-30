@@ -1,0 +1,101 @@
+﻿@page "/DiagramHighlighter"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<style>
+    .e-diagram-first-selection-indicator {
+        stroke: red !important;
+    }
+
+    .e-diagram-selection-indicator {
+        stroke: red !important;
+    }
+</style>
+<SfDiagramComponent @ref="diagram" ID="diagram" Width="800px" Height="800px" Nodes="nodes">
+    <SnapSettings Constraints="SnapConstraints.None"> </SnapSettings>
+</SfDiagramComponent>
+
+@code {
+    SfDiagramComponent diagram;
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                OffsetX = 200,
+                OffsetY = 230,
+                Height = 100,
+                Width = 100,
+                ID = "node1",
+                Style = new ShapeStyle() { Fill = "#5E94EF", StrokeColor = "#5E94EF" },
+                Shape = new BasicShape()
+                {
+                    Shape = NodeBasicShapes.Diamond,
+                },
+            };
+        nodes.Add(node1);
+        Node node2 = new Node()
+            {
+                OffsetX = 480,
+                OffsetY = 230,
+                Height = 100,
+                Width = 100,
+                ID = "node2",
+                Style = new ShapeStyle() { Fill = "#5E94EF", StrokeColor = "#5E94EF" },
+                Shape = new BasicShape()
+                {
+                    Shape = NodeBasicShapes.Diamond,
+                },
+            };
+        nodes.Add(node2);
+
+        Node node3 = new Node()
+            {
+                OffsetX = 335,
+                OffsetY = 330,
+                Height = 100,
+                Width = 100,
+                ID = "node3",
+                Style = new ShapeStyle() { Fill = "#5E94EF", StrokeColor = "#5E94EF" },
+                Shape = new BasicShape()
+                {
+                    Shape = NodeBasicShapes.Diamond,
+                },
+            };
+        nodes.Add(node3);
+
+        Node node4 = new Node()
+            {
+                OffsetX = 200,
+                OffsetY = 400,
+                Height = 100,
+                Width = 100,
+                ID = "node4",
+                Style = new ShapeStyle() { Fill = "#5E94EF", StrokeColor = "#5E94EF" },
+                Shape = new BasicShape()
+                {
+                    Shape = NodeBasicShapes.Diamond,
+                },
+            };
+        nodes.Add(node4);
+
+        Node node5 = new Node()
+            {
+                OffsetX = 480,
+                OffsetY = 400,
+                Height = 100,
+                Width = 100,
+                ID = "node5",
+                Style = new ShapeStyle() { Fill = "#5E94EF", StrokeColor = "#5E94EF" },
+                Shape = new BasicShape()
+                {
+                    Shape = NodeBasicShapes.Diamond,
+                },
+            };
+        nodes.Add(node5);
+
+    }
+}

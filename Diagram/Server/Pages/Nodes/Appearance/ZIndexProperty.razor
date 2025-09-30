@@ -1,0 +1,53 @@
+﻿@page "/ZIndexProperty"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+
+@code
+{
+    SfDiagramComponent diagram;
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // nodes are created and stored in nodes array.
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                // Position of the node.
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                ZIndex = 2,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+            };
+        nodes.Add(node1);
+
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                // Position of the node.
+                OffsetX = 300,
+                OffsetY = 300,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                ZIndex = 1,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+            };
+        nodes.Add(node2);
+    }
+}
