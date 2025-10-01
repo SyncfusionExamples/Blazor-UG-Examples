@@ -1,0 +1,88 @@
+﻿@using Syncfusion.Blazor.Lists;
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.Grids;
+@using static UGSamples.Components.Pages.Columns.Content_ColumnChooser
+
+<div class="setMargin">
+    <SfTextBox Placeholder="Search" Input="@OnInput"></SfTextBox>
+</div>
+<SfListView @ref="ListView" Height="100%" ShowCheckBox="true" DataSource="@CloneData">
+    <ListViewFieldSettings TValue="DataModel" Id="Id" Text="Text"></ListViewFieldSettings>
+    <ListViewEvents Clicked="OnClicked" Created="@(()=>OnCreated(ColumnContext.Columns))" TValue="DataModel"></ListViewEvents>
+</SfListView>
+<style>
+    .setMargin {
+        margin-bottom: 10px;
+    }
+</style>
+@code
+{
+    public List<DataModel> CloneData { get; set; } = new List<DataModel>();
+    [CascadingParameter]
+    public SfGrid<Order> Grid { get; set; }
+    [Parameter]
+    public ColumnChooserTemplateContext ColumnContext { get; set; }
+    public SfListView<DataModel> ListView { get; set; }
+    async Task OnInput(InputEventArgs eventArgs)
+    {
+        CloneData = DataSource.FindAll(e => e.Text.ToLower().StartsWith(eventArgs.Value.ToLower()));
+        await Task.Delay(100);
+        await Preselect();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        CloneData = DataSource;
+        await Task.Delay(100);
+        await Preselect();
+    }
+    List<DataModel> DataSource = new List<DataModel>
+    {
+        new DataModel() { Text = "Order ID", Id = "OrderID" },
+        new DataModel() { Text = "Customer ID", Id ="CustomerID"},
+        new DataModel() { Text = "Employee ID", Id = "EmployeeID" },
+        new DataModel() { Text = "First Name", Id = "FirstName"},
+        new DataModel() { Text = "Order Date", Id = "OrderDate" },
+        new DataModel() { Text = "Last Name", Id = "LastName" },
+        new DataModel() { Text = "Hire Date", Id = "HireDate"},
+        new DataModel() { Text = "Title", Id = "Title"},
+        new DataModel() { Text = "Freight", Id = "Freight"},
+    };
+    public async Task Preselect()
+    {
+        var cols = ColumnContext.Columns.FindAll(x => x.Visible == true).ToList();
+        var selectlist = new List<DataModel>();
+        foreach (var column in cols)
+        {
+            selectlist.Add(DataSource.Where(x => x.Text == column.HeaderText).FirstOrDefault());
+        }
+        if (selectlist.Count > 0)
+        {
+            if (ListView != null)
+            {
+                await ListView?.CheckItemsAsync(selectlist.AsEnumerable());
+            }
+        }
+    }
+    public async Task OnCreated(List<GridColumn> args)
+    {
+        await Preselect();
+    }
+    public async Task OnClicked(ClickEventArgs<DataModel> args)
+    {
+        if (args.IsChecked)
+        {
+            await Grid.ShowColumnAsync(args.Text);
+        }
+        else
+        {
+            await Grid.HideColumnAsync(args.Text);
+        }
+    }
+
+    public class DataModel
+    {
+        public string Id { get; set; }
+        public string Text { get; set; }
+        public string Type { get; set; }
+    }
+}
