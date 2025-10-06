@@ -1,0 +1,41 @@
+﻿@page "/RemoveConnectorsAtRunTime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="Remove Connector" OnClick="@RemoveConnector" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
+    <SnapSettings Constraints="@snapConstraints"></SnapSettings>
+</SfDiagramComponent>
+@code {
+    //Defines snap consttraints
+    SnapConstraints snapConstraints = SnapConstraints.None;
+    //Defines diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                // Set the source and target point of the connector
+                SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    // Style of the connector segment
+                    Style = new ShapeStyle() { Fill = "#6f409f", StrokeColor = "#6f409f", StrokeWidth = 1 }
+                },
+                Style = new ShapeStyle() { StrokeColor = "#6f409f", StrokeWidth = 1 },
+                // Type of the connector
+                Type = ConnectorSegmentType.Straight,
+            };
+        connectors.Add(Connector);
+    }
+    public void RemoveConnector()
+    {
+        // Remove connector at runtime
+        connectors.Remove(connectors[0]);
+    }
+}

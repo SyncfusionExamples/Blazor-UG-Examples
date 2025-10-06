@@ -1,0 +1,35 @@
+﻿@page "/OrthogonalThumbStyle"
+
+@using Syncfusion.Blazor.Diagram
+
+<style>
+    .e-diagram-ortho-segment-handle {
+       stroke: red;
+       stroke-width: 1px;
+       fill: green;
+   }
+
+</style>
+
+<SfDiagramComponent @ref="Diagram" Width="1000px"  Height="500px" Connectors="@connectors" ConnectorSegmentThumb="@segmentThumbSettings">
+</SfDiagramComponent>
+
+@code
+{
+    SfDiagramComponent Diagram;
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    SegmentThumbSettings segmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.DoubleArrow };
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "Connector2",
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb | ConnectorConstraints.InheritSegmentThumbShape,
+            Type = ConnectorSegmentType.Orthogonal,
+            SourcePoint = new DiagramPoint { X = 400, Y = 100 },
+            TargetPoint = new DiagramPoint { X = 500, Y = 200 }
+        };
+        connectors.Add(Connector);
+    }
+}

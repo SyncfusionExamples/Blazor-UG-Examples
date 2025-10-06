@@ -1,0 +1,71 @@
+﻿@page "/ConnectorSplitting"
+
+@using Syncfusion.Blazor.Diagram
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Nodes="@nodes" Connectors="@connectors" EnableConnectorSplitting="true">
+
+</SfDiagramComponent>
+@code {
+    //Reference the diagram
+    SfDiagramComponent Diagram;
+    // Initialize diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    // Initialize diagram's node collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>() {
+          new Node() {  OffsetX = 100,
+            OffsetY = 100,
+            Height = 50,
+            Width = 100,
+            ID = "node1",
+            Style = new ShapeStyle(){ Fill = "#6495ED",
+                StrokeColor = "#6495ED",},
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+          },
+          new Node() {  OffsetX = 300,
+            OffsetY = 300,
+            Height = 50,
+            Width = 100,
+            ID = "node2",
+            Style = new ShapeStyle(){ Fill = "#6495ED",
+                StrokeColor = "#6495ED",},
+           Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+          },
+          new Node() {  OffsetX = 300,
+            OffsetY = 100,
+            Height = 50,
+            Width = 100,
+            ID = "node3",
+            Style = new ShapeStyle(){ Fill = "#6495ED",
+                StrokeColor = "#6495ED",},
+           Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+          }
+        };
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                //Source node id of the connector.
+                SourceID = "node1",
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                    }
+                },
+                //Target node id of the connector.
+                TargetID = "node2",
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                },
+                // Type of the connector
+                Type = ConnectorSegmentType.Straight,
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.AllowDrop,
+            };
+        connectors.Add(Connector);
+    }
+}

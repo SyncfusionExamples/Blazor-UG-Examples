@@ -1,0 +1,34 @@
+﻿@page "/TooltipPositionForConnector"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Connector Position" OnClick="@PositionChange" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+@code
+{
+    //Define diagram's connectors collection
+    DiagramObjectCollection<Connector> connector;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's connectors collection
+
+        connector = new DiagramObjectCollection<Connector>();
+        Connector connectors = new Connector()
+            {
+                ID = "Connector1",
+                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+                Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip", Position = Position.TopCenter },
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+            };
+        connector.Add(connectors);
+    }
+    //Change position at run time.
+    private void PositionChange()
+    {
+        connector[0].Tooltip.Position = Position.RightCenter;
+    }
+}

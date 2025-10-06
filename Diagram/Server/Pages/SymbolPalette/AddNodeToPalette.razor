@@ -1,0 +1,58 @@
+﻿@page "/AddNodeToPalette"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width:20%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+<AddNodeToPalette />
+@code{
+    //Reference the symbolpreview
+    DiagramSize SymbolPreview;
+    //Define symbol margin
+    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+
+    SfSymbolPaletteComponent symbolpalette;
+
+    //Define palattes collection
+    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    // Defines palette's flow-shape collection
+    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        Palettes = new DiagramObjectCollection<Palette>();
+
+        PaletteNodes = new DiagramObjectCollection<NodeBase>();
+        CreatePaletteNode(NodeFlowShapes.Terminator, "Terminator");
+
+        Palettes = new DiagramObjectCollection<Palette>()
+    {
+           new Palette(){Symbols =PaletteNodes,Title="Flow Shapes",ID="Flow Shapes" },
+        };
+    }
+    //Method to create palette node
+    private void CreatePaletteNode(NodeFlowShapes flowShape, string id)
+    {
+        Node node = new Node()
+        {
+            ID = id,
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = flowShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        PaletteNodes.Add(node);
+    }
+}

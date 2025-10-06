@@ -1,0 +1,72 @@
+﻿@page "/Style"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
+    <SnapSettings>
+        <HorizontalGridLines LineColor="White" LineDashArray="2,2" />
+        <VerticalGridLines LineColor="White" LineDashArray="2,2" />
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    // Defines diagram's nodes collection.
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    // Defines diagram's SelectionSettings.
+    DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+
+    protected override void OnInitialized()
+    {
+        //Creating the userhandle for cloning the objects.
+        UserHandle cloneHandle = new UserHandle()
+            {
+                //Name of the user handle.
+                Name = "clone",
+                //Set path data for userhandle.
+                PathData = "M60.3,18H27.5c-3,0-5.5,2.4-5.5,5.5v38.2h5.5V23.5h32.7V18z M68.5,28.9h-30c-3,0-5.5,2.4-5.5,5.5v38.2c0,3,2.4,5.5,5.5,5.5h30c3,0,5.5-2.4,5.5-5.5V34.4C73.9,31.4,71.5,28.9,68.5,28.9z M68.5,72.5h-30V34.4h30V72.5z",
+                //Set visibility for the user handle.
+                Visible = true,
+                //Set the position for the user handle.
+                Offset = 1,
+                //Set side based on the given offset.
+                Side = Direction.Bottom,
+                //Set margin for the user handle.
+                Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 },
+                //Set size of the user handle.
+                Size = 50,
+                //Set path color for given path data.
+                PathColor = "yellow",
+                //Set Border color of the user handle.
+                BorderColor = "red",
+                //Set Background Color of the user handle.
+                BackgroundColor = "green",
+                //Set Border Width Color of the user handle.
+                BorderWidth = 3,
+            };
+        //Add user handle to the collection.
+        UserHandles = new DiagramObjectCollection<UserHandle>()
+        {
+            cloneHandle
+        };
+        SelectedModel = new DiagramSelectionSettings()
+            {
+                //Enable userhandle for selected model.
+                Constraints = SelectorConstraints.UserHandle,
+                UserHandles = this.UserHandles
+            };
+        nodes = new DiagramObjectCollection<Node>();
+        Node diagramNode = new Node()
+            {
+                ID = "node1",
+                OffsetX = 100,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
+            };
+        nodes.Add(diagramNode);
+    }
+}

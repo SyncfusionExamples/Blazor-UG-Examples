@@ -1,0 +1,55 @@
+﻿@page "/CreateConnectorPorts"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors">
+<SnapSettings Constraints="SnapConstraints.None"></SnapSettings>    
+</SfDiagramComponent>
+
+@code
+{
+    //Define diagram's connector collection
+    DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        // A connector is created and stored in connectors collection.
+        connectors = new DiagramObjectCollection<Connector>();
+
+        // Create an orthogonal connector
+        Connector connector = new Connector()
+        {
+            ID = "connector",
+            SourcePoint = new DiagramPoint() { X = 400, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 550, Y = 350 },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
+                {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                        StrokeWidth = 2
+                }
+            },
+            Ports = new DiagramObjectCollection<ConnectorPort>()
+            {
+                new ConnectorPort()
+                {
+                    ID = "port",
+                    Visibility = PortVisibility.Visible,
+                    Shape = PortShapes.Square,
+                    Style = new ShapeStyle(){ Fill = "gray", StrokeColor = "gray" },
+                }
+            },
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+            }
+        };
+        connectors.Add(connector);
+    }
+}

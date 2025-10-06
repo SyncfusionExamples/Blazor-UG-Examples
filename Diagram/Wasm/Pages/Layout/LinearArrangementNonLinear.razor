@@ -1,0 +1,61 @@
+﻿@page "/LinearArrangementNonLinear"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <DataSourceSettings ID="Id" ParentID="ReportingPerson" DataSource="@DataSource"></DataSourceSettings>
+    <Layout Type="LayoutType.ComplexHierarchicalTree" LinearArrangement="false" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+    </Layout>
+</SfDiagramComponent>
+
+@code
+{
+    //Initializing layout.
+    int HorizontalSpacing = 40;
+    int VerticalSpacing = 50;
+
+    //Creates node with some default values.
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Height = 40;
+        node.Width = 40;
+        node.Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeWidth = 2, StrokeColor = "none" };
+    }
+
+    //Creates connectors with some default values.
+    private void OnConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).CornerRadius = 7;
+        (connector as Connector).Style.StrokeWidth = 1;
+        (connector as Connector).TargetDecorator.Height = 7;
+        (connector as Connector).TargetDecorator.Width = 7;
+        (connector as Connector).Style.Fill = "#6495ED";
+        (connector as Connector).Style.StrokeColor = "#6495ED";
+        (connector as Connector).TargetDecorator.Style.Fill = "#6BA5D7";
+        (connector as Connector).TargetDecorator.Style.StrokeColor = "#6BA5D7";
+    }
+
+    public class ComplexHierarchical
+    {
+        public string Id { get; set; }
+        public List<string> ReportingPerson { get; set; }
+    }
+    public object DataSource = new List<object>()
+    {
+        new ComplexHierarchical() { Id= "node11" },
+        new ComplexHierarchical() { Id= "node12", ReportingPerson= new List<string>(){"node114" }},
+        new ComplexHierarchical() { Id= "node13", ReportingPerson=new List<string>() {"node12" }},
+        new ComplexHierarchical() { Id= "node14", ReportingPerson=new List<string>() {"node12"}},
+        new ComplexHierarchical() { Id= "node15", ReportingPerson=new List<string>() {"node12" }},
+        new ComplexHierarchical() { Id= "node116", ReportingPerson=new List<string>() {"node22","node12" }},      
+        new ComplexHierarchical() { Id= "node21"},
+        new ComplexHierarchical() { Id= "node22", ReportingPerson=new List<string>() {"node114" }},
+        new ComplexHierarchical() { Id= "node23", ReportingPerson=new List<string>() {"node22" }},
+        new ComplexHierarchical() { Id= "node24", ReportingPerson=new List<string>() {"node22"}},
+        new ComplexHierarchical() { Id= "node25", ReportingPerson=new List<string>() {"node22"}},        
+         new ComplexHierarchical() { Id= "node31"},
+        new ComplexHierarchical() { Id= "node114", ReportingPerson=new List<string>() {"node11","node21","node31" }}
+    };
+}

@@ -1,0 +1,113 @@
+﻿@page "/ConnectorPortConnection"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    // Initialize connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint() { X = 200, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 350, Y = 250 },
+                Type = ConnectorSegmentType.Bezier,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                        StrokeWidth = 2
+                    }
+                },
+                Ports = new DiagramObjectCollection<ConnectorPort>()
+            {
+                new ConnectorPort()
+                {
+                    ID = "port",
+                    Visibility = PortVisibility.Visible,
+                    Shape = PortShapes.Square,
+                    Style = new ShapeStyle(){ Fill = "gray", StrokeColor = "gray" },
+                }
+            },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+                }
+            };
+
+        Connector connector2 = new Connector()
+            {
+                ID = "connector2",
+                SourcePoint = new DiagramPoint() { X = 600, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 750, Y = 250 },
+                Type = ConnectorSegmentType.Bezier,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                        StrokeWidth = 2
+                    }
+                },
+                Ports = new DiagramObjectCollection<ConnectorPort>()
+            {
+                new ConnectorPort()
+                {
+                    ID = "port",
+                    Visibility = PortVisibility.Visible,
+                    Shape = PortShapes.Square,
+                    Style = new ShapeStyle(){ Fill = "gray", StrokeColor = "gray" },
+                }
+            },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+                }
+            };
+        Connector connector3 = new Connector()
+            {
+                ID = "connector3",
+                SourceID = "connector1",
+                SourcePortID = "port",
+                TargetID = "connector2",
+                TargetPortID = "port",
+                Type = ConnectorSegmentType.Straight,
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6495ED",
+                        StrokeColor = "#6495ED",
+                        StrokeWidth = 2
+                    }
+                },
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+                }
+            };
+
+        connectors.Add(connector1);
+        connectors.Add(connector2);
+        connectors.Add(connector3);
+    }
+}

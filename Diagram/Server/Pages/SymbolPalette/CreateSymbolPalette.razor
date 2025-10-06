@@ -1,0 +1,17 @@
+﻿@page "/CreateSymbolPalette"
+
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+@using Syncfusion.Blazor.Diagram
+
+@* Initializes the symbol palette *@
+<SfSymbolPaletteComponent @ref="SymbolPalette" Height="600px"
+                          SymbolHeight="80" SymbolWidth="80" Palettes="@palettes">
+</SfSymbolPaletteComponent>
+
+@code
+{
+    //Reference the symbol palette
+    SfSymbolPaletteComponent SymbolPalette;
+    //Initialize the palettes collection
+    DiagramObjectCollection<Palette> palettes = new DiagramObjectCollection<Palette>();
+}

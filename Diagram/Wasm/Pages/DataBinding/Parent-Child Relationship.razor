@@ -1,0 +1,54 @@
+﻿@page "/Parent-Child Relationship"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
+    <Layout Type="LayoutType.HierarchicalTree" HorizontalSpacing="@HorizontalSpacing" VerticalSpacing="@VerticalSpacing">
+    </Layout>
+    <SnapSettings>
+        <HorizontalGridLines LineColor="white" LineDashArray="2,2">
+        </HorizontalGridLines>
+        <VerticalGridLines LineColor="white" LineDashArray="2,2">
+        </VerticalGridLines>
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    int left = 40;
+    int top = 50;
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    int HorizontalSpacing = 40;
+    int VerticalSpacing = 40;
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Height = 40;
+        node.Width = 100;
+        //Initializing the default node's shape style.
+        node.Style = new ShapeStyle() { Fill = "darkcyan", StrokeWidth = 3, StrokeColor = "Black" };
+    }
+
+    private void OnConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+    }
+
+    public class HierarchicalDetails
+    {
+        public string Id { get; set; }
+        public string Role { get; set; }
+        public string ParentId { get; set; }
+        public string ChartType { get; set; }
+        public string Color { get; set; }
+    }
+    public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
+    {
+        new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
+        new HierarchicalDetails()   { Id= "1", Role= "General Manager", ParentId= "parent", ChartType= "right", Color= "#71AF17" },
+        new HierarchicalDetails()   { Id= "11", Role= "Assistant Manager", ParentId= "1", Color= "#71AF17" },
+    };
+}

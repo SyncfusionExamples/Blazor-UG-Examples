@@ -1,0 +1,24 @@
+﻿@page "/HistoryChange"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize Diagram *@
+<SfDiagramComponent @ref="@diagram" Height="600px" HistoryChanged="@Onhistorychange">
+</SfDiagramComponent>
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent diagram;
+
+    protected override void OnInitialized()
+    {
+
+    }
+    //Onhistory change event
+    public void Onhistorychange(HistoryChangedEventArgs args)
+    {
+        //causes of history change
+        var ActionTrigger = args.ActionTrigger;
+    }
+}

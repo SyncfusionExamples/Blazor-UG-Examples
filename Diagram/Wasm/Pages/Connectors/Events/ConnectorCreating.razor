@@ -1,0 +1,44 @@
+﻿@page "/ConnectorCreating"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" 
+                    Connectors="@connectors" 
+                    ConnectorCreating="OnConnectorCreating" />
+
+@code
+{
+    // Define the connector collection.
+    DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        //A connector is created and stored in the connectors collection.
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 400,
+            }
+        };
+        connectors.Add(Connector);
+    }
+
+    public void OnConnectorCreating(IDiagramObject obj)
+    { 
+        Connector connector = obj as Connector;
+        connector.Style.Fill = "black";
+        connector.Style.StrokeColor = "black";
+        connector.Style.Opacity = 1;
+        connector.TargetDecorator.Style.Fill = "black";
+        connector.TargetDecorator.Style.StrokeColor = "black";
+    }
+    }

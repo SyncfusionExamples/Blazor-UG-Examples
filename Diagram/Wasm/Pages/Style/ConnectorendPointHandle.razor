@@ -1,0 +1,29 @@
+﻿@page "/ConnectorendPointHandle"
+
+@using Syncfusion.Blazor.Diagram
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
+</SfDiagramComponent>
+<style>
+    .e-diagram-endpoint-handle {
+        fill: red;
+        stroke: green;
+    }
+</style>
+@code {
+    //Defines diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint()
+                {
+                    X = 100,
+                    Y = 100
+                },
+                TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            };
+        connectors.Add(Connector);
+    }
+}

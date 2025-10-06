@@ -1,0 +1,152 @@
+﻿@page "/ScrollPadding"
+
+@using Syncfusion.Blazor.Diagram
+<SfDiagramComponent @ref="diagram" Height="500px" Width="500px" Nodes="@nodes" GetCustomTool="@GetCustomTool" SelectionSettings="@selectionSettings">
+    @* Sets the ScrollSettings for the diagram *@
+    <ScrollSettings ScrollPadding="@ScrollBorder">
+    </ScrollSettings>
+</SfDiagramComponent>
+@code
+{
+    SfDiagramComponent diagram;
+    DiagramMargin ScrollBorder = new DiagramMargin() { Left = 100, Right = 100, Top = 100, Bottom = 100 };
+    DiagramObjectCollection<Node> nodes;
+    DiagramSelectionSettings selectionSettings = new DiagramSelectionSettings();
+    DiagramObjectCollection<UserHandle> handles = new DiagramObjectCollection<UserHandle>();
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in the nodes collection.
+        Node node = new Node()
+            {
+                ID = "node1",
+                // Position of the node.
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                }
+            };
+        // Add node.
+        nodes.Add(node);
+    }
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            UpdateHandle();
+        }
+    }
+
+    private void UpdateHandle()
+    {
+        UserHandle deleteHandle = AddHandle("Delete", "delete", Direction.Bottom, 0.5);
+        UserHandle drawHandle = AddHandle("Draw", "draw", Direction.Right, 0.5);
+        handles.Add(deleteHandle);
+        handles.Add(drawHandle);
+        selectionSettings.UserHandles = handles;
+    }
+
+    private UserHandle AddHandle(string name, string path, Direction direction, double offset)
+    {
+        UserHandle handle = new UserHandle()
+            {
+                Name = name,
+                Visible = true,
+                Offset = offset,
+                Side = direction,
+                Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 }
+            };
+        if (path == "delete")
+        {
+            handle.PathData = "M0.54700077,2.2130003 L7.2129992,2.2130003 7.2129992,8.8800011 C7.2129992,9.1920013 7.1049975,9.4570007 6.8879985,9.6739998 6.6709994,9.8910007 6.406,10 6.0939997,10 L1.6659999,10 C1.3539997,10 1.0890004,9.8910007 0.87200136,9.6739998 0.65500242,9.4570007 0.54700071,9.1920013 0.54700077,8.8800011 z M2.4999992,0 L5.2600006,0 5.8329986,0.54600048 7.7599996,0.54600048 7.7599996,1.6660004 0,1.6660004 0,0.54600048 1.9270014,0.54600048 z";
+        }
+        else
+        {
+            handle.PathData = "M3.9730001,0 L8.9730001,5.0000007 3.9730001,10.000001 3.9730001,7.0090005 0,7.0090005 0,2.9910006 3.9730001,2.9910006 z";
+        }
+        return handle;
+    }
+    public InteractionControllerBase GetCustomTool(DiagramElementAction action, string id)
+    {
+        InteractionControllerBase tool = null;
+        if (id == "Draw")
+        {
+            tool = new DrawTool(diagram);
+        }
+        else
+        {
+            tool = new AddDeleteTool(diagram);
+        }
+        return tool;
+    }
+    // Custom tool to delete the node.
+    public class AddDeleteTool : InteractionControllerBase
+    {
+        SfDiagramComponent sfDiagram;
+        Node deleteObject = null;
+        public AddDeleteTool(SfDiagramComponent Diagram) : base(Diagram)
+        {
+            sfDiagram = Diagram;
+        }
+        public override void OnMouseDown(DiagramMouseEventArgs args)
+        {
+            if (sfDiagram.SelectionSettings.Nodes.Count > 0 && ((sfDiagram.SelectionSettings.Nodes[0]) is Node))
+            {
+                deleteObject = (sfDiagram.SelectionSettings.Nodes[0]) as Node;
+            }
+            base.OnMouseDown(args);
+        }
+        public override void OnMouseUp(DiagramMouseEventArgs args)
+        {
+            if (deleteObject != null)
+            {
+                sfDiagram.StartGroupAction();
+                sfDiagram.BeginUpdate();
+                sfDiagram.Nodes.Remove(deleteObject);
+                _ = sfDiagram.EndUpdateAsync();
+                sfDiagram.EndGroupAction();
+            }
+            base.OnMouseUp(args);
+            this.InAction = true;
+        }
+    }
+
+    public class DrawTool : ConnectorDrawingController
+    {
+        SfDiagramComponent sfDiagram;
+        Connector newConnector = null;
+        public DrawTool(SfDiagramComponent Diagram) : base(Diagram, DiagramElementAction.ConnectorSourceEnd)
+        {
+            sfDiagram = Diagram;
+            newConnector = new Connector()
+                {
+                    ID = "OrthogonalConnector",
+                    SourceID = sfDiagram.SelectionSettings.Nodes[0].ID,
+                    Type = ConnectorSegmentType.Orthogonal,
+                };
+            @*Hidden:Lines*@
+#pragma warning disable BL0005
+            @*End:Hidden*@
+            Diagram.InteractionController = DiagramInteractions.DrawOnce;
+            Diagram.DrawingObject = newConnector;
+            @*Hidden:Lines*@
+#pragma warning restore BL0005
+            @*End:Hidden*@
+        }
+        public override void OnMouseDown(DiagramMouseEventArgs args)
+        {
+            base.OnMouseDown(args);
+        }
+        public override void OnMouseUp(DiagramMouseEventArgs args)
+        {
+            base.OnMouseUp(args);
+        }
+    }
+}

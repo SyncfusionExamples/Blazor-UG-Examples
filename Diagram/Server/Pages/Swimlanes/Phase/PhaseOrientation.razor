@@ -1,0 +1,61 @@
+﻿@page "/PhaseOrientation"
+
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width:20%;">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    //Reference the symbolpreview.
+    DiagramSize SymbolPreview;
+    //Define symbol margin.
+    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+
+    SfSymbolPaletteComponent symbolpalette;
+
+    //Define palattes collection.
+    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    // Defines palette's swimlane-shape collection.
+    DiagramObjectCollection<NodeBase> SwimlaneNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        Palettes = new DiagramObjectCollection<Palette>();
+
+        SwimlaneNodes = new DiagramObjectCollection<NodeBase>();
+
+
+        //create a horizontal phase.
+        Phase horizontalPhase = new Phase() { ID = "HorizontalPhase", Orientation = Orientation.Horizontal, Width = 80, Height = 1, Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" } };
+
+        //create a vertical phase.
+        Phase verticalPhase = new Phase() { ID = "VerticalPhase", Orientation = Orientation.Vertical, Width = 1, Height = 80, Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" } };
+
+        SwimlaneNodes = new DiagramObjectCollection<NodeBase>()
+        {
+            horizontalPhase,
+            verticalPhase
+        };
+
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols =SwimlaneNodes,Title="Swimlane Shapes",ID="SwimlaneShapes" },
+        };
+    }
+}

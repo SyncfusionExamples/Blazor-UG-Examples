@@ -1,0 +1,27 @@
+﻿@page "/ContainerNode"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    public SfDiagramComponent diagram;
+    //Initialize the node collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Container container = new Container()
+            {
+                ID = "container",
+                Height = 300,
+                Width = 500,
+                OffsetX = 500,
+                OffsetY = 300,
+            };
+        nodes.Add(container);
+    }
+} 

@@ -1,0 +1,38 @@
+﻿@page "/TooltipTemplateForConnector"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector">
+    <DiagramTemplates>
+        <TooltipTemplate>
+            @{
+                    if (context is Connector)
+                    {
+                        <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
+                    }
+                }
+            </TooltipTemplate>
+        </DiagramTemplates>
+    </SfDiagramComponent>
+    @code
+    {
+    //Define diagram's connectors collection
+    DiagramObjectCollection<Connector> connector;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's connectors collection
+
+        connector = new DiagramObjectCollection<Connector>();
+        Connector connectors = new Connector()
+            {
+                ID = "Connector1",
+                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+                Tooltip = new DiagramTooltip(),
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+            };
+        connector.Add(connectors);
+    }
+}

@@ -1,0 +1,38 @@
+﻿@page "/SnapToObject"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes">
+    <SnapSettings Constraints="@snapConstraints" SnapAngle="10" SnapDistance="10">
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Sets the Snap to objects constraints...
+    public SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToObject;
+    //Initialize the diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node diagramNode = new Node();
+        diagramNode.OffsetX = 100;
+        diagramNode.OffsetY = 100;
+        diagramNode.Width = 100;
+        diagramNode.Height = 100;
+        diagramNode.Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" };
+        diagramNode.ID = "node1";
+        nodes.Add(diagramNode);
+
+        diagramNode = new Node();
+        diagramNode.OffsetX = 300;
+        diagramNode.OffsetY = 100;
+        diagramNode.Width = 100;
+        diagramNode.Height = 100;
+        diagramNode.Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" };
+        diagramNode.ID = "node2";
+        nodes.Add(diagramNode);
+    }
+}

@@ -1,0 +1,75 @@
+﻿@page "/LaneChildren"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Swimlanes="@SwimlaneCollections" NodeCreating="@OnNodeCreating" />
+
+@code
+{
+    //Define diagram's swimlane collection
+    DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+
+    protected override void OnInitialized()
+    {
+        // A swimlane is created and stored in the swimlanes collection.
+        Swimlane swimlane = new Swimlane()
+            {
+                Header = new SwimlaneHeader()
+                {
+                    Annotation = new ShapeAnnotation()
+                    {
+                        Content = "SALES PROCESS FLOW CHART"
+                    },
+                    Height = 50,
+                },
+                OffsetX = 400,
+                OffsetY = 200,
+                Height = 120,
+                Width = 450,
+                Lanes = new DiagramObjectCollection<Lane>()
+                {
+                    new Lane(){Height = 100,
+                    Header = new SwimlaneHeader(){
+                        Width = 30,
+                        Annotation = new ShapeAnnotation(){ Content = "Consumer" }
+                    },
+                    Children = new DiagramObjectCollection<Node>()
+                    {
+                        new Node(){Height = 50, Width = 50, LaneOffsetX = 100, LaneOffsetY = 30},
+                        new Node(){Height = 50, Width = 50, LaneOffsetX = 250, LaneOffsetY = 30},
+                    }
+                    },
+                }
+            };
+        // Add swimlane
+        SwimlaneCollections.Add(swimlane);
+    }
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        if (obj is Swimlane swimlane)
+        {
+            swimlane.Header.Style = new TextStyle()
+                {
+                    Fill = "#5b9bd5",
+                    StrokeColor = "#5b9bd5"
+                };
+            foreach (Phase phase in swimlane.Phases)
+            {
+                phase.Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
+            }
+            foreach (Lane lane in swimlane.Lanes)
+            {
+                lane.Header.Style = new TextStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
+            }
+        }
+        else if (obj is Node node)
+        {
+            node.Style = new ShapeStyle()
+                {
+                    Fill = "#5b9bd5",
+                    StrokeColor = "#5b9bd5"
+                };
+        }
+    }
+}

@@ -1,0 +1,43 @@
+﻿@page "/ConnectorFixedUserHandle"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors">
+    <SnapSettings>
+        <HorizontalGridLines LineColor="White" LineDashArray="2,2" />
+        <VerticalGridLines LineColor="White" LineDashArray="2,2" />
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Intialize diagram's connectors collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector connector = new Connector()
+            {
+                SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+                Type = ConnectorSegmentType.Orthogonal,
+                Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+                // A fixed user handle is created and stored in fixed user handle collection of Connector.
+                FixedUserHandles = new DiagramObjectCollection<ConnectorFixedUserHandle>()
+            {
+                new ConnectorFixedUserHandle()
+                {
+                    ID = "user1",
+                    Height = 25,
+                    Width = 25,
+                    Offset = 0.5,
+                    Alignment = FixedUserHandleAlignment.After,
+                    Displacement = new DiagramPoint() { Y = 10 },
+                    Visibility = true, Padding = new DiagramThickness() { Bottom = 1, Left = 1, Right = 1, Top = 1 },
+                    PathData = "M60.3,18H27.5c-3,0-5.5,2.4-5.5,5.5v38.2h5.5V23.5h32.7V18z M68.5,28.9h-30c-3,0-5.5,2.4-5.5,5.5v38.2c0,3,2.4,5.5,5.5,5.5h30c3,0,5.5-2.4,5.5-5.5V34.4C73.9,31.4,71.5,28.9,68.5,28.9z M68.5,72.5h-30V34.4h30V72.5z"
+                }
+            },
+            };
+        connectors.Add(connector);
+    }
+}

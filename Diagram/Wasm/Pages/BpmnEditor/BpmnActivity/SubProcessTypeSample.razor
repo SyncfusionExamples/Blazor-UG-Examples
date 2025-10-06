@@ -1,0 +1,34 @@
+﻿@page "/SubProcessType"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Initialize node collection with Node.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                // Position of the node.
+                OffsetX = 100,
+                OffsetY = 100,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                // Unique Id of the node.
+                ID = "node1",
+                // Sets shape to Activity.
+                Shape = new BpmnActivity()
+                {
+                    ActivityType = BpmnActivityType.CollapsedSubProcess,
+                    SubProcessType = BpmnSubProcessType.Event,
+                }
+            };
+        nodes.Add(node);
+    }
+}
