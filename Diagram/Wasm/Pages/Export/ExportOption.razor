@@ -1,0 +1,19 @@
+﻿@page "/ExportOption"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Export" OnClick="@Export" />
+<SfDiagramComponent Height="600px" @ref="@diagram">
+</SfDiagramComponent>
+
+@code {
+    //Reference the diagram
+    SfDiagramComponent diagram;
+
+    private async Task Export()
+    {
+        DiagramExportSettings export = new DiagramExportSettings();
+        //To export the diagram
+        await diagram.ExportAsync("Diagram", DiagramExportFormat.SVG, export);
+    }
+}

@@ -1,0 +1,26 @@
+﻿@page "/ResponsiveWithParentContainer"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+<div style="width:700px; height:700px;">
+    <SfDiagramComponent @ref="@diagram" Width="100%" Height="100%" Nodes="nodes"></SfDiagramComponent>
+</div>
+@code
+{
+    //Initialize the diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Reference the diagram
+    SfDiagramComponent diagram;
+    protected override void OnInitialized()
+    {
+        nodes.Add(new Node()
+            {
+                ID = "node1",
+                OffsetX = 100,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+            });
+    }
+}

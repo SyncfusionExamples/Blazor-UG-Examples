@@ -1,0 +1,38 @@
+﻿@page "/ChunkMessage"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" EnableChunkMessages="true"/>
+
+@code
+{
+    //Initialize the Nodes Collection.
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        int offsetX = 100; int offsetY = 100; double count = 1;
+        for(int i=1; i<=200; i++)
+        {
+            Node node = new Node()
+                {
+                    ID = "node" + i,
+                    OffsetX = count * offsetX,
+                    OffsetY = offsetY,
+                    Width = 100,
+                    Height = 100,
+                    Annotations = new DiagramObjectCollection<ShapeAnnotation>() {
+                        new ShapeAnnotation() { Content = "Annotation for the Node" + i.ToString() }
+                    }
+                };
+                count += 1.5;
+                if (i % 5 == 0)
+                {
+                    count = 1;
+                    offsetX = 100;
+                    offsetY = offsetY + 200;
+                }
+            nodes.Add(node);
+        }
+    }
+}

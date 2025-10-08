@@ -1,0 +1,97 @@
+﻿@page "/SetTemplate"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+@* Initialize Diagram *@
+<SfDiagramComponent Height="600px" Nodes="@nodes" SetNodeTemplate="@SetNodeTemplate" />
+
+@code
+{
+    // Initialize node collection with node
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                // Size of the node
+                Height = 100,
+                Width = 100,
+                // Position of the node
+                OffsetX = 100,
+                OffsetY = 100,
+            };
+        Node node2 = new Node()
+            {
+                ID = "node6",
+                // Size of the node
+                Height = 510,
+                Width = 202,
+                // Position of the node
+                OffsetX = 300,
+                OffsetY = 100,
+            };
+        nodes.Add(node1);
+        nodes.Add(node2);
+    }
+    //SetNode Template method
+    private CommonElement SetNodeTemplate(IDiagramObject node)
+    {
+        if ((node as Node).ID == "node6")
+        {
+            var table = new StackPanel();
+            table.Style = new ShapeStyle() { Fill = "#e6e0eb", StrokeColor = "#e6e0eb" };
+            table.Orientation = Orientation.Horizontal;
+            var column1 = new StackPanel();
+            column1.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
+            column1.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column1.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column1.Children = new ObservableCollection<CommonElement>();
+            column1.Children.Add(getTextElement("Events"));
+
+            var column2 = new StackPanel();
+            column2.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column2.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column2.Children = new ObservableCollection<CommonElement>();
+            column2.Children.Add(getTextElement("Emails"));
+            column2.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
+
+            var column3 = new StackPanel();
+            column3.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column3.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column3.Children = new ObservableCollection<CommonElement>();
+            column3.Children.Add(getTextElement("Calls"));
+            column3.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
+
+            var column4 = new StackPanel();
+            column4.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column4.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
+            column4.Children = new ObservableCollection<CommonElement>();
+            column4.Children.Add(getTextElement("Smart contents"));
+            column4.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
+
+            table.Orientation = Orientation.Vertical;
+            table.Children = new ObservableCollection<CommonElement>() { column1, column2, column3, column4 };
+            return table;
+        }
+        else
+        {
+            (node as Node).Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F", StrokeWidth = 2 };
+            (node as Node).Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle, CornerRadius = 10 };
+        }
+        return null;
+    }
+
+    private TextElement getTextElement(string text)
+    {
+        var textElement = new TextElement();
+        textElement.Width = 60;
+        textElement.Height = 20;
+        textElement.Content = text;
+        textElement.Style = new TextStyle() { Color = "white" };
+        return textElement;
+    }
+}

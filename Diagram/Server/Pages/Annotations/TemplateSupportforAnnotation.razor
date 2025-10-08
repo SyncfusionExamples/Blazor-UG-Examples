@@ -1,0 +1,51 @@
+﻿@page "/TemplateSupportforAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="1000px" Nodes="@nodes">
+    <DiagramTemplates>
+        <AnnotationTemplate>
+            @if (context is Annotation annotation)
+                {
+                    if (annotation.ID == "Annotation1")
+                    {
+                        string ID = annotation.ID + "TemplateContent";
+                        <div id="@ID" class="profile-card" style="width:100%;height:100%;display:flex;justify-content:center;align-items:center;flex-direction:column">
+                            <div class="profile-image" style="width:100%;height:100%;border-radius:50%;overflow:hidden;background:white">
+                                <img src="https://ej2.syncfusion.com/demos/src/diagram/employees/image2.png" width="100%" height="100%" alt="Profile Image">
+                            </div>
+                            <div class="profile-name" style="font-size:12px;font-weight:bold;">Nicolas</div>
+                        </div>
+                    }
+                }
+            </AnnotationTemplate>
+        </DiagramTemplates>
+    </SfDiagramComponent>
+    @code
+    {
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+            {
+                ID = "node1",
+                Height = 100,
+                Width = 100,
+                OffsetX = 300,
+                OffsetY = 300,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "black", Opacity = 1 },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+                 new ShapeAnnotation()
+                 {
+                     ID = "Annotation1",
+                     UseTemplate = true,
+                     Height = 75,
+                     Width = 75,
+
+                 },
+            },
+            };
+        nodes.Add(node);
+    }
+}

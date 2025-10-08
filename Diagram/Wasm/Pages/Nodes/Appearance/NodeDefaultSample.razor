@@ -1,0 +1,46 @@
+﻿@page "/NodeDefaultSample"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" NodeCreating="@NodeCreating" />
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent diagram;
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes array.
+        Node node1 = new Node()
+            {
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Shape of the Node
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+            };
+        Node node2 = new Node()
+            {
+                // Position of the node
+                OffsetX = 100,
+                OffsetY = 100,
+                // Shape of the Node
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse }
+            };
+        nodes.Add(node1);
+        nodes.Add(node2);
+    }
+    //Method to define nodecreating event
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Style = new ShapeStyle() { Fill = "#6495ED" };
+        // Size of the node
+        node.Width = 100;
+        node.Height = 100;
+    }
+}

@@ -1,0 +1,106 @@
+﻿@page "/RadialTreeWithNodes"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.Internal
+@using System.Collections.ObjectModel
+
+@using Microsoft.AspNetCore.Components
+@using Node = Syncfusion.Blazor.Diagram.Node
+
+<style>
+    #diagram-space {
+        width: 70%;
+        float: left;
+    }
+
+</style>
+
+
+<div id="diagram-space">
+    <br />
+    <SfDiagramComponent @ref="diagram" Width="1200px" Height="800px" @bind-Nodes="@nodes" @bind-Connectors="@connectors" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
+        <Layout Type="LayoutType.RadialTree" HorizontalSpacing="40" VerticalSpacing="40" Root="@root">
+        </Layout>
+    </SfDiagramComponent>
+</div>
+@code {
+
+    SfDiagramComponent diagram;
+    string root = "node1";
+
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        for(int i = 1;i < 18;i++)
+        {
+            Node node1 = new Node()
+            {
+                ID = "node"+i,
+                Width = 70,
+                Height = 70,
+            };
+            nodes.Add(node1);
+        }
+        Connector connector1 = new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node2", };
+        connectors.Add(connector1);
+
+        Connector connector2 = new Connector() { ID = "connector2", SourceID = "node1", TargetID = "node3", };
+        connectors.Add(connector2);
+
+        Connector connector3 = new Connector() { ID = "connector3", SourceID = "node1", TargetID = "node4", };
+        connectors.Add(connector3);
+
+        Connector connector4 = new Connector() { ID = "connector4", SourceID = "node2", TargetID = "node5", };
+        connectors.Add(connector4);
+
+        Connector connector5 = new Connector() { ID = "connector5", SourceID = "node3", TargetID = "node6", };
+        connectors.Add(connector5);
+
+        Connector connector6 = new Connector() { ID = "connector6", SourceID = "node4", TargetID = "node7", };
+        connectors.Add(connector6);
+
+        Connector connector7 = new Connector() { ID = "connector7", SourceID = "node1", TargetID = "node8", };
+        connectors.Add(connector7);
+
+        Connector connector8 = new Connector() { ID = "connector8", SourceID = "node8", TargetID = "node9", };
+        connectors.Add(connector8);
+        Connector connector9 = new Connector() { ID = "connector9", SourceID = "node2", TargetID = "node10", };
+        connectors.Add(connector9);
+        Connector connector10 = new Connector() { ID = "connector10", SourceID = "node3", TargetID = "node11", };
+        connectors.Add(connector10);
+        Connector connector11 = new Connector() { ID = "connector11", SourceID = "node4", TargetID = "node12", };
+        connectors.Add(connector11);
+        Connector connector12 = new Connector() { ID = "connector12", SourceID = "node8", TargetID = "node13", };
+        connectors.Add(connector12);
+        Connector connector13 = new Connector() { ID = "connector13", SourceID = "node2", TargetID = "node14", };
+        connectors.Add(connector13);
+        Connector connector14 = new Connector() { ID = "connector14", SourceID = "node3", TargetID = "node15", };
+        connectors.Add(connector14);
+        Connector connector15 = new Connector() { ID = "connector15", SourceID = "node4", TargetID = "node16", };
+        connectors.Add(connector15);
+        Connector connector16 = new Connector() { ID = "connector16", SourceID = "node8", TargetID = "node17", };
+        connectors.Add(connector16);
+
+    }
+
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Width = 60;
+        node.Height = 60;
+        ShapeAnnotation annotation = new ShapeAnnotation() { Content = node.ID, Style = new TextStyle() { Color = "black" } };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>() { annotation };
+
+    }
+    private void ConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Straight;
+        (connector as Connector).TargetDecorator=new DecoratorSettings
+            {
+            Shape = DecoratorShape.None,
+        };
+    }
+    
+}

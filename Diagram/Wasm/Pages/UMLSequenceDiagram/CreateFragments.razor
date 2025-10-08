@@ -1,0 +1,95 @@
+﻿@page "/CreateFragments"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Height="700px" Model="@DiagramModel">
+    <SnapSettings Constraints="SnapConstraints.None" />
+</SfDiagramComponent>
+
+@code {
+    private SfDiagramComponent Diagram;
+    private UmlSequenceDiagramModel DiagramModel;
+
+    protected override void OnInitialized()
+    {
+        // Participants
+        List<UmlSequenceParticipant> participants = new List<UmlSequenceParticipant>()
+        {
+            new UmlSequenceParticipant() { ID = "Customer", Content = "Customer", IsActor = true },
+            new UmlSequenceParticipant() { ID = "OrderSystem", Content = "Order System", IsActor = false },
+            new UmlSequenceParticipant() { ID = "PaymentGateway", Content = "Payment Gateway", IsActor = false }
+        };
+
+        // Messages
+        List<UmlSequenceMessage> messages = new List<UmlSequenceMessage>()
+        {
+            new UmlSequenceMessage() { ID = "MSG1", Content = "Place Order", FromParticipantID = "Customer", ToParticipantID = "OrderSystem", MessageType = UmlSequenceMessageType.Synchronous },
+            new UmlSequenceMessage() { ID = "MSG2", Content = "Check Stock Availability", FromParticipantID = "OrderSystem", ToParticipantID = "OrderSystem", MessageType = UmlSequenceMessageType.Synchronous },
+            new UmlSequenceMessage() { ID = "MSG3", Content = "Stock Available", FromParticipantID = "OrderSystem", ToParticipantID = "Customer", MessageType = UmlSequenceMessageType.Reply },
+            new UmlSequenceMessage() { ID = "MSG4", Content = "Process Payment", FromParticipantID = "OrderSystem", ToParticipantID = "PaymentGateway", MessageType = UmlSequenceMessageType.Synchronous },
+            new UmlSequenceMessage() { ID = "MSG5", Content = "Payment Successful", FromParticipantID = "PaymentGateway", ToParticipantID = "OrderSystem", MessageType = UmlSequenceMessageType.Reply },
+            new UmlSequenceMessage() { ID = "MSG6", Content = "Order Confirmed and Shipped", FromParticipantID = "OrderSystem", ToParticipantID = "Customer", MessageType = UmlSequenceMessageType.Reply },
+            new UmlSequenceMessage() { ID = "MSG7", Content = "Payment Failed", FromParticipantID = "PaymentGateway", ToParticipantID = "OrderSystem", MessageType = UmlSequenceMessageType.Reply },
+            new UmlSequenceMessage() { ID = "MSG8", Content = "Retry Payment", FromParticipantID = "OrderSystem", ToParticipantID = "Customer", MessageType = UmlSequenceMessageType.Reply }
+        };
+
+        // Fragments
+        List<UmlSequenceFragment> fragments = new List<UmlSequenceFragment>()
+        {
+            new UmlSequenceFragment()
+            {
+                ID = "Frag3",
+                FragmentType = UmlSequenceFragmentType.Loop,
+                Conditions = new List<UmlSequenceFragmentCondition>
+                {
+                    new UmlSequenceFragmentCondition()
+                    {
+                        Content = "while attempts less than 3",
+                        Fragments = new List<UmlSequenceFragment>()
+                        {
+                            new UmlSequenceFragment()
+                            {
+                                ID = "Frag1",
+                                FragmentType = UmlSequenceFragmentType.Optional,
+                                Conditions = new List<UmlSequenceFragmentCondition>()
+                                {
+                                    new UmlSequenceFragmentCondition()
+                                    {
+                                        Content = "if item is in stock",
+                                        MessageIds = new List<string> { "MSG4" }
+                                    }
+                                }
+                            },
+                            new UmlSequenceFragment()
+                            {
+                                ID = "Frag2",
+                                FragmentType = UmlSequenceFragmentType.Alternative,
+                                Conditions = new List<UmlSequenceFragmentCondition>()
+                                {
+                                    new UmlSequenceFragmentCondition()
+                                    {
+                                        Content = "if payment is successful",
+                                        MessageIds = new List<string>() { "MSG5", "MSG6" }
+                                    },
+                                    new UmlSequenceFragmentCondition()
+                                    {
+                                        Content = "if payment fails",
+                                        MessageIds = new List<string>() { "MSG7", "MSG8" }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Assign model
+        DiagramModel = new UmlSequenceDiagramModel()
+            {
+                SpaceBetweenParticipants = 300,
+                Participants = participants,
+                Messages = messages,
+                Fragments = fragments
+            };
+    }
+}

@@ -1,0 +1,74 @@
+﻿@page "/SymbolStretch"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width:20%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px" GetSymbolInfo="GetSymbolInfo"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="120" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code {
+    //Define symbolpreview
+    DiagramSize SymbolPreview;
+    //Define SymbolMargin
+    SymbolMargin SymbolMargin = new SymbolMargin
+        {
+            Left = 15,
+            Right = 15,
+            Top = 15,
+            Bottom = 15
+        };
+        //Reference the symbolpalette
+    SfSymbolPaletteComponent symbolpalette;
+
+    //Define palattes collection
+    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    // Defines palette's flow-shape collection
+    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+    private void InitPaletteModel()
+    {
+        Palettes = new DiagramObjectCollection<Palette>();
+
+        PaletteNodes = new DiagramObjectCollection<NodeBase>();
+        CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
+
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+        };
+    }
+    //Method to create palette node
+    private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
+    {
+        Node node = new Node()
+            {
+                ID = id,
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+            };
+        PaletteNodes.Add(node);
+    }
+    //Method to getsymbolinfo
+    private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
+    {
+        SymbolInfo SymbolInfo = new SymbolInfo();
+        //SymbolInfo.Fit = true;
+
+        string text = null;
+        text = (symbol as Node).ID;
+        SymbolInfo.Description = new SymbolDescription() { Text = text };
+        return SymbolInfo;
+    }
+}

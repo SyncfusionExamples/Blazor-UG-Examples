@@ -1,0 +1,47 @@
+﻿@page "/AddNodeAtRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="Add Node" OnClick="@AddNode" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+
+@code
+{
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED" }
+            };
+        nodes.Add(node);
+    }
+    //Method to add node at runtime
+    public void AddNode()
+    {
+        Node NewNode = new Node()
+            {
+                ID = "node2",
+                // Position of the node
+                OffsetX = 450,
+                OffsetY = 450,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED" }
+            };
+        nodes.Add(NewNode);
+    }
+}

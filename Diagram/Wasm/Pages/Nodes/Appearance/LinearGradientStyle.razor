@@ -1,0 +1,45 @@
+﻿@page "/LinearGradientStyle"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes array.
+        Node node = new Node()
+            {
+                // Position of the node
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Gradient = new LinearGradientBrush()
+                    {
+                        //Start point of linear gradient
+                        X1 = 0,
+                        Y1 = 0,
+                        ////End point of linear gradient
+                        X2 = 50,
+                        Y2 = 50,
+                        //Sets an array of stop objects
+                        GradientStops = new DiagramObjectCollection<GradientStop>()
+                    {
+                        new GradientStop(){ Color = "white", Offset = 0},
+                        new GradientStop(){ Color = "#6495ED", Offset = 100}
+                    },
+                    }
+                },
+            };
+        nodes.Add(node);
+    }
+}

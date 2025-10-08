@@ -1,0 +1,40 @@
+﻿@page "/Rotate"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="Rotate" OnClick="@OnRotate" />
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Reference of the diagram
+    SfDiagramComponent diagram;
+    // To define node collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes collection.
+        Node node = new Node()
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
+        // Add node
+        nodes.Add(node);
+    }
+
+    public void OnRotate()
+    {
+        // Rotate the node
+        diagram.Rotate(diagram.Nodes[0], diagram.Nodes[0].RotationAngle + 10);
+    }
+}

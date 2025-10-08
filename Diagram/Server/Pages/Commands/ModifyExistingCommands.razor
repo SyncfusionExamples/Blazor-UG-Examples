@@ -1,0 +1,85 @@
+﻿@page "/ModifyExistingCommands"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+    @* Initializing the custom commands *@
+    <CommandManager>
+        <CommandManager Commands="@commands" Execute="@CommandExecute" CanExecute="@canexe">
+        </CommandManager>
+    </CommandManager>
+</SfDiagramComponent>
+
+@code
+{
+    // Reference to diagram
+    SfDiagramComponent diagram;
+    // Defines diagram's nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<KeyboardCommand> commands = new DiagramObjectCollection<KeyboardCommand>()
+    {
+        new KeyboardCommand()
+        {
+            Name = "SelectAll",
+            Gesture = new KeyGesture() { Key = DiagramKeys.A, Modifiers = ModifierKeys.Control }
+        },
+        new KeyboardCommand()
+        {
+            Name = "Copy",
+            Gesture = new KeyGesture() { Key = DiagramKeys.C, Modifiers = ModifierKeys.Control }
+        }
+    };
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                OffsetX = 100,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation() { Content = "Node" }
+            }
+            };
+        nodes.Add(node1);
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                OffsetX = 300,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation() { Content = "Node1" }
+            }
+            };
+        nodes.Add(node2);
+    }
+
+    public void canexe(CommandKeyArgs args)
+    {
+        args.CanExecute = true;
+    }
+
+    /// <summary>
+    /// Custom command execution event
+    /// </summary>
+    public void CommandExecute(CommandKeyArgs args)
+    {
+        if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.A)
+        {
+            //to disable a built-in command and none of action execute
+        }
+        if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.C)
+        {
+            //Modify the existing copy command to cut command
+            diagram.Cut();
+        }
+    }
+}

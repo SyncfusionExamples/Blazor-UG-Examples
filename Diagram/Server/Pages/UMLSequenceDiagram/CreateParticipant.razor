@@ -1,0 +1,38 @@
+﻿@page "/CreateParticipant"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Height="600px" Model="@DiagramModel">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code {
+    private SfDiagramComponent Diagram;
+    private UmlSequenceDiagramModel DiagramModel;
+
+    protected override void OnInitialized()
+    {
+        // Create participants
+        List<UmlSequenceParticipant> participants = new List<UmlSequenceParticipant>()
+        {
+            new UmlSequenceParticipant()
+            {
+                ID = "User",
+                Content = "User",
+                IsActor = true
+            },
+            new UmlSequenceParticipant()
+            {
+                ID = "System",
+                Content = "System",
+                IsActor = false,
+                ShowDestructionMarker = true
+            }
+        };
+
+        // Initialize the UML sequence diagram model
+        DiagramModel = new UmlSequenceDiagramModel()
+            {
+                Participants = participants
+            };
+    }
+}

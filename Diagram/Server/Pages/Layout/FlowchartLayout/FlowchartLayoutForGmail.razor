@@ -1,0 +1,119 @@
+﻿@page "/FlowchartLayoutForGmail"	
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent @ref="Diagram" Width="100%" Height="900px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
+    <Layout @bind-Type="@Type" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-Orientation="@OrientationType" @bind-VerticalSpacing="@VerticalSpacing" FlowchartLayoutSettings="@flowchartSettings">
+    </Layout>
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code {
+    FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
+        {
+            //Set the decision yes branch direction
+            YesBranchDirection = BranchDirection.LeftInFlow,
+            //Set the decision no branch direction
+            NoBranchDirection = BranchDirection.RightInFlow,
+            //Set the custom yes branch values
+            YesBranchValues = new List<string> { "Yes", "Existing" },
+            //Set the custom no branch values
+            NoBranchValues = new List<string> { "No", "New" },
+        };
+    public SfDiagramComponent Diagram;
+    public int? HValue { get; set; } = 60;
+    public int? VValue { get; set; } = 40;
+    public LayoutType Type = LayoutType.Flowchart;
+    public LayoutOrientation OrientationType = LayoutOrientation.TopToBottom;
+    public int HorizontalSpacing = 50;
+    public int VerticalSpacing = 50;
+    private void OnDataLoaded(object obj)
+    {
+        for (int i = 0; i < Diagram.Connectors.Count; i++)
+        {
+            var connector = Diagram.Connectors[i];
+            var node = Diagram.GetObject(connector.TargetID) as Node;
+            var srcNode = Diagram.GetObject(connector.SourceID) as Node;
+            if (node.Data != null && node.Data is NodeInfo NodeInfo)
+            {
+                if (NodeInfo.LineText != null && NodeInfo.LineText.Count > 0)
+                {
+                    if (NodeInfo.ParentId.IndexOf((srcNode.Data as NodeInfo).Id) != -1)
+                    {
+                        var parentIndex = NodeInfo.ParentId.IndexOf((srcNode.Data as NodeInfo).Id);
+                        if (NodeInfo.LineText.Count > parentIndex)
+                        {
+                            connector.Annotations = new DiagramObjectCollection<PathAnnotation>()
+                            {
+                                new PathAnnotation() { Content = NodeInfo.LineText[parentIndex], Style=new TextStyle(){Fill="White" } }
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        if (obj is Connector connector)
+        {
+            connector.Type = ConnectorSegmentType.Orthogonal;
+        }
+    }
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        if (node.Data != null && node.Data is NodeInfo)
+        {
+            NodeInfo employeeDetails = node.Data as NodeInfo;
+            node.Width = employeeDetails.Width;
+            node.Height = employeeDetails.Height;
+            if (employeeDetails.Shape == "Rectangle")
+            {
+                node.Shape = new FlowShape() { Shape = NodeFlowShapes.Process };
+            }
+            else if (employeeDetails.Shape == "StartOrEnd")
+            {
+                node.Shape = new FlowShape() { Shape = NodeFlowShapes.Terminator };
+            }
+            else
+                node.Shape = new FlowShape() { Shape = (NodeFlowShapes)Enum.Parse(typeof(NodeFlowShapes), employeeDetails.Shape.ToString()) };
+            node.Style.Fill = employeeDetails.Color;
+            node.Style.StrokeColor = employeeDetails.Color;
+            node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation(){ Content = employeeDetails.Description, Style = new TextStyle(){ Color="white"} }
+            };
+        }
+    }
+    public List<NodeInfo> DataSource = new List<NodeInfo>()
+    {
+        new NodeInfo() { Id = "1", Description = "Start", Shape = "StartOrEnd", Width = 100, Height = 30, Color = "#8E44CC" },
+        new NodeInfo() { Id = "2", Description = "Open Gmail site in browser", ParentId = new List<string> { "1" }, Shape = "Rectangle", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "3", Description = "Existing \nor \nnew user?", ParentId = new List<string> { "2" }, Shape = "Decision", Width = 130, Height = 80, Color = "#2F95D8" },
+        new NodeInfo() { Id = "4", LineText = new List<string> { "New" }, Description = "Create an account", ParentId = new List<string> { "3" }, Shape = "Rectangle", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "5", Description = "Sign in", LineText = new List<string> { "Existing" }, ParentId = new List<string> { "3" }, Shape = "Rectangle", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "6", Description = "Enter username \nand password", LineText = new List<string> { "", "No" }, ParentId = new List<string> { "5", "7" }, Shape = "Data", Width = 150, Height = 50, Color = "#70AF16" },
+        new NodeInfo() { Id = "7", Description = "Authorized?", ParentId = new List<string> { "6" }, Shape = "Decision", Width = 120, Height = 70, Color = "#2F95D8" },
+        new NodeInfo() { Id = "8", Description = "Login successful!!", LineText = new List<string> { "Yes" }, ParentId = new List<string> { "7" }, Shape = "Rectangle", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "9", Description = "Enter first name \nand last name", ParentId = new List<string> { "4" }, Shape = "Data", Width = 150, Height = 50, Color = "#70AF16" },
+        new NodeInfo() { Id = "10", Description = "Enter username \nand password", LineText = new List<string> { "", "Yes" }, ParentId = new List<string> { "9", "11" }, Shape = "Data", Width = 150, Height = 50, Color = "#70AF16" },
+        new NodeInfo() { Id = "11", Description = "Username \nalready\n exists?", ParentId = new List<string> { "10" }, Shape = "Decision", Width = 130, Height = 80, Color = "#2F95D8" },
+        new NodeInfo() { Id = "12", Description = "Registration Successful!!", LineText = new List<string> { "No" }, ParentId = new List<string> { "11" }, Shape = "Process", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "13", Description = "Open inbox", ParentId = new List<string> { "8", "12" }, Shape = "Process", Width = 120, Height = 50, Color = "#1759B7" },
+        new NodeInfo() { Id = "14", Description = "End", ParentId = new List<string> { "13" }, Shape = "StartOrEnd", Width = 100, Height = 30, Color = "#8E44CC" },
+    };
+    public class NodeInfo
+    {
+        public string Id { get; set; }
+        public string Description { get; set; }
+        public List<string> ParentId { get; set; }
+        public List<string> LineText { get; set; }
+        public string Shape { get; set; }
+        public double Width { get; set; }
+        public double Height { get; set; }
+        public string Color { get; set; }
+    }
+}

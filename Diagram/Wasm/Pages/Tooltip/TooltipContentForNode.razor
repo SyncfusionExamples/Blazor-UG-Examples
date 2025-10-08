@@ -1,0 +1,40 @@
+﻿@page "/TooltipContentForNode"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Node Content" OnClick="@ContentChange" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+@code
+{
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's nodes collection
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                OffsetX = 250,
+                OffsetY = 250,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+                Tooltip = new DiagramTooltip() { Content = "NodeTooltip" },
+                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+            };
+        nodes.Add(node);
+    }
+    //Change Content at run time.
+    private void ContentChange()
+    {
+        nodes[0].Tooltip.Content = "UpdateTooltipContent";
+    }
+}

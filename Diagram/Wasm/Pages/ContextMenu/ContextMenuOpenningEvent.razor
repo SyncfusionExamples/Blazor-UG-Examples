@@ -1,0 +1,16 @@
+﻿@page "/ContextMenuOpenningEvent"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px">
+    <ContextMenuSettings Show="true" ShowCustomMenuOnly="false" ContextMenuOpening="@OnContextMenuOpen">
+    </ContextMenuSettings>
+</SfDiagramComponent>
+
+@code
+{
+    // Defines context menu and ContextMenuOpening event
+    public void OnContextMenuOpen(DiagramMenuOpeningEventArgs arg)
+    {
+        //Action to be performed
+    }
+}

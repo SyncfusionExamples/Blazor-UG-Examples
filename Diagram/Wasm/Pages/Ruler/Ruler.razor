@@ -1,0 +1,30 @@
+﻿@page "/Ruler"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Height="600px" >
+	<RulerSettings>
+        <HorizontalRuler  IsVisible="true" Interval="@RulerInterval" 
+                            TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
+     </HorizontalRuler>
+        <VerticalRuler IsVisible="false"  Interval="@RulerInterval" 
+                        TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
+        </VerticalRuler>
+    </RulerSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Reference to diagram.
+    SfDiagramComponent diagram;
+    //Defining Ruler Interval of Rulers
+    public int RulerInterval = 20;
+    //Defining Tick Alignment of Rulers
+    public TickAlignment RulerTickAlignment = TickAlignment.RightAndBottom;
+    //Defining Marker color of Rulers
+    public string RulerMarkerColor = "green";
+
+}
+
+
+

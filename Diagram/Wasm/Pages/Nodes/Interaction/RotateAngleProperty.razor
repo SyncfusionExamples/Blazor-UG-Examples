@@ -1,0 +1,25 @@
+﻿@page "/RotateAngleProperty"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    //Intialize nodes collection
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            RotationAngle = 50, // Rotates node by 50 degrees
+        };
+        nodes.Add(node);
+    }
+}

@@ -1,0 +1,37 @@
+﻿@page "/InheritBehaviors"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize the diagram with constraints *@
+<SfDiagramComponent Height="600px"
+                    Connectors="@connectors"
+                    Constraints="@diagramConstraints">
+</SfDiagramComponent>
+
+@code
+{
+    //Sets the diagram constraints
+    DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Bridging;
+    DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+                //sets the ConnectorConstraints...
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.InheritBridging
+            };
+        Connector connector1 = new Connector()
+            {
+                ID = "connector2",
+                SourcePoint = new DiagramPoint() { X = 200, Y = 100 },
+                TargetPoint = new DiagramPoint() { X = 100, Y = 200 },
+            };
+        connectors.Add(connector);
+        connectors.Add(connector1);
+    }
+}

@@ -1,0 +1,33 @@
+﻿@page "/ExpandedSubProcessCompensation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Initialize node collection with Node.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                // Position of the node.
+                OffsetX = 100,
+                OffsetY = 100,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                // Unique id of the node.
+                ID = "node1",
+                // Defines the shape to Bpmn ExpandedSubProcess.
+                Shape = new BpmnExpandedSubProcess()
+                {
+                    IsCompensation = true,
+                }
+            };
+        nodes.Add(node);
+    }
+}

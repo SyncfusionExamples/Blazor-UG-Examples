@@ -1,0 +1,34 @@
+﻿@page "/TipPointerForConnectorTooltip"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Connector TipPointer" OnClick="@TipPointerChange" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+@code
+{
+    //Define diagram's connectors collection
+    DiagramObjectCollection<Connector> connector;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's connectors collection
+        connector = new DiagramObjectCollection<Connector>();
+        Connector connectors = new Connector()
+            {
+                ID = "Connector1",
+                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+                //Set tooltip
+                Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip", ShowTipPointer = true },
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+            };
+        connector.Add(connectors);
+    }
+    //Change the TipPointer at run time.
+    private void TipPointerChange()
+    {
+        connector[0].Tooltip.ShowTipPointer = false;
+    }
+}

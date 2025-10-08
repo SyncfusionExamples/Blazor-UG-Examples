@@ -1,0 +1,61 @@
+﻿@page "/JsonData"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Data
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px"
+                    NodeCreating="NodeDefaults" SetNodeTemplate="SetTemplate">
+    <DataSourceSettings ID="Name" ParentID="Category">
+        <SfDataManager Json="DataSource" Adaptor="Syncfusion.Blazor.Adaptors.JsonAdaptor"></SfDataManager>
+    </DataSourceSettings>
+    <Layout HorizontalSpacing="40" VerticalSpacing="40" Type="LayoutType.HierarchicalTree"></Layout>
+</SfDiagramComponent>
+
+@code
+{
+    SfDiagramComponent Diagram;
+    float x = 100;
+    float y = 100;
+    Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
+
+    // Create the hierarchical details with needed properties.
+    public class HierarchicalDetails
+    {
+        public string Name { get; set; }
+        public string FillColor { get; set; }
+        public string Category { get; set; }
+    }
+
+    // Create the data source with node name and fill color values.
+    public HierarchicalDetails[] DataSource = new HierarchicalDetails[]
+    {
+        new HierarchicalDetails(){ Name ="Diagram", Category="",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Layout", Category="Diagram",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Organizational chart", Category="Diagram",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Tree layout", Category="Layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Hierarchical tree", Category="Tree layout",FillColor="#659be5"},
+    };
+
+    // Defines the node's default values.
+    private void NodeDefaults(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.OffsetX = x;
+        node.OffsetY = y;
+        x += 100;
+        HierarchicalDetails hierarchicalData = node.Data as HierarchicalDetails;
+        node.Style.Fill = hierarchicalData.FillColor;
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation()
+            {
+                Content = hierarchicalData.Name
+            }
+        };
+    }
+
+    private CommonElement SetTemplate(IDiagramObject node)
+    {
+        return null;
+    }
+}

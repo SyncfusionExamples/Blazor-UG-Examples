@@ -1,0 +1,84 @@
+﻿@page "/BezierControlPointsVisibility"
+
+@using Syncfusion.Blazor.Diagram
+
+<style>
+    #diagram-space {
+        width: 70%;
+        float: left;
+    }
+
+    #properties {
+        width: 25%;
+        float: right;
+    }
+</style>
+
+<div id="properties">
+    <b> ControlPointVisibility:</b>
+    <select id="smoothnessOption" @onchange="@controlPointVisibilityChange">
+        <option disabled selected>ControlPointVisibility</option>
+        <option value="0">None</option>
+        <option value="1">Source</option>
+        <option value="2">Target</option>
+        <option value="3">Intermediate</option>
+        <option value="4">All</option>
+    </select>
+</div>
+
+<div id="diagram-space">
+<SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Connectors="@connectors"></SfDiagramComponent>
+</div>
+@code {
+    //Reference for diagram
+    SfDiagramComponent diagram;
+    //Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint() { X = 700, Y = 200 },
+                TargetPoint = new DiagramPoint() { X = 1000, Y = 400 },
+                Segments = new DiagramObjectCollection<ConnectorSegment>()
+                {
+                    new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 750, Y = 250}},
+                    new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 900, Y = 350}}
+                },
+                Type = ConnectorSegmentType.Bezier,
+                BezierConnectorSettings = new BezierConnectorSettings() 
+                {
+                    //Defines the visibility of the control points
+                    ControlPointsVisibility = ControlPointsVisibility.Intermediate 
+                },
+            };
+        connectors.Add(connector1);
+    }
+
+    private void controlPointVisibilityChange(ChangeEventArgs args)
+    {
+        int index = int.Parse(args.Value.ToString());
+        Connector connector = diagram.SelectionSettings.Connectors[0];
+
+        switch (index)
+        {
+            case 0:
+                connector.BezierConnectorSettings.ControlPointsVisibility = ControlPointsVisibility.None;
+                break;
+            case 1:
+                connector.BezierConnectorSettings.ControlPointsVisibility = ControlPointsVisibility.Source;
+                break;
+            case 2:
+                connector.BezierConnectorSettings.ControlPointsVisibility = ControlPointsVisibility.Target;
+                break;
+            case 3:
+                connector.BezierConnectorSettings.ControlPointsVisibility = ControlPointsVisibility.Intermediate;
+                break;
+            case 4:
+                connector.BezierConnectorSettings.ControlPointsVisibility = ControlPointsVisibility.All;
+                break;
+        }
+    }
+}

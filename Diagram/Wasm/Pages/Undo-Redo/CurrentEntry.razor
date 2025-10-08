@@ -1,0 +1,40 @@
+﻿@page "/CurrentEntry"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+<SfButton Content="GetCurrentEntry" OnClick="@GetCurrentEntry" />
+
+@* Initialize Diagram *@
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+</SfDiagramComponent>
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent diagram;
+
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in the nodes collection.
+        Node node = new Node()
+        {
+            ID = "node1",
+            // Position of the node.
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
+        // Add node.
+        nodes.Add(node);
+    }
+    public void GetCurrentEntry()
+    {
+        Console.WriteLine(diagram.HistoryManager.CurrentEntry);
+    }
+}

@@ -1,0 +1,34 @@
+﻿@page "/OffsetOfNodeAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Defines diagram's node collection.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation
+                {
+                    Content = "Offset(0,0)",
+                    // Sets the offset for an annotation's content.
+                    Offset = new DiagramPoint() { X = 0, Y = 0 }
+                }
+            },
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            };
+        nodes.Add(node);
+    }
+}
