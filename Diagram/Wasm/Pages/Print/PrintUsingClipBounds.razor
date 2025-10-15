@@ -1,0 +1,112 @@
+﻿@page "/PrintUsingClipBounds"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Print" OnClick="@OnPrint" />
+<SfDiagramComponent Height="600px" @ref="@diagram" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
+    <PageSettings MultiplePage="true" Width="@width" Height="@height" Orientation="@orientation" ShowPageBreaks="@showPageBreak">
+        <PageMargin Left="@left" Right="@right" Top="@top" Bottom="@bottom"></PageMargin>
+    </PageSettings>
+    <DataSourceSettings DataSource="DataSource" ID="Id" ParentID="Manager"></DataSourceSettings>
+    <Layout @bind-Type="type" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-FixedNode="@FixedNode" @bind-Orientation="@oreintation" @bind-VerticalSpacing="@VerticalSpacing" @bind-HorizontalAlignment="@horizontalAlignment" @bind-VerticalAlignment="@verticalAlignment">
+        <LayoutMargin @bind-Top="@lTop" @bind-Bottom="@lBottom" @bind-Right="@lRight" @bind-Left="@lLeft"></LayoutMargin>
+    </Layout>
+    <SnapSettings></SnapSettings>
+</SfDiagramComponent>
+
+@code {
+
+    //Reference the diagram
+    SfDiagramComponent diagram;
+    double left = 10;
+    double top = 10;
+    double right = 10;
+    double bottom = 10;
+    double width = 410;
+    double height = 550;
+
+    bool multiplePage = true;
+    bool showPageBreak = true;
+    DiagramPrintExportRegion region = DiagramPrintExportRegion.ClipBounds;
+    PageOrientation orientation = PageOrientation.Landscape;
+    //Method to prin the diagram
+    private async Task OnPrint()
+    {
+        DiagramPrintSettings print = new DiagramPrintSettings();
+        print.ClipBounds = new DiagramRect() { Height = 300, Width = 500, X = 300, Y = 200 };
+        print.Region = region;
+        print.FitToPage = multiplePage;
+        print.Orientation = orientation;
+        await diagram.PrintAsync(print);
+    }
+
+    double lTop = 50;
+    double lBottom = 50;
+    double lRight = 50;
+    double lLeft = 50;
+    LayoutType type = LayoutType.OrganizationalChart;
+    LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
+    HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
+    VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
+    int HorizontalSpacing = 30;
+    int VerticalSpacing = 30;
+    private string FixedNode = null;
+    public class HierarchicalDetails
+    {
+        public string Id { get; set; }
+        public string Role { get; set; }
+        public string Manager { get; set; }
+        public string ChartType { get; set; }
+        public string Color { get; set; }
+    }
+    public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
+    {
+            new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
+            new HierarchicalDetails()   { Id= "1", Role= "General Manager", Manager= "parent", ChartType= "right", Color= "#71AF17" },
+            new HierarchicalDetails()   { Id= "11", Role= "Assistant Manager", Manager= "1", Color= "#71AF17" },
+            new HierarchicalDetails()   { Id= "2", Role= "Human Resource Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+            new HierarchicalDetails()   { Id= "3", Role= "Trainers", Manager= "2", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "4", Role= "Recruiting Team", Manager= "2", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "5", Role= "Finance Asst. Manager", Manager= "2", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "6", Role= "Design Manager", Manager= "1",ChartType= "right", Color= "#1859B7" },
+            new HierarchicalDetails()   { Id= "7", Role= "Design Supervisor", Manager= "6", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "8", Role= "Development Supervisor", Manager= "6", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "9", Role= "Drafting Supervisor", Manager= "6", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "10", Role= "Operation Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+            new HierarchicalDetails()   { Id= "11", Role= "Statistic Department", Manager= "10", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "12", Role= "Logistic Department", Manager= "10", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "16", Role= "Marketing Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+            new HierarchicalDetails()   { Id= "17", Role= "Oversea sales Manager", Manager= "16", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "18", Role= "Petroleum Manager", Manager= "16", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "20", Role= "Service Dept. Manager", Manager= "16", Color= "#2E95D8" },
+            new HierarchicalDetails()   { Id= "21", Role= "Quality Department", Manager= "16", Color= "#2E95D8" }
+
+    };
+
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        if (node.Data is System.Text.Json.JsonElement)
+        {
+            node.Data = System.Text.Json.JsonSerializer.Deserialize<HierarchicalDetails>(node.Data.ToString());
+        }
+        HierarchicalDetails hierarchicalData = node.Data as HierarchicalDetails;
+        node.Width = 150;
+        node.Height = 50;
+        node.Style.Fill = hierarchicalData.Color;
+        // node.IsVisible = false;
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+    {
+        new ShapeAnnotation()
+        {
+            Content = hierarchicalData.Role,
+            Style =new TextStyle(){Color = "white"}
+        }
+    };
+    }
+    private void ConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).TargetDecorator.Shape = DecoratorShape.None;
+    }
+}

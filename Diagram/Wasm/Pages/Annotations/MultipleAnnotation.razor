@@ -1,0 +1,75 @@
+﻿@page "/MultipleAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" />
+
+@code
+{
+    // Defines diagram's node collection.
+    DiagramObjectCollection<Node> nodes;
+
+    // Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node",
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
+                // Sets the multiple annotation for the node.
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation
+                {
+                    Content = "Left",
+                    Offset = new DiagramPoint(){ X = .12,Y = .1}
+                },
+                new ShapeAnnotation
+                {
+                    Content = "Center",
+                    Offset = new DiagramPoint(){ X = .5,Y = .5}
+                },
+                new ShapeAnnotation
+                {
+                    Content = "Right",
+                    Offset = new DiagramPoint(){ X = .82,Y = .9}
+                }
+            },
+            };
+        nodes.Add(node);
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+            {
+                SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+                TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+                Type = ConnectorSegmentType.Orthogonal,
+                Style = new TextStyle() { StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+                new PathAnnotation
+                {
+                    Content = "Offset as 0",
+                    Offset = 0
+                },
+                new PathAnnotation
+                {
+                    Content = "Offset as 0.5",
+                    Offset = 0.5
+                },
+                new PathAnnotation
+                {
+                    Content = "Offset as 1",
+                    Offset = 1
+                },
+            }
+            };
+        connectors.Add(connector);
+    }
+}

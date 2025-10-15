@@ -1,0 +1,34 @@
+﻿@page "/DiagramPositionEvent"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@NodeCollection"
+                    PositionChanging="OnPositionChanging"
+                    PositionChanged="OnPositionChanged">
+</SfDiagramComponent>
+@code {
+    //Intialize the diagram's nodes collection
+    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    protected override void OnInitialized()
+    {
+        Node node4 = new Node()
+            {
+                OffsetX = 100,
+                OffsetY = 200,
+                Height = 100,
+                Width = 100,
+                ID = "node4",
+            };
+        NodeCollection.Add(node4);
+    }
+    //Event to notify while dragging the elements in the diagram.
+    private void OnPositionChanging(PositionChangingEventArgs args)
+    {
+        //sets true to cancel the element's dragging
+        args.Cancel = true;
+    }
+    //Event to notify once element's position has changed in the diagram'.
+    private void OnPositionChanged(PositionChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

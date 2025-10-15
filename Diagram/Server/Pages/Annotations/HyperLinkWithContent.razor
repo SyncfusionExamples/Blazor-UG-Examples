@@ -1,0 +1,40 @@
+﻿@page "/HyperLinkWithContent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Defines diagram's node collection.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        // Initialize diagram's node collection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node",
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                // Sets the annotation for the Node.
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                // Add text as hyperlink.
+                new ShapeAnnotation
+                {
+                    Hyperlink = new HyperlinkSettings
+                    {
+                        Content = "Syncfusion",
+                        Url = "https://www.syncfusion.com"
+                    }
+                }
+            },
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            };
+        nodes.Add(node);
+    }
+}

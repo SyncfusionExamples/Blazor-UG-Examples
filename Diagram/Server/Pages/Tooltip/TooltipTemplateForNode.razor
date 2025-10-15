@@ -1,0 +1,44 @@
+﻿@page "/TooltipTemplateForNode"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes">
+    <DiagramTemplates>
+        <TooltipTemplate>
+            @{
+                    if (context is Node)
+                    {
+                        <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
+                    }
+                }
+            </TooltipTemplate>
+        </DiagramTemplates>
+    </SfDiagramComponent>
+    @code
+    {
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's nodes collection
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                OffsetX = 250,
+                OffsetY = 250,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+                Tooltip = new DiagramTooltip(),
+                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+            };
+        nodes.Add(node);
+    }
+}

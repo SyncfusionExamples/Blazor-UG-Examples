@@ -1,0 +1,35 @@
+﻿@page "/SizeOfAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
+
+@code
+{
+    // Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        // Intialize diagram's connector collection
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+            {
+                SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+                TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+                Type = ConnectorSegmentType.Orthogonal,
+                Style = new TextStyle() { StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+              new PathAnnotation
+              {
+                  Content = "Annotation length will be varied",
+                  // Sets the size of the annotation.
+                  Width = 50,
+                  Height = 50
+              },
+            }
+            };
+        connectors.Add(connector);
+    }
+}

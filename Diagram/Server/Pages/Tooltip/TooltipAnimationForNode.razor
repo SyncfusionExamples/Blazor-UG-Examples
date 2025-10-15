@@ -1,0 +1,52 @@
+﻿@page "/TooltipAnimationForNode"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Node Animation" OnClick="@AnimationChange" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+@code
+{
+    //Define diagram's nodes collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Initialize the diagram's nodes collection
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node1",
+                OffsetX = 250,
+                OffsetY = 250,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+                Tooltip = new DiagramTooltip()
+                {
+                    Content = "NodeTooltip",
+                    AnimationSettings = new AnimationModel()
+                    {
+                        Open = new TooltipAnimationSettings() { Effect = Effect.None },
+                        Close = new TooltipAnimationSettings() { Effect = Effect.None }
+                    }
+                },
+                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+            };
+        nodes.Add(node);
+    }
+    //Change the Animation at run time.
+    private void AnimationChange()
+    {
+        nodes[0].Tooltip.AnimationSettings = new AnimationModel()
+            {
+                Open = new TooltipAnimationSettings() { Effect = Effect.FadeZoomIn, Duration = 100 },
+                Close = new TooltipAnimationSettings() { Effect = Effect.FadeZoomOut, Duration = 50 }
+            };
+    }
+}

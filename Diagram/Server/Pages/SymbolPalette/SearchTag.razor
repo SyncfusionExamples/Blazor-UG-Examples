@@ -1,0 +1,58 @@
+﻿@page "/SearchTag"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">   
+    <div style="width: 100%">  
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@SymbolPalette" ShowSearchTextBox="true" Height="300px" Width="200px" 
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="120" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+        </div>
+</div>
+
+@code
+{
+    SymbolMargin SymbolMargin = new SymbolMargin 
+    { 
+        Left = 15, 
+        Right = 15, 
+        Top = 15, 
+        Bottom = 15 
+    };       
+    SfSymbolPaletteComponent SymbolPalette;
+    //Define palettes collection.
+    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's flow-shape collection.
+    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+        
+    private void InitPaletteModel()
+    {
+        CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
+        CreatePaletteNode(NodeBasicShapes.Ellipse, "Ellipse");
+        CreatePaletteNode(NodeBasicShapes.Star, "Star");
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+           new Palette(){Symbols = PaletteNodes,Title = "Basic Shapes", ID = "Basic Shapes" },
+        };
+    }
+        
+    private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
+    {
+        Node node = new Node()
+        {
+            ID = id,
+           SearchTags = new List<string>() { "Basic" },
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        PaletteNodes.Add(node);
+    }
+}

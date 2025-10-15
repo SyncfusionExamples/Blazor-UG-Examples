@@ -1,0 +1,43 @@
+﻿@page "/RemoveAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="Removelabel" OnClick="@RemoveLabel" />
+
+<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+
+@code
+{
+    // Reference to diagram
+    SfDiagramComponent diagram;
+
+    // Defines diagram's node collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
+            };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+    {
+            new ShapeAnnotation {ID="label", Content = "Annotation" },
+        };
+        nodes.Add(node);
+    }
+
+    // Method to remove labels at runtime using Remove method.
+    public void RemoveLabel()
+    {
+        ShapeAnnotation annotation = (diagram.Nodes[0].Annotations[0]) as ShapeAnnotation;
+        (diagram.Nodes[0].Annotations as DiagramObjectCollection<ShapeAnnotation>).Remove(annotation);
+    }
+}

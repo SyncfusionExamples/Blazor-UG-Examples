@@ -1,0 +1,50 @@
+﻿@page "/PositionChange"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px"
+                    Nodes="@nodes"
+                    PositionChanging="OnPositionChanging"
+                    PositionChanged="OnPositionChanged" />
+
+@code
+{
+    // To define node collection.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes collection.
+        Node node = new Node()
+            {
+                // Position of the node.
+                OffsetX = 250,
+                OffsetY = 250,
+                // Size of the node.
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                },
+                Shape = new Shape() { Type = NodeShapes.Basic }
+            };
+        // Add node.
+        nodes.Add(node);
+    }
+
+    // Event to notify the position changing event while dragging the elements in diagram.
+    public void OnPositionChanging(PositionChangingEventArgs args)
+    {
+        // Sets true to cancel the action.
+        args.Cancel = true;
+    }
+
+    //Event to notify the position changed event when the node's or connector's position is changed.
+    public void OnPositionChanged(PositionChangedEventArgs args)
+    {
+        // Action to be performed.
+    }
+}

@@ -1,0 +1,77 @@
+﻿@page "/DescriptionStyle"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width: 30%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff; height:200px">
+            <SfSymbolPaletteComponent @ref="@SymbolPalette" Height="300px" GetSymbolInfo="GetSymbolInfo"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="120">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    SfSymbolPaletteComponent SymbolPalette;
+    //Define palettes collection.
+    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's basic-shape collection.
+    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
+        CreatePaletteNode(NodeBasicShapes.Ellipse, "Ellipse");
+        CreatePaletteNode(NodeBasicShapes.Hexagon, "Hexagon");
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+           new Palette(){Symbols = PaletteNodes,Title = "Basic Shapes", ID = "Basic Shapes" },
+        };
+    }
+
+    private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
+    {
+        Node node = new Node()
+            {
+                ID = id,
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+            };
+        PaletteNodes.Add(node);
+    }
+
+    private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
+    {
+        SymbolInfo SymbolInfo = new SymbolInfo();
+        string text = string.Empty;
+        text = (symbol as NodeBase).ID;
+        SymbolInfo.Width = 75;
+        SymbolInfo.Height = 40;
+        SymbolInfo.Description = new SymbolDescription() { 
+            Text = text,
+            // Customize the style of the symbol description
+            Style = new TextStyle() 
+            { 
+                Bold = true,
+                Italic = true,
+                Color = "red",
+                Fill = "transparent",
+                FontFamily = "Arial",
+                FontSize = 15,
+                TextDecoration = TextDecoration.Underline,
+                TextOverflow = TextOverflow.Ellipsis,
+                TextWrapping = TextWrap.WrapWithOverflow
+            },
+            Margin = new DiagramThickness(){ Top = 10, Bottom = 10 }
+        };
+        return SymbolInfo;
+    }
+}

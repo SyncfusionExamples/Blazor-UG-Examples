@@ -1,0 +1,47 @@
+﻿@page "/CreateAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" />
+
+@code
+{
+    // Defines diagram's connector collection
+    DiagramObjectCollection<Connector> connectors;
+
+    // Defines diagram's node collection
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                // A annotation is created and stored in Annotations collection of Node.
+                new ShapeAnnotation { Content = "Node" }
+            }
+            };
+        nodes.Add(node);
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+            {
+                SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+                TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+                Type = ConnectorSegmentType.Orthogonal,
+                Style = new TextStyle() { StrokeColor = "#6495ED" },
+                Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+                // A annotation is created and stored in Annotations collection of Connector.
+                new PathAnnotation { Content = "Connector" }
+            }
+            };
+        connectors.Add(connector);
+    }
+}

@@ -1,0 +1,109 @@
+﻿@page "/ContextMenuEvents"
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+
+<SfDiagramComponent @ref="@diagram" Height="600px"
+                    Nodes="@NodeCollection"
+                    Connectors="@ConnectorCollection">
+
+    <ContextMenuSettings Show="true" Items="@contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="@OnContextMenuOpen">
+    </ContextMenuSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Reference to diagram
+    SfDiagramComponent diagram;
+    //Defines diagram's nodes collection
+    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    //Defines diagram's connector collection
+    public DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        //Create a node
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                Height = 100,
+                Width = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6BA5D7",
+                    StrokeColor = "white",
+                    StrokeWidth = 1
+                }
+            };
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                Height = 100,
+                Width = 100,
+                OffsetX = 300,
+                OffsetY = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6BA5D7",
+                    StrokeColor = "white",
+                    StrokeWidth = 1
+                }
+            };
+        //Add node into node's collection
+        NodeCollection.Add(node1);
+        NodeCollection.Add(node2);
+
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1",
+                TargetID = "node2",
+                Type = ConnectorSegmentType.Straight,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6BA5D7",
+                    StrokeWidth = 2
+                }
+            };
+        ConnectorCollection.Add(connector1);
+    }
+    List<ContextMenuItem> contextMenuItemModels = new List<ContextMenuItem>()
+    {
+        new ContextMenuItem()
+        {
+            Text ="Node Color",
+            ID="Node",
+            Items = new List<ContextMenuItem>()
+            {
+                new ContextMenuItem(){  Text ="Red", ID="Red", },
+                new ContextMenuItem(){  Text ="Yellow", ID="Yellow", },
+                new ContextMenuItem(){  Text ="Green", ID="Green", }
+            }
+        },
+        new ContextMenuItem()
+        {
+            Text ="Connector Color",
+            ID="Connector",
+            Items = new List<ContextMenuItem>()
+            {
+                new ContextMenuItem(){  Text ="Red", ID="black", },
+                new ContextMenuItem(){  Text ="Yellow", ID="blue", },
+                new ContextMenuItem(){  Text ="Green", ID="brown", }
+            }
+        },
+    };
+    // Event to notify context menu opening
+    public void OnContextMenuOpen(DiagramMenuOpeningEventArgs arg)
+    {
+        if (diagram.SelectionSettings.Nodes.Count > 0)
+        {
+            arg.HiddenItems.Add("Connector");
+        }
+        if (diagram.SelectionSettings.Connectors.Count > 0)
+        {
+            arg.HiddenItems.Add("Node");
+        }
+    }
+}

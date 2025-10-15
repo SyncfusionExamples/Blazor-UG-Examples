@@ -1,0 +1,62 @@
+﻿@page "/SegmentEditing"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" SegmentCollectionChange="OnSegmentChange">
+</SfDiagramComponent>
+@code {
+    //Defines diagram's connector collection
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+
+        Connector Connector = new Connector()
+            {
+                ID = "connector1",
+                SourcePoint = new DiagramPoint()
+                {
+                    X = 100,
+                    Y = 100
+                },
+                // Enable DragSegmentThumb constraints to segment editing
+                Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+                Style = new ShapeStyle() { StrokeColor = "#6f409f", StrokeWidth = 1 },
+                TargetPoint = new DiagramPoint() { X = 300, Y = 300 },
+                //Specify the segments type as Orthogonal.
+                Type = ConnectorSegmentType.Orthogonal,
+                //Create a new segment with length and direction
+                Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new OrthogonalSegment
+                {
+                    Length = 100,
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Right,
+                },
+                new OrthogonalSegment
+                {
+                    Length = 100,
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Bottom,
+                }
+            },
+                TargetDecorator = new DecoratorSettings()
+                {
+                    Shape = DecoratorShape.Arrow,
+                    Style = new ShapeStyle()
+                    {
+                        Fill = "#6f409f",
+                        StrokeColor = "#6f409f",
+                        StrokeWidth = 1
+                    }
+                }
+
+            };
+        connectors.Add(Connector);
+    }
+    //Event to notify while modifying the segment collection for the connector.
+    private void OnSegmentChange(SegmentCollectionChangeEventArgs args)
+    {
+        //Action to be perform...
+    }
+}

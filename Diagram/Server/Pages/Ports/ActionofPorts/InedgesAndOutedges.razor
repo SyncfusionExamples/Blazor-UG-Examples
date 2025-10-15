@@ -1,0 +1,97 @@
+﻿@page "/InedgesAndOutedges"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="GetInEdges" OnClick="@GetInEdges" />
+<SfDiagramComponent @ref="diagram" Height="600px" Nodes="@nodes" Connectors="@connectors" />
+
+@code
+{
+    SfDiagramComponent diagram;
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                Width = 100,
+                Height = 100,
+                OffsetX = 300,
+                OffsetY = 300,
+                // Initialize port collection.
+                Ports = new DiagramObjectCollection<PointPort>()
+            {
+                new PointPort()
+                {
+                    ID = "port1",
+                    Offset = new DiagramPoint() { X = 0, Y = 0.5 },
+                    Visibility = PortVisibility.Visible,
+                    //Set the style for the port.
+                    Style= new ShapeStyle()
+                    {
+                        Fill = "red",
+                        StrokeColor = "black",
+                        StrokeWidth = 2
+                    },
+                    Width = 12,
+                    Height = 12,
+                  // Sets the shape of the port as a Circle.
+                    Shape = PortShapes.Circle
+                }
+            },
+
+            };
+        nodes.Add(node1);
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                Width = 100,
+                Height = 100,
+                OffsetX = 300,
+                OffsetY = 500,
+                // Initialize port collection.
+                Ports = new DiagramObjectCollection<PointPort>()
+            {
+                new PointPort()
+                {
+                    ID = "port1",
+                    Offset = new DiagramPoint() { X = 0, Y = 0.5 },
+                    Visibility = PortVisibility.Visible,
+                    //Set the style for the port.
+                    Style= new ShapeStyle()
+                    {
+                        Fill = "red",
+                        StrokeColor = "black",
+                        StrokeWidth = 2
+                    },
+                    Width = 12,
+                    Height = 12,
+                    // Sets the shape of the port as Circle .
+                    Shape = PortShapes.Circle
+                }
+            },
+            };
+        nodes.Add(node2);
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1",
+                SourcePortID = "port1",
+                TargetPortID = "port1",
+                TargetID = "node2",
+            };
+        connectors.Add(connector1);
+    }
+    private void GetInEdges()
+    {
+        List<string> Inedges = new List<string>();
+        foreach (string inedge in diagram.Nodes[1].Ports[0].InEdges)
+        {
+            Inedges.Add(inedge);
+        }
+    }
+}

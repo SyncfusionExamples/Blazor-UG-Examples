@@ -1,0 +1,41 @@
+﻿@page "/AnnotationWithTextOverflow"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Defines diagram's node collection.
+    DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        // Initialize diagram's node collection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+            {
+                ID = "node",
+                Width = 100,
+                Height = 100,
+                OffsetX = 100,
+                OffsetY = 100,
+                // Sets the style for the text to be displayed.
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation
+                {
+                    Content = "The text element with property of overflow as Wrap and wrapping as NoWrap",
+                    Style = new TextStyle()
+                    {
+                        // Sets the text overflow of the annotation as Wrap.
+                        TextOverflow = TextOverflow.Wrap,
+                        TextWrapping = TextWrap.NoWrap
+                    }
+                },
+            },
+                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            };
+        nodes.Add(node);
+    }
+}

@@ -1,0 +1,115 @@
+﻿@page "/CanZoomIn"
+
+@using Syncfusion.Blazor.Diagram
+
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="CanZoomIn" @onclick="CanZoom" />
+
+<div class="col-lg-9 control-section" style="border-right: 1px solid #D7D7D7">
+    <SfDiagramComponent @ref="@diagram" Height="700px" Width="800px"
+                        Nodes="@nodes"
+                        Connectors="@connectors">
+
+    </SfDiagramComponent>
+</div>
+
+@code
+{
+
+    public SfDiagramComponent diagram;
+
+    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    FitOptions Options = new FitOptions()
+
+        {
+
+            Mode = FitMode.Height,
+
+            Region = DiagramRegion.Content,
+
+            CanZoomIn = true
+
+        };
+
+    protected override void OnInitialized()
+
+    {
+
+        Node node1 = new Node()
+            {
+                ID = "node1",
+                OffsetX = 250,
+                OffsetY = 100,
+                Width = 100,
+                Height = 50,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                }
+            };
+
+        nodes.Add(node1);
+
+        Node node2 = new Node()
+            {
+                ID = "node2",
+                OffsetX = 250,
+                OffsetY = 180,
+                Width = 100,
+                Height = 50,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                }
+            };
+
+        nodes.Add(node2);
+
+        Node node3 = new Node()
+
+            {
+                ID = "node3",
+                OffsetX = 250,
+                OffsetY = 260,
+                Width = 100,
+                Height=50,
+                Style = new ShapeStyle() 
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                }
+            };
+        nodes.Add(node3);
+
+        Connector connector1 = new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1",
+                TargetID = "node2",
+                Type = ConnectorSegmentType.Straight
+            };
+        connectors.Add(connector1);
+
+        Connector connector2 = new Connector()
+            {
+                ID = "connector2",
+                SourceID = "node2",
+                TargetID = "node3",
+                Type = ConnectorSegmentType.Straight
+            };
+        connectors.Add(connector2);
+
+    }
+    public void CanZoom()
+    {
+        diagram.FitToPage(Options);
+    }
+
+}
+
