@@ -1,0 +1,17 @@
+﻿@page "/RichTextEditor/PasteCleanUp/AccessingPastedContent"
+
+<h5>Accessing pasted content programmatically</h5>
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorEvents AfterPasteCleanup="@AfterPasteCleanupHandler" />
+</SfRichTextEditor>
+
+@code {
+    public void AfterPasteCleanupHandler(PasteCleanupArgs args)
+    {
+        // Here you can get the pasted Html string using args.Value
+    }
+}

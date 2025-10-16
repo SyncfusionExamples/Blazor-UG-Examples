@@ -1,0 +1,30 @@
+﻿<h5>Video Quick Toolbar</h5>
+
+@page "/RichTextEditor/Toolbar/QuickToolbar/VideoQuickToolbar"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorQuickToolbarSettings Video="VideoQuickToolbarItems" />
+    <p><b>Get started with Quick Toolbar to click on a video</b></p>
+    <p>Using the quick toolbar, users can replace, align, display, dimension, and delete the selected video.</p>
+
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Video },
+    };
+    private List<VideoToolbarItemModel> VideoQuickToolbarItems = new List<VideoToolbarItemModel>()
+    {
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.VideoReplace },
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.VideoRemove},
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.VideoLayoutOption },
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.Separator },
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.VideoAlign},
+        new VideoToolbarItemModel() { Command = VideoToolbarCommand.VideoDimension}
+    };
+}

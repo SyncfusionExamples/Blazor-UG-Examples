@@ -1,0 +1,27 @@
+﻿<h5>Google Font Support</h5>
+
+@page "/RichTextEditor/Tools/StylingTools/FontFamily/GoogleFontSupport"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor CssClass="customClass">
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorFontFamily Default="Georgia" Items="@FontFamilyItems" />
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.FontName }
+    };
+    private List<DropDownItemModel> FontFamilyItems = new List<DropDownItemModel>()
+    {
+        new DropDownItemModel() { Text = "Segoe UI", Value = "Arial,Helvetica,sans-serif" },
+        new DropDownItemModel() { Text = "Arial", Value = "Roboto" },
+        new DropDownItemModel() { Text = "Georgia", Value = "Georgia,serif" },
+        new DropDownItemModel() { Text = "Impact", Value = "Impact,Charcoal,sans-serif" },
+        new DropDownItemModel() { Text = "Tahoma", Value = "Tahoma,Geneva,sans-serif" }
+    };
+}
