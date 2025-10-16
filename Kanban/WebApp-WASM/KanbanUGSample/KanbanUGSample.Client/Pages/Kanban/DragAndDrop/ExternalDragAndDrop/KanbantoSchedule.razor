@@ -1,0 +1,138 @@
+﻿@page "/Kanban/DragAndDrop/ExternalDragAndDrop/KanbantoSchedule"
+
+<PageTitle>Kanban to Schedule</PageTitle>
+
+@using Syncfusion.Blazor.Kanban
+@using KanbanUGSample.Components.Pages.Kanban.ExternalDragAndDrop.Data
+@using Syncfusion.Blazor.Schedule
+<div class="component-container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <SfKanban ID="Kanban1" @ref="KanbanRef" TValue="KanbanDataModel" KeyField="Status" DataSource="cardData" ExternalDropId="@DropTarget1">
+                    <KanbanColumns>
+                        @foreach (KanbanColumnModel item in ColumnData)
+                        {
+                            <KanbanColumn HeaderText="@item.HeaderText" KeyField="@item.KeyField"></KanbanColumn>
+                        }
+                    </KanbanColumns>
+                    <KanbanCardSettings HeaderField="Id" ContentField="Summary"></KanbanCardSettings>
+                    <KanbanEvents TValue="KanbanDataModel" DragStop="OnCardDragStop1"></KanbanEvents>
+                </SfKanban>
+            </div>
+            <div class="col-md-6">
+                <SfSchedule ID="Schedule1" TValue="HospitalData" @ref="ScheduleRef" Width="100%" Height="650px" CssClass="schedule-drag-drop" @bind-SelectedDate="@CurrentDate">
+                    <ScheduleEvents TValue="HospitalData" OnActionBegin="OnActionBegin"></ScheduleEvents>
+                    <ScheduleGroup EnableCompactView="false" Resources="@Resources"></ScheduleGroup>
+                    <ScheduleResources>
+                        <ScheduleResource TItem="ResourceData" TValue="int" DataSource="@Departments" Field="DepartmentID" Title="Department" Name="Departments" TextField="Text" IdField="Id" ColorField="Color"></ScheduleResource>
+                        <ScheduleResource TItem="ResourceData" TValue="int" DataSource="@Consultants" Field="ConsultantID" Title="Consultant" Name="Consultants" TextField="Text" IdField="Id" ColorField="Color" GroupIDField="GroupId" AllowMultiple="false"></ScheduleResource>
+                    </ScheduleResources>
+                    <ScheduleViews>
+                        <ScheduleView MaxEventsPerRow="1" Option="View.TimelineDay"></ScheduleView>
+                        <ScheduleView MaxEventsPerRow="1" Option="View.TimelineMonth"></ScheduleView>
+                    </ScheduleViews>
+                    <ScheduleWorkHours Highlight="true" Start="08:00" End="18:00"></ScheduleWorkHours>
+                    <ScheduleEventSettings DataSource="@DataSource">
+                        <ScheduleField>
+                            <FieldSubject Name="Name" Title="Patient Name"></FieldSubject>
+                            <FieldStartTime Name="StartTime" Title="From"></FieldStartTime>
+                            <FieldEndTime Name="EndTime" Title="To"></FieldEndTime>
+                            <FieldDescription Name="Description" Title="Reason"></FieldDescription>
+                        </ScheduleField>
+                    </ScheduleEventSettings>
+                </SfSchedule>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .treeview-external-drag {
+        border: 1px solid #808080;
+    }
+</style>
+@code {
+    private SfKanban<KanbanDataModel> KanbanRef;
+    private DateTime CurrentDate = new DateTime(2020, 1, 6);
+    SfSchedule<HospitalData> ScheduleRef;
+    public List<HospitalData> DataSource = new ScheduleData().GetHospitalData();
+    public List<HospitalData> TreeViewData = new ScheduleData().GetWaitingListData();
+    public string[] Resources = new string[] { "Departments", "Consultants" };
+    private List<string> DropTarget1 = new List<string> { "#Schedule1" };
+    private List<ResourceData> Departments { get; set; } = new List<ResourceData> {
+        new ResourceData { Text = "GENERAL", Id = 1, Color = "#bbdc00" },
+        new ResourceData { Text = "DENTAL", Id = 2, Color = "#9e5fff" }
+    };
+    private List<ResourceData> Consultants { get; set; } = new List<ResourceData> {
+        new ResourceData { Text = "Alice", Id = 1, GroupId = 1, Color = "#bbdc00", Designation = "Cardiologist" },
+        new ResourceData { Text = "Nancy", Id = 2, GroupId = 2, Color = "#9e5fff", Designation = "Orthodontist" },
+        new ResourceData { Text = "Robert", Id = 3, GroupId = 1, Color = "#bbdc00", Designation = "Optometrist" },
+        new ResourceData { Text = "Robson", Id = 4, GroupId = 2, Color = "#9e5fff", Designation = "Periodontist" },
+        new ResourceData { Text = "Laura", Id = 5, GroupId = 1, Color = "#bbdc00", Designation = "Orthopedic" },
+        new ResourceData { Text = "Margaret", Id = 6, GroupId = 2, Color = "#9e5fff", Designation = "Endodontist" }
+    };
+    public class ResourceData
+    {
+        public string Text { get; set; }
+        public int Id { get; set; }
+        public int GroupId { get; set; }
+        public string Color { get; set; }
+        public string Designation { get; set; }
+    }
+    public class MailItem
+    {
+        public string Id { get; set; }
+        public string ParentId { get; set; }
+        public string FolderName { get; set; }
+        public bool Expanded { get; set; }
+        public bool HasSubFolders { get; set; }
+    }
+    public HospitalData DraggedItem { get; set; }
+    private List<KanbanDataModel> cardData = new KanbanDataModel().GetTasks();
+    private List<KanbanColumnModel> ColumnData = new List<KanbanColumnModel>() {
+        new KanbanColumnModel(){ HeaderText= "To Do", KeyField= new List<string>() { "Open" } },
+        new KanbanColumnModel(){ HeaderText= "In Progress", KeyField= new List<string>() { "InProgress" } },
+        new KanbanColumnModel(){ HeaderText= "Testing", KeyField= new List<string>() { "Testing" } },
+        new KanbanColumnModel(){ HeaderText= "Done", KeyField=new List<string>() { "Close" } }
+    };
+
+    public class KanbanColumnModel
+    {
+        public string HeaderText { get; set; }
+        public List<string> KeyField { get; set; }
+    }
+    private async void OnCardDragStop1(Syncfusion.Blazor.Kanban.DragEventArgs<KanbanDataModel> args)
+    {
+        args.Cancel = true;
+        CellClickEventArgs cellData = await ScheduleRef.GetTargetCellAsync((int)args.Left, (int)args.Top);
+        if (cellData != null)
+        {
+            var resourceDetails = ScheduleRef.GetResourceByIndex(cellData.GroupIndex);
+            Random rnd = new Random();
+            int Id = rnd.Next(1000);
+            HospitalData kanData = DataSource.Where(data => data.Id.ToString() == args.Data[0].Id).First();
+            HospitalData eventData = new HospitalData
+                {
+                    Id = Id,
+                    Name = kanData.Name,
+                    StartTime = cellData.StartTime,
+                    EndTime = cellData.EndTime,
+                    IsAllDay = cellData.IsAllDay,
+                    ConsultantID = resourceDetails.GroupData.ConsultantID,
+                    DepartmentID = resourceDetails.GroupData.DepartmentID,
+                    Description = kanData.Description,
+                    DepartmentName = kanData.DepartmentName
+                };
+            await ScheduleRef.OpenEditorAsync(eventData, Syncfusion.Blazor.Schedule.CurrentAction.Add);
+            DraggedItem = kanData;
+        }
+    }
+    public void OnActionBegin(Syncfusion.Blazor.Schedule.ActionEventArgs<HospitalData> args)
+    {
+        if (args.ActionType == ActionType.EventCreate && DraggedItem != null)
+        {
+            KanbanRef.DeleteCardAsync(DraggedItem.Id);
+            DraggedItem = null;
+        }
+    }
+}
