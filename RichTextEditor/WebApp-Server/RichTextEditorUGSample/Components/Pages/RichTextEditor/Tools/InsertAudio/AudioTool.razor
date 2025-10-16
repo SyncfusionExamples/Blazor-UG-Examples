@@ -1,0 +1,15 @@
+﻿<h5>Configure Audio tool in the toolbar</h5>
+
+@page "/RichTextEditor/Tools/InsertAudio/AudioTool"
+
+@using Syncfusion.Blazor.RichTextEditor;
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Items" />
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Items = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Audio }
+    };
+}

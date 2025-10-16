@@ -1,0 +1,22 @@
+﻿@page "/RichTextEditor/ValueBinding/GetEditorContent"
+
+﻿<h5>Get Editor Content</h5>
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor @bind-Value="@Value" @ref="RteObj">
+    <RichTextEditorEvents ValueChange="@ValueChangeHandler">
+    </RichTextEditorEvents>
+</SfRichTextEditor>
+
+@code {
+    SfRichTextEditor RteObj;
+
+    private string Value { get; set; } = "<p>Syncfusion RichTextEditor</p>";
+    public void ValueChangeHandler(Syncfusion.Blazor.RichTextEditor.ChangeEventArgs args)
+    {
+        //here you can can get the editor value using args.value
+        this.Value = args.Value;
+    }
+}

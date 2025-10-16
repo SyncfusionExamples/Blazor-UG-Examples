@@ -1,0 +1,21 @@
+﻿<h5>Enabling the slash menu and Configure the slash menu items</h5>
+
+@page "/RichTextEditor/SmartEditing/SlashCommands/EnablingSlashMenu"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor Placeholder="@editorPlaceholder">
+    <RichTextEditorSlashMenuSettings Enable="true" Items="@slashmenuItems" />
+</SfRichTextEditor>
+
+@code {
+    private string editorPlaceholder = "Type \"/\" and choose format";
+    private List<SlashMenuItemModel> slashmenuItems = new List<SlashMenuItemModel>()
+    {
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Paragraph},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading1},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading2},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading3},
+    };
+}

@@ -1,0 +1,18 @@
+﻿<h5>Built-in font family</h5>
+
+@page "/RichTextEditor/Tools/StylingTools/FontFamily/BuiltInFontFamily"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorFontFamily Default="Georgia" />
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+@code {
+
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.FontName }
+    };
+}
