@@ -1,0 +1,140 @@
+﻿@page "/MarkdownEditor/HTMLPreview"
+
+<PageTitle>Live Markdown Preview in Blazor Markdown Editor</PageTitle>
+
+@using Syncfusion.Blazor.RichTextEditor
+@using Markdig;
+
+<div class="control-section">
+    @if (!IsPreview)
+    {
+        <SfRichTextEditor Height="250px" EditorMode="EditorMode.Markdown" SaveInterval="1" @bind-Value="@MarkdownValue">
+            <RichTextEditorToolbarSettings Items="@Tools">
+                <RichTextEditorCustomToolbarItems>
+                    <RichTextEditorCustomToolbarItem Name="Preview">
+                        <Template>
+                            <button id="preview-code" class="e-tbar-btn e-control e-btn e-icon-btn" @onclick="PreviewClick">
+                                <span class="e-btn-icon e-md-preview e-icons"></span>
+                            </button>
+                        </Template>
+                    </RichTextEditorCustomToolbarItem>
+                </RichTextEditorCustomToolbarItems>
+            </RichTextEditorToolbarSettings>
+            <RichTextEditorMarkdownOptions ListSyntax="@ListSyntax" />
+            <RichTextEditorEvents ValueChange="@OnValueChange" />
+        </SfRichTextEditor>
+    }
+    else
+    {
+        <SfRichTextEditor Readonly="true" @bind-Value="@HtmlValue">
+            <RichTextEditorToolbarSettings Items="@Items">
+                <RichTextEditorCustomToolbarItems>
+                    <RichTextEditorCustomToolbarItem Name="code">
+                        <Template>
+                            <button id="MD_Preview" class="e-tbar-btn e-control e-btn e-icon-btn" @onclick="CodeClick">
+                                <span class="e-btn-icon e-preview e-icons"></span>
+                            </button>
+                        </Template>
+                    </RichTextEditorCustomToolbarItem>
+                </RichTextEditorCustomToolbarItems>
+            </RichTextEditorToolbarSettings>
+        </SfRichTextEditor>
+    }
+</div>
+@code {
+    private bool IsPreview { get; set; }
+    private string HtmlValue { get; set; }
+    private MarkdownPipeline Pipeline { get; set; }
+    private string MarkdownValue { get; set; } = @"The sample is added to showcase **markdown editing**.
+Type or edit the content and apply formatting to view markdown formatted content.
+We can add our own custom formation syntax for the Markdown formation, [sample link](https://blazor.syncfusion.com/demos/rich-text-editor/markdown-custom-format).
+The third-party library **Marked** is used in this sample to convert markdown into HTML content.";
+    private List<ToolbarItemModel> Items = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Name = "code", TooltipText = "Code View" },
+    };
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+        new ToolbarItemModel() { Command = ToolbarCommand.Blockquote },
+        new ToolbarItemModel() { Command = ToolbarCommand.OrderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.UnorderedList },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+        new ToolbarItemModel() { Command = ToolbarCommand.Image },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Name = "Preview", TooltipText = "Preview" },
+        new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+        new ToolbarItemModel() { Command = ToolbarCommand.Redo }
+    };
+    private Dictionary<string, string> ListSyntax { get; set; } = new Dictionary<string, string>()
+    {
+        { "OL", "1., 2., 3." }
+    };
+    protected override void OnInitialized()
+    {
+        Pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+        this.HtmlValue = Markdig.Markdown.ToHtml(MarkdownValue, Pipeline);
+        base.OnInitialized();
+    }
+    private void OnValueChange(Syncfusion.Blazor.RichTextEditor.ChangeEventArgs args)
+    {
+        if (args.Value == null)
+        {
+            this.HtmlValue = null;
+        }
+        else
+        {
+            this.HtmlValue = Markdig.Markdown.ToHtml(args.Value, Pipeline);
+        }
+    }
+    private void PreviewClick()
+    {
+        Items = new List<ToolbarItemModel>()
+        {
+            new ToolbarItemModel() { Name = "code", TooltipText = "Code View" },
+        };
+        this.IsPreview = true;
+    }
+    private void CodeClick()
+    {
+        Tools = new List<ToolbarItemModel>()
+        {
+            new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+            new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+            new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+            new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+            new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+            new ToolbarItemModel() { Command = ToolbarCommand.Blockquote },
+            new ToolbarItemModel() { Command = ToolbarCommand.OrderedList },
+            new ToolbarItemModel() { Command = ToolbarCommand.UnorderedList },
+            new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+            new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+            new ToolbarItemModel() { Command = ToolbarCommand.Image },
+            new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
+            new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+            new ToolbarItemModel() { Name = "Preview", TooltipText = "Preview" },
+            new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+            new ToolbarItemModel() { Command = ToolbarCommand.Redo }
+        };
+        this.IsPreview = false;
+    }
+}
+<style>
+    .e-content td,
+    .e-content th {
+        border: 1px solid #bdbdbd;
+        padding: 0 5px;
+    }
+    .e-icon-btn .e-md-preview::before {
+        content: '\e7de';
+    }
+    .e-icon-btn .e-preview::before {
+        content: '\e80e';
+    }
+</style>

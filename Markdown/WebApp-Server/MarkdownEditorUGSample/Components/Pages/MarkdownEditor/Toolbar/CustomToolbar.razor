@@ -1,0 +1,39 @@
+﻿@page "/MarkdownEditor/Toolbar/CustomToolbar"
+
+<PageTitle>Adding Custom Toolbar Items</PageTitle>
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor EditorMode="EditorMode.Markdown" Value="@MarkdownValue">
+    <RichTextEditorToolbarSettings Items="@Tools">
+        <RichTextEditorCustomToolbarItems>
+            <RichTextEditorCustomToolbarItem Name="Symbol">
+                <Template>
+                    <SfButton @onclick="ClickHandler">Ω</SfButton>
+                </Template>
+            </RichTextEditorCustomToolbarItem>
+        </RichTextEditorCustomToolbarItems>
+    </RichTextEditorToolbarSettings>
+</SfRichTextEditor>
+
+@code {
+
+    private string MarkdownValue { get; set; } = @"In Rich Text Editor, you click the toolbar buttons to format the words and
+        the changes are visible immediately. Markdown is not like that. When you format the word in Markdown format, you need to add Markdown syntax to the word to indicate which words and phrases should look different from each other. Rich Text Editor supports markdown editing when the editorMode set as **markdown** and using both *keyboard interaction* and *toolbar action*, you can apply the formatting to text. You can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/). The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content.";
+
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Name = "Symbol", TooltipText = "Insert Symbol" },
+        new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+        new ToolbarItemModel() { Command = ToolbarCommand.FullScreen }
+    };
+    private void ClickHandler()
+    {
+        //Perform your action here
+    }
+}
