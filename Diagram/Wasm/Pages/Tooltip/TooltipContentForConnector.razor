@@ -1,0 +1,33 @@
+﻿@page "/TooltipContentForConnector"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Connector Content" OnClick="@ContentChange" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+
+@code
+{
+    private DiagramObjectCollection<Connector> connector;
+
+    protected override void OnInitialized()
+    {
+        connector = new DiagramObjectCollection<Connector>();
+        Connector connectors = new Connector()
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+            TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+            Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip" },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        connector.Add(connectors);
+    }
+
+    //Change Content at run time.
+    private void ContentChange()
+    {
+        connector[0].Tooltip.Content = "UpdateTooltipContent";
+    }
+}

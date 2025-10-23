@@ -1,0 +1,39 @@
+﻿@page "/PrintSample"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Print" OnClick="@OnPrint" />
+<SfDiagramComponent Height="600px" @ref="@diagram">
+    <PageSettings MultiplePage="true" Width="@width" Height="@height" Orientation="@orientation" ShowPageBreaks="@showPageBreak">
+        <PageMargin Left="@left" Right="@right" Top="@top" Bottom="@bottom"></PageMargin>
+    </PageSettings>
+</SfDiagramComponent>
+
+@code
+{ 
+    //Reference the diagram
+    private SfDiagramComponent diagram;
+    private double left = 10;
+    private double top = 10;
+    private double right = 10;
+    private double bottom = 10;
+    private double width = 410;
+    private double height = 550;
+    private bool multiplePage = true;
+    private bool showPageBreak = true;
+    private DiagramPrintExportRegion region = DiagramPrintExportRegion.PageSettings;
+    private PageOrientation orientation = PageOrientation.Portrait;
+    
+    //Method to prin the diagram
+    private async Task OnPrint()
+    {
+        DiagramPrintSettings print = new DiagramPrintSettings();
+        print.PageWidth = width;
+        print.PageHeight = height;
+        print.Region = region;
+        print.FitToPage = multiplePage;
+        print.Orientation = orientation;
+        print.Margin = new DiagramThickness() { Left = left, Top = top, Right = right, Bottom = bottom };
+        await diagram.PrintAsync(print);
+    }
+}

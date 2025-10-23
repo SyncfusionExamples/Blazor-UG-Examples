@@ -1,0 +1,38 @@
+﻿@page "/PortConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize the diagram with NodeCollection *@
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        // Initialize the NodeCollection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
+        node.Ports = new DiagramObjectCollection<PointPort>()
+        {
+            new PointPort()
+            {
+                ID="port1",
+                Offset=new DiagramPoint(){X=0,Y=0.5},
+                Shape=PortShapes.Circle,
+                Visibility=PortVisibility.Visible,
+                // Sets the PortConstraints...
+                Constraints=PortConstraints.None
+            }
+        };
+        nodes.Add(node);
+    }
+}

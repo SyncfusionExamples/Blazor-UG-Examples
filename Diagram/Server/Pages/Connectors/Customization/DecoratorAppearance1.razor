@@ -1,0 +1,56 @@
+﻿@page "/DecoratorAppearance1"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" />
+
+@code
+{
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 1
+            },
+            SourcePoint = new DiagramPoint()
+            {
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            SourceDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Height = 15,
+                Width = 15,
+                Style = new ShapeStyle()
+                { StrokeColor = "blue", Fill = "yellow", StrokeWidth = 3 }
+            },
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Height = 15,
+                Width = 15,
+                Style = new ShapeStyle()
+                {
+                    StrokeColor = "red",
+                    Fill = "yellow",
+                    StrokeWidth = 3
+                }
+            }
+        };
+        connectors.Add(Connector);
+    }
+}

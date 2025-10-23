@@ -1,0 +1,48 @@
+﻿@page "/TargetPointChanged"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" TargetPointChanging="@OnTargetPointChanging" TargetPointChanged="@OnTargetPointChanged"
+                    Height="500px" Connectors="@connectors" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram.
+    private SfDiagramComponent Diagram;
+    //Initialize the diagram's connectors collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Initialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 400,
+            }
+        };
+        connectors.Add(Connector);
+    }
+
+
+    // Notify the target point changed event before the target point has changed.
+    private void OnTargetPointChanging(EndPointChangingEventArgs args)
+    {
+        //Action to be performed.
+    }
+
+    // Notify the target point changed event after the target point has changed.
+    private void OnTargetPointChanged(EndPointChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}
