@@ -8,20 +8,20 @@
 
 @code
 {
-    public SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Container container = new Container()
-            {
-                ID = "container",
-                Height = 300,
-                Width = 500,
-                OffsetX = 500,
-                OffsetY = 300,
-            };
+        {
+            ID = "container",
+            Height = 300,
+            Width = 500,
+            OffsetX = 500,
+            OffsetY = 300,
+        };
         nodes.Add(container);
     }
 } 

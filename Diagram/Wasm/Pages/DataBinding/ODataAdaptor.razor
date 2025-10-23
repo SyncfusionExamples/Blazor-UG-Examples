@@ -4,7 +4,6 @@
 @using Syncfusion.Blazor.Data
 @inject HttpClient Http
 
-
 <div id="diagram-space" class="content-wrapper">
     <SfDiagramComponent Height="400px" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
         <DataSourceSettings Id="EmployeeID" ParentId="ReportsTo" Query="Query">
@@ -15,8 +14,9 @@
     </SfDiagramComponent>
 </div>
 
-@code {
-        SfDiagramComponent Diagrams;
+@code
+{
+    private SfDiagramComponent Diagrams;
     private float x = 100;
     private float y = 100;
 
@@ -41,8 +41,10 @@
         x += 100;
 
         Dictionary<string, object> data = node.Data as Dictionary<string, object>;
-        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>() {
-            new ShapeAnnotation() {
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation()
+            {
                 Content = data["FirstName"].ToString(),
                 Style = new TextStyle() { Color = "white" }
             }

@@ -2,6 +2,7 @@
 
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
+
 <SfButton Content="GetCurrentEntry" OnClick="@GetCurrentEntry" />
 
 @* Initialize Diagram *@
@@ -11,9 +12,8 @@
 @code
 {
     //Reference the diagram
-    SfDiagramComponent diagram;
-
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -33,7 +33,8 @@
         // Add node.
         nodes.Add(node);
     }
-    public void GetCurrentEntry()
+
+    private void GetCurrentEntry()
     {
         Console.WriteLine(diagram.HistoryManager.CurrentEntry);
     }

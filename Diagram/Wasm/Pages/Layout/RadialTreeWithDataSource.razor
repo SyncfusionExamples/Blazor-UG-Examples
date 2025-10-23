@@ -4,6 +4,7 @@
 @using Syncfusion.Blazor.Diagram.Internal
 @using System.Collections.ObjectModel
 @using Syncfusion.Blazor.Popups;
+
 <style>
     #diagram-space {
         width: 80%;
@@ -22,9 +23,11 @@
         <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
     </SfDiagramComponent>
 </div>
-@code {
 
-    SfDiagramComponent diagram;
+@code
+{
+
+    private SfDiagramComponent diagram;
     
     public class RadialTreeDetails
     {
@@ -79,8 +82,7 @@
         new RadialTreeDetails()   { Id = "16", Name = "Paula Parente", Designation = "Project Lead",
             ReportingPerson = "15" },
         new RadialTreeDetails()   { Id = "17", Name = "Matti Kenna", Designation = "Project Lead",
-            ReportingPerson = "15" },
-        
+            ReportingPerson = "15" },  
     };
     
     private void NodeCreating(IDiagramObject obj)
@@ -105,11 +107,11 @@
         if (radialData.Designation == "Managing Director")
         {
             node.Shape = new BasicShape()
-                {
-                    Type = NodeShapes.Basic,
-                    Shape = NodeBasicShapes.Ellipse,
-                    CornerRadius = 10
-                };
+            {
+                Type = NodeShapes.Basic,
+                Shape = NodeBasicShapes.Ellipse,
+                CornerRadius = 10
+            };
             node.Width = 150;
             node.Height = 150;
             node.Style.Fill = "black";
@@ -123,19 +125,19 @@
         else
         {
             node.Shape = new BasicShape()
-                {
-                    Type = NodeShapes.Basic,
-                    Shape = NodeBasicShapes.Ellipse,
-                    CornerRadius = 10
-                };
+            {
+                Type = NodeShapes.Basic,
+                Shape = NodeBasicShapes.Ellipse,
+                CornerRadius = 10
+            };
             node.Style.Fill = "#afeeee";
             node.Width = 50;
             node.Height = 50;
         }
     }
+
     private void ConnectorCreating(IDiagramObject connector)
     {
         (connector as Connector).Type = ConnectorSegmentType.Straight;
-    }
-   
+    } 
 }

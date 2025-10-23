@@ -13,19 +13,16 @@
     </div>
 </div>
 
-@code {
-   
+@code
+{
     //Reference the symbolpalette
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
-
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
     // Defines palette's connector collection
-    DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -36,28 +33,28 @@
     {
         PaletteConnectors = new DiagramObjectCollection<NodeBase>();
         CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
-
         Palettes = new DiagramObjectCollection<Palette>()
         {
             new Palette(){Symbols =PaletteConnectors,Title="Connectors" ,IsExpanded = true},
         };
     }
+
     //Method to create palette connector
     private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
     {
         Connector connector = new Connector()
+        {
+            ID = id,
+            Type = type,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 100, Y = 100 },
+            Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#6495ED" },
+            TargetDecorator = new DecoratorSettings()
             {
-                ID = id,
-                Type = type,
-                SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
-                TargetPoint = new DiagramPoint() { X = 100, Y = 100 },
-                Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#6495ED" },
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = decoratorShape,
-                    Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
-                }
-            };
+                Shape = decoratorShape,
+                Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
+            }
+        };
 
         PaletteConnectors.Add(connector);
     }

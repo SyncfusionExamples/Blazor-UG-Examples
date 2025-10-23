@@ -8,45 +8,45 @@
 
 @code
 {
-    public SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "node1",
+            Height = 60,
+            Width = 100,
+            OffsetX = 400,
+            OffsetY = 300,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "node1",
-                Height = 60,
-                Width = 100,
-                OffsetX = 400,
-                OffsetY = 300,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                {
-                    new ShapeAnnotation(){ Content = "Process"}
-                }
-            };
+                new ShapeAnnotation(){ Content = "Process"}
+            }
+        };
         Node node2 = new Node()
+        {
+            ID = "node2",
+            Height = 60,
+            Width = 100,
+            OffsetX = 600,
+            OffsetY = 300,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "node2",
-                Height = 60,
-                Width = 100,
-                OffsetX = 600,
-                OffsetY = 300,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                {
-                    new ShapeAnnotation(){ Content = "Process"}
-                }
-            };
+                new ShapeAnnotation(){ Content = "Process"}
+            }
+        };
         Container container = new Container()
-            {
-                ID = "container",
-                Height = 300,
-                Width = 500,
-                OffsetX = 500,
-                OffsetY = 300,
-                Children = new string[] { "node1", "node2" }
-            };
+        {
+            ID = "container",
+            Height = 300,
+            Width = 500,
+            OffsetX = 500,
+            OffsetY = 300,
+            Children = new string[] { "node1", "node2" }
+        };
         nodes.Add(node1);
         nodes.Add(node2);
         nodes.Add(container);

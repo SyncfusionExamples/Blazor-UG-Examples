@@ -14,21 +14,32 @@
     <SnapSettings></SnapSettings>
 </SfDiagramComponent>
 
-@code {
-
+@code
+{
     //Reference the diagram
-    SfDiagramComponent diagram;
-    double left = 10;
-    double top = 10;
-    double right = 10;
-    double bottom = 10;
-    double width = 410;
-    double height = 550;
-
-    bool multiplePage = true;
-    bool showPageBreak = true;
-    DiagramPrintExportRegion region = DiagramPrintExportRegion.ClipBounds;
-    PageOrientation orientation = PageOrientation.Landscape;
+    private SfDiagramComponent diagram;
+    private double left = 10;
+    private double top = 10;
+    private double right = 10;
+    private double bottom = 10;
+    private double width = 410;
+    private double height = 550;
+    private bool multiplePage = true;
+    private bool showPageBreak = true;
+    private DiagramPrintExportRegion region = DiagramPrintExportRegion.ClipBounds;
+    private PageOrientation orientation = PageOrientation.Landscape;
+    private double lTop = 50;
+    private double lBottom = 50;
+    private double lRight = 50;
+    private double lLeft = 50;
+    private LayoutType type = LayoutType.OrganizationalChart;
+    private LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
+    private int HorizontalSpacing = 30;
+    private int VerticalSpacing = 30;
+    private string FixedNode = null;
+    
     //Method to prin the diagram
     private async Task OnPrint()
     {
@@ -40,17 +51,6 @@
         await diagram.PrintAsync(print);
     }
 
-    double lTop = 50;
-    double lBottom = 50;
-    double lRight = 50;
-    double lLeft = 50;
-    LayoutType type = LayoutType.OrganizationalChart;
-    LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
-    HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
-    VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
-    int HorizontalSpacing = 30;
-    int VerticalSpacing = 30;
-    private string FixedNode = null;
     public class HierarchicalDetails
     {
         public string Id { get; set; }
@@ -59,6 +59,7 @@
         public string ChartType { get; set; }
         public string Color { get; set; }
     }
+
     public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
     {
             new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
@@ -96,14 +97,15 @@
         node.Style.Fill = hierarchicalData.Color;
         // node.IsVisible = false;
         node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-    {
-        new ShapeAnnotation()
         {
-            Content = hierarchicalData.Role,
-            Style =new TextStyle(){Color = "white"}
-        }
-    };
+            new ShapeAnnotation()
+            {
+                Content = hierarchicalData.Role,
+                Style =new TextStyle(){Color = "white"}
+            }
+        };
     }
+
     private void ConnectorCreating(IDiagramObject connector)
     {
         (connector as Connector).Type = ConnectorSegmentType.Orthogonal;

@@ -136,6 +136,7 @@
             float: left;
         }
     </style>
+
     <div style="width: 100%">
         <div id="palette-space" class="sb-mobile-palette">
 
@@ -144,12 +145,7 @@
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
                 <div class="content-wrapper" style="border: 1px solid #D7D7D7">
-                    <SfDiagramComponent @ref="@Diagram"
-                                    Width="100%"
-                                    Height="700px"
-                                    Nodes="nodes"
-                                    DragLeave="OnDragLeave">
-                    </SfDiagramComponent>
+                    <SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" DragLeave="OnDragLeave" />
                 </div>
             </div>
             @*Hidden:Lines*@
@@ -157,47 +153,52 @@
     </div>
 
 
-@code{
-    SfDiagramComponent Diagram;
-    DiagramSize SymbolPreview;
-    DiagramSize diagramPreview;
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-    DiagramObjectCollection<NodeBase> TNodes = new DiagramObjectCollection<NodeBase>();
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    SfSymbolPaletteComponent PaletteInstance;
+@code
+{
+    private SfDiagramComponent Diagram;
+    private DiagramSize SymbolPreview;
+    private DiagramSize diagramPreview;
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> TNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfSymbolPaletteComponent PaletteInstance;
+    
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
         SymbolInfo SymbolInfo = new SymbolInfo();
         SymbolInfo.Fit = true;
         return SymbolInfo;
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
         PaletteInstance.Targets.Add(Diagram);
     }
+
     protected override void OnInitialized()
     {
         SymbolPreview = new DiagramSize();
         SymbolPreview.Width = 80;
         SymbolPreview.Height = 80;
         diagramPreview = new DiagramSize()
-            {
-                Width = 50,
-                Height = 50
-            };
+        {
+            Width = 50,
+            Height = 50
+        };
         TNodes = new DiagramObjectCollection<NodeBase>();
-             Node TNode2 = new Node()
-             { 
-                 ID = "node1", 
-                 Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
-             };
-            TNodes.Add(TNode2);
-            Palettes = new DiagramObjectCollection<Palette>()
-             {
-                new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
-             };
+        Node TNode2 = new Node()
+        { 
+            ID = "node1", 
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
+        };
+        TNodes.Add(TNode2);
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+        new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
+        };
     }
+
      // Notify the DragLeave event.
     private void OnDragLeave(DragLeaveEventArgs args)
     {

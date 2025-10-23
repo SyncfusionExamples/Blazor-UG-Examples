@@ -5,49 +5,53 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="sendBackward" OnClick="@sendBackward" />
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes">
-</SfDiagramComponent>
-@code {
+
+<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes" />
+
+@code
+{
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 90,
-                Height = 80,
-                OffsetX = 100,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
-            };
+        {
+            ID = "node1",
+            Width = 90,
+            Height = 80,
+            OffsetX = 100,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
+        };
         nodes.Add(node1);
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 90,
-                Height = 80,
-                OffsetX = 240,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Cylinder },
-                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
-            };
+        {
+            ID = "node2",
+            Width = 90,
+            Height = 80,
+            OffsetX = 240,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Cylinder },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
+        };
         nodes.Add(node2);
         Node node3 = new Node()
-            {
-                ID = "node3",
-                Width = 120,
-                Height = 80,
-                OffsetX = 170,
-                OffsetY = 60,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
-                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
-            };
+        {
+            ID = "node3",
+            Width = 120,
+            Height = 80,
+            OffsetX = 170,
+            OffsetY = 60,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
+        };
         nodes.Add(node3);
     }
+
     private void sendBackward()
     {
         diagram.Select(new ObservableCollection<IDiagramObject>() { diagram.Nodes[2] });

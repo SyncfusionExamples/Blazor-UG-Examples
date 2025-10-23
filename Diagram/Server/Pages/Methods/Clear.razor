@@ -9,53 +9,54 @@
 @code
 {
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Nodes.Add(new Node()
-            {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
-            });
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        });
         Nodes.Add(new Node()
-            {
-                ID = "node2",
-                OffsetX = 270,
-                OffsetY = 70,
-                Width = 50,
-                Height = 50,
-            });
+        {
+            ID = "node2",
+            OffsetX = 270,
+            OffsetY = 70,
+            Width = 50,
+            Height = 50,
+        });
         Nodes.Add(new Node()
-            {
-                ID = "node3",
-                OffsetX = 330,
-                OffsetY = 130,
-                Width = 50,
-                Height = 50,
-            });
+        {
+            ID = "node3",
+            OffsetX = 330,
+            OffsetY = 130,
+            Width = 50,
+            Height = 50,
+        });
         Nodes.Add(new NodeGroup()
-            {
-                ID = "group",
-                Children = new string[] { "node2", "node3" },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
-            });
+        {
+            ID = "group",
+            Children = new string[] { "node2", "node3" },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        });
         Connectors.Add(new Connector()
-            {
-                SourceID = "node1",
-                TargetID = "group",
-                Style = new ShapeStyle() { StrokeColor = "#6495ED" },
-                TargetDecorator = new DecoratorSettings() { Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" } }
-            });
+        {
+            SourceID = "node1",
+            TargetID = "group",
+            Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+            TargetDecorator = new DecoratorSettings() { Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" } }
+        });
     }
+
     private void ClearMethod()
     {
         diagram.Clear();

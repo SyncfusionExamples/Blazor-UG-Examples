@@ -7,19 +7,19 @@
 @code
 {
     // Defines diagram's node collection.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "node1",
-                Width = 100,
-                Height = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation
                 {
@@ -31,8 +31,8 @@
                     Offset = new DiagramPoint(){ X = 0.5 ,Y = 1}
                 }
             },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-            };
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+        };
         nodes.Add(node);
     }
 }

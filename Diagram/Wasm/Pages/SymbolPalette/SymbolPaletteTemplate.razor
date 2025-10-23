@@ -11,18 +11,19 @@
     </SymbolPaletteTemplates>
 </SfSymbolPaletteComponent>
 
-@code {
-    DiagramObjectCollection<NodeBase> Symbols = new DiagramObjectCollection<NodeBase>();
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+@code
+{
+    private DiagramObjectCollection<NodeBase> Symbols = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
 
     protected override void OnInitialized()
     {
         Symbols = new DiagramObjectCollection<NodeBase>();
         Node node = new Node()
-            {
-                ID = "Nativenode",
-                Shape = new Shape() { Type = NodeShapes.SVG },
-            };
+        {
+            ID = "Nativenode",
+            Shape = new Shape() { Type = NodeShapes.SVG },
+        };
         Symbols.Add(node as NodeBase);
 
         Palettes = new DiagramObjectCollection<Palette>()

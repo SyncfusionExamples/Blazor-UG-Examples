@@ -5,12 +5,12 @@
 
 <SfSymbolPaletteComponent Width="100%" Height="700px" EnableChunkMessages="true" Palettes="@palettes" SymbolHeight="@symbolHeight" SymbolWidth="@symbolWidth" SymbolDragPreviewSize="@symbolDragPreviewSize" />
 
-@code{
-
-    DiagramSize symbolDragPreviewSize;
-    public DiagramObjectCollection<Palette> palettes;
-    double symbolHeight = 75;
-    double symbolWidth = 75;
+@code
+{
+    private DiagramSize symbolDragPreviewSize;
+    private DiagramObjectCollection<Palette> palettes;
+    private double symbolHeight = 75;
+    private double symbolWidth = 75;
 
     protected override void OnInitialized()
     {
@@ -26,7 +26,6 @@
         DiagramObjectCollection<NodeBase> DiningRoomSymbols = new DiagramObjectCollection<NodeBase>();
         DiagramObjectCollection<NodeBase> KitchenSymbols = new DiagramObjectCollection<NodeBase>();
         
-
         DoorSymbols = new DiagramObjectCollection<NodeBase>()
         {
             new Node()

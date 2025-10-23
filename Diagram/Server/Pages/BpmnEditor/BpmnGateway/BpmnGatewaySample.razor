@@ -2,12 +2,13 @@
 
 @using Syncfusion.Blazor.Diagram
 
+@* Initialize Diagram *@
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
 
 @code
 {
     // Initialize node collection with Node.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
@@ -25,7 +26,7 @@
             Shape = new BpmnGateway()
             {
                 //Sets gateway type to None.
-                GatewayType = BpmnGatewayType.None 
+                GatewayType = BpmnGatewayType.None
             }
         };
         nodes.Add(node);

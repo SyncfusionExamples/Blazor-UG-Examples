@@ -6,21 +6,21 @@
 
 @code
 {
-    DiagramObjectCollection<Node> nodes;
-    DiagramSelectionSettings selectionSettings = new DiagramSelectionSettings() { CanToggleSelection = true };
+    private DiagramObjectCollection<Node> nodes;
+    private DiagramSelectionSettings selectionSettings = new DiagramSelectionSettings() { CanToggleSelection = true };
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "node1",
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
-            };
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
         nodes.Add(node);
         
     }

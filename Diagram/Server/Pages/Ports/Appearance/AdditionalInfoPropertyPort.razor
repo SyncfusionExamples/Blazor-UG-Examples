@@ -1,10 +1,12 @@
 ﻿@page "/AdditionalInfoPropertyPort"
 
 @using Syncfusion.Blazor.Diagram
+
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
+
 @code
 {
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
@@ -13,25 +15,25 @@
         PortInfo.Add("portInfo", "Port A");
         // Create a port with additional info.
         PointPort port = new PointPort()
-            {
-                Offset = new DiagramPoint { X = 0.5, Y = 0.5 },
-                Visibility = PortVisibility.Visible,
-                AdditionalInfo = PortInfo
-            };
+        {
+            Offset = new DiagramPoint { X = 0.5, Y = 0.5 },
+            Visibility = PortVisibility.Visible,
+            AdditionalInfo = PortInfo
+        };
         // A node is created and stored in nodes collection.
         Node node = new Node()
+        {
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white"
-                },
-                Ports = new DiagramObjectCollection<PointPort> { port }
-            };
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Ports = new DiagramObjectCollection<PointPort> { port }
+        };
         // Add node.
         nodes.Add(node);
     }

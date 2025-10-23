@@ -5,25 +5,26 @@
 <SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors">
     <DiagramTemplates>
             <DiagramExpandIconTemplate>
-                    @{
-                    <div style="height: 100%; width: 100%">
-                        <input type="button" value="Collapse" />
-                    </div>
-                    } 
+                @{
+                <div style="height: 100%; width: 100%">
+                    <input type="button" value="Collapse" />
+                </div>
+                } 
             </DiagramExpandIconTemplate>
             <DiagramCollapseIconTemplate>
-                    @{
-                    <div style="height: 100%; width: 100%">
-                        <input type="button" value="Expand" />
-                    </div>
-                    } 
+                @{
+                <div style="height: 100%; width: 100%">
+                    <input type="button" value="Expand" />
+                </div>
+                } 
             </DiagramCollapseIconTemplate>
-        </DiagramTemplates>
-    </SfDiagramComponent>
+    </DiagramTemplates>
+</SfDiagramComponent>
         
-    @code {
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+@code 
+{
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -96,11 +97,11 @@
         };
         nodes.Add(node2);
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourceID = "node1",
-                TargetID = "node2",
-            };
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+        };
         connectors.Add(connector1);
     }
 }

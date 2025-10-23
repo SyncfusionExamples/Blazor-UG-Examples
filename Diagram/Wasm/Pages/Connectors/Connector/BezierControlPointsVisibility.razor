@@ -27,33 +27,35 @@
 </div>
 
 <div id="diagram-space">
-<SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Connectors="@connectors"></SfDiagramComponent>
+    <SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Connectors="@connectors"></SfDiagramComponent>
 </div>
-@code {
+
+@code
+{
     //Reference for diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Defines diagram's connector collection.
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 700, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 1000, Y = 400 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint() { X = 700, Y = 200 },
-                TargetPoint = new DiagramPoint() { X = 1000, Y = 400 },
-                Segments = new DiagramObjectCollection<ConnectorSegment>()
-                {
-                    new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 750, Y = 250}},
-                    new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 900, Y = 350}}
-                },
-                Type = ConnectorSegmentType.Bezier,
-                BezierConnectorSettings = new BezierConnectorSettings() 
-                {
-                    //Defines the visibility of the control points
-                    ControlPointsVisibility = ControlPointsVisibility.Intermediate 
-                },
-            };
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 750, Y = 250}},
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 900, Y = 350}}
+            },
+            Type = ConnectorSegmentType.Bezier,
+            BezierConnectorSettings = new BezierConnectorSettings() 
+            {
+                //Defines the visibility of the control points
+                ControlPointsVisibility = ControlPointsVisibility.Intermediate 
+            },
+        };
         connectors.Add(connector1);
     }
 

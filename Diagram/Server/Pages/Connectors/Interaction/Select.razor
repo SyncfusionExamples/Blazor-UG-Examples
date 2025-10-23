@@ -7,56 +7,60 @@
 <SfButton Content="Select" OnClick="@OnSelect" />
 <SfButton Content="UnSelect" OnClick="@UnSelect" />
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors">
-</SfDiagramComponent>
-@code {
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors" />
+
+@code
+{
     //Reference the diagram
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Intialize the diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
         Dictionary<string, object> ConnectorInfo = new Dictionary<string, object>();
         ConnectorInfo.Add("connectorInfo", "Central Connector");
         Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint()
-                {
-                    X = 100,
-                    Y = 100
-                },
-                TargetPoint = new DiagramPoint()
-                {
-                    X = 200,
-                    Y = 200
-                },
-                Type = ConnectorSegmentType.Orthogonal,
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "#6495ED",
-                        StrokeColor = "#6495ED",
-                        StrokeWidth = 1
-                    }
-                },
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
                 Style = new ShapeStyle()
                 {
+                    Fill = "#6495ED",
                     StrokeColor = "#6495ED",
                     StrokeWidth = 1
-                },
-                AdditionalInfo = ConnectorInfo
-            };
+                }
+            },
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "#6495ED",
+                StrokeWidth = 1
+            },
+            AdditionalInfo = ConnectorInfo
+        };
         connectors.Add(Connector);
     }
-    public void OnSelect()
+
+    private void OnSelect()
     {
         // Select the Connector
         Diagram.Select(new ObservableCollection<IDiagramObject> { Diagram.GetObject(Diagram.Connectors[0].ID) as IDiagramObject });
     }
-    public void UnSelect()
+
+    private void UnSelect()
     {
         // clear selection in the diagram
         Diagram.ClearSelection();

@@ -5,7 +5,8 @@
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
-@code {
+@code
+{
     private SfDiagramComponent Diagram;
     private UmlSequenceDiagramModel DiagramModel;
 
@@ -31,8 +32,8 @@
 
         // Initialize the UML sequence diagram model
         DiagramModel = new UmlSequenceDiagramModel()
-            {
-                Participants = participants
-            };
+        {
+            Participants = participants
+        };
     }
 }

@@ -6,19 +6,19 @@
 
 @code
 {
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
-            {
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                FixedUserHandles = new DiagramObjectCollection<NodeFixedUserHandle>()
+        {
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            FixedUserHandles = new DiagramObjectCollection<NodeFixedUserHandle>()
             {
                 new NodeFixedUserHandle()
                 {
@@ -32,7 +32,7 @@
                     Tooltip = new DiagramTooltip(){ Content = "CloneNode", IsSticky = true },
                 },
             }
-            };
+        };
         nodes.Add(node1);
     }
 }

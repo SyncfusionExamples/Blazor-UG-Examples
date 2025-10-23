@@ -28,7 +28,7 @@
 @code
 {
     //Define diagram's swimlane collection.
-    DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
@@ -60,6 +60,7 @@
         // Add swimlane.
         SwimlaneCollections.Add(swimlane);
     }
+
     private void OnNodeCreating(IDiagramObject obj)
     {
         if (obj is Swimlane swimlane)

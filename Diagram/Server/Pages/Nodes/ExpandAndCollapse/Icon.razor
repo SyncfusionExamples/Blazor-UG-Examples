@@ -7,84 +7,84 @@
 @code
 {
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 100,
+            OffsetX = 300,
+            OffsetY = 300,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                Width = 100,
-                Height = 100,
-                OffsetX = 300,
-                OffsetY = 300,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white"
-                },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation()
                 {
                     Content="Node1"
                 }
             },
-                ExpandIcon = new DiagramExpandIcon()
-                {
-                    Shape = DiagramExpandIcons.Minus,
-                    Height = 20,
-                    Width = 20,
-                },
-                CollapseIcon = new DiagramCollapseIcon()
-                {
-                    Shape = DiagramCollapseIcons.Plus,
-                    Height = 20,
-                    Width = 20,
-                },
-            };
+            ExpandIcon = new DiagramExpandIcon()
+            {
+                Shape = DiagramExpandIcons.Minus,
+                Height = 20,
+                Width = 20,
+            },
+            CollapseIcon = new DiagramCollapseIcon()
+            {
+                Shape = DiagramCollapseIcons.Plus,
+                Height = 20,
+                Width = 20,
+            },
+        };
         nodes.Add(node1);
         Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 100,
+            Height = 100,
+            OffsetX = 300,
+            OffsetY = 500,
+            Style = new ShapeStyle()
             {
-                ID = "node2",
-                Width = 100,
-                Height = 100,
-                OffsetX = 300,
-                OffsetY = 500,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white"
-                },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation()
                 {
                     Content="Node2"
                 }
             },
-                ExpandIcon = new DiagramExpandIcon()
-                {
-                    Shape = DiagramExpandIcons.Minus,
-                    Height = 20,
-                    Width = 20,
-                },
-                CollapseIcon = new DiagramCollapseIcon()
-                {
-                    Shape = DiagramCollapseIcons.Plus,
-                    Height = 20,
-                    Width = 20,
-                },
-            };
+            ExpandIcon = new DiagramExpandIcon()
+            {
+                Shape = DiagramExpandIcons.Minus,
+                Height = 20,
+                Width = 20,
+            },
+            CollapseIcon = new DiagramCollapseIcon()
+            {
+                Shape = DiagramCollapseIcons.Plus,
+                Height = 20,
+                Width = 20,
+            },
+        };
         nodes.Add(node2);
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourceID = "node1",
-                TargetID = "node2",
-            };
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+        };
         connectors.Add(connector1);
     }
 }

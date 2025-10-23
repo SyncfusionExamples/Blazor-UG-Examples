@@ -2,15 +2,12 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" 
-                    Nodes="@nodes" 
-                    SelectionChanging="OnSelectionChanging"
-                    SelectionChanged="OnSelectionChanged" />
+<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionChanging="OnSelectionChanging" SelectionChanged="OnSelectionChanged" />
 
 @code
 {
     // To define node collection.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
@@ -36,14 +33,14 @@
     }
 
     // Event to notify the selection changing event before selecting/unselecting the diagram elements.
-    public void OnSelectionChanging(SelectionChangingEventArgs args)
+    private void OnSelectionChanging(SelectionChangingEventArgs args)
     {
         // Sets true to cancel the selection.
         args.Cancel = true;
     }
 
     // Event to notify the selection changed event after selecting/unselecting the diagram elements.
-    public void OnSelectionChanged(SelectionChangedEventArgs args)
+    private void OnSelectionChanged(SelectionChangedEventArgs args)
     {
         // Action to be performed.
     }

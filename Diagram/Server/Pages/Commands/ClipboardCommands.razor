@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Cut" OnClick="@OnCut" />
 <SfButton Content="Copy" OnClick="@OnCopy" />
 <SfButton Content="Paste" OnClick="@OnPaste" />
@@ -14,51 +13,54 @@
 @code
 {
     //Reference to diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     // Initialize diagram's node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
    
-
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 50,
-                Height = 30,
-                OffsetX = 500,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
-            };
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 30,
+            OffsetX = 500,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
         nodes.Add(node1);
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 60,
-                Height = 40,
-                OffsetX = 400,
-                OffsetY = 200,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
-            };
+        {
+            ID = "node2",
+            Width = 60,
+            Height = 40,
+            OffsetX = 400,
+            OffsetY = 200,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
         nodes.Add(node2);
     }
+
     //Method to remove selected nodes/connectors and move them to clipborad.
     private void OnCut()
     {
         diagram.Cut();
     }
+
     //Method to copies selected nodes/connectors  to the clipborad.
     private void OnCopy()
     {
         diagram.Copy();
     }
+
     //Method to adds the given objects in the diagram clipboard to the diagram control.
     private void OnPaste()
     {
         diagram.Paste();
     }
+
     //Method to adds the given objects in the parameter to the diagram control.
     private void PasteWithArgument()
     {

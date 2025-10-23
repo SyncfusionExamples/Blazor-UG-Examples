@@ -7,15 +7,14 @@
     </Layout>
 </SfDiagramComponent>
 
-@code {
-
+@code
+{
     //Defines diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     //Defines diagram's node collection
-    DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-
-    int HorizontalSpacing = 40;
-    int VerticalSpacing = 40;
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private int HorizontalSpacing = 40;
+    private int VerticalSpacing = 40;
 
     private void OnNodeCreating(IDiagramObject obj)
     {
@@ -24,7 +23,7 @@
         node.Width = 100;
         //Initializing the default node's shape style
         node.Style = new ShapeStyle() { Fill = "darkcyan", StrokeWidth = 3, StrokeColor = "Black" };
-       node.Annotations[0].Style = new TextStyle() { Color = "white", Bold = true };
+        node.Annotations[0].Style = new TextStyle() { Color = "white", Bold = true };
     }
 
     private void OnConnectorCreating(IDiagramObject connector)

@@ -7,9 +7,9 @@
 @code
 {
     //Reference to diagram.
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Enable the multiple tools.
-    public DiagramInteractions tool = DiagramInteractions.DrawOnce | DiagramInteractions.ZoomPan;
+    private DiagramInteractions tool = DiagramInteractions.DrawOnce | DiagramInteractions.ZoomPan;
     //Defines diagram's connectors collection.
-    public DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 }

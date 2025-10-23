@@ -7,16 +7,16 @@
     <DiagramTemplates>
         <TooltipTemplate>
             @{
-                    if (context is Connector)
-                    {
-                        <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
-                    }
+                if (context is Connector)
+                {
+                    <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
                 }
-            </TooltipTemplate>
-        </DiagramTemplates>
-    </SfDiagramComponent>
-    @code
-    {
+             }
+        </TooltipTemplate>
+    </DiagramTemplates>
+</SfDiagramComponent>
+@code
+{
     //Define diagram's connectors collection
     DiagramObjectCollection<Connector> connector;
 
@@ -26,13 +26,13 @@
 
         connector = new DiagramObjectCollection<Connector>();
         Connector connectors = new Connector()
-            {
-                ID = "Connector1",
-                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
-                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
-                Tooltip = new DiagramTooltip(),
-                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
-            };
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+            TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+            Tooltip = new DiagramTooltip(),
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
         connector.Add(connectors);
     }
 }

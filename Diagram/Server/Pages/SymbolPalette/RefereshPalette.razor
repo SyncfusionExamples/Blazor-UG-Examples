@@ -17,18 +17,18 @@
 
 @code
 {
-    SymbolMargin SymbolMargin = new SymbolMargin
-        {
-            Left = 15,
-            Right = 15,
-            Top = 15,
-            Bottom = 15
-        };
-    SfSymbolPaletteComponent SymbolPalette;
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    private SfSymbolPaletteComponent SymbolPalette;
     //Define palettes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection.
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -47,11 +47,11 @@
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
-            {
-                ID = id,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = id,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
     }
 
@@ -63,6 +63,7 @@
         SymbolInfo.Description = new SymbolDescription() { Text = text };
         return SymbolInfo;
     }
+
     private void RefreshSymbols()
     {
         SymbolPalette.RefreshSymbols();

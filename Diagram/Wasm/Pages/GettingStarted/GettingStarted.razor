@@ -7,12 +7,12 @@
 
 @code
 {
-    SfDiagramComponent diagram;
-    int connectorCount = 0;
+    private SfDiagramComponent diagram;
+    private int connectorCount = 0;
     //Defines Diagram's nodes collection.
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
     //Defines Diagram's connectors collection.
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -93,7 +93,7 @@
     private void CreateNode(string id, double x, double y, NodeFlowShapes shape, string label)
     {
         Node diagramNode = new Node()
-            {
+        {
                 //Represents the unique id of the node.
                 ID = id,
                 // Defines the position of the node.
@@ -108,18 +108,18 @@
                 Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = shape },
                 // Defines the annotation collection of the node.
                 Annotations = new DiagramObjectCollection<ShapeAnnotation>
-            {
-                new ShapeAnnotation
                 {
-                    Content = label,
-                    Style = new TextStyle()
+                    new ShapeAnnotation
                     {
-                        Color="White",
-                        Fill = "transparent"
+                        Content = label,
+                        Style = new TextStyle()
+                        {
+                            Color="White",
+                            Fill = "transparent"
+                        }
                     }
                 }
-            }
-            };
+        };
         nodes.Add(diagramNode);
     }
 }

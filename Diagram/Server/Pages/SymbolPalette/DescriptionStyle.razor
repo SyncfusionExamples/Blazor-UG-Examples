@@ -15,11 +15,11 @@
 
 @code
 {
-    SfSymbolPaletteComponent SymbolPalette;
+    private SfSymbolPaletteComponent SymbolPalette;
     //Define palettes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's basic-shape collection.
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -40,11 +40,11 @@
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
-            {
-                ID = id,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = id,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
     }
 
@@ -55,7 +55,8 @@
         text = (symbol as NodeBase).ID;
         SymbolInfo.Width = 75;
         SymbolInfo.Height = 40;
-        SymbolInfo.Description = new SymbolDescription() { 
+        SymbolInfo.Description = new SymbolDescription() 
+        { 
             Text = text,
             // Customize the style of the symbol description
             Style = new TextStyle() 

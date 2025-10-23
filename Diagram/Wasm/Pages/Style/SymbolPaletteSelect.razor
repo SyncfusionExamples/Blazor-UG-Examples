@@ -1,7 +1,6 @@
 ﻿@page "/SymbolPaletteSelect"
 
 @using Syncfusion.Blazor.Diagram
-
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 
@@ -14,29 +13,31 @@
         </div>
     </div>
 </div>
+
 <style>
     .e-symbolpalette .e-symbol-selected {
         background:blue;
     }
 </style>
+
 @code
 {
-    SymbolMargin SymbolMargin = new SymbolMargin
-        {
-            Left = 15,
-            Right = 15,
-            Top = 15,
-            Bottom = 15
-        };
-    SfSymbolPaletteComponent SymbolPalette;
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    private SfSymbolPaletteComponent SymbolPalette;
     //Define palettes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection.
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
     // Defines palette's group collection.
-    DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
     // Defines palette's connector collection.
-    DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -59,61 +60,61 @@
     private void CreatePaletteNode(NodeFlowShapes flowShape, string id)
     {
         Node node = new Node()
-            {
-                ID = id,
-                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = flowShape },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = id,
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = flowShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
     }
 
     private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
     {
         Connector connector = new Connector()
+        {
+            ID = id,
+            Type = type,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 60, Y = 60 },
+            Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#757575" },
+            TargetDecorator = new DecoratorSettings()
             {
-                ID = id,
-                Type = type,
-                SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
-                TargetPoint = new DiagramPoint() { X = 60, Y = 60 },
-                Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#757575" },
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = decoratorShape,
-                    Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }
-                }
-            };
+                Shape = decoratorShape,
+                Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }
+            }
+        };
         PaletteConnectors.Add(connector);
     }
 
     private void CreatePaletteGroup()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 50,
-                Height = 50,
-                OffsetX = 100,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ed" },
-            };
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 50,
-                Height = 50,
-                OffsetX = 100,
-                OffsetY = 200,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
-                Style = new ShapeStyle() { Fill = "#6495ed" },
-            };
+        {
+            ID = "node2",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 200,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
         PaletteGroup.Add(node1);
         PaletteGroup.Add(node2);
         NodeGroup group = new NodeGroup()
-            {
-                ID = "group1",
-                Children = new string[] { "node1", "node2" }
-            };
+        {
+            ID = "group1",
+            Children = new string[] { "node1", "node2" }
+        };
         PaletteGroup.Add(group);
     }
 }

@@ -8,23 +8,23 @@
 @code
 {
     
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         //Intialize the node collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "node1",
-                Height = 100,
-                Width = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "White" },
-                //Sets the NodeConstraints constraints.
-                Constraints = NodeConstraints.Default & ~NodeConstraints.Rotate
-            };
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "White" },
+            //Sets the NodeConstraints constraints.
+            Constraints = NodeConstraints.Default & ~NodeConstraints.Rotate
+        };
         nodes.Add(node);
     }
 }

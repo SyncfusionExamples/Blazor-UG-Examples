@@ -10,23 +10,24 @@
 
 @functions
 {
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
 
-    SfDiagramComponent diagram;
-    public DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
     protected override void OnInitialized()
     {
         Connector connector1 = new Connector() { ID = "connector1", SourcePoint = new DiagramPoint() { X = 100, Y = 10 }, TargetPoint = new DiagramPoint() { X = 200, Y = 100 }, Type = ConnectorSegmentType.Straight };
         Connectors.Add(connector1);
     }
-    public async Task CloneConnectors()
+
+    private async Task CloneConnectors()
     {
         Connector connector = Connectors[0].Clone() as Connector;
         connector.ID = RandomId();
         connector.SourcePoint = new DiagramPoint { X = 100, Y = 100 };
         connector.TargetPoint = new DiagramPoint { X = 200, Y = 100 };
         await diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { connector });
-
     }
+
     internal string RandomId()
     {
         Random random = new Random();
@@ -36,5 +37,4 @@
           .Select(s => s[random.Next(s.Length)]).ToArray());
 #pragma warning restore CA5394 // Do not use insecure randomness
     }
-
 }

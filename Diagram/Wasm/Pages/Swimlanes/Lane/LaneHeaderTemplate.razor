@@ -48,19 +48,24 @@
             Height = 120,
             Width = 450,
             Lanes = new DiagramObjectCollection<Lane>()
-        {
-                new Lane(){Height = 100,
-                Header = new SwimlaneHeader(){
-                    Width = 30,
-                    Style = new TextStyle(){ Fill = "Teal"},
-                    Annotation = new ShapeAnnotation(){
-                        ID="Lane 1",
-                        Content = "Lane 1",
-                        UseTemplate = true,
-                        Height = 50,
-                        Width = 75,
-                    },
-                } },
+            {
+                new Lane()
+                {
+                    Height = 100,
+                    Header = new SwimlaneHeader()
+                    {
+                        Width = 30,
+                        Style = new TextStyle(){ Fill = "Teal"},
+                        Annotation = new ShapeAnnotation()
+                        {
+                            ID="Lane 1",
+                            Content = "Lane 1",
+                            UseTemplate = true,
+                            Height = 50,
+                            Width = 75,
+                        },
+                    } 
+                },
             }
         };
         // Add swimlane.
@@ -72,10 +77,10 @@
         if (obj is Swimlane swimlane)
         {
             swimlane.Header.Style = new TextStyle()
-                {
-                    Fill = "#5b9bd5",
-                    StrokeColor = "#5b9bd5"
-                };
+            {
+                Fill = "#5b9bd5",
+                StrokeColor = "#5b9bd5"
+            };
             foreach (Phase phase in swimlane.Phases)
             {
                 phase.Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };

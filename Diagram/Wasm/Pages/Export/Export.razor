@@ -4,11 +4,11 @@
 
 <SfButton Content="ExportBase64" OnClick="@ExportBase64" />
 <SfButton Content="ExportPng" OnClick="@ExportPng" />
-<SfDiagramComponent Height="600px" @ref="@diagram">
-</SfDiagramComponent>
+<SfDiagramComponent Height="600px" @ref="@diagram" />
 
-@code {
-    SfDiagramComponent diagram;
+@code
+{
+    private SfDiagramComponent diagram;
 
     //To export the diagram as base64 string.
     private async Task ExportBase64()

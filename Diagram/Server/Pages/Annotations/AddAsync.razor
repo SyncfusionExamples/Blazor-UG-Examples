@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Addlabel" OnClick="@AddLabel" />
 <SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes">
 </SfDiagramComponent>
@@ -11,28 +10,27 @@
 @code
 {
     // Reference to diagram
-    SfDiagramComponent diagram;
-
+    private SfDiagramComponent diagram;
     // Defines diagram's node collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
 	// Intialize diagram's node collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                Width = 100,
-                Height = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-            };
+        {
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+        };
         nodes.Add(node);
     }
 
     // Method to add labels at runtime
-    public async void AddLabel()
+    private async void AddLabel()
     {
         ShapeAnnotation annotation = new ShapeAnnotation { Content = "Annotation" };
         await (diagram.Nodes[0].Annotations as DiagramObjectCollection<ShapeAnnotation>).AddAsync(annotation);

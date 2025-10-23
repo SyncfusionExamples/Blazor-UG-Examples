@@ -8,61 +8,61 @@
 
 @code
 {
-    public SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "node1",
+            Height = 60,
+            Width = 100,
+            OffsetX = 400,
+            OffsetY = 300,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                Height = 60,
-                Width = 100,
-                OffsetX = 400,
-                OffsetY = 300,
-                Style = new ShapeStyle()
-                {
-                    Fill = "CornflowerBlue", 
-                    StrokeColor = "transparent"
-                }
-            };
+                Fill = "CornflowerBlue", 
+                StrokeColor = "transparent"
+            }
+        };
         Node node2 = new Node()
+        {
+            ID = "node2",
+            Height = 60,
+            Width = 100,
+            OffsetX = 600,
+            OffsetY = 300,
+            Style = new ShapeStyle()
             {
-                ID = "node2",
-                Height = 60,
-                Width = 100,
-                OffsetX = 600,
-                OffsetY = 300,
-                Style = new ShapeStyle()
-                {
-                    Fill = "CornflowerBlue",
-                    StrokeColor = "transparent"
-                }
-            };
+                Fill = "CornflowerBlue",
+                StrokeColor = "transparent"
+            }
+        };
         Container container = new Container()
+        {
+            ID = "container",
+            Header = new ContainerHeader()
             {
-                ID = "container",
-                Header = new ContainerHeader()
+                ID = "containerHeader",
+                Height = 40,
+                Annotation = new ShapeAnnotation()
                 {
-                    ID = "containerHeader",
-                    Height = 40,
-                    Annotation = new ShapeAnnotation()
-                    {
-                        Content = "Container Title",
-                        Style = new TextStyle() { FontSize = 18, Bold = true, Color = "#343434" }
-                    },
-                    Style = new TextStyle()
-                    {
-                        Fill = "CornflowerBlue"
-                    }
+                    Content = "Container Title",
+                    Style = new TextStyle() { FontSize = 18, Bold = true, Color = "#343434" }
                 },
-                Height = 300,
-                Width = 500,
-                OffsetX = 500,
-                OffsetY = 300,
-                Children = new string[] { "node1", "node2" }
-            };
+                Style = new TextStyle()
+                {
+                    Fill = "CornflowerBlue"
+                }
+            },
+            Height = 300,
+            Width = 500,
+            OffsetX = 500,
+            OffsetY = 300,
+            Children = new string[] { "node1", "node2" }
+        };
         nodes.Add(node1);
         nodes.Add(node2);
         nodes.Add(container);

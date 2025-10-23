@@ -5,54 +5,54 @@
 @inject IJSRuntime js
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="CloneGroup" OnClick="@CloneGroup" />
 <SfDiagramComponent @ref="diagram" Width="50%" Height="500px" @bind-Nodes="NodeCollection"></SfDiagramComponent>
 
 @functions
 {
 
-    SfDiagramComponent diagram;
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                OffsetX = 100,
-                OffsetY = 150,
-                Height = 100,
-                Width = 100,
-                ID = "node1",
-
-            };
+        {
+            OffsetX = 100,
+            OffsetY = 150,
+            Height = 100,
+            Width = 100,
+            ID = "node1",
+        };
         NodeCollection.Add(node1);
+
         Node node2 = new Node()
-            {
-                OffsetX = 400,
-                OffsetY = 200,
-                Height = 100,
-                Width = 100,
-                ID = "node2",
-               
-            };
+        {
+            OffsetX = 400,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node2",      
+        };
         NodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
+        {
+            ID = "group1",
+            Children = new string[] { "node1", "node2" },
+            OffsetX = 300,
+            OffsetY = 300,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "group1",
-                Children = new string[] { "node1", "node2" },
-                OffsetX = 300,
-                OffsetY = 300,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                        {
-                            new ShapeAnnotation()
-                            {
-                            Content = "Group1"
-                            }
-                        },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "Group1"
+                }
+            },
+        };
         NodeCollection.Add(group1);
     }
-    public async Task CloneGroup()
+
+    private async Task CloneGroup()
     {
         Node node2 = NodeCollection[0].Clone() as Node;
         node2.ID = RandomId();

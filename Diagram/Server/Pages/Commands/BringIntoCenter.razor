@@ -4,24 +4,33 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="BringIntoCenter" OnClick="@BringIntoCenter1" />
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes">
-    
+<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes"> 
 </SfDiagramComponent>
+
 @code
 {
-    SfDiagramComponent diagram;
-    DiagramObjectCollection<Node> nodes;
-    DiagramObjectCollection<Connector> connectors;
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Connector> connectors;
+
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>()
         {
-        new Node { ID = "node1", Width = 150, Height = 100, OffsetX = 1100, OffsetY = 900,
-        Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-        {
-            new ShapeAnnotation() { Content = "Node1" } } },
+            new Node 
+            { 
+                ID = "node1", Width = 150, Height = 100, OffsetX = 1100, OffsetY = 900,
+                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                {
+                    new ShapeAnnotation()
+                    { 
+                        Content = "Node1" 
+                    } 
+                } 
+            },
         };
     }
+
     //Brings the specified bounds into the center of the view port of the diagram
     private void BringIntoCenter1()
     {

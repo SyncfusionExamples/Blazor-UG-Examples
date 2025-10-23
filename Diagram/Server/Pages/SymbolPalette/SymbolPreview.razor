@@ -146,29 +146,28 @@
     </div>
 </div>
 
-@code {
+@code
+{
     //Define symbolpreview
-    DiagramSize Preview;
+    private DiagramSize Preview;
     //Define SymbolMargin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Reference the symbol palette
-    SfSymbolPaletteComponent symbolpalette;
-
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-
+    private SfSymbolPaletteComponent symbolpalette;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
         InitPaletteModel();
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         symbolpalette.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
@@ -193,11 +192,11 @@
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
-            {
-                ID = id,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = id,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
     }
 

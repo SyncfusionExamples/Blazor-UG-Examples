@@ -14,21 +14,20 @@
     </div>
 </div>
 
-@code {
+@code
+{
     //Define symbolpreview
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define symbolmargin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-    double symbolwidth = 60;
-    double symbolheight = 60;
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private double symbolwidth = 60;
+    private double symbolheight = 60;
     //Reference the symbolpalette
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -38,29 +37,29 @@
     private void InitPaletteModel()
     {
         Node node1 = new Node()
-            {
-                ID = "Rectangle",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = "Rectangle",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         Node node2 = new Node()
-            {
-                ID = "Ellipse",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = "Ellipse",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         Node node3 = new Node()
-            {
-                ID = "Diamond",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Diamond },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = "Diamond",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Diamond },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node1);
         PaletteNodes.Add(node2);
         PaletteNodes.Add(node3);
 
         Palettes = new DiagramObjectCollection<Palette>()
-    {
+        {
            new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
         };
     }

@@ -1,31 +1,34 @@
 ﻿@page "/DiagramSizeEvent"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection"
-                    SizeChanging="OnSizeChanging"
-                    SizeChanged="OnSizeChanged">
+<SfDiagramComponent Height="600px" Nodes="@NodeCollection" SizeChanging="OnSizeChanging" SizeChanged="OnSizeChanged">
 </SfDiagramComponent>
-@code {
+
+@code
+{
     //Initailize the diagram's nodes collection
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    
     protected override void OnInitialized()
     {
         Node node = new Node()
-            {
-                OffsetX = 100,
-                OffsetY = 200,
-                Height = 100,
-                Width = 100,
-                ID = "node",
-            };
+        {
+            OffsetX = 100,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node",
+        };
         NodeCollection.Add(node);
     }
+
     //Event to notify while resizing the elements in the diagram.
     private void OnSizeChanging(SizeChangingEventArgs args)
     {
         //sets true to cancel the element's resizing
         args.Cancel = true;
     }
+
     //Event to notify once element's size has changed in the diagram'.
     private void OnSizeChanged(SizeChangedEventArgs args)
     {

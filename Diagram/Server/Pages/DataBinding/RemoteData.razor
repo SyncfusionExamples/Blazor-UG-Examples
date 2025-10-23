@@ -18,16 +18,19 @@
 
 @code
 {
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     private float x = 100;
     private float y = 100;
+    
     public class Employee
     {
         public int? EmployeeID { get; set; }
         public string FirstName { get; set; }
         public int? ReportsTo { get; set; }
     }
+
     private Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
+    
     private void OnNodeCreating(IDiagramObject obj)
     {
         Node node = obj as Node;
@@ -81,6 +84,7 @@
             node.Style.Fill = "#8E4DB4";
         }
     }
+
     private void OnConnectorCreating(IDiagramObject obj)
     {
         Connector connector = obj as Connector;
@@ -90,6 +94,7 @@
         connector.SourceDecorator.Shape = DecoratorShape.None;
         connector.Style = new ShapeStyle() { StrokeColor = "#3A4857", Fill = "#3A4857", StrokeWidth = 1, StrokeDashArray = "3,3" };
     }
+
     private CommonElement SetTemplate(IDiagramObject node)
     {
         return null;

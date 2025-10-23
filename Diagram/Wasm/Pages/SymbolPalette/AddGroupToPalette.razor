@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 
-
 <div class="control-section">
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
@@ -14,24 +13,22 @@
     </div>
 </div>
 
-@code {
+@code 
+{
     //Define symbol margin
-    SymbolMargin SymbolMargin = new SymbolMargin
-        {
-            Left = 15,
-            Right = 15,
-            Top = 15,
-            Bottom = 15
-        };
-
-        //Reference the symbol palette
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    //Reference the symbol palette
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's group collection
-    DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -47,37 +44,38 @@
              new Palette(){Symbols=PaletteGroup,Title="Group Shapes",IsExpanded=true}
         };
     }
+
     //Method to create palette group.
     private void CreatePaletteGroup()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 50,
-                Height = 50,
-                OffsetX = 100,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ed" },
-            };
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 50,
-                Height = 50,
-                OffsetX = 100,
-                OffsetY = 200,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
-                Style = new ShapeStyle() { Fill = "#6495ed" },
-            };
+        {
+            ID = "node2",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 200,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
         PaletteGroup.Add(node1);
         PaletteGroup.Add(node2);
 
         NodeGroup group = new NodeGroup()
-            {
-                ID = "group1",
-                Children = new string[] { "node1", "node2" }
-            };
+        {
+            ID = "group1",
+            Children = new string[] { "node1", "node2" }
+        };
         PaletteGroup.Add(group);
     }
 }

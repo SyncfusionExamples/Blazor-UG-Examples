@@ -7,11 +7,12 @@
 <SfDiagramComponent Height="600px" Width="90%" Swimlanes="@swimlaneCollections">
 </SfDiagramComponent>
 
-@code {
+@code
+{
     /// <summary>
     /// Collection of swimlanes used in the SfDiagramComponent.
     /// </summary>
-    DiagramObjectCollection<Swimlane> swimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> swimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     /// <summary>
     /// Initializes the swimlane, phases, lanes, and child nodes for the diagram.
@@ -20,23 +21,23 @@
     {
         // Define the first node
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Height = 100,
-                Width = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-            };
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
 
         // Define the second node
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Height = 100,
-                Width = 100,
-                OffsetX = 300,
-                OffsetY = 100,
-            };
+        {
+            ID = "node2",
+            Height = 100,
+            Width = 100,
+            OffsetX = 300,
+            OffsetY = 100,
+        };
 
         // Create swimlane structure
         swimlaneCollections = new DiagramObjectCollection<Swimlane>()
@@ -73,7 +74,6 @@
 
                 Lanes = new DiagramObjectCollection<Lane>()
                 {
-                    
                     new Lane()
                     {
                         Header = new SwimlaneHeader()
@@ -92,7 +92,6 @@
                         }
                     }
                 },
-
                 ChildrenSpacing = new DiagramThickness()
                 {
                     Bottom = 10,

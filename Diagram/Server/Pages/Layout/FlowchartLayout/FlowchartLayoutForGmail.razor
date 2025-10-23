@@ -10,25 +10,27 @@
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
-@code {
+@code
+{
     FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
-        {
-            //Set the decision yes branch direction
-            YesBranchDirection = BranchDirection.LeftInFlow,
-            //Set the decision no branch direction
-            NoBranchDirection = BranchDirection.RightInFlow,
-            //Set the custom yes branch values
-            YesBranchValues = new List<string> { "Yes", "Existing" },
-            //Set the custom no branch values
-            NoBranchValues = new List<string> { "No", "New" },
-        };
-    public SfDiagramComponent Diagram;
-    public int? HValue { get; set; } = 60;
-    public int? VValue { get; set; } = 40;
-    public LayoutType Type = LayoutType.Flowchart;
-    public LayoutOrientation OrientationType = LayoutOrientation.TopToBottom;
-    public int HorizontalSpacing = 50;
-    public int VerticalSpacing = 50;
+    {
+        //Set the decision yes branch direction
+        YesBranchDirection = BranchDirection.LeftInFlow,
+        //Set the decision no branch direction
+        NoBranchDirection = BranchDirection.RightInFlow,
+        //Set the custom yes branch values
+        YesBranchValues = new List<string> { "Yes", "Existing" },
+        //Set the custom no branch values
+        NoBranchValues = new List<string> { "No", "New" },
+    };
+    private SfDiagramComponent Diagram;
+    private int? HValue { get; set; } = 60;
+    private int? VValue { get; set; } = 40;
+    private LayoutType Type = LayoutType.Flowchart;
+    private LayoutOrientation OrientationType = LayoutOrientation.TopToBottom;
+    private int HorizontalSpacing = 50;
+    private int VerticalSpacing = 50;
+    
     private void OnDataLoaded(object obj)
     {
         for (int i = 0; i < Diagram.Connectors.Count; i++)
@@ -55,6 +57,7 @@
             }
         }
     }
+
     private void OnConnectorCreating(IDiagramObject obj)
     {
         if (obj is Connector connector)
@@ -62,6 +65,7 @@
             connector.Type = ConnectorSegmentType.Orthogonal;
         }
     }
+
     private void OnNodeCreating(IDiagramObject obj)
     {
         Node node = obj as Node;
@@ -88,6 +92,7 @@
             };
         }
     }
+
     public List<NodeInfo> DataSource = new List<NodeInfo>()
     {
         new NodeInfo() { Id = "1", Description = "Start", Shape = "StartOrEnd", Width = 100, Height = 30, Color = "#8E44CC" },
@@ -105,6 +110,7 @@
         new NodeInfo() { Id = "13", Description = "Open inbox", ParentId = new List<string> { "8", "12" }, Shape = "Process", Width = 120, Height = 50, Color = "#1759B7" },
         new NodeInfo() { Id = "14", Description = "End", ParentId = new List<string> { "13" }, Shape = "StartOrEnd", Width = 100, Height = 30, Color = "#8E44CC" },
     };
+
     public class NodeInfo
     {
         public string Id { get; set; }

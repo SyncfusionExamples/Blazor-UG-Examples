@@ -1,33 +1,33 @@
 ﻿@page "/AdditionalInfoProperty"
 
 @using Syncfusion.Blazor.Diagram
+
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
+
 @code
 {
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
-
         // Create a dictionary to store additional information for the annotation.
         Dictionary<string, object> AnnotationInfo = new Dictionary<string, object>();
         AnnotationInfo.Add("author", "John Doe");
         AnnotationInfo.Add("modifiedDate", DateTime.Now);
-
         // A node with an annotation containing additional information.
         Node node = new Node()
+        {
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white"
-                },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation
                 {
@@ -35,8 +35,7 @@
                     AdditionalInfo = AnnotationInfo
                 }
             }
-            };
-
+        };
         // Add the node to the collection.
         nodes.Add(node);
     }

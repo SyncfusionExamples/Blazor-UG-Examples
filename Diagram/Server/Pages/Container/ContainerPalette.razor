@@ -15,13 +15,13 @@
 
 @code
 {
-    SfSymbolPaletteComponent symbolpalette;
+    private SfSymbolPaletteComponent symbolpalette;
     //Define symbol margin.
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
     //Define palattes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's container-shape collection.
-    DiagramObjectCollection<NodeBase> ContainerNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> ContainerNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -36,37 +36,37 @@
 
         // Create container with header
         Container container = new Container()
+        {
+            ID = "containerWithHeader",
+            Header = new ContainerHeader()
             {
-                ID = "containerWithHeader",
-                Header = new ContainerHeader()
+                ID = "containerHeader",
+                Height = 50,
+                Annotation = new ShapeAnnotation()
                 {
-                    ID = "containerHeader",
-                    Height = 50,
-                    Annotation = new ShapeAnnotation()
-                    {
-                        Content = "Container Title"
-                    },
-                    Style = new TextStyle()
-                    {
-                        Fill = "CornflowerBlue"
-                    }
+                    Content = "Container Title"
                 },
-                Height = 300,
-                Width = 300,
-                OffsetX = 100,
-                OffsetY = 100,
-            };
+                Style = new TextStyle()
+                {
+                    Fill = "CornflowerBlue"
+                }
+            },
+            Height = 300,
+            Width = 300,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
 
         // Create container without header.
         Container containerWithoutHeader = new Container()
-            {
-                ID = "containerWithoutHeader",
-                Height = 300,
-                Width = 300,
-                OffsetX = 100,
-                OffsetY = 100,
-                Style = new ShapeStyle() { Fill = "CornflowerBlue" }
-            };
+        {
+            ID = "containerWithoutHeader",
+            Height = 300,
+            Width = 300,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "CornflowerBlue" }
+        };
 
         ContainerNodes = new DiagramObjectCollection<NodeBase>()
         {

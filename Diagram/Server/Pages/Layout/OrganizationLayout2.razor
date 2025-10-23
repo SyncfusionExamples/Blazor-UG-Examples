@@ -18,8 +18,8 @@
 @code
 {
     //Initializing layout.
-    int HorizontalSpacing = 40;
-    int VerticalSpacing = 50;
+    private int HorizontalSpacing = 40;
+    private int VerticalSpacing = 50;
 
     //To configure every subtree of the organizational chart.
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
@@ -57,6 +57,7 @@
         public string Team { get; set; }
         public string Role { get; set; }
     }
+
     public object DataSource = new List<object>()
     {
         new OrgChartDataModel() { Id= "1", Role= "General Manager" },

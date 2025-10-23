@@ -9,13 +9,14 @@
     </ScrollSettings>
 </SfDiagramComponent>
 
-@code {
+@code
+{
     //Define horizontaloffset value
-    public double horizontalOffset { get; set; } = 100;
+    private double horizontalOffset { get; set; } = 100;
     //Define verticalOffset value
-    public double verticalOffset { get; set; } = 100;
+    private double verticalOffset { get; set; } = 100;
     //Update scrollvalues
-    public void updateScrollValues()
+    private void updateScrollValues()
     {
         //Update scroll settings.
         verticalOffset = 400;

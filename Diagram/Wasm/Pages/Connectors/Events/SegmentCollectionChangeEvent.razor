@@ -2,37 +2,35 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" 
-                    Connectors="@connectors" 
-                    SegmentCollectionChange="SegmentCollectionChange" />
+<SfDiagramComponent Height="600px" Connectors="@connectors" SegmentCollectionChange="SegmentCollectionChange" />
 
 @code
 {
     // Define the connector collection.
-    DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> connectors;
 
     protected override void OnInitialized()
     {
         connectors = new DiagramObjectCollection<Connector>();
         //A connector is created and stored in the connectors collection.
         Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint()
-                {
-                    X = 200,
-                    Y = 200
-                },
-                TargetPoint = new DiagramPoint()
-                {
-                    X = 300,
-                    Y = 400,
-                }
-            };
+                X = 200,
+                Y = 200
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 400,
+            }
+        };
         connectors.Add(Connector);
     }
 
-    public void SegmentCollectionChange(SegmentCollectionChangeEventArgs args)
+    private void SegmentCollectionChange(SegmentCollectionChangeEventArgs args)
     {
 
     }

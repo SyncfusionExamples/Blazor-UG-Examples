@@ -7,28 +7,28 @@
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node = new Node()
-            {
-                // Position of the node
-                OffsetX = 250,
-                OffsetY = 250,
-                // Size of the node
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                // Initialize port collection
-                Ports = new DiagramObjectCollection<PointPort>()
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            // Initialize port collection
+            Ports = new DiagramObjectCollection<PointPort>()
             {
                 new PointPort()
                 {
                     ID = "port1",
-                       Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                        Offset = new DiagramPoint() { X = 1, Y = 0.5 },
                     Visibility = PortVisibility.Visible,
                     //Set the style for the port
                     Style= new ShapeStyle(){ Fill = "gray", StrokeColor = "black"},
@@ -38,7 +38,7 @@
                     Constraints = PortConstraints.Default|PortConstraints.Draw
                 }
             },
-            };
+        };
         nodes.Add(node);
     }
 }

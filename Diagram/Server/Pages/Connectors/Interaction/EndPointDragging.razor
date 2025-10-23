@@ -1,53 +1,56 @@
 ﻿@page "/EndPointDragging"
 
 @using Syncfusion.Blazor.Diagram
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors">
-</SfDiagramComponent>
-@code {
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors" />
+
+@code
+{
     //Reference the diagram
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Intialize the diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
         Dictionary<string, object> ConnectorInfo = new Dictionary<string, object>();
         ConnectorInfo.Add("connectorInfo", "Central Connector");
         Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint()
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Circle,
+                Style = new ShapeStyle()
                 {
-                    X = 100,
-                    Y = 100
-                },
-                TargetPoint = new DiagramPoint()
+                    Fill = "red",
+                    StrokeColor = "red",
+                    StrokeWidth = 1
+                }
+            },
+            SourceDecorator=new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Circle,
+                Style = new ShapeStyle()
                 {
-                    X = 200,
-                    Y = 200
-                },
-                Type = ConnectorSegmentType.Orthogonal,
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Circle,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "red",
-                        StrokeColor = "red",
-                        StrokeWidth = 1
-                    }
-                },
-                SourceDecorator=new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Circle,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "red",
-                        StrokeColor = "red",
-                        StrokeWidth = 1
-                    }
-                },
-                AdditionalInfo = ConnectorInfo
-            };
+                    Fill = "red",
+                    StrokeColor = "red",
+                    StrokeWidth = 1
+                }
+            },
+            AdditionalInfo = ConnectorInfo
+        };
         connectors.Add(Connector);
     }
 }

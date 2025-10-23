@@ -11,22 +11,24 @@
     </Layout>
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
+
 @code {
 
-    SfDiagramComponent diagram;
-    double top = 50;
-    double bottom = 50;
-    double right = 50;
-    double left = 50;
-    LayoutType type = LayoutType.OrganizationalChart;
-    LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
-    HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
-    VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
-    int HorizontalSpacing = 30;
-    int VerticalSpacing = 30;
-    Orientation subTreeOrientation = Orientation.Vertical;
-    SubTreeAlignmentType subTreeAlignment = SubTreeAlignmentType.Left;
+    private SfDiagramComponent diagram;
+    private double top = 50;
+    private double bottom = 50;
+    private double right = 50;
+    private double left = 50;
+    private LayoutType type = LayoutType.OrganizationalChart;
+    private LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
+    private int HorizontalSpacing = 30;
+    private int VerticalSpacing = 30;
+    private Orientation subTreeOrientation = Orientation.Vertical;
+    private SubTreeAlignmentType subTreeAlignment = SubTreeAlignmentType.Left;
     private string FixedNode = null;
+    
     //private DiagramRect bounds = new Rect(200, 200, 500, 500);
     public class HierarchicalDetails
     {
@@ -36,6 +38,7 @@
         public string ChartType { get; set; }
         public string Color { get; set; }
     }
+
     public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
     {
         new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
@@ -58,6 +61,7 @@
         new HierarchicalDetails()   { Id= "20", Role= "Service Dept. Manager", Manager= "16", Color= "#2E95D8" },
         new HierarchicalDetails()   { Id= "21", Role= "Quality Department", Manager= "16", Color= "#2E95D8" }
     };
+
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
     {
         if (rows == 0)
@@ -90,7 +94,9 @@
         }
         return options;
     }
+
     private int rows = 0;
+
     private void NodeCreating(IDiagramObject obj)
     {
         Node node = obj as Node;
@@ -123,6 +129,7 @@
                 Width = 20,
             };
     }
+
     private void ConnectorCreating(IDiagramObject connector)
     {
         (connector as Connector).Type = ConnectorSegmentType.Orthogonal;

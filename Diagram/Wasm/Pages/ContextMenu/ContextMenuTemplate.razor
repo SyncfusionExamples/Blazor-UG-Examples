@@ -3,31 +3,26 @@
 @using System.Collections.ObjectModel
 
 
-<SfDiagramComponent @ref="diagram" Height="600px" Width="90%" @bind-Nodes="nodes"
-                    @bind-Connectors="connectors">
-    <ContextMenuSettings @bind-Show="@show"
-                         @bind-ShowCustomMenuOnly="customMenuOnly"
-                         @bind-Items="@Items">
-
+<SfDiagramComponent @ref="diagram" Height="600px" Width="90%" @bind-Nodes="nodes" @bind-Connectors="connectors">
+    <ContextMenuSettings @bind-Show="@show" @bind-ShowCustomMenuOnly="customMenuOnly" @bind-Items="@Items">
         <ContextMenuTemplate>
             @context.Text
             <span class="shortcut">@((@context.Text == "Save As...") ? "Ctrl + S" : "")</span>
-            </ContextMenuTemplate>
+        </ContextMenuTemplate>
+    </ContextMenuSettings>
+</SfDiagramComponent>
 
-        </ContextMenuSettings>
-    </SfDiagramComponent>
-
-    @code {
+@code 
+{
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Define diagram nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
     //Define diagram connectors collection
-    DiagramObjectCollection<Connector> connectors;
-
-    List<ContextMenuItem> Items;
-    bool customMenuOnly = false;
-    bool show = true;
+    private DiagramObjectCollection<Connector> connectors;
+    private List<ContextMenuItem> Items;
+    private bool customMenuOnly = false;
+    private bool show = true;
 
     protected override void OnInitialized()
     {
@@ -37,64 +32,64 @@
         connectors = new DiagramObjectCollection<Connector>();
 
         Items = new List<ContextMenuItem>()
-    {
-                new ContextMenuItem()
-                {
-                    Text = "Save As...",
-                    ID = "save",
-                    IconCss = "e-save",
-                },
-                new ContextMenuItem()
-                {
-                    Text = "Delete",
-                    ID = "delete",
-                    IconCss = "e-delete"
-                }
+        {
+            new ContextMenuItem()
+            {
+                Text = "Save As...",
+                ID = "save",
+                IconCss = "e-save",
+            },
+            new ContextMenuItem()
+            {
+                Text = "Delete",
+                ID = "delete",
+                IconCss = "e-delete"
+            }
         };
 
         Node node1 = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                Height = 100,
-                Width = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white",
-                    StrokeWidth = 1
-                }
-            };
+                Fill = "#6BA5D7",
+                StrokeColor = "white",
+                StrokeWidth = 1
+            }
+        };
         Node node2 = new Node()
+        {
+            ID = "node2",
+            Height = 100,
+            Width = 100,
+            OffsetX = 300,
+            OffsetY = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node2",
-                Height = 100,
-                Width = 100,
-                OffsetX = 300,
-                OffsetY = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeColor = "white",
-                    StrokeWidth = 1
-                }
-            };
+                Fill = "#6BA5D7",
+                StrokeColor = "white",
+                StrokeWidth = 1
+            }
+        };
         nodes.Add(node1);
         nodes.Add(node2);
 
         Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            Type = ConnectorSegmentType.Straight,
+            Style = new ShapeStyle()
             {
-                ID = "connector1",
-                SourceID = "node1",
-                TargetID = "node2",
-                Type = ConnectorSegmentType.Straight,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6BA5D7",
-                    StrokeWidth = 2
-                }
-            };
+                Fill = "#6BA5D7",
+                StrokeWidth = 2
+            }
+        };
         connectors.Add(connector1);
     }
 }

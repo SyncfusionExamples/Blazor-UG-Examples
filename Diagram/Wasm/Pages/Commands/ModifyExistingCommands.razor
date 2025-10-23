@@ -13,10 +13,10 @@
 @code
 {
     // Reference to diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     // Defines diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramObjectCollection<KeyboardCommand> commands = new DiagramObjectCollection<KeyboardCommand>()
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<KeyboardCommand> commands = new DiagramObjectCollection<KeyboardCommand>()
     {
         new KeyboardCommand()
         {
@@ -33,36 +33,36 @@
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation() { Content = "Node" }
             }
-            };
+        };
         nodes.Add(node1);
         Node node2 = new Node()
-            {
-                ID = "node2",
-                OffsetX = 300,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node2",
+            OffsetX = 300,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation() { Content = "Node1" }
             }
-            };
+        };
         nodes.Add(node2);
     }
 
-    public void canexe(CommandKeyArgs args)
+    private void canexe(CommandKeyArgs args)
     {
         args.CanExecute = true;
     }
@@ -70,7 +70,7 @@
     /// <summary>
     /// Custom command execution event
     /// </summary>
-    public void CommandExecute(CommandKeyArgs args)
+    private void CommandExecute(CommandKeyArgs args)
     {
         if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.A)
         {

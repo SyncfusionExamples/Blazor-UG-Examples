@@ -6,33 +6,35 @@
 
 <SfButton Content="Node TipPointer" OnClick="@TipPointerChange" />
 <SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                //Set tooltip
-                Tooltip = new DiagramTooltip() { Content = "NodeTooltip", ShowTipPointer = true },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            //Set tooltip
+            Tooltip = new DiagramTooltip() { Content = "NodeTooltip", ShowTipPointer = true },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         nodes.Add(node);
     }
+
     //Change TipPointer at run time.
     private void TipPointerChange()
     {

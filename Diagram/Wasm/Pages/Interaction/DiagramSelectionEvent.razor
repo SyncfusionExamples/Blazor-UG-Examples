@@ -1,31 +1,36 @@
 ﻿@page "/DiagramSelectionEvent"
+
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection"
-                    SelectionChanging="OnSelectionChanging"
+<SfDiagramComponent Height="600px" Nodes="@NodeCollection" SelectionChanging="OnSelectionChanging"
                     SelectionChanged="OnSelectionChanged">
 </SfDiagramComponent>
-@code {
+
+@code
+{
     //Initailize the diagram's nodes collection
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    
     protected override void OnInitialized()
     {
         Node node4 = new Node()
-            {
-                OffsetX = 100,
-                OffsetY = 200,
-                Height = 100,
-                Width = 100,
-                ID = "node4",
-            };
+        {
+            OffsetX = 100,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node4",
+        };
         NodeCollection.Add(node4);
     }
+
     //Event to notify selection changing event before select the nodes/conenctors in diagram.
     private void OnSelectionChanging(SelectionChangingEventArgs args)
     {
         //sets true to cancel the element
         args.Cancel = true;
     }
+
     //Event to notify selection changing event after selected the nodes/conenctors in diagram.
     private void OnSelectionChanged(SelectionChangedEventArgs args)
     {

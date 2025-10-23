@@ -1,6 +1,5 @@
 ﻿@page "/CustomizeGridline"
 
-
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Width="1000px" Height="500px">
@@ -15,8 +14,8 @@
 
 @code
 {
-    public double[] HDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20 };
-    public double[] VDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20, 1, 20, 1, 20 };
-    public double[] HInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
-    public double[] VInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
+    private double[] HDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20 };
+    private double[] VDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20, 1, 20, 1, 20 };
+    private double[] HInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
+    private double[] VInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
 }

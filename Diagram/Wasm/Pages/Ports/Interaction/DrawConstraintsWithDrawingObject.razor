@@ -7,8 +7,9 @@
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
-    IDiagramObject DrawingObject;
+    private DiagramObjectCollection<Node> nodes;
+    private IDiagramObject DrawingObject;
+    
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();

@@ -1,33 +1,32 @@
 ﻿@page "/RotationAngleProperty"
 
-
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
 
 @code
 {
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Node node = new Node()
-            {
-                ID = "node1",
-                Height = 100,
-                Width = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-    {
-        new ShapeAnnotation
         {
-            Content = "Node",
-            ID = "Annotation",
-            RotationAngle = 30,
-        }
-    },
-            };
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation
+                {
+                    Content = "Node",
+                    ID = "Annotation",
+                    RotationAngle = 30,
+                }
+            },
+        };
         nodes.Add(node);
     }
 }

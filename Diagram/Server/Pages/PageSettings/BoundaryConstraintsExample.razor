@@ -8,11 +8,7 @@
         <VerticalGridLines LineColor="gray" />
     </SnapSettings>
     @*Initialize the page settings with page orientation and break lines*@
-    <PageSettings Height="300"
-                  Width="300"
-                  MultiplePage="true"
-                  Orientation="@orientation"
-                  BoundaryConstraints="@boundaryConstraints"
+    <PageSettings Height="300" Width="300" MultiplePage="true" Orientation="@orientation" BoundaryConstraints="@boundaryConstraints"
                   ShowPageBreaks="true">
         <BackgroundStyle Background="lightblue" />
         <PageMargin Left="10" Top="10" Bottom="10" />
@@ -22,23 +18,22 @@
 @code
 {
     //Reference to diagram.
-    SfDiagramComponent diagram;
-    public PageOrientation orientation = PageOrientation.Landscape;
-    public BoundaryConstraints boundaryConstraints = BoundaryConstraints.Page;
+    private SfDiagramComponent diagram;
+    private PageOrientation orientation = PageOrientation.Landscape;
+    private BoundaryConstraints boundaryConstraints = BoundaryConstraints.Page;
     //Define diagram's nodes collection.
-    public DiagramObjectCollection<Node>
-    NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Node node = new Node()
-            {
-                ID = "group",
-                OffsetX = 200,
-                OffsetY = 200,
-                Width = 100,
-                Height = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "group",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation()
                 {
@@ -49,12 +44,12 @@
                     }
                 }
             },
-                Style = new ShapeStyle()
-                {
-                    Fill = "cornflowerblue",
-                    StrokeColor = "white"
-                }
-            };
+            Style = new ShapeStyle()
+            {
+                Fill = "cornflowerblue",
+                StrokeColor = "white"
+            }
+        };
         NodeCollection.Add(node);
     }
 }

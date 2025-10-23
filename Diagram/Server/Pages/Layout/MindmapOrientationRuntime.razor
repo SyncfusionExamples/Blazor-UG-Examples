@@ -25,13 +25,13 @@
     </div>
 </div>
 
-@code {
+@code
+{
     private SfDiagramComponent? diagram;
-    
     // Property bound to dropdown and diagram layout, updated at runtime by user interaction.
-    public LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
+    private LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
     
-    public List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
+    private List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
     {
         new OrientationItem { Text = "Vertical", Value = LayoutOrientation.Vertical },
         new OrientationItem { Text = "Horizontal", Value = LayoutOrientation.Horizontal },
@@ -39,7 +39,7 @@
         new OrientationItem { Text = "Right to Left", Value = LayoutOrientation.RightToLeft }
     };
 
-    public List<MindMapDetails> DataSource { get; set; } = new()
+    private List<MindMapDetails> DataSource { get; set; } = new()
     {
         new MindMapDetails { Id = "1", Label = "Project Planning", ParentId = "", Branch = "Root" },
         new MindMapDetails { Id = "2", Label = "Requirements", ParentId = "1", Branch = "Right" },

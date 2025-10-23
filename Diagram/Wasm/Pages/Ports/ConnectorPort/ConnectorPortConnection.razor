@@ -9,27 +9,27 @@
 @code
 {
     // Initialize connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 200, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 350, Y = 250 },
+            Type = ConnectorSegmentType.Bezier,
+            TargetDecorator = new DecoratorSettings()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint() { X = 200, Y = 100 },
-                TargetPoint = new DiagramPoint() { X = 350, Y = 250 },
-                Type = ConnectorSegmentType.Bezier,
-                TargetDecorator = new DecoratorSettings()
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
                 {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "#6495ED",
-                        StrokeColor = "#6495ED",
-                        StrokeWidth = 2
-                    }
-                },
-                Ports = new DiagramObjectCollection<ConnectorPort>()
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+                }
+            },
+            Ports = new DiagramObjectCollection<ConnectorPort>()
             {
                 new ConnectorPort()
                 {
@@ -39,31 +39,31 @@
                     Style = new ShapeStyle(){ Fill = "gray", StrokeColor = "gray" },
                 }
             },
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "#6495ED",
-                    StrokeWidth = 2
-                }
-            };
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 2
+            }
+        };
 
         Connector connector2 = new Connector()
+        {
+            ID = "connector2",
+            SourcePoint = new DiagramPoint() { X = 600, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 750, Y = 250 },
+            Type = ConnectorSegmentType.Bezier,
+            TargetDecorator = new DecoratorSettings()
             {
-                ID = "connector2",
-                SourcePoint = new DiagramPoint() { X = 600, Y = 100 },
-                TargetPoint = new DiagramPoint() { X = 750, Y = 250 },
-                Type = ConnectorSegmentType.Bezier,
-                TargetDecorator = new DecoratorSettings()
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
                 {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "#6495ED",
-                        StrokeColor = "#6495ED",
-                        StrokeWidth = 2
-                    }
-                },
-                Ports = new DiagramObjectCollection<ConnectorPort>()
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 2
+                }
+            },
+            Ports = new DiagramObjectCollection<ConnectorPort>()
             {
                 new ConnectorPort()
                 {
@@ -73,38 +73,38 @@
                     Style = new ShapeStyle(){ Fill = "gray", StrokeColor = "gray" },
                 }
             },
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "#6495ED",
-                    StrokeWidth = 2
-                }
-            };
-        Connector connector3 = new Connector()
+            Style = new ShapeStyle()
             {
-                ID = "connector3",
-                SourceID = "connector1",
-                SourcePortID = "port",
-                TargetID = "connector2",
-                TargetPortID = "port",
-                Type = ConnectorSegmentType.Straight,
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "#6495ED",
-                        StrokeColor = "#6495ED",
-                        StrokeWidth = 2
-                    }
-                },
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 2
+            }
+        };
+        Connector connector3 = new Connector()
+        {
+            ID = "connector3",
+            SourceID = "connector1",
+            SourcePortID = "port",
+            TargetID = "connector2",
+            TargetPortID = "port",
+            Type = ConnectorSegmentType.Straight,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
                 Style = new ShapeStyle()
                 {
                     Fill = "#6495ED",
                     StrokeColor = "#6495ED",
                     StrokeWidth = 2
                 }
-            };
+            },
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 2
+            }
+        };
 
         connectors.Add(connector1);
         connectors.Add(connector2);

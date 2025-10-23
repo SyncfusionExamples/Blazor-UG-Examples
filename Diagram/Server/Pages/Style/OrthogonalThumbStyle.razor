@@ -8,17 +8,15 @@
        stroke-width: 1px;
        fill: green;
    }
-
 </style>
 
-<SfDiagramComponent @ref="Diagram" Width="1000px"  Height="500px" Connectors="@connectors" ConnectorSegmentThumb="@segmentThumbSettings">
-</SfDiagramComponent>
+<SfDiagramComponent @ref="Diagram" Width="1000px"  Height="500px" Connectors="@connectors" ConnectorSegmentThumb="@segmentThumbSettings" />
 
 @code
 {
-    SfDiagramComponent Diagram;
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    SegmentThumbSettings segmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.DoubleArrow };
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SegmentThumbSettings segmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.DoubleArrow };
 
     protected override void OnInitialized()
     {

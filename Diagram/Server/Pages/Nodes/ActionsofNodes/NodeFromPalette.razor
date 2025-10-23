@@ -4,35 +4,35 @@
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 @using System.Collections.ObjectModel
 
-
 <div id="palette-space" style="width: 130px; float: left">
-    <SfSymbolPaletteComponent @ref="@PaletteInstance" Width="@paletteWidth" Height="@paletteHeight"
-                              Palettes="@Palettes" SymbolDragPreviewSize="@SymbolPreview" SymbolHeight="@symbolSizeHeight" SymbolWidth="@symbolSizeWidth" SymbolMargin="@SymbolMargin">
+    <SfSymbolPaletteComponent @ref="@PaletteInstance" Width="@paletteWidth" Height="@paletteHeight" Palettes="@Palettes" 
+                              SymbolDragPreviewSize="@SymbolPreview" SymbolHeight="@symbolSizeHeight" SymbolWidth="@symbolSizeWidth" SymbolMargin="@SymbolMargin">
     </SfSymbolPaletteComponent>
 </div>
+
 <div style="border: 1px solid #D7D7D7;float: right">
     <SfDiagramComponent @ref="@Diagram" Height="400px" Width="1200px">
     </SfDiagramComponent>
 </div>
+
 @code
 {
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Reference the symbol palette
-    SfSymbolPaletteComponent PaletteInstance;
-    DiagramSize SymbolPreview;
-    string paletteWidth = "300";
-    string paletteHeight = "800";
+    private SfSymbolPaletteComponent PaletteInstance;
+    private DiagramSize SymbolPreview;
+    private string paletteWidth = "300";
+    private string paletteHeight = "800";
     //Intialize the  palette's collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 10, Right = 10, Top = 10, Bottom = 10 };
-    double symbolSizeWidth;
-    double symbolSizeHeight;
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 10, Right = 10, Top = 10, Bottom = 10 };
+    private double symbolSizeWidth;
+    private double symbolSizeHeight;
     // Defines palette's flow-shape collection
-    public DiagramObjectCollection<NodeBase> FlowShapeList
+    private DiagramObjectCollection<NodeBase> FlowShapeList
     { get; set; }
-
     // Defines Symbol info
-    public SymbolInfo SymbolInfo { get; set; }
+    private SymbolInfo SymbolInfo { get; set; }
 
     protected override void OnInitialized()
     {
@@ -51,15 +51,15 @@
         };
         Palettes.Add(
              new Palette()
-                 {
-                     ID = "FlowShape",
-                     IsExpanded = true,
-                     Symbols = FlowShapeList,
-                     Title = "Flow Shapes",
-                 }
-          );
-    
+            {
+                ID = "FlowShape",
+                IsExpanded = true,
+                Symbols = FlowShapeList,
+                Title = "Flow Shapes",
+            }
+        ); 
     }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };

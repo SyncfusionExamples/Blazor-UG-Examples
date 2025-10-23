@@ -6,10 +6,11 @@
 
 <SfButton Content="Connector Position" OnClick="@PositionChange" />
 <SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+
 @code
 {
     //Define diagram's connectors collection
-    DiagramObjectCollection<Connector> connector;
+    private DiagramObjectCollection<Connector> connector;
 
     protected override void OnInitialized()
     {
@@ -17,15 +18,16 @@
 
         connector = new DiagramObjectCollection<Connector>();
         Connector connectors = new Connector()
-            {
-                ID = "Connector1",
-                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
-                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
-                Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip", Position = Position.TopCenter },
-                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
-            };
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+            TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+            Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip", Position = Position.TopCenter },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
         connector.Add(connectors);
     }
+
     //Change position at run time.
     private void PositionChange()
     {

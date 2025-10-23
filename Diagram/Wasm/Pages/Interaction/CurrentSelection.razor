@@ -6,12 +6,15 @@
 <SfButton Content="GetSelectionInfo" OnClick="GetSelectionInfo"></SfButton>
 <SfDiagramComponent @ref="diagram" Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection" SelectionChanged="OnSelectionChanged">
 </SfDiagramComponent>
-@code {
-    SfDiagramComponent diagram;
+
+@code
+{
+    private SfDiagramComponent diagram;
     //Initailize the diagram's nodes collection
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connector collection
-    public DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
@@ -32,6 +35,7 @@
         };
         ConnectorCollection.Add(connector1);
     }
+
     //Event to notify selection changing event after selected the nodes/conenctors in diagram.
     private void OnSelectionChanged(SelectionChangedEventArgs args)
     {

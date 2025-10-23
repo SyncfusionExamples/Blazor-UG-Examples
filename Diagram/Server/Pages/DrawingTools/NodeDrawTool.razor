@@ -10,23 +10,22 @@
 @code
 {
     //Reference to diagram
-    SfDiagramComponent diagram;
-
+    private SfDiagramComponent diagram;
     //Defines diagram's nodes collection
-    public DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "group",
-                OffsetX = 200,
-                OffsetY = 200,
-                Width = 100,
-                Height = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
         {
+            ID = "group",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
                 new ShapeAnnotation()
                 {
                     Content = "Node",
@@ -36,8 +35,8 @@
                     }
                 }
             },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
-            };
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
         nodes.Add(node);
     }
 
@@ -47,9 +46,9 @@
         diagram.InteractionController = DiagramInteractions.DrawOnce;
         //Initialize the drawing object to draw the shape
         diagram.DrawingObject = new Node()
-            {
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
-            };
+        {
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
     }
 }

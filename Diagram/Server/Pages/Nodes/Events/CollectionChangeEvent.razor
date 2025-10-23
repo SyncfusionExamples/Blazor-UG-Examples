@@ -3,18 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@Diagram"
-                    Width="100%"
-                    Height="700px"
-                    Nodes="nodes"
-                    CollectionChanged="OnCollectionChanged">
-</SfDiagramComponent>
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" CollectionChanged="OnCollectionChanged" />
 
-@code{
+@code
+{
     //Reference the diagram
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    
     protected override void OnInitialized()
     {
         Node node = new Node()

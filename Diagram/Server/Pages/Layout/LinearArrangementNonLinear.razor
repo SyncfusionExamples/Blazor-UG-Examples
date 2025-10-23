@@ -11,8 +11,8 @@
 @code
 {
     //Initializing layout.
-    int HorizontalSpacing = 40;
-    int VerticalSpacing = 50;
+    private int HorizontalSpacing = 40;
+    private int VerticalSpacing = 50;
 
     //Creates node with some default values.
     private void OnNodeCreating(IDiagramObject obj)
@@ -42,6 +42,7 @@
         public string Id { get; set; }
         public List<string> ReportingPerson { get; set; }
     }
+
     public object DataSource = new List<object>()
     {
         new ComplexHierarchical() { Id= "node11" },
@@ -55,7 +56,7 @@
         new ComplexHierarchical() { Id= "node23", ReportingPerson=new List<string>() {"node22" }},
         new ComplexHierarchical() { Id= "node24", ReportingPerson=new List<string>() {"node22"}},
         new ComplexHierarchical() { Id= "node25", ReportingPerson=new List<string>() {"node22"}},        
-         new ComplexHierarchical() { Id= "node31"},
+        new ComplexHierarchical() { Id= "node31"},
         new ComplexHierarchical() { Id= "node114", ReportingPerson=new List<string>() {"node11","node21","node31" }}
     };
 }

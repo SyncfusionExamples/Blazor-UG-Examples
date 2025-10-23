@@ -7,16 +7,17 @@
     <DiagramTemplates>
         <TooltipTemplate>
             @{
-                    if (context is Node)
-                    {
-                        <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
-                    }
+                if (context is Node)
+                {
+                    <div><p>Product Name : Diagram</p><p>Element: Node</p><p>Content: Node Tooltip </p></div>
                 }
-            </TooltipTemplate>
-        </DiagramTemplates>
-    </SfDiagramComponent>
-    @code
-    {
+              }
+        </TooltipTemplate>
+    </DiagramTemplates>
+</SfDiagramComponent>
+
+@code
+{
     //Define diagram's nodes collection
     DiagramObjectCollection<Node> nodes;
 
@@ -25,20 +26,20 @@
         //Intialize diagram's nodes collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 250,
-                OffsetY = 250,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip(),
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip(),
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         nodes.Add(node);
     }
 }

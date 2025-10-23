@@ -1,14 +1,13 @@
 ﻿@page "/LaneOrientation"
 
-
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 
 <div class="control-section">
     <div style="width:20%;">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px" Palettes="@Palettes" 
+                                      SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -17,17 +16,14 @@
 @code
 {
     //Reference the symbolpreview.
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define symbol margin.
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's swimlane-shape collection.
-    DiagramObjectCollection<NodeBase> SwimlaneNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> SwimlaneNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -42,38 +38,37 @@
 
         //create a horizontal lane.
         Lane horizontalLane = new Lane()
+        {
+            ID = "HorizontalSwimlane",
+            Orientation = Orientation.Horizontal,
+            Height = 100,
+            Width = 150,
+            // Style = new TextStyle() { Fill = "orange", StrokeColor = "black" },
+            Header = new SwimlaneHeader()
             {
-                ID = "HorizontalSwimlane",
-                Orientation = Orientation.Horizontal,
-                Height = 100,
-                Width = 150,
-                // Style = new TextStyle() { Fill = "orange", StrokeColor = "black" },
-                Header = new SwimlaneHeader()
-                {
-                    Annotation = new ShapeAnnotation() { Content = "Lane Title" },
-                    Style = new TextStyle() { Fill = "lightblue", StrokeColor = "black" },
-                    Width = 25,
-                    Height = 100
-                },
-            };
+                Annotation = new ShapeAnnotation() { Content = "Lane Title" },
+                Style = new TextStyle() { Fill = "lightblue", StrokeColor = "black" },
+                Width = 25,
+                Height = 100
+            },
+        };
 
         //create a vertical lane.
         Lane verticalLane = new Lane()
+        {
+            ID = "VerticalSwimlane",
+            Orientation = Orientation.Vertical,
+            Height = 150,
+            Width = 100,
+            // Style = new TextStyle() { Fill = "orange", StrokeColor = "black" },
+            Header = new SwimlaneHeader()
             {
-                ID = "VerticalSwimlane",
-                Orientation = Orientation.Vertical,
-                Height = 150,
+                Annotation = new ShapeAnnotation() { Content = "Lane Title" },
+                Style = new TextStyle() { Fill = "lightblue", StrokeColor = "black" },
                 Width = 100,
-                // Style = new TextStyle() { Fill = "orange", StrokeColor = "black" },
-                Header = new SwimlaneHeader()
-                {
-                    Annotation = new ShapeAnnotation() { Content = "Lane Title" },
-                    Style = new TextStyle() { Fill = "lightblue", StrokeColor = "black" },
-                    Width = 100,
-                    Height = 25
-                },
-            };
-
+                Height = 25
+            },
+        };
 
         SwimlaneNodes = new DiagramObjectCollection<NodeBase>()
         {

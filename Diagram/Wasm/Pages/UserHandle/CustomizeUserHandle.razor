@@ -5,70 +5,71 @@
     <DiagramTemplates>
         <UserHandleTemplate>
             @{
-                    if ((context as UserHandle).Name == "user1")
-                    {
-                        <div style="height: 100%; width: 100%">
-                            <input type="button" value="Button1" />
-                        </div>
+                if ((context as UserHandle).Name == "user1")
+                {
+                    <div style="height: 100%; width: 100%">
+                        <input type="button" value="Button1" />
+                    </div>
 
-                    }
                 }
-            </UserHandleTemplate>
-        </DiagramTemplates>
-    </SfDiagramComponent>
+             }
+        </UserHandleTemplate>
+    </DiagramTemplates>
+</SfDiagramComponent>
 
-    @code
-    {
-    SfDiagramComponent Diagram;
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+@code
+{
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     // Defines diagram's SelectionSettings.
-    DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    
     protected override void OnInitialized()
     {
         //Creating the userhandle for cloning the objects.
         UserHandle cloneHandle = new UserHandle()
-            {
-                Name = "user1",
-                Visible = true,
-                Offset = 0,
-                Size = 30,
-                Side = Direction.Right,
-                Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 },
-                VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector
-            };
+        {
+            Name = "user1",
+            Visible = true,
+            Offset = 0,
+            Size = 30,
+            Side = Direction.Right,
+            Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 },
+            VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector
+        };
         //Add user handle to the collection.
         UserHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
         SelectedModel = new DiagramSelectionSettings()
-            {
-                //Enable userhandle for the selected model.
-                Constraints = SelectorConstraints.UserHandle,
-                UserHandles = this.UserHandles
-            };
+        {
+            //Enable userhandle for the selected model.
+            Constraints = SelectorConstraints.UserHandle,
+            UserHandles = this.UserHandles
+        };
         nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node()
-            {
-                ID = "node1",
-                OffsetX = 300,
-                OffsetY = 200,
-                Width = 130,
-                Height = 130,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
-            };
+        {
+            ID = "node1",
+            OffsetX = 300,
+            OffsetY = 200,
+            Width = 130,
+            Height = 130,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
+        };
         nodes.Add(diagramNode);
 
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint() { X = 600, Y = 120 },
-                TargetPoint = new DiagramPoint() { X = 750, Y = 270 },
-                Type = ConnectorSegmentType.Orthogonal
-            };
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 600, Y = 120 },
+            TargetPoint = new DiagramPoint() { X = 750, Y = 270 },
+            Type = ConnectorSegmentType.Orthogonal
+        };
         connectors.Add(connector1);
     }
 }

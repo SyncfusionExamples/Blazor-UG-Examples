@@ -7,19 +7,19 @@
 @code
 {
     // Defines diagram's node collection.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 100,
-                Height = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation
                 {
@@ -27,16 +27,15 @@
                     RotationReference = AnnotationRotationReference.Parent,
                 }
             },
-
-            };
+        };
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 100,
-                Height = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node2",
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation
                 {
@@ -44,8 +43,7 @@
                     RotationReference = AnnotationRotationReference.Page,
                 }
             },
-
-            };
+        };
         nodes.Add(node1);
         nodes.Add(node2);
     }

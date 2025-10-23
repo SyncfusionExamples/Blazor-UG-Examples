@@ -5,104 +5,106 @@
 @inject IJSRuntime js
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Clone" OnClick="@Clone" />
 <SfDiagramComponent @ref="diagram" Width="50%" Height="800px" @bind-Connectors="@Connectors" @bind-Nodes="NodeCollection"></SfDiagramComponent>
+
 @functions
 {
-    double offsetX = 0;
-    double offsetY = 0;
-    double opacity = 0;
-    public string ID = "diagram";
-    SfDiagramComponent diagram;
-    public string Height { get; set; } = "700px";
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    public DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private double offsetX = 0;
+    private double offsetY = 0;
+    private double opacity = 0;
+    private string ID = "diagram";
+    private SfDiagramComponent diagram;
+    private string Height { get; set; } = "700px";
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Height = 100,
+            Width = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Height = 100,
-                Width = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node1"
-                        },
-                    },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "node1"
+                },
+            },
+        };
         NodeCollection.Add(node1);
         Node node2 = new Node()
+        {
+            ID = "node2",
+            OffsetX = 100,
+            OffsetY = 300,
+            Height = 100,
+            Width = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "node2",
-                OffsetX = 100,
-                OffsetY = 300,
-                Height = 100,
-                Width = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node2"
-                        },
-                    },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "node2"
+                },
+            },
+        };
         NodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
+        {
+            ID = "group1",
+            Children = new string[] { "node1", "node2" },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "group1",
-                Children = new string[] { "node1", "node2" },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                        {
-                            new ShapeAnnotation()
-                            {
-                            Content = "Group1"
-                            }
-                        },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "Group1"
+                }
+            },
+        };
         NodeCollection.Add(group1);
         Node node3 = new Node()
+        {
+            ID = "node3",
+            OffsetX = 300,
+            OffsetY = 100,
+            Height = 100,
+            Width = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "node3",
-                OffsetX = 300,
-                OffsetY = 100,
-                Height = 100,
-                Width = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node3"
-                        },
-                    },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "node3"
+                },
+            },
+        };
         NodeCollection.Add(node3);
         Connector connector = new Connector()
-            {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint() { X = 250, Y = 250 },
-                TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
-            };
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 250, Y = 250 },
+            TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
+        };
         Connectors.Add(connector);
         NodeGroup group2 = new NodeGroup()
+        {
+            ID = "group2",
+            Children = new string[] { "node3", "connector1", "group1" },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
-                ID = "group2",
-                Children = new string[] { "node3", "connector1", "group1" },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                        {
-                            new ShapeAnnotation()
-                            {
-                            Content = "Group2"
-                            }
-                        },
-            };
+                new ShapeAnnotation()
+                {
+                    Content = "Group2"
+                }
+            },
+        };
         NodeCollection.Add(group2);
     }
-    public void Clone()
+
+    private void Clone()
     {
         diagram.StartGroupAction();
         if (diagram.SelectionSettings.Nodes.Count > 0)
@@ -128,7 +130,8 @@
         diagram.ClearSelection();
         diagram.EndGroupAction();
     }
-    public string CloneGroup(NodeGroup gNode, bool isChild)
+
+    private string CloneGroup(NodeGroup gNode, bool isChild)
     {
         NodeGroup groupNode = gNode.Clone() as NodeGroup;
         groupNode.ID = RandomId();
@@ -163,7 +166,8 @@
          _ = diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { groupNode });
         return groupNode.ID;
     }
-    public string CloneNode(Node node, bool isChild)
+
+    private string CloneNode(Node node, bool isChild)
     {
         diagram.StartGroupAction();
         Node nodeChild = node.Clone() as Node;
@@ -177,7 +181,8 @@
         diagram.EndGroupAction();
         return nodeChild.ID;
     }
-    public string CloneConnector(Connector connector, bool isChild)
+
+    private string CloneConnector(Connector connector, bool isChild)
     {
         diagram.StartGroupAction();
         Connector connectorChild = connector.Clone() as Connector;

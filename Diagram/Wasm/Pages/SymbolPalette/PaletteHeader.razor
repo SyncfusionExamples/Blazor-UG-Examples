@@ -10,7 +10,6 @@
         <SfButton Content="RemovePaletteItem" OnClick="@UpdateHeading1" />
         <SfButton Content="AddPalettes" OnClick="@UpdateHeading2" />
         <SfButton Content="RemovePalettes" OnClick="@UpdateHeading3" />
-
     </div>
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
@@ -21,19 +20,18 @@
     </div>
 </div>
 
-@code {
+@code
+{
     //Define symbolpreview
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define symbol margin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
     //Reference the symbol palette
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -43,33 +41,36 @@
     private void InitPaletteModel()
     {
         Node node = new Node()
-            {
-                ID = "Rectangle",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = "Rectangle",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
 
         Palettes = new DiagramObjectCollection<Palette>()
-    {
+        {
            new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
         };
     }
+
     //Method to update heading
     private void UpdateHeading()
     {
         Node Star = new Node()
-            {
-                ID = "Star",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Star }
-            };
+        {
+            ID = "Star",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Star }
+        };
         symbolpalette.AddPaletteItem("Basic Shapes", Star, false);
     }
+
     //Method to update heading
     private void UpdateHeading1()
     {
         symbolpalette.RemovePaletteItem("Basic Shapes", "Star");
     }
+
     //Method to update heading
     private void UpdateHeading2()
     {
@@ -84,10 +85,10 @@
             };
         symbolpalette.AddPalettes(newPalettes);
     }
+
     private void UpdateHeading3()
     {
         symbolpalette.RemovePalettes("FlowShapes");
     }
-
 }
 

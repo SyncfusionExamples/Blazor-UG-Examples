@@ -3,16 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Update Port" OnClick="@UpdatePort" />
 <SfDiagramComponent @ref="diagram" Height="600px" Nodes="@nodes" />
 
 @code
 {
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
@@ -22,20 +21,20 @@
         // A node is created and stored in nodes array
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                // Position of the node
-                OffsetX = 250,
-                OffsetY = 250,
-                // Size of the node
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
-                Ports = ports
-            };
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
+            Ports = ports
+        };
         nodes.Add(node);
     }
 
-    public async void UpdatePort()
+    private async void UpdatePort()
     {
         //update ports at run time
         diagram.BeginUpdate();

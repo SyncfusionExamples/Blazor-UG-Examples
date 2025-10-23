@@ -8,33 +8,38 @@
 
 @code
 {
-    //Defines diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
     protected override void OnInitialized()
     {
-
         Connector connector1 = new Connector()
+        {
+            ID = "Connector1",
+            Type = ConnectorSegmentType.Orthogonal,
+            SourcePoint = new DiagramPoint()
             {
-                ID = "Connector1",
-                Type = ConnectorSegmentType.Orthogonal,
-                SourcePoint = new DiagramPoint()
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint() { X = 300, Y = 200 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new OrthogonalSegment
                 {
-                    X = 100,
-                    Y = 100
+                    Length = 100,
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Right
                 },
-                TargetPoint = new DiagramPoint() { X = 300, Y = 200 },
-                Segments = new DiagramObjectCollection<ConnectorSegment>(){
-                    new OrthogonalSegment {
+                new OrthogonalSegment
+                {
                     Length = 100,
                     Type = ConnectorSegmentType.Orthogonal,
-                    Direction = Direction.Right, },
-                new OrthogonalSegment {
-                    Length = 100,
-                    Type = ConnectorSegmentType.Orthogonal,
-                    Direction = Direction.Bottom, } },
-            };
-
-        //Add the connector into connectors's collection.
+                    Direction = Direction.Bottom
+                }
+            },
+        };
+        //Add the connector into connectors' collection.
         connectors.Add(connector1);
     }
 }

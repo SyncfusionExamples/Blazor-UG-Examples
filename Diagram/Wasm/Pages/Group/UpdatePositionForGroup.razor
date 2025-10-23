@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="UpdatePosition" OnClick="@UpdatePosition" />
 @* Initialize the diagram with NodeCollection *@
 <SfDiagramComponent Height="500px" Nodes="@nodes" />
@@ -11,8 +10,8 @@
 @code
 {
     //Initilaize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    NodeGroup groupnode = new NodeGroup();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private NodeGroup groupnode = new NodeGroup();
 
     protected override void OnInitialized()
     {
@@ -25,35 +24,37 @@
         nodes.Add(node2);
         nodes.Add(groupnode);
     }
+
     //Method to create node
-    public Node createNode(string id, double offx, double offy, string content)
+    private Node createNode(string id, double offx, double offy, string content)
     {
         Node node = new Node()
-            {
-                ID = id,
-                OffsetX = offx,
-                OffsetY = offy,
-                Height = 100,
-                Width = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED" }
-            };
+        {
+            ID = id,
+            OffsetX = offx,
+            OffsetY = offy,
+            Height = 100,
+            Width = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED" }
+        };
         ShapeAnnotation annotation = new ShapeAnnotation
+        {
+            ID = "annotation1",
+            Content = content,
+            Style = new TextStyle()
             {
-                ID = "annotation1",
-                Content = content,
-                Style = new TextStyle()
-                {
-                    Color = "white",
-                    Fill = "transparent",
-                    StrokeColor = "None"
-                },
-            };
+                Color = "white",
+                Fill = "transparent",
+                StrokeColor = "None"
+            },
+        };
         node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-{
+        {
             annotation
         };
         return node;
     }
+
     //Method to update position at runtime
     private void UpdatePosition()
     {

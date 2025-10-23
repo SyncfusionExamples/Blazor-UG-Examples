@@ -15,12 +15,12 @@
 @code
 {
     //Defines diagram's connector collection.
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     //Defines diagram's node collection.
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    LayoutType type = LayoutType.ComplexHierarchicalTree;
-    int HorizontalSpacing = 50;
-    int VerticalSpacing = 50;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private LayoutType type = LayoutType.ComplexHierarchicalTree;
+    private int HorizontalSpacing = 50;
+    private int VerticalSpacing = 50;
 
     private void OnNodeCreating(IDiagramObject obj)
     {

@@ -5,24 +5,23 @@
 @* Initialize the diagram with connectors *@
 <SfDiagramComponent Height="600px" Connectors="@connectors" />
 
-
 @code
 {
-    DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> connectors;
 
     protected override void OnInitialized()
     {
         //Initialize the connector collection
         connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
-            {
-                ID = "connector1",
-                Type = ConnectorSegmentType.Straight,
-                SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
-                TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
-                //sets the ConnectorConstraints...
-                Constraints = ConnectorConstraints.Default & ~ConnectorConstraints.Select
-            };
+        {
+            ID = "connector1",
+            Type = ConnectorSegmentType.Straight,
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            //sets the ConnectorConstraints...
+            Constraints = ConnectorConstraints.Default & ~ConnectorConstraints.Select
+        };
         connectors.Add(connector);
     }
 }

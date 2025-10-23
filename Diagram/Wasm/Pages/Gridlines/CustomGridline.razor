@@ -16,12 +16,12 @@
 @code
 {
     //Sets the snapinterval...
-    public double[] SnapInterval { get; set; } = new double[]
+    private double[] SnapInterval { get; set; } = new double[]
     {
         10
     };
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {

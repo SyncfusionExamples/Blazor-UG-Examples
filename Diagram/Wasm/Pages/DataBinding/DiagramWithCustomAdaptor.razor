@@ -22,6 +22,7 @@
         </div>
     </div>
 </div>
+
 <div class="row" id="diagram">
     <div class="col-md-10">
         <div id="diagram-space" class="content-wrapper">
@@ -34,18 +35,21 @@
         </div>
     </div>
 </div>
-@functions{
-    SfDiagramComponent? diagram;
-    public static List<EmployeeDetails> employeeDetails { get; set; }
-    public static List<EmployeeDetails> Details { get; set; } = new List<EmployeeDetails>();
 
-    Layout LayoutValue = new Layout() { };
+@functions
+{
+    private SfDiagramComponent? diagram;
+    private static List<EmployeeDetails> employeeDetails { get; set; }
+    private static List<EmployeeDetails> Details { get; set; } = new List<EmployeeDetails>();
+    private Layout LayoutValue = new Layout() { };
+    
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
     {
         options.EnableSubTree = true;
         options.Orientation = Orientation.Horizontal;
         return options;
     }
+
     private void NodeCreating(IDiagramObject obj)
     {
         Node? node = obj as Node;
@@ -69,6 +73,7 @@
             node.Style = new ShapeStyle() { Fill = data.Color, StrokeColor = "none", StrokeWidth = 2, };
         }
     }
+
     private void ConnectorCreating(IDiagramObject connector)
     {
         Connector? newConnector = connector as Connector;
@@ -93,24 +98,17 @@
             new EmployeeDetails { EmployeeID = "9", FirstName = "Anne", Designation = "Developer", Country = "USA", ReportsTo = "5", Color = "Gray" },
             new EmployeeDetails { EmployeeID = "6", FirstName = "Laura", Designation = "HR", Country = "USA", ReportsTo = "1", Color = "Purple" },
         };
-
     }
 
     public class EmployeeDetails
     {
         public string EmployeeID { get; set; }
-
         public string ReportsTo { get; set; }
-
         public string FirstName { get; set; }
-
         public string Designation { get; set; }
-
         public string Country { get; set; }
-
         public string Color { get; set; }
     }
-
 
     // Implementing custom adaptor by extending the DataAdaptor class
     public class CustomAdaptor : DataAdaptor
@@ -179,19 +177,19 @@
 
     }
 
-    public void Read()
+    private void Read()
     {
         Details = new List<EmployeeDetails>();
         Details = diagram.ReadDataAsync().Result as List<EmployeeDetails>;
     }
 
-    public async void Update()
+    private async void Update()
     {
         EmployeeDetails employeeDetails = new EmployeeDetails { EmployeeID = "1", FirstName = "AndrewSimonds", Designation = "CEO", Country = "Australia", ReportsTo = "", Color = "Red" };
         await diagram.UpdateDataAsync("EmployeeID", employeeDetails);
     }
 
-    public async void Insert()
+    private async void Insert()
     {
         EmployeeDetails employeeDetails = new EmployeeDetails()
         {
@@ -206,7 +204,7 @@
 
     }
 
-    public async void Delete()
+    private async void Delete()
     {
         await diagram.DeleteDataAsync("EmployeeID", "6");
     }

@@ -17,8 +17,10 @@
         <SfDiagramOverviewComponent Height="300" Width="400" SourceID="element"></SfDiagramOverviewComponent>
     </div>
 </div>
-@code {
-    SfDiagramComponent Diagram;
+
+@code
+{
+    private SfDiagramComponent Diagram;
 
     private void ConnectorCreating(IDiagramObject connector)
     {
@@ -28,12 +30,14 @@
         (connector as Connector).Constraints = 0;
         (connector as Connector).CornerRadius = 5;
     }
+
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
     {
         options.EnableSubTree = true;
         options.Orientation = Orientation.Horizontal;
         return options;
     }
+
     private void NodeCreating(IDiagramObject obj)
     {
         Node node = obj as Node;
@@ -55,6 +59,7 @@
             }
         };
     }
+
     public class HierarchicalDetails
     {
         public string Name { get; set; }
@@ -62,6 +67,7 @@
         public string Category { get; set; }
 
     }
+
     public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
     {
         new HierarchicalDetails(){ Name ="Diagram", Category="",FillColor="#659be5"},

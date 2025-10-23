@@ -6,40 +6,42 @@
 
 <SfButton Content="Connector Animation" OnClick="@AnimationChange" />
 <SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+
 @code
 {
     //Define diagram's connectors collection
-    DiagramObjectCollection<Connector> connector;
+    private DiagramObjectCollection<Connector> connector;
 
     protected override void OnInitialized()
     {
         //Initialize diagram's connectors collection
         connector = new DiagramObjectCollection<Connector>();
         Connector connectors = new Connector()
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
+            TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
+            Tooltip = new DiagramTooltip()
             {
-                ID = "Connector1",
-                SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
-                TargetPoint = new DiagramPoint() { X = 600, Y = 400 },
-                Tooltip = new DiagramTooltip()
+                Content = "ConnectorTooltip",
+                AnimationSettings = new AnimationModel()
                 {
-                    Content = "ConnectorTooltip",
-                    AnimationSettings = new AnimationModel()
-                    {
-                        Open = new TooltipAnimationSettings() { Effect = Effect.None },
-                        Close = new TooltipAnimationSettings() { Effect = Effect.None }
-                    }
-                },
-                Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
-            };
+                    Open = new TooltipAnimationSettings() { Effect = Effect.None },
+                    Close = new TooltipAnimationSettings() { Effect = Effect.None }
+                }
+            },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
         connector.Add(connectors);
     }
+
     //Change the Animation at run time.
     private void AnimationChange()
     {
         connector[0].Tooltip.AnimationSettings = new AnimationModel()
-            {
-                Open = new TooltipAnimationSettings() { Effect = Effect.ZoomIn, Duration = 500 },
-                Close = new TooltipAnimationSettings() { Effect = Effect.ZoomOut, Duration = 500 }
-            };
+        {
+            Open = new TooltipAnimationSettings() { Effect = Effect.ZoomIn, Duration = 500 },
+            Close = new TooltipAnimationSettings() { Effect = Effect.ZoomOut, Duration = 500 }
+        };
     }
 }

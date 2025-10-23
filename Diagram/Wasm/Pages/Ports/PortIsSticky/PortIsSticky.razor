@@ -3,43 +3,46 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Buttons
+
 <SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
+    
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "NodeContent", IsSticky = true },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-                Ports = new DiagramObjectCollection<PointPort>()
-                {
-                new PointPort(){
-                    ID="Port1",
-                    Style = new ShapeStyle(){ Fill = "gray" },
-                    Offset = new DiagramPoint() { X = 1, Y = 0.5 },
-                    Visibility = PortVisibility.Visible,
-                    Tooltip = new DiagramTooltip(){ Content = "PortContent" , IsSticky = true},
-                    Constraints = PortConstraints.Default | PortConstraints.Draw
-                }
-                },
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "NodeContent", IsSticky = true },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+            Ports = new DiagramObjectCollection<PointPort>()
+            {
+            new PointPort(){
+                ID="Port1",
+                Style = new ShapeStyle(){ Fill = "gray" },
+                Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                Visibility = PortVisibility.Visible,
+                Tooltip = new DiagramTooltip(){ Content = "PortContent" , IsSticky = true},
+                Constraints = PortConstraints.Default | PortConstraints.Draw
+            }
+            },
+        };
         nodes.Add(node);
     }
 }

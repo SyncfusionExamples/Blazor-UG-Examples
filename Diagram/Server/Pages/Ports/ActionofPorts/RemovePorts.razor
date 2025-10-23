@@ -9,24 +9,24 @@
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         // A node is created and stored in nodes array.
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                // Position of the node
-                OffsetX = 250,
-                OffsetY = 250,
-                // Size of the node
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                // Initialize port collection
-                Ports = new DiagramObjectCollection<PointPort>()
         {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            // Initialize port collection
+            Ports = new DiagramObjectCollection<PointPort>()
+            {
                 new PointPort()
                 {
                     ID = "port1",
@@ -38,11 +38,12 @@
                     Width= 12, Height=12, Shape= PortShapes.Circle
                 }
             },
-            };
+        };
         nodes.Add(node);
     }
-    //MMethod to remove ports at runtime
-    public void RemovePort()
+
+    //Method to remove ports at runtime
+    private void RemovePort()
     {
         (nodes[0].Ports as DiagramObjectCollection<PointPort>).RemoveAt(0);
     }

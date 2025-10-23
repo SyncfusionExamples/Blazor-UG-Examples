@@ -4,31 +4,33 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
+
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "Tooltip", IsSticky = true },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "Tooltip", IsSticky = true },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         nodes.Add(node);
     }
 }

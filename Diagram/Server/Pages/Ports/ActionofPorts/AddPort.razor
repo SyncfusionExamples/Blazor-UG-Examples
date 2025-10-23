@@ -3,13 +3,12 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="AddPorts" OnClick="@AddPorts" />
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
 
 @code
 {
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
@@ -28,7 +27,7 @@
         nodes.Add(node);
     }
 
-    public void AddPorts()
+    private void AddPorts()
     {
         PointPort port = new PointPort()
         {

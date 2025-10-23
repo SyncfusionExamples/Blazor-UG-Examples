@@ -3,17 +3,13 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@Diagram"
-                    Width="100%"
-                    Height="700px"
-                    Nodes="nodes"
-                    PropertyChanged="OnPropertyChanged">
-                    </SfDiagramComponent>
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" PropertyChanged="OnPropertyChanged" />
 
-
-@code{
-    SfDiagramComponent Diagram;
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+@code
+{
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    
     protected override void OnInitialized()
     {
         Node node = new Node()
@@ -25,6 +21,7 @@
         };
         nodes.Add(node);
     }
+
      // Notify the property changed event while the change property is at run time.
     private void OnPropertyChanged(PropertyChangedEventArgs args)
     {

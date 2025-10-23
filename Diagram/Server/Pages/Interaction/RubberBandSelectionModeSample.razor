@@ -5,16 +5,17 @@
 @inject IJSRuntime js
 @using Syncfusion.Blazor.Buttons
 
-
 <SfDiagramComponent @ref="diagram" Width="50%" Height="800px" SelectionSettings="@select" @bind-Connectors="@Connectors" @bind-Nodes="NodeCollection"></SfDiagramComponent>
+
 @functions
 {
 
-    public string ID = "diagram";
-    SfDiagramComponent diagram;
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    public DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
-    DiagramSelectionSettings select;
+    private string ID = "diagram";
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramSelectionSettings select;
+    
     protected override void OnInitialized()
     {
         select = new DiagramSelectionSettings() { RubberBandSelectionMode = RubberBandSelectionMode.CompleteIntersect };
@@ -26,12 +27,12 @@
             Height = 100,
             Width = 100,
             Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node1"
-                        },
-                    },
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "node1"
+                },
+            },
         };
         NodeCollection.Add(node1);
         Node node2 = new Node()
@@ -42,12 +43,12 @@
             Height = 100,
             Width = 100,
             Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node2"
-                        },
-                    },
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "node2"
+                },
+            },
         };
         NodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
@@ -55,12 +56,12 @@
             ID = "group1",
             Children = new string[] { "node1", "node2" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                        {
-                            new ShapeAnnotation()
-                            {
-                            Content = "Group1"
-                            }
-                        },
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "Group1"
+                }
+            },
         };
         NodeCollection.Add(group1);
         Node node3 = new Node()
@@ -71,12 +72,12 @@
             Height = 100,
             Width = 100,
             Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                    {
-                        new ShapeAnnotation()
-                        {
-                            Content = "node3"
-                        },
-                    },
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "node3"
+                },
+            },
         };
         NodeCollection.Add(node3);
         Connector connector = new Connector()
@@ -86,7 +87,5 @@
             TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
         };
         Connectors.Add(connector);
-
     }
-
 }

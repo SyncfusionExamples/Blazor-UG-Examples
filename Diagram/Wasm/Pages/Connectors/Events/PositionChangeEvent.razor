@@ -2,53 +2,53 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" PositionChanging="@OnPositionChanging" PositionChanged="@OnPositionChanged" Height="500px" Connectors="@connectors">
-</SfDiagramComponent>
+<SfDiagramComponent @ref="Diagram" Width="1000px" PositionChanging="@OnPositionChanging" PositionChanged="@OnPositionChanged"
+                    Height="500px" Connectors="@connectors" />
 
 @code
 {
     //Reference the diagram
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Initialize the diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
             {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint()
-                {
-                    X = 100,
-                    Y = 100
-                },
-                TargetPoint = new DiagramPoint()
-                {
-                    X = 200,
-                    Y = 200
-                },
-                Type = ConnectorSegmentType.Orthogonal,
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle()
-                    {
-                        Fill = "black",
-                        StrokeColor = "black",
-                        StrokeWidth = 1
-                    }
-                },
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
                 Style = new ShapeStyle()
                 {
+                    Fill = "black",
                     StrokeColor = "black",
                     StrokeWidth = 1
-                },
-            };
+                }
+            },
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "black",
+                StrokeWidth = 1
+            },
+        };
         connectors.Add(Connector);
     }
 
     // Event to notify the position changing event before dragging the diagram elements
-    public void OnPositionChanging(PositionChangingEventArgs args)
+    private void OnPositionChanging(PositionChangingEventArgs args)
     {
         //sets true to cancel the dragging.
         args.Cancel = true;

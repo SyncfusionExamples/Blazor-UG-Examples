@@ -2,57 +2,58 @@
 
 @using Syncfusion.Blazor.Diagram
 
+@* Initialize Diagram *@
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
 
 @code
 {
     // Initialize node collection with Node.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
+        {
+            // Position of the node.
+            OffsetX = 500,
+            OffsetY = 500,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            // Unique Id of the node.
+            ID = "node1",
+            // Sets the type of shape to Bpmn and shape to activity.
+            Shape = new BpmnActivity()
             {
-                // Position of the node.
-                OffsetX = 500,
-                OffsetY = 500,
-                // Size of the node.
-                Width = 100,
-                Height = 100,
-                // Unique Id of the node.
-                ID = "node1",
-                // Sets the type of shape to Bpmn and shape to activity.
-                Shape = new BpmnActivity()
-                {
-                    ActivityType = BpmnActivityType.Task
-                },
-            };
+                ActivityType = BpmnActivityType.Task
+            },
+        };
         nodes.Add(node1);
         Node node2 = new Node()
+        {
+            // Position of the node.
+            OffsetX = 600,
+            OffsetY = 350,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            // Unique Id of the node.
+            ID = "node2",
+            // Sets type as Bpmn and shape as DataObject
+            Shape = new BpmnTextAnnotation()
             {
-                // Position of the node.
-                OffsetX = 600,
-                OffsetY = 350,
-                // Size of the node.
-                Width = 100,
-                Height = 100,
-                // Unique Id of the node.
-                ID = "node2",
-                // Sets type as Bpmn and shape as DataObject
-                Shape = new BpmnTextAnnotation()
+                TextAnnotationDirection = TextAnnotationDirection.Bottom,
+                TextAnnotationTarget = "node1"
+            },
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
                 {
-                    TextAnnotationDirection = TextAnnotationDirection.Bottom,
-                    TextAnnotationTarget = "node1"
+                    Content = "Text",
                 },
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-                {
-                    new ShapeAnnotation()
-                    {
-                        Content = "Text",
-                    },
-                }
-            };
+            }
+        };
         nodes.Add(node2);
     }
 }

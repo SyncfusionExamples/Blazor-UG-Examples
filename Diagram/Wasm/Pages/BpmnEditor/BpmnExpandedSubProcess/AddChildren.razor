@@ -2,39 +2,40 @@
 
 @using Syncfusion.Blazor.Diagram
 
+@* Initialize Diagram *@
 <SfDiagramComponent Height="600px" Nodes="@nodes" />
 
 @code
 {
     // Initialize node collection with Node.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
-            {
-                ID = "node1",
-                OffsetX = 300,
-                OffsetY = 300,
-                Width = 70,
-                Height = 70,
-                Shape = new BpmnActivity() { ActivityType = BpmnActivityType.Task }
-            };
+        {
+            ID = "node1",
+            OffsetX = 300,
+            OffsetY = 300,
+            Width = 70,
+            Height = 70,
+            Shape = new BpmnActivity() { ActivityType = BpmnActivityType.Task }
+        };
         nodes.Add(node1);
         Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 300,
+            OffsetX = 500,
+            OffsetY = 300,
+            Height = 300,
+            Constraints = NodeConstraints.Default | NodeConstraints.AllowDrop,
+            Shape = new BpmnExpandedSubProcess()
             {
-                ID = "node2",
-                Width = 300,
-                OffsetX = 500,
-                OffsetY = 300,
-                Height = 300,
-                Constraints = NodeConstraints.Default | NodeConstraints.AllowDrop,
-                Shape = new BpmnExpandedSubProcess()
-                {
-                    Children = new DiagramObjectCollection<string>() { "node1" }
-                }
-            };
+                Children = new DiagramObjectCollection<string>() { "node1" }
+            }
+        };
         nodes.Add(node2);
     }
 }

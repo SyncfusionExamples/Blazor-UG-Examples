@@ -9,85 +9,90 @@
 <SfDiagramComponent @ref="diagram" Width="500px" Height="500px" @bind-Nodes="@Nodes" @bind-Connectors="@Connectors">
     <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
-@code {
+
+@code
+{
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Initialize the diagram's nodes collection
-    DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
     //Initialize the diagram's nodebase collection
-    DiagramObjectCollection<NodeBase> DiagramElements = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> DiagramElements = new DiagramObjectCollection<NodeBase>();
+    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "node1",
+            OffsetX = 200,
+            OffsetY = 100,
+            Height = 50,
+            Width = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 200,
-                OffsetY = 100,
-                Height = 50,
-                Width = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                }
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            }
+        };
         Nodes.Add(node1);
         Node node2 = new Node()
+        {
+            ID = "node2",
+            OffsetX = 200,
+            OffsetY = 200,
+            Height = 50,
+            Width = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node2",
-                OffsetX = 200,
-                OffsetY = 200,
-                Height = 50,
-                Width = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                }
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            }
+        };
         Nodes.Add(node2);
         Node node3 = new Node()
+        {
+            ID = "node3",
+            OffsetX = 200,
+            OffsetY = 300,
+            Height = 50,
+            Width = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node3",
-                OffsetX = 200,
-                OffsetY = 300,
-                Height = 50,
-                Width = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                }
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            }
+        };
         Nodes.Add(node3);
 
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourceID = "node1",
-                TargetID = "node2",
-                Type = ConnectorSegmentType.Straight,
-            };
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            Type = ConnectorSegmentType.Straight,
+        };
         Connectors.Add(connector1);
         Connector connector2 = new Connector()
-            {
-                ID = "connector2",
-                SourceID = "node2",
-                TargetID = "node3",
-                Type = ConnectorSegmentType.Straight,
-            };
+        {
+            ID = "connector2",
+            SourceID = "node2",
+            TargetID = "node3",
+            Type = ConnectorSegmentType.Straight,
+        };
         Connectors.Add(connector2);
         NodeGroup groupNode = new NodeGroup();
         groupNode.Children = new string[] { "node2", "node3" };
         Nodes.Add(groupNode);
     }
+
     //Deletes DiagramElements with null parameter
-    public void DeleteMethod()
+    private void DeleteMethod()
     {
         diagram.Delete();
     }
+
     //Deletes DiagramElements with parameter
     private void DeletewithArgument()
     {

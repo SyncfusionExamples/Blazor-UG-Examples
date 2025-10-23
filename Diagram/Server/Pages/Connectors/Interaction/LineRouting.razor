@@ -5,18 +5,19 @@
 <SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" Nodes="@nodes" Constraints="@diagramConstraints">
     <LineRoutingSettings RoutingType ="@routingTypes" ObstaclePadding="@padding"></LineRoutingSettings>
 </SfDiagramComponent>
+
 @code 
 {
     // Set the type of the routing
-    RoutingTypes routingTypes = RoutingTypes.Advanced;
+    private RoutingTypes routingTypes = RoutingTypes.Advanced;
     // Set the padding for the obstable
-    double padding = 20;
+    private double padding = 20;
     // Enable routing constraints for diagram.
-    DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Routing;
+    private DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Routing;
     // Intialize the node collection.
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
     // Intialize the connector collection.
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {

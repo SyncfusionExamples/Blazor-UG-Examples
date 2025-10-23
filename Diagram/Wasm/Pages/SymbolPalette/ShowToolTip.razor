@@ -22,7 +22,8 @@
     </div>
 </div>
 
-@code {
+@code
+{
     // Controls tooltip visibility for symbols at runtime.
     private bool showTooltip = false;
     private SfSymbolPaletteComponent? symbolPalette;
@@ -34,11 +35,10 @@
         Top = 15,
         Bottom = 15
     };
-
-    public DiagramObjectCollection<Palette> Palettes { get; set; } = new DiagramObjectCollection<Palette>();
-    public DiagramObjectCollection<NodeBase> FlowShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
-    public DiagramObjectCollection<NodeBase> BasicShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
-    public DiagramObjectCollection<NodeBase> ConnectorsPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Palette> Palettes { get; set; } = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> FlowShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> BasicShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> ConnectorsPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {

@@ -14,65 +14,65 @@
     protected override void OnInitialized()
     {
         Node node1 = new Node()
+        {
+            ID = "n1",
+            // Position of the node.
+            OffsetX = 200,
+            OffsetY = 200,
+            // Size of the node.
+            Width = 70,
+            Height = 70,
+            Ports = new DiagramObjectCollection<PointPort>()
             {
-                ID = "n1",
-                // Position of the node.
-                OffsetX = 200,
-                OffsetY = 200,
-                // Size of the node.
-                Width = 70,
-                Height = 70,
-                Ports = new DiagramObjectCollection<PointPort>()
-                {
-                    new PointPort()
-                    { ID="n1p1",
-                      Style = new ShapeStyle(){ Fill = "gray" },
-                      Offset = new DiagramPoint() { X = 1, Y = 0.5 },
-                      Visibility = PortVisibility.Visible,
-                      Constraints = PortConstraints.Default|PortConstraints.Draw,
-                      //Set Port Connection Direction
-                      ConnectionDirection = PortConnectionDirection.Left
-                    }
+                new PointPort()
+                { ID="n1p1",
+                    Style = new ShapeStyle(){ Fill = "gray" },
+                    Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                    Visibility = PortVisibility.Visible,
+                    Constraints = PortConstraints.Default|PortConstraints.Draw,
+                    //Set Port Connection Direction
+                    ConnectionDirection = PortConnectionDirection.Left
                 }
-            };
+            }
+        };
         nodes.Add(node1);
 
         Node node2 = new Node()
+        {
+            ID = "n2",
+            // Position of the node.
+            OffsetX = 400,
+            OffsetY = 300,
+            // Size of the node.
+            Width = 70,
+            Height = 70,
+            Ports = new DiagramObjectCollection<PointPort>()
             {
-                ID = "n2",
-                // Position of the node.
-                OffsetX = 400,
-                OffsetY = 300,
-                // Size of the node.
-                Width = 70,
-                Height = 70,
-                Ports = new DiagramObjectCollection<PointPort>()
-                {
-                    new PointPort()
-                    { ID="n2p1",
-                      Style = new ShapeStyle(){ Fill = "gray" },
-                      Offset = new DiagramPoint() { X = 1, Y = 0.5 },
-                      Visibility = PortVisibility.Visible,
-                      Constraints = PortConstraints.Default|PortConstraints.Draw,
-                      //Set Port Connection Direction
-                      ConnectionDirection = PortConnectionDirection.Bottom
-                    }
+                new PointPort()
+                { ID="n2p1",
+                    Style = new ShapeStyle(){ Fill = "gray" },
+                    Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                    Visibility = PortVisibility.Visible,
+                    Constraints = PortConstraints.Default|PortConstraints.Draw,
+                    //Set Port Connection Direction
+                    ConnectionDirection = PortConnectionDirection.Bottom
                 }
-            };
+            }
+        };
         // Add node.
         nodes.Add(node2);
 
         Connector Connector1 = new Connector()
-            {
-                ID = "connector1",
-                // Set the source and target point of the connector.
-                SourceID = "n1",
-                TargetID = "n2",
-                SourcePortID = "n1p1",
-                TargetPortID = "n2p1",
-                // Type of the connector segments.
-                Type = ConnectorSegmentType.Orthogonal
-            };
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourceID = "n1",
+            TargetID = "n2",
+            SourcePortID = "n1p1",
+            TargetPortID = "n2p1",
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Orthogonal
+        };
         connectors.Add(Connector1);
     }
 }

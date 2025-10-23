@@ -12,9 +12,9 @@
 @code
 {
     //Initialize diagram component.
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     //Initialize flowchart layout settings.
-    FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
+    private FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
     {
         YesBranchDirection = BranchDirection.LeftInFlow,
         NoBranchDirection = BranchDirection.RightInFlow
@@ -166,6 +166,7 @@
                 _Color = "#6CA0DC"
         },
     };
+
     public class ItemInfo
     {
         public string Name { get; set; }

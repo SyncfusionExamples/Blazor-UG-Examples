@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="DisableUndoRedo" OnClick="@DisableUndoRedo1" />
 <SfButton Content="EnableUndoRedo" OnClick="@EnableUndoRedo" />
 
@@ -13,9 +12,9 @@
 
 @code
 {
-    SfDiagramComponent diagram;
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    string EventValue = string.Empty;
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private string EventValue = string.Empty;
 
     protected override void OnInitialized()
     {
@@ -48,5 +47,4 @@
         diagram.HistoryManager.CanRedo = false;
         diagram.HistoryManager.CanUndo = false;
     }
-
 }

@@ -7,31 +7,31 @@
 @code
 {
     //Define diagram's swimlane collection
-    DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
         // A swimlane is created and stored in the swimlanes collection.
         Swimlane swimlane = new Swimlane()
+        {
+            Header = new SwimlaneHeader()
             {
-                Header = new SwimlaneHeader()
+                Annotation = new ShapeAnnotation()
                 {
-                    Annotation = new ShapeAnnotation()
-                    {
-                        Content = "SALES PROCESS FLOW CHART",
-                        Style = new TextStyle() { Color = "White", FontSize = 12, Bold = true, Italic = true, TextDecoration = TextDecoration.Underline }
-                    },
-                    Height = 50,
-                    Style = new TextStyle()
-                    {
-                        Fill = "teal"
-                    }
+                    Content = "SALES PROCESS FLOW CHART",
+                    Style = new TextStyle() { Color = "White", FontSize = 12, Bold = true, Italic = true, TextDecoration = TextDecoration.Underline }
                 },
-                OffsetX = 400,
-                OffsetY = 200,
-                Height = 150,
-                Width = 450,
-            };
+                Height = 50,
+                Style = new TextStyle()
+                {
+                    Fill = "teal"
+                }
+            },
+            OffsetX = 400,
+            OffsetY = 200,
+            Height = 150,
+            Width = 450,
+        };
         // Add swimlane
         SwimlaneCollections.Add(swimlane);
     }

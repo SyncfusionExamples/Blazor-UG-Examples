@@ -10,9 +10,9 @@
 @code
 {
     //Sets the Snap to objects constraints.
-    public SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToObject | SnapConstraints.SnapToLines;
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    ShapeStyle snapLineStyle = new ShapeStyle() { StrokeColor = "green", StrokeWidth = 3 };
+    private SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToObject | SnapConstraints.SnapToLines;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private ShapeStyle snapLineStyle = new ShapeStyle() { StrokeColor = "green", StrokeWidth = 3 };
 
     protected override void OnInitialized()
     {

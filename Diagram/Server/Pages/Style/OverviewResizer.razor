@@ -11,15 +11,18 @@
     </Layout>
 </SfDiagramComponent>
 <SfDiagramOverviewComponent Height="200px" Width="400px" SourceID="element"></SfDiagramOverviewComponent>
+
 <style>
-        .overviewresizer
+    .overviewresizer
     {
           fill:blue;
     }
+</style>
 
-    </style>
-@code {
-    SfDiagramComponent Diagram;
+@code
+{
+    private SfDiagramComponent Diagram;
+    
     private void ConnectorCreating(IDiagramObject connector)
     {
         (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
@@ -28,12 +31,14 @@
         (connector as Connector).Constraints = 0;
         (connector as Connector).CornerRadius = 5;
     }
+
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
     {
         options.EnableSubTree = true;
         options.Orientation = Orientation.Horizontal;
         return options;
     }
+
     private void NodeCreating(IDiagramObject obj)
     {
         Node node = obj as Node;
@@ -47,14 +52,15 @@
         node.Width = 150;
         node.Height = 50;
         node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
-    {
-        new ShapeAnnotation()
         {
-            Content = hierarchicalData.Name,
-            Style =new TextStyle(){Color = "white"}
-        }
-    };
+            new ShapeAnnotation()
+            {
+                Content = hierarchicalData.Name,
+                Style =new TextStyle(){Color = "white"}
+            }
+        };
     }
+
     //Create the hierarchical details with needed properties.
     public class HierarchicalDetails
     {
@@ -62,20 +68,21 @@
         public string FillColor { get; set; }
         public string Category { get; set; }
     }
+
     //Create the data source with node name and fill color values.
     public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
-{
-    new HierarchicalDetails(){ Name ="Diagram", Category="",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Layout", Category="Diagram",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Tree layout", Category="Layout",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Organizational chart", Category="Layout",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Hierarchical tree", Category="Tree layout",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Radial tree", Category="Tree layout",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Mind map", Category="Hierarchical tree",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Family tree", Category="Hierarchical tree",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Management", Category="Organizational chart",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Human resources", Category="Management",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="University", Category="Management",FillColor="#659be5"},
-    new HierarchicalDetails(){ Name ="Business", Category="#Management",FillColor="#659be5"}
-};
+    {
+        new HierarchicalDetails(){ Name ="Diagram", Category="",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Layout", Category="Diagram",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Tree layout", Category="Layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Organizational chart", Category="Layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Hierarchical tree", Category="Tree layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Radial tree", Category="Tree layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Mind map", Category="Hierarchical tree",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Family tree", Category="Hierarchical tree",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Management", Category="Organizational chart",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Human resources", Category="Management",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="University", Category="Management",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Business", Category="#Management",FillColor="#659be5"}
+    };
 }

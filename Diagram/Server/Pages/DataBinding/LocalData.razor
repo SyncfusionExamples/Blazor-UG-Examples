@@ -1,10 +1,7 @@
 ﻿@page "/LocalData"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@Diagram"
-                    Height="499px"
-                    InteractionController="DiagramInteractions.ZoomPan"
-                    ConnectorCreating="@ConnectorDefaults"
+<SfDiagramComponent @ref="@Diagram" Height="499px" InteractionController="DiagramInteractions.ZoomPan" ConnectorCreating="@ConnectorDefaults"
                     NodeCreating="@NodeDefaults">
     <DataSourceSettings ID="Name" ParentID="Category" DataSource="DataSource" />
     <Layout @bind-Type="type"
@@ -21,15 +18,15 @@
 @code
 {
     //Reference the diagram
-    SfDiagramComponent Diagram;
+    private SfDiagramComponent Diagram;
     // Specify the layout type.
-    LayoutType type = LayoutType.HierarchicalTree;
+    private LayoutType type = LayoutType.HierarchicalTree;
     // Specify the orientation of the layout.
-    LayoutOrientation orientation = LayoutOrientation.TopToBottom;
-    HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
-    VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
-    int HorizontalSpacing = 30;
-    int VerticalSpacing = 30;
+    private LayoutOrientation orientation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
+    private int HorizontalSpacing = 30;
+    private int VerticalSpacing = 30;
 
     // Defines the connector's default values.
     private void ConnectorDefaults(IDiagramObject connector)

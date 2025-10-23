@@ -6,14 +6,15 @@
 <SfDiagramComponent Height="600px" Nodes="@NodeCollection">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
+
 @code
 {
     //Initialize node collection with node
-    DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>()
-       {
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>()
+    {
          // Creates a path node
-         new Node()
-         {
+        new Node()
+        {
              ID="node1",
              //Size of the node
              Height=100,

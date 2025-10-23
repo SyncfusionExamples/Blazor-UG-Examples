@@ -10,31 +10,30 @@
 
 @code
 {
-    SfDiagramComponent diagram;
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-
-    int stackLimit = 3;
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private int stackLimit = 3;
 
     protected override void OnInitialized()
     {
         Node diagramNode = new Node()
+        {
+            ID = "node1",
+            OffsetX = 300,
+            OffsetY = 140,
+            Width = 145,
+            Height = 60,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 300,
-                OffsetY = 140,
-                Width = 145,
-                Height = 60,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#357BD2",
-                    StrokeColor = "White"
-                },
-                Shape = new FlowShape()
-                {
-                    Type = NodeShapes.Flow,
-                    Shape = NodeFlowShapes.Terminator
-                }
-            };
+                Fill = "#357BD2",
+                StrokeColor = "White"
+            },
+            Shape = new FlowShape()
+            {
+                Type = NodeShapes.Flow,
+                Shape = NodeFlowShapes.Terminator
+            }
+        };
         nodes.Add(diagramNode);
     }
 }

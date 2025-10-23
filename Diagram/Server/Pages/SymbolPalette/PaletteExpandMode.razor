@@ -7,48 +7,33 @@
 <SfSymbolPaletteComponent @ref="@Palette" Width="80%" Height="645px" Palettes="@Palettes" SymbolHeight="@SymbolHeight" SymbolWidth="@SymbolWidth" AllowDrag="false">
 </SfSymbolPaletteComponent>
 
-@code {
+@code
+{
     //Reference the symbolpalette
-    SfSymbolPaletteComponent Palette;
+    private SfSymbolPaletteComponent Palette;
     //Define the symbolmargin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
     private int? index { get; set; } = 1;
     //Define pallette collection
-    public DiagramObjectCollection<Palette> Palettes;
-   
-    SfDropDownList<string, Modevalue> Expandable;
-
-    public int? sizeChangeValue { get; set; } = 80;
-    bool animationChecked = true;
-    bool AnimationMode = true;
-
-    bool icon = true;
-
-    double SymbolHeight = 50;
-
-    double SymbolWidth = 50;
-
-    public string Height { get; set; } = "580px";
-
-    public double length = 70;
-
-    public DiagramObjectCollection<Connector> ConnectorCollection
-    {
-        get;
-        set;
-    }
-
-
-    public SymbolInfo SymbolInfo { get; set; }
-    public DiagramObjectCollection<NodeBase> BasicShape { get; set; }
-    public DiagramObjectCollection<NodeBase> Connectors { get; set; }
-    public DiagramObjectCollection<NodeBase> FlowShapess { get; set; }
-
-    public class Modevalue
+    private DiagramObjectCollection<Palette> Palettes;
+    private SfDropDownList<string, Modevalue> Expandable;
+    private int? sizeChangeValue { get; set; } = 80;
+    private bool animationChecked = true;
+    private bool AnimationMode = true;
+    private bool icon = true;
+    private double SymbolHeight = 50;
+    private double SymbolWidth = 50;
+    private string Height { get; set; } = "580px";
+    private double length = 70;
+    private DiagramObjectCollection<Connector> ConnectorCollection { get; set; }
+    private SymbolInfo SymbolInfo { get; set; }
+    private DiagramObjectCollection<NodeBase> BasicShape { get; set; }
+    private DiagramObjectCollection<NodeBase> Connectors { get; set; }
+    private DiagramObjectCollection<NodeBase> FlowShapess { get; set; }
+    private class Modevalue
     {
         public string Text { get; set; }
         public string Value { get; set; }
-
     }
 
     private List<Modevalue> ExpandMode = new List<Modevalue>() {
@@ -58,7 +43,7 @@
 
     Syncfusion.Blazor.Navigations.ExpandMode ExpandModeType = Syncfusion.Blazor.Navigations.ExpandMode.Multiple;
 
-    public void ModeChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, Modevalue> args)
+    private void ModeChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, Modevalue> args)
     {
 
         if (args.Value == "Multiple")
@@ -131,12 +116,12 @@
         Palettes = new DiagramObjectCollection<Palette>();
 
         SymbolInfo = new SymbolInfo()
-            {
-                Fit = true
-            };
+        {
+            Fit = true
+        };
 
         BasicShape = new DiagramObjectCollection<NodeBase>
-{
+        {
             new Node()
             {
                 ID="Rectangle" , Shape = new BasicShape(){
@@ -188,7 +173,7 @@
         };
 
         Connectors = new DiagramObjectCollection<NodeBase>()
-{
+        {
             new Connector(){ID="Link1" ,  Type = ConnectorSegmentType.Orthogonal ,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){  X=40,Y=40},
               TargetDecorator= new DecoratorSettings()
               { Shape=DecoratorShape.Arrow, Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
@@ -209,7 +194,7 @@
         };
 
         FlowShapess = new DiagramObjectCollection<NodeBase>()
-{
+        {
             new Node()
             {
                 ID = "Terminator",
@@ -263,34 +248,34 @@
 
         Palettes.Add(
             new Palette()
-                {
-                    ID = "Flowshapess",
-                    IsExpanded = true,
-                    Symbols = FlowShapess,
-                    Title = "Flowshapes",
-                    IconCss = "e-ddb-icons e-flow"
-                }
+            {
+                ID = "Flowshapess",
+                IsExpanded = true,
+                Symbols = FlowShapess,
+                Title = "Flowshapes",
+                IconCss = "e-ddb-icons e-flow"
+            }
         );
         Palettes.Add(
            new Palette()
-               {
-                   ID = "BasicShape",
-                   IsExpanded = true,
-                   Symbols = BasicShape,
-                   Title = "Basic Shapes",
-                   IconCss = "e-ddb-icons e-basic"
-               }
+            {
+                ID = "BasicShape",
+                IsExpanded = true,
+                Symbols = BasicShape,
+                Title = "Basic Shapes",
+                IconCss = "e-ddb-icons e-basic"
+            }
         );
 
         Palettes.Add(
             new Palette()
-                {
-                    ID = "Connectors",
-                    IsExpanded = true,
-                    Symbols = Connectors,
-                    Title = "Connectors",
-                    IconCss = "e-ddb-icons e-connector"
-                }
+            {
+                ID = "Connectors",
+                IsExpanded = true,
+                Symbols = Connectors,
+                Title = "Connectors",
+                IconCss = "e-ddb-icons e-connector"
+            }
         );
     }
 }

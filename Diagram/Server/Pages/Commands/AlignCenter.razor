@@ -3,50 +3,50 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Center" OnClick="@OnAlignCenter" />
 <SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" Nodes="@nodes" />
 
 @code
 {
     // Reference to diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     // Initialize diagram's node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 50,
-                Height = 30,
-                OffsetX = 500,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
-            };
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 30,
+            OffsetX = 500,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
         nodes.Add(node1);
         Node node2 = new Node()
-            {
-                ID = "node2",
-                Width = 60,
-                Height = 40,
-                OffsetX = 500,
-                OffsetY = 300,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
-            };
+        {
+            ID = "node2",
+            Width = 60,
+            Height = 40,
+            OffsetX = 500,
+            OffsetY = 300,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
         nodes.Add(node2);
         Node node3 = new Node()
-            {
-                ID = "node3",
-                Width = 70,
-                Height = 50,
-                OffsetX = 500,
-                OffsetY = 500,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
-            };
+        {
+            ID = "node3",
+            Width = 70,
+            Height = 50,
+            OffsetX = 500,
+            OffsetY = 500,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
         nodes.Add(node3);
     }
+
     // Method to align selected objects at center of the selection boundary.
     private void OnAlignCenter()
     {

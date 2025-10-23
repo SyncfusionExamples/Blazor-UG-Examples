@@ -6,7 +6,7 @@
 	<RulerSettings>
         <HorizontalRuler  IsVisible="true" Interval="@RulerInterval" 
                             TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
-     </HorizontalRuler>
+        </HorizontalRuler>
         <VerticalRuler IsVisible="false"  Interval="@RulerInterval" 
                         TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
         </VerticalRuler>
@@ -16,14 +16,13 @@
 @code
 {
     //Reference to diagram.
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Defining Ruler Interval of Rulers
-    public int RulerInterval = 20;
+    private int RulerInterval = 20;
     //Defining Tick Alignment of Rulers
-    public TickAlignment RulerTickAlignment = TickAlignment.RightAndBottom;
+    private TickAlignment RulerTickAlignment = TickAlignment.RightAndBottom;
     //Defining Marker color of Rulers
-    public string RulerMarkerColor = "green";
-
+    private string RulerMarkerColor = "green";
 }
 
 

@@ -13,30 +13,30 @@
     </div>
 </div>
 
-@code {
+@code 
+{
     //Define symbolpreview
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define SymbolMargin
-    SymbolMargin SymbolMargin = new SymbolMargin
-        {
-            Left = 15,
-            Right = 15,
-            Top = 15,
-            Bottom = 15
-        };
-        //Reference the symbolpalette
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    //Reference the symbolpalette
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
         InitPaletteModel();
     }
+
     private void InitPaletteModel()
     {
         Palettes = new DiagramObjectCollection<Palette>();
@@ -49,23 +49,24 @@
            new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
         };
     }
+
     //Method to create palette node
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
-            {
-                ID = id,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
-            };
+        {
+            ID = id,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
         PaletteNodes.Add(node);
     }
+
     //Method to getsymbolinfo
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
         SymbolInfo SymbolInfo = new SymbolInfo();
         //SymbolInfo.Fit = true;
-
         string text = null;
         text = (symbol as Node).ID;
         SymbolInfo.Description = new SymbolDescription() { Text = text };

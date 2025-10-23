@@ -3,22 +3,36 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="Add Connector" OnClick="@AddConnector" />
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors"></SfDiagramComponent>
-@code {
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" />
 
-    //Defines diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector() { ID = "connector1", SourcePoint = new DiagramPoint() { X = 100, Y = 100 }, TargetPoint = new DiagramPoint() { X = 200, Y = 200 }, Type = ConnectorSegmentType.Straight };
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            Type = ConnectorSegmentType.Straight
+        };
         connectors.Add(Connector);
     }
-    public void AddConnector()
+
+    private void AddConnector()
     {
-        Connector NewConnector = new Connector() { ID = "connector2", SourcePoint = new DiagramPoint() { X = 300, Y = 300 }, TargetPoint = new DiagramPoint() { X = 400, Y = 400 }, Type = ConnectorSegmentType.Straight };
-        //Add the connector at the run time.
+        Connector NewConnector = new Connector()
+        {
+            ID = "connector2",
+            SourcePoint = new DiagramPoint() { X = 300, Y = 300 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 400 },
+            Type = ConnectorSegmentType.Straight
+        };
+        //Add the connector at the runtime.
         connectors.Add(NewConnector);
     }
 }

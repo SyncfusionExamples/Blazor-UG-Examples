@@ -2,14 +2,12 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" 
-                    Connectors="@connectors" 
-                    ConnectorCreating="OnConnectorCreating" />
+<SfDiagramComponent Height="600px" Connectors="@connectors" ConnectorCreating="OnConnectorCreating" />
 
 @code
 {
     // Define the connector collection.
-    DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> connectors;
 
     protected override void OnInitialized()
     {
@@ -32,7 +30,7 @@
         connectors.Add(Connector);
     }
 
-    public void OnConnectorCreating(IDiagramObject obj)
+    private void OnConnectorCreating(IDiagramObject obj)
     { 
         Connector connector = obj as Connector;
         connector.Style.Fill = "black";
@@ -41,4 +39,4 @@
         connector.TargetDecorator.Style.Fill = "black";
         connector.TargetDecorator.Style.StrokeColor = "black";
     }
-    }
+}

@@ -9,33 +9,34 @@
 
 @code
 {
-    SfDiagramComponent diagram;
-    DiagramObjectCollection<Node> nodes;
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node = new Node()
+        {
+            ID = "node",
+            // Position of the node.
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            BackgroundColor = "red",
+            Style = new ShapeStyle()
             {
-                ID = "node",
-                // Position of the node.
-                OffsetX = 250,
-                OffsetY = 250,
-                // Size of the node.
-                Width = 100,
-                Height = 100,
-                BackgroundColor = "red",
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                // Pivot of the node.
-                Pivot = new DiagramPoint() { X = 0, Y = 0 }
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            // Pivot of the node.
+            Pivot = new DiagramPoint() { X = 0, Y = 0 }
+        };
         nodes.Add(node);
     }
+
     private void GetParentMethod()
     {
         IDiagramObject parent = diagram.Nodes[0].GetParent();

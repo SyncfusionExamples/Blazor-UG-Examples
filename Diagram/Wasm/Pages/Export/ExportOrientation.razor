@@ -3,12 +3,12 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Export" OnClick="@Export" />
-<SfDiagramComponent Height="600px" @ref="@diagram">
-</SfDiagramComponent>
+<SfDiagramComponent Height="600px" @ref="@diagram" />
 
-@code {
+@code
+{
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
 
     private async Task Export()
     {

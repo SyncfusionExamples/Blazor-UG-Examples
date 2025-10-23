@@ -4,10 +4,7 @@
 @using Syncfusion.Blazor.Diagram
 
 <div>
-    <SfDiagramComponent @ref="Diagram" Height="500px"
-                        Nodes="@nodes"
-                        Connectors="@connectors"
-                        SelectionSettings="@SelectedModel"
+    <SfDiagramComponent @ref="Diagram" Height="500px" Nodes="@nodes" Connectors="@connectors" SelectionSettings="@SelectedModel"
                         GetCustomTool="GetCustomTool">
         <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
     </SfDiagramComponent>
@@ -15,12 +12,12 @@
 
 @code
 {
-    public SfDiagramComponent Diagram;
-    public DiagramObjectCollection<Node> nodes { get; set; }
-    public DiagramObjectCollection<Connector> connectors { get; set; }
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Node> nodes { get; set; }
+    private DiagramObjectCollection<Connector> connectors { get; set; }
     // Defines diagram's SelectionSettings.
-    DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
 
     protected override void OnInitialized()
     {
@@ -36,7 +33,7 @@
 
     public class DeleteTool : InteractionControllerBase
     {
-        SfDiagramComponent diagram;
+        private SfDiagramComponent diagram;
         public DeleteTool(SfDiagramComponent diagram) : base(diagram) { this.diagram = diagram; }
         public override void OnMouseUp(DiagramMouseEventArgs args)
         {
@@ -47,7 +44,7 @@
 
     public class CloneTool : DragController
     {
-        SfDiagramComponent diagram;
+        private SfDiagramComponent diagram;
         public CloneTool(SfDiagramComponent diagram) : base(diagram) { this.diagram = diagram; }
         public override void OnMouseDown(DiagramMouseEventArgs args)
         {
@@ -59,7 +56,7 @@
 
     private void InitDiagramModel()
     {
-        var node = new Node()
+        Node node = new Node()
         {
             ID = "Node1",
             OffsetX = 300,
@@ -74,7 +71,7 @@
         };
         nodes.Add(node);
 
-        var connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "Connector1",
             SourcePoint = new DiagramPoint() { X = 500, Y = 150 },
@@ -86,7 +83,8 @@
             }
         };
         connectors.Add(connector);
-        var cloneHandle = new UserHandle()
+
+        UserHandle cloneHandle = new UserHandle()
         {
             Name = "clone",
             PathData = "M60.3,18H27.5c-3,0-5.5,2.4-5.5,5.5v38.2h5.5V23.5h32.7V18z M68.5,28.9h-30c-3,0-5.5,2.4-5.5,5.5v38.2c0,3,2.4,5.5,5.5,5.5h30c3,0,5.5-2.4,5.5-5.5V34.4C73.9,31.4,71.5,28.9,68.5,28.9z M68.5,72.5h-30V34.4h30V72.5z",
@@ -95,7 +93,8 @@
             Visible = true,
             VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector
         };
-        var deleteHandle = new UserHandle()
+
+        UserHandle deleteHandle = new UserHandle()
         {
             Name = "delete",
             PathData = "M0.54700077,2.2130003 L7.2129992,2.2130003 7.2129992,8.8800011 C7.2129992,9.1920013 7.1049975,9.4570007 6.8879985,9.6739998 6.6709994,9.8910007 6.406,10 6.0939997,10 L1.6659999,10 C1.3539997,10 1.0890004,9.8910007 0.87200136,9.6739998 0.65500242,9.4570007 0.54700071,9.1920013 0.54700077,8.8800011 z M2.4999992,0 L5.2600006,0 5.8329986,0.54600048 7.7599996,0.54600048 7.7599996,1.6660004 0,1.6660004 0,0.54600048 1.9270014,0.54600048 z",
@@ -104,15 +103,16 @@
             VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector,
             Visible = true
         };
+
         UserHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle, deleteHandle
         };
+
         SelectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for selected model.
             Constraints = SelectorConstraints.UserHandle,
-
             UserHandles = this.UserHandles
         };
     }

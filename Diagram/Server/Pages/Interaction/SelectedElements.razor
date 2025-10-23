@@ -1,35 +1,40 @@
 ﻿@page "/SelectedElements"
+
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent @ref="diagram" Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection"
-SelectionChanged="OnSelectionChanged">
+                    SelectionChanged="OnSelectionChanged">
 </SfDiagramComponent>
-@code {
-    SfDiagramComponent diagram;
+
+@code
+{
+    private SfDiagramComponent diagram;
     //Initailize the diagram's nodes collection
-    public DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connector collection
-    public DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                OffsetX = 100,
-                OffsetY = 200,
-                Height = 100,
-                Width = 100,
-                ID = "node1",
-            };
+        {
+            OffsetX = 100,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node1",
+        };
         NodeCollection.Add(node1);
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourcePoint = new DiagramPoint() { X = 300, Y = 100 },
-                TargetPoint = new DiagramPoint() { X = 400, Y = 300 },
-                Type = ConnectorSegmentType.Orthogonal
-            };
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 300, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 300 },
+            Type = ConnectorSegmentType.Orthogonal
+        };
         ConnectorCollection.Add(connector1);
     }
+
     //Event to notify selection changing event after selected the nodes/conenctors in diagram.
     private void OnSelectionChanged(SelectionChangedEventArgs args)
     {

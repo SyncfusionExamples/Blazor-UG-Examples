@@ -9,9 +9,9 @@
 @code
 {
     //Sets the snap constraints
-    public SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToLines;
+    private SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToLines;
     //Intialize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {

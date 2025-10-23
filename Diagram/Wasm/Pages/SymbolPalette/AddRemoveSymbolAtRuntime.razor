@@ -4,7 +4,6 @@
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="AddSymbol" OnClick="@AddSymbol" />
 <SfButton Content="RemoveSymbol" OnClick="@RemoveSymbol" />
 
@@ -18,19 +17,18 @@
     </div>
 </div>
 <AddNodeToPalette />
-@code{
+
+@code
+{
     //Reference the symbolpreview
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define symbol margin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -49,6 +47,7 @@
            new Palette(){Symbols =PaletteNodes,Title="FlowShapes",ID="FlowShapes" },
         };
     }
+
     //Method to create palette node
     private void CreatePaletteNode(NodeFlowShapes flowShape, string id)
     {
@@ -60,6 +59,7 @@
         };
         PaletteNodes.Add(node);
     }
+
     private void AddSymbol()
     {
         Node decision = new Node()
@@ -68,7 +68,8 @@
             Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
         };
         symbolpalette.AddPaletteItem("FlowShapes", decision, false);
-    }    
+    }
+    
     private void RemoveSymbol()
     {
         symbolpalette.RemovePaletteItem("FlowShapes", "Decision");

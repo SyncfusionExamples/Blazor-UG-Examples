@@ -7,20 +7,19 @@
 @code
 {
     // Defines diagram's node collection.
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
-        // Initialize diagram's node collection.
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "node",
-                Width = 100,
-                Height = 100,
-                OffsetX = 100,
-                OffsetY = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "node",
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation
                 {
@@ -29,8 +28,8 @@
                     Constraints = AnnotationConstraints.ReadOnly
                 }
             },
-                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
-            };
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
+        };
         nodes.Add(node);
     }
 }

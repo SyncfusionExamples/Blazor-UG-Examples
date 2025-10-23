@@ -15,18 +15,18 @@
 
 @code
 {
-    SymbolMargin SymbolMargin = new SymbolMargin 
+    private SymbolMargin SymbolMargin = new SymbolMargin
     { 
         Left = 15, 
         Right = 15, 
         Top = 15, 
         Bottom = 15 
     };       
-    SfSymbolPaletteComponent SymbolPalette;
+    private SfSymbolPaletteComponent SymbolPalette;
     //Define palettes collection.
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection.
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {

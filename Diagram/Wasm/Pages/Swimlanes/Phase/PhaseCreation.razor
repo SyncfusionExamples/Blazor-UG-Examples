@@ -6,38 +6,38 @@
 @code
 {
     //Define diagram's swimlane collection
-    DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
         // A swimlane is created and stored in the swimlanes collection.
         Swimlane swimlane = new Swimlane()
+        {
+            Header = new SwimlaneHeader()
             {
-                Header = new SwimlaneHeader()
+                Annotation = new ShapeAnnotation()
                 {
-                    Annotation = new ShapeAnnotation()
-                    {
-                        Content = "SALES PROCESS FLOW CHART"
-                    },
-                    Height = 50,
+                    Content = "SALES PROCESS FLOW CHART"
                 },
-                OffsetX = 400,
-                OffsetY = 200,
-                Height = 150,
-                Width = 450,
-                Phases = new DiagramObjectCollection<Phase>()
+                Height = 50,
+            },
+            OffsetX = 400,
+            OffsetY = 200,
+            Height = 150,
+            Width = 450,
+            Phases = new DiagramObjectCollection<Phase>()
+            {
+                new Phase()
                 {
-                    new Phase()
+                    Width = 450,
+                    Header = new SwimlaneHeader()
                     {
-                        Width = 450,
-                        Header = new SwimlaneHeader()
-                        {
-                            Annotation = new ShapeAnnotation(){Content = "Phase 1"},
-                            Height = 30
-                        }
+                        Annotation = new ShapeAnnotation(){Content = "Phase 1"},
+                        Height = 30
                     }
                 }
-            };
+            }
+        };
         // Add swimlane
         SwimlaneCollections.Add(swimlane);
     }
@@ -47,10 +47,10 @@
         if (obj is Swimlane swimlane)
         {
             swimlane.Header.Style = new TextStyle()
-                {
-                    Fill = "#5b9bd5",
-                    StrokeColor = "#5b9bd5"
-                };
+            {
+                Fill = "#5b9bd5",
+                StrokeColor = "#5b9bd5"
+            };
             foreach (Phase phase in swimlane.Phases)
             {
                 phase.Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };

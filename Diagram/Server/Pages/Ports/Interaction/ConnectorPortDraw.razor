@@ -3,13 +3,13 @@
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Height="600px" Connectors="@connectors">
-<SnapSettings Constraints="SnapConstraints.None"></SnapSettings>    
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>    
 </SfDiagramComponent>
 
 @code
 {
     //Define diagram's connector collection
-    DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> connectors;
 
     protected override void OnInitialized()
     {

@@ -8,20 +8,20 @@
 @code
 {
     // Initialize node and connector collections
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                OffsetX = 200,
-                OffsetY = 200,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                Ports = new DiagramObjectCollection<PointPort>()
+        {
+            ID = "node1",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            Ports = new DiagramObjectCollection<PointPort>()
             {
                 new PointPort()
                 {
@@ -31,17 +31,17 @@
                     Shape = PortShapes.Circle,
                 }
             }
-            };
+        };
 
         Node node2 = new Node()
-            {
-                ID = "node2",
-                OffsetX = 400,
-                OffsetY = 200,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                Ports = new DiagramObjectCollection<PointPort>()
+        {
+            ID = "node2",
+            OffsetX = 400,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            Ports = new DiagramObjectCollection<PointPort>()
             {
                 new PointPort()
                 {
@@ -51,19 +51,19 @@
                     Shape = PortShapes.Circle,
                 }
             }
-            };
+        };
 
         // Connector connecting node1's port1 to node2's port1
         Connector connector1 = new Connector()
-            {
-                ID = "connector1",
-                SourceID = "node1",
-                SourcePortID = "port1",
-                TargetID = "node2",
-                TargetPortID = "port1",
-                Type = ConnectorSegmentType.Straight,
-                Style = new ShapeStyle() { StrokeColor = "#6495ED", StrokeWidth = 2 }
-            };
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            SourcePortID = "port1",
+            TargetID = "node2",
+            TargetPortID = "port1",
+            Type = ConnectorSegmentType.Straight,
+            Style = new ShapeStyle() { StrokeColor = "#6495ED", StrokeWidth = 2 }
+        };
 
         nodes.Add(node1);
         nodes.Add(node2);

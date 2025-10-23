@@ -2,22 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="diagram"
-                    Height="600px"
-                    Nodes="NodeCollection"
-                    Connectors="ConnectorCollection">
-    <ContextMenuSettings Show="true"
-                         Items="contextMenuItemModels"
-                         ShowCustomMenuOnly="true"
-                         ContextMenuOpening="OnContextMenuOpen"
+<SfDiagramComponent @ref="diagram" Height="600px" Nodes="NodeCollection" Connectors="ConnectorCollection">
+    <ContextMenuSettings Show="true" Items="contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="OnContextMenuOpen"
                          ContextMenuItemClicked="ContextMenuItemClickHandler">
     </ContextMenuSettings>
 </SfDiagramComponent>
 
-@code {
+@code
+{
     // Reference to diagram
     private SfDiagramComponent diagram;
-
     // Diagram collections
     private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
     private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();

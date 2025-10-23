@@ -4,7 +4,6 @@
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="AddPalette" OnClick="@AddPalette" />
 <SfButton Content="RemovePalette" OnClick="@RemovePalette" />
 
@@ -18,19 +17,18 @@
     </div>
 </div>
 <AddNodeToPalette />
-@code{
+
+@code
+{
     //Reference the symbolpreview
-    DiagramSize SymbolPreview;
+    private DiagramSize SymbolPreview;
     //Define symbol margin
-    SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-
-    SfSymbolPaletteComponent symbolpalette;
-
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SfSymbolPaletteComponent symbolpalette;
     //Define palattes collection
-    DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -49,6 +47,7 @@
            new Palette(){Symbols =PaletteNodes,Title="Flow Shapes",ID="Flow Shapes" },
         };
     }
+
     //Method to create palette node
     private void CreatePaletteNode(NodeFlowShapes flowShape, string id)
     {
@@ -60,21 +59,23 @@
         };
         PaletteNodes.Add(node);
     }
+
     private void AddPalette()
     {
         DiagramObjectCollection<NodeBase> newNodes = new DiagramObjectCollection<NodeBase>();
         Node newNode = new Node()
-            {
-                ID = "newNode",
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse }
-            };
+        {
+            ID = "newNode",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse }
+        };
         newNodes.Add(newNode as NodeBase);
         DiagramObjectCollection<Palette> newPalettes = new DiagramObjectCollection<Palette>()
         {
             new Palette(){Symbols = newNodes,Title = "BasicShapes",ID = "BasicShapes" },
         };
         symbolpalette.AddPalettes(newPalettes);
-    }    
+    } 
+    
     private void RemovePalette()
     {
         symbolpalette.RemovePalettes("BasicShapes");

@@ -3,8 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Data
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px"
-                    NodeCreating="NodeDefaults" SetNodeTemplate="SetTemplate">
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" NodeCreating="NodeDefaults" SetNodeTemplate="SetTemplate">
     <DataSourceSettings ID="Name" ParentID="Category">
         <SfDataManager Json="DataSource" Adaptor="Syncfusion.Blazor.Adaptors.JsonAdaptor"></SfDataManager>
     </DataSourceSettings>
@@ -13,9 +12,9 @@
 
 @code
 {
-    SfDiagramComponent Diagram;
-    float x = 100;
-    float y = 100;
+    private SfDiagramComponent Diagram;
+    private float x = 100;
+    private float y = 100;
     Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
 
     // Create the hierarchical details with needed properties.

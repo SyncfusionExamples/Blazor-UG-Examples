@@ -7,7 +7,7 @@
 @code
 {
     // Defines diagram's connector collection.
-    DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> connectors;
 
     protected override void OnInitialized()
     {
@@ -20,12 +20,12 @@
             Style = new TextStyle() { StrokeColor = "#6495ED" },
             Annotations = new DiagramObjectCollection<PathAnnotation>()
             {
-                new PathAnnotation 
-                { 
-                    Content = "Annotation", 
+                new PathAnnotation
+                {
+                    Content = "Annotation",
                     // Set the segment angle for the connector's annotation.
                     SegmentAngle = true,
-                    Offset = 0.7 
+                    Offset = 0.7
                 },
             }
         };

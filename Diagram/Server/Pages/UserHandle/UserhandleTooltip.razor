@@ -2,16 +2,15 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px"
-                    Nodes="@nodes"
-                    SelectionSettings="@SelectedModel">
+<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
 </SfDiagramComponent>
 
 @code
 {
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+
     protected override void OnInitialized()
     {
         UserHandle cloneHandle = new UserHandle()

@@ -2,27 +2,26 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Connectors="@connectors">
-</SfDiagramComponent>
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
 
 @code
 {
     //Defines diagram's connector collection.
-    public DiagramObjectCollection<Connector> connectors { get; set; }
+    private DiagramObjectCollection<Connector> connectors { get; set; }
 
     protected override void OnInitialized()
     {
         connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
+        {
+            SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new ShapeStyle()
             {
-                SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
-                TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
-                Type = ConnectorSegmentType.Orthogonal,
-                Style = new ShapeStyle()
-                {
-                    StrokeColor = "#6BA5D7"
-                },
-                Annotations = new DiagramObjectCollection<PathAnnotation>()
+                StrokeColor = "#6BA5D7"
+            },
+            Annotations = new DiagramObjectCollection<PathAnnotation>()
             {
                 new PathAnnotation()
                 {
@@ -32,7 +31,7 @@
                     Alignment = AnnotationAlignment.After
                 },
             }
-            };
+        };
         connectors.Add(connector);
     }
 }

@@ -14,10 +14,11 @@
     </Layout>
 </SfDiagramComponent>
 
-@code {
+@code
+{
     private SfDiagramComponent? diagram;
-    public LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
-    public List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
+    private LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
+    private List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
     {
         new OrientationItem { Text = "Vertical", Value = LayoutOrientation.Vertical },
         new OrientationItem { Text = "Horizontal", Value = LayoutOrientation.Horizontal },
@@ -25,7 +26,7 @@
         new OrientationItem { Text = "Right to Left", Value = LayoutOrientation.RightToLeft }
     };
 
-    public List<MindMapDetails> DataSource { get; set; } = new()
+    private List<MindMapDetails> DataSource { get; set; } = new()
     {
         new MindMapDetails { Id = "1", Label = "Project Planning", ParentId = "", Branch = "Root" },
         new MindMapDetails { Id = "2", Label = "Requirements", ParentId = "1", Branch = "Right" },
@@ -94,13 +95,13 @@
         };
     }
 
-    public class OrientationItem
+    private class OrientationItem
     {
         public string Text { get; set; } = string.Empty;
         public LayoutOrientation Value { get; set; }
     }
 
-    public class MindMapDetails
+    private class MindMapDetails
     {
         public string Id { get; set; } = string.Empty;
         public string Label { get; set; } = string.Empty;

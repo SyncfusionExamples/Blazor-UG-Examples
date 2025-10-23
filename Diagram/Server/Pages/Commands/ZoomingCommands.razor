@@ -3,30 +3,29 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
-
 <SfButton Content="Zoom" OnClick="@OnZoom" />
+
 <SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes"  />
 
 @code
 {
     //Reference to diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     // Initialize diagram's node collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
    
     protected override void OnInitialized()
     {
         Node node1 = new Node()
-            {
-                ID = "node1",
-                Width = 50,
-                Height = 30,
-                OffsetX = 500,
-                OffsetY = 100,
-                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
-            };
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 30,
+            OffsetX = 500,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
         nodes.Add(node1);
     }
 

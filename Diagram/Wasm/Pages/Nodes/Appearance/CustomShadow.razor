@@ -7,31 +7,31 @@
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node = new Node()
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            Constraints = NodeConstraints.Default | NodeConstraints.Shadow,
+            // Custom Shadow of the node
+            Shadow = new Shadow()
             {
-                // Position of the node
-                OffsetX = 250,
-                OffsetY = 250,
-                // Size of the node
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
-                Constraints = NodeConstraints.Default | NodeConstraints.Shadow,
-                // Custom Shadow of the node
-                Shadow = new Shadow()
-                {
-                    Angle = 50,
-                    Color = "Blue",
-                    Opacity = 0.8,
-                    Distance = 20
-                }
-            };
+                Angle = 50,
+                Color = "Blue",
+                Opacity = 0.8,
+                Distance = 20
+            }
+        };
         nodes.Add(node);
     }
 }

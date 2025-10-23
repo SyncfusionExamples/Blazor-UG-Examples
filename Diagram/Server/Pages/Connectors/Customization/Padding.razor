@@ -1,58 +1,61 @@
 ﻿@page "/Padding"
 
 @using Syncfusion.Blazor.Diagram
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" Nodes="@nodes">
-</SfDiagramComponent>
-@code {
-    //Defines diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    //Defines diagram's connector collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" Nodes="@nodes" />
+
+@code
+{
+    //Defines diagram's nodes collection.
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>() {
-          new Node() {
-            OffsetX = 100,
-            OffsetY = 100,
-            Height = 50,
-            Width = 100,
-            ID = "node1",
-            Style = new ShapeStyle(){
-                Fill = "#6BA5D7",
-                StrokeColor = "#6BA5D7"},
-            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
-          },
-          new Node() {   OffsetX = 300,
-            OffsetY = 300,
-            Height = 50,
-            Width = 100,
-            ID = "node2",
-             Style = new ShapeStyle(){
-                Fill = "#6BA5D7",
-                StrokeColor = "#6BA5D7"},
-            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
-
-        }};
-        Connector Connector = new Connector()
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node()
             {
-                ID = "connector1",
-                SourceID = "node1",
-                TargetID = "node2",
-                //Specifies the source and target padding values.
-                SourcePadding = 20,
-                TargetPadding = 20,
-                TargetDecorator = new DecoratorSettings()
-                {
-                    Shape = DecoratorShape.Arrow,
-                    Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7", StrokeWidth = 1 }
-                },
-                Style = new ShapeStyle()
-                {
-                    StrokeColor = "#6BA5D7",
-                    StrokeWidth = 1
-                },
-                Type = ConnectorSegmentType.Orthogonal
-            };
+                OffsetX = 100,
+                OffsetY = 100,
+                Height = 50,
+                Width = 100,
+                ID = "node1",
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" },
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+            },
+            new Node()
+            {
+                OffsetX = 300,
+                OffsetY = 300,
+                Height = 50,
+                Width = 100,
+                ID = "node2",
+                Style = new ShapeStyle(){ Fill = "#6BA5D7", StrokeColor = "#6BA5D7" },
+                Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+            }
+        };
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            //Specifies the source and target padding values.
+            SourcePadding = 20,
+            TargetPadding = 20,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7", StrokeWidth = 1 }
+            },
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "#6BA5D7",
+                StrokeWidth = 1
+            },
+            Type = ConnectorSegmentType.Orthogonal
+        };
         connectors.Add(Connector);
     }
 }

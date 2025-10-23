@@ -12,9 +12,10 @@
 @code
 {
     //Reference to the diagram.
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
     //Define the diagram's nodes collection.
-    public DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
+    
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
@@ -40,6 +41,7 @@
         };
         nodes.Add(node);
     }
+
     private void Freehand()
     {
         //Draw an object once and activate the draw once.

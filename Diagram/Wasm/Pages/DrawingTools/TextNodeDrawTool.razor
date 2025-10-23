@@ -3,29 +3,27 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-
 <SfButton Content="AddNode" OnClick="@AddNode" />
 <SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px" />
 
 @code
 {
     //Reference to diagram.
-    SfDiagramComponent diagram;
-
+    private SfDiagramComponent diagram;
     //Define the diagram's nodes collection.
-    public DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     protected override void OnInitialized()
     {
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
-            {
-                ID = "group",
-                OffsetX = 200,
-                OffsetY = 200,
-                Width = 100,
-                Height = 100,
-                Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            ID = "group",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
             {
                 new ShapeAnnotation()
                 {
@@ -36,8 +34,8 @@
                     }
                 }
             },
-                Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
-            };
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
         nodes.Add(node);
     }
 
@@ -47,9 +45,9 @@
         diagram.InteractionController = DiagramInteractions.DrawOnce;
         //Initialize the drawing object to draw the shape.
         diagram.DrawingObject = new Node()
-            {
-                Shape = new TextShape() { Content = "Text Content" },
-                Style = new TextStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
-            };
+        {
+            Shape = new TextShape() { Content = "Text Content" },
+            Style = new TextStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
     }
 }

@@ -6,88 +6,91 @@
 
 <SfButton Content="Show CustomTooltip" OnClick="@show" />
 <SfButton Content="Hide CustomTooltip" OnClick="@hide" />
-
 <SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> nodes;
     //Reference the diagram
-    SfDiagramComponent diagram;
+    private SfDiagramComponent diagram;
+    
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
         nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 100,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node1",
-                OffsetX = 100,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "Auto", OpensOn = "Auto", Position = Position.BottomCenter },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "Auto", OpensOn = "Auto", Position = Position.BottomCenter },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         Node node1 = new Node()
+        {
+            ID = "node2",
+            OffsetX = 250,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node2",
-                OffsetX = 250,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "Hover", OpensOn = "Hover" },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "Hover", OpensOn = "Hover" },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         Node node2 = new Node()
+        {
+            ID = "node3",
+            OffsetX = 400,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node3",
-                OffsetX = 400,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "Custom", OpensOn = "Custom" },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "Custom", OpensOn = "Custom" },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         Node node3 = new Node()
+        {
+            ID = "node4",
+            OffsetX = 550,
+            OffsetY = 100,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
             {
-                ID = "node4",
-                OffsetX = 550,
-                OffsetY = 100,
-                Width = 100,
-                Height = 100,
-                Style = new ShapeStyle()
-                {
-                    Fill = "#6495ED",
-                    StrokeColor = "white"
-                },
-                Tooltip = new DiagramTooltip() { Content = "Click", OpensOn = "Click" },
-                Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
-            };
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "Click", OpensOn = "Click" },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
         nodes.Add(node);
         nodes.Add(node1);
         nodes.Add(node2);
         nodes.Add(node3);
     }
+
     //Method to show tooltip
     private void show()
     {
         _ = diagram.ShowTooltipAsync(diagram.Nodes[2] as NodeBase);
     }
+
     //Method to hide tooltip
     private void hide()
     {

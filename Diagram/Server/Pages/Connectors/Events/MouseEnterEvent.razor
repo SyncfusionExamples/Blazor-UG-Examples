@@ -2,20 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@Diagram"
-                    Width="100%"
-                    Height="700px"
-                    Connectors="@connectors"
-                    MouseEnter="OnMouseEnter">
-</SfDiagramComponent>
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Connectors="@connectors" MouseEnter="OnMouseEnter" />
 
-@code{
-    SfDiagramComponent Diagram;
+@code
+{
+    private SfDiagramComponent Diagram;
     //Defines diagram's connector collection.
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
     protected override void OnInitialized()
     {
-          Connector Connector = new Connector()
+        Connector Connector = new Connector()
         {
             ID = "connector1",
             // Set the source and target point of the connector.
@@ -26,6 +23,7 @@
         };
         connectors.Add(Connector);
     }
+
     private void OnMouseEnter(DiagramElementMouseEventArgs args)
     {
 

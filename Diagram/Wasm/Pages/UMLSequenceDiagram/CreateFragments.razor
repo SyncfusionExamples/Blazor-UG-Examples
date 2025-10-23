@@ -5,7 +5,8 @@
     <SnapSettings Constraints="SnapConstraints.None" />
 </SfDiagramComponent>
 
-@code {
+@code
+{
     private SfDiagramComponent Diagram;
     private UmlSequenceDiagramModel DiagramModel;
 
@@ -85,11 +86,11 @@
 
         // Assign model
         DiagramModel = new UmlSequenceDiagramModel()
-            {
-                SpaceBetweenParticipants = 300,
-                Participants = participants,
-                Messages = messages,
-                Fragments = fragments
-            };
+        {
+            SpaceBetweenParticipants = 300,
+            Participants = participants,
+            Messages = messages,
+            Fragments = fragments
+        };
     }
 }

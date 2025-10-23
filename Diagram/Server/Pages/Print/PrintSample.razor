@@ -9,20 +9,21 @@
     </PageSettings>
 </SfDiagramComponent>
 
-@code {
-
+@code
+{ 
     //Reference the diagram
-    SfDiagramComponent diagram;
-    double left = 10;
-    double top = 10;
-    double right = 10;
-    double bottom = 10;
-    double width = 410;
-    double height = 550;
-    bool multiplePage = true;
-    bool showPageBreak = true;
-    DiagramPrintExportRegion region = DiagramPrintExportRegion.PageSettings;
-    PageOrientation orientation = PageOrientation.Portrait;
+    private SfDiagramComponent diagram;
+    private double left = 10;
+    private double top = 10;
+    private double right = 10;
+    private double bottom = 10;
+    private double width = 410;
+    private double height = 550;
+    private bool multiplePage = true;
+    private bool showPageBreak = true;
+    private DiagramPrintExportRegion region = DiagramPrintExportRegion.PageSettings;
+    private PageOrientation orientation = PageOrientation.Portrait;
+    
     //Method to prin the diagram
     private async Task OnPrint()
     {

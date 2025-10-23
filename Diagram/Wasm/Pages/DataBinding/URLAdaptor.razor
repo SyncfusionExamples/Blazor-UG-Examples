@@ -3,7 +3,6 @@
 @using Syncfusion.Blazor.Data
 @inject HttpClient Http
 
-
 <div id="diagram-space" class="content-wrapper">
     <SfDiagramComponent Height="400px" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
         <DataSourceSettings Id="EmployeeID" ParentId="ReportsTo">
@@ -14,12 +13,14 @@
     </SfDiagramComponent>
 </div>
 
-@code {
-    SfDiagramComponent Diagrams;
+@code
+{
+    private SfDiagramComponent Diagrams;
     private float x = 100;
     private float y = 100;
 
-    public class Employee {
+    public class Employee
+    {
         public int? EmployeeID { get; set; }
         public string FirstName { get; set; }
         public int? ReportsTo { get; set; }
@@ -27,7 +28,8 @@
 
     private Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
 
-    private void OnNodeCreating(IDiagramObject obj) {
+    private void OnNodeCreating(IDiagramObject obj)
+    {
         Node node = obj as Node;
         node.OffsetX = x;
         node.OffsetY = y;
@@ -70,7 +72,8 @@
         }
     }
 
-    private void OnConnectorCreating(IDiagramObject obj) {
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
         Connector connector = obj as Connector;
         connector.Style.StrokeColor = "#048785";
         connector.Type = ConnectorSegmentType.Orthogonal;

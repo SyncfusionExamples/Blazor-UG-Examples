@@ -17,11 +17,12 @@
 {
 
     //Initailize the diagram's nodes collection
-    DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connectors collection
-    DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    int HorizontalSpacing = 40;
-    int VerticalSpacing = 40;
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private int HorizontalSpacing = 40;
+    private int VerticalSpacing = 40;
+
     //Method to set node's default properties
     private void OnNodeCreating(IDiagramObject obj)
     {
@@ -32,6 +33,7 @@
         node.Style = new ShapeStyle() { Fill = "#6CA0DC", StrokeColor = "#6CA0DC" };
         node.Annotations[0].Style = new TextStyle() { Color = "white", Bold = true };
     }
+
     //Method to set connector's default properties
     private void OnConnectorCreating(IDiagramObject connector)
     {
