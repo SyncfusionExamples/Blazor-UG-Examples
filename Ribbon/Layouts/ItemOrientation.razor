@@ -1,0 +1,110 @@
+@page "/itemorientation"
+
+@using Syncfusion.Blazor.Ribbon;
+@using Syncfusion.Blazor.SplitButtons;
+@using Syncfusion.Blazor.DropDowns;
+
+<LayoutsNav></LayoutsNav>
+
+<div style="width:60%">
+    <SfRibbon ActiveLayout="RibbonLayout.Classic">
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.SplitButton Disabled=true>
+                                        <RibbonSplitButtonSettings Content="Paste" IconCss="e-icons e-paste" Items="@formatItems"></RibbonSplitButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Copy" IconCss="e-icons e-copy"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Format Painter" IconCss="e-icons e-format-painter"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                    <RibbonGroup Orientation=Orientation.Row HeaderText="Font">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.ComboBox>
+                                        <RibbonComboBoxSettings @bind-Value="@fontFamValue" AllowFiltering=true DataSource="@fontFamilyItems" FieldSettings="@fieldSetings"></RibbonComboBoxSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.ComboBox>
+                                        <RibbonComboBoxSettings Index="3" AllowFiltering=true DataSource="@fontSizeItems" FieldSettings="@fieldSetings"></RibbonComboBoxSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Decrease Indent" IconCss="e-icons e-decrease-indent"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Increase Indent" IconCss="e-icons e-increase-indent"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Paragraph" IconCss="e-icons e-paragraph"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    public string fontFamValue { get; set; } = "Cambria";
+
+    private class ComboBoxItem
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+    }
+
+    FieldSettingsModel fieldSetings = new FieldSettingsModel
+        {
+            Text = "Text",
+            Value = "Value"
+        };
+
+    List<ComboBoxItem> fontFamilyItems = new List<ComboBoxItem>
+    {
+        new ComboBoxItem { Text = "Algerian", Value = "Algerian" },
+        new ComboBoxItem { Text = "Arial", Value = "Arial" },
+        new ComboBoxItem { Text = "Calibri", Value = "Calibri" },
+        new ComboBoxItem { Text = "Cambria", Value = "Cambria" },
+        new ComboBoxItem { Text = "Cambria Math", Value = "Cambria Math" },
+    };
+
+    List<ComboBoxItem> fontSizeItems = new List<ComboBoxItem>
+    {
+        new ComboBoxItem { Text = "8", Value = "8" },
+        new ComboBoxItem { Text = "9", Value = "9" },
+        new ComboBoxItem { Text = "10", Value = "10" },
+        new ComboBoxItem { Text = "11", Value = "11" },
+        new ComboBoxItem { Text = "12", Value = "12" },
+    };
+
+    List<DropDownMenuItem> formatItems = new List<DropDownMenuItem>()
+        {
+        new DropDownMenuItem{ Text = "Keep Source Format" },
+        new DropDownMenuItem{ Text = "Merge Format" },
+        new DropDownMenuItem{ Text = "Keep Text Only" }
+        };
+}

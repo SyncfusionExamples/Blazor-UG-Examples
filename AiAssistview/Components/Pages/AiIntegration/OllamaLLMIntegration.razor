@@ -1,0 +1,140 @@
+@page "/ollamallmintegration"
+@rendermode InteractiveServer
+
+@using Markdig
+@using Microsoft.Extensions.AI
+@using Syncfusion.Blazor.Navigations
+
+<AiIntegrationNav></AiIntegrationNav>
+
+<div class="control-section">
+    <div class="stream-aiassistview">
+        <SfAIAssistView @ref="AIAssist"
+        PromptSuggestions="@suggestions"
+        PromptRequested="@PromptRequest"
+        ResponseStopped="@HandleStopResponse">
+            <AssistViews>
+                <AssistView>
+                    <BannerTemplate>
+                        <div class="banner-content">
+                            <div class="e-icons e-assistview-icon"></div>
+                            <h3>AI Assistance</h3>
+                            <i> Live responses streamed from your local Ollama model. </i>
+                        </div>
+                    </BannerTemplate>
+                </AssistView>
+            </AssistViews>
+
+            <AssistViewToolbar ItemClicked="ToolbarItemClicked">
+                <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+                <AssistViewToolbarItem IconCss="e-icons e-refresh"></AssistViewToolbarItem>
+            </AssistViewToolbar>
+        </SfAIAssistView>
+    </div>
+</div>
+
+@code {
+    private SfAIAssistView AIAssist = new();
+    private bool responseStopped = false;
+    private bool isStreaming = false;
+
+    // Suggestion list
+    private List<string> suggestions = new()
+    {
+        "What are the best tools for organizing my tasks?",
+        "How can I maintain work-life balance effectively?"
+    };
+
+    [Inject] private IChatClient ChatClient { get; set; } = default!;
+
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        responseStopped = false;
+        isStreaming = true; // turn on Stop button
+
+        try
+        {
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .UsePipeTables()
+                .UseTaskLists()
+                .Build();
+
+            var messages = new List<Microsoft.Extensions.AI.ChatMessage>
+            {
+                new(ChatRole.System, "You are a helpful AI assistant. Respond with clear, concise explanations. Use Markdown when helpful."),
+                new(ChatRole.User, args.Prompt)
+            };
+
+            var buffer = new System.Text.StringBuilder();
+            const int updateRateChars = 5;
+            int lastLenPushed = 0;
+
+            await foreach (var update in ChatClient.GetStreamingResponseAsync(messages))
+            {
+                if (responseStopped) break;
+                if (string.IsNullOrEmpty(update?.Text)) continue;
+
+                buffer.Append(update.Text);
+
+                if (buffer.Length - lastLenPushed >= updateRateChars)
+                {
+                    string html = Markdown.ToHtml(buffer.ToString(), pipeline);
+                    await AIAssist.UpdateResponseAsync(html);
+                    await AIAssist.ScrollToBottomAsync();
+                    lastLenPushed = buffer.Length;
+                }
+            }
+
+            if (!responseStopped)
+            {
+                string finalHtml = Markdown.ToHtml(buffer.ToString(), pipeline);
+                await AIAssist.UpdateResponseAsync(finalHtml);
+                await AIAssist.ScrollToBottomAsync();
+            }
+
+            args.PromptSuggestions = suggestions;
+        }
+        catch (Exception ex)
+        {
+            await AIAssist.UpdateResponseAsync($"Error generating response: {ex.Message}");
+            await AIAssist.ScrollToBottomAsync();
+        }
+        finally
+        {
+            responseStopped = false;
+            isStreaming = true; 
+            StateHasChanged();     
+        }
+    }
+
+    private void ToolbarItemClicked(AssistViewToolbarItemClickedEventArgs args)
+    {
+        // Handle Refresh
+        if (args.Item.IconCss == "e-icons e-refresh")
+        {
+            AIAssist.Prompts.Clear();
+
+            AIAssist.PromptSuggestions = suggestions;
+        }
+    }
+
+    private void HandleStopResponse(ResponseStoppedEventArgs args)
+    {
+        responseStopped = true;
+    }
+}
+
+<style>
+.stream-aiassistview {
+    height: 350px;
+    width: 650px;
+    margin: 0 auto;
+}
+.stream-aiassistview .banner-content .e-assistview-icon:before {
+    font-size: 25px;
+}
+.stream-aiassistview .banner-content {
+    text-align: center;
+}
+</style>

@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "kA7JSScSH80=",
+  "success": true,
+  "projectFilePath": "C:\\Gitea\\SpeechToText\\SpeechToText.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.authorization\\9.0.4\\microsoft.aspnetcore.authorization.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.components\\9.0.4\\microsoft.aspnetcore.components.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\9.0.4\\microsoft.aspnetcore.components.analyzers.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\9.0.4\\microsoft.aspnetcore.components.forms.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.components.web\\9.0.4\\microsoft.aspnetcore.components.web.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.aspnetcore.metadata\\9.0.4\\microsoft.aspnetcore.metadata.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.4\\microsoft.extensions.dependencyinjection.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.4\\microsoft.extensions.dependencyinjection.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.4\\microsoft.extensions.logging.abstractions.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.extensions.options\\9.0.4\\microsoft.extensions.options.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.4\\microsoft.extensions.primitives.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\microsoft.jsinterop\\9.0.4\\microsoft.jsinterop.9.0.4.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.buttons\\31.1.23\\syncfusion.blazor.buttons.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.core\\31.1.23\\syncfusion.blazor.core.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.data\\31.1.23\\syncfusion.blazor.data.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.inputs\\31.1.23\\syncfusion.blazor.inputs.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.popups\\31.1.23\\syncfusion.blazor.popups.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.spinner\\31.1.23\\syncfusion.blazor.spinner.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.blazor.splitbuttons\\31.1.23\\syncfusion.blazor.splitbuttons.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\syncfusion.licensing\\31.1.23\\syncfusion.licensing.31.1.23.nupkg.sha512",
+    "C:\\Users\\PremanandhVenkatacha\\.nuget\\packages\\system.text.json\\9.0.4\\system.text.json.9.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

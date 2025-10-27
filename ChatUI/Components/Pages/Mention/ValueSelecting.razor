@@ -1,0 +1,27 @@
+@page "/valueselecting"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.DropDowns
+
+<MentionNav></MentionNav>
+
+<div style="height: 400px; width: 400px;">
+    <SfChatUI ID="mentionSelect" MentionUsers="MentionUsers" ValueSelecting="OnValueSelecting"></SfChatUI>
+</div>
+
+@code {
+    private static UserModel CurrentUserModel = new UserModel() { ID = "user1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "user2", User = "Michale Suyama" };
+
+    private List<UserModel> MentionUsers = new List<UserModel>()
+    {
+        CurrentUserModel,
+        MichaleUserModel
+    };
+
+    private void OnValueSelecting(MentionValueSelectingEventArgs<UserModel> args)
+    {
+        // Your required action here
+    }
+}

@@ -1,0 +1,121 @@
+@page "/gallerytemplate"
+
+@using Syncfusion.Blazor.Ribbon;
+@using Syncfusion.Blazor.SplitButtons;
+
+<GalleryNav></GalleryNav>
+
+<div style="width:60%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.SplitButton Disabled=true>
+                                        <RibbonSplitButtonSettings Content="Paste" IconCss="e-icons e-paste" Items="@formatItems"></RibbonSplitButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Copy" IconCss="e-icons e-copy"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Format Painter" IconCss="e-icons e-format-painter"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                    <RibbonGroup HeaderText="Gallery">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Gallery>
+                                        <Template Context="context">
+                                            @RenderGalleryTemplate(context)
+                                        </Template>
+                                        <PopupTemplate Context="context">
+                                            @RenderGalleryTemplate(context)
+                                        </PopupTemplate>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code{
+
+    private RenderFragment<GalleryItemContext> RenderGalleryTemplate => context => @<div class="gallery-template">
+        <table class="table">
+            <tbody>
+                <tr class="row_one">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+                <tr class="row_two">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+                <tr class="row_three">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>;
+
+    List<DropDownMenuItem> formatItems = new List<DropDownMenuItem>()
+    {
+        new DropDownMenuItem{ Text = "Keep Source Format" },
+        new DropDownMenuItem{ Text = "Merge Format" },
+        new DropDownMenuItem{ Text = "Keep Text Only" }
+    };
+
+    List<GalleryGroup> galleryGroups = new List<GalleryGroup>
+    {
+        new GalleryGroup
+        {
+            Header = "Plain Tables",
+            Items = new List<GalleryItem>
+            {
+                new GalleryItem {},
+                new GalleryItem {},
+                new GalleryItem {},
+                new GalleryItem {},
+            }
+        },
+                new GalleryGroup
+        {
+            Header = "List Tables",
+            Items = new List<GalleryItem>
+            {
+                new GalleryItem {},
+                new GalleryItem {},
+                new GalleryItem {},
+                new GalleryItem {},
+            }
+        },
+    };
+}

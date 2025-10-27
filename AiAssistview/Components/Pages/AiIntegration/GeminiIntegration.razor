@@ -1,0 +1,72 @@
+@page "/geminiintegration"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Navigations
+@using Mscc.GenerativeAI
+@using Markdig
+
+<AiIntegrationNav></AiIntegrationNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+// Initializes the AI Assist component
+    <SfAIAssistView @ref="sfAIAssistView" ID="aiAssistView" PromptSuggestions="@promptSuggestions" PromptRequested="@OnPromptRequest">
+        <AssistViews>
+            <AssistView>
+                <BannerTemplate>
+                    <div class="banner-content">
+                        <div class="e-icons e-assistview-icon"></div>
+                        <h3>AI Assistance</h3>
+                        <i>To get started, provide input or choose a suggestion.</i>
+                    </div>
+                </BannerTemplate>
+            </AssistView>
+        </AssistViews>
+        <AssistViewToolbar ItemClicked="ToolbarItemClicked">
+            <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+            <AssistViewToolbarItem IconCss="e-icons e-refresh"></AssistViewToolbarItem>
+        </AssistViewToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private SfAIAssistView sfAIAssistView = new SfAIAssistView();
+    private List<string> promptSuggestions = new List<string>
+    {
+        "What are the best tools for organizing my tasks?",
+        "How can I maintain work-life balance effectively?"
+    };
+    // Initialize Gemini API
+    private readonly string geminiApiKey = "";
+    // Handle user prompt: call Gemini model
+    private async Task OnPromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        try
+        {
+            var gemini = new GoogleAI(apiKey: geminiApiKey); // Replace with your Gemini API key
+            var model = gemini.GenerativeModel(model: "gemini-2.5-flash"); // Select the Gemini model (update model name as needed)
+            var response = await model.GenerateContent(args.Prompt);
+            var responseText = response.Text;
+            var pipeline = new MarkdownPipelineBuilder()
+                .UseAdvancedExtensions()
+                .UsePipeTables()
+                .UseTaskLists()
+                .Build();
+            // Add the response to the AIAssistView
+            await Task.Delay(1000); // Simulate delay as in original code
+            args.Response = Markdown.ToHtml(responseText, pipeline);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching Gemini response: {ex.Message}");
+            await Task.Delay(1000);
+            args.Response = "⚠️ Something went wrong while connecting to the AI service. Please check your API key or try again later.";
+        }
+    }
+
+    private void ToolbarItemClicked(AssistViewToolbarItemClickedEventArgs args)
+    {
+        sfAIAssistView.Prompts.Clear();
+        StateHasChanged();
+    }
+}

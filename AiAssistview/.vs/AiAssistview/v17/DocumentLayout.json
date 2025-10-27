@@ -1,0 +1,1062 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Gitea\\AiAssistview\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\toolbaritemsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\toolbaritemsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\templatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\templatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\methods\\methodsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\methods\\methodsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\gettingstarted\\gettingstartednav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\gettingstarted\\gettingstartednav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\fileattachments\\fileattachmentsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\fileattachments\\fileattachmentsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\fileattachments\\enableattachments.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\fileattachments\\enableattachments.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\viewiconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\viewiconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\customviewnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\customviewnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\assistviewnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\assistviewnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\attachmentuploadfailed.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\attachmentuploadfailed.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\appearance\\width.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\appearance\\width.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\appearance\\height.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\appearance\\height.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\visible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\visible.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\tooltip.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\tooltip.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\toolbartext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\toolbartext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\toolbaritemtype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\toolbaritemtype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\template.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\template.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\tabindex.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\tabindex.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\responsewidth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\responsewidth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\responsetoolbaritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\responsetoolbaritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\responseitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\responseitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\promptwidth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\promptwidth.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\prompttoolbaritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\prompttoolbaritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\promptitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\promptitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\itemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\itemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\iconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\iconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\toolbaritems\\disabled.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\toolbaritems\\disabled.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\suggestionitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\suggestionitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\responseitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\responseitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\promptitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\promptitemtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\footertemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\footertemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\template\\bannertemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\template\\bannertemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\methods\\executingprompt.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\methods\\executingprompt.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\gettingstarted\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\gettingstarted\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\fileattachments\\saveremoveurl.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\fileattachments\\saveremoveurl.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\fileattachments\\filetype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\fileattachments\\filetype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\fileattachments\\filesize.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\fileattachments\\filesize.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\promptrequested.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\promptrequested.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\promptchanged.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\promptchanged.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\created.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\created.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\attachmentuploadsuccess.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\attachmentuploadsuccess.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\attachmentuploadstart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\attachmentuploadstart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\events\\attachmentremoved.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\events\\attachmentremoved.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\viewtype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\viewtype.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\viewtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\viewtemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\viewname.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\viewname.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\clearbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\clearbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\customview\\activeview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\customview\\activeview.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\responseiconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\responseiconcss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\prompttext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\prompttext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\promptsuggestionheader.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\promptsuggestionheader.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\promptsuggestion.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\promptsuggestion.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\prompts.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\prompts.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\promptplaceholder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\promptplaceholder.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\assistview\\prompticoncss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\assistview\\prompticoncss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|c:\\gitea\\aiassistview\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{74E6E128-4426-447C-8666-42D598AF9FED}|AiAssistview.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 62,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ToolbarItemsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarItemsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ToolbarItemsNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarItemsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ToolbarItemsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:54:08.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MethodsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Methods\\MethodsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Methods\\MethodsNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Methods\\MethodsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Methods\\MethodsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:53:32.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GettingStartedNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:53:26.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AssistviewNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\AssistviewNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\AssistviewNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\AssistviewNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\AssistviewNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:51:42.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppearanceNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:00:32.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Visible.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Visible.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\Visible.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Visible.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\Visible.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:49:03.724Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ToolbarText.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarText.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ToolbarText.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarText.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ToolbarText.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:55.268Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Tooltip.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Tooltip.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\Tooltip.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Tooltip.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\Tooltip.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:54.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ToolbarItemType.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarItemType.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ToolbarItemType.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ToolbarItemType.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ToolbarItemType.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:50.245Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Template.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Template.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\Template.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Template.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\Template.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:44.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Tabindex.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Tabindex.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\Tabindex.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Tabindex.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\Tabindex.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:39.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ResponseWidth.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseWidth.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ResponseWidth.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseWidth.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ResponseWidth.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:29.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ResponseToolbarItems.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseToolbarItems.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ResponseToolbarItems.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseToolbarItems.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ResponseToolbarItems.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:25.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ResponseItemclick.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseItemclick.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ResponseItemclick.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ResponseItemclick.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ResponseItemclick.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:21.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PromptWidth.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptWidth.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\PromptWidth.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptWidth.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\PromptWidth.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:17.209Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PromptToolbarItems.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptToolbarItems.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\PromptToolbarItems.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptToolbarItems.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\PromptToolbarItems.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:13.247Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "PromptItemclick.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptItemclick.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\PromptItemclick.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\PromptItemclick.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\PromptItemclick.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:09.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ItemClick.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ItemClick.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\ItemClick.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\ItemClick.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\ItemClick.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:05.326Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IconCss.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\IconCss.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\IconCss.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\IconCss.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\IconCss.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:48:01.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Disabled.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Disabled.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\Disabled.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\Disabled.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\Disabled.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:54.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\CssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ToolbarItems\\CssClass.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\ToolbarItems\\CssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\ToolbarItems\\CssClass.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:50.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TemplateNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\TemplateNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\TemplateNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\TemplateNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\TemplateNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:44.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "SuggestionItemTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\SuggestionItemTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\SuggestionItemTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\SuggestionItemTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\SuggestionItemTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:39.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ResponseItemTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\ResponseItemTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\ResponseItemTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\ResponseItemTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\ResponseItemTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:34.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "PromptItemTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\PromptItemTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\PromptItemTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\PromptItemTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\PromptItemTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:27.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "FooterTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\FooterTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\FooterTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\FooterTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\FooterTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:23.541Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "BannerTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\BannerTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\BannerTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Template\\BannerTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\BannerTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:19.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ExecutingPrompt.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Methods\\ExecutingPrompt.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Methods\\ExecutingPrompt.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Methods\\ExecutingPrompt.razor",
+              "RelativeToolTip": "Components\\Pages\\Methods\\ExecutingPrompt.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:13.57Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "GettingStarted.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:06.713Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "SaveRemoveUrl.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\SaveRemoveUrl.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FileAttachments\\SaveRemoveUrl.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\SaveRemoveUrl.razor",
+              "RelativeToolTip": "Components\\Pages\\FileAttachments\\SaveRemoveUrl.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:47:00.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "FileType.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileType.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FileAttachments\\FileType.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileType.razor",
+              "RelativeToolTip": "Components\\Pages\\FileAttachments\\FileType.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:56.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "FileSize.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileSize.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FileAttachments\\FileSize.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileSize.razor",
+              "RelativeToolTip": "Components\\Pages\\FileAttachments\\FileSize.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:52.427Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FileAttachmentsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileAttachmentsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FileAttachments\\FileAttachmentsNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\FileAttachmentsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\FileAttachments\\FileAttachmentsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:50.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EnableAttachments.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\EnableAttachments.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\FileAttachments\\EnableAttachments.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\FileAttachments\\EnableAttachments.razor",
+              "RelativeToolTip": "Components\\Pages\\FileAttachments\\EnableAttachments.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:46.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "PromptRequested.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\PromptRequested.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\PromptRequested.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\PromptRequested.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\PromptRequested.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:40.36Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "PromptChanged.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\PromptChanged.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\PromptChanged.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\PromptChanged.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\PromptChanged.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:35.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EventsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\EventsNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\EventsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:33.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Created.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\Created.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\Created.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\Created.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\Created.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:30.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "AttachmentUploadSuccess.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentUploadSuccess.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\AttachmentUploadSuccess.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentUploadSuccess.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\AttachmentUploadSuccess.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:25.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "AttachmentuploadStart.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentuploadStart.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\AttachmentuploadStart.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentuploadStart.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\AttachmentuploadStart.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:21.143Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AttachmentUploadFailed.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentUploadFailed.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\AttachmentUploadFailed.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentUploadFailed.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\AttachmentUploadFailed.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:16.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "AttachmentRemoved.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentRemoved.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\AttachmentRemoved.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Events\\AttachmentRemoved.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\AttachmentRemoved.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:12.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "ViewType.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewType.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ViewType.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewType.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ViewType.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:05.142Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ViewTemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewTemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ViewTemplate.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewTemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ViewTemplate.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:46:01.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "ViewName.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewName.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ViewName.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewName.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ViewName.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:56.704Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ViewIconCss.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewIconCss.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ViewIconCss.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ViewIconCss.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ViewIconCss.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:51.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CustomviewNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\CustomviewNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\CustomviewNav.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\CustomviewNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\CustomviewNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:48.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ClearButton.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ClearButton.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ClearButton.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ClearButton.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ClearButton.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:44.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "ActiveView.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ActiveView.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Customview\\ActiveView.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Customview\\ActiveView.razor",
+              "RelativeToolTip": "Components\\Pages\\Customview\\ActiveView.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:40.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "ResponseIconCss.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\ResponseIconCss.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\ResponseIconCss.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\ResponseIconCss.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\ResponseIconCss.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:32.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "PromptText.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptText.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\PromptText.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptText.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\PromptText.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:28.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "PromptSuggestionHeader.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptSuggestionHeader.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\PromptSuggestionHeader.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptSuggestionHeader.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\PromptSuggestionHeader.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:24.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "PromptSuggestion.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptSuggestion.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\PromptSuggestion.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptSuggestion.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\PromptSuggestion.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:20.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Prompts.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\Prompts.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\Prompts.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\Prompts.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\Prompts.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:16.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "PromptPlaceholder.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptPlaceholder.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\PromptPlaceholder.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptPlaceholder.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\PromptPlaceholder.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:11.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "PromptIconCss.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptIconCss.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Assistview\\PromptIconCss.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Assistview\\PromptIconCss.razor",
+              "RelativeToolTip": "Components\\Pages\\Assistview\\PromptIconCss.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:05.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Width.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\Width.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\Width.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\Width.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\Width.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:45:01.28Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Height.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\Height.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\Height.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\Height.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\Height.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:44:56.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T08:44:32.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "Home.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Home.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T08:46:58.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T08:44:02.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T08:42:03.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T08:41:33.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Gitea\\AiAssistview\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Components\\_Imports.razor",
+              "ToolTip": "C:\\Gitea\\AiAssistview\\Components\\_Imports.razor",
+              "RelativeToolTip": "Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T08:41:04.945Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

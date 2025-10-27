@@ -1,0 +1,293 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AiAssistview
+build_property.RootNamespace = AiAssistview
+build_property.ProjectDir = c:\Gitea\AiAssistview\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Gitea\AiAssistview
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[c:/Gitea/AiAssistview/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Appearance/AppearanceNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBcHBlYXJhbmNlXEFwcGVhcmFuY2VOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Appearance/CssClass.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBcHBlYXJhbmNlXENzc0NsYXNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Appearance/Height.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBcHBlYXJhbmNlXEhlaWdodC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Appearance/Width.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBcHBlYXJhbmNlXFdpZHRoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/AssistviewNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XEFzc2lzdHZpZXdOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/PromptIconCss.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdEljb25Dc3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/PromptPlaceholder.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdFBsYWNlaG9sZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/Prompts.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/PromptSuggestion.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdFN1Z2dlc3Rpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/PromptSuggestionHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdFN1Z2dlc3Rpb25IZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/PromptText.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFByb21wdFRleHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Assistview/ResponseIconCss.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBc3Npc3R2aWV3XFJlc3BvbnNlSWNvbkNzcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ActiveView.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XEFjdGl2ZVZpZXcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ClearButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XENsZWFyQnV0dG9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/CustomviewNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XEN1c3RvbXZpZXdOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ViewIconCss.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XFZpZXdJY29uQ3NzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ViewName.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XFZpZXdOYW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ViewTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XFZpZXdUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Customview/ViewType.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDdXN0b212aWV3XFZpZXdUeXBlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/AttachmentRemoved.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcQXR0YWNobWVudFJlbW92ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/AttachmentUploadFailed.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcQXR0YWNobWVudFVwbG9hZEZhaWxlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/AttachmentuploadStart.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcQXR0YWNobWVudHVwbG9hZFN0YXJ0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/AttachmentUploadSuccess.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcQXR0YWNobWVudFVwbG9hZFN1Y2Nlc3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/Created.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcQ3JlYXRlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/EventsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcRXZlbnRzTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/PromptChanged.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcUHJvbXB0Q2hhbmdlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Events/PromptRequested.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcUHJvbXB0UmVxdWVzdGVkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/FileAttachments/EnableAttachments.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlQXR0YWNobWVudHNcRW5hYmxlQXR0YWNobWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/FileAttachments/FileAttachmentsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlQXR0YWNobWVudHNcRmlsZUF0dGFjaG1lbnRzTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/FileAttachments/FileSize.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlQXR0YWNobWVudHNcRmlsZVNpemUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/FileAttachments/FileType.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlQXR0YWNobWVudHNcRmlsZVR5cGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/FileAttachments/SaveRemoveUrl.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlQXR0YWNobWVudHNcU2F2ZVJlbW92ZVVybC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/GettingStarted/GettingStarted.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXR0aW5nU3RhcnRlZFxHZXR0aW5nU3RhcnRlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/GettingStarted/GettingStartedNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXR0aW5nU3RhcnRlZFxHZXR0aW5nU3RhcnRlZE5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Methods/ExecutingPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZXRob2RzXEV4ZWN1dGluZ1Byb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Methods/MethodsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xNZXRob2RzXE1ldGhvZHNOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/BannerTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxCYW5uZXJUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/FooterTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxGb290ZXJUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/PromptItemTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxQcm9tcHRJdGVtVGVtcGxhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/ResponseItemTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxSZXNwb25zZUl0ZW1UZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/SuggestionItemTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxTdWdnZXN0aW9uSXRlbVRlbXBsYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Template/TemplateNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUZW1wbGF0ZVxUZW1wbGF0ZU5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/CssClass.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcQ3NzQ2xhc3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/Disabled.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcRGlzYWJsZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/IconCss.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcSWNvbkNzcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ItemClick.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcSXRlbUNsaWNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/PromptItemclick.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUHJvbXB0SXRlbWNsaWNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/PromptToolbarItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUHJvbXB0VG9vbGJhckl0ZW1zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/PromptWidth.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUHJvbXB0V2lkdGgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ResponseItemclick.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUmVzcG9uc2VJdGVtY2xpY2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ResponseToolbarItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUmVzcG9uc2VUb29sYmFySXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ResponseWidth.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcUmVzcG9uc2VXaWR0aC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/Tabindex.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVGFiaW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/Template.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVGVtcGxhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ToolbarItemsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVG9vbGJhckl0ZW1zTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ToolbarItemType.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVG9vbGJhckl0ZW1UeXBlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/ToolbarText.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVG9vbGJhclRleHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/Tooltip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVG9vbHRpcC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/ToolbarItems/Visible.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sYmFySXRlbXNcVmlzaWJsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Gitea/AiAssistview/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-marb637ntd
+
+[c:/Gitea/AiAssistview/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-uqpxdw8yxh

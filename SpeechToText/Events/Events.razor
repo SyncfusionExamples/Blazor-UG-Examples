@@ -1,0 +1,22 @@
+@page "/events"
+
+@using Syncfusion.Blazor.Inputs
+
+<EventsNav></EventsNav>
+
+<div class="speechtext-container">
+    <SfSpeechToText SpeechRecognitionStarted="@HandleStartRecognition"
+                    SpeechRecognitionStopped="@HandleStopRecognition"
+                    SpeechRecognitionError="@HandleSpeechRecognitionError"
+                    TranscriptChanging="@HandleTranscriptChange">
+    </SfSpeechToText>
+</div>
+
+@code {
+
+    private void HandleStartRecognition(SpeechRecognitionStartedEventArgs args) { /* Required action here */ }
+    private void HandleStopRecognition(SpeechRecognitionStoppedEventArgs args) { /* Required action here */ }
+    private void HandleSpeechRecognitionError(SpeechRecognitionErrorEventArgs args) { /* Required action here */ }
+    private void HandleTranscriptChange(TranscriptChangeEventArgs args) { /* Required action here */ }
+
+}

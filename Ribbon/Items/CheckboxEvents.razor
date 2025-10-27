@@ -1,0 +1,43 @@
+@page "/checkboxevents"
+
+@using Syncfusion.Blazor.Ribbon
+
+<ItemsNav></ItemsNav>
+
+<div style="width:30%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Show">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.CheckBox>
+                                        <RibbonCheckBoxSettings Label="Ruler"
+                                                                Checked="true" 
+                                                                Created="Created" 
+                                                                ValueChange="ValueChange">
+                                        </RibbonCheckBoxSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.CheckBox>
+                                        <RibbonCheckBoxSettings Label="Gridlines"></RibbonCheckBoxSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.CheckBox>
+                                        <RibbonCheckBoxSettings Label="Navigation Pane"></RibbonCheckBoxSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    private void Created() { /* your actions here */ }
+
+    private void ValueChange(ChangeEventArgs args) { /* your actions here */ }
+}

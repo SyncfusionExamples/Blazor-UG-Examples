@@ -1,0 +1,28 @@
+@page "/allowedsizes"
+
+@using Syncfusion.Blazor.Ribbon;
+@using Syncfusion.Blazor.SplitButtons;
+
+<ResizingNav></ResizingNav>
+
+<div style="width:25%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button AllowedSizes="RibbonItemSize.Large">
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>

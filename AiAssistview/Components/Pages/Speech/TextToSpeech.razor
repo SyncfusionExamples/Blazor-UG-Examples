@@ -1,0 +1,167 @@
+@page "/texttospeech"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using AssistView_OpenAI.Components.Services
+@using Syncfusion.Blazor.Navigations
+@inject AzureOpenAIService OpenAIService
+@inject IJSRuntime JSRuntime
+@implements IDisposable
+
+<SpeechNav></SpeechNav>
+
+<div class="integration-texttospeech-section">
+    <SfAIAssistView @ref="assistView" PromptRequested="@PromptRequest">
+        <AssistViews>
+            <AssistView>
+                <BannerTemplate>
+                    <div class="banner-content">
+                        <div class="e-icons e-audio"></div>
+                        <i>Ready to assist voice enabled !</i>
+                    </div>
+                </BannerTemplate>
+            </AssistView>
+        </AssistViews>
+        <AssistViewToolbar ItemClicked="ToolbarItemClicked">
+            <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+            <AssistViewToolbarItem IconCss="e-icons e-refresh"></AssistViewToolbarItem>
+        </AssistViewToolbar>
+        <ResponseToolbar ItemClicked="ResponseToolbarItemClicked">
+            <ResponseToolbarItem IconCss="e-icons e-assist-copy" Tooltip="Copy"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="@audioIconCss" Tooltip="@audioTooltip"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="e-icons e-assist-like" Tooltip="Like"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="e-icons e-assist-dislike" Tooltip="Need Improvement"></ResponseToolbarItem>
+        </ResponseToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private SfAIAssistView assistView;
+    private string finalResponse { get; set; }
+    private string audioIconCss = "e-icons e-audio";
+    private string audioTooltip = "Read Aloud";
+    private bool IsSpeaking = false;
+    // If component class name isn’t Home (file is not Home.razor), update DotNetObjectReference to match the actual component type.
+    private DotNetObjectReference<Home>? dotNetRef;
+
+    protected override void OnInitialized()
+    {
+        dotNetRef = DotNetObjectReference.Create(this);
+    }
+    
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        var lastIdx = assistView.Prompts.Count - 1;
+        assistView.Prompts[lastIdx].Response = string.Empty;
+        finalResponse = string.Empty;
+        try
+        {
+            await foreach (var chunk in OpenAIService.GetChatResponseStreamAsync(args.Prompt))
+            {
+                await UpdateResponse(args, chunk);
+            }
+
+            args.Response = finalResponse;
+        }
+        catch (Exception ex)
+        {
+            args.Response = $"Error: {ex.Message}";
+        }
+    }
+
+    private async Task UpdateResponse(AssistViewPromptRequestedEventArgs args, string response)
+    {
+        var lastIdx = assistView.Prompts.Count - 1;
+        await Task.Delay(30); // Small delay for UI updates
+        assistView.Prompts[lastIdx].Response += response.Replace("\n", "<br>");
+        finalResponse = assistView.Prompts[lastIdx].Response;
+        StateHasChanged();
+    }
+
+    private void ToolbarItemClicked(AssistViewToolbarItemClickedEventArgs args)
+    {
+        if (args.Item.IconCss == "e-icons e-refresh")
+        {
+            assistView.Prompts.Clear();
+        }
+    }
+
+    // Handles toolbar item clicks to toggle text-to-speech functionality for AI responses
+    private async void ResponseToolbarItemClicked(AssistViewToolbarItemClickedEventArgs args)
+    {
+        var prompts = assistView.Prompts;
+        if (prompts.Count > args.DataIndex && prompts[args.DataIndex].Response != null)
+        {
+            string responseHtml = prompts[args.DataIndex].Response;
+            string text = await JSRuntime.InvokeAsync<string>("extractTextFromHtml", responseHtml);
+
+            if (args.Item.IconCss == "e-icons e-audio" || args.Item.IconCss == "e-icons e-assist-stop")
+            {
+                if (IsSpeaking)
+                {
+                    await JSRuntime.InvokeVoidAsync("cancel");
+                    IsSpeaking = false;
+                    audioIconCss = "e-icons e-audio";
+                    audioTooltip = "Read Aloud";
+                }
+                else if (!string.IsNullOrEmpty(text))
+                {
+                    IsSpeaking = await JSRuntime.InvokeAsync<bool>("speak", text, dotNetRef);
+                    if (IsSpeaking)
+                    {
+                        audioIconCss = "e-icons e-assist-stop";
+                        audioTooltip = "Stop";
+                    }
+                    else
+                    {
+                        await JSRuntime.InvokeVoidAsync("console.warn", "Failed to start speech synthesis.");
+                    }
+                }
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+    }
+
+    [JSInvokable]
+    public void OnSpeechEnd()
+    {
+        IsSpeaking = false;
+        audioIconCss = "e-icons e-audio";
+        audioTooltip = "Read Aloud";
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        dotNetRef?.Dispose();
+        dotNetRef = null;
+    }
+}
+
+<style>
+.integration-texttospeech-section {
+    height: 350px;
+    width: 650px;
+    margin: 0 auto;
+}
+
+.integration-texttospeech-section .banner-content .e-audio:before {
+    font-size: 25px;
+}
+
+.integration-texttospeech-section .e-view-container {
+    margin: auto;
+}
+
+.integration-texttospeech-section .banner-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+@media only screen and (max-width: 750px) {
+    .integration-texttospeech-section {
+        width: 100%;
+    }
+}
+</style>

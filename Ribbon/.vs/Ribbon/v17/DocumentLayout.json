@@ -1,0 +1,551 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Gitea\\Ribbon\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\template.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\template.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gallery\\gallerytemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gallery\\gallerytemplate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gallery\\popupdimensions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gallery\\popupdimensions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\items\\checkboxevents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\items\\checkboxevents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\layouts\\groupoverflowpopup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\layouts\\groupoverflowpopup.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gettingstarted\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gettingstarted\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\tooltip\\tooltipnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\tooltip\\tooltipnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\tooltip\\tooltipcssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\tooltip\\tooltipcssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\resizing\\resizingnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\resizing\\resizingnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\layouts\\layoutsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\layouts\\layoutsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\keytip\\keytipnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\keytip\\keytipnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\items\\itemsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\items\\itemsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\helppanetemplate\\helppanetemplatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\helppanetemplate\\helppanetemplatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gettingstarted\\gettingstartednav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gettingstarted\\gettingstartednav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\filemenu\\filemenunav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\filemenu\\filemenunav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\events\\events.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\events\\events.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\contextualtabs\\contextualtabsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\contextualtabs\\contextualtabsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\backstagenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\backstagenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gallery\\gallerynav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gallery\\gallerynav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\items\\colorpickerevents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\items\\colorpickerevents.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\footeritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\footeritems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\backstagemenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\backstagemenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\backstageitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\backstageitemclick.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\backstage\\backbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\backstage\\backbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\layouts\\groupproperties.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\layouts\\groupproperties.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\gallery\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\gallery\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\items\\disableditems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\items\\disableditems.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|c:\\gitea\\ribbon\\components\\pages\\items\\displayoptions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0D83789E-82EF-469A-9959-B19E46984633}|Ribbon.csproj|solutionrelative:components\\pages\\items\\displayoptions.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 29,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PopupDimensions.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\PopupDimensions.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Gallery\\PopupDimensions.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\PopupDimensions.razor",
+              "RelativeToolTip": "Components\\Pages\\Gallery\\PopupDimensions.razor",
+              "ViewState": "AgIAADsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:54:20.815Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GettingStarted.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStarted\\GettingStarted.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:50:54.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TooltipNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Tooltip\\TooltipNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Tooltip\\TooltipNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Tooltip\\TooltipNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Tooltip\\TooltipNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:48:46.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TooltipCssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Tooltip\\TooltipCssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Tooltip\\TooltipCssClass.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Tooltip\\TooltipCssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\Tooltip\\TooltipCssClass.razor",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:48:42.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ResizingNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Resizing\\ResizingNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Resizing\\ResizingNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Resizing\\ResizingNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Resizing\\ResizingNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:48:33.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LayoutsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\LayoutsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Layouts\\LayoutsNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\LayoutsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Layouts\\LayoutsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:47:58.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "KeytipNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Keytip\\KeytipNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Keytip\\KeytipNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Keytip\\KeytipNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Keytip\\KeytipNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:47:24.744Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HelpPaneTemplateNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\HelpPaneTemplate\\HelpPaneTemplateNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\HelpPaneTemplate\\HelpPaneTemplateNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\HelpPaneTemplate\\HelpPaneTemplateNav.razor",
+              "RelativeToolTip": "Components\\Pages\\HelpPaneTemplate\\HelpPaneTemplateNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:46:32.859Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "GettingStartedNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStarted\\GettingStartedNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:46:17.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FilemenuNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Filemenu\\FilemenuNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Filemenu\\FilemenuNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Filemenu\\FilemenuNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Filemenu\\FilemenuNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:45:53.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EventsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\EventsNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\EventsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:45:46.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Events.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Events\\Events.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\Events.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Events\\Events.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\Events.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:45:44.955Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ContextualTabsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\ContextualTabs\\ContextualTabsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\ContextualTabs\\ContextualTabsNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\ContextualTabs\\ContextualTabsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\ContextualTabs\\ContextualTabsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:45:30.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BackstageNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\BackstageNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\BackstageNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:45:00.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GalleryNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\GalleryNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Gallery\\GalleryNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\GalleryNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Gallery\\GalleryNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:44:21.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:26:41.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FooterItems.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\FooterItems.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\FooterItems.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\FooterItems.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\FooterItems.razor",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAlwF0AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T07:32:46.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BackstageMenu.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\BackstageMenu.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageMenu.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\BackstageMenu.razor",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAlwGIAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T07:27:41.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "BackstageItemclick.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageItemclick.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\BackstageItemclick.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackstageItemclick.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\BackstageItemclick.razor",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAD0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T07:27:40.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "BackButton.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackButton.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\BackButton.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\BackButton.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\BackButton.razor",
+              "ViewState": "AgIAADAAAAAAAAAAAAAtwEAAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T06:48:48.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "GroupProperties.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\GroupProperties.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Layouts\\GroupProperties.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\GroupProperties.razor",
+              "RelativeToolTip": "Components\\Pages\\Layouts\\GroupProperties.razor",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T06:37:22.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "CssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\CssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Gallery\\CssClass.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\CssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\Gallery\\CssClass.razor",
+              "ViewState": "AgIAADsAAAAAAAAAAAAowE4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T06:06:25.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GroupOverflowPopup.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\GroupOverflowPopup.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Layouts\\GroupOverflowPopup.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Layouts\\GroupOverflowPopup.razor",
+              "RelativeToolTip": "Components\\Pages\\Layouts\\GroupOverflowPopup.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T05:56:00.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "DisabledItems.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\DisabledItems.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Items\\DisabledItems.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\DisabledItems.razor",
+              "RelativeToolTip": "Components\\Pages\\Items\\DisabledItems.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T11:12:22.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "DisplayOptions.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\DisplayOptions.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Items\\DisplayOptions.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\DisplayOptions.razor",
+              "RelativeToolTip": "Components\\Pages\\Items\\DisplayOptions.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T11:11:48.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ItemsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\ItemsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Items\\ItemsNav.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\ItemsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Items\\ItemsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T11:11:24.658Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Gallerytemplate.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\Gallerytemplate.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Gallery\\Gallerytemplate.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Gallery\\Gallerytemplate.razor",
+              "RelativeToolTip": "Components\\Pages\\Gallery\\Gallerytemplate.razor",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAD4AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T01:20:05.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CheckboxEvents.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\CheckboxEvents.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Items\\CheckboxEvents.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\CheckboxEvents.razor",
+              "RelativeToolTip": "Components\\Pages\\Items\\CheckboxEvents.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T01:15:20.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Template.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\Template.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Backstage\\Template.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Backstage\\Template.razor",
+              "RelativeToolTip": "Components\\Pages\\Backstage\\Template.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T01:14:55.13Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ColorPickerEvents.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\ColorPickerEvents.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Items\\ColorPickerEvents.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Pages\\Items\\ColorPickerEvents.razor",
+              "RelativeToolTip": "Components\\Pages\\Items\\ColorPickerEvents.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAADUAAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T01:12:39.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Gitea\\Ribbon\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Gitea\\Ribbon\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAoAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T01:11:34.553Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

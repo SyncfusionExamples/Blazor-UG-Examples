@@ -1,0 +1,321 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Ribbon
+build_property.RootNamespace = Ribbon
+build_property.ProjectDir = C:\Gitea\Ribbon\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Gitea\Ribbon
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Gitea/Ribbon/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/BackButton.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcQmFja0J1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/BackstageItemclick.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcQmFja3N0YWdlSXRlbWNsaWNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/BackstageMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcQmFja3N0YWdlTWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/BackstageNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcQmFja3N0YWdlTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/FooterItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcRm9vdGVySXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/Seperator.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcU2VwZXJhdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Backstage/Template.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCYWNrc3RhZ2VcVGVtcGxhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/ContextualTabs/ContextualTabs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250ZXh0dWFsVGFic1xDb250ZXh0dWFsVGFicy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/ContextualTabs/ContextualTabsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250ZXh0dWFsVGFic1xDb250ZXh0dWFsVGFic05hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/ContextualTabs/SelectedTabs.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250ZXh0dWFsVGFic1xTZWxlY3RlZFRhYnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/ContextualTabs/Visibility.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb250ZXh0dWFsVGFic1xWaXNpYmlsaXR5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Events/Events.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcRXZlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Events/EventsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFdmVudHNcRXZlbnRzTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Filemenu/FilemenuItemsEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlbWVudVxGaWxlbWVudUl0ZW1zRXZlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Filemenu/FilemenuNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlbWVudVxGaWxlbWVudU5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Filemenu/HeaderText.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlbWVudVxIZWFkZXJUZXh0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Filemenu/MenuItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlbWVudVxNZW51SXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Filemenu/SubMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGaWxlbWVudVxTdWJNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/CssClass.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XENzc0NsYXNzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/GalleryEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdhbGxlcnlFdmVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/GalleryHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdhbGxlcnlIZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/GalleryItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdhbGxlcnlJdGVtcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/GalleryNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdhbGxlcnlOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/Gallerytemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdhbGxlcnl0ZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/GroupStyling.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEdyb3VwU3R5bGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/ItemCount.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEl0ZW1Db3VudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/ItemDimension.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XEl0ZW1EaW1lbnNpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/PopupDimensions.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XFBvcHVwRGltZW5zaW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Gallery/SelectedItemIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYWxsZXJ5XFNlbGVjdGVkSXRlbUluZGV4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/GettingStarted/GettingStarted.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXR0aW5nU3RhcnRlZFxHZXR0aW5nU3RhcnRlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/GettingStarted/GettingStartedNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXR0aW5nU3RhcnRlZFxHZXR0aW5nU3RhcnRlZE5hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/GettingStarted/GettingStartedWebapp.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHZXR0aW5nU3RhcnRlZFxHZXR0aW5nU3RhcnRlZFdlYmFwcC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/HelpPaneTemplate/HelpPane.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWxwUGFuZVRlbXBsYXRlXEhlbHBQYW5lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/HelpPaneTemplate/HelpPaneTemplateNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIZWxwUGFuZVRlbXBsYXRlXEhlbHBQYW5lVGVtcGxhdGVOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/ButtonEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xCdXR0b25FdmVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/CheckboxEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xDaGVja2JveEV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/ColorPickerEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xDb2xvclBpY2tlckV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/ComboboxEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xDb21ib2JveEV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/CustomItem.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xDdXN0b21JdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/DisabledItems.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xEaXNhYmxlZEl0ZW1zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/DisplayOptions.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xEaXNwbGF5T3B0aW9ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/DropdownButtonEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xEcm9wZG93bkJ1dHRvbkV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/GroupButtonEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xHcm91cEJ1dHRvbkV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/ItemsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xJdGVtc05hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Items/SplitButtonEvents.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJdGVtc1xTcGxpdEJ1dHRvbkV2ZW50cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/BackstageMenuKeytip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcQmFja3N0YWdlTWVudUtleXRpcC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/FilemenuKeytip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcRmlsZW1lbnVLZXl0aXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/ItemsKeytip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcSXRlbXNLZXl0aXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/KeytipMethod.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcS2V5dGlwTWV0aG9kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/KeytipNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcS2V5dGlwTmF2LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/LauncherIconKeytip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcTGF1bmNoZXJJY29uS2V5dGlwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Keytip/LayoutSwitcherKeytip.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xLZXl0aXBcTGF5b3V0U3dpdGNoZXJLZXl0aXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/ActiveLayouts.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEFjdGl2ZUxheW91dHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/GroupOverflowPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEdyb3VwT3ZlcmZsb3dQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/GroupProperties.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEdyb3VwUHJvcGVydGllcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/HidelayoutSwitcher.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEhpZGVsYXlvdXRTd2l0Y2hlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/ItemOrientation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEl0ZW1PcmllbnRhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/ItemSize.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXEl0ZW1TaXplLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/LayoutsNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXExheW91dHNOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/MinimizedState.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXE1pbmltaXplZFN0YXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Layouts/SimplifiedLayouts.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMYXlvdXRzXFNpbXBsaWZpZWRMYXlvdXRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Resizing/Allowedsizes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpemluZ1xBbGxvd2Vkc2l6ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Resizing/ResizingNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNpemluZ1xSZXNpemluZ05hdi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Tooltip/TooltipCssClass.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sdGlwXFRvb2x0aXBDc3NDbGFzcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Tooltip/TooltipIconcss.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sdGlwXFRvb2x0aXBJY29uY3NzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Tooltip/TooltipNav.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUb29sdGlwXFRvb2x0aXBOYXYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/Ribbon/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-qph0m8k9ie
+
+[C:/Gitea/Ribbon/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-zrk5nkq9js

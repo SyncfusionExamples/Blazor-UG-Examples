@@ -1,0 +1,238 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Gitea\\ChatUI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\timestamp\\timestampformat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\timestamp\\timestampformat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\loadondemand\\loadondemand.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\loadondemand\\loadondemand.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\header\\headericoncss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\header\\headericoncss.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\timestamp\\showtimestamp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\timestamp\\showtimestamp.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\timestamp\\timestampnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\timestamp\\timestampnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\template\\templatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\template\\templatenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\messages\\timestampformat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\messages\\timestampformat.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\messages\\messagesnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\messages\\messagesnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|c:\\gitea\\chatui\\components\\pages\\messages\\autoscroll.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B5149A60-B63C-43E6-A650-FB82DEF35CFB}|ChatUI.csproj|solutionrelative:components\\pages\\messages\\autoscroll.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T10:27:48.167Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HeaderIconcss.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Header\\HeaderIconcss.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Header\\HeaderIconcss.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Header\\HeaderIconcss.razor",
+              "RelativeToolTip": "Components\\Pages\\Header\\HeaderIconcss.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T05:51:24.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoadOnDemand.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\LoadOnDemand\\LoadOnDemand.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\LoadOnDemand\\LoadOnDemand.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\LoadOnDemand\\LoadOnDemand.razor",
+              "RelativeToolTip": "Components\\Pages\\LoadOnDemand\\LoadOnDemand.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T05:39:58.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ShowTimeStamp.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\ShowTimeStamp.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\TimeStamp\\ShowTimeStamp.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\ShowTimeStamp.razor",
+              "RelativeToolTip": "Components\\Pages\\TimeStamp\\ShowTimeStamp.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T05:37:16.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T00:52:14.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppearanceNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T00:52:09.824Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TimeStampNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\TimeStampNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\TimeStamp\\TimeStampNav.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\TimeStampNav.razor",
+              "RelativeToolTip": "Components\\Pages\\TimeStamp\\TimeStampNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:39:38.68Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AutoScroll.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\AutoScroll.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Messages\\AutoScroll.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\AutoScroll.razor",
+              "RelativeToolTip": "Components\\Pages\\Messages\\AutoScroll.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:34:19.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MessagesNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\MessagesNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Messages\\MessagesNav.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\MessagesNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Messages\\MessagesNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:33:44.84Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TimeStampFormat.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\TimeStampFormat.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\TimeStamp\\TimeStampFormat.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\TimeStamp\\TimeStampFormat.razor",
+              "RelativeToolTip": "Components\\Pages\\TimeStamp\\TimeStampFormat.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:33:27.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TimeStampFormat.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\TimeStampFormat.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Messages\\TimeStampFormat.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Messages\\TimeStampFormat.razor",
+              "RelativeToolTip": "Components\\Pages\\Messages\\TimeStampFormat.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:33:19.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TemplateNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Pages\\Template\\TemplateNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Template\\TemplateNav.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Pages\\Template\\TemplateNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Template\\TemplateNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:32:59.233Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Gitea\\ChatUI\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Gitea\\ChatUI\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-17T09:19:50.5Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

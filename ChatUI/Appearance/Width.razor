@@ -1,0 +1,21 @@
+@page "/width"
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<AppearanceNav></AppearanceNav>
+
+<div style="height: 400px;">
+    <SfChatUI Width="400px" User="CurrentUserModel" Messages="ChatUserMessages"></SfChatUI>
+</div>
+
+@code {
+    private static UserModel CurrentUserModel = new UserModel() { ID = "User1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "User2", User = "Michale Suyama" };
+
+    private List<ChatMessage> ChatUserMessages = new List<ChatMessage>()
+    {
+        new ChatMessage() { Text = "Hi, thinking of painting this weekend.", Author = CurrentUserModel },
+        new ChatMessage() { Text = "That’s fun! What will you paint?", Author = MichaleUserModel },
+        new ChatMessage() { Text = "Maybe landscapes.", Author = CurrentUserModel }
+    };
+}

@@ -1,0 +1,1333 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = UGSamples
+build_property.RootNamespace = UGSamples
+build_property.ProjectDir = C:\Gitea\github-samples\Blazor-UG-Examples\Grid\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Gitea\github-samples\Blazor-UG-Examples\Grid
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/AdaptiveLayout/AdaptiveLayoutforSmallscreen.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRhcHRpdmVMYXlvdXRcQWRhcHRpdmVMYXlvdXRmb3JTbWFsbHNjcmVlbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/AdaptiveLayout/AdaptiveLayoutRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRhcHRpdmVMYXlvdXRcQWRhcHRpdmVMYXlvdXRSb3V0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/AdaptiveLayout/RenderAdaptiveDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRhcHRpdmVMYXlvdXRcUmVuZGVyQWRhcHRpdmVEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/AdaptiveLayout/VerticalMode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRhcHRpdmVMYXlvdXRcVmVydGljYWxNb2RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/AggregateRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXEFnZ3JlZ2F0ZVJvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/CustomAggregate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXEN1c3RvbUFnZ3JlZ2F0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/Footer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXEZvb3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/Formataggregate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXEZvcm1hdGFnZ3JlZ2F0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/GroupAndCaption.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXEdyb3VwQW5kQ2FwdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Aggregate/Reactiveaggregate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWdncmVnYXRlXFJlYWN0aXZlYWdncmVnYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/CellNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsTmF2aWdhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_AutoWrap.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX0F1dG9XcmFwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_clipmode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX2NsaXBtb2RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_customattribute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX2N1c3RvbWF0dHJpYnV0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_customized.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX2N1c3RvbWl6ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_DisbaleHTML.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX0Rpc2JhbGVIVE1MLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Cell/Cell_gridline.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2VsbFxDZWxsX2dyaWRsaW5lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/Autofill.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXEF1dG9maWxsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/Clipboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXENsaXBib2FyZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/ClipboardRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXENsaXBib2FyZFJvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/CopyExternally.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXENvcHlFeHRlcm5hbGx5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/clipboard/Paste.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY2xpcGJvYXJkXFBhc3RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Autofit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xBdXRvZml0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/AutoFitColumns-Visibility.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xBdXRvRml0Q29sdW1ucy1WaXNpYmlsaXR5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/AutofitMethod.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xBdXRvZml0TWV0aG9kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/AutoGeneratingColumns.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xBdXRvR2VuZXJhdGluZ0NvbHVtbnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Boolean-CheckBox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xCb29sZWFuLUNoZWNrQm94LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Column-Chooser-Button.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW4tQ2hvb3Nlci1CdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Column-Chooser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW4tQ2hvb3Nlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Column-headerText.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW4taGVhZGVyVGV4dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Column-Menu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW4tTWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ColumnChooser-Dialog-Size.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW5DaG9vc2VyLURpYWxvZy1TaXplLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ColumnResizing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW5SZXNpemluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ColumnRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW5Sb3V0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ColumnTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb2x1bW5UZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Complex-Data-Binding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb21wbGV4LURhdGEtQmluZGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Conditional ColumnTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb25kaXRpb25hbCBDb2x1bW5UZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ConditionInsideTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb25kaXRpb25JbnNpZGVUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Content_ColumnChooser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb250ZW50X0NvbHVtbkNob29zZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Control-DataGrid-Actions.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xDb250cm9sLURhdGFHcmlkLUFjdGlvbnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Dynamic-Column-Binding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xEeW5hbWljLUNvbHVtbi1CaW5kaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/DynamicColumnBinding-ExpandoObject.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xEeW5hbWljQ29sdW1uQmluZGluZy1FeHBhbmRvT2JqZWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/DynamicObject-ComplexDataBinding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xEeW5hbWljT2JqZWN0LUNvbXBsZXhEYXRhQmluZGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ExpandoObject-ComplexDataBinding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xFeHBhbmRvT2JqZWN0LUNvbXBsZXhEYXRhQmluZGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Footer_ColumnChooser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xGb290ZXJfQ29sdW1uQ2hvb3Nlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ForeignKeyCol - Local.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xGb3JlaWduS2V5Q29sIC0gTG9jYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ForeignKeyCol - Remote.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xGb3JlaWduS2V5Q29sIC0gUmVtb3RlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Format.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xGb3JtYXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/HeaderTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xIZWFkZXJUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/HyperLink Column.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xIeXBlckxpbmsgQ29sdW1uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Hyperlink.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xIeXBlcmxpbmsucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ImageInsideTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xJbWFnZUluc2lkZVRlbXBsYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/LockColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xMb2NrQ29sdW1uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Min-MaxWidth.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xNaW4tTWF4V2lkdGgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/PreventFilterQueryGeneration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xQcmV2ZW50RmlsdGVyUXVlcnlHZW5lcmF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Reorder.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xSZW9yZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ReorderMultipleCols.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xSZW9yZGVyTXVsdGlwbGVDb2xzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ReorderSingleCol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xSZW9yZGVyU2luZ2xlQ29sLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ResizeStackedCol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xSZXNpemVTdGFja2VkQ29sLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ResponsiveColumns.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xSZXNwb25zaXZlQ29sdW1ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/ShowhideBtn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xTaG93aGlkZUJ0bi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/StackedColumnHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xTdGFja2VkQ29sdW1uSGVhZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Columns/Visibility.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29sdW1uc1xWaXNpYmlsaXR5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/BuiltInandCustomContextMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcQnVpbHRJbmFuZEN1c3RvbUNvbnRleHRNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/Contextmenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcQ29udGV4dG1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/ContextmenuItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcQ29udGV4dG1lbnVJdGVtcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/ContextMenuRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcQ29udGV4dE1lbnVSb3V0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/DisableContextMenuforSpecificColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcRGlzYWJsZUNvbnRleHRNZW51Zm9yU3BlY2lmaWNDb2x1bW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/DisableContextMenuItemsDynamic.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcRGlzYWJsZUNvbnRleHRNZW51SXRlbXNEeW5hbWljLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/contextmenu/SubContextMenuItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY29udGV4dG1lbnVcU3ViQ29udGV4dE1lbnVJdGVtcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CAdapAllService.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDQWRhcEFsbFNlcnZpY2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CAdapService.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDQWRhcFNlcnZpY2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CAdpAllServiceComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDQWRwQWxsU2VydmljZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CustomAdaptorComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDdXN0b21BZGFwdG9yQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CustomAdp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDdXN0b21BZHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CustomADpWithDI.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDdXN0b21BRHBXaXRoREkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/CustomBinding/CustomBindingRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3VzdG9tQmluZGluZ1xDdXN0b21CaW5kaW5nUm91dGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataAnnotation/DataAnnotation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUFubm90YXRpb25cRGF0YUFubm90YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/ChangeQueryParameter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcQ2hhbmdlUXVlcnlQYXJhbWV0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/DataBindingNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcRGF0YUJpbmRpbmdOYXZpZ2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/HandlingHTTPerror.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcSGFuZGxpbmdIVFRQZXJyb3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/ObservableCollection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcT2JzZXJ2YWJsZUNvbGxlY3Rpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/ODataAdaptor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcT0RhdGFBZGFwdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/ODataV4Adaptor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcT0RhdGFWNEFkYXB0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/SendAdditonalParameters.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcU2VuZEFkZGl0b25hbFBhcmFtZXRlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/SettingCustomHeaders.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcU2V0dGluZ0N1c3RvbUhlYWRlcnMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/SfDataManager-After-InitialRender.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcU2ZEYXRhTWFuYWdlci1BZnRlci1Jbml0aWFsUmVuZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/DataBinding/WebApiAdaptor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGF0YUJpbmRpbmdcV2ViQXBpQWRhcHRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/AddNewRow-Bottom.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xBZGROZXdSb3ctQm90dG9tLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/BatchConfirmation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xCYXRjaENvbmZpcm1hdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/BatchEditing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xCYXRjaEVkaXRpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CellEditTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDZWxsRWRpdFRlbXBsYXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CellEditTypeParams.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDZWxsRWRpdFR5cGVQYXJhbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/ColumnValidation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDb2x1bW5WYWxpZGF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CommandColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDb21tYW5kQ29sdW1uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CustomCommand.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDdXN0b21Db21tYW5kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CustomFormEditing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDdXN0b21Gb3JtRWRpdGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/CustomizeDialogHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xDdXN0b21pemVEaWFsb2dIZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DefaultValuesWhileAdding.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEZWZhdWx0VmFsdWVzV2hpbGVBZGRpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DeleteConfirmation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEZWxldGVDb25maXJtYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DialogEditing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEaWFsb2dFZGl0aW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DialogTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEaWFsb2dUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DisableComp-DialogTemp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEaXNhYmxlQ29tcC1EaWFsb2dUZW1wLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/DisableEditingForColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xEaXNhYmxlRWRpdGluZ0ZvckNvbHVtbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/EditingNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xFZGl0aW5nTmF2aWdhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/InlineTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xJbmxpbmVUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/NormalEditing.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xOb3JtYWxFZGl0aW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/Programmatic-CRUD-operations.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xQcm9ncmFtbWF0aWMtQ1JVRC1vcGVyYXRpb25zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Editing/SetFocusToEditor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdGluZ1xTZXRGb2N1c1RvRWRpdG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ActionBegin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEFjdGlvbkJlZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ActionComplete.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEFjdGlvbkNvbXBsZXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ActionFailure.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEFjdGlvbkZhaWx1cmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/CellSaved.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENlbGxTYXZlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/CellSelected.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENlbGxTZWxlY3RlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/CellSelecting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENlbGxTZWxlY3RpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ColumnMenuItemClicked.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENvbHVtbk1lbnVJdGVtQ2xpY2tlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/CommandClicked.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENvbW1hbmRDbGlja2VkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ContextMenuItemClicked.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENvbnRleHRNZW51SXRlbUNsaWNrZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/Created.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXENyZWF0ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/DataBound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXERhdGFCb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/DBound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXERCb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/Destroyed.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXERlc3Ryb3llZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/DetailDataBound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXERldGFpbERhdGFCb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/EventsRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEV2ZW50c1JvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/HeaderCellInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXEhlYWRlckNlbGxJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnBatchAdd.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQmF0Y2hBZGQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnBatchDelete.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQmF0Y2hEZWxldGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnBatchSave.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQmF0Y2hTYXZlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnBeginEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQmVnaW5FZGl0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnCellEdit.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQ2VsbEVkaXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnCellSave.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uQ2VsbFNhdmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnLoad.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uTG9hZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnPdfExport.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uUGRmRXhwb3J0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnRecordDoubleClick.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uUmVjb3JkRG91YmxlQ2xpY2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnResizeStart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uUmVzaXplU3RhcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/OnToolbarClick.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXE9uVG9vbGJhckNsaWNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/QueryCellInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFF1ZXJ5Q2VsbEluZm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/ResizeStopped.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJlc2l6ZVN0b3BwZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/RowDataBound.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJvd0RhdGFCb3VuZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/RowDeselected.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJvd0Rlc2VsZWN0ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/RowSelected.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJvd1NlbGVjdGVkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Events/RowSelecting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXZlbnRzXFJvd1NlbGVjdGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/ExcelExportNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsRXhwb3J0TmF2aWdhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_customdata.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2N1c3RvbWRhdGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_customization.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2N1c3RvbWl6YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_export.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2V4cG9ydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_filename.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2ZpbGVuYW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_group.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2dyb3VwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_hidden.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX2hpZGRlbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Excel-Export/Excel_theme.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhjZWwtRXhwb3J0XEV4Y2VsX3RoZW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/CustomFilterIcon.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEN1c3RvbUZpbHRlckljb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/CustomFilterPopup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEN1c3RvbUZpbHRlclBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Enable_FilterColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEVuYWJsZV9GaWx0ZXJDb2x1bW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filtering.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcmluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/FilterItemTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlckl0ZW1UZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/FilterMode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlck1vZGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/FilterNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlck5hdmlnYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/FilterOperator-Override.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlck9wZXJhdG9yLU92ZXJyaWRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_bartemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9iYXJ0ZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_different.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9kaWZmZXJlbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_excel.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9leGNlbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_Initial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9Jbml0aWFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_Menu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9NZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_menucustom.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9tZW51Y3VzdG9tLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Filter/Filter_operator.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyXEZpbHRlcl9vcGVyYXRvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GSnavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTbmF2aWdhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GSrowdata.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTcm93ZGF0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GS_Column.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTX0NvbHVtbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GS_filtering.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTX2ZpbHRlcmluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GS_grouping.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTX2dyb3VwaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GS_paging.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTX3BhZ2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Getting started/GS_sorting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2V0dGluZyBzdGFydGVkXEdTX3NvcnRpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Globalization/RTL.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR2xvYmFsaXphdGlvblxSVEwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Grouping.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBpbmcucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/GroupNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBOYXZpZ2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Group_caption.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBfY2FwdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Group_event.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBfZXZlbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Group_format.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBfZm9ybWF0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Group_Hidedroparea.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBfSGlkZWRyb3BhcmVhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Group_Initial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcR3JvdXBfSW5pdGlhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Lazyload.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcTGF6eWxvYWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Group/Virtuallazyload.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBcVmlydHVhbGxhenlsb2FkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/AddRangeOfItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cQWRkUmFuZ2VPZkl0ZW1zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/CssIsolation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cQ3NzSXNvbGF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/CustomDeleteConfirmDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cQ3VzdG9tRGVsZXRlQ29uZmlybURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/CustomEmptyGridDisplayMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cQ3VzdG9tRW1wdHlHcmlkRGlzcGxheU1lc3NhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/CustomFilterChoiceItemCount.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cQ3VzdG9tRmlsdGVyQ2hvaWNlSXRlbUNvdW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/DefineGridEventProgrammatically.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cRGVmaW5lR3JpZEV2ZW50UHJvZ3JhbW1hdGljYWxseS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/DisplayCustomTooltip.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cRGlzcGxheUN1c3RvbVRvb2x0aXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/EnableorDiableGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cRW5hYmxlb3JEaWFibGVHcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/GroupColumnChooserItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cR3JvdXBDb2x1bW5DaG9vc2VySXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/HideCommandColumninRecord.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSGlkZUNvbW1hbmRDb2x1bW5pblJlY29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/HideDetailTemplateIcon.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSGlkZURldGFpbFRlbXBsYXRlSWNvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/HowtoNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9OYXZpZ2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_accesspublicmethod.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fYWNjZXNzcHVibGljbWV0aG9kLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_calculateothercolumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY2FsY3VsYXRlb3RoZXJjb2x1bW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_cascading.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY2FzY2FkaW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_changedata.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY2hhbmdlZGF0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_columnstyle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY29sdW1uc3R5bGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_customcontroltoolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY3VzdG9tY29udHJvbHRvb2xiYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_customdataDD.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY3VzdG9tZGF0YURELnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_customizeCM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY3VzdG9taXplQ00ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_customtoolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY3VzdG9tdG9vbGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_customtoolbarDD.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fY3VzdG9tdG9vbGJhckRELnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_dictionary.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fZGljdGlvbmFyeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_Edittempcol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fRWRpdHRlbXBjb2wucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_gridcustomization.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fZ3JpZGN1c3RvbWl6YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_gridinsidetab.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fZ3JpZGluc2lkZXRhYi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_preventaction.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fcHJldmVudGFjdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_rowindex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fcm93aW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_selectrow.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fc2VsZWN0cm93LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_showorhide.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fc2hvd29yaGlkZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/Howto_singleclikBM.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cSG93dG9fc2luZ2xlY2xpa0JNLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/SaveNewRowatSpecificIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cU2F2ZU5ld1Jvd2F0U3BlY2lmaWNJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Howto/UseRadioButtonInsteadofCheckbox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG93dG9cVXNlUmFkaW9CdXR0b25JbnN0ZWFkb2ZDaGVja2JveC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Paging/PageNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnaW5nXFBhZ2VOYXZpZ2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Paging/PagerTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnaW5nXFBhZ2VyVGVtcGxhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Paging/PageSizes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnaW5nXFBhZ2VTaXplcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Paging/Paging.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFnaW5nXFBhZ2luZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/ChangePageSize.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XENoYW5nZVBhZ2VTaXplLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/CustomDataSource.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XEN1c3RvbURhdGFTb3VyY2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/ExportCurrentPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XEV4cG9ydEN1cnJlbnRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/ExportHiddenCols.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XEV4cG9ydEhpZGRlbkNvbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/ImageInHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XEltYWdlSW5IZWFkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/LineInHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XExpbmVJbkhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/PageInHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFBhZ2VJbkhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/PageOrientation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFBhZ2VPcmllbnRhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/PdfExporting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFBkZkV4cG9ydGluZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/PdfExportRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFBkZkV4cG9ydFJvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/PdfFileName.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFBkZkZpbGVOYW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/TextinHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFRleHRpbkhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/pdfexport/Theme.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccGRmZXhwb3J0XFRoZW1lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/print/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJpbnRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/print/Print.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJpbnRcUHJpbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/print/PrintExternal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJpbnRcUHJpbnRFeHRlcm5hbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/print/PrintRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJpbnRcUHJpbnRSb3V0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/print/PrintVisible.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNccHJpbnRcUHJpbnRWaXNpYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/AccessChildComponentinDetailTemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XEFjY2Vzc0NoaWxkQ29tcG9uZW50aW5EZXRhaWxUZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/DragandDropwithinGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XERyYWdhbmREcm9wd2l0aGluR3JpZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/MasterDetailDataGrid.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XE1hc3RlckRldGFpbERhdGFHcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/RowDragandDrop.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd0RyYWdhbmREcm9wLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/RowNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd05hdmlnYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_alternaterow.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19hbHRlcm5hdGVyb3cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_customcomponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19jdXN0b21jb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_customize.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19jdXN0b21pemUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_customizehieght.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19jdXN0b21pemVoaWVnaHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_detailtemplate.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19kZXRhaWx0ZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_expandexternal.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19leHBhbmRleHRlcm5hbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_Height.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd19IZWlnaHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_template.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd190ZW1wbGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Row/Row_templateformat.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUm93XFJvd190ZW1wbGF0ZWZvcm1hdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/CustomGridScrollbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXEN1c3RvbUdyaWRTY3JvbGxiYXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/FreezeDirection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXEZyZWV6ZURpcmVjdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/FreezeparticularCol.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXEZyZWV6ZXBhcnRpY3VsYXJDb2wucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/FrozenLineColor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXEZyb3plbkxpbmVDb2xvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/FrozenRowsAndColumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXEZyb3plblJvd3NBbmRDb2x1bW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/Responsive.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXFJlc3BvbnNpdmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/ScrollRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXFNjcm9sbFJvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/StickyHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXFN0aWNreUhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/scrolling/WidthAndHeight.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2Nyb2xsaW5nXFdpZHRoQW5kSGVpZ2h0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/DisableSearch.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXERpc2FibGVTZWFyY2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/ImmediateSearch.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXEltbWVkaWF0ZVNlYXJjaC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/InitialSearch.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXEluaXRpYWxTZWFyY2gucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/Search.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXFNlYXJjaC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/SearchButton.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXFNlYXJjaEJ1dHRvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/SearchingNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXFNlYXJjaGluZ05hdmlnYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Searching/SearchSpecificColumns.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoaW5nXFNlYXJjaFNwZWNpZmljQ29sdW1ucy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/Cellselection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXENlbGxzZWxlY3Rpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/CheckboxSelection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXENoZWNrYm94U2VsZWN0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/CheckboxSelectionmode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXENoZWNrYm94U2VsZWN0aW9ubW9kZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/DragSelection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXERyYWdTZWxlY3Rpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/GetSelectedIndex.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXEdldFNlbGVjdGVkSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/HideSelectallCheckbox.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXEhpZGVTZWxlY3RhbGxDaGVja2JveC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/SelectAtInitial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNlbGVjdEF0SW5pdGlhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/SelectbasedOnCon.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNlbGVjdGJhc2VkT25Db24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/Selection1.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNlbGVjdGlvbjEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/Selectionmode.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNlbGVjdGlvbm1vZGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/SelectionRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNlbGVjdGlvblJvdXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/SimpleMultiSelection.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFNpbXBsZU11bHRpU2VsZWN0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/selection/Toggle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcc2VsZWN0aW9uXFRvZ2dsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/Sorting.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0aW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/SortNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0TmF2aWdhdGlvbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/Sort_Comparer.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0X0NvbXBhcmVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/Sort_event.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0X2V2ZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/Sort_initial.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0X2luaXRpYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Sort/Sort_multicolumn.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU29ydFxTb3J0X211bHRpY29sdW1uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/StateManagement/EnablePersistence.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhdGVNYW5hZ2VtZW50XEVuYWJsZVBlcnNpc3RlbmNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/StateManagement/HandleGridStateManual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhdGVNYW5hZ2VtZW50XEhhbmRsZUdyaWRTdGF0ZU1hbnVhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/StateManagement/StateRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RhdGVNYW5hZ2VtZW50XFN0YXRlUm91dGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Template/TemplateNavigation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVtcGxhdGVcVGVtcGxhdGVOYXZpZ2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Template/Template_column.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVtcGxhdGVcVGVtcGxhdGVfY29sdW1uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Template/Template_row.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVtcGxhdGVcVGVtcGxhdGVfcm93LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/BuildInCustom.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxCdWlsZEluQ3VzdG9tLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/Buildintoolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxCdWlsZGludG9vbGJhci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CustomToolbar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXN0b21Ub29sYmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CustomToolbarItems.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXN0b21Ub29sYmFySXRlbXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CustomToolbarStyles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXN0b21Ub29sYmFyU3R5bGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CustomToolbarText.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXN0b21Ub29sYmFyVGV4dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CustomToolbarwithTooltipText.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXN0b21Ub29sYmFyd2l0aFRvb2x0aXBUZXh0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/CusToolWithDropDown.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxDdXNUb29sV2l0aERyb3BEb3duLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/EnableDisable.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxFbmFibGVEaXNhYmxlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxOYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/toolbar/ToolbarRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcdG9vbGJhclxUb29sYmFyUm91dGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/ColumnVirtual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cQ29sdW1uVmlydHVhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/FrozenVirtualization.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cRnJvemVuVmlydHVhbGl6YXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/MaskVirtualization.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cTWFza1ZpcnR1YWxpemF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/RefreshVirtual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cUmVmcmVzaFZpcnR1YWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/RowVirtual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cUm93VmlydHVhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/ScrollContentbyExternalButton.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cU2Nyb2xsQ29udGVudGJ5RXh0ZXJuYWxCdXR0b24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Virtualization/VirtualizationRoute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlydHVhbGl6YXRpb25cVmlydHVhbGl6YXRpb25Sb3V0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fq9fpv9ta0
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-rjgd5czorr
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Gitea/github-samples/Blazor-UG-Examples/Grid/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

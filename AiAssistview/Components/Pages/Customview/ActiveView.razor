@@ -1,0 +1,36 @@
+@page "/activeview"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<CustomviewNav></CustomviewNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView PromptRequested="@PromptRequest" ActiveView="1">
+        <AssistViews>
+            <AssistView></AssistView>
+            <CustomView Header="Response" IconCss="e-icons e-comment-show">
+                <ViewTemplate>
+                    <div class="view-container"><h5>Response view content</h5></div>
+                </ViewTemplate>
+            </CustomView>
+        </AssistViews>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = defaultResponse;
+    }
+}
+<style>
+    .view-container {
+        height: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

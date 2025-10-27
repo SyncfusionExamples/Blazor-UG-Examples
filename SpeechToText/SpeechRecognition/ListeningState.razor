@@ -1,0 +1,124 @@
+@page "/listeningstate"
+
+@using Syncfusion.Blazor.Inputs
+
+<SpeechRecognitionNav></SpeechRecognitionNav>
+
+<div class="speech-container">
+    <div class="status-box @GetStatusClass()">
+        <span>Status: <strong>@listeningState</strong></span>
+    </div>
+
+    <SfSpeechToText ListeningState="listeningState" SpeechRecognitionStopped="(args) => UpdateListeningState(args.State)" SpeechRecognitionStarted="(args) => UpdateListeningState(args.State)"></SfSpeechToText>
+
+    <div class="waveform-container">
+        @if (listeningState == SpeechToTextState.Listening)
+        {
+            <div class="waveform">
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p>Listening... Speak now!</p>
+        }
+        else
+        {
+            <p>Click the button to start listening.</p>
+        }
+    </div>
+</div>
+
+@code {
+    private SpeechToTextState listeningState = SpeechToTextState.Inactive;
+
+    private void UpdateListeningState(SpeechToTextState state) {
+        listeningState = state;
+    }
+
+    private string GetStatusClass()
+    {
+        return listeningState switch
+        {
+            SpeechToTextState.Listening => "listening",
+            SpeechToTextState.Stopped => "stopped",
+            _ => "inactive"
+        };
+    }
+}
+
+<style>
+    .waveform-container {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    .waveform {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 40px;
+        gap: 5px;
+    }
+
+    .waveform span {
+        display: block;
+        width: 6px;
+        height: 20px;
+        background: #28a745;
+        animation: wave-animation 1.2s infinite ease-in-out;
+    }
+
+    .waveform span:nth-child(1) { animation-delay: 0s; }
+    .waveform span:nth-child(2) { animation-delay: 0.2s; }
+    .waveform span:nth-child(3) { animation-delay: 0.4s; }
+    .waveform span:nth-child(4) { animation-delay: 0.6s; }
+    .waveform span:nth-child(5) { animation-delay: 0.8s; }
+
+    .waveform span:nth-child(5) {
+        animation-delay: 0.8s;
+    }
+
+    @@keyframes wave-animation {
+        0%, 100% {
+            height: 10px;
+        }
+
+        50% {
+            height: 30px;
+        }
+    }
+
+    .speech-container {
+        text-align: center;
+        margin: 20px auto;
+        max-width: 400px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        background: #fff;
+    }
+
+    .status-box {
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+
+    .status-box.listening {
+        background-color: #d1e7dd;
+        color: #0f5132;
+    }
+
+    .status-box.stopped {
+        background-color: #f8d7da;
+        color: #842029;
+    }
+
+    .status-box.inactive {
+        background-color: #e2e3e5;
+        color: #6c757d;
+    }
+
+    .visual-indicator {
+        margin-top: 20px;
+    }
+</style>

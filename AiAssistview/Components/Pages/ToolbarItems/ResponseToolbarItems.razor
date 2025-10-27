@@ -1,0 +1,31 @@
+@page "/responsetoolbaritem"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<ToolbarItemsNav></ToolbarItemsNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView PromptRequested="@PromptRequest" Prompts="@prompts">
+        <ResponseToolbar>
+            <ResponseToolbarItem IconCss="e-icons e-download"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="e-icons e-refresh"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="e-icons e-assist-like"></ResponseToolbarItem>
+            <ResponseToolbarItem IconCss="e-icons e-assist-dislike"></ResponseToolbarItem>
+        </ResponseToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private List<AssistViewPrompt> prompts = new List<AssistViewPrompt>()
+    {
+        new AssistViewPrompt() { Prompt = "What is AI?", Response = "<div>AI stands for Artificial Intelligence, enabling machines to mimic human intelligence for tasks such as learning, problem-solving, and decision-making.</div>" }
+    };
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var promptData = prompts.FirstOrDefault(prompt => prompt.Prompt == args.Prompt);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = string.IsNullOrEmpty(promptData.Response) ? defaultResponse : promptData.Response;
+    }
+}

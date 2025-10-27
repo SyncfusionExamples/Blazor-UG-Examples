@@ -1,0 +1,447 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Gitea\\SpeechToText\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\transcript.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\transcript.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\speechrecognitionnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\speechrecognitionnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\showtooltip.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\showtooltip.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\listeningstate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\listeningstate.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\interimresults.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\interimresults.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\speechrecognition\\disabled.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\speechrecognition\\disabled.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\methods\\methods.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\methods\\methods.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwebapp\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwebapp\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwebapp\\buttoncontent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwebapp\\buttoncontent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwasm\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwasm\\gettingstarted.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwasm\\buttoncontent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwasm\\buttoncontent.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\events\\events.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\events\\events.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\appearance\\tooltippositionappearance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\appearance\\tooltippositionappearance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\appearance\\isprimaryappearance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\appearance\\isprimaryappearance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\appearance\\cssclass.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\layout\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\events\\eventsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\appearance\\appearancenav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\methods\\methodsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\methods\\methodsnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwebapp\\gettingstartedwebappnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwebapp\\gettingstartedwebappnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\pages\\gettingstartedwasm\\gettingstartedwasmnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\pages\\gettingstartedwasm\\gettingstartedwasmnav.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|c:\\gitea\\speechtotext\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{98327938-B70D-4F00-B1F2-5BF267EC369E}|SpeechToText.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Transcript.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Transcript.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\Transcript.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Transcript.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\Transcript.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:25:15.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ListeningState.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\ListeningState.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\ListeningState.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\ListeningState.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\ListeningState.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:25:03.539Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Language.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Language.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\Language.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Language.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\Language.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:24:59.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InterimResults.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\InterimResults.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\InterimResults.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\InterimResults.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\InterimResults.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:24:55.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Disabled.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Disabled.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\Disabled.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\Disabled.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\Disabled.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:24:50.797Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ButtonContent.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\ButtonContent.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWebapp\\ButtonContent.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\ButtonContent.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWebapp\\ButtonContent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:24:30.252Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ButtonContent.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\ButtonContent.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWASM\\ButtonContent.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\ButtonContent.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWASM\\ButtonContent.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:24:19.878Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CssClass.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\CssClass.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\CssClass.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:23:16.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Methods.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Methods\\Methods.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Methods\\Methods.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Methods\\Methods.razor",
+              "RelativeToolTip": "Components\\Pages\\Methods\\Methods.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:21:08.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SpeechRecognitionNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\SpeechRecognitionNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\SpeechRecognitionNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\SpeechRecognitionNav.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\SpeechRecognitionNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:11:27.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MethodsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Methods\\MethodsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Methods\\MethodsNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Methods\\MethodsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Methods\\MethodsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:11:18.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GettingStartedWebappNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\GettingStartedWebappNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWebapp\\GettingStartedWebappNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\GettingStartedWebappNav.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWebapp\\GettingStartedWebappNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:11:06.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "GettingStarted.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\GettingStarted.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWebapp\\GettingStarted.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWebapp\\GettingStarted.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWebapp\\GettingStarted.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:11:03.243Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GettingStartedWASMNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\GettingStartedWASMNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWASM\\GettingStartedWASMNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\GettingStartedWASMNav.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWASM\\GettingStartedWASMNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:10:50.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "GettingStarted.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\GettingStarted.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\GettingStartedWASM\\GettingStarted.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\GettingStartedWASM\\GettingStarted.razor",
+              "RelativeToolTip": "Components\\Pages\\GettingStartedWASM\\GettingStarted.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:10:45.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "EventsNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\EventsNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Events\\EventsNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\EventsNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:10:37.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Events.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Events\\Events.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Events\\Events.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Events\\Events.razor",
+              "RelativeToolTip": "Components\\Pages\\Events\\Events.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:10:36.849Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppearanceNav.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\AppearanceNav.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-27T11:10:18.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShowTooltip.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\ShowTooltip.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\SpeechRecognition\\ShowTooltip.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\SpeechRecognition\\ShowTooltip.razor",
+              "RelativeToolTip": "Components\\Pages\\SpeechRecognition\\ShowTooltip.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:19:23.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TooltipPositionAppearance.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\TooltipPositionAppearance.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\TooltipPositionAppearance.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\TooltipPositionAppearance.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\TooltipPositionAppearance.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:19:10.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IsPrimaryAppearance.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\IsPrimaryAppearance.razor",
+              "RelativeDocumentMoniker": "Components\\Pages\\Appearance\\IsPrimaryAppearance.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Pages\\Appearance\\IsPrimaryAppearance.razor",
+              "RelativeToolTip": "Components\\Pages\\Appearance\\IsPrimaryAppearance.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:18:55.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "NavMenu.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\Layout\\NavMenu.razor",
+              "RelativeDocumentMoniker": "Components\\Layout\\NavMenu.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\Layout\\NavMenu.razor",
+              "RelativeToolTip": "Components\\Layout\\NavMenu.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:18:19.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "App.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Components\\App.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\App.razor",
+              "RelativeToolTip": "Components\\App.razor",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:17:05.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-14T12:16:15.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "C:\\Gitea\\SpeechToText\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Components\\_Imports.razor",
+              "ToolTip": "C:\\Gitea\\SpeechToText\\Components\\_Imports.razor",
+              "RelativeToolTip": "Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-14T12:16:04.342Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

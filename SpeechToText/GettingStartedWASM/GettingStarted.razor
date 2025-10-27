@@ -1,0 +1,24 @@
+@page "/gettingstartedwasm"
+
+@using Syncfusion.Blazor.Inputs
+
+<GettingStartedWASMNav></GettingStartedWASMNav>
+
+<div class="speechtext-container">
+    <SfSpeechToText @bind-Transcript="@transcript"></SfSpeechToText>
+    <SfTextArea RowCount="5" ColumnCount="50" @bind-Value="@transcript" ResizeMode="Resize.None" Placeholder="Transcribed text will be shown here..."></SfTextArea>
+</div>
+
+<style>
+    .speechtext-container {
+        margin: 50px auto;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+@code {
+    string transcript = "";
+}

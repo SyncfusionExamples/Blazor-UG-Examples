@@ -1,0 +1,29 @@
+@page "/integrationwithai"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Microsoft.Extensions.AI
+@using Markdig;
+@using System.Text.RegularExpressions;
+@inject IChatClient ChatClient
+
+<HowToNav></HowToNav>
+
+<div style="height: 350px; width: 650px;">
+    <SfAIAssistView PromptRequested="@OnPromptRequested"></SfAIAssistView>
+</div>
+
+@code {
+    
+    private async Task OnPromptRequested(AssistViewPromptRequestedEventArgs args)
+    {
+        // Send the user’s prompt to the AI model
+        var chatResponse = await ChatClient.GetResponseAsync(args.Prompt, new ChatOptions());
+        // Convert markdown to HTML
+        var htmlContent = Markdown.ToHtml(chatResponse.Text);
+        // Clean up extra whitespace
+        htmlContent = Regex.Replace(htmlContent, @"\s+", " ").Trim();
+        // Set the cleaned HTML as the response
+        args.Response = htmlContent;
+    }
+}
