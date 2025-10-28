@@ -11,15 +11,10 @@
     //Reference the diagram
     private SfDiagramComponent diagram;
 
-    protected override void OnInitialized()
-    {
-
-    }
-
     //Onhistory change event
     private void Onhistorychange(HistoryChangedEventArgs args)
     {
         //causes of history change
-        var ActionTrigger = args.ActionTrigger;
+        HistoryChangedAction ActionTrigger = args.ActionTrigger;
     }
 }

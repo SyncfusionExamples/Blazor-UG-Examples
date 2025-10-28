@@ -42,22 +42,22 @@
         //Initializing node and connectors.
         nodes = new DiagramObjectCollection<Node>()
         {
-            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Steve-Ceo"} } },
-            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Kevin-Manager"} } },
-            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Peter-Manager"} } },
-            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Jim-CSE"} } },
-            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Martin-CSE"} } },
-            new Node() { ID="node6", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="John-Manager"} } },
-            new Node() { ID="node7", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Mary-CSE"} } },
+            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Steve-Ceo" } } },
+            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Kevin-Manager" } } },
+            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Peter-Manager" } } },
+            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Jim-CSE" } } },
+            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Martin-CSE" } } },
+            new Node() { ID="node6", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "John-Manager" } } },
+            new Node() { ID="node7", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Mary-CSE" } } },
         };
         connectors = new DiagramObjectCollection<Connector>()
         {
-            new Connector() { ID="connector1", SourceID="node1", TargetID="node2" },
-            new Connector() { ID="connector2", SourceID="node1", TargetID="node3" },
-            new Connector() { ID="connector3", SourceID="node2", TargetID="node4" },
-            new Connector() { ID="connector4", SourceID="node2", TargetID="node5" },
-            new Connector() { ID="connector5", SourceID="node3", TargetID="node6" },
-            new Connector() { ID="connector6", SourceID="node3", TargetID="node7" },
+            new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node2" },
+            new Connector() { ID = "connector2", SourceID = "node1", TargetID = "node3" },
+            new Connector() { ID = "connector3", SourceID = "node2", TargetID = "node4" },
+            new Connector() { ID = "connector4", SourceID = "node2", TargetID = "node5" },
+            new Connector() { ID = "connector5", SourceID = "node3", TargetID = "node6" },
+            new Connector() { ID = "connector6", SourceID = "node3", TargetID = "node7" },
         };
     }
 }

@@ -35,16 +35,16 @@
     {
         for (int i = 0; i < Diagram.Connectors.Count; i++)
         {
-            var connector = Diagram.Connectors[i];
-            var node = Diagram.GetObject(connector.TargetID) as Node;
-            var srcNode = Diagram.GetObject(connector.SourceID) as Node;
+            Connector connector = Diagram.Connectors[i];
+            Node node = Diagram.GetObject(connector.TargetID) as Node;
+            Node srcNode = Diagram.GetObject(connector.SourceID) as Node;
             if (node.Data != null && node.Data is NodeInfo NodeInfo)
             {
                 if (NodeInfo.LineText != null && NodeInfo.LineText.Count > 0)
                 {
                     if (NodeInfo.ParentId.IndexOf((srcNode.Data as NodeInfo).Id) != -1)
                     {
-                        var parentIndex = NodeInfo.ParentId.IndexOf((srcNode.Data as NodeInfo).Id);
+                        int parentIndex = NodeInfo.ParentId.IndexOf((srcNode.Data as NodeInfo).Id);
                         if (NodeInfo.LineText.Count > parentIndex)
                         {
                             connector.Annotations = new DiagramObjectCollection<PathAnnotation>()

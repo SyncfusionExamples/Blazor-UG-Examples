@@ -55,8 +55,7 @@
     private void GetSelectionInfo()
     {
         // Get selected nodes
-        var selectedNodes = diagram.SelectionSettings.Nodes;
-        foreach (var node in selectedNodes)
+        foreach (Node node in diagram.SelectionSettings.Nodes)
         {
             Console.WriteLine($"Selected Node ID: {node.ID}");
             Console.WriteLine($"Node OffsetX: {node.OffsetX}");
@@ -67,8 +66,7 @@
         }
 
         // Get selected connectors
-        var selectedConnectors = diagram.SelectionSettings.Connectors;
-        foreach (var connector in selectedConnectors)
+        foreach (Connector connector in diagram.SelectionSettings.Connectors)
         {
             Console.WriteLine($"Selected Connector ID: {connector.ID}");
             Console.WriteLine($"Connector SourcePoint: X={connector.SourcePoint.X}, Y={connector.SourcePoint.Y}");

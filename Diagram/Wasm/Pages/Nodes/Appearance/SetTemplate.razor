@@ -43,31 +43,31 @@
     {
         if ((node as Node).ID == "node6")
         {
-            var table = new StackPanel();
+            StackPanel table = new StackPanel();
             table.Style = new ShapeStyle() { Fill = "#e6e0eb", StrokeColor = "#e6e0eb" };
             table.Orientation = Orientation.Horizontal;
-            var column1 = new StackPanel();
+            StackPanel column1 = new StackPanel();
             column1.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
             column1.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column1.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column1.Children = new ObservableCollection<CommonElement>();
             column1.Children.Add(getTextElement("Events"));
 
-            var column2 = new StackPanel();
+            StackPanel column2 = new StackPanel();
             column2.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column2.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column2.Children = new ObservableCollection<CommonElement>();
             column2.Children.Add(getTextElement("Emails"));
             column2.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
 
-            var column3 = new StackPanel();
+            StackPanel column3 = new StackPanel();
             column3.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column3.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column3.Children = new ObservableCollection<CommonElement>();
             column3.Children.Add(getTextElement("Calls"));
             column3.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
 
-            var column4 = new StackPanel();
+            StackPanel column4 = new StackPanel();
             column4.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column4.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column4.Children = new ObservableCollection<CommonElement>();
@@ -88,7 +88,7 @@
 
     private TextElement getTextElement(string text)
     {
-        var textElement = new TextElement();
+        TextElement textElement = new TextElement();
         textElement.Width = 60;
         textElement.Height = 20;
         textElement.Content = text;

@@ -18,9 +18,9 @@
     
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
-            SymbolInfo SymbolInfo = new SymbolInfo();
-            SymbolInfo.Fit = true;
-            return SymbolInfo;
+        SymbolInfo SymbolInfo = new SymbolInfo();
+        SymbolInfo.Fit = true;
+        return SymbolInfo;
     }
 
     protected override void OnInitialized()
@@ -34,7 +34,7 @@
         TNodes.Add(TNode2);
         Palettes = new DiagramObjectCollection<Palette>()
         {
-        new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
+            new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
         };
     }
 

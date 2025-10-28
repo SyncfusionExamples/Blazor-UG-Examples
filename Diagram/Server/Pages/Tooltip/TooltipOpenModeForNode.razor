@@ -86,14 +86,14 @@
     }
 
     //Method to show tooltip
-    private void show()
+    private async void show()
     {
-        _ = diagram.ShowTooltipAsync(diagram.Nodes[2] as NodeBase);
+        await diagram.ShowTooltipAsync(diagram.Nodes[2] as NodeBase);
     }
 
     //Method to hide tooltip
-    private void hide()
+    private async void hide()
     {
-        _ = diagram.HideTooltipAsync(diagram.Nodes[2] as NodeBase);
+        await diagram.HideTooltipAsync(diagram.Nodes[2] as NodeBase);
     }
 }

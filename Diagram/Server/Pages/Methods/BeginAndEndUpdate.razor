@@ -63,11 +63,11 @@
         nodes.Add(node2);
     }
 
-    private void PropertyUpdate()
+    private async void PropertyUpdate()
     {
         diagram.BeginUpdate();
         diagram.Nodes[0].Height = 150;
         diagram.Nodes[0].Width = 150;
-        _ = diagram.EndUpdateAsync();
+        await diagram.EndUpdateAsync();
     }
 }
