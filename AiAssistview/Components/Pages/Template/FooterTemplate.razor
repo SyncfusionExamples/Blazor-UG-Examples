@@ -1,0 +1,61 @@
+@page "/footertemplate"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<TemplateNav></TemplateNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView @ref="AIAssist" PromptRequested="PromptRequest">
+        <AssistViews>
+            <AssistView>
+                <FooterTemplate>
+                    <div class="custom-footer">
+                        <textarea id="promptTextArea" @bind="textAreaValue" class="e-input" rows="2" placeholder="Enter your prompt here"></textarea>
+                        <button id="sendPrompt" @onclick="GenerateContent" class="e-btn e-primary">Generate</button>
+                    </div>
+                </FooterTemplate>
+            </AssistView>
+        </AssistViews>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private SfAIAssistView AIAssist;
+    private string textAreaValue = string.Empty;
+    private async Task GenerateContent()
+    {
+        if (!string.IsNullOrEmpty(textAreaValue))
+        {
+            var value = textAreaValue;
+            textAreaValue = String.Empty;
+            await AIAssist.ExecutePromptAsync(value);
+        }
+    }
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = defaultResponse;
+    }
+}
+<style>
+    .custom-footer {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        background-color: transparent;
+    }
+
+    #promptTextArea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    #sendPrompt {
+        padding: 5px 15px;
+        align-self: flex-end;
+    }
+</style>

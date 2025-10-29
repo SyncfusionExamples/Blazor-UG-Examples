@@ -1,0 +1,30 @@
+@page "/viewtemplate"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<CustomviewNav></CustomviewNav>
+
+<div class="aiassist-container" style="width: max(50%, 500px); margin: 30px auto;">
+    <SfAIAssistView>
+        <AssistViews>
+            <AssistView Header="Prompt">
+                <ViewTemplate>
+                    <div class="view-container"><h5>Prompt view content</h5></div>
+                </ViewTemplate>
+            </AssistView>
+            <CustomView Header="Response">
+                <ViewTemplate>
+                    <div class="view-container"><h5>Response view content</h5></div>
+                </ViewTemplate>
+            </CustomView>
+        </AssistViews>
+    </SfAIAssistView>
+</div>
+
+<style>
+    .view-container {
+        margin: 20px auto;
+        width: 80%;
+    }
+</style>

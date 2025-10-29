@@ -1,0 +1,26 @@
+@page "/mentiontext"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<MentionNav></MentionNav>
+
+<div style="height: 400px; width: 400px;">
+    <SfChatUI User="CurrentUserModel" Messages="ChatUserMessages" HeaderText="TeamSync Professionals"></SfChatUI>
+</div>
+
+@code {
+    private static UserModel CurrentUserModel = new UserModel() { ID = "user1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "user2", User = "Michale Suyama" };
+
+    private List<ChatMessage> ChatUserMessages = new List<ChatMessage>()
+    {
+        new ChatMessage() {
+            Author = CurrentUserModel,
+            Text = "Hi {0}, are we on track for the deadline?",
+            MentionUsers = new List<UserModel>() { MichaleUserModel }
+        },
+        new ChatMessage() { Author = MichaleUserModel, Text = "Yes {0}, the design phase is complete.", MentionUsers = new List<UserModel>() { CurrentUserModel }},
+        new ChatMessage() { Author = CurrentUserModel, Text = "I’ll review it and send feedback by today." }
+    };
+}

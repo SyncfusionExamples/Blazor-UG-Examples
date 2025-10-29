@@ -1,0 +1,26 @@
+@page "/visible"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Navigations
+
+<ToolbarItemsNav></ToolbarItemsNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView PromptRequested="@PromptRequest">
+        <AssistViewToolbar>
+            <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+            <AssistViewToolbarItem Type="ItemType.Button" IconCss="e-icons e-refresh" Visible=false></AssistViewToolbarItem>
+            <AssistViewToolbarItem Type="ItemType.Button" IconCss="e-icons e-user"></AssistViewToolbarItem>
+        </AssistViewToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = defaultResponse;
+    }
+}

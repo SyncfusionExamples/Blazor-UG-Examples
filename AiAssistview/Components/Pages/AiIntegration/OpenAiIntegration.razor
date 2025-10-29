@@ -1,0 +1,77 @@
+@page "/openaiintegration"
+@rendermode InteractiveServer
+
+@using AIAssistView_AzureAI.Components.Services
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Navigations
+@inject AzureOpenAIService OpenAIService
+
+<AiIntegrationNav></AiIntegrationNav>
+
+// Initialize AI AssistView component
+<div class="aiassist-container" style="height: 450px; width: 650px;">
+    <SfAIAssistView @ref="assistView" ID="aiAssistView" PromptSuggestions="@promptSuggestions" PromptRequested="@PromptRequest">
+        <AssistViews>
+            <AssistView>
+                <BannerTemplate>
+                    <div class="banner-content">
+                        <div class="e-icons e-assistview-icon"></div>
+                        <h3>AI Assistance</h3>
+                        <i>To get started, provide input or choose a suggestion.</i>
+                    </div>
+                </BannerTemplate>
+            </AssistView>
+        </AssistViews>
+        <AssistViewToolbar ItemClicked="ToolbarItemClicked">
+            <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+            <AssistViewToolbarItem IconCss="e-icons e-refresh"></AssistViewToolbarItem>
+        </AssistViewToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private SfAIAssistView assistView;
+    private string finalResponse { get; set; }
+    private List<string> promptSuggestions = new List<string>
+    {
+        "What are the best tools for organizing my tasks?",
+        "How can I maintain work-life balance effectively?"
+    };
+    
+    // Handle user prompt: call Azure OpenAI Chat Completions
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        // Reset the response for this prompt
+        var lastIdx = assistView.Prompts.Count - 1;
+        assistView.Prompts[lastIdx].Response = string.Empty;
+        finalResponse = string.Empty;
+        try
+        {
+            await foreach (var chunk in OpenAIService.GetChatResponseStreamAsync(args.Prompt))
+            {
+                await UpdateResponse(args, chunk);
+            }
+
+            args.Response = finalResponse;
+        }
+        catch (Exception ex)
+        {
+            args.Response = $"Error: {ex.Message}";
+        }
+    }
+
+    private async Task UpdateResponse(AssistViewPromptRequestedEventArgs args, string response)
+    {
+        var lastIdx = assistView.Prompts.Count - 1;
+        await Task.Delay(10); // Small delay for UI updates
+        assistView.Prompts[lastIdx].Response += response.Replace("\n", "<br>");
+        finalResponse = assistView.Prompts[lastIdx].Response;
+        StateHasChanged();
+    }
+
+    private void ToolbarItemClicked(AssistViewToolbarItemClickedEventArgs args)
+    {
+        assistView.Prompts.Clear();
+        StateHasChanged();
+    }
+}

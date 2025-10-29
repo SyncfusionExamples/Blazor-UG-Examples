@@ -1,0 +1,16 @@
+@page "/tabindex"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Navigations
+
+<ToolbarItemsNav></ToolbarItemsNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView>
+        <AssistViewToolbar>
+            <AssistViewToolbarItem Text="Item 1" TabIndex="1"></AssistViewToolbarItem>
+            <AssistViewToolbarItem Text="Item 2" TabIndex="2"></AssistViewToolbarItem>
+        </AssistViewToolbar>
+    </SfAIAssistView>
+</div>

@@ -1,0 +1,30 @@
+@page "/attachmentuploadsuccess"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Inputs
+
+<EventsNav></EventsNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView AttachmentUploadSuccess="OnAttachmentUploadSuccess" AttachmentSettings="attachmentSettings" PromptRequested="PromptRequest"></SfAIAssistView>
+</div>
+
+@code {
+    private void OnAttachmentUploadSuccess(SuccessEventArgs args)
+    {
+        // Your required action here
+    }
+    private AssistViewAttachmentSettings attachmentSettings = new AssistViewAttachmentSettings()
+    {
+        Enable = true,
+        SaveUrl = "https://blazor.syncfusion.com/services/production/api/FileUploader/Save",
+        RemoveUrl = "https://blazor.syncfusion.com/services/production/api/FileUploader/Remove"
+    };
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = defaultResponse;
+    }
+}

@@ -1,0 +1,41 @@
+@page "/template"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.SplitButtons
+
+<ToolbarItemsNav></ToolbarItemsNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView PromptRequested="@PromptRequest">
+        <AssistViewToolbar>
+            <AssistViewToolbarItem Type="ItemType.Spacer"></AssistViewToolbarItem>
+            <AssistViewToolbarItem Type="ItemType.Input">
+                <Template>
+                    <SfDropDownButton Content="English" CssClass="custom-dropdown" IconCss="e-icons e-translate">
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="हिंदी"></DropDownMenuItem>
+                            <DropDownMenuItem Text="தமிழ்"></DropDownMenuItem>
+                            <DropDownMenuItem Text="తెలుగు"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </Template>
+            </AssistViewToolbarItem>
+        </AssistViewToolbar>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = defaultResponse;
+    }
+}
+<style>
+    .custom-dropdown.e-dropdown-popup ul {
+        min-width: 100px;
+    }
+</style>

@@ -1,0 +1,65 @@
+@page "/promptitemtemplate"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<TemplateNav></TemplateNav>
+
+<div class="aiassist-container" style="height: 350px; width: 650px;">
+    <SfAIAssistView Prompts="prompts" PromptRequested="@PromptRequest" >
+        <AssistViews>
+            <AssistView>
+                <PromptItemTemplate>
+                    <div class="promptItemContent">
+                        <div class="prompt-header">
+                            You
+                            <span class="e-icons e-user"></span>
+                        </div>
+                        <div class="promptcontent">@context.Prompt.Replace(@"<span class=""e-icons e-circle-info""></span>", "")</div>
+                    </div>
+                </PromptItemTemplate>
+            </AssistView>
+        </AssistViews>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private List<AssistViewPrompt> prompts = new List<AssistViewPrompt>()
+    {
+        new AssistViewPrompt() { Prompt = "What is AI?", Response = "<div>AI stands for Artificial Intelligence, enabling machines to mimic human intelligence for tasks such as learning, problem-solving, and decision-making.</div>" }
+    };
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var promptData = prompts.FirstOrDefault(prompt => prompt.Prompt == args.Prompt);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = string.IsNullOrEmpty(promptData.Response) ? defaultResponse : promptData.Response;
+    }
+}
+<style>
+    .promptItemContent {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .promptItemContent {
+        align-items: flex-end;
+        margin-right: 20px
+    }
+
+    .promptItemContent .prompt-header {
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .promptItemContent .prompt-header span {
+        margin-left: 10px;
+    }
+
+    .promptItemContent .promptcontent {
+        margin-right: 35px;
+    }
+</style>

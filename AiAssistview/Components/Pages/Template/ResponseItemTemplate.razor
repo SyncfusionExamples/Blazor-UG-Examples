@@ -1,0 +1,65 @@
+@page "/responseitemtemplate"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<TemplateNav></TemplateNav>
+
+<div class="aiassist-container" style="height: 400px; width: 650px;">
+    <SfAIAssistView Prompts="prompts" PromptRequested="@PromptRequest">
+        <AssistViews>
+            <AssistView>
+                <ResponseItemTemplate>
+                    <div class="responseItemContent">
+                        <div class="response-header">
+                            <span class="e-icons e-assistview-icon"></span>
+                            AI Assist
+                        </div>
+                        <div class="responseContent">@((MarkupString)context.Response)</div>
+                    </div>
+                </ResponseItemTemplate>
+            </AssistView>
+        </AssistViews>
+    </SfAIAssistView>
+</div>
+
+@code {
+    private List<AssistViewPrompt> prompts = new List<AssistViewPrompt>()
+    {
+        new AssistViewPrompt() { Prompt = "What is AI?", Response = "<div>AI stands for Artificial Intelligence, enabling machines to mimic human intelligence for tasks such as learning, problem-solving, and decision-making.</div>" }
+    };
+    private async Task PromptRequest(AssistViewPromptRequestedEventArgs args)
+    {
+        await Task.Delay(1000);
+        var promptData = prompts.FirstOrDefault(prompt => prompt.Prompt == args.Prompt);
+        var defaultResponse = "For real-time prompt processing, connect the AI AssistView component to your preferred AI service, such as OpenAI or Azure Cognitive Services. Ensure you obtain the necessary API credentials to authenticate and enable seamless integration.";
+        args.Response = string.IsNullOrEmpty(promptData.Response) ? defaultResponse : promptData.Response;
+    }
+}
+<style>
+    .responseItemContent {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 20px
+    }
+
+    .responseItemContent .response-header {
+        font-size: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+    .responseItemContent .responseContent {
+        margin-left: 35px;
+    }
+
+    .responseItemContent .response-header .e-assistview-icon:before {
+        margin-right: 10px;
+    }
+
+    .aiassist-container .e-response-item-template .e-toolbar-items {
+        margin-left: 35px;
+    }
+</style>
