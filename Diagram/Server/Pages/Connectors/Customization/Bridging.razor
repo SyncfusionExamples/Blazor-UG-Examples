@@ -1,0 +1,81 @@
+﻿@page "/Bridging"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" @bind-Constraints="@diagramConstraints" Height="500px" Connectors="@connectors" />
+
+@code
+{
+    private DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Bridging;
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector1 = new Connector()
+        {
+            ID = "connector1",
+            // Bridge space value has been defined.
+            BridgeSpace = 20,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 1
+            },
+            SourcePoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 400,
+                Y = 200
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 1
+                }
+            }
+        };
+        connectors.Add(Connector1);
+        Connector Connector2 = new Connector()
+        {
+            ID = "connector2",
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "#6495ED",
+                StrokeWidth = 1
+            },
+            SourcePoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 300
+            },
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "#6495ED",
+                    StrokeWidth = 1
+                }
+            }
+        };
+        connectors.Add(Connector2);
+    }
+}

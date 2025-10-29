@@ -1,0 +1,84 @@
+﻿@page "/CurrentSelection"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+@using SelectionChangedEventArgs = Syncfusion.Blazor.Diagram.SelectionChangedEventArgs 
+
+<SfButton Content="GetSelectionInfo" OnClick="GetSelectionInfo"></SfButton>
+<SfDiagramComponent @ref="diagram" Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection" SelectionChanged="OnSelectionChanged">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent diagram;
+    //Initailize the diagram's nodes collection
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    //Initailize the diagram's connector collection
+    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+        {
+            OffsetX = 100,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node1",
+        };
+        NodeCollection.Add(node1);
+        Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 300, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 300 },
+            Type = ConnectorSegmentType.Orthogonal
+        };
+        ConnectorCollection.Add(connector1);
+    }
+
+    //Event to notify selection changing event after selected the nodes/conenctors in diagram.
+    private void OnSelectionChanged(SelectionChangedEventArgs args)
+    {
+        if (diagram.SelectionSettings.Nodes.Count > 0)
+        {
+            Node selectedNode = diagram.SelectionSettings.Nodes[0];
+            //Here you can modified the selected node.
+        }
+        if (diagram.SelectionSettings.Connectors.Count > 0)
+        {
+            Connector selectedConnector = diagram.SelectionSettings.Connectors[0];
+            //Here you can modified the selected connector.
+        }
+    }
+
+    // Method to get current selection information
+    private void GetSelectionInfo()
+    {
+        // Get selected nodes
+        foreach (Node node in diagram.SelectionSettings.Nodes)
+        {
+            Console.WriteLine($"Selected Node ID: {node.ID}");
+            Console.WriteLine($"Node OffsetX: {node.OffsetX}");
+            Console.WriteLine($"Node OffsetY: {node.OffsetY}");
+            Console.WriteLine($"Node Width: {node.Width}");
+            Console.WriteLine($"Node Height: {node.Height}");
+            Console.WriteLine($"Node Rotation: {node.RotationAngle}");
+        }
+
+        // Get selected connectors
+        foreach (Connector connector in diagram.SelectionSettings.Connectors)
+        {
+            Console.WriteLine($"Selected Connector ID: {connector.ID}");
+            Console.WriteLine($"Connector SourcePoint: X={connector.SourcePoint.X}, Y={connector.SourcePoint.Y}");
+            Console.WriteLine($"Connector TargetPoint: X={connector.TargetPoint.X}, Y={connector.TargetPoint.Y}");
+        }
+
+        // Get selection bounds information
+        Console.WriteLine($"Selection OffsetX: {diagram.SelectionSettings.OffsetX}");
+        Console.WriteLine($"Selection OffsetY: {diagram.SelectionSettings.OffsetY}");
+        Console.WriteLine($"Selection Width: {diagram.SelectionSettings.Width}");
+        Console.WriteLine($"Selection Height: {diagram.SelectionSettings.Height}");
+        Console.WriteLine($"Selection Rotation: {diagram.SelectionSettings.RotationAngle}");
+        Console.WriteLine($"Selection Pivot: {diagram.SelectionSettings.Pivot}");
+    }
+}

@@ -1,0 +1,34 @@
+﻿@page "/StraightSegmentShape"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.Internal
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" ConnectorSegmentThumb="@connectorSegmentThumb" />
+
+@code
+{
+    //Define the diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Define the segment shape
+    private SegmentThumbSettings connectorSegmentThumb = new SegmentThumbSettings() { Shape = SegmentThumbShapes.Rectangle };
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "Connector",
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb | ConnectorConstraints.InheritSegmentThumbShape,
+            SourcePoint = new DiagramPoint { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint { X = 250, Y = 250 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>
+            {
+                new StraightSegment()
+                {
+                    Type = ConnectorSegmentType.Straight,
+                    Point = new DiagramPoint { X = 180, Y = 180 }
+                }
+            },
+        };
+        connectors.Add(Connector);
+    }
+}

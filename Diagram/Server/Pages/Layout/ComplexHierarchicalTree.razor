@@ -1,0 +1,66 @@
+﻿@page "/ComplexHierarchicalTree"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <Layout Type="LayoutType.ComplexHierarchicalTree" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+    </Layout>
+    <SnapSettings>
+        <HorizontalGridLines LineColor="white" LineDashArray="2,2">
+        </HorizontalGridLines>
+        <VerticalGridLines LineColor="white" LineDashArray="2,2">
+        </VerticalGridLines>
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+
+    //Initailize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Initailize the diagram's connectors collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private int HorizontalSpacing = 40;
+    private int VerticalSpacing = 40;
+
+    //Method to set node's default properties
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Height = 40;
+        node.Width = 50;
+        //Initializing the default node's shape style.
+        node.Style = new ShapeStyle() { Fill = "#6CA0DC", StrokeColor = "#6CA0DC" };
+        node.Annotations[0].Style = new TextStyle() { Color = "white", Bold = true };
+    }
+
+    //Method to set connector's default properties
+    private void OnConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).CornerRadius = 5;
+        (connector as Connector).TargetDecorator = new DecoratorSettings() { Style = new ShapeStyle() { Fill = "#6CA0DC", StrokeColor = "#6CA0DC" } };
+        (connector as Connector).Style = new ShapeStyle() { StrokeColor = "#6CA0DC" };
+
+    }
+
+    protected override void OnInitialized()
+    {
+        //Initializing node and connectors.
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node1"} } },
+            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node2"} } },
+            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node3"} } },
+            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node4"} } },
+            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node5"} } },
+        };
+        connectors = new DiagramObjectCollection<Connector>()
+        {
+            new Connector() { ID="connector1", SourceID="node1", TargetID="node4" },
+            new Connector() { ID="connector2", SourceID="node2", TargetID="node4" },
+            new Connector() { ID="connector3", SourceID="node3", TargetID="node4" },
+            new Connector() { ID="connector4", SourceID="node4", TargetID="node5" },
+        };
+    }
+}

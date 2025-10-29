@@ -1,0 +1,28 @@
+﻿@page "/SnapConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes">
+    @* Initialize the snapsettings with constraints *@
+    <SnapSettings Constraints="SnapConstraints.ShowHorizontalLines" />
+</SfDiagramComponent>
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Initialize the NodeCollection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
+        nodes.Add(node);
+    }
+}

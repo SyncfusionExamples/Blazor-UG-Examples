@@ -1,0 +1,34 @@
+﻿@page "/StraightSegmentEditing"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent Diagram;
+    // Initialize diagram's connector collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "Connector1",
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+            SourcePoint = new DiagramPoint { X = 200, Y = 100 },
+            TargetPoint = new DiagramPoint { X = 340, Y = 150 },
+            // Enable the segment editing.
+            Segments = new DiagramObjectCollection<ConnectorSegment>
+            {
+                new StraightSegment()
+                {
+                    Type = ConnectorSegmentType.Straight,
+                    Point = new DiagramPoint { X = 300, Y = 200 }
+                }
+            }
+        };
+        connectors.Add(Connector);
+    }
+}

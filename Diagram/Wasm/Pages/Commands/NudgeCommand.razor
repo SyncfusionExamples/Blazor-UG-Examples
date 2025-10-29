@@ -1,0 +1,35 @@
+﻿@page "/NudgeCommand"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="NudgeLeft" OnClick="@NudgeLeft" />
+
+<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent diagram;
+    // Initialize diagram's node collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
+        nodes.Add(node);
+    }
+
+    private void NudgeLeft()
+    {
+        //Repositions the selected objects by 50 towards left direction.
+        diagram.Nudge(Direction.Left, 50);
+    }
+}

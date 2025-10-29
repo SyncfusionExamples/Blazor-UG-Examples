@@ -1,0 +1,281 @@
+﻿@page "/PaletteExpandMode"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+@using Syncfusion.Blazor.DropDowns
+
+<SfSymbolPaletteComponent @ref="@Palette" Width="80%" Height="645px" Palettes="@Palettes" SymbolHeight="@SymbolHeight" SymbolWidth="@SymbolWidth" AllowDrag="false">
+</SfSymbolPaletteComponent>
+
+@code
+{
+    //Reference the symbolpalette
+    private SfSymbolPaletteComponent Palette;
+    //Define the symbolmargin
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private int? index { get; set; } = 1;
+    //Define pallette collection
+    private DiagramObjectCollection<Palette> Palettes;
+    private SfDropDownList<string, Modevalue> Expandable;
+    private int? sizeChangeValue { get; set; } = 80;
+    private bool animationChecked = true;
+    private bool AnimationMode = true;
+    private bool icon = true;
+    private double SymbolHeight = 50;
+    private double SymbolWidth = 50;
+    private string Height { get; set; } = "580px";
+    private double length = 70;
+    private DiagramObjectCollection<Connector> ConnectorCollection { get; set; }
+    private SymbolInfo SymbolInfo { get; set; }
+    private DiagramObjectCollection<NodeBase> BasicShape { get; set; }
+    private DiagramObjectCollection<NodeBase> Connectors { get; set; }
+    private DiagramObjectCollection<NodeBase> FlowShapess { get; set; }
+    private class Modevalue
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+    }
+
+    private List<Modevalue> ExpandMode = new List<Modevalue>() {
+         new Modevalue  { Text ="Single",  Value= "Single" },
+         new Modevalue  { Text = "Multiple", Value = "Multiple" },
+    };
+
+    Syncfusion.Blazor.Navigations.ExpandMode ExpandModeType = Syncfusion.Blazor.Navigations.ExpandMode.Multiple;
+
+    private void ModeChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, Modevalue> args)
+    {
+
+        if (args.Value == "Multiple")
+        {
+            Palette.Palettes[0].IsExpanded = true;
+            Palette.Palettes[1].IsExpanded = true;
+            Palette.Palettes[2].IsExpanded = true;
+        }
+        else
+        {
+            Palette.Palettes[0].IsExpanded = true;
+            Palette.Palettes[1].IsExpanded = false;
+            Palette.Palettes[2].IsExpanded = false;
+
+        }
+        this.StateHasChanged();
+    }
+
+    private void sizeChange(Syncfusion.Blazor.Inputs.ChangeEventArgs<int?> args)
+    {
+        this.SymbolWidth = double.Parse(args.Value.ToString());
+        this.SymbolHeight = double.Parse(args.Value.ToString());
+        this.sizeChangeValue = int.Parse(args.Value.ToString());
+        this.StateHasChanged();
+    }
+
+
+    private void animationChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        this.animationChecked = args.Checked;
+        this.AnimationMode = args.Checked;
+        this.StateHasChanged();
+    }
+
+    private void iconChange(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        for (var i = 0; i < Palettes.Count; i++)
+        {
+            this.icon = args.Checked;
+            if (args.Checked)
+            {
+                if (i == 0)
+                {
+                    Palettes[i].IconCss = "e-ddb-icons e-basic";
+                }
+                else if (i == 1)
+                {
+                    Palettes[i].IconCss = "e-ddb-icons e-flow";
+                }
+                else if (i == 2)
+                {
+                    Palettes[i].IconCss = "e-ddb-icons e-connector";
+                }
+            }
+            else
+            {
+                Palettes[i].IconCss = "";
+            }
+            this.StateHasChanged();
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        InitializePalatte();
+    }
+
+    private void InitializePalatte()
+    {
+        Palettes = new DiagramObjectCollection<Palette>();
+
+        SymbolInfo = new SymbolInfo()
+        {
+            Fit = true
+        };
+
+        BasicShape = new DiagramObjectCollection<NodeBase>
+        {
+            new Node()
+            {
+                ID="Rectangle" , Shape = new BasicShape(){
+                Type = NodeShapes.Basic, Shape=NodeBasicShapes.Rectangle},
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Ellipse" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Ellipse },
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Parallelogram" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Parallelogram },
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Triangle" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Triangle},
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Hexagon" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Hexagon},
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Pentagon" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Pentagon },
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Cylinder" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic,Shape=NodeBasicShapes.Cylinder},
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+            new Node()
+            {
+                ID="Star" , Shape = new BasicShape(){
+                Type =NodeShapes.Basic, Shape=NodeBasicShapes.Star},
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575"}
+            },
+        };
+
+        Connectors = new DiagramObjectCollection<NodeBase>()
+        {
+            new Connector(){ID="Link1" ,  Type = ConnectorSegmentType.Orthogonal ,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){  X=40,Y=40},
+              TargetDecorator= new DecoratorSettings()
+              { Shape=DecoratorShape.Arrow, Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
+            },
+            new Connector(){ID="link3" ,  Type=ConnectorSegmentType.Orthogonal,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){   X=40,Y=40},
+             TargetDecorator= new DecoratorSettings(){ Shape=DecoratorShape.None},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
+            },
+            new Connector(){ID="Link21" ,  Type=ConnectorSegmentType.Straight,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){  X=40,Y=40},
+              TargetDecorator= new DecoratorSettings()
+              { Shape=DecoratorShape.Arrow, Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
+            },
+            new Connector(){ID="link23" ,  Type=ConnectorSegmentType.Straight,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){  X=40,Y=40},
+              TargetDecorator= new DecoratorSettings(){ Shape=DecoratorShape.None},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
+            },
+            new Connector(){ID="link33" ,  Type=ConnectorSegmentType.Bezier,SourcePoint= new DiagramPoint(){ X=0,Y=0 },TargetPoint = new DiagramPoint(){ X=40,Y=40},
+              TargetDecorator= new DecoratorSettings(){ Shape=DecoratorShape.None},Style= new ShapeStyle(){ StrokeWidth=2, StrokeColor = "#757575"}
+            }
+        };
+
+        FlowShapess = new DiagramObjectCollection<NodeBase>()
+        {
+            new Node()
+            {
+                ID = "Terminator",
+                Style = new ShapeStyle(){StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow,Shape=NodeFlowShapes.Terminator }
+            },
+            new Node()
+            {
+                ID = "Process",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Process }
+            },
+            new Node()
+            {
+                ID = "Sort",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Sort }
+            },
+            new Node()
+            {
+                ID = "Document",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Document }
+            },
+            new Node()
+            {
+                ID = "Predefined Process",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.PreDefinedProcess }
+            },
+            new Node()
+            {
+                ID = "Punched Tape",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.PaperTap }
+            },
+            new Node()
+            {
+                ID = "Direct Data",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.DirectData
+                }
+            },
+            new Node()
+            {
+                ID = "Sequential Data",
+                Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" },
+                Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.SequentialData }
+            }
+        };
+
+        Palettes.Add(
+            new Palette()
+            {
+                ID = "Flowshapess",
+                IsExpanded = true,
+                Symbols = FlowShapess,
+                Title = "Flowshapes",
+                IconCss = "e-ddb-icons e-flow"
+            }
+        );
+        Palettes.Add(
+           new Palette()
+            {
+                ID = "BasicShape",
+                IsExpanded = true,
+                Symbols = BasicShape,
+                Title = "Basic Shapes",
+                IconCss = "e-ddb-icons e-basic"
+            }
+        );
+
+        Palettes.Add(
+            new Palette()
+            {
+                ID = "Connectors",
+                IsExpanded = true,
+                Symbols = Connectors,
+                Title = "Connectors",
+                IconCss = "e-ddb-icons e-connector"
+            }
+        );
+    }
+}

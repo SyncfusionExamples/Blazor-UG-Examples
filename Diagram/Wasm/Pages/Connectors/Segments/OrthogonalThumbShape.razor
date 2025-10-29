@@ -1,0 +1,26 @@
+﻿@page "/OrthogonalThumbShape"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "Connector2",
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
+            Type = ConnectorSegmentType.Orthogonal,
+            SourcePoint = new DiagramPoint { X = 400, Y = 100 },
+            TargetPoint = new DiagramPoint { X = 500, Y = 200 },
+            SegmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.IndentedArrow }
+        };
+        connectors.Add(Connector);
+    }
+}

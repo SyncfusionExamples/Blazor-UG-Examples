@@ -1,0 +1,30 @@
+﻿@page "/KeyDownEvent"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" KeyDown="@OnKeyDown" />
+
+@code
+{
+    private SfDiagramComponent Diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100
+        };
+        nodes.Add(node);
+    }
+
+    // Notify the keydown event
+    private void OnKeyDown(KeyEventArgs args)
+    {
+
+    }
+}
