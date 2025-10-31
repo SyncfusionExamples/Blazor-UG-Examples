@@ -1,0 +1,28 @@
+﻿<h5>Validation Attributes</h5>
+
+@page "/RichTextEditor/FormValidation/ValidationAttributes"
+
+@using Syncfusion.Blazor.RichTextEditor
+@using System.ComponentModel.DataAnnotations;
+
+<EditForm Model="@MyForm">
+    <DataAnnotationsValidator />
+    <p>
+        <label for="description">Enter Text</label>
+        <SfRichTextEditor ShowCharCount="true" MaxLength="200" Placeholder="RTE Forms" @bind-Value="@MyForm.Description">
+        </SfRichTextEditor>
+        <ValidationMessage For="@(() => MyForm.Description)"></ValidationMessage>
+    </p>
+    <button class="e-btn" type="submit">Submit</button>
+</EditForm>
+
+@code{
+    public class Form
+    {
+        [Required]
+        [MinLength(20, ErrorMessage = "Please enter at least 20 characters.")]
+        public string Description { get; set; } = "<div>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</div>";
+    }
+
+    private Form MyForm = new Form();
+}

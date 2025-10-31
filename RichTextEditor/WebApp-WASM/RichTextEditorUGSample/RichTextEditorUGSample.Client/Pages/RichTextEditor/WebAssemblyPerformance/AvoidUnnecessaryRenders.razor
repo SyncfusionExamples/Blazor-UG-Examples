@@ -1,0 +1,23 @@
+﻿<h5>Avoid Unnecessary Component Renders</h5>
+
+@page "/RichTextEditor/WebAssemblyPerformance/AvoidUnnecessaryRenders"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<SfRichTextEditor @ref="rteObj"> 
+    <p>The Rich Text Editor component is WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p> 
+</SfRichTextEditor> 
+@code {
+    SfRichTextEditor rteObj;
+    private int currentCount = 0;
+    private void IncrementCount()
+    {
+        rteObj.PreventRender();
+        currentCount++;
+    }
+}

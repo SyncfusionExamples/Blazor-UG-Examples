@@ -1,0 +1,20 @@
+﻿<h5>Customizing the popup width and height</h5>
+
+@page "/RichTextEditor/SmartEditing/SlashCommands/Customizingpopupwidthandheight"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor Placeholder="@editorPlaceholder">
+    <RichTextEditorSlashMenuSettings Enable="true" Items="@slashmenuItems" PopupWidth="300px" PopupHeight="250px" />
+</SfRichTextEditor>
+
+@code {
+    private string editorPlaceholder = "Type \"/\" and choose format";
+    private List<SlashMenuItemModel> slashmenuItems = new List<SlashMenuItemModel>()
+    {
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Paragraph},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading1},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading2},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading3},
+    };
+}

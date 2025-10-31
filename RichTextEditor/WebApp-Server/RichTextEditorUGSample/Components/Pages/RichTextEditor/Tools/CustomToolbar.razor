@@ -1,0 +1,39 @@
+﻿<h5>How to Add a Custom Toolbar Tool in Blazor Rich Text Editor</h5>
+
+@page "/RichTextEditor/Tools/CustomToolbar"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor @ref="RteObj">
+    <RichTextEditorToolbarSettings Items="@Tools">
+        <RichTextEditorCustomToolbarItems>
+            <RichTextEditorCustomToolbarItem Name="Symbol">
+                <Template>
+                    <SfButton @onclick="ClickHandler">Insert Symbol</SfButton>
+                </Template>
+            </RichTextEditorCustomToolbarItem>
+        </RichTextEditorCustomToolbarItems>
+    </RichTextEditorToolbarSettings>
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content. Users can format their content using the standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    SfRichTextEditor RteObj;
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Name = "Symbol", TooltipText = "Insert Symbol" },
+        new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+        new ToolbarItemModel() { Command = ToolbarCommand.FullScreen }
+    };
+    private async Task ClickHandler()
+    {
+        ExecuteCommandOption executeCommandOption = new ExecuteCommandOption();
+        executeCommandOption.Undo = true;
+        await RteObj.ExecuteCommandAsync(CommandName.InsertText, "₹", executeCommandOption);
+    }
+}

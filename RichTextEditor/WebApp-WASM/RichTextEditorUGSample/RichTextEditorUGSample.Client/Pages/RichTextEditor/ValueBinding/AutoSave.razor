@@ -1,0 +1,24 @@
+﻿﻿<h5>ValueBinding based on the SaveInterval and AutoSaveOnIdle properties</h5>
+
+@page "/RichTextEditor/ValueBinding/AutoSave"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor ID="AutoSave" SaveInterval="saveInterval" AutoSaveOnIdle="true" Value="@Value">
+    <p>Type or edit the content to be saved automatically in the editor </p>
+    <RichTextEditorEvents ValueChange="UpdateStatus" />
+</SfRichTextEditor>
+
+@code {
+    private string Value { get; set; } = "<p>Start to type a content to save </p>";
+    private int saveInterval { get; set; } = 5000;
+    private void UpdateStatus(Syncfusion.Blazor.RichTextEditor.ChangeEventArgs args)
+    {
+        // Place the codes here, which save the Rich Text Editor value into database.
+        if(args.Value != null){
+            this.Value = args.Value;
+        }
+       
+    }
+}
