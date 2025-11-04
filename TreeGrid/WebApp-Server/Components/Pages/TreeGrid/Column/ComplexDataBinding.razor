@@ -1,0 +1,48 @@
+﻿<h3>ComplexDataBinding</h3>
+@page "/TreeGrid/DataBinding/complex-data-binding"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.TreeGrid
+
+<SfTreeGrid DataSource="@TreeData" AllowPaging="true" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80"
+                        TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Task.TaskName" HeaderText="Task Name" Width="160">
+        </TreeGridColumn>
+        <TreeGridColumn Field="Task.Duration" HeaderText="Duration" Width="100"
+                        TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100"
+                        TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80">
+        </TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public class BusinessObject
+    {
+        public int TaskId { get; set; }
+        public TaskDetails Task { get; set; }
+        public int Progress { get; set; }
+        public string Priority { get; set; }
+        public int? ParentId { get; set; }
+    }
+
+    public class TaskDetails
+    {
+        public string TaskName { get; set; }
+        public int Duration { get; set; }
+    }
+    public List<BusinessObject> TreeData = new List<BusinessObject>();
+    protected override void OnInitialized()
+    {
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Parent Task 1", Duration = 50000 }, TaskId = 1, Progress = 70, ParentId = null, Priority = "High" });
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Child task 1", Duration = 400000 }, TaskId = 2, Progress = 80, ParentId = 1, Priority = "Normal" });
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Child Task 2", Duration = 500000 }, TaskId = 3, Progress = 65, ParentId = 1, Priority = "Critical" });
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Parent Task 2", Duration = 50000 }, TaskId = 4, Progress = 70, ParentId = null, Priority = "High" });
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Child task 1", Duration = 400000 }, TaskId = 5, Progress = 80, ParentId = 4, Priority = "Normal" });
+        TreeData.Add(new BusinessObject() { Task = new TaskDetails() { TaskName = "Child Task 2", Duration = 500000 }, TaskId = 6, Progress = 65, ParentId = 4, Priority = "Critical" });
+
+    }
+}

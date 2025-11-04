@@ -1,0 +1,722 @@
+﻿@page "/TreeGrid/filtering"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Grids
+
+<div style="margin-bottom:5px">
+    <label>Change Normal TreeGrid and Complex TreeGrid </label>
+    <SfSwitch ValueChange="Change" TChecked="bool" style="margin-top:5px"></SfSwitch>
+</div>
+
+<SfButton OnClick="click">Get Filtered Data Count</SfButton>
+<SfButton OnClick="clear">Clear</SfButton>
+
+<div style="text-align: center; color: black">
+    <span class="e-message">@message</span>
+</div>
+
+<div style="display:flex">
+    <div class="col-lg-9 control-section">
+        @if (isNormalTreeGrid)
+        {
+            <SfTreeGrid @ref="TreeGrid" TValue="OrderData" AllowFiltering="@allowFiltering" AllowSorting="true" AllowPaging="true" DataSource="@TreeGridData" Height="315" IdMapping="OrderID" ParentIdMapping="ParentOrderID" TreeColumnIndex="1">
+                <TreeGridFilterSettings IgnoreAccent="@ignoreAccent" Type="@treeGridFilterType"></TreeGridFilterSettings>
+                <TreeGridEvents TValue="OrderData"
+                                FilterDialogOpening="@FilterDialogOpeningHandler"
+                                Filtering="@FilteringHandler"
+                                Filtered="@FilteredHandler"
+                                FilterDialogOpened="@FilterDialogOpenedHandler" />
+                <TreeGridColumns>
+                    <TreeGridColumn Field=@nameof(OrderData.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="90" Type="Syncfusion.Blazor.Grids.ColumnType.Integer"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.CustomerID) HeaderText="Customer Name" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.String"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.ShipCity) HeaderText="ShipCity" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Type="Syncfusion.Blazor.Grids.ColumnType.String" Width="120"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.Freight) HeaderText="Freight" Format="C2" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="90" Type="Syncfusion.Blazor.Grids.ColumnType.Double"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.OrderDate) HeaderText="Order Date" Format="d" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.DateTime"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.DateOnly) HeaderText="DateOnly" Format="dd/MM/yyyy" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.DateOnly"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.TimeOnly) HeaderText="TimeOnly" Format="h:mm tt" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.TimeOnly"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.DateTimeOffset) HeaderText="DateTimeOffset" Format="dd/MM/yyyy HH:mm:ss zzz" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="140" Type="Syncfusion.Blazor.Grids.ColumnType.Date"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.OrderNumber) HeaderText="OrderNumber" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.Long"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.Verified) HeaderText="Verified" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Type="Syncfusion.Blazor.Grids.ColumnType.Boolean" Width="120"></TreeGridColumn>
+                </TreeGridColumns>
+            </SfTreeGrid>
+
+            @if (showRecords == true)
+            {
+                <div>
+                    <h4 class="e-filtered">Total Filtered Records Count: @FilterData.Count</h4>
+                </div>
+            }
+
+            <h3><b>Methods</b></h3>
+            <div id="Properties" style="width: 100%; height: 300px; overflow: scroll;" class="container">
+                <table style="width: 100%">
+                    <tr>
+                        <td class="e-method">
+                            <h4 class="name"><b>Filter By Column</b></h4>
+                            <div class="method-controls">
+                                <div class="control">
+                                    <h5>Field name</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Field Name"
+                                                    DataSource="@FilterColumnName"
+                                                    @bind-Value="Names"
+                                                    Width="300px">
+                                        <DropDownListEvents TItem="string" TValue="string" ValueChange="OnFieldNameChange"></DropDownListEvents>
+                                    </SfDropDownList>
+                                </div>
+                                <div class="control">
+                                    <h5>Field operator</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Field Operator"
+                                                    DataSource="@FilteredOperators"
+                                                    @bind-Value="Operators"
+                                                    Enabled="@EnableOperatorDropdown"
+                                                    Width="300px">
+                                    </SfDropDownList>
+                                </div>
+                                <div class="control">
+                                    <h5>Filter value</h5>
+                                    <SfTextBox @bind-Value="@FilterValue" Width="150px"></SfTextBox>
+                                </div>
+                                <div class="control">
+                                    <h5>Match case</h5>
+                                    <SfCheckBox @bind-Checked="IsMatchCaseEnabled"></SfCheckBox>
+                                </div>
+                                <div class="control">
+                                    <h5>Predicate</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Predicate" DataSource="@FilterPredicateValue" @bind-Value="Predicate" Width="300px"></SfDropDownList>
+                                </div>
+                                <h5>Filter choice Count</h5>
+                                <SfDropDownList TValue="int" TItem="int" Placeholder="Select a count" DataSource="@FilterChoiceCount" @bind-Value="MyItem" Width="300px"></SfDropDownList>
+
+                                <div class="methodbtnn" style="padding-top: 10px; padding-bottom: 10px">
+                                    <SfButton id="filterColumn" class="methodbtn" OnClick="@(args => ApplyTreeGridActions("filterColumn"))">Apply Filter</SfButton>
+                                    <SfButton id="clearFilter" class="methodbtn" OnClick="@(args => ApplyTreeGridActions("clearFilter"))">Clear Filtering</SfButton>
+                                    <SfButton id="clearFilterStrictly" class="methodbtn" OnClick="@(args => ApplyTreeGridActions("clearFilterStrictly"))">Clear Filtering Strictly</SfButton>
+                                    <SfButton id="strictFiltering" class="methodbtn" OnClick="@(args => ApplyTreeGridActions("strictFiltering"))">Get Filtering Strictly</SfButton>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+        @if (isComplexTreeGrid)
+        {
+            <SfTreeGrid @ref="TreeGrid" TValue="OrderData" AllowFiltering="@allowFiltering" AllowSorting="true" AllowPaging="true" DataSource="@TreeGridData" Height="315" IdMapping="OrderID" ParentIdMapping="ParentOrderID" TreeColumnIndex="1">
+                <TreeGridFilterSettings EnableCaseSensitivity="@enableCaseSensitive" IgnoreAccent="@ignoreAccent" Type="@treeGridFilterType"></TreeGridFilterSettings>
+                <TreeGridEvents TValue="OrderData"
+                                FilterDialogOpening="@FilterDialogOpeningHandler"
+                                Filtering="@FilteringHandler"
+                                Filtered="@FilteredHandler"
+                                FilterDialogOpened="@FilterDialogOpenedHandler" />
+                <TreeGridColumns>
+                    <TreeGridColumn Field=@nameof(OrderData.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="90" Type="Syncfusion.Blazor.Grids.ColumnType.Integer"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.CustomerID) HeaderText="Customer Name" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.String"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.ShipCity) HeaderText="ShipCity" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" Type="Syncfusion.Blazor.Grids.ColumnType.String" Width="120"></TreeGridColumn>
+                    <TreeGridColumn Field=@nameof(OrderData.Freight) HeaderText="Freight" Format="C2" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="90" Type="Syncfusion.Blazor.Grids.ColumnType.Double"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.FirstName" HeaderText="FirstName" Width="120"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.RollNumber" HeaderText="RollNumber" Width="120" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.DateOnly" HeaderText="Date" Width="120" Format="dd/MM/yyyy"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.TimeOnly" HeaderText="TimeOnly" Format="h:mm tt" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.TimeOnly"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.DateTimeOffset" HeaderText="DateTimeOffset" Format="dd/MM/yyyy HH:mm:ss zzz" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="140" Type="Syncfusion.Blazor.Grids.ColumnType.Date"></TreeGridColumn>
+                    <TreeGridColumn Field="Employee.OrderIdentity" HeaderText="OrderIdentity" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="120" Type="Syncfusion.Blazor.Grids.ColumnType.Long"></TreeGridColumn>
+                </TreeGridColumns>
+            </SfTreeGrid>
+
+            @if (showRecords == true)
+            {
+                <div class="e-filtered">
+                    <h4>Total Filtered Records Count: @FilterData.Count</h4>
+                </div>
+            }
+
+            <h3><b>Methods</b></h3>
+            <div id="Properties" style="width: 100%; height: 300px; overflow: scroll;" class="container">
+                <table style="width: 100%">
+                    <tr>
+                        <td class="e-method">
+                            <div class="method-controls">
+                                <h4 class="name"><b>Filter By Column</b></h4>
+                                <div class="control">
+                                    <h5>Field name</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Field Name"
+                                                    DataSource="@FilterColumnName1"
+                                                    @bind-Value="Names1"
+                                                    Width="300px">
+                                        <DropDownListEvents TItem="string" TValue="string" ValueChange="OnFieldNameChangeComplex"></DropDownListEvents>
+                                    </SfDropDownList>
+                                </div>
+                                <div class="control">
+                                    <h5>Field operator</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Field Operator"
+                                                    DataSource="@FilteredOperatorsComplex"
+                                                    @bind-Value="Operators1"
+                                                    Enabled="@EnableOperatorDropdownComplex"
+                                                    Width="300px">
+                                    </SfDropDownList>
+                                </div>
+                                <div class="control">
+                                    <h5>Filter value</h5>
+                                    <SfTextBox @bind-Value="@FilterValue1" Width="150px"></SfTextBox>
+                                </div>
+                                <div class="control">
+                                    <h5>Match case</h5>
+                                    <SfCheckBox @bind-Checked="IsMatchCaseEnabled1"></SfCheckBox>
+                                </div>
+                                <div class="control">
+                                    <h5>Predicate</h5>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select Predicate" DataSource="@FilterPredicateValue" @bind-Value="Predicate" Width="300px"></SfDropDownList>
+                                </div>
+                                <h5>Filter choice Count</h5>
+                                <SfDropDownList TValue="int" TItem="int" Placeholder="Select a count" DataSource="@FilterChoiceCount" @bind-Value="MyItem" Width="300px"></SfDropDownList>
+
+                                <div class="methodbtnn" style="padding-top: 10px; padding-bottom: 10px">
+                                    <SfButton id="filterColumn1" class="methodbtn" OnClick="@(args => ApplyTreeGridActionsComplex("filterColumn1"))">Apply Filter</SfButton>
+                                    <SfButton id="clearFilter" class="methodbtn" OnClick="@(args => ApplyTreeGridActionsComplex("clearFilter"))">Clear Filtering</SfButton>
+                                    <SfButton id="clearFilterStrictly" class="methodbtn" OnClick="@(args => ApplyTreeGridActionsComplex("clearFilterStrictly"))">Clear Filtering Strictly</SfButton>
+                                    <SfButton id="strictFiltering" class="methodbtn" OnClick="@(args => ApplyTreeGridActionsComplex("strictFiltering"))">Get Filtering Strictly</SfButton>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+
+    <div class="col-lg-3 control-section" style="padding-left: 20px">
+        <h3><b>Filtering choice</b></h3>
+        <div id="properties">
+            <div>
+                <SfTreeView @ref="TreeView" TValue="GridProperties" ShowCheckBox="true" AutoCheck="false">
+                    <TreeViewEvents TValue="GridProperties" NodeChecking="NodeChecking"></TreeViewEvents>
+                    <TreeViewFieldsSettings TValue="GridProperties" Id="Id" DataSource="@Data" Text="Name" ParentID="ParentId" HasChildren="HasChild" Expanded="Expanded" IsChecked="IsChecked"></TreeViewFieldsSettings>
+                </SfTreeView>
+            </div>
+            <SfButton id="applybutton" IsPrimary="true" OnClick="ApplyChanges">Apply Changes</SfButton>
+        </div>
+
+        <div>
+            <h3>Properties</h3>
+            <div style="margin-bottom:5px">
+                <label>EnableCaseSensitive </label>
+                <SfSwitch ValueChange="ChangeCaseSensitive" TChecked="bool" style="margin-top:5px"></SfSwitch>
+            </div>
+            <div style="margin-bottom:5px">
+                <label>IgnoreAccent </label>
+                <SfSwitch ValueChange="ChangeAccent" TChecked="bool" style="margin-top:5px"></SfSwitch>
+            </div>
+        </div>
+
+        <h3><b>Event</b></h3>
+        <table id="property" title="Event Trace" style="width: 100%">
+            <tr>
+                <td>
+                    <div class="eventarea" style="height: 200px;overflow: auto">
+                        <span class="EventLog" id="EventLog" style="word-break: normal;"></span>
+                        <div class="e-log" style="margin-top: 20px; font-size: 14px; color: #333;">
+                            @foreach (var log in EventLogs)
+                            {
+                                <div class="e-event">@((MarkupString)log)</div>
+                            }
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="evtbtn" style="padding-bottom: 10px">
+                        <SfButton id="clear" class="button" OnClick="ClearEventLogs">Clear</SfButton>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    td.e-method {
+        border: 1px solid #ccc;
+        padding: 10px;
+        vertical-align: top;
+    }
+
+    #applybutton {
+        margin-left: 140px;
+        width: 150px;
+        margin-top: 20px;
+        height: 40px;
+    }
+</style>
+
+@code {
+    public List<OrderData> TreeGridData { get; set; }
+    SfTreeGrid<OrderData>? TreeGrid { get; set; }
+    public bool allowFiltering { get; set; } = true;
+    private Dictionary<string, bool?> TempSettings = new();
+    public List<OrderData> FilterData { get; set; }
+    public string message;
+    private SfTreeView<GridProperties> TreeView;
+    public bool showRecords = false;
+    public bool flag = false;
+    public string FilterValue { get; set; }
+    public bool IsMatchCaseEnabled { get; set; }
+    public string FilterValue1 { get; set; }
+    public bool IsMatchCaseEnabled1 { get; set; }
+    public bool enableCaseSensitive = false;
+    public bool ignoreAccent = false;
+    private Syncfusion.Blazor.TreeGrid.FilterType treeGridFilterType = Syncfusion.Blazor.TreeGrid.FilterType.Menu;
+
+    List<GridProperties> Data = new List<GridProperties>();
+
+    private bool isComplexTreeGrid = false;
+    private bool isNormalTreeGrid = true;
+
+    private void Change(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        isComplexTreeGrid = args.Checked;
+        isNormalTreeGrid = !args.Checked;
+        StateHasChanged();
+    }
+
+    private void ChangeCaseSensitive(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        enableCaseSensitive = args.Checked;
+        StateHasChanged();
+    }
+
+    private void ChangeAccent(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        ignoreAccent = args.Checked;
+        StateHasChanged();
+    }
+
+    public class GridProperties
+    {
+        public string Id { get; set; }
+        public string ParentId { get; set; }
+        public string Name { get; set; }
+        public bool Expanded { get; set; }
+        public bool? IsChecked { get; set; }
+        public bool HasChild { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        TreeGridData = OrderData.GetAllRecords();
+
+        base.OnInitialized();
+
+        Data.Add(new GridProperties
+            {
+                Id = "Filter",
+                Name = "Allow Filtering",
+                HasChild = true,
+                Expanded = true,
+                IsChecked = true
+            });
+        Data.Add(new GridProperties
+            {
+                Id = "FilterType",
+                Name = "Filter Type",
+                ParentId = "Filter",
+                HasChild = true,
+                Expanded = true,
+                IsChecked = true
+            });
+        Data.Add(new GridProperties
+            {
+                Id = "Menu",
+                ParentId = "FilterType",
+                Name = "Menu",
+                IsChecked = true
+            });
+        Data.Add(new GridProperties
+            {
+                Id = "Excel",
+                ParentId = "FilterType",
+                Name = "Excel"
+            });
+    }
+
+    public void NodeChecking(NodeCheckEventArgs args)
+    {
+        if (args.IsInteracted)
+        {
+            if (args.Action == "uncheck" && args.NodeData.Text == "Filter Type")
+            {
+                args.Cancel = true;
+                return;
+            }
+            TempSettings[args.NodeData.Id] = args.Action == "check";
+
+            switch (args.NodeData.Id)
+            {
+                case "Filter":
+                    if (args.Action == "uncheck")
+                    {
+                        TreeView.UncheckAllAsync(new string[] { "FilterType", "Menu", "Excel" });
+                    }
+                    else
+                    {
+                        TreeView.CheckAllAsync(new string[] { "FilterType", "Menu" });
+                    }
+                    break;
+                case "Menu":
+                    if (args.Action == "check")
+                    {
+                        TreeView.CheckAllAsync(new string[] { "Filter", "FilterType" });
+                        TreeView.UncheckAllAsync(new string[] { "Excel" });
+                    }
+                    else
+                    {
+                        args.Cancel = true;
+                    }
+                    break;
+                case "Excel":
+                    if (args.Action == "check")
+                    {
+                        TreeView.CheckAllAsync(new string[] { "Filter", "FilterType" });
+                        TreeView.UncheckAllAsync(new string[] { "Menu" });
+                    }
+                    else
+                    {
+                        TreeView.CheckAllAsync(new string[] { "Menu" });
+                    }
+                    break;
+            }
+        }
+    }
+
+    public class OrderData
+    {
+        public static List<OrderData> Orders = new List<OrderData>();
+        public OrderData() { }
+
+        public OrderData(int? OrderID, int? ParentOrderID, string CustomerID, string ShipCity, DateTime? OrderDate, double? Freight, DateOnly? date, TimeOnly? timeOnly, DateTimeOffset? dateTimeOffset, long? orderNumber, bool Verified, EmployeeData employeeData)
+        {
+            this.OrderID = OrderID;
+            this.ParentOrderID = ParentOrderID;
+            this.CustomerID = CustomerID;
+            this.ShipCity = ShipCity;
+            this.OrderDate = OrderDate;
+            this.Freight = Freight;
+            this.DateOnly = date;
+            this.TimeOnly = timeOnly;
+            this.DateTimeOffset = dateTimeOffset;
+            this.OrderNumber = orderNumber;
+            this.Verified = Verified;
+            this.Employee = employeeData;
+        }
+
+        public static List<OrderData> GetAllRecords()
+        {
+            if (Orders.Count() == 0)
+            {
+                int OrderID = 10248;
+
+                for (int i = 1; i < 10; i++)
+                {
+                    // Parent records
+                    Orders.Add(new OrderData(OrderID + 1, null, "VINET", "VÍCTÉ", new DateTime(2025, 07, 04), 32.38, new DateOnly(2025, 8, 1), new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 1, 9, 0, 0, TimeSpan.FromHours(5.5)), 2345, true, new EmployeeData("ANTON", 1987, new DateOnly(2025, 8, 1), "Münster", new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 1, 9, 0, 0, TimeSpan.FromHours(5.5)), 2345)));
+                    // Child records
+                    Orders.Add(new OrderData(OrderID + 2, OrderID + 1, "TOMSP", "Lyon", new DateTime(2025, 07, 05), 11.61, new DateOnly(2025, 8, 2), new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 2, 9, 0, 0, TimeSpan.FromHours(5.5)), 345, false, new EmployeeData("BOLID", 234, null, "Charleroi", new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 2, 9, 0, 0, TimeSpan.FromHours(5.5)), 345)));
+                    Orders.Add(new OrderData(OrderID + 3, OrderID + 1, "HANAR", "Münster", new DateTime(2025, 07, 06), 65.83, new DateOnly(2025, 8, 3), new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 3, 9, 0, 0, TimeSpan.FromHours(5.5)), 2345, true, new EmployeeData("TOMPS", 1234, new DateOnly(2025, 8, 3), "Rio de Janeiro", new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 3, 9, 0, 0, TimeSpan.FromHours(5.5)), null)));
+                    Orders.Add(new OrderData(OrderID + 4, OrderID + 2, "VICTE", "Đặng Minh", new DateTime(2025, 07, 07), 45.78, new DateOnly(2025, 8, 4), new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 4, 9, 0, 0, TimeSpan.FromHours(5.5)), 876, true, new EmployeeData("", null, new DateOnly(2025, 8, 4), null, null, new DateTimeOffset(2025, 8, 5, 9, 0, 0, TimeSpan.FromHours(5.5)), 256)));
+                    Orders.Add(new OrderData(OrderID + 5, OrderID + 2, "SUPRD", "Rio de Janeiro", new DateTime(2025, 07, 08), 98.6, new DateOnly(2025, 8, 5), new TimeOnly(12, 00, 00), new DateTimeOffset(2025, 8, 5, 9, 0, 0, TimeSpan.FromHours(5.5)), 2329, false, new EmployeeData("WELLI", 234, new DateOnly(2025, 8, 5), "", null, null, 302)));
+                    OrderID += 100;
+                }
+            }
+            return Orders;
+        }
+
+        public int? OrderID { get; set; }
+        public int? ParentOrderID { get; set; }
+        public string CustomerID { get; set; }
+        public string ShipCity { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+        public DateOnly? DateOnly { get; set; }
+        public TimeOnly? TimeOnly { get; set; }
+        public DateTimeOffset? DateTimeOffset { get; set; }
+        public long? OrderNumber { get; set; }
+        public bool? Verified { get; set; }
+        public EmployeeData Employee { get; set; }
+    }
+
+    public class EmployeeData
+    {
+        public EmployeeData(string firstName, double? rollNumber, DateOnly? date, string ShipCity, TimeOnly? timeOnly, DateTimeOffset? dateTimeOffset, long? OrderIdentity)
+        {
+            this.FirstName = firstName;
+            this.RollNumber = rollNumber;
+            this.DateOnly = date;
+            this.TimeOnly = timeOnly;
+            this.DateTimeOffset = dateTimeOffset;
+            this.OrderIdentity = OrderIdentity;
+            this.ShipCity = ShipCity;
+        }
+        public string FirstName { get; set; }
+        public double? RollNumber { get; set; }
+        public DateOnly? DateOnly { get; set; }
+        public TimeOnly? TimeOnly { get; set; }
+        public DateTimeOffset? DateTimeOffset { get; set; }
+        public long? OrderIdentity { get; set; }
+        public string ShipCity { get; set; }
+    }
+
+    List<int> FilterChoiceCount = new List<int>() { 5, 10, 15 };
+    public int MyItem { get; set; }
+    public bool EnableOperatorDropdown = false;
+    public List<string> FilteredOperators = new List<string>();
+    public bool EnableOperatorDropdownComplex = false;
+    public List<string> FilteredOperatorsComplex = new List<string>();
+
+    public void OnFieldNameChange(ChangeEventArgs<string, string> args)
+    {
+        Names = args.Value;
+        EnableOperatorDropdown = !string.IsNullOrEmpty(Names);
+
+        if (Names == "OrderID" || Names == "Freight" || Names == "OrderDate" || Names == "DateOnly" || Names == "TimeOnly" || Names == "DateTimeOffset" || Names == "OrderNumber")
+        {
+            FilteredOperators = new List<string>() { "equal", "notequal", "greaterthan", "lessthan", "greaterthanorequal", "lessthanorequal", "isnull", "isnotnull" };
+        }
+        else
+        {
+            FilteredOperators = new List<string>() { "startswith", "endswith", "contains", "doesnotstartwith", "doesnotendwith", "doesnotcontain", "equal", "notequal", "isempty", "isnotempty", "like" };
+        }
+
+        Operators = null;
+    }
+
+    List<string> FilterColumnName = new List<string>() { "OrderID", "CustomerID", "ShipCity", "OrderDate", "Freight", "DateOnly", "TimeOnly", "DateTimeOffset", "OrderNumber", "Verified" };
+    public string Names { get; set; }
+    public string Operators { get; set; }
+
+    List<string> FilterColumnName1 = new List<string>() { "OrderID", "CustomerID", "ShipCity", "Freight", "Employee.DateOnly", "Employee.RollNumber", "Employee.FirstName", "Employee.TimeOnly", "Employee.DateTimeOffset", "Employee.OrderIdentity" };
+    public string Names1 { get; set; }
+    public string Operators1 { get; set; }
+
+    public void OnFieldNameChangeComplex(ChangeEventArgs<string, string> args)
+    {
+        Names1 = args.Value;
+        EnableOperatorDropdownComplex = !string.IsNullOrEmpty(Names1);
+
+        if (Names1 == "OrderID" || Names1 == "Freight" || Names1 == "Employee.DateOnly" || Names1 == "Employee.RollNumber")
+        {
+            FilteredOperatorsComplex = new List<string>() { "equal", "notequal", "greaterthan", "lessthan", "greaterthanorequal", "lessthanorequal", "isnull", "isnotnull" };
+        }
+        else
+        {
+            FilteredOperatorsComplex = new List<string>() { "startswith", "endswith", "contains", "doesnotstartwith", "doesnotendwith", "doesnotcontain", "equal", "notequal", "isempty", "isnotempty", "like" };
+        }
+
+        Operators1 = null;
+    }
+
+    List<string> FilterPredicateValue = new List<string>() { "AND", "OR" };
+    public string Predicate { get; set; }
+
+    private List<string> EventLogs = new();
+
+    private void AppendEventLog(string message)
+    {
+        EventLogs.Insert(0, message);
+    }
+
+    private void ClearEventLogs()
+    {
+        EventLogs.Clear();
+    }
+
+    private void FilterDialogOpeningHandler(FilterDialogOpeningEventArgs args)
+    {
+        if (TreeGrid.FilterSettings.Type == Syncfusion.Blazor.TreeGrid.FilterType.Excel || TreeGrid.FilterSettings.Type == Syncfusion.Blazor.TreeGrid.FilterType.Menu)
+        {
+            AppendEventLog("TreeGrid <b>FilterDialogOpeningEventArgs</b> event called<hr>");
+        }
+        if (TreeGrid.FilterSettings.Type == Syncfusion.Blazor.TreeGrid.FilterType.Excel)
+        {
+            args.FilterChoiceCount = MyItem;
+        }
+    }
+
+    private void FilterDialogOpenedHandler(FilterDialogOpenedEventArgs args)
+    {
+        if (TreeGrid.FilterSettings.Type == Syncfusion.Blazor.TreeGrid.FilterType.Excel || TreeGrid.FilterSettings.Type == Syncfusion.Blazor.TreeGrid.FilterType.Menu)
+        {
+            AppendEventLog($"TreeGrid <b>FilterDialogOpenedEventArgs</b> event called and {args.ColumnName} filter popup opened<hr>");
+        }
+    }
+
+    private void FilteringHandler(Syncfusion.Blazor.Grids.FilteringEventArgs args)
+    {
+        if (args.ColumnName == "OrderID")
+        {
+            args.Cancel = true;
+            AppendEventLog("The Filtering event has been triggered and the filtering action is cancelled for " + args.ColumnName);
+        }
+        if (args.FilterPredicates != null)
+        {
+            flag = true;
+        }
+        else
+        {
+            flag = false;
+        }
+    }
+
+    private void FilteredHandler(FilteredEventArgs args)
+    {
+        if (args.FilterPredicates != null)
+        {
+            AppendEventLog("The FilteredEventArgs event has been triggered and the filtering action for the " + args.ColumnName + " column has been successfully executed");
+        }
+        else
+        {
+            message = " ";
+        }
+    }
+
+    public async Task click()
+    {
+        if (flag == true)
+        {
+            var filteredRecords = TreeGrid?.GetFilteredRecordsAsync();
+            FilterData = (List<OrderData>)filteredRecords.Result;
+            showRecords = true;
+            message = "";
+        }
+        else
+        {
+            showRecords = false;
+            message = "No Records is filtered ";
+        }
+    }
+
+    public async Task clear()
+    {
+        await TreeGrid?.ClearFilteringAsync();
+        showRecords = false;
+    }
+
+    private async Task ApplyChanges()
+    {
+        foreach (var setting in TempSettings)
+        {
+            switch (setting.Key)
+            {
+                case "Filter":
+                    allowFiltering = setting.Value ?? false;
+                    break;
+                case "Menu":
+                    if (setting.Value == true)
+                    {
+                        treeGridFilterType = Syncfusion.Blazor.TreeGrid.FilterType.Menu;
+                        allowFiltering = true;
+                    }
+                    else
+                    {
+                        treeGridFilterType = Syncfusion.Blazor.TreeGrid.FilterType.Menu;
+                    }
+                    break;
+                case "Excel":
+                    if (setting.Value == true)
+                    {
+                        treeGridFilterType = Syncfusion.Blazor.TreeGrid.FilterType.Excel;
+                        allowFiltering = true;
+                    }
+                    else
+                    {
+                        treeGridFilterType = Syncfusion.Blazor.TreeGrid.FilterType.Menu;
+                    }
+                    break;
+            }
+        }
+        TempSettings.Clear();
+        await TreeGrid?.RefreshAsync();
+    }
+
+    private async Task ApplyTreeGridActions(string action)
+    {
+        if (TreeGrid == null) return;
+
+        switch (action)
+        {
+            case "filterColumn":
+                if (FilterColumnName != null && FilterColumnName.Count > 0 && !string.IsNullOrEmpty(FilterValue))
+                {
+                    await TreeGrid.FilterByColumnAsync(Names, Operators, FilterValue, Predicate, IsMatchCaseEnabled);
+                }
+                break;
+            case "clearFilter":
+                await TreeGrid.ClearFilteringAsync();
+                break;
+            case "clearFilterStrictly":
+                await TreeGrid.ClearFilteringAsync(new List<string> { "Freight" });
+                message = "Only Freight column will be cleared once completed filtering for freight column";
+                break;
+            case "strictFiltering":
+                var data = TreeGrid?.GetFilteredRecordsAsync(true);
+                FilterData = (List<OrderData>)data.Result;
+                if (FilterData.Count == 0)
+                {
+                    message = "The filtered records " + FilterData.Count;
+                }
+                else
+                {
+                    message = "The filtered records " + FilterData.Count;
+                }
+                break;
+        }
+    }
+
+    private async Task ApplyTreeGridActionsComplex(string action)
+    {
+        if (TreeGrid == null) return;
+
+        switch (action)
+        {
+            case "filterColumn1":
+                if (FilterColumnName1 != null && FilterColumnName1.Count > 0 && !string.IsNullOrEmpty(FilterValue1))
+                {
+                    await TreeGrid.FilterByColumnAsync(Names1, Operators1, FilterValue1, Predicate, IsMatchCaseEnabled1);
+                }
+                break;
+            case "clearFilter":
+                await TreeGrid.ClearFilteringAsync();
+                break;
+            case "clearFilterStrictly":
+                await TreeGrid.ClearFilteringAsync(new List<string> { "Freight" });
+                message = "Only Freight column will be cleared once completed filtering for freight column";
+                break;
+            case "strictFiltering":
+                var data = TreeGrid?.GetFilteredRecordsAsync(true);
+                FilterData = (List<OrderData>)data.Result;
+                if (FilterData.Count == 0)
+                {
+                    message = "The filtered records " + FilterData.Count;
+                }
+                else
+                {
+                    message = "The filtered records " + FilterData.Count;
+                }
+                break;
+        }
+    }
+}

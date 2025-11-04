@@ -1,0 +1,24 @@
+﻿@page "/treegrid/scrolling/frozenrowsandcolumns"
+@rendermode InteractiveServer
+
+@using TreeGridUGSample.Components.Data;
+@using Syncfusion.Blazor.TreeGrid;
+@using Syncfusion.Blazor.Grids;
+
+<SfTreeGrid DataSource="@TreeGridData" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1" Height="400" FrozenColumns="2" FrozenRows="3">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="100" TextAlign="TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="220" IsFrozen="true"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="180" TextAlign="TextAlign.Right" IsFrozen="true"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="180"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="180"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public List<TreeDatas> TreeGridData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+}
