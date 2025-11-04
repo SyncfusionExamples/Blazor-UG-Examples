@@ -1,0 +1,113 @@
+﻿@page "/AddPaletteToSymbolPalette"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width:20%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@SymbolPalette" Height="300px" Width="200px"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    private SfSymbolPaletteComponent SymbolPalette;
+    //Define palettes collection.
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's flow-shape collection.
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    // Defines palette's group collection.
+    private DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
+    // Defines palette's connector collection.
+    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        CreatePaletteNode(NodeFlowShapes.Terminator, "Terminator");
+        CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
+        CreatePaletteGroup();
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols = PaletteNodes,Title = "Flow Shapes", ID = "Flow Shapes" },
+            new Palette(){Symbols = PaletteConnectors,Title = "Connectors", IsExpanded = true},
+            new Palette(){Symbols = PaletteGroup,Title = "Group Shapes", IsExpanded = true}
+        };
+    }
+
+    private void CreatePaletteNode(NodeFlowShapes flowShape, string id)
+    {
+        Node node = new Node()
+        {
+            ID = id,
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = flowShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        PaletteNodes.Add(node);
+    }
+
+    private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
+    {
+        Connector connector = new Connector()
+        {
+            ID = id,
+            Type = type,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 60, Y = 60 },
+            Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#757575" },
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = decoratorShape,
+                Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }
+            }
+        };
+        PaletteConnectors.Add(connector);
+    }
+
+    private void CreatePaletteGroup()
+    {
+        Node node1 = new Node()
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
+        Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 50,
+            Height = 50,
+            OffsetX = 100,
+            OffsetY = 200,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Style = new ShapeStyle() { Fill = "#6495ed" },
+        };
+        PaletteGroup.Add(node1);
+        PaletteGroup.Add(node2);
+        NodeGroup group = new NodeGroup()
+        {
+            ID = "group1",
+            Children = new string[] { "node1", "node2" }
+        };
+        PaletteGroup.Add(group);
+    }
+}

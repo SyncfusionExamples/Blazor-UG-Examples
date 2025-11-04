@@ -1,0 +1,28 @@
+﻿@page "/BoundaryConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes">
+    @* Initialize the pagesettings with boundary constraints *@
+    <PageSettings Width="600" Height="500" BoundaryConstraints="BoundaryConstraints.Page" />
+</SfDiagramComponent>
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Initialize the NodeCollection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
+        nodes.Add(node);
+    }
+}

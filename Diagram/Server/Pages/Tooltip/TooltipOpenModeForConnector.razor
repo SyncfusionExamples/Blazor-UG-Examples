@@ -1,0 +1,71 @@
+﻿@page "/TooltipOpenModeForConnector"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Show CustomTooltip" OnClick="@show" />
+<SfButton Content="Hide CustomTooltip" OnClick="@hide" />
+<SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Connectors="connector" />
+
+@code
+{
+    //Define diagram's connectors collection
+    private DiagramObjectCollection<Connector> connector;
+    //Refrence the diagram
+    private SfDiagramComponent diagram;
+    
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's nodes collection
+        connector = new DiagramObjectCollection<Connector>();
+        Connector connectors = new Connector()
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 100 },
+            Tooltip = new DiagramTooltip() { Content = "Auto", OpensOn = "Auto" },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        Connector connectors1 = new Connector()
+        {
+            ID = "Connector2",
+            SourcePoint = new DiagramPoint() { X = 300, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 100 },
+            Tooltip = new DiagramTooltip() { Content = "Hover", OpensOn = "Hover" },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        Connector connectors2 = new Connector()
+        {
+            ID = "Connector3",
+            SourcePoint = new DiagramPoint() { X = 500, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 600, Y = 100 },
+            Tooltip = new DiagramTooltip() { Content = "Custom", OpensOn = "Custom" },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        Connector connectors3 = new Connector()
+        {
+            ID = "Connector4",
+            SourcePoint = new DiagramPoint() { X = 700, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 800, Y = 100 },
+            Tooltip = new DiagramTooltip() { Content = "Click", OpensOn = "Click" },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        connector.Add(connectors);
+        connector.Add(connectors1);
+        connector.Add(connectors2);
+        connector.Add(connectors3);
+    }
+
+    //Method to show tooltip
+    private async void show()
+    {
+        await diagram.ShowTooltipAsync(diagram.Connectors[2] as NodeBase);
+    }
+
+    //Method to hide tooltip
+    private async void hide()
+    {
+        await diagram.HideTooltipAsync(diagram.Connectors[2] as NodeBase);
+    }
+}

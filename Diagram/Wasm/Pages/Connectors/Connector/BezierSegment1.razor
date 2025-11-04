@@ -1,0 +1,69 @@
+﻿@page "/BezierSegment1"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div style="width: 200px; float: left">
+    <SfSymbolPaletteComponent Height="600px" @ref="@PaletteInstance" Palettes="@Palettes">
+    </SfSymbolPaletteComponent>
+</div>
+
+<SfDiagramComponent @ref="@DiagramInstance" Width="1000px" Height="500px" Connectors="@connectors"></SfDiagramComponent>
+
+@code
+{
+    private SfSymbolPaletteComponent PaletteInstance;
+    private SfDiagramComponent DiagramInstance;
+    private DiagramObjectCollection<NodeBase> PaletteConnector = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        PaletteInstance.Targets.Add(DiagramInstance);
+    }
+
+    protected override void OnInitialized()
+    {
+        Connector diagramConnector = new Connector() { ID = "connector1", SourcePoint = new DiagramPoint() { X = 100, Y = 100 }, TargetPoint = new DiagramPoint() { X = 200, Y = 200 }, Type = ConnectorSegmentType.Straight };
+        connectors.Add(diagramConnector);
+        PaletteConnector = new DiagramObjectCollection<NodeBase>();
+        Connector connector = new Connector
+        {
+            ID = "Link1",
+            Type = ConnectorSegmentType.Straight,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 60, Y = 60 }
+        };
+        PaletteConnector.Add(connector as NodeBase);
+        Connector connector2 = new Connector
+        {
+            ID = "Link2",
+            Type = ConnectorSegmentType.Orthogonal,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 60, Y = 60 },
+            TargetDecorator = new DecoratorSettings() { Shape = DecoratorShape.OpenArrow },
+            Style = new ShapeStyle() { StrokeWidth = 1 }
+        };
+        PaletteConnector.Add(connector2 as NodeBase);
+        Connector connector3 = new Connector
+        {
+            ID = "Link3",
+            Type = ConnectorSegmentType.Bezier,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 60, Y = 60 },
+            TargetDecorator = new DecoratorSettings() { Shape = DecoratorShape.None },
+        };
+        PaletteConnector.Add(connector3 as NodeBase);
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols =PaletteConnector,Title="Connectors" ,IsExpanded = false},
+        };
+    }
+
+    private void AddConnector()
+    {
+        Connector NewConnector = new Connector() { ID = "connector1", SourcePoint = new DiagramPoint() { X = 100, Y = 100 }, TargetPoint = new DiagramPoint() { X = 200, Y = 200 }, Type = ConnectorSegmentType.Straight };
+        connectors.Add(NewConnector);
+    }
+}

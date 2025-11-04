@@ -1,0 +1,61 @@
+﻿@page "/AddConnectorToSymbolPalette"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+
+<div class="control-section">
+    <div style="width:20%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="100">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    //Reference the symbolpalette
+    private SfSymbolPaletteComponent symbolpalette;
+    //Define palattes collection
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's flow-shape collection
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    // Defines palette's connector collection
+    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+        CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols =PaletteConnectors,Title="Connectors" ,IsExpanded = true},
+        };
+    }
+
+    //Method to create palette connector
+    private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
+    {
+        Connector connector = new Connector()
+        {
+            ID = id,
+            Type = type,
+            SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
+            TargetPoint = new DiagramPoint() { X = 100, Y = 100 },
+            Style = new ShapeStyle() { StrokeWidth = 1, StrokeColor = "#6495ED" },
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = decoratorShape,
+                Style = new ShapeStyle() { StrokeColor = "#6495ED", Fill = "#6495ED" }
+            }
+        };
+
+        PaletteConnectors.Add(connector);
+    }
+}

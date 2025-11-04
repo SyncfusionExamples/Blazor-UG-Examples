@@ -1,0 +1,61 @@
+﻿@page "/BasicLayout"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <Layout Type="LayoutType.HierarchicalTree" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+    </Layout>
+    <SnapSettings>
+        <HorizontalGridLines LineColor="white">
+        </HorizontalGridLines>
+        <VerticalGridLines LineColor="white">
+        </VerticalGridLines>
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Defines diagram's node collection.
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private LayoutType type = LayoutType.ComplexHierarchicalTree;
+    private int HorizontalSpacing = 50;
+    private int VerticalSpacing = 50;
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        node.Height = 60;
+        node.Width = 110;
+        node.Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeWidth = 2, StrokeColor = "none" };
+    }
+
+    private void OnConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).CornerRadius = 5;
+        (connector as Connector).TargetDecorator = new DecoratorSettings() { Style = new ShapeStyle() { Fill = "#6CA0DC", StrokeColor = "#6CA0DC" } };
+        (connector as Connector).Style = new ShapeStyle() { StrokeColor = "#6CA0DC" };
+    }
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="CEO"} } },
+            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="COO"} } },
+            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Marketing Head"} } },
+            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Product Head"} } },
+            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Customer Support Lead"} } },
+            new Node() { ID="node6", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="Warehouse Manager"} } },
+        };
+        connectors = new DiagramObjectCollection<Connector>()
+        {
+            new Connector() { ID="connector1", SourceID="node1", TargetID="node2" },
+            new Connector() { ID="connector2", SourceID="node1", TargetID="node3" },
+            new Connector() { ID="connector3", SourceID="node1", TargetID="node4" },
+            new Connector() { ID="connector4", SourceID="node1", TargetID="node5" },
+            new Connector() { ID="connector5", SourceID="node1", TargetID="node6" }
+        };
+    }
+}

@@ -1,0 +1,70 @@
+﻿@page "/CreateActivationBox"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Height="600px" Model="@DiagramModel">
+    <SnapSettings Constraints="SnapConstraints.None" />
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent Diagram;
+    private UmlSequenceDiagramModel DiagramModel;
+
+    protected override void OnInitialized()
+    {
+        // Create participants with an activation box
+        List<UmlSequenceParticipant> participants = new List<UmlSequenceParticipant>()
+        {
+            new UmlSequenceParticipant()
+            {
+                ID = "User",
+                Content = "User",
+                IsActor = true
+            },
+            new UmlSequenceParticipant()
+            {
+                ID = "System",
+                Content = "System",
+                IsActor = false,
+                ShowDestructionMarker = true,
+                ActivationBoxes = new List<UmlSequenceActivationBox>()
+                {
+                    new UmlSequenceActivationBox()
+                    {
+                        ID = "ActivateSystem",
+                        StartMessageID = "MSG1",
+                        EndMessageID = "MSG2"
+                    }
+                }
+            }
+        };
+
+        // Create messages
+        List<UmlSequenceMessage> messages = new List<UmlSequenceMessage>()
+        {
+            new UmlSequenceMessage()
+            {
+                ID = "MSG1",
+                Content = "Login Request",
+                FromParticipantID = "User",
+                ToParticipantID = "System",
+                MessageType = UmlSequenceMessageType.Synchronous
+            },
+            new UmlSequenceMessage()
+            {
+                ID = "MSG2",
+                Content = "Login Response",
+                FromParticipantID = "System",
+                ToParticipantID = "User",
+                MessageType = UmlSequenceMessageType.Reply
+            }
+        };
+
+        // Initialize the model
+        DiagramModel = new UmlSequenceDiagramModel()
+        {
+            Participants = participants,
+            Messages = messages
+        };
+    }
+}

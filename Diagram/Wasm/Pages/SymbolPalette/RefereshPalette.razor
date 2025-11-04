@@ -1,0 +1,71 @@
+﻿@page "/RefereshPalette"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+@using Syncfusion.Blazor.Buttons
+
+<div class="control-section">
+    <div style="width: 100%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@SymbolPalette" Height="300px" Width="200px" GetSymbolInfo="GetSymbolInfo"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="120" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+<SfButton Content="RefreshSymbols" OnClick="@RefreshSymbols" />
+
+@code
+{
+    private SymbolMargin SymbolMargin = new SymbolMargin
+    {
+        Left = 15,
+        Right = 15,
+        Top = 15,
+        Bottom = 15
+    };
+    private SfSymbolPaletteComponent SymbolPalette;
+    //Define palettes collection.
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's flow-shape collection.
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+           new Palette(){Symbols = PaletteNodes,Title = "Basic Shapes", ID = "Basic Shapes" },
+        };
+    }
+
+    private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
+    {
+        Node node = new Node()
+        {
+            ID = id,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        PaletteNodes.Add(node);
+    }
+
+    private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
+    {
+        SymbolInfo SymbolInfo = new SymbolInfo();
+        string text = null;
+        text = (symbol as Node).ID;
+        SymbolInfo.Description = new SymbolDescription() { Text = text };
+        return SymbolInfo;
+    }
+
+    private void RefreshSymbols()
+    {
+        SymbolPalette.RefreshSymbols();
+    }
+}

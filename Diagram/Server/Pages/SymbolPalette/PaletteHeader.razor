@@ -1,0 +1,94 @@
+﻿@page "/PaletteHeader"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+@using Syncfusion.Blazor.Buttons
+
+<div class="control-section">
+    <div class="properties">
+        <SfButton Content="AddPaletteItem" OnClick="@UpdateHeading" />
+        <SfButton Content="RemovePaletteItem" OnClick="@UpdateHeading1" />
+        <SfButton Content="AddPalettes" OnClick="@UpdateHeading2" />
+        <SfButton Content="RemovePalettes" OnClick="@UpdateHeading3" />
+    </div>
+    <div style="width:20%">
+        <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
+            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
+                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            </SfSymbolPaletteComponent>
+        </div>
+    </div>
+</div>
+
+@code
+{
+    //Define symbolpreview
+    private DiagramSize SymbolPreview;
+    //Define symbol margin
+    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    //Reference the symbol palette
+    private SfSymbolPaletteComponent symbolpalette;
+    //Define palattes collection
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Defines palette's flow-shape collection
+    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+
+    protected override void OnInitialized()
+    {
+        InitPaletteModel();
+    }
+
+    private void InitPaletteModel()
+    {
+        Node node = new Node()
+        {
+            ID = "Rectangle",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        PaletteNodes.Add(node);
+
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+        };
+    }
+
+    //Method to update heading
+    private void UpdateHeading()
+    {
+        Node Star = new Node()
+        {
+            ID = "Star",
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Star }
+        };
+        symbolpalette.AddPaletteItem("Basic Shapes", Star, false);
+    }
+
+    //Method to update heading
+    private void UpdateHeading1()
+    {
+        symbolpalette.RemovePaletteItem("Basic Shapes", "Star");
+    }
+
+    //Method to update heading
+    private void UpdateHeading2()
+    {
+        DiagramObjectCollection<NodeBase> newNodes = new DiagramObjectCollection<NodeBase>();
+
+        Node newNode = new Node() { ID = "newNode", Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Process } };
+        newNodes.Add(newNode as NodeBase);
+
+        DiagramObjectCollection<Palette> newPalettes = new DiagramObjectCollection<Palette>()
+        {
+                new Palette(){Symbols =newNodes,Title="FlowShapes",ID="FlowShapes" },
+            };
+        symbolpalette.AddPalettes(newPalettes);
+    }
+
+    private void UpdateHeading3()
+    {
+        symbolpalette.RemovePalettes("FlowShapes");
+    }
+}
+
