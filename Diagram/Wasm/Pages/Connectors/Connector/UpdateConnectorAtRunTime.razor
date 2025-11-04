@@ -32,11 +32,11 @@
     }
 
     //Method to update connector at runtime.
-    private void UpdateConnector()
+    private async void UpdateConnector()
     {
         Diagram.BeginUpdate();
         Diagram.Connectors[0].SourcePoint.X = 50;
         Diagram.Connectors[0].SourcePoint.Y = 50;
-        _ = Diagram.EndUpdateAsync();
+        await Diagram.EndUpdateAsync();
     }
 }
