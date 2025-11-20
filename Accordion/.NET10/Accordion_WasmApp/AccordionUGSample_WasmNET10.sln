@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181 d18.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccordionUGSample_WasmNET10", "AccordionUGSample_WasmNET10\AccordionUGSample_WasmNET10.csproj", "{66207CE1-8500-0600-9B12-57E2DF898634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccordionUGSample_WasmNET10.Client", "AccordionUGSample_WasmNET10.Client\AccordionUGSample_WasmNET10.Client.csproj", "{ABC13800-71DD-8E10-ACFC-DC6DBBD25458}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{66207CE1-8500-0600-9B12-57E2DF898634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66207CE1-8500-0600-9B12-57E2DF898634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66207CE1-8500-0600-9B12-57E2DF898634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66207CE1-8500-0600-9B12-57E2DF898634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC13800-71DD-8E10-ACFC-DC6DBBD25458}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC13800-71DD-8E10-ACFC-DC6DBBD25458}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC13800-71DD-8E10-ACFC-DC6DBBD25458}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC13800-71DD-8E10-ACFC-DC6DBBD25458}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {625CC477-22F9-4995-9FDC-DA14E8C84B45}
+	EndGlobalSection
+EndGlobal
