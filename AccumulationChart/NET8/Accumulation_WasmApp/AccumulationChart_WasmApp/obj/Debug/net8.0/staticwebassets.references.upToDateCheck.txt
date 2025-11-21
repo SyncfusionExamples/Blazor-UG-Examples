@@ -1,0 +1,1 @@
+D:\PublicRepo\Blazor-UG-Examples\AccumulationChart\NET8\Accumulation_WasmApp\AccumulationChart_WasmApp.Client\obj\Debug\net8.0\staticwebassets.build.json
