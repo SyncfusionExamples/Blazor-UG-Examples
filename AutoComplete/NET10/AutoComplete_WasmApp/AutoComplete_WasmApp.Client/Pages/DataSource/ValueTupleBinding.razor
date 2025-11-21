@@ -1,0 +1,9 @@
+﻿@page "/ValueTupleBinding"
+
+@using Syncfusion.Blazor.DropDowns;
+<DataSourceRoute></DataSourceRoute>
+
+<SfAutoComplete TItem="(DayOfWeek, string)" Width="250px" TValue="DayOfWeek"
+                DataSource="@(Enum.GetValues<DayOfWeek>().Select(e => (e, e.ToString())))">
+    <AutoCompleteFieldSettings Value="Item1" />
+</SfAutoComplete>
