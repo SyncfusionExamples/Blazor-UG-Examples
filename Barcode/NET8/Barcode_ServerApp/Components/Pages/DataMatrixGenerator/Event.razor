@@ -1,0 +1,13 @@
+﻿@page "/DMEvent"
+
+@using Syncfusion.Blazor.BarcodeGenerator
+<DataMatrixRoute></DataMatrixRoute>
+
+<SfDataMatrixGenerator Width="200px" Height="150px" Value="SYNCFUSION" OnValidationFailed="@OnValidationFailed"></SfDataMatrixGenerator>
+
+@code
+{
+    public void OnValidationFailed(ValidationFailedEventArgs args)
+    {
+    }
+}

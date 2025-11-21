@@ -1,0 +1,13 @@
+﻿@page "/Event"
+
+@using Syncfusion.Blazor.BarcodeGenerator
+<BarcodeRoute></BarcodeRoute>
+
+<SfBarcodeGenerator Width="200px" Height="150px" Type="@BarcodeType.Code128" Value="SYNCFUSION" OnValidationFailed="@OnValidationFailed"></SfBarcodeGenerator>
+
+@code
+{
+    public void OnValidationFailed(ValidationFailedEventArgs args)
+    {
+    }
+}
