@@ -1,0 +1,34 @@
+﻿@page "/OnActionFailureEvent"
+
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Data
+<EventRoute></EventRoute>
+
+<SfAutoComplete TValue="string" TItem="OrderDetails" Query="@RemoteDataQuery">
+        <SfDataManager Url="https://js.syncfusion.com/demos/ejServices/Wcf/Northwind.svc/Orders" CrossDomain="true" Adaptor="Syncfusion.Blazor.Adaptors.ODataAdaptor"></SfDataManager>
+        <AutoCompleteEvents TValue="string" TItem="OrderDetails" OnActionFailure="@OnActionFailurehandler"></AutoCompleteEvents>
+        <AutoCompleteFieldSettings Text="CustomerID" Value="CustomerID"></AutoCompleteFieldSettings>
+    </SfAutoComplete>
+
+@code {
+    public Query RemoteDataQuery = new Query().Select(new List<string> { "CustomerID" }).Take(6).RequiresCount();
+    public class OrderDetails
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public int? EmployeeID { get; set; }
+        public double? Freight { get; set; }
+        public string ShipCity { get; set; }
+        public bool Verified { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public string ShipName { get; set; }
+        public string ShipCountry { get; set; }
+        public DateTime? ShippedDate { get; set; }
+        public string ShipAddress { get; set; }
+    }
+
+    private void OnActionFailurehandler(Exception args)
+    {
+        // Here, you can customize your code.
+    }
+}

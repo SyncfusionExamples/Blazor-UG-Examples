@@ -1,0 +1,11 @@
+﻿@page "/EnableCheckSum"
+
+@using Syncfusion.Blazor.BarcodeGenerator
+<BarcodeRoute></BarcodeRoute>
+
+<SfBarcodeGenerator EnableCheckSum=false
+                    Width="200px"
+                    Height="150px"
+                    Type="@BarcodeType.Code39"
+                    Value="SYNCFUSION">
+</SfBarcodeGenerator>

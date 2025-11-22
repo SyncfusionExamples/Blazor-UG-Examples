@@ -1,0 +1,30 @@
+﻿@page "/PassEventData"
+
+@using Syncfusion.Blazor.DropDowns;
+<EventsRoute></EventsRoute>
+
+<SfAutoComplete TValue="string" TItem="Country" @onkeypress="@(e => KeyPressed(e))" DataSource="@LocalData">
+    <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
+</SfAutoComplete>
+
+@code {
+  public void KeyPressed(KeyboardEventArgs args) {
+    if (args.Key == "a") {
+      Console.WriteLine("A was pressed");
+    }
+  }
+  public class Country
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+
+    List<Country> LocalData = new List<Country> {
+        new Country() { Name = "Australia", Code = "AU" },
+        new Country() { Name = "Bermuda", Code = "BM" },
+        new Country() { Name = "Canada", Code = "CA" },
+        new Country() { Name = "Cameroon", Code = "CM" },
+        new Country() { Name = "Denmark", Code = "DK" },
+        new Country() { Name = "France", Code = "FR" },
+    };
+}

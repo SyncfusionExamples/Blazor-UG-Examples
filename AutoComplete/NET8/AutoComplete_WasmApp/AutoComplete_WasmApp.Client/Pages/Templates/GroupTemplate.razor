@@ -1,0 +1,39 @@
+﻿@page "/GroupTemplate"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfAutoComplete TValue="string" TItem="EmployeeData" Placeholder="Select a customer" DataSource="@Data">
+    <AutoCompleteTemplates TItem="EmployeeData">
+        <GroupTemplate>
+            <span class='country'>@(context.Text)</span>
+        </GroupTemplate>
+    </AutoCompleteTemplates>
+    <AutoCompleteFieldSettings Value="FirstName" GroupBy="Country"></AutoCompleteFieldSettings>
+</SfAutoComplete>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+        public string Country { get; set; }
+    }
+    List<EmployeeData> Data = new List<EmployeeData>
+{
+        new EmployeeData() { FirstName = "Andrew Fuller",  Country = "England" },
+        new EmployeeData() { FirstName = "Anne Dodsworth", Country = "USA" },
+        new EmployeeData() { FirstName = "Janet Leverling", Country = "USA" },
+        new EmployeeData() { FirstName = "Laura Callahan", Country = "USA"},
+        new EmployeeData() { FirstName = "Margaret Peacock", Country = "USA"},
+        new EmployeeData() { FirstName = "Michael Suyama", Country = "USA", },
+        new EmployeeData() { FirstName = "Nancy Davolio", Country = "USA"},
+        new EmployeeData() { FirstName = "Robert King", Country = "England"},
+        new EmployeeData() { FirstName = "Steven Buchanan", Country = "England"},
+    };
+}
+<style>
+    .group {
+        color: slategrey;
+    }
+</style>

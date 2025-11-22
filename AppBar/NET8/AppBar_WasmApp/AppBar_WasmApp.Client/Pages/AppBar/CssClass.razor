@@ -1,0 +1,19 @@
+﻿@page "/AppBar/css"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary" CssClass="custom-appbar">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-home"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-appbar.custom-appbar {
+        background: #ff0000;
+        color: #fff;
+    }
+</style>

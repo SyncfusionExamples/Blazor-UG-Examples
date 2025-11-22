@@ -1,0 +1,37 @@
+﻿@page "/accumulation/annotation/region" 
+@using Syncfusion.Blazor.Charts
+<AnnotationRoute></AnnotationRoute>
+
+<SfAccumulationChart ID="pie" Title="Mobile Browser Statistics">
+    <AccumulationChartSeriesCollection>
+        <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Browser" YName="Users" Name="Browser">
+            <AccumulationDataLabelSettings Visible="true" Name="Text" Position="AccumulationLabelPosition.Outside"></AccumulationDataLabelSettings>
+        </AccumulationChartSeries>
+    </AccumulationChartSeriesCollection>
+
+    <AccumulationChartAnnotations>
+        <AccumulationChartAnnotation X=130 Y=180 CoordinateUnits="@Syncfusion.Blazor.Charts.Units.Pixel" Region="@Syncfusion.Blazor.Charts.Regions.Chart">
+            <ContentTemplate>
+                <div style='border: 1px solid black;background-color:lightblue;padding: 5px 5px 5px 5px'>Opera</div>
+            </ContentTemplate>
+        </AccumulationChartAnnotation>
+    </AccumulationChartAnnotations>
+</SfAccumulationChart>
+
+@code{
+    public class Statistics
+    {
+        public string Browser { get; set; }
+        public double Users { get; set; }
+    }
+
+    public List<Statistics> StatisticsDetails = new List<Statistics>
+	{
+        new Statistics { Browser = "Chrome", Users = 37 },
+        new Statistics { Browser = "UC Browser", Users = 17 },
+        new Statistics { Browser = "iPhone", Users = 19 },
+        new Statistics { Browser = "Others", Users = 4  },
+        new Statistics { Browser = "Opera", Users = 11 },
+        new Statistics { Browser = "Android", Users = 12 },
+    };
+}

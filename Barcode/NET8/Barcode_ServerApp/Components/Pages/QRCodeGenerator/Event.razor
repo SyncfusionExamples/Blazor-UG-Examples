@@ -1,0 +1,13 @@
+﻿@page "/QREvent"
+
+@using Syncfusion.Blazor.BarcodeGenerator
+<QRCodeRoute></QRCodeRoute>
+
+<SfQRCodeGenerator Width="200px" Height="150px" Value="Syncfusion" OnValidationFailed="@OnValidationFailed"></SfQRCodeGenerator>
+
+@code
+{
+    public void OnValidationFailed(ValidationFailedEventArgs args)
+    {
+    }
+}

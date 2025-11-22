@@ -1,0 +1,19 @@
+﻿@page "/ExportAsBaseImage"
+
+@using Syncfusion.Blazor.BarcodeGenerator
+<ExportsRoute></ExportsRoute>
+
+<input type="button" value="Export" @onclick="@OnExport" />
+<SfQRCodeGenerator Width="200px" Height="150px" Value="Syncfusion" @ref="@QRcode">
+    <QRCodeGeneratorDisplayText Text="Text"></QRCodeGeneratorDisplayText>
+</SfQRCodeGenerator>
+
+@code
+{
+    SfQRCodeGenerator QRcode;
+
+    private async void OnExport()
+    {
+        await QRcode.ExportAsBase64Image(BarcodeExportType.JPG);
+    }
+}

@@ -1,0 +1,17 @@
+﻿@page "/Accordion/MultipleExpandMode"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+<AccordionRoute></AccordionRoute>
+
+<SfAccordion ExpandMode="ExpandMode.Multiple" @bind-ExpandedIndices=ExpandItems>
+    <AccordionItems>
+        <AccordionItem Header="ASP.NET" Content="Microsoft ASP.NET is a set of technologies in the Microsoft .NET Framework for building Web applications and XML Web services."></AccordionItem>
+        <AccordionItem Header="ASP.NET MVC" Content="The Model-View-Controller (MVC) architectural pattern separates an application into three main components: the model, the view, and the controller."></AccordionItem>
+        <AccordionItem Header="JavaScript" Content="JavaScript (JS) is an interpreted computer programming language. It was originally implemented as part of web browsers so that client-side scripts could interact with the user, control the browser, communicate asynchronously, and alter the document content that was displayed."></AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+@code {
+    public int[] ExpandItems = new int[] { 0, 2 };
+}
