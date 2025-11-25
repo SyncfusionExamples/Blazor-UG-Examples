@@ -1,0 +1,32 @@
+﻿@page "/MultipleAxes"
+
+@using Syncfusion.Blazor.CircularGauge
+<AxesRoute></AxesRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis Minimum="0"
+                           Maximum="140">
+            <CircularGaugePointers>
+                <CircularGaugePointer Type="PointerType.Needle">
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+        <CircularGaugeAxis Minimum="-20"
+                           Maximum="60">
+            <CircularGaugePointers>
+                <CircularGaugePointer Type="PointerType.Marker"
+                                      MarkerShape="GaugeShape.InvertedTriangle"
+                                      MarkerHeight="20"
+                                      MarkerWidth="20">
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeAxisMajorTicks Position="Position.Outside">
+            </CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks Position="Position.Outside">
+            </CircularGaugeAxisMinorTicks>
+            <CircularGaugeAxisLabelStyle Position="Position.Outside">
+            </CircularGaugeAxisLabelStyle>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

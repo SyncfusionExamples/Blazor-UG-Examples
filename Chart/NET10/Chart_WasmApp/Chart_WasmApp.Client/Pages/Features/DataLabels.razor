@@ -1,0 +1,33 @@
+﻿@page "/Features/DataLabels"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<FeatureRoute></FeatureRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.Column">
+            <ChartMarker>
+                <ChartDataLabel Visible="true" />
+            </ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class Data
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<Data> WeatherReports = new List<Data>
+    {
+        new Data{ X= "Jan", Y= 3 },
+        new Data{ X= "Feb", Y= 3.5 },
+        new Data{ X= "Mar", Y= 7 },
+        new Data{ X= "Apr", Y= 13.5 }
+    };
+}

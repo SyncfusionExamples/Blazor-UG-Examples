@@ -1,0 +1,15 @@
+﻿@page "/OnDragStart"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents OnDragStart="@OnDragStartHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void OnDragStartHandler(DragStartEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

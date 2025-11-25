@@ -1,0 +1,28 @@
+﻿@page "/TooltipFormat"
+
+@using Syncfusion.Blazor.CircularGauge
+<UserRoute></UserRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="50">
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeTooltipSettings Enable="true"
+                                          Fill="lightgray"
+                                          EnableAnimation="true"
+                                          Format="Speed: {value}">
+                <CircularGaugeTooltipBorder Color="blue"
+                                            Width="1">
+                </CircularGaugeTooltipBorder>
+                <CircularGaugeTooltipTextStyle Color="blue"
+                                               FontStyle="italic"
+                                               FontWeight="bold"
+                                               Size="15px">
+                </CircularGaugeTooltipTextStyle>
+            </CircularGaugeTooltipSettings>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

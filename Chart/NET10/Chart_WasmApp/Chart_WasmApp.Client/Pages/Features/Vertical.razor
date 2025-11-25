@@ -1,0 +1,38 @@
+﻿@page "/Features/Vertical"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<FeatureRoute></FeatureRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+        <ChartStriplines>
+            <ChartStripline Start="2" End="3" Color="#EEFFCC" />
+            <ChartStripline Start="4" End="5" Color="pink" />
+        </ChartStriplines>
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries Type="ChartSeriesType.Column" DataSource="@WeatherReports" XName="X" YName="Y">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+        new ChartData { X = "Sun", Y = 28 },
+        new ChartData { X = "Mon", Y = 27 },
+        new ChartData { X = "Tue", Y = 33 },
+        new ChartData { X = "Wed", Y = 36 },
+        new ChartData { X = "Thu", Y = 28 },
+        new ChartData { X = "Fri", Y = 30 },
+        new ChartData { X = "Sat", Y = 31 }
+    };
+}

@@ -1,0 +1,72 @@
+﻿@page "/Selection/Rectangular"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart Title="Olympic Medals" SelectionMode="SelectionMode.DragXY">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="XValue" Opacity="1" YName="YValue" Type="ChartSeriesType.Scatter">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public double XValue { get; set; }
+        public double YValue { get; set; }
+    };
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { XValue = 1971, YValue = 50 },
+        new ChartData { XValue = 1972, YValue = 20 },
+        new ChartData { XValue = 1973, YValue = 63 },
+        new ChartData { XValue = 1974, YValue = 81 },
+        new ChartData { XValue = 1975, YValue = 64 },
+        new ChartData { XValue = 1976, YValue = 36 },
+        new ChartData { XValue = 1977, YValue = 22 },
+        new ChartData { XValue = 1978, YValue = 78 },
+        new ChartData { XValue = 1979, YValue = 60 },
+        new ChartData { XValue = 1980, YValue = 41 },
+        new ChartData { XValue = 1981, YValue = 62 },
+        new ChartData { XValue = 1982, YValue = 56 },
+        new ChartData { XValue = 1983, YValue = 96 },
+        new ChartData { XValue = 1984, YValue = 48 },
+        new ChartData { XValue = 1985, YValue = 23 },
+        new ChartData { XValue = 1986, YValue = 54 },
+        new ChartData { XValue = 1987, YValue = 73 },
+        new ChartData { XValue = 1988, YValue = 56 },
+        new ChartData { XValue = 1989, YValue = 67 },
+        new ChartData { XValue = 1990, YValue = 79 },
+        new ChartData { XValue = 1991, YValue = 18 },
+        new ChartData { XValue = 1992, YValue = 78 },
+        new ChartData { XValue = 1993, YValue = 92 },
+        new ChartData { XValue = 1994, YValue = 43 },
+        new ChartData { XValue = 1995, YValue = 29 },
+        new ChartData { XValue = 1996, YValue = 14 },
+        new ChartData { XValue = 1997, YValue = 85 },
+        new ChartData { XValue = 1998, YValue = 24 },
+        new ChartData { XValue = 1999, YValue = 61 },
+        new ChartData { XValue = 2000, YValue = 80 },
+        new ChartData { XValue = 2001, YValue = 14 },
+        new ChartData { XValue = 2002, YValue = 34 },
+        new ChartData { XValue = 2003, YValue = 81 },
+        new ChartData { XValue = 2004, YValue = 70 },
+        new ChartData { XValue = 2005, YValue = 21 },
+        new ChartData { XValue = 2006, YValue = 70 },
+        new ChartData { XValue = 2007, YValue = 32 },
+        new ChartData { XValue = 2008, YValue = 43 },
+        new ChartData { XValue = 2009, YValue = 21 },
+        new ChartData { XValue = 2010, YValue = 63 },
+        new ChartData { XValue = 2011, YValue = 9 },
+        new ChartData { XValue = 2012, YValue = 51 },
+        new ChartData { XValue = 2013, YValue = 25 },
+        new ChartData { XValue = 2014, YValue = 96 },
+        new ChartData { XValue = 2015, YValue = 32 }
+    };
+}

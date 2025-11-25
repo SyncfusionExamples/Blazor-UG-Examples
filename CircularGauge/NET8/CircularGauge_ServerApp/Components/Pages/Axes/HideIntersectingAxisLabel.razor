@@ -1,0 +1,13 @@
+﻿@page "/HideIntersectingAxisLabel"
+
+@using Syncfusion.Blazor.CircularGauge
+<AxesRoute></AxesRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis Maximum="200" StartAngle="270" EndAngle="90" Minimum="0" HideIntersectingLabel="true">
+            <CircularGaugeAxisMajorTicks Interval="4"></CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks Interval="2"></CircularGaugeAxisMinorTicks>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

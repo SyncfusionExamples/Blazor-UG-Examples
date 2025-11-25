@@ -1,0 +1,47 @@
+﻿@page "/CloseDialog"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton @onclick="@OpenDialog">Open Dialog</SfButton>
+
+<div id="target">
+    <SfDialog Target="#target" Width="300px" IsModal="true" ShowCloseIcon="true" CloseOnEscape="false" @bind-Visible="@IsVisible">
+        <DialogEvents OnOverlayClick="@OverlayClick"></DialogEvents>
+        <DialogTemplates>
+            <Header> Delete Multiple Items</Header>
+            <Content> Are you sure you want to permanently delete all of these items? </Content>
+        </DialogTemplates>
+        <DialogButtons>
+            <DialogButton Content="Yes" IsPrimary="true" OnClick="@CloseDialog1" />
+            <DialogButton Content="No" OnClick="@CloseDialog1" />
+        </DialogButtons>
+    </SfDialog>
+</div>
+
+<style>
+    #target {
+        min-height: 450px;
+        height: 100%;
+    }
+</style>
+
+@code {
+    private bool IsVisible { get; set; } = true;
+
+    private void OpenDialog()
+    {
+        this.IsVisible = true;
+    }
+
+    private void OverlayClick(MouseEventArgs args)
+    {
+        this.IsVisible = false;
+    }
+
+    private void CloseDialog1()
+    {
+        this.IsVisible = false;
+    }
+}

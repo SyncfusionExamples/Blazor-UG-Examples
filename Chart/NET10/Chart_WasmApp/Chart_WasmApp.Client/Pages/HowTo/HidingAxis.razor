@@ -1,0 +1,44 @@
+﻿@page "/HowTo/HidingAxis"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<HowToRoute></HowToRoute>
+<br/>
+<SfChart>
+    <ChartAxes>
+        <ChartAxis Name="yAxis1" />
+        <ChartAxis OpposedPosition="true" Name="yAxis2" />
+        <ChartAxis OpposedPosition="true" Name="yAxis3" />
+    </ChartAxes>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@DataPoints" XName="XValue" YName="YValue1" Name="England" YAxisName="yAxis1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@DataPoints" XName="XValue" YName="YValue2" Name="US" Fill="green" YAxisName="yAxis2" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@DataPoints" XName="XValue" YName="YValue3" Name="West Indies" Fill="#b22222" YAxisName="yAxis3" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+    <ChartLegendSettings Visible="true" ToggleVisibility="true" />
+</SfChart>
+
+
+@code {
+
+    public List<ChartData> DataPoints = new List<ChartData>
+    {
+        new ChartData { XValue = 16, YValue1 = 2, YValue2 = 12, YValue3 = 7 },
+        new ChartData { XValue = 17, YValue1 = 14, YValue2 = 10, YValue3 = 7 },
+        new ChartData { XValue = 18, YValue1 = 7, YValue2 = 17, YValue3 = 11 },
+        new ChartData { XValue = 19, YValue1 = 7, YValue2 = 20, YValue3 = 8 },
+        new ChartData { XValue = 20, YValue1 = 10, YValue2 = 16, YValue3 = 24 },
+    };
+
+    public class ChartData
+    {
+        public double XValue { get; set; }
+        public double YValue1 { get; set; }
+        public double YValue2 { get; set; }
+        public double YValue3 { get; set; }
+    }
+
+}

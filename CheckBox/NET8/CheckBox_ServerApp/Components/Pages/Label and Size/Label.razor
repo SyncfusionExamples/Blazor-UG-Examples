@@ -1,0 +1,13 @@
+﻿@page "/Label"
+
+@using Syncfusion.Blazor.Buttons
+<LabelSizeRoute></LabelSizeRoute>
+
+<SfCheckBox Label="Left Side Label" LabelPosition="LabelPosition.Before" @bind-Checked="isLeftChecked"></SfCheckBox>
+<br />
+<SfCheckBox Label="Right Side Label" LabelPosition="LabelPosition.After" @bind-Checked="isRightChecked"></SfCheckBox>
+
+@code {
+    private bool isLeftChecked = true;
+    private bool isRightChecked = true;
+}

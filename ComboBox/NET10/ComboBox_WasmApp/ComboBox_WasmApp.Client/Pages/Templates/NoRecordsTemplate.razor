@@ -1,0 +1,22 @@
+﻿@page "/NoRecordsTemplate"
+
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfComboBox TValue="string" TItem="Country" Placeholder="Select a customer" DataSource="@Countries">
+    <ComboBoxTemplates TItem="Country">
+        <NoRecordsTemplate>
+            <span class='norecord'> NO DATA AVAILABLE</span>
+        </NoRecordsTemplate>
+    </ComboBoxTemplates>
+</SfComboBox>
+
+@code {
+
+    public class EmployeeData { }
+    public EmployeeData Data = new EmployeeData();
+
+    public class Country { }
+
+    List<Country> Countries = new List<Country> { };
+}

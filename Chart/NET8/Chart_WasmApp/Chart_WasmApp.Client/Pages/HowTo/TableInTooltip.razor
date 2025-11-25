@@ -1,0 +1,53 @@
+﻿@page "/HowTo/TableInTooltip"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<HowToRoute></HowToRoute>
+<br/>
+<SfChart Title="Weather condition JPN vs DEU">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+    <ChartTooltipSettings Enable="true">
+        <Template>
+            @{
+                var data = context as ChartTooltipInfo;
+                <table border="2" bgcolor="lightblue" cellpadding="5">
+                    <tr style="border: .1px solid black">
+                        <td style="border: 1px solid black">Month: </td>
+                        <td style="border: 1px solid black"> @data.X</td>
+                    </tr>
+                    <tr style="border: .1px solid black">
+                        <td style="border: 1px solid black">Value: </td>
+                        <td style="border: 1px solid black"> @data.Y</td>
+                    </tr>
+                </table>
+            }
+        </Template>
+    </ChartTooltipSettings>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+         new ChartData{ X= "Jan", Y= 15 },
+         new ChartData{ X= "Feb", Y= 20 },
+         new ChartData{ X= "Mar", Y= 35 },
+         new ChartData{ X= "Apr", Y= 40 },
+         new ChartData{ X= "May", Y= 80 },
+         new ChartData{ X= "Jun", Y= 70 },
+         new ChartData{ X= "Jul", Y= 65 },
+         new ChartData{ X= "Aug", Y= 55 },
+         new ChartData{ X= "Sep", Y= 50 },
+         new ChartData{ X= "Oct", Y= 30 },
+         new ChartData{ X= "Nov", Y= 35 },
+         new ChartData{ X= "Dec", Y= 35 }
+    };
+}

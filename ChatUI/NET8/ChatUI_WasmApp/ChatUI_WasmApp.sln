@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatUI_WasmApp", "ChatUI_WasmApp\ChatUI_WasmApp.csproj", "{EE8FF359-77F0-4B76-AD55-FA2E742F485F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatUI_WasmApp.Client", "ChatUI_WasmApp.Client\ChatUI_WasmApp.Client.csproj", "{00991BB5-126E-4168-990E-C816EE674EBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE8FF359-77F0-4B76-AD55-FA2E742F485F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8FF359-77F0-4B76-AD55-FA2E742F485F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8FF359-77F0-4B76-AD55-FA2E742F485F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8FF359-77F0-4B76-AD55-FA2E742F485F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00991BB5-126E-4168-990E-C816EE674EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00991BB5-126E-4168-990E-C816EE674EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00991BB5-126E-4168-990E-C816EE674EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00991BB5-126E-4168-990E-C816EE674EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1F6F4A0-19DB-4A31-AE4E-610095304E54}
+	EndGlobalSection
+EndGlobal

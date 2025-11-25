@@ -1,0 +1,39 @@
+﻿@page "/ChartTypes/Waterfall/Waterfall"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="XValue" YName="YValue" Type="ChartSeriesType.Waterfall" IntermediateSumIndexes="@index" SumIndexes="@sumIndex">
+            <ChartMarker Height="10" Width="10" Visible="true"></ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    double[] index = new double[] { 4 };
+    double[] sumIndex = new double[] { 8 };
+
+    public class ChartData
+    {
+        public string XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> SalesReports = new List<ChartData>
+    {
+        new ChartData { XValue = "Income", YValue = 4711 },
+        new ChartData { XValue = "Sales", YValue = -1015 },
+        new ChartData { XValue = "Development", YValue = -688 },
+        new ChartData { XValue = "Revenue", YValue = 1030 },
+        new ChartData { XValue = "Balance" },
+        new ChartData { XValue = "Expense", YValue = -361 },
+        new ChartData { XValue = "Tax", YValue = -695 },
+        new ChartData { XValue = "Net Profit" },
+    };
+}

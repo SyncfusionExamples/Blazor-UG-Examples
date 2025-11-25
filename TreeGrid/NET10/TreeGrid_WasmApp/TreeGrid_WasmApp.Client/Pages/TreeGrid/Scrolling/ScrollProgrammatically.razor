@@ -1,0 +1,55 @@
+﻿@page "/treegrid/scrolling/setprogrammatically"
+@rendermode InteractiveWebAssembly
+
+@using TreeGridUGSample.Components.Data;
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Buttons
+<div style="display: flex; align-items: center;">
+    <div style="margin-right: 10px;">
+        ColumnIndex:
+    </div>
+    <div style="display: flex; align-items: center; margin-right: 10px;">
+        <input style="margin-right: 10px;" @bind-value="@ColumnIndex" />
+        <SfButton @onclick="Scroll" Content="Scroll Horizontally"></SfButton>
+    </div>
+</div>
+<div style="display: flex; align-items: center; padding-top: 5px;">
+    <div style="margin-right: 33px;">
+        RowIndex:
+    </div>
+    <div style="display: flex; align-items: center; margin-right: 10px;">
+        <input style="margin-right: 10px;" @bind-value="@RowIndex" />
+        <SfButton @onclick="Scroll" Content="Scroll Vertically"></SfButton>
+    </div>
+</div>
+<SfTreeGrid @ref="TreeGrid" DataSource="@TreeData" RowHeight="35" IdMapping="TaskID" TreeColumnIndex="1" ParentIdMapping="ParentID" Height="400" Width="600">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskID" HeaderText="Jersey No" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD1" HeaderText="Name" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD2" HeaderText="Year" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD3" HeaderText="Stint" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD4" HeaderText="TMID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD5" HeaderText="LGID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD6" HeaderText="GP" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field7" HeaderText="GS" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field8" HeaderText="Minutes" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field9" HeaderText="Points" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+@code {
+    public List<sampleData> TreeData { get; set; }
+    SfTreeGrid<sampleData> TreeGrid { get; set; }
+    public int ColumnIndex { get; set; } = -1;
+    public int RowIndex { get; set; } = -1;
+    public int RowHeight { get; set; } = -1;
+    protected override void OnInitialized()
+    {
+        this.TreeData = sampleData.GetTreeSampleData().ToList();
+    }
+    public async Task Scroll()
+    {
+        await TreeGrid.ScrollIntoViewAsync(ColumnIndex, RowIndex, RowHeight);
+    }
+   
+}

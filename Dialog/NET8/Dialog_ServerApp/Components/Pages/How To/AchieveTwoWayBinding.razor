@@ -1,0 +1,36 @@
+﻿@page "/AchieveTwoWayBinding"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<div id="target" class="col-lg-12 control-section">
+    <div class="row">
+        <SfCheckBox Label="Show/Hide Dialog" @bind-Checked="@Visibility"></SfCheckBox>
+    </div>
+    <SfDialog Width="400px" ShowCloseIcon="true" @bind-Visible="@Visibility">
+        <DialogTemplates>
+            <Header> Update Required!!! </Header>
+            <Content> Would you like to install the latest updates? </Content>
+        </DialogTemplates>
+        <DialogButtons>
+            <DialogButton Content="Update" IsPrimary="true" OnClick="@CloseDialog" />
+            <DialogButton Content="Later" IsPrimary="false" OnClick="@CloseDialog" />
+        </DialogButtons>
+    </SfDialog>
+</div>
+
+<style>
+    #target {
+        min-height: 300px;
+    }
+</style>
+
+@code {
+    private bool Visibility { get; set; } = false;
+
+    private void CloseDialog()
+    {
+        this.Visibility = false;
+    }
+}

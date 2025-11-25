@@ -1,0 +1,35 @@
+﻿@page "/ChartTypes/BarChart/SpaceAndWidth"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="Country" YName="Gold" ColumnSpacing="0.2" ColumnWidth="0.7" Type="ChartSeriesType.Bar">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string Country { get; set; }
+        public double Gold { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData{ Country= "USA", Gold=50  },
+        new ChartData{ Country="China", Gold=40 },
+        new ChartData{ Country= "Japan", Gold=70 },
+        new ChartData{ Country= "Australia", Gold=60},
+        new ChartData{ Country= "France", Gold=50 },
+        new ChartData{ Country= "Germany", Gold=40 },
+        new ChartData{ Country= "Italy", Gold=40 },
+        new ChartData{ Country= "Sweden", Gold=30 }
+    };
+}

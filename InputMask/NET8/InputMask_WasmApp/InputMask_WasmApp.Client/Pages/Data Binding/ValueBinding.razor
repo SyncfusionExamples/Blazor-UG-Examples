@@ -1,0 +1,16 @@
+﻿@page "/DataBindings/ValueBinding"
+<BindingRoute></BindingRoute>
+
+<SfMaskedTextBox Mask="00000" @bind-Value="@MaskValue"></SfMaskedTextBox>
+
+<button @onclick="@UpdateValue">Update Value</button>
+
+@code {
+
+    public string MaskValue { get; set; } = "12345";
+
+    public void UpdateValue()
+    {
+        MaskValue = "67890";
+    }
+}

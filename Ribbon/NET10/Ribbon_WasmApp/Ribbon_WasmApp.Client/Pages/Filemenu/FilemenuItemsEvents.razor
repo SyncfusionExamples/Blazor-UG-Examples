@@ -1,0 +1,71 @@
+@page "/filemenuitemsevents"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon;
+@using Syncfusion.Blazor.SplitButtons;
+@using Syncfusion.Blazor.Navigations;
+
+<FilemenuNav></FilemenuNav>
+
+<div style="width:40%">
+    <SfRibbon>
+        <RibbonFileMenuSettings Visible=true 
+                                MenuItems="@fileMenuItems" 
+                                FileMenuOpening="FileMenuOpening" 
+                                FileMenuClosing="FileMenuClosing" 
+                                FileMenuOpened="FileMenuOpened" 
+                                FileMenuClosed="FileMenuClosed" 
+                                FileMenuItemRendering="FileMenuItemRendering" 
+                                ItemSelecting="ItemSelecting">
+        </RibbonFileMenuSettings>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut" ></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code{
+
+    private void FileMenuOpening(FileMenuOpenEventArgs args) { /* your actions here */ }
+
+    private void FileMenuClosing(FileMenuCloseEventArgs args) { /* your actions here */ }
+
+    private void FileMenuOpened(FileMenuOpenedEventArgs args) { /* your actions here */ }
+
+    private void FileMenuClosed(FileMenuClosedEventArgs args) { /* your actions here */ }
+
+    private void FileMenuItemRendering(FileMenuItemRenderEventArgs args) { /* your actions here */ }
+
+    private void ItemSelecting(FileMenuItemSelectEventArgs args) { /* your actions here */ }
+
+    List<MenuItem> fileMenuItems = new List<MenuItem>()
+    {
+        new MenuItem { Text = "New", IconCss = "e-icons e-file-new", Id = "new" },
+        new MenuItem { Text = "Open", IconCss = "e-icons e-folder-open", Id = "open" },
+        new MenuItem { Text = "Rename", IconCss = "e-icons e-rename", Id = "rename" },
+        new MenuItem {
+            Text = "Save as",
+            IconCss = "e-icons e-save",
+            Id = "save",
+            Items = new List<MenuItem>() {
+                new MenuItem { Text = "Microsoft Word (.docx)", IconCss = "sf-icon-word", Id = "word" },
+                new MenuItem { Text = "Microsoft Word 97-2003(.doc)", IconCss = "sf-icon-word", Id = "word97" },
+                new MenuItem { Text = "Download as PDF", IconCss = "e-icons e-export-pdf", Id = "pdf" }
+            }
+        }
+    };
+}

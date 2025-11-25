@@ -1,0 +1,28 @@
+﻿@page "/IndexValueBinding"
+
+@using Syncfusion.Blazor.DropDowns
+<BindRoute></BindRoute>
+
+<SfComboBox TValue="string" Placeholder="e.g. Australia" TItem="Country" @bind-Index="@ddlIndex" DataSource="@Countries">
+    <ComboBoxFieldSettings Value="Name"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+
+    private int? ddlIndex { get; set; } = 1;
+
+    public class Country
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+    }
+
+    List<Country> Countries = new List<Country>
+    {
+        new Country() { Name = "Australia", Code = "AU" },
+        new Country() { Name = "Bermuda", Code = "BM" },
+        new Country() { Name = "Canada", Code = "CA" },
+        new Country() { Name = "Cameroon", Code = "CM" },
+    };
+}

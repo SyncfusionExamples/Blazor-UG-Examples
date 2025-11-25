@@ -1,0 +1,50 @@
+﻿@page "/MultipleAnnotations"
+
+@using Syncfusion.Blazor.CircularGauge
+<AnnotationRoute></AnnotationRoute>
+
+<SfCircularGauge Height="250px" Width="250px">
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugeRanges>
+                <CircularGaugeRange Start="35"
+                                    End="70"
+                                    Color="blue"
+                                    Opacity="0.2">
+                </CircularGaugeRange>
+            </CircularGaugeRanges>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="50"></CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeAnnotations>
+                <CircularGaugeAnnotation Angle="325" Radius="150%" ZIndex="1">
+                    <ContentTemplate>
+                        <div class="custom-annotation">Speed to get higher milage</div>
+                    </ContentTemplate>
+                </CircularGaugeAnnotation>
+                <CircularGaugeAnnotation Angle="195" ZIndex="1">
+                    <ContentTemplate>
+                        <div class="speed">50</div>
+                    </ContentTemplate>
+                </CircularGaugeAnnotation>
+            </CircularGaugeAnnotations>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>
+<style type="text/css">
+    .speed {
+        color: white;
+        background-color: blue;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        padding: 4px 0 0 6px;
+        font-weight: bold;
+    }
+
+    .custom-annotation {
+        background-color: lightgray;
+        width: 100%;
+        padding: 1px;
+    }
+</style>

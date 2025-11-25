@@ -1,0 +1,40 @@
+﻿@page "/CustomContextMenuItems"
+
+@using Syncfusion.Blazor.Navigations
+<CustomRoute></CustomRoute>
+
+<div id="target">Right click/Touch hold to open the ContextMenu </div>
+<div class="col-lg-12 control-section">
+    <SfContextMenu Target="#target" TValue="MenuItem">
+        <MenuTemplates TValue="MenuItem">
+            <Template>
+                @context.Text
+                <span class="shortcut">@((@context.Text == "Save As...") ? "Ctrl + S" : "Ctrl + Shift + I")</span>
+            </Template>
+        </MenuTemplates>
+        <MenuItems>
+            <MenuItem Text="Save As..."></MenuItem>
+            <MenuItem Text="Inspect"></MenuItem>
+        </MenuItems>
+    </SfContextMenu>
+</div>
+<style>
+    #target {
+        border: 1px dashed;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+        text-align: justify;
+        color: gray;
+        user-select: none;
+    }
+
+    .shortcut {
+        float: right;
+        font-size: 10px;
+        opacity: 0.5;
+    }
+</style>
+@code {
+
+}

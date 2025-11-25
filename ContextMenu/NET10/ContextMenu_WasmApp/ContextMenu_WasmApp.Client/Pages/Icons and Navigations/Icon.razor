@@ -1,0 +1,37 @@
+﻿@page "/Icon"
+
+@using Syncfusion.Blazor.Navigations
+<IconRoute></IconRoute>
+
+<div id="target">Right click/Touch hold to open the Context Menu </div>
+<SfContextMenu Target="#target" TValue="MenuItem">
+    <MenuItems>
+        <MenuItem Text="Cut" IconCss="e-icons e-cut"></MenuItem>
+        <MenuItem Text="Copy" IconCss="e-icons e-copy"></MenuItem>
+        <MenuItem Text="Paste" IconCss="e-icons e-paste"></MenuItem>
+    </MenuItems>
+</SfContextMenu>
+
+<style>
+    #target {
+        border: 1px dashed;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+        text-align: justify;
+        color: gray;
+        user-select: none;
+    }
+
+    .e-cut::before {
+        content: '\e279';
+    }
+
+    .e-copy::before {
+        content: '\e280';
+    }
+
+    .e-paste::before {
+        content: '\e601';
+    }
+</style>

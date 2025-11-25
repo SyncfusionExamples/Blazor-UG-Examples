@@ -1,0 +1,24 @@
+﻿@page "/MultipleRanges"
+
+@using Syncfusion.Blazor.CircularGauge
+<RangeRoute></RangeRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugeRanges>
+                <CircularGaugeRange Start="0" End="25" Radius="108%">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="25" End="50" Radius="70%">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="50" End="75" Radius="70%">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="75" End="100" Radius="108%">
+                </CircularGaugeRange>
+            </CircularGaugeRanges>
+            <CircularGaugeAxisLabelStyle UseRangeColor="true">
+            </CircularGaugeAxisLabelStyle>
+            <CircularGaugeAxisMinorTicks UseRangeColor="true"></CircularGaugeAxisMinorTicks>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

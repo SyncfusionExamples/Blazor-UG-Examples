@@ -1,0 +1,36 @@
+﻿@page "/Tooltip/Sorting"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor.Data
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart Title="Sales History of Product X">
+    <ChartSorting PropertyName="Y" Direction="ListSortDirection.Ascending"></ChartSorting>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="X" YName="YValue" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+        public double Profit { get; set; }
+    }
+
+    public List<ChartData> SalesReports = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46, Profit = 25},
+        new ChartData { X= "GBR", YValue= 30, Profit = 30},
+        new ChartData { X= "CHN", YValue= 25, Profit = 20},
+        new ChartData { X= "UK", YValue= 40, Profit = 15},
+        new ChartData { X= "AUS", YValue= 28, Profit = 10},
+        new ChartData { X= "IND", YValue= 35, Profit = 20},
+        new ChartData { X= "DEN", YValue= 30, Profit = 10},
+        new ChartData { X= "MEX", YValue= 20, Profit = 5},
+    };
+}

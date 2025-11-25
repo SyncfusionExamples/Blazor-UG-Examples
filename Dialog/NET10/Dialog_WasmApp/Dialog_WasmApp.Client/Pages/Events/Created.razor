@@ -1,0 +1,15 @@
+﻿@page "/Created"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents Created="@CreatedHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void CreatedHandler(Object args)
+    {
+        // Here, you can customize your code.
+    }
+}

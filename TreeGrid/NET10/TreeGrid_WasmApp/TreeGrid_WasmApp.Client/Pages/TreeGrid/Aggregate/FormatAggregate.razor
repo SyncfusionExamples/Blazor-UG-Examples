@@ -1,0 +1,43 @@
+﻿@page "/treegrid/aggregate/formataggregate"
+@rendermode InteractiveWebAssembly
+
+@using TreeGridUGSample.Components.Data;
+@using Syncfusion.Blazor.TreeGrid;
+
+<SfTreeGrid DataSource="@TreeGridData" IdMapping="TaskId" ParentIdMapping="ParentId" AllowPaging="true" TreeColumnIndex="1">
+    <TreeGridAggregates>
+        <TreeGridAggregate ShowChildSummary="false">
+            <TreeGridAggregateColumns>
+                <TreeGridAggregateColumn Field="Duration" Type="Syncfusion.Blazor.Grids.AggregateType.Sum" Format="C2">
+                    <FooterTemplate>
+                        @{
+                            var sumvalue = (context as Syncfusion.Blazor.Grids.AggregateTemplateContext);
+                            <div>
+                                <p>Sum: @sumvalue.Sum</p>
+                            </div>
+                        }
+                    </FooterTemplate>
+                </TreeGridAggregateColumn>
+            </TreeGridAggregateColumns>
+        </TreeGridAggregate>
+    </TreeGridAggregates>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="100"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Approved" HeaderText="Approved" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center" DisplayAsCheckBox="true" Width="100">
+        </TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public List<TreeDatas> TreeGridData { get; set; }
+
+    public Syncfusion.Blazor.Grids.AggregateTemplateContext model = new Syncfusion.Blazor.Grids.AggregateTemplateContext();
+
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+}

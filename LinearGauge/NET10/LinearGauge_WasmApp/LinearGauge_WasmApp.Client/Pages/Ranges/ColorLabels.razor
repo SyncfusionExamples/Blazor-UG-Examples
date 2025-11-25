@@ -1,0 +1,17 @@
+﻿@page "/ColorLabels"
+<RangeRoute></RangeRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugeAxisLabelStyle UseRangeColor="true">
+            </LinearGaugeAxisLabelStyle>
+            <LinearGaugeRanges>
+                <LinearGaugeRange Start="20" End="60" Color="red">
+                </LinearGaugeRange>
+            </LinearGaugeRanges>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

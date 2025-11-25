@@ -1,0 +1,63 @@
+﻿@page "/HeaderTemplate"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfComboBox TValue="string" TItem="EmployeeData" Placeholder="Select a customer" DataSource="@Data">
+    <ComboBoxTemplates TItem="EmployeeData">
+        <ItemTemplate>
+            <span class='item'><span class='name'>@((context as EmployeeData).FirstName)</span><span class='city'>@((context as EmployeeData).Country)</span></span>
+        </ItemTemplate>
+        <HeaderTemplate>
+            <span class='head'><span class='name'>Name</span><span class='city'>Country</span></span>
+        </HeaderTemplate>
+    </ComboBoxTemplates>
+    <ComboBoxFieldSettings Value="Country" Text="FirstName"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+        public string Country { get; set; }
+    }
+
+    List<EmployeeData> Data = new List<EmployeeData>
+    {
+        new EmployeeData() { FirstName = "Andrew Fuller",  Country = "England" },
+        new EmployeeData() { FirstName = "Anne Dodsworth", Country = "USA" },
+        new EmployeeData() { FirstName = "Janet Leverling", Country = "USA" },
+        new EmployeeData() { FirstName = "Laura Callahan", Country = "USA"},
+        new EmployeeData() { FirstName = "Margaret Peacock", Country = "USA"},
+        new EmployeeData() { FirstName = "Michael Suyama", Country = "USA", },
+        new EmployeeData() { FirstName = "Nancy Davolio", Country = "USA"},
+        new EmployeeData() { FirstName = "Robert King", Country = "England"},
+        new EmployeeData() { FirstName = "Steven Buchanan", Country = "England"},
+    };
+}
+
+<style>
+    .head, .item {
+        display: table;
+        width: 100%;
+        margin: auto;
+    }
+
+    .head {
+        height: 40px;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .name, .city {
+        display: table-cell;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+    .head .name {
+        text-indent: 16px;
+    }
+
+</style>

@@ -1,0 +1,8 @@
+﻿@page "/ArrayOfString"
+<BindingRoute></BindingRoute>
+
+@using Syncfusion.Blazor.DropDowns
+<SfListBox TValue="string[]" DataSource="@Games" TItem="string"></SfListBox>
+@code {
+    public string[] Games = new string[] { "Badminton", "Cricket", "Football", "Golf", "Tennis", "Basket Ball", "Base Ball", "Hockey", "Volley Ball" };
+}

@@ -1,0 +1,46 @@
+﻿@page "/treegrid/scrolling/stickyheader"
+@rendermode InteractiveWebAssembly
+
+@using TreeGridUGSample.Components.Data;
+@using Syncfusion.Blazor.TreeGrid;
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Grids;
+
+<div>
+	<label>Enable or Disable Sticky Header</label>
+	<SfSwitch ValueChange="Change" TChecked="bool" style="margin-top:5px"></SfSwitch>
+</div>
+
+<div style="height:350px; margin-top:5px">
+	<SfTreeGrid @ref="TreeGrid" DataSource="@TreeData" EnableStickyHeader="@isStickyHeaderEnabled" IdMapping="TaskID" TreeColumnIndex="1" ParentIdMapping="ParentID">
+		<TreeGridColumns>
+			<TreeGridColumn Field="TaskID" HeaderText="Jersey No" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD1" HeaderText="Name" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD2" HeaderText="Year" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD3" HeaderText="Stint" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD4" HeaderText="TMID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD5" HeaderText="LGID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="FIELD6" HeaderText="GP" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="Field7" HeaderText="GS" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="Field8" HeaderText="Minutes" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+			<TreeGridColumn Field="Field9" HeaderText="Points" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+		</TreeGridColumns>
+	</SfTreeGrid>
+</div>
+
+@code {
+	public SfTreeGrid<sampleData> TreeGrid;
+	public List<sampleData> TreeData { get; set; }
+	public bool isStickyHeaderEnabled;
+
+	protected override void OnInitialized()
+	{
+		this.TreeData = sampleData.GetTreeSampleData().ToList();
+	}
+
+	private void Change(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+	{
+		isStickyHeaderEnabled = args.Checked;
+		TreeGrid.RefreshAsync();
+	}
+}

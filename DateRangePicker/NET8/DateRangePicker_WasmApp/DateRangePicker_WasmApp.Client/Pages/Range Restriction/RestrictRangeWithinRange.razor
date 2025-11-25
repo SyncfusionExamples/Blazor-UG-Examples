@@ -1,0 +1,11 @@
+﻿@page "/RestrictRangeWithinRange"
+
+@using Syncfusion.Blazor.Calendars
+<RangeRoute></RangeRoute>
+
+<SfDateRangePicker TValue="DateTime?" Min='@MinDate' Max='@MaxDate'></SfDateRangePicker>
+
+@code {
+    public DateTime MinDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15);
+    public DateTime MaxDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 15);
+}

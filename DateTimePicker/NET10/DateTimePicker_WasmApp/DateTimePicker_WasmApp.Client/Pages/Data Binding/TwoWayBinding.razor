@@ -1,0 +1,12 @@
+﻿@page "/TwoWayBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<p>DateTimePicker value is: @DateValue</p>
+
+<SfDateTimePicker TValue="DateTime?" @bind-Value="@DateValue"></SfDateTimePicker>
+
+@code {
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+}

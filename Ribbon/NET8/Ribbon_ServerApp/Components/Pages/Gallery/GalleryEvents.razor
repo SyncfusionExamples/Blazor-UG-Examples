@@ -1,0 +1,76 @@
+@page "/galleryevents"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon
+
+<GalleryNav></GalleryNav>
+
+<div style="width:25%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                    <RibbonGroup HeaderText="Gallery">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Gallery>
+                                        <RibbonGallerySettings Groups="galleryGroups"
+                                                               PopupOpening="PopupOpening"
+                                                               PopupClosing="PopupClosing"
+                                                               ItemRendering="ItemRendering"
+                                                               ItemHover="ItemHover"
+                                                               Selecting="Selecting"
+                                                               Selected="Selected">
+                                        </RibbonGallerySettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    
+    private void PopupOpening(GalleryPopupOpenEventArgs args) { /* your actions here */ }
+
+    private void PopupClosing(GalleryPopupCloseEventArgs args) { /* your actions here */ }
+
+    private void ItemHover(GalleryItemHoverEventArgs args) { /* your actions here */ }
+
+    private void ItemRendering(GalleryItemRenderEventArgs args) { /* your actions here */ }
+
+    private void Selecting(GallerySelectEventArgs args) { /* your actions here */ }
+
+    private void Selected(GallerySelectedEventArgs args) { /* your actions here */ }
+
+    List<GalleryGroup> galleryGroups = new List<GalleryGroup>
+    {
+        new GalleryGroup
+        {
+            Header = "Title and Headings",
+            Items = new List<GalleryItem>
+            {
+                new GalleryItem { Content = "Heading 1" },
+                new GalleryItem { Content = "Heading 2" },
+                new GalleryItem { Content = "Heading 3" },
+                new GalleryItem { Content = "Heading 4" }
+            }
+        },
+    };
+}

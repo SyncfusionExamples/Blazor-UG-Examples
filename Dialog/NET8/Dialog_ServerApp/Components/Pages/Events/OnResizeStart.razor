@@ -1,0 +1,15 @@
+﻿@page "/OnResizeStart"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents OnResizeStart="@OnResizeStartHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void OnResizeStartHandler(MouseEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

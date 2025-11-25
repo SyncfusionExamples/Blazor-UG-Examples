@@ -1,0 +1,16 @@
+﻿@page "/Focus"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateTimePicker TValue="DateTime?">
+    <DateTimePickerEvents TValue="DateTime?" Focus="FocusHandler"></DateTimePickerEvents>
+</SfDateTimePicker>
+
+@code {
+
+    public void FocusHandler(object args)
+    {
+        // Here, you can customize your code.
+    }
+}

@@ -1,0 +1,91 @@
+@page "/comboboxevents"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.DropDowns
+
+<ItemsNav></ItemsNav>
+
+<div style="width:50%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup Orientation=Orientation.Row HeaderText="Font">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.ComboBox>
+                                        <RibbonComboBoxSettings @bind-Value="@fontFamValue" ShowClearButton="true" AllowFiltering=true DataSource="@fontFamilyItems" FieldSettings="@fieldSetings"
+                                        PopupOpening="PopupOpening" 
+                                        PopupClosing="PopupClosing" 
+                                        PopupOpened="PopupOpened" 
+                                        PopupClosed="PopupClosed" 
+                                        Filtering="Filtering" 
+                                        Selecting="Selecting" 
+                                        ValueChange="ValueChange">
+                                        </RibbonComboBoxSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.ComboBox>
+                                        <RibbonComboBoxSettings Index="3" AllowFiltering=true DataSource="@fontSizeItems" FieldSettings="@fieldSetings"></RibbonComboBoxSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+
+    public string fontFamValue { get; set; } = "Cambria";
+
+    private class ComboBoxItem
+    {
+        public string Text { get; set; }
+        public string Value { get; set; }
+    }
+
+    FieldSettingsModel fieldSetings = new FieldSettingsModel
+    {
+        Text = "Text",
+        Value = "Value"
+    };
+
+    List<ComboBoxItem> fontFamilyItems = new List<ComboBoxItem>
+    {
+        new ComboBoxItem { Text = "Algerian", Value = "Algerian" },
+        new ComboBoxItem { Text = "Arial", Value = "Arial" },
+        new ComboBoxItem { Text = "Calibri", Value = "Calibri" },
+        new ComboBoxItem { Text = "Cambria", Value = "Cambria" },
+        new ComboBoxItem { Text = "Cambria Math", Value = "Cambria Math" },
+    };
+
+    List<ComboBoxItem> fontSizeItems = new List<ComboBoxItem>
+    {
+        new ComboBoxItem { Text = "8", Value = "8" },
+        new ComboBoxItem { Text = "9", Value = "9" },
+        new ComboBoxItem { Text = "10", Value = "10" },
+        new ComboBoxItem { Text = "11", Value = "11" },
+        new ComboBoxItem { Text = "12", Value = "12" },
+    };
+
+    private void PopupOpening(ComboBoxPopupOpenEventArgs args) { /* your actions here */ }
+
+    private void PopupClosing(ComboBoxPopupCloseEventArgs args) { /* your actions here */ }
+
+    private void PopupOpened(ComboBoxPopupOpenedEventArgs args) { /* your actions here */ }
+
+    private void PopupClosed(ComboBoxPopupClosedEventArgs args) { /* your actions here */ }
+
+    private void Filtering(ComboBoxFilterEventArgs args) { /* your actions here */ }
+
+    private void Selecting(ComboBoxSelectEventArgs args) { /* your actions here */ }
+
+    private void ValueChange(ComboBoxChangeEventArgs args) { /* your actions here */ }
+
+}

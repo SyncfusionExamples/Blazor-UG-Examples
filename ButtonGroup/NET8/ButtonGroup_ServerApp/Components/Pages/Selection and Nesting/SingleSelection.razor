@@ -1,0 +1,14 @@
+﻿@page "/SingleSelection"
+
+@using Syncfusion.Blazor.SplitButtons
+<SelectionRoute></SelectionRoute>
+
+<SfButtonGroup Mode="Syncfusion.Blazor.SplitButtons.SelectionMode.Single">
+    <ButtonGroupButton>Left</ButtonGroupButton>
+    <ButtonGroupButton @bind-Selected="@centerSelected">Center</ButtonGroupButton>
+    <ButtonGroupButton>Right</ButtonGroupButton>
+</SfButtonGroup>
+
+@code {
+    private bool centerSelected = true;
+}

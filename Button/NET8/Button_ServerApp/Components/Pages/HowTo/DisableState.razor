@@ -1,0 +1,16 @@
+﻿@page "/DisableState"
+
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton Disabled="@disable" @ref="ButtonObj">Disabled</SfButton>
+<SfButton OnClick="click">Enable</SfButton>
+
+@code {
+    SfButton ButtonObj;
+    private Boolean disable = true;
+    public void click()
+    {
+        disable = false;
+    }
+}

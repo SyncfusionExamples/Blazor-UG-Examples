@@ -1,0 +1,39 @@
+﻿@page "/Annotation/ChartSubTitle"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AnnotationsRoute></AnnotationsRoute>
+<br/>
+<SfChart Title="Olympic Medals" SubTitle="Medals">
+    <ChartSubTitleStyle FontFamily="Arial" FontStyle="italic" FontWeight="regular" Size="18px" Color="red"></ChartSubTitleStyle>
+
+    <ChartTitleStyle FontFamily="Arial" FontStyle="italic" FontWeight="regular" Size="23px" Color="red"></ChartTitleStyle>
+
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="Country" YName="Gold" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string Country { get; set; }
+        public double Gold { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData{ Country= "USA", Gold=50  },
+        new ChartData{ Country="China", Gold=40 },
+        new ChartData{ Country= "Japan", Gold=70 },
+        new ChartData{ Country= "Australia", Gold=60},
+        new ChartData{ Country= "France", Gold=50 },
+        new ChartData{ Country= "Germany", Gold=40 },
+        new ChartData{ Country= "Italy", Gold=40 },
+        new ChartData{ Country= "Sweden", Gold=30 }
+    };
+}

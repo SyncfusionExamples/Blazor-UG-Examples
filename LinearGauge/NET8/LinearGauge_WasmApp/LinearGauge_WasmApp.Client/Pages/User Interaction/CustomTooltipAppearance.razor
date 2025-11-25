@@ -1,0 +1,23 @@
+﻿@page "/CustomTooltipAppearance"
+<UserRoute></UserRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugeTooltipSettings Enable="true" Format="Speed: {value}"
+                                        Fill="lightgray" EnableAnimation="true">
+                <LinearGaugeTooltipBorder Color="darkgray" Width="1">
+                </LinearGaugeTooltipBorder>
+                <LinearGaugeTooltipTextStyle Color="blue" FontStyle="italic"
+                                             FontWeight="bold">
+                </LinearGaugeTooltipTextStyle>
+            </LinearGaugeTooltipSettings>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="40">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

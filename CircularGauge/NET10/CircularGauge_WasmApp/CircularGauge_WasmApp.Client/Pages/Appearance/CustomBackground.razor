@@ -1,0 +1,29 @@
+﻿@page "/CustomBackground"
+
+@using Syncfusion.Blazor.CircularGauge
+<AppearanceRoute></AppearanceRoute>
+
+<SfCircularGauge Background="skyblue">
+    <CircularGaugeBorder Color="#FF0000"
+                         Width="2">
+    </CircularGaugeBorder>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugeRanges>
+                <CircularGaugeRange Start="1"
+                                    End="50"
+                                    Radius="110%">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="80"
+                                    End="100"
+                                    Radius="110%">
+                </CircularGaugeRange>
+            </CircularGaugeRanges>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="50"
+                                      Radius="60%">
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

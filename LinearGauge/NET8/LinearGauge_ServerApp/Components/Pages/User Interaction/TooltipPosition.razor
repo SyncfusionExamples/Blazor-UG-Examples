@@ -1,0 +1,17 @@
+﻿@page "/TooltipPosition"
+<UserRoute></UserRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeTooltipSettings Enable="true" Position="Syncfusion.Blazor.LinearGauge.TooltipPosition.Center">
+    </LinearGaugeTooltipSettings>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="50" Type="Point.Bar" Color="blue">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

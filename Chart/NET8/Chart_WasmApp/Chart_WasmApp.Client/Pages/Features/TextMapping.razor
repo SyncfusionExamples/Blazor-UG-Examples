@@ -1,0 +1,34 @@
+﻿@page "/Features/TextMapping"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<FeatureRoute></FeatureRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.Column">
+            <ChartMarker>
+                <ChartDataLabel Visible="true" Name="Text"></ChartDataLabel>
+            </ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class Data
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+        public string Text { get; set; }
+    }
+
+    public List<Data> WeatherReports = new List<Data>
+    {
+       new Data{ X= "Jan", Y= 3, Text= "January" },
+       new Data{ X= "Feb", Y= 3.5, Text= "February" },
+       new Data{ X= "Mar", Y= 7, Text= "March" },
+       new Data{ X= "Apr", Y= 13.5, Text= "April" }
+    };
+}

@@ -1,0 +1,70 @@
+﻿@page "/ShowPreviewofSlide"
+
+@using Syncfusion.Blazor.Navigations
+<NavigationRoute></NavigationRoute>
+
+<div class="control-container">
+    <SfCarousel CssClass="template-carousel">
+        <ChildContent>
+            @foreach (Bird bird in birds)
+            {
+                <CarouselItem>
+                    <figure class="img-container">
+                        <img src="@("https://ej2.syncfusion.com/products/images/carousel/" + bird.ImageName + ".png")" alt="@bird.ImageName" style="height:100%;width:100%;" />
+                    </figure>
+                </CarouselItem>
+            }
+        </ChildContent>
+        <IndicatorsTemplate>
+            <div class="indicator">
+                <img src="@("https://ej2.syncfusion.com/products/images/carousel/" + previewImage[context.Index] + ".png")" alt="image" style="height:100%;width:100%;" />
+            </div>
+        </IndicatorsTemplate>
+    </SfCarousel>
+</div>
+@code {
+    private List<string> previewImage = new List<string>() { "cardinal", "hunei", "costa-rica", "kaohsiung", "bee-eater" };
+    public List<Bird> birds = new List<Bird> {
+        new Bird { ID = 1, Name = "Cardinal", ImageName = "cardinal" },
+        new Bird { ID = 2, Name = "Kingfisher", ImageName = "hunei" },
+        new Bird { ID = 3, Name = "Keel-billed-toucan", ImageName = "costa-rica" },
+        new Bird { ID = 4, Name = "Yellow-warbler", ImageName = "kaohsiung" },
+        new Bird { ID = 5, Name = "Bee-eater", ImageName = "bee-eater" }
+    };
+
+    public class Bird
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string ImageName { get; set; }
+    }
+}
+<style>
+    .control-container {
+        margin: 0 auto 2em;
+        max-width: 500px;
+        height: 350px;
+    }
+
+    .template-carousel .e-carousel-items,
+    .template-carousel .e-carousel-navigators {
+        height: calc(100% - 3rem);
+    }
+
+    .template-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar .indicator {
+        background-color: #ECECEC;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        height: 2rem;
+        margin: 0.6rem;
+        width: 3rem;
+    }
+
+        .template-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar .indicator img {
+            padding: 2px;
+        }
+
+    .template-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar.e-active .indicator {
+        background-color: #3C78EF;
+    }
+</style>

@@ -1,0 +1,15 @@
+﻿@page "/Closed"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents Closed="@ClosedHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void ClosedHandler(CloseEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

@@ -1,0 +1,48 @@
+﻿@page "/CreateNestedDialog"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton @onclick="@OpenParentDialog">Open Parent Dialog</SfButton>
+
+<SfDialog ID="innerDialog" Width="250px" MinHeight="150px" ShowCloseIcon="true" Target="@Target" @bind-Visible="@IsVisibleChild">
+    <DialogTemplates>
+        <Header> Inner Dialog </Header>
+        <Content> This is a Nested Dialog </Content>
+    </DialogTemplates>
+    <DialogPositionData X="center" Y="center"></DialogPositionData>
+</SfDialog>
+
+<SfDialog ID="dialog" Width="400px" Height="300px" ShowCloseIcon="true" @bind-Visible="@IsVisibleParent">
+    <DialogTemplates>
+        <Header> Outer Dialog </Header>
+        <Content>
+            <SfButton @onclick="@OpenChildDialog">Open Inner Dialog</SfButton>
+        </Content>
+    </DialogTemplates>
+    <DialogPositionData X="center" Y="center"></DialogPositionData>
+</SfDialog>
+
+<style>
+    .content {
+        padding: 10px;
+    }
+</style>
+
+@code {
+    private string Target { get; set; } = "body";
+    private bool IsVisibleParent { get; set; } = true;
+    private bool IsVisibleChild { get; set; } = false;
+
+    private void OpenParentDialog()
+    {
+        this.IsVisibleParent = true;
+    }
+
+    private void OpenChildDialog()
+    {
+        this.Target = "#dialog.e-dialog";
+        this.IsVisibleChild = true;
+    }
+}

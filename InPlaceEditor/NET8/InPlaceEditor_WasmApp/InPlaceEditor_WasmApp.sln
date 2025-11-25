@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InPlaceEditor_WasmApp", "InPlaceEditor_WasmApp\InPlaceEditor_WasmApp.csproj", "{60C83EFC-F9F5-4A08-8CBE-53152DE23DD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InPlaceEditor_WasmApp.Client", "InPlaceEditor_WasmApp.Client\InPlaceEditor_WasmApp.Client.csproj", "{03EC9662-69A3-4370-BD0A-50132ABD2BBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60C83EFC-F9F5-4A08-8CBE-53152DE23DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60C83EFC-F9F5-4A08-8CBE-53152DE23DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60C83EFC-F9F5-4A08-8CBE-53152DE23DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60C83EFC-F9F5-4A08-8CBE-53152DE23DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03EC9662-69A3-4370-BD0A-50132ABD2BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03EC9662-69A3-4370-BD0A-50132ABD2BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03EC9662-69A3-4370-BD0A-50132ABD2BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03EC9662-69A3-4370-BD0A-50132ABD2BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {022E5AD3-B690-4195-8295-53AB62725A74}
+	EndGlobalSection
+EndGlobal

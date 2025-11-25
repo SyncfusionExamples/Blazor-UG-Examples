@@ -1,0 +1,34 @@
+﻿@page "/Chart/CustomLabel"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<ChartsRoute></ChartsRoute>
+<br />
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime"/>    
+
+    <ChartPrimaryYAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Logarithmic" LabelFormat="${value}K" RangePadding="ChartRangePadding.Auto"/> 
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@Data" XName="XValue" YName="YValue" />        
+    </ChartSeriesCollection>
+</SfChart>
+
+@code{
+    public class ChartData
+    {
+        public DateTime XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> Data = new List<ChartData> 
+	{
+		new ChartData { XValue = new DateTime(2005, 01, 01), YValue = 100   },
+		new ChartData { XValue = new DateTime(2006, 01, 01), YValue = 200   },
+		new ChartData { XValue = new DateTime(2007, 01, 01), YValue = 500   },
+		new ChartData { XValue = new DateTime(2008, 01, 01), YValue = 1000  },
+		new ChartData { XValue = new DateTime(2009, 01, 01), YValue = 8000  },
+		new ChartData { XValue = new DateTime(2010, 01, 01), YValue = 90000 },
+		new ChartData { XValue = new DateTime(2011, 01, 01), YValue = 99000 },
+	};
+}

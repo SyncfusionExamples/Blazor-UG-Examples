@@ -1,0 +1,26 @@
+﻿@page "/Virtual"
+
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Data
+
+<SfComboBox TValue="string" TItem="Record" Placeholder="Select an item" DataSource="@Records" Query="@LocalDataQuery" PopupHeight="130px" EnableVirtualization="true">
+    <ComboBoxFieldSettings Text="Text" Value="ID"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public Query LocalDataQuery = new Query().Take(6);
+    public class Record
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+    public List<Record> Records { get; set; }
+    protected override void OnInitialized()
+    {
+        this.Records = Enumerable.Range(1, 150).Select(i => new Record()
+            {
+                ID = i.ToString(),
+                Text = "Item " + i,
+            }).ToList();
+    }
+}

@@ -1,0 +1,10 @@
+﻿@page "/DisableDatePicker"
+
+@using Syncfusion.Blazor.Calendars
+<HowToRoute></HowToRoute>
+
+<SfDatePicker TValue="DateTime?" Enabled=false Value="@DateValue"></SfDatePicker>
+
+@code {
+    public DateTime? DateValue { get; set; } = DateTime.Now;
+}

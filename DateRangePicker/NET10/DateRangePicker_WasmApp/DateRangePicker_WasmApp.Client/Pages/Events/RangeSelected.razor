@@ -1,0 +1,16 @@
+﻿@page "/RangeSelected"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateRangePicker TValue="DateTime?">
+    <DateRangePickerEvents TValue="DateTime?" RangeSelected="RangeSelectHandler"></DateRangePickerEvents>
+</SfDateRangePicker>
+
+@code {
+
+    public void RangeSelectHandler(RangePickerEventArgs<DateTime?> args)
+    {
+        // Here, you can customize your code.
+    }
+}

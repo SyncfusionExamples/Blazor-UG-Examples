@@ -1,0 +1,40 @@
+﻿@page "/ChartTypes/BarChart/GroupStackedBar"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@DataSource" StackingGroup="Group1" XName="X" YName="YValue" Type="ChartSeriesType.StackingBar">
+        </ChartSeries>
+        <ChartSeries DataSource="@DataSource" StackingGroup="Group1" XName="X" YName="YValue1" Type="ChartSeriesType.StackingBar">
+        </ChartSeries>
+        <ChartSeries DataSource="@DataSource" StackingGroup="Group2" XName="X" YName="YValue2" Type="ChartSeriesType.StackingBar">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+        public double YValue1 { get; set; }
+        public double YValue2 { get; set; }
+    }
+
+    public List<ChartData> DataSource = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46, YValue1=56, YValue2=26},
+        new ChartData { X= "GBR", YValue= 27, YValue1=17, YValue2=37},
+        new ChartData { X= "CHN", YValue= 26, YValue1=36, YValue2=56},
+        new ChartData { X= "UK", YValue= 56,  YValue1=16, YValue2=36},
+        new ChartData { X= "AUS", YValue= 12, YValue1=46, YValue2=26},
+        new ChartData { X= "IND", YValue= 26, YValue1=16, YValue2=76},
+        new ChartData { X= "DEN", YValue= 26, YValue1=12, YValue2=42},
+        new ChartData { X= "MEX", YValue= 34, YValue1=32, YValue2=82 },
+    };
+}

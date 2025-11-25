@@ -1,0 +1,19 @@
+﻿@page "/CustomButtonAppearance"
+
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton CssClass="e-custom">CUSTOM</SfButton>
+
+<style>
+    .e-custom {
+        border-radius: 0;
+        height: 30px;
+        width: 80px;
+    }
+
+        .e-custom, .e-custom:hover, .e-custom:focus, .e-custom:active {
+            background-color: #ff6e40;
+            color: #fff;
+        }
+</style>

@@ -1,0 +1,46 @@
+@page "/events"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon
+
+<EventsNav></EventsNav>
+
+<div style="width:25%">
+    <SfRibbon Created="Created" TabSelecting="TabSelecting" TabSelected="TabSelected" RibbonExpanding="RibbonExpanding" RibbonCollapsing="RibbonCollapsing" LauncherIconClick="LauncherIconClick" OverflowPopupOpening="OverflowPopupOpening" OverflowPopupClosing="OverflowPopupClosing">
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button AllowedSizes="RibbonItemSize.Large">
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    private void Created() { /* your actions here */ }
+
+    private void TabSelecting(TabSelectingEventArgs args) { /* your actions here */ }
+
+    private void TabSelected(TabSelectedEventArgs args) { /* your actions here */ }
+
+    private void RibbonExpanding(ExpandEventArgs args) { /* your actions here */ }
+
+    private void RibbonCollapsing(CollapseEventArgs args) { /* your actions here */ }
+
+    private void LauncherIconClick(LauncherClickEventArgs args) { /* your actions here */ }
+
+    private void OverflowPopupOpening(OverflowPopupEventArgs args) { /* your actions here */ }
+
+    private void OverflowPopupClosing(OverflowPopupEventArgs args) { /* your actions here */ }
+}

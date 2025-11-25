@@ -1,0 +1,18 @@
+﻿@page "/NormalContainer"
+<AppearanceRoute></AppearanceRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeContainer Width="30">
+        <LinearGaugeAxes>
+            <LinearGaugeAxis>
+                <LinearGaugePointers>
+                    <LinearGaugePointer PointerValue="50" Width="15" Type="Point.Bar"
+                                        Color="#a6a6a6">
+                    </LinearGaugePointer>
+                </LinearGaugePointers>
+            </LinearGaugeAxis>
+        </LinearGaugeAxes>
+    </LinearGaugeContainer>
+</SfLinearGauge>

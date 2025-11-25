@@ -1,0 +1,18 @@
+﻿@page "/CreateMenuWithRoundedCorner"
+
+@using Syncfusion.Blazor.SplitButtons
+<HowToRoute></HowToRoute>
+
+<SfDropDownButton CssClass="e-round-corner" Content="Clipboard">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Edit"></DropDownMenuItem>
+        <DropDownMenuItem Text="Copy"></DropDownMenuItem>
+        <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+    .e-round-corner {
+        border-radius: 5px;
+    }
+</style>

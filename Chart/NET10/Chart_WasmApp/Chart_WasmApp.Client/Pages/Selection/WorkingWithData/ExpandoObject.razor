@@ -1,0 +1,30 @@
+﻿@page "/Selection/WorkingWithData/Expand"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+@using System.Dynamic
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="Y" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    private List<string> countries = new List<string> { "South Korea", "India", "Germany", "Italy", "Russia" };
+    private Random randomNum = new Random();
+    public List<ExpandoObject> MedalDetails { get; set; } = new List<ExpandoObject>();
+    protected override void OnInitialized()
+    {
+        MedalDetails = Enumerable.Range(0, 5).Select((x) =>
+        {
+            dynamic d = new ExpandoObject();
+            d.X = countries[x];
+            d.Y = randomNum.Next(20, 80);
+            return d;
+        }).Cast<ExpandoObject>().ToList<ExpandoObject>();
+    }
+}

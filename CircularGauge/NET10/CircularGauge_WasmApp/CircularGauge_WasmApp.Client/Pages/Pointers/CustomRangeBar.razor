@@ -1,0 +1,22 @@
+﻿@page "/CustomRangeBar"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="46"
+                                      Type="PointerType.RangeBar"
+                                      PointerWidth="8"
+                                      Radius="95%"
+                                      Color="lightgray">
+                    <CircularGaugePointerBorder Color="darkgray"
+                                                Width="2">
+                    </CircularGaugePointerBorder>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

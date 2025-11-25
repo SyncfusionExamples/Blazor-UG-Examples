@@ -1,0 +1,127 @@
+﻿@page "/Indicators/Stochastic"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<IndicatorRoute></IndicatorRoute>
+<br/>
+<SfChart Title="AAPL - 2012-2017">
+
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Title="months" IntervalType="IntervalType.Months">
+        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+        <ChartAxisCrosshairTooltip Enable="true"></ChartAxisCrosshairTooltip>
+    </ChartPrimaryXAxis>
+
+    <ChartPrimaryYAxis Title="Price" LabelFormat="${value}M" Minimum="50"
+                       Maximum="170" Interval="30" RowIndex="1" OpposedPosition="true">
+        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+    </ChartPrimaryYAxis>
+
+    <ChartAxes>
+        <ChartAxis Name="secondary" OpposedPosition="true" RowIndex="0" Interval="60"
+                   Minimum="0" Maximum="120" Title="Stochastic">
+            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+            <ChartStriplines>
+                <ChartStripline ZIndex="ZIndex.Behind" Start="0" End="120" Text="" Color="black" Visible="true" Opacity="0.03"></ChartStripline>
+            </ChartStriplines>
+        </ChartAxis>
+    </ChartAxes>
+
+    <ChartRows>
+        <ChartRow Height="40%"></ChartRow>
+        <ChartRow Height="60%"></ChartRow>
+    </ChartRows>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@StockDetails" XName="X" YName="Y" Low="Low" High="High" Close="Close" Volume="Volume" Open="Open"
+                     Width="2" Name="Apple Inc" Type="ChartSeriesType.Candle">
+        </ChartSeries>
+    </ChartSeriesCollection>
+
+    <ChartIndicators>
+        <ChartIndicator Type="TechnicalIndicators.Stochastic" Field="FinancialDataFields.Close" SeriesName="Apple Inc" Fill="blue" Period=3
+                        YAxisName="secondary" KPeriod="2" DPeriod="3" ShowZones="true">
+            <ChartIndicatorPeriodLine Color="yellow"></ChartIndicatorPeriodLine>
+            <ChartIndicatorUpperLine Color="red"></ChartIndicatorUpperLine>
+            <ChartIndicatorLowerLine Color="green"></ChartIndicatorLowerLine>
+        </ChartIndicator>
+    </ChartIndicators>
+
+    <ChartLegendSettings Visible="false" />
+</SfChart>
+
+@code {
+
+    public class Data
+    {
+        public DateTime X { get; set; }
+        public double High { get; set; }
+        public double Low { get; set; }
+        public double Open { get; set; }
+        public double Close { get; set; }
+        public double Volume { get; set; }
+    }
+
+    public List<Data> StockDetails = new List<Data>
+    {
+        new Data{X= new DateTime(2012,10,15), Open= 90.3357, High= 93.2557, Low= 87.0885,Close= 87.12,Volume= 646996264},
+        new Data{X= new DateTime(2012,10,22), Open= 87.4885, High= 90.7685, Low= 84.4285,Close= 86.2857,Volume= 866040680 },
+        new Data{X= new DateTime(2012,10,29), Open= 84.9828, High= 86.1428, Low= 82.1071,Close= 82.4,Volume= 367371310},
+        new Data{X= new DateTime(2012,11,05), Open= 83.3593, High= 84.3914, Low= 76.2457,Close= 78.1514,Volume= 919719846},
+        new Data{X= new DateTime(2012,11,12), Open= 79.1643, High= 79.2143, Low= 72.25,Close= 75.3825,Volume= 894382149},
+        new Data{X= new DateTime(2012,11,19), Open= 77.2443, High= 81.7143, Low= 77.1257,Close= 81.6428,Volume= 527416747},
+        new Data{X= new DateTime(2012,11,26), Open= 82.2714, High= 84.8928, Low= 81.7514,Close= 83.6114,Volume= 646467974},
+        new Data{X= new DateTime(2012,12,03), Open= 84.8071, High= 84.9414, Low= 74.09,Close= 76.1785,Volume= 980096264},
+        new Data{X= new DateTime(2012,12,10), Open= 75, High= 78.5085, Low= 72.2257,Close= 72.8277,Volume= 835016110},
+        new Data{X= new DateTime(2012,12,17), Open= 72.7043, High= 76.4143, Low= 71.6043,Close= 74.19,Volume= 726150329},
+        new Data{X= new DateTime(2012,12,24), Open= 74.3357, High= 74.8928, Low= 72.0943,Close= 72.7984,Volume= 321104733},
+        new Data{X= new DateTime(2012,12,31), Open= 72.9328, High= 79.2857, Low= 72.7143,Close= 75.2857,Volume= 540854882},
+        new Data{X= new DateTime(2013,01,07), Open= 74.5714, High= 75.9843, Low= 73.6,Close= 74.3285,Volume= 574594262},
+        new Data{X= new DateTime(2013,01,14), Open= 71.8114, High= 72.9643, Low= 69.0543,Close= 71.4285,Volume= 803105621},
+        new Data{X= new DateTime(2013,01,21), Open= 72.08, High= 73.57, Low= 62.1428,Close= 62.84,Volume= 971912560},
+        new Data{X= new DateTime(2013,01,28), Open= 62.5464, High= 66.0857, Low= 62.2657,Close= 64.8028,Volume= 656549587},
+        new Data{X= new DateTime(2013,02,04), Open= 64.8443, High= 68.4014, Low= 63.1428,Close= 67.8543,Volume= 743778993},
+        new Data{X= new DateTime(2013,02,11), Open= 68.0714, High= 69.2771, Low= 65.7028,Close= 65.7371,Volume= 585292366},
+        new Data{X= new DateTime(2013,02,18), Open= 65.8714, High= 66.1043, Low= 63.26,Close= 64.4014,Volume= 421766997},
+        new Data{X= new DateTime(2013,02,25), Open= 64.8357, High= 65.0171, Low= 61.4257,Close= 61.4957,Volume= 582741215},
+        new Data{X= new DateTime(2013,03,04), Open= 61.1143, High= 62.2043, Low= 59.8571,Close= 61.6743,Volume= 632856539},
+        new Data{X= new DateTime(2013,03,11), Open= 61.3928, High= 63.4614, Low= 60.7343,Close= 63.38,Volume= 572066981},
+        new Data{X= new DateTime(2013,03,18), Open= 63.0643, High= 66.0143, Low= 63.0286,Close= 65.9871,Volume= 552156035},
+        new Data{X= new DateTime(2013,03,25), Open= 66.3843, High= 67.1357, Low= 63.0886,Close= 63.2371,Volume= 390762517},
+        new Data{X= new DateTime(2013,04,01), Open= 63.1286, High= 63.3854, Low= 59.9543,Close= 60.4571,Volume= 505273732},
+        new Data{X= new DateTime(2013,04,08), Open= 60.6928, High= 62.57, Low= 60.3557,Close= 61.4,Volume= 387323550},
+        new Data{X= new DateTime(2013,04,15), Open= 61, High= 61.1271, Low= 55.0143,Close= 55.79,Volume= 709945604},
+        new Data{X= new DateTime(2013,04,22), Open= 56.0914, High= 59.8241, Low= 55.8964,Close= 59.6007,Volume= 787007506},
+        new Data{X= new DateTime(2013,04,29), Open= 60.0643, High= 64.7471, Low= 60,Close= 64.2828,Volume= 655020017},
+        new Data{X= new DateTime(2013,05,06), Open= 65.1014, High= 66.5357, Low= 64.3543,Close= 64.71,Volume= 545488533},
+        new Data{X= new DateTime(2013,05,13), Open= 64.5014, High= 65.4143, Low= 59.8428,Close= 61.8943,Volume= 633706550},
+        new Data{X= new DateTime(2013,05,20), Open= 61.7014, High= 64.05, Low= 61.4428,Close= 63.5928,Volume= 494379068},
+        new Data{X= new DateTime(2013,05,27), Open= 64.2714, High= 65.3, Low= 62.7714,Close= 64.2478,Volume= 362907830},
+        new Data{X= new DateTime(2013,06,03), Open= 64.39, High= 64.9186, Low= 61.8243,Close= 63.1158,Volume= 443249793},
+        new Data{X= new DateTime(2013,06,10), Open= 63.5328, High= 64.1541, Low= 61.2143,Close= 61.4357,Volume= 389680092},
+        new Data{X= new DateTime(2013,06,17), Open= 61.6343, High= 62.2428, Low= 58.3,Close= 59.0714,Volume= 400384818},
+        new Data{X= new DateTime(2013,06,24), Open= 58.2, High= 58.38, Low= 55.5528,Close= 56.6471,Volume= 519314826},
+        new Data{X= new DateTime(2013,07,01), Open= 57.5271, High= 60.47, Low= 57.3171,Close= 59.6314,Volume= 343878841},
+        new Data{X= new DateTime(2013,07,08), Open= 60.0157, High= 61.3986, Low= 58.6257,Close= 60.93,Volume= 384106977},
+        new Data{X= new DateTime(2013,07,15), Open= 60.7157, High= 62.1243, Low= 60.5957,Close= 60.7071,Volume= 286035513},
+        new Data{X= new DateTime(2013,07,22), Open= 61.3514, High= 63.5128, Low= 59.8157,Close= 62.9986,Volume= 395816827},
+        new Data{X= new DateTime(2013,07,29), Open= 62.9714, High= 66.1214, Low= 62.8857,Close= 66.0771,Volume= 339668858},
+        new Data{X= new DateTime(2013,08,12), Open= 65.2657, High= 72.0357, Low= 65.2328,Close= 71.7614,Volume= 711563584},
+        new Data{X= new DateTime(2013,08,19), Open= 72.0485, High= 73.3914, Low= 71.1714,Close= 71.5743,Volume= 417119660},
+        new Data{X= new DateTime(2013,08,26), Open= 71.5357, High= 72.8857, Low= 69.4286,Close= 69.6023,Volume= 392805888},
+        new Data{X= new DateTime(2013,09,02), Open= 70.4428, High= 71.7485, Low= 69.6214,Close= 71.1743,Volume= 317244380},
+        new Data{X= new DateTime(2013,09,09), Open= 72.1428, High= 72.56, Low= 66.3857,Close= 66.4143,Volume= 669376320},
+        new Data{X= new DateTime(2013,09,16), Open= 65.8571, High= 68.3643, Low= 63.8886,Close= 66.7728,Volume= 625142677},
+        new Data{X= new DateTime(2013,09,23), Open= 70.8714, High= 70.9871, Low= 68.6743,Close= 68.9643,Volume= 475274537},
+        new Data{X= new DateTime(2013,09,30), Open= 68.1786, High= 70.3357, Low= 67.773,Close= 69.0043,Volume= 368198906},
+        new Data{X= new DateTime(2013,10,07), Open= 69.5086, High= 70.5486, Low= 68.3257,Close= 70.4017,Volume= 361437661},
+        new Data{X= new DateTime(2013,10,14), Open= 69.9757, High= 72.7514, Low= 69.9071,Close= 72.6985,Volume= 342694379},
+        new Data{X= new DateTime(2013,10,21), Open= 73.11, High= 76.1757, Low= 72.5757,Close= 75.1368,Volume= 490458997},
+        new Data{X= new DateTime(2013,10,28), Open= 75.5771, High= 77.0357, Low= 73.5057,Close= 74.29,Volume= 508130174},
+        new Data{X= new DateTime(2013,11,04), Open= 74.4428, High= 75.555, Low= 73.1971,Close= 74.3657,Volume= 318132218},
+        new Data{X= new DateTime(2013,11,11), Open= 74.2843, High= 75.6114, Low= 73.4871,Close= 74.9987,Volume= 306711021},
+        new Data{X= new DateTime(2013,11,18), Open= 74.9985, High= 75.3128, Low= 73.3814,Close= 74.2571,Volume= 282778778},
+    };
+}

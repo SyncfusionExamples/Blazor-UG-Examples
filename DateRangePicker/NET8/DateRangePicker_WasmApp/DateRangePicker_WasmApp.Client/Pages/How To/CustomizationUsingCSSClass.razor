@@ -1,0 +1,32 @@
+﻿@page "/CustomizationUsingCSSClass"
+
+@using Syncfusion.Blazor.Calendars
+<HowToRoute></HowToRoute>
+
+<SfDateRangePicker TValue="DateTime?" Placeholder="Select a range" CssClass="CustomCSS"></SfDateRangePicker>
+
+<style>
+    .CustomCSS .e-calendar .e-content .e-selected span.e-day,
+    .CustomCSS .e-calendar .e-content .e-selected span.e-day:hover,
+    .CustomCSS .e-calendar .e-content .e-today.e-selected:hover span.e-day,
+    .CustomCSS .e-calendar .e-content .e-today.e-selected span.e-day,
+    .CustomCSS .e-calendar .e-content .e-selected:hover span.e-day {
+        background-color: #35b86b;
+    }
+
+    .CustomCSS .e-calendar .e-content .e-today span.e-day,
+    .CustomCSS .e-calendar .e-content .e-focused-date.e-today span.e-day {
+        border: 1px solid #35b86b;
+        color: #ff3337;
+    }
+
+    .CustomCSS .e-calendar .e-content .e-weekend span {
+        color: #ff3337;
+    }
+
+    .CustomCSS.e-date-range-wrapper .e-input-group-icon.e-icons.e-active,
+    .CustomCSS .e-btn.e-flat,
+    .CustomCSS .e-btn.e-flat:hover {
+        color: #35b86b;
+    }
+</style>

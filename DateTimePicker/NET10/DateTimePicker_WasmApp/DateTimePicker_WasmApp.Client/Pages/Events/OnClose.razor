@@ -1,0 +1,16 @@
+﻿@page "/OnClose"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateTimePicker TValue="DateTime?">
+    <DateTimePickerEvents TValue="DateTime?" OnClose="OnCloseHandler"></DateTimePickerEvents>
+</SfDateTimePicker>
+
+@code {
+
+    public void OnCloseHandler(object args)
+    {
+        // Here, you can customize your code.
+    }
+}

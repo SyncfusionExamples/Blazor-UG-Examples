@@ -1,0 +1,21 @@
+﻿@page "/ClickEvent"
+
+@using Syncfusion.Blazor.Buttons
+
+<SfButton @ref="ToggleBtn" @onclick="onToggleClick" CssClass="e-flat" IsToggle="true" IsPrimary="true" Content="@Content"></SfButton>
+
+@code {
+    SfButton ToggleBtn;
+    public string Content = "Play";
+    private void onToggleClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+    {
+        if (ToggleBtn.Content == "Play")
+        {
+            this.Content = "Pause";
+        }
+        else
+        {
+            this.Content = "Play";
+        }
+    }
+}

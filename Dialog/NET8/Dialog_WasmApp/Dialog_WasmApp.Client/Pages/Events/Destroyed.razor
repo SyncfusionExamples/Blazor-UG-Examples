@@ -1,0 +1,15 @@
+﻿@page "/Destroyed"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents Destroyed="@DestroyedHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void DestroyedHandler(Object args)
+    {
+        // Here, you can customize your code.
+    }
+}

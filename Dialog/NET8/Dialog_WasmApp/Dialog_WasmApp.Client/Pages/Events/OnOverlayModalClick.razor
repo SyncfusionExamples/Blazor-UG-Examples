@@ -1,0 +1,15 @@
+﻿@page "/OnOverlayModalClick"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents OnOverlayModalClick="@OnOverlayModalClickHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void OnOverlayModalClickHandler(OverlayModalClickEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

@@ -1,0 +1,27 @@
+﻿@page "/ModelBinding"
+<HowToRoute></HowToRoute>
+
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="@User">
+    <DataAnnotationsValidator />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <SfMaskedTextBox Mask="00000" Placeholder='Provide user ID' @bind-Value="@User.ID"></SfMaskedTextBox>
+        <ValidationMessage For="@(() => User.ID)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</EditForm>
+
+@code {
+
+    public Customer User = new Customer();
+
+    public class Customer
+    {
+        [Required(ErrorMessage = "User ID is required")]
+
+        public string ID { get; set; }
+
+    }
+}

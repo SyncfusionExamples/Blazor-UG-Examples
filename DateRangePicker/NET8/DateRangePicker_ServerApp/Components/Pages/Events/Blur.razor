@@ -1,0 +1,15 @@
+﻿@page "/Blur"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateRangePicker TValue="DateTime?">
+    <DateRangePickerEvents TValue="DateTime?" Blur="BlurHandler"></DateRangePickerEvents>
+</SfDateRangePicker>
+@code {
+
+    public void BlurHandler(Syncfusion.Blazor.Calendars.BlurEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

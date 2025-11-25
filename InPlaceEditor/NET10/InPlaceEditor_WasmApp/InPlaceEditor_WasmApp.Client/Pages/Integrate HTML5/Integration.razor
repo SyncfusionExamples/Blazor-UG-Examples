@@ -1,0 +1,42 @@
+﻿@page "/Integration"
+
+@using Syncfusion.Blazor.InPlaceEditor
+
+<div id='container'>
+    <span class="content-title"> Select date: </span>
+    <SfInPlaceEditor @ref="InplaceditorObj" EmptyText="Value" TValue="string" @bind-Value="@inplaceValue" Mode="RenderMode.Inline" Type="InputType.Template">
+        <InPlaceEditorTemplate>
+            <input @bind-value="@inplaceValue" id="date" type="text" />
+        </InPlaceEditorTemplate>
+        <InPlaceEditorEvents TValue="string" OnActionSuccess="OnSuccess"></InPlaceEditorEvents>
+    </SfInPlaceEditor>
+</div>
+
+<style>
+    #container {
+        display: flex;
+        justify-content: center;
+    }
+
+    #InplaceDate {
+        width: 150px;
+    }
+
+    .content-title {
+        font-weight: 500;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+@code {
+    SfInPlaceEditor<string> InplaceditorObj;
+
+    public string inplaceValue { get; set; } = "syncfusion";
+
+    private void OnSuccess(ActionEventArgs<string> args)
+    {
+        inplaceValue = args.Value;
+    }
+}

@@ -1,0 +1,45 @@
+﻿@page "/Annotation/Region"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AnnotationsRoute></AnnotationsRoute>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartAnnotations>
+        <ChartAnnotation X="@Country" Y="65" Region="Regions.Series" CoordinateUnits="Units.Point">
+            <ContentTemplate>
+                <div>Highest Medal Count</div>
+            </ContentTemplate>
+        </ChartAnnotation>
+    </ChartAnnotations>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="Country" YName="Gold" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    string Country = "Australia";
+
+    public class ChartData
+    {
+        public string Country { get; set; }
+        public double Gold { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData{ Country= "USA", Gold=50  },
+        new ChartData{ Country= "China", Gold=40 },
+        new ChartData{ Country= "Japan", Gold=70 },
+        new ChartData{ Country= "Australia", Gold=60},
+        new ChartData{ Country= "France", Gold=50 },
+        new ChartData{ Country= "Germany", Gold=40 },
+        new ChartData{ Country= "Italy", Gold=40 },
+        new ChartData{ Country= "Sweden", Gold=30 }
+    };
+}

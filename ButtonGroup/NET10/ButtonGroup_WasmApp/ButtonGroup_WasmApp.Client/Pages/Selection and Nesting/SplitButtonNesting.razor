@@ -1,0 +1,17 @@
+﻿@page "/SplitButtonNesting"
+
+@using Syncfusion.Blazor.SplitButtons
+<SelectionRoute></SelectionRoute>
+
+<SfButtonGroup>
+    <ButtonGroupButton CssClass="e-btn e-success">View</ButtonGroupButton>
+    <ButtonGroupButton CssClass="e-btn e-success">Edit</ButtonGroupButton>
+    <SfSplitButton Content="Paste">
+        <DropDownMenuItems>
+            <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+            <DropDownMenuItem Text="Paste Special"></DropDownMenuItem>
+            <DropDownMenuItem Text="Paste as Formula"></DropDownMenuItem>
+            <DropDownMenuItem Text="Paste as Hyperlink"></DropDownMenuItem>
+        </DropDownMenuItems>
+    </SfSplitButton>
+</SfButtonGroup>

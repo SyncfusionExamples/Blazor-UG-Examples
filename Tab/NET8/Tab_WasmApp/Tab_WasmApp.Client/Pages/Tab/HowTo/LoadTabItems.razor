@@ -1,0 +1,98 @@
+@page "/Tab/HowTo/LoadTabItems"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfTab @ref="Tab" ShowCloseButton="true">
+    <TabEvents Selected="@ItemSelected"></TabEvents>
+    <TabItems>
+        <TabItem>
+            <ChildContent>
+                <TabHeader Text="Tab1"></TabHeader>
+            </ChildContent>
+            <ContentTemplate>
+                <ul>
+                    <li>Click on the "+" header to add dynamic tab items. </li>
+                    <li>It displays input elements to get the new tab information. </li>
+                    <li>Add details and click the "Add Tab" button to open the newly added tab.</li>
+                </ul>
+            </ContentTemplate>
+        </TabItem>
+        <TabItem>
+            <ChildContent>
+                <TabHeader IconCss="e-add-icon"></TabHeader>
+            </ChildContent>
+            <ContentTemplate>
+                <div id="form-container">
+                    <div>
+                        <SfTextBox @bind-Value="@dynamicHeader" Placeholder="Enter Header"></SfTextBox>
+                    </div>
+                    <br />
+                    <div>
+                        <SfTextBox @bind-Value="@dynamicContent" Placeholder="Enter Content"></SfTextBox>
+                    </div>
+                    <br />
+                    <div>
+                        <SfButton Content="@Content" IsPrimary="true" @onclick="onClick"></SfButton>
+                        <br />
+                        <br />
+                        <span class="info"> * Title is mandatory to add a new Tab</span>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+<style>
+
+    .info {
+        font-weight: bold;
+    }
+
+    .e-content .e-item {
+        font-size: 12px;
+        margin: 10px;
+        text-align: justify;
+    }
+
+    .e-add-icon::before {
+        content: '\e823';
+    }
+
+    .e-tab .e-tab-header .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:last-child .e-add-icon,
+    .e-tab .e-tab-header .e-toolbar-item .e-tab-icon.e-add-icon::before {
+        line-height: 1.5 !important;
+        font-size: 14px !important;
+    }
+
+    .e-tab .e-tab-header .e-toolbar-items:not(.e-tbar-pos) .e-toolbar-item:last-child .e-close-icon {
+        display: none !important;
+    }
+</style>
+
+@code{
+    SfTab Tab;
+    public string Content = "Add Tab";
+    public string dynamicHeader { get; set; }
+    public string dynamicContent { get; set; }
+
+    public void onClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+    {
+        List<TabItem> source = new List<TabItem>()
+{
+        new TabItem() { Header = new TabHeader() { Text = @dynamicHeader }, Content = @dynamicContent }
+      };
+        this.Tab.AddTab(source, this.Tab.Items.Count() - 1);
+    }
+    public void ItemSelected(Syncfusion.Blazor.Navigations.SelectEventArgs args)
+    {
+        if (args.SelectedIndex == this.Tab.Items.Count() - 1)
+        {
+            this.dynamicHeader = "";
+            this.dynamicContent = "";
+        }
+    }
+}

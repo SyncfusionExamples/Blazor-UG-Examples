@@ -1,0 +1,65 @@
+﻿<h3>Complex_Expando_DataBinding</h3>
+@page "/TreeGrid/DataBinding/complex-expando-databinding"
+@rendermode InteractiveWebAssembly
+
+@using Syncfusion.Blazor.TreeGrid;
+@using System.Dynamic;
+
+<SfTreeGrid DataSource="@TreeData" AllowPaging="true" IdMapping="TaskID" ParentIdMapping="ParentID" TreeColumnIndex="1">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskID" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Task.TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Task.Duration" HeaderText="Duration" Width="160" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+@code {
+    public List<ExpandoObject> TreeData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeData = GetData().ToList();
+    }
+    public static List<ExpandoObject> Data = new List<ExpandoObject>();
+    public static int ParentRecordID { get; set; }
+    public static int ChildRecordID { get; set; }
+    public static List<ExpandoObject> GetData()
+    {
+        Data.Clear();
+        ParentRecordID = 0;
+        ChildRecordID = 0;
+        for (var i = 1; i <= 2; i++)
+        {
+
+            dynamic ParentRecord = new ExpandoObject();
+            dynamic Task = new ExpandoObject();
+            Task.TaskName = "Parent Task " + i;
+            Task.Duration = ParentRecordID % 2 == 0 ? 32 : 76;
+            ParentRecord.TaskID = ++ParentRecordID;
+            ParentRecord.Task = Task;
+            ParentRecord.Progress = ParentRecordID % 2 == 0 ? "In Progress" : "Open";
+            ParentRecord.Priority = ParentRecordID % 2 == 0 ? "High" : "Low";
+            ParentRecord.ParentID = null;
+            Data.Add(ParentRecord);
+            AddChildRecords(ParentRecordID);
+        }
+        return Data;
+    }
+    public static void AddChildRecords(int ParentId)
+    {
+        for (var i = 1; i < 3; i++)
+        {
+
+            dynamic ChildRecord = new ExpandoObject();
+            dynamic Task = new ExpandoObject();
+            Task.TaskName = "Child Task " + ++ChildRecordID;
+            Task.Duration = ParentRecordID % 3 == 0 ? 64 : 98;
+            ChildRecord.TaskID = ++ParentRecordID;
+            ChildRecord.Task = Task;
+            ChildRecord.Progress = ParentRecordID % 3 == 0 ? "Validated" : "Closed";
+            ChildRecord.Priority = ParentRecordID % 3 == 0 ? "Low" : "Critical";
+            ChildRecord.ParentID = ParentId;
+            Data.Add(ChildRecord);
+        }
+    }
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateRangePicker_WasmApp", "DateRangePicker_WasmApp\DateRangePicker_WasmApp.csproj", "{9B92E43E-A2A8-465F-8B7D-E147B0FBE110}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateRangePicker_WasmApp.Client", "DateRangePicker_WasmApp.Client\DateRangePicker_WasmApp.Client.csproj", "{482A080E-990C-43B8-9F75-F40C14E86238}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B92E43E-A2A8-465F-8B7D-E147B0FBE110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B92E43E-A2A8-465F-8B7D-E147B0FBE110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B92E43E-A2A8-465F-8B7D-E147B0FBE110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B92E43E-A2A8-465F-8B7D-E147B0FBE110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{482A080E-990C-43B8-9F75-F40C14E86238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{482A080E-990C-43B8-9F75-F40C14E86238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{482A080E-990C-43B8-9F75-F40C14E86238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{482A080E-990C-43B8-9F75-F40C14E86238}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {375EC775-D3C0-40F3-ABBB-6306BC79EEDC}
+	EndGlobalSection
+EndGlobal

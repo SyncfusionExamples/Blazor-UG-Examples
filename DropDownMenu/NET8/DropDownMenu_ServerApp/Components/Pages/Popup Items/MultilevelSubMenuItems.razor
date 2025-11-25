@@ -1,0 +1,88 @@
+﻿@page "/MultilevelSubMenuItems"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.SplitButtons
+<PopupRoute></PopupRoute>
+
+<SfDropDownButton @ref="FileButton" Id="btnFileMenu" Content="File" CssClass="e-dropDown-button">
+    <ChildContent>
+        <DropDownButtonEvents OnClose="@DropDownButtonClose"></DropDownButtonEvents>
+    </ChildContent>
+    <PopupContent>
+        <SfContextMenu @ref="ContextMenu" Items="FileMenuItems" TValue="ContextMenuItemModel" ShowItemOnClick="true">
+            <MenuFieldSettings Text="Content"></MenuFieldSettings>
+            <MenuEvents TValue="ContextMenuItemModel" OnClose="BeforeClose" Created="OnMenuCreated" ItemSelected="Selected"></MenuEvents>
+        </SfContextMenu>
+    </PopupContent>
+</SfDropDownButton>
+
+@code {
+    SfDropDownButton FileButton;
+    SfContextMenu<ContextMenuItemModel> ContextMenu;
+    public bool isClose = false;
+
+    private void DropDownButtonClose(BeforeOpenCloseMenuEventArgs args)
+    {
+        args.Cancel = true;
+    }
+    private void BeforeClose(BeforeOpenCloseMenuEventArgs<ContextMenuItemModel> args)
+    {
+        if (!isClose)
+        {
+            FileButton.Toggle();
+        }
+    }
+    public class ContextMenuItemModel
+    {
+        public List<ContextMenuItemModel> Items { get; set; }
+        public string Content { get; set; }
+        public string Id { get; set; }
+        public string IconCss { get; set; }
+        public Boolean Separator { get; set; }
+    }
+    private List<ContextMenuItemModel> FileMenuItems = new List<ContextMenuItemModel>{
+                new ContextMenuItemModel {Id ="FileMenuItemsNew", Content = "Align" , Items = new List<ContextMenuItemModel> {
+                        new ContextMenuItemModel { Content="Left" },
+                        new ContextMenuItemModel { Content="Right" },
+                        new ContextMenuItemModel { Content="Center" },
+                        new ContextMenuItemModel { Content="Top"},
+                        new ContextMenuItemModel { Content="Bottom" },
+                        new ContextMenuItemModel { Content="Middle"}
+                    }},
+                new ContextMenuItemModel {Id ="FileMenuItemsOpen", Content = "Open" },
+                new ContextMenuItemModel { Separator = true },
+                new ContextMenuItemModel { Id ="FileMenuItemsSave",Content = "Space", Items = new List<ContextMenuItemModel> {
+                        new ContextMenuItemModel { Content="Double" },
+                        new ContextMenuItemModel { Content="Single" },
+                        new ContextMenuItemModel { Content="Small" },
+                        new ContextMenuItemModel { Content="Big"},
+                        new ContextMenuItemModel { Content="Large" },
+                    }},
+                new ContextMenuItemModel { Id ="FileMenuItemsSaveAs",Content = "Save As", Items = new List<ContextMenuItemModel> {
+                        new ContextMenuItemModel { Content="PDF" },
+                        new ContextMenuItemModel { Content="Excel" },
+                        new ContextMenuItemModel { Content="Word" },
+                        new ContextMenuItemModel { Content=".XLS"},
+                    } },
+                new ContextMenuItemModel {Id ="FileMenuItemsExport", Content = "Export"},
+                new ContextMenuItemModel { Separator = true},
+                new ContextMenuItemModel { Id ="FileMenuItemsPrint",Content = "Print" }
+            };
+
+    public void OnMenuCreated()
+    {
+        ContextMenu.Open();
+    }
+
+    public void Selected(MenuEventArgs<ContextMenuItemModel> args)
+    {
+        if (args.Item.Content == "Space" || args.Item.Content == "Save As" || args.Item.Content == "Align")
+        {
+            isClose = true;
+        }
+        else
+        {
+            isClose = false;
+        }
+    }
+}

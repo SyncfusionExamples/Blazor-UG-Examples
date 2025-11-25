@@ -1,0 +1,54 @@
+@page "/suggestiontemplate"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<TemplateNav></TemplateNav>
+
+<div class="template-chatui" style="height: 400px; width: 400px;">
+    <SfChatUI ID="chatUser" User="CurrentUserModel" Messages="ChatUserMessages" Suggestions="@Suggestions">
+        <SuggestionTemplate>
+            <div class='suggestion-item active'>
+                <div class="content">@context.Suggestions</div>
+            </div>
+        </SuggestionTemplate>
+    </SfChatUI>
+</div>
+
+@code {
+    private static UserModel CurrentUserModel = new UserModel() { ID = "User1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "User2", User = "Michale Suyama" };
+    private List<string> Suggestions = new List<string>() { "Portrait", "Landscape" };
+
+    private List<ChatMessage> ChatUserMessages = new List<ChatMessage>()
+    {
+        new ChatMessage() { Text = "Hi, thinking of painting this weekend.", Author = CurrentUserModel },
+        new ChatMessage() { Text = "That’s fun! What will you paint?", Author = MichaleUserModel }
+    };
+}
+
+<style>
+    .template-chatui .e-suggestion-list li {
+        padding: 0;
+        border: none;
+        box-shadow: none;
+    }
+
+    .template-chatui .suggestion-item {
+        display: flex;
+        align-items: center;
+        background-color: #87b6fb;
+        color: black;
+        padding: 4px;
+        gap: 5px;
+        height: 30px;
+        border-radius: 5px;
+    }
+
+    .template-chatui .suggestion-item .content {
+        padding: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+</style>

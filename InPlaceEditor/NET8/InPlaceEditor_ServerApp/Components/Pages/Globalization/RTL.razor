@@ -1,0 +1,22 @@
+﻿@page "/RTL"
+
+@using Syncfusion.Blazor.InPlaceEditor
+@using Syncfusion.Blazor.Inputs
+<GlobalRoute></GlobalRoute>
+
+<table>
+    <tr>
+        <td class="control-title content-title"> Enter your name: </td>
+        <td>
+            <SfInPlaceEditor @bind-Value="@TextValue" EnableRtl="true" TValue="string">
+                <EditorComponent>
+                    <SfTextBox @bind-Value="@TextValue" Placeholder="Enter some text"></SfTextBox>
+                </EditorComponent>
+            </SfInPlaceEditor>
+        </td>
+    </tr>
+</table>
+
+@code {
+    public string TextValue = "Andrew";
+}

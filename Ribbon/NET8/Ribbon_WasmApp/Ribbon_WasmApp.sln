@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ribbon_WasmApp", "Ribbon_WasmApp\Ribbon_WasmApp.csproj", "{273669BA-3E4E-4DE4-98F1-00EDBF0050DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ribbon_WasmApp.Client", "Ribbon_WasmApp.Client\Ribbon_WasmApp.Client.csproj", "{FFC1E413-AE20-4E52-9C07-07A2C9B84F9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{273669BA-3E4E-4DE4-98F1-00EDBF0050DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273669BA-3E4E-4DE4-98F1-00EDBF0050DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273669BA-3E4E-4DE4-98F1-00EDBF0050DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273669BA-3E4E-4DE4-98F1-00EDBF0050DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFC1E413-AE20-4E52-9C07-07A2C9B84F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC1E413-AE20-4E52-9C07-07A2C9B84F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC1E413-AE20-4E52-9C07-07A2C9B84F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC1E413-AE20-4E52-9C07-07A2C9B84F9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD13264B-B07A-4BBC-8AD0-DB63BB91F2C9}
+	EndGlobalSection
+EndGlobal

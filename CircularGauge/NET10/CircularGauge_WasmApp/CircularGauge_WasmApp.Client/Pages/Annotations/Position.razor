@@ -1,0 +1,34 @@
+﻿@page "/Position"
+
+@using Syncfusion.Blazor.CircularGauge
+<AnnotationRoute></AnnotationRoute>
+
+<SfCircularGauge Height="250px" Width="250px">
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="50"></CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeAnnotations>
+                <CircularGaugeAnnotation Angle="90"
+                                         Radius="110%"
+                                         ZIndex="1">
+                    <ContentTemplate>
+                        <div class="custom-annotation">50</div>
+                    </ContentTemplate>
+                </CircularGaugeAnnotation>
+            </CircularGaugeAnnotations>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>
+<style type="text/css">
+    .custom-annotation {
+        color: white;
+        background-color: blue;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        padding: 4px 0 0 6px;
+        font-weight: bold;
+    }
+</style>

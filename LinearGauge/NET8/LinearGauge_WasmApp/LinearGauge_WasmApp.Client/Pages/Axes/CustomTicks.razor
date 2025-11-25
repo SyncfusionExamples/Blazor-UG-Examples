@@ -1,0 +1,18 @@
+﻿@page "/CustomTicks"
+<AxesRoute></AxesRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum=20 Maximum=140>
+            <LinearGaugeMajorTicks Color="red" Interval="20" Height="20" Width="3">
+            </LinearGaugeMajorTicks>
+            <LinearGaugeMinorTicks Color="Orange" Interval="5" Height="10">
+            </LinearGaugeMinorTicks>
+            <LinearGaugePointers>
+                <LinearGaugePointer></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

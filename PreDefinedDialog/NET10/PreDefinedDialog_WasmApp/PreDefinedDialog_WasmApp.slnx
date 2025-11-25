@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PreDefinedDialog_WasmApp.Client/PreDefinedDialog_WasmApp.Client.csproj" />
+  <Project Path="PreDefinedDialog_WasmApp/PreDefinedDialog_WasmApp.csproj" />
+</Solution>

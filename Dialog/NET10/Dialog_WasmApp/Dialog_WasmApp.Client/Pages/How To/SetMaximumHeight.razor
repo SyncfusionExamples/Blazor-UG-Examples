@@ -1,0 +1,36 @@
+﻿@page "/SetMaximumHeight"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfButton @onclick="@OpenDialog">Open FullScreen Dialog</SfButton>
+
+<SfDialog @ref="DialogRef" Width="800px" ShowCloseIcon="true" Visible="false">
+    <DialogEvents OnOpen="onOpen"></DialogEvents>
+    <DialogTemplates>
+        <Header> Dialog </Header>
+        <Content> This is a Dialog with the MaxHeight property </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="OK" IsPrimary="true" OnClick="@CloseDialog" />
+        <DialogButton Content="Cancel" OnClick="@CloseDialog" />
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    SfDialog DialogRef;
+    private async Task OpenDialog()
+    {
+        await this.DialogRef.ShowAsync();
+    }
+    private async Task CloseDialog()
+    {
+        await this.DialogRef.HideAsync();
+    }
+    private void onOpen(BeforeOpenEventArgs args)
+    {
+        // setting maximum height to the Dialog
+        args.MaxHeight = "300px";
+    }
+}

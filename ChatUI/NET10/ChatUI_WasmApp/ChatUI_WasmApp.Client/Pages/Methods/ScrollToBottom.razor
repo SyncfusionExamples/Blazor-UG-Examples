@@ -1,0 +1,32 @@
+@page "/scrolltobottom"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<MethodsNav></MethodsNav>
+
+<div style="height: 400px; width: 400px;">
+    <button @onclick="OnScrollToBottom" class="e-btn e-primary" style="margin-bottom: 10px">Scroll to bottom</button>
+    <SfChatUI @ref="@ChatUser" ID="chatUser" User="CurrentUserModel" Messages="ChatUserMessages"></SfChatUI>
+</div>
+
+@code {
+    private SfChatUI ChatUser;
+    private static UserModel CurrentUserModel = new UserModel() { ID = "User1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "User2", User = "Michale Suyama" };
+
+    private List<ChatMessage> ChatUserMessages = new List<ChatMessage>()
+    {
+        new ChatMessage() { Text = "Want to get coffee tomorrow?", Author = CurrentUserModel },
+        new ChatMessage() { Text = "Sure! What time?", Author = MichaleUserModel },
+        new ChatMessage() { Text = "How about 10 AM?", Author = CurrentUserModel },
+        new ChatMessage() { Text = "Perfect.", Author = MichaleUserModel },
+        new ChatMessage() { Text = "See you!", Author = CurrentUserModel },
+        new ChatMessage() { Text = "Bye!", Author = MichaleUserModel }
+    };
+
+    private async void OnScrollToBottom()
+    {
+        await ChatUser.ScrollToBottomAsync();
+    }
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialog_WasmApp", "Dialog_WasmApp\Dialog_WasmApp.csproj", "{DCED880F-054C-40FA-8664-CFD46CC7CD56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dialog_WasmApp.Client", "Dialog_WasmApp.Client\Dialog_WasmApp.Client.csproj", "{A73CA1AD-F779-4971-BD36-5491AFB1AB57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCED880F-054C-40FA-8664-CFD46CC7CD56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCED880F-054C-40FA-8664-CFD46CC7CD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCED880F-054C-40FA-8664-CFD46CC7CD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCED880F-054C-40FA-8664-CFD46CC7CD56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73CA1AD-F779-4971-BD36-5491AFB1AB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73CA1AD-F779-4971-BD36-5491AFB1AB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73CA1AD-F779-4971-BD36-5491AFB1AB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73CA1AD-F779-4971-BD36-5491AFB1AB57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {960CE606-76A2-4F5E-92D6-5F4E4387AF59}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,27 @@
+﻿@page "/MultipleAxes"
+<AxesRoute></AxesRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum=20 Maximum=100>
+            <LinearGaugeAxisLabelStyle Format="{value}°C">
+            </LinearGaugeAxisLabelStyle>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue=20></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+        <LinearGaugeAxis Minimum=20 Maximum=100 OpposedPosition=true>
+            <LinearGaugeMajorTicks Interval="20" Height="20">
+            </LinearGaugeMajorTicks>
+            <LinearGaugeMinorTicks Interval="5" Height="10">
+            </LinearGaugeMinorTicks>
+            <LinearGaugeAxisLabelStyle Format="{value}°C">
+            </LinearGaugeAxisLabelStyle>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue=20></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

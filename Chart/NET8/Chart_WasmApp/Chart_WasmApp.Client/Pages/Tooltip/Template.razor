@@ -1,0 +1,47 @@
+﻿@page "/Tooltip/Template"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart Title="Unemployment Rates 1975-2010">
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="StepChartValues" Type="ChartSeriesType.StepLine" XName="Year" YName="YValue" Name="China">
+            <ChartMarker Visible="true" Width="10" Height="10">
+            </ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+    <ChartTooltipSettings Enable="true">
+        <Template>
+            @{
+                var data = context as ChartTooltipInfo;
+                <div>
+                    <table style="width:100%;  border: 1px solid black;">
+                        <tr><th colspan="2" bgcolor="#00FFFF">Unemployment</th></tr>
+                        <tr><td bgcolor="#00FFFF">@data.X:</td><td bgcolor="#00FFFF">@data.Y</td></tr>
+                    </table>
+                </div>
+            }
+        </Template>
+    </ChartTooltipSettings>
+</SfChart>
+
+@code {
+    public List<StepChartData> StepChartValues = new List<StepChartData>
+    {
+        new StepChartData { Year = "1975", YValue = 16 },
+        new StepChartData { Year = "1980", YValue = 12.5 },
+        new StepChartData { Year = "1985", YValue = 19 },
+        new StepChartData { Year = "1990", YValue = 14.4 },
+        new StepChartData { Year = "1995", YValue = 11.5 },
+        new StepChartData { Year = "2000", YValue = 14 },
+        new StepChartData { Year = "2005", YValue = 10 },
+        new StepChartData { Year = "2010", YValue = 16 }
+    };
+
+    public class StepChartData
+    {
+        public string Year { get; set; }
+        public double YValue { get; set; }
+    }
+}

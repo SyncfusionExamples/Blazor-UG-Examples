@@ -1,0 +1,24 @@
+﻿@page "/AnnotationValue"
+<GlobalRoute></GlobalRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<button style="margin-left:34px" @onclick="ChangeAnnotationValue">Update annotation value</button>
+<SfLinearGauge @ref="lineargauge" Width="250px" Height="250px">
+    <LinearGaugeAnnotations>
+        <LinearGaugeAnnotation AxisValue="0" ZIndex="1" Content="10">
+        </LinearGaugeAnnotation>
+    </LinearGaugeAnnotations>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+@code {
+    SfLinearGauge lineargauge;
+    public void ChangeAnnotationValue()
+    {
+        lineargauge.SetAnnotationValue(0, "50", 50);
+    }
+}

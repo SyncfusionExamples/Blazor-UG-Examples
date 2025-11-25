@@ -1,0 +1,31 @@
+﻿@page "/Icons"
+
+@using Syncfusion.Blazor.SplitButtons
+<PopupRoute></PopupRoute>
+
+<SfDropDownButton Content="Message" IconCss="e-icons e-message">
+    <DropDownMenuItems>
+        <DropDownMenuItem IconCss="e-icons e-edit" Text="Edit"></DropDownMenuItem>
+        <DropDownMenuItem IconCss="e-icons e-delete" Text="Delete"></DropDownMenuItem>
+        <DropDownMenuItem IconCss="e-icons e-like" Text="Like"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+    .e-message::before {
+        content: '\e7cb';
+    }
+
+    .e-edit::before {
+        content: '\e78f';
+    }
+
+    .e-delete::before {
+        content: '\e773';
+    }
+
+    .e-like::before {
+        content: '\e682';
+    }
+
+</style>

@@ -1,0 +1,27 @@
+﻿@page "/CustomIconAndWidth"
+
+@using Syncfusion.Blazor.SplitButtons
+<HowToRoute></HowToRoute>
+
+<SfDropDownButton IconCss="e-icons e-search" CssClass="e-custom" IconPosition="SplitButtonIconPosition.Top" Content="Search">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Find"></DropDownMenuItem>
+        <DropDownMenuItem Text="Replace"></DropDownMenuItem>
+        <DropDownMenuItem Text="Go To"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+
+    .e-search::before {
+        content: '\e724';
+    }
+
+    .e-dropdown-btn.e-custom {
+        width: 85px;
+    }
+
+        .e-dropdown-btn.e-custom .e-search::before {
+            font-size: 40px;
+        }
+</style>

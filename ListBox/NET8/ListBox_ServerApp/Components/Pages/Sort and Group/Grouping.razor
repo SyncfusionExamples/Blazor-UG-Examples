@@ -1,0 +1,31 @@
+﻿@page "/Grouping"
+<SortRoute></SortRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfListBox TValue="string[]" DataSource="@VegetableData" TItem="VegetableDetail">
+    <ListBoxFieldSettings GroupBy="Category" Text="Vegetable" Value="Id" />
+</SfListBox>
+
+@code {
+    public List<VegetableDetail> VegetableData = new List<VegetableDetail> {
+       new VegetableDetail{ Vegetable = "Cabbage", Category = "Leafy and Salad", Id = "item1" },
+       new VegetableDetail{ Vegetable = "Spinach", Category = "Leafy and Salad", Id = "item2" },
+       new VegetableDetail{ Vegetable = "Wheat grass", Category = "Leafy and Salad", Id = "item3" },
+       new VegetableDetail{ Vegetable = "Yarrow", Category = "Leafy and Salad", Id = "item4" },
+       new VegetableDetail{ Vegetable = "Pumpkins", Category = "Leafy and Salad", Id = "item5" },
+       new VegetableDetail{ Vegetable = "Chickpea", Category = "Beans", Id = "item6" },
+       new VegetableDetail{ Vegetable = "Green bean", Category = "Beans", Id = "item7" },
+       new VegetableDetail{ Vegetable = "Horse gram", Category = "Beans", Id = "item8" },
+       new VegetableDetail{ Vegetable = "Garlic", Category = "Bulb and Stem", Id = "item9" },
+       new VegetableDetail{ Vegetable = "Nopal", Category = "Bulb and Stem", Id = "item10" },
+       new VegetableDetail{ Vegetable = "Onion", Category = "Bulb and Stem", Id = "item11" }
+    };
+
+    public class VegetableDetail
+    {
+        public string Vegetable { get; set; }
+        public string Category { get; set; }
+        public string Id { get; set; }
+    }
+}

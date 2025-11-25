@@ -1,0 +1,44 @@
+﻿@page "/Selection/WorkingWithData/EmptyPoint"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<SelectRoute></SelectRoute>
+<br/>
+
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="Month" YName="Sales" Type="ChartSeriesType.Column">
+            <ChartEmptyPointSettings Fill="blue" Mode="@Mode">
+            </ChartEmptyPointSettings>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code{
+    public class ChartData
+    {
+        public string Month { get; set; }
+        public Nullable<double> Sales { get; set; }
+    }
+
+    public EmptyPointMode Mode = EmptyPointMode.Average;
+
+    public List<ChartData> SalesReports = new List<ChartData>
+    {
+        new ChartData{ Month= "Jan", Sales= 35 },
+        new ChartData{ Month= "Feb", Sales= 28 },
+        new ChartData{ Month= "Mar", Sales= double.NaN },
+        new ChartData{ Month= "Apr", Sales= 32 },
+        new ChartData{ Month= "May", Sales= 40 },
+        new ChartData{ Month= "Jun", Sales= 32 },
+        new ChartData{ Month= "Jul", Sales= 35 },
+        new ChartData{ Month= "Aug", Sales= double.NaN },
+        new ChartData{ Month= "Sep", Sales= 38 },
+        new ChartData{ Month= "Oct", Sales= 30 },
+        new ChartData{ Month= "Nov", Sales= 25 },
+        new ChartData{ Month= "Dec", Sales= 32 }
+    };
+}

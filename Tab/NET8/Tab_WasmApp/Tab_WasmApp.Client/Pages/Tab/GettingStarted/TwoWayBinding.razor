@@ -1,0 +1,41 @@
+@page "/Documentation/Tab/GettingStarted/TwoWayBinding"
+
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Navigations
+
+Selected Tab
+<SfNumericTextBox TValue="int" @bind-Value="@SelectedTab" Min="0" Max="4" Width="200px"></SfNumericTextBox>
+
+<SfTab @bind-SelectedItem="SelectedTab">
+    <TabItems>
+        <TabItem Content="HyperText Markup Language, commonly referred to as HTML, is the standard markup language used to create web pages. Along with CSS, and JavaScript, HTML is a cornerstone technology, used by most websites to create visually engaging web pages, user interfaces for web applications, and user interfaces for many mobile applications.[1] Web browsers can read HTML files and render them into visible or audible web pages. HTML describes the structure of a website semantically along with cues for presentation, making it a markup language, rather than a programming language.">
+            <ChildContent>
+                <TabHeader Text="HTML"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="C# is intended to be a simple, modern, general-purpose, object-oriented programming language. Its development team is led by Anders Hejlsberg. The most recent version is C# 5.0, which was released on August 15, 2012.">
+            <ChildContent>
+                <TabHeader Text="C Sharp(C#)"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="Java is a set of computer software and specifications developed by Sun Microsystems, later acquired by Oracle Corporation, that provides a system for developing application software and deploying it in a cross-platform computing environment. Java is used in a wide variety of computing platforms from embedded devices and mobile phones to enterprise servers and supercomputers. While less common, Java applets run in secure, sandboxed environments to provide many features of native applications and can be embedded in HTML pages.">
+            <ChildContent>
+                <TabHeader Text="Java"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="The command-line compiler, VBC.EXE, is installed as part of the freeware .NET Framework SDK. Mono also includes a command-line VB.NET compiler. The most recent version is VB 2012, which was released on August 15, 2012.">
+            <ChildContent>
+                <TabHeader Text="VB.Net"></TabHeader>
+            </ChildContent>
+        </TabItem>
+        <TabItem Content="Xamarin is a San Francisco, California based software company created in May 2011[3] by the engineers that created Mono,[4] Mono for Android and MonoTouch that are cross-platform implementations of the Common Language Infrastructure (CLI) and Common Language Specifications (often called Microsoft .NET). With a C#-shared codebase, developers can use Xamarin tools to write native Android, iOS, and Windows apps with native user interfaces and share code across multiple platforms.[5] Xamarin has over 1 million developers in more than 120 countries around the World as of May 2015.">
+            <ChildContent>
+                <TabHeader Text="Xamarin"></TabHeader>
+            </ChildContent>
+        </TabItem>
+    </TabItems>
+</SfTab>
+
+@code {
+    private int SelectedTab = 0;
+}

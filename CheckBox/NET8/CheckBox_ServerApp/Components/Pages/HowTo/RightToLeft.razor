@@ -1,0 +1,10 @@
+﻿@page "/RightToLeft"
+
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<SfCheckBox Label="Default" @bind-Checked="isChecked" EnableRtl="true"></SfCheckBox>
+
+@code {
+    private bool isChecked = true;
+}

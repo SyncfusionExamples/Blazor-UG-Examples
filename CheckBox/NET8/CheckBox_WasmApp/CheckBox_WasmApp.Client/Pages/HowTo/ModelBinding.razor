@@ -1,0 +1,27 @@
+﻿@page "/ModelBinding"
+
+@using Syncfusion.Blazor.Buttons
+@using System.ComponentModel.DataAnnotations
+<HowToRoute></HowToRoute>
+
+<EditForm Model="Annotate">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <div class="form-group">
+        <SfCheckBox Label="Option 1" @bind-Checked="@Annotate.Check"></SfCheckBox>
+        <ValidationMessage For="@(() => Annotate.Check)" />
+    </div>
+    <SfButton HtmlAttributes="@Submit" Content="Submit"></SfButton>
+</EditForm>
+
+@code {
+    public Annotation Annotate = new Annotation();
+    public class Annotation
+    {
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You need to agree to the Terms and Conditions")]
+        public bool Check { get; set; }
+    }
+    public Dictionary<string, object> Submit = new Dictionary<string, object>()
+    {
+        { "type", "submit"}
+    };
+}

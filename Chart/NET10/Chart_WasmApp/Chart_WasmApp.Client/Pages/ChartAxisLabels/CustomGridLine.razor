@@ -1,0 +1,36 @@
+﻿@page "/ChartAxisLabels/GridLine"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" MinorTicksPerInterval="2">
+        <ChartAxisMajorGridLines Width="5" Color="blue" />
+        <ChartAxisMinorGridLines Width="0.5" Color="red" />
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "USA", YValue= 46 },
+        new ChartData { X= "GBR", YValue= 27 },
+        new ChartData { X= "CHN", YValue= 26 },
+        new ChartData { X= "UK", YValue= 23 },
+        new ChartData { X= "AUS", YValue= 16 },
+        new ChartData { X= "IND", YValue= 36 },
+        new ChartData { X= "DEN", YValue= 12 },
+        new ChartData { X= "MEX", YValue= 20 },
+    };
+}
