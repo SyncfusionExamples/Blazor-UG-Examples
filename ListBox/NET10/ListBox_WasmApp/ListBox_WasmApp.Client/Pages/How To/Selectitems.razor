@@ -29,6 +29,6 @@
     public string[] Value = new string[] { "Bugatti Chiron" };
     private async Task created(object args)
     {
-        await ListBoxObj.SelectItems(this.Value, true);
+        await ListBoxObj.SelectItemsAsync(this.Value, true);
     }
 }
