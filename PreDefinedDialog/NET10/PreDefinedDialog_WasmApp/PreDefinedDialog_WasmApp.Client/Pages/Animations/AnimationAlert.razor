@@ -12,7 +12,7 @@
     {
         await DialogService.AlertAsync("10% of battery remaining", "Low Battery", new DialogOptions()
             {
-                AnimationSettings = new DialogAnimationSettings() { Effect = DialogEffect.Zoom },
+            AnimationSettings = new DialogAnimationOptions() { Effect = DialogEffect.Zoom },
             });
     }
 }

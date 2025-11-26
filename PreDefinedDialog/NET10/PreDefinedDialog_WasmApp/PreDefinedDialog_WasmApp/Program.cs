@@ -1,6 +1,7 @@
 using PreDefinedDialog_WasmApp.Client.Pages;
 using PreDefinedDialog_WasmApp.Components;
 using Syncfusion.Blazor;
+using Syncfusion.Blazor.Popups;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 builder.Services.AddSyncfusionBlazor();
-
+builder.Services.AddScoped<SfDialogService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

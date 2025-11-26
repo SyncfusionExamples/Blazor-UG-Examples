@@ -12,7 +12,7 @@
     {
         string promptText = await DialogService.PromptAsync(null, "Join Wi-Fi network", new DialogOptions()
                 {
-                    AnimationSettings = new DialogAnimationSettings() { Effect = DialogEffect.Zoom },
+                    AnimationSettings = new DialogAnimationOptions() { Effect = DialogEffect.Zoom },
                     ChildContent = @<table class="Table">
     <tbody>
         <tr>
