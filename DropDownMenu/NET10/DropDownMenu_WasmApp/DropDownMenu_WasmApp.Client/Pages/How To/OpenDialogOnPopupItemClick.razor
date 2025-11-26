@@ -28,14 +28,14 @@
 
     private void click(object args)
     {
-        DialogObj.Hide();
+        DialogObj.HideAsync();
     }
 
     private void select(MenuEventArgs args)
     {
         if (args.Item.Text == "Update")
         {
-            DialogObj.Show();
+            DialogObj.ShowAsync();
         }
     }
 }
