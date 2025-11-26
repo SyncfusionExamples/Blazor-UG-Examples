@@ -57,7 +57,7 @@
     private async Task AddItem()
     {
         var customData = new TItem() { Name = Custom, Code = Custom };
-        await this.ComboObj.AddItems(new List<TItem> { customData });
+        await this.ComboObj.AddItemsAsync(new List<TItem> { customData });
         CustomDataItems.Add(customData);
         await this.ComboObj.HidePopupAsync();
     }
