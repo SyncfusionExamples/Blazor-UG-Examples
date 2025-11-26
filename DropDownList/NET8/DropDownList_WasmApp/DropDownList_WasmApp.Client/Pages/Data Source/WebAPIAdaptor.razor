@@ -1,0 +1,22 @@
+﻿@page "/WebAPIAdaptor"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<SourceRoute></SourceRoute>
+
+<SfDropDownList TValue="string" TItem="EmployeeData" Placeholder="Select a Employee" Query="@Query">
+    <SfDataManager Url="https://ej2services.syncfusion.com/production/web-services/api/Employees" Adaptor="Syncfusion.Blazor.Adaptors.WebApiAdaptor" CrossDomain=true></SfDataManager>
+    <DropDownListFieldSettings Text="FirstName" Value="EmployeeID"></DropDownListFieldSettings>
+</SfDropDownList>
+
+@code {
+    public Query Query = new Query();
+
+    public class EmployeeData
+    {
+        public int EmployeeID { get; set; }
+        public string FirstName { get; set; }
+        public string Designation { get; set; }
+        public string Country { get; set; }
+    }
+}
