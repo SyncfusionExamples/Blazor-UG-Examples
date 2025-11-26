@@ -3,7 +3,7 @@
 
 @using Syncfusion.Blazor.Grids
 @using Syncfusion.Blazor.TreeGrid;
-@using TreeGridUGSample.Components.Data
+@using TreeGrid_WasmApp.Client.Pages.Data
 <SfTreeGrid DataSource="@TreeData" @ref="TreeGrid" IdMapping="TaskId" ParentIdMapping="ParentId" ContextMenuItems="@(new List<ContextMenuItemModel>() { new ContextMenuItemModel { Text = "Copy with headers", Target = ".e-content", Id = "copywithheader" } })" TreeColumnIndex="1">
     <TreeGridEvents ContextMenuItemClicked="OnContextMenuClick" TValue="BusinessObject"></TreeGridEvents>
     <TreeGridColumns>

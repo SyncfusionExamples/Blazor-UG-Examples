@@ -1,7 +1,7 @@
 ﻿@page "/treegrid/virtualization/cellplaceholder"
 @rendermode InteractiveWebAssembly
-@using TreeGridUGSample.Components.Data
-@using TreeGridUGSample.Components.Data;
+@using TreeGrid_WasmApp.Client.Pages.Data
+@using TreeGrid_WasmApp.Client.Pages.Data;
 @using Syncfusion.Blazor.Grids
 <SfTreeGrid Height="300" Width="450" RowHeight="38" EnableVirtualMaskRow="true" DataSource="@TreeGridData" IdMapping="TaskID" TreeColumnIndex="1" ParentIdMapping="ParentID" EnableVirtualization="true" EnableColumnVirtualization="true">
     <TreeGridPageSettings PageSize="40"></TreeGridPageSettings>

@@ -1,7 +1,7 @@
 ﻿@page "/treegrid/contextmenu/defaultcontextmenu"
 @rendermode InteractiveWebAssembly
 @using Syncfusion.Blazor.TreeGrid;
-@using TreeGridUGSample.Components.Data
+@using TreeGrid_ServerApp.Components.Data
 <SfTreeGrid DataSource="@TreeData" IdMapping="TaskId" AllowPaging="true" AllowExcelExport="true" AllowPdfExport="true" AllowSorting="true" ParentIdMapping="ParentId" ContextMenuItems="@(new List<object>() { "AutoFit", "AutoFitAll", "SortAscending", "SortDescending","Copy", "Edit", "Delete", "Save", "Cancel","PdfExport", "ExcelExport", "CsvExport", "FirstPage", "PrevPage","LastPage", "NextPage"})" TreeColumnIndex="1">
     <TreeGridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="EditMode.Row"></TreeGridEditSettings>
     <TreeGridPageSettings PageSize="1"></TreeGridPageSettings>
