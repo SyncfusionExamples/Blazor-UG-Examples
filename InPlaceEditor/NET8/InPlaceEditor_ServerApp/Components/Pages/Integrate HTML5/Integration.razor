@@ -4,7 +4,7 @@
 
 <div id='container'>
     <span class="content-title"> Select date: </span>
-    <SfInPlaceEditor @ref="InplaceditorObj" EmptyText="Value" TValue="string" @bind-Value="@inplaceValue" Mode="RenderMode.Inline" Type="InputType.Template">
+    <SfInPlaceEditor @ref="InplaceditorObj" EmptyText="Value" TValue="string" @bind-Value="@inplaceValue" Mode="Syncfusion.Blazor.InPlaceEditor.RenderMode.Inline" Type="InputType.Template">
         <InPlaceEditorTemplate>
             <input @bind-value="@inplaceValue" id="date" type="text" />
         </InPlaceEditorTemplate>
