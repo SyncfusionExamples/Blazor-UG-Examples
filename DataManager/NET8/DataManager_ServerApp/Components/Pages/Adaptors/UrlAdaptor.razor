@@ -1,0 +1,24 @@
+﻿@page "/UrlAdaptor"
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+<AdaptorRoute></AdaptorRoute>
+
+<SfGrid TValue="EmployeeData" ID="Grid" AllowPaging="true">
+    <SfDataManager Url="http://controller.com/actions" Adaptor="Adaptors.UrlAdaptor"></SfDataManager>
+    <GridColumns>
+        <GridColumn Field=@nameof(EmployeeData.EmployeeID) TextAlign="TextAlign.Center" HeaderText="Employee ID" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Name) HeaderText="First Name" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Title) HeaderText="Title" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    public class EmployeeData
+    {
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+    }
+}
