@@ -1,0 +1,43 @@
+﻿<h5>Deleting images from server using keyboard and quick toolbar actions</h5>
+
+@page "/RichTextEditor/Tools/InsertImage/DeletingImagesKeyboard"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+@inject HttpClient Http
+
+<SfRichTextEditor>
+    <RichTextEditorEvents ImageDelete="@OnImageDeleteHandler"></RichTextEditorEvents>
+    <RichTextEditorImageSettings SaveUrl="@SaveURL" Path="@Path" RemoveUrl="@RemoveURL" />
+</SfRichTextEditor>
+@code {
+    private string SaveURL = "[SERVICE_HOSTED_PATH]/api/RichTextEditor/SaveFile";
+    private string Path = "[SERVICE_HOSTED_PATH]/RichTextEditor/";
+    private string RemoveURL = "[SERVICE_HOSTED_PATH]/api/RichTextEditor/DeleteFile";
+
+    public async Task OnImageDeleteHandler(AfterImageDeleteEventArgs args)
+    {
+        var imageSrc = args.Src;
+        var fileName = imageSrc.Split('/').Last();
+        var content = new MultipartFormDataContent();
+        var dummyFile = new ByteArrayContent(new byte[0]);
+        content.Add(dummyFile, "UploadFiles", fileName);
+        try
+        {
+            var response = await Http.PostAsync(RemoveURL, content);
+            if (response.IsSuccessStatusCode)
+            {
+                Console.WriteLine($"Image deleted successfully: {fileName}");
+            }
+            else
+            {
+                Console.WriteLine($"Image deletion failed: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error deleting image: {ex.Message}");
+        }
+    }
+
+}

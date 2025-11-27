@@ -1,0 +1,31 @@
+﻿<h5>Customizing Editor Content</h5>
+
+@page "/RichTextEditor/StylingAndAppearance/CustomizingEditorContent"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update content. Format your content using standard toolbar commands. </p>
+    <p><b> Key features:</b></p>
+    <ul>
+    <li><p> Provides <b>IFRAME</b> and <b>DIV</b> modes </p></li>
+    <li><p> Capable of handling markdown editing.</p></li>
+    </ul>
+</SfRichTextEditor>
+
+<style>
+    /* To change font family and font size */
+    .e-richtexteditor .e-rte-content .e-content,
+    .e-richtexteditor .e-source-content .e-content {
+        font-size: 20px;
+        font-family: Segoe ui;
+    }
+
+    /* To change font color and content background */
+    .e-richtexteditor .e-rte-content,
+    .e-richtexteditor .e-source-content {
+        background: seashell;
+        color: blue;
+    }
+</style>

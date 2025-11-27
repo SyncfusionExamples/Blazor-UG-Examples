@@ -1,0 +1,26 @@
+﻿<h5>Audio Quick Toolbar</h5>
+
+@page "/RichTextEditor/Toolbar/QuickToolbar/AudioQuickToolbar"
+
+@using Syncfusion.Blazor.RichTextEditor;
+
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorQuickToolbarSettings Audio="AudioQuickToolbarItems" />
+    <p><b>Get started with Quick Toolbar to click on an audio</b></p>
+    <p>Using the quick toolbar, users can replace, display, and delete the selected audio.</p>
+
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Audio },
+    };
+    private List<AudioToolbarItemModel> AudioQuickToolbarItems = new List<AudioToolbarItemModel>()
+    {
+        new AudioToolbarItemModel() { Command = AudioToolbarCommand.AudioRemove },
+        new AudioToolbarItemModel() { Command = AudioToolbarCommand.AudioReplace},
+        new AudioToolbarItemModel() { Command = AudioToolbarCommand.AudioLayoutOption }
+    };
+}

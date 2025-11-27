@@ -1,0 +1,266 @@
+﻿<h3>Events</h3>
+@page "/RichTextEditor/Events"
+@using Syncfusion.Blazor.RichTextEditor
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Inputs
+
+
+<h6> OnActionBegin event triggers before command execution using the toolbar items.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnActionBegin="@OnActionBeginHandler" ></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnActionComplete event triggers after command execution using the toolbar items.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnActionComplete="@OnActionCompleteHandler" ></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnDialogOpen event triggers when the dialog is being opened.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnDialogOpen="@OnDialogOpenHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> DialogOpened event triggers when a dialog is opened.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents DialogOpened="@DialogOpenedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnDialogClose event triggers when the dialog is being closed.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnDialogClose="@OnDialogCloseHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+<h6> DialogClosed event triggers after the dialog has been closed.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents DialogClosed="@DialogClosedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnQuickToolbarOpen event triggers when the quick toolbar is being opened.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnQuickToolbarOpen="@OnQuickToolbarOpenHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnQuickToolbarClose event triggers when the quick toolbar is being closed.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents QuickToolbarOpened="@QuickToolbarOpenedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> QuickToolbarClosed event triggers after the quick toolbar has been closed.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents QuickToolbarClosed="@QuickToolbarClosedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnImageSelected event triggers when the image is selected or dragged into the insert image dialog.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnImageSelected="@OnImageSelectedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> BeforeUploadImage event triggers before the image upload process.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents BeforeUploadImage ="@BeforeUploadImageHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnImageUploadSuccess event triggers when the image is successfully uploaded to the server side.</h6>
+
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnImageUploadSuccess="@OnImageUploadSuccessHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnImageUploadFailed event triggers when there is an error in the image upload.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnImageUploadFailed="@OnImageUploadFailedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+<h6> OnImageRemoving event triggers when the selected image is cleared from the insert image dialog.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnImageRemoving="@OnImageRemovingHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> ImageDelete event triggers when the selected image is cleared from the Rich Text Editor Content.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents ImageDelete="@OnImageDeleteHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> Created event triggers when the Rich Text Editor is rendered.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents Created="@CreatedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+
+<h6> Destroyed event triggers when the Rich Text Editor is destroyed.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents Destroyed="@DestroyedHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> Blur event triggers when the Rich Text Editor is focused out.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents Blur="@BlurHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnToolbarClick event triggers when Rich Text Editor Toolbar items is clicked.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnToolbarClick="@OnToolbarClickHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> Focus event triggers when Rich Text Editor is focused in.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents Focus="@FocusHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> ValueChange event triggers only when Rich Text Editor is blurred and changes are done to the content.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents ValueChange="@ValueChangeHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> SelectionChanged event triggers whenever the selection range is modified within the Rich Text Editor, such as when selecting text with the mouse or using Shift+Arrow keys.</h6>
+
+@* <SfRichTextEditor>
+    <RichTextEditorEvents SelectionChanged="@SelectionChangedHandler"></RichTextEditorEvents>
+</SfRichTextEditor> *@
+
+<h6> OnResizeStart event triggers only when resizing the image is started.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnResizeStart="@OnResizeStartHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<h6> OnResizeStop event triggers only when resizing the image is stopped.</h6>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents OnResizeStop="@OnResizeStopHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+<br> <h6>AfterPasteCleanup event triggers after cleaning up the copied content.</h6> <br>
+
+<SfRichTextEditor>
+    <RichTextEditorEvents AfterPasteCleanup="@AfterPasteCleanupHandler"></RichTextEditorEvents>
+</SfRichTextEditor>
+
+@code{
+    public void OnActionBeginHandler(ActionBeginEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnActionCompleteHandler(Syncfusion.Blazor.RichTextEditor.ActionCompleteEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnDialogOpenHandler(BeforeOpenEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void DialogOpenedHandler(DialogOpenEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnDialogCloseHandler(BeforeCloseEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void DialogClosedHandler(DialogCloseEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnQuickToolbarOpenHandler(BeforeQuickToolbarOpenArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void QuickToolbarOpenedHandler(QuickToolbarEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void QuickToolbarClosedHandler(QuickToolbarEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnImageSelectedHandler(SelectedEventArgs args)
+    {
+        // Here you can customize your code
+    } 
+    public void BeforeUploadImageHandler(ImageUploadingEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnImageUploadSuccessHandler(ImageSuccessEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnImageUploadFailedHandler(ImageFailedEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnImageRemovingHandler(RemovingEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnImageDeleteHandler(AfterImageDeleteEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void CreatedHandler(Object args)
+    {
+        // Here you can customize your code
+    }
+    public void DestroyedHandler(DestroyedEventArgs args)
+    {
+        // Here you can customize your code
+    } 
+    public void BlurHandler(Syncfusion.Blazor.RichTextEditor.BlurEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnToolbarClickHandler(ToolbarClickEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void FocusHandler(Syncfusion.Blazor.RichTextEditor.FocusEventArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void ValueChangeHandler(Syncfusion.Blazor.RichTextEditor.ChangeEventArgs args)
+    {
+        if (args is null)
+        {
+            throw new ArgumentNullException(nameof(args));
+        }
+        // Here you can customize your code
+    }
+    // public void SelectionChangedHandler(Syncfusion.Blazor.RichTextEditor.SelectionChangedEventArgs args)
+    // {
+    //     if (args is null)
+    //     {
+    //         throw new ArgumentNullException(nameof(args));
+    //     }
+    // }
+    public void OnResizeStartHandler(ResizeArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void OnResizeStopHandler(ResizeArgs args)
+    {
+        // Here you can customize your code
+    }
+    public void AfterPasteCleanupHandler(PasteCleanupArgs args)
+    {
+        // Here you can customize your code
+    }
+}

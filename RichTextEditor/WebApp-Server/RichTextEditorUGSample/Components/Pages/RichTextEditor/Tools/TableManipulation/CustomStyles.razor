@@ -1,0 +1,22 @@
+﻿<h5>Custom Styles</h5>
+
+@page "/RichTextEditor/Tools/TableManipulation/CustomStyles"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorTableSettings Styles="@StyleItems" />
+    <RichTextEditorToolbarSettings Items="@Tools" />
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable }
+    };
+
+    private List<DropDownItemModel> StyleItems = new List<DropDownItemModel>()
+    {
+        new DropDownItemModel() { Text = "Alternate Rows" }
+    };
+}
