@@ -1,0 +1,24 @@
+﻿@page "/MinHeightWidth"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Popups
+@inject SfDialogService DialogService
+<DimensionRoute></DimensionRoute>
+<div>
+    <SfButton @onclick="@AlertBtn">Alert</SfButton>
+</div>
+<style>
+    .e-dialog.customClass {
+        min-width: 300px;
+        min-height: 200px;
+    }
+</style>
+@code {
+    private async Task AlertBtn()
+    {
+        await DialogService.AlertAsync("The Succinctly series was born in 2012.", "About SYNCFUSION Succinctly Serires", new DialogOptions()
+            {
+                CssClass = "customClass ",
+            });
+    }
+}

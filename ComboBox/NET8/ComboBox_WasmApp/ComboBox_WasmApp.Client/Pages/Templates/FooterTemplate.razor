@@ -1,0 +1,42 @@
+﻿@page "/FooterTemplate"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfComboBox TValue="string" TItem="EmployeeData" DataSource="@Data" Placeholder="Select a customer">
+    <ComboBoxTemplates TItem="EmployeeData">
+        <FooterTemplate>
+            <span class='footer'>Total list Item: 6 </span>
+        </FooterTemplate>
+    </ComboBoxTemplates>
+    <ComboBoxFieldSettings Value="Country" Text="FirstName"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+        public string Country { get; set; }
+    }
+
+    List<EmployeeData> Data = new List<EmployeeData>
+    {
+       new EmployeeData() { FirstName = "Andrew Fuller",  Country = "England" },
+        new EmployeeData() { FirstName = "Anne Dodsworth", Country = "USA" },
+        new EmployeeData() { FirstName = "Janet Leverling", Country = "USA" },
+        new EmployeeData() { FirstName = "Laura Callahan", Country = "USA"},
+        new EmployeeData() { FirstName = "Margaret Peacock", Country = "USA"},
+        new EmployeeData() { FirstName = "Michael Suyama", Country = "USA", },
+    };
+}
+
+<style>
+    .footer {
+        text-indent: 1.2em;
+        display: block;
+        font-size: 15px;
+        line-height: 40px;
+        border-top: 1px solid #e0e0e0;
+    }
+</style>

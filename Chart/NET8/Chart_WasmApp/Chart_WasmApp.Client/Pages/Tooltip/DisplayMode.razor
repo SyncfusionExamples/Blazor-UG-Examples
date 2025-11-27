@@ -1,0 +1,35 @@
+﻿@page "/Tooltip/DisplayMode"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+    <ChartZoomSettings EnableSelectionZooming="true" EnableMouseWheelZooming="true" EnablePinchZooming="true" ToolbarDisplayMode="ToolbarMode.Always">
+    </ChartZoomSettings>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="X" YName="YValue" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+
+    public class ChartData1
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData1> SalesReports = new List<ChartData1>
+    {
+        new ChartData1 { X= "USA", YValue= 50 },
+        new ChartData1 { X= "GBR", YValue= 20 },
+        new ChartData1 { X= "CHN", YValue= 26 },
+        new ChartData1 { X= "UK", YValue= 20 },
+        new ChartData1 { X= "AUS", YValue= 35 },
+        new ChartData1 { X= "IND", YValue= 15 },
+        new ChartData1 { X= "DEN", YValue= 40 },
+        new ChartData1 { X= "MEX", YValue= 30 },
+    };
+}

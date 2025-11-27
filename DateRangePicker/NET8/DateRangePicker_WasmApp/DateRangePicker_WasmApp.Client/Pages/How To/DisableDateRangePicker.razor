@@ -1,0 +1,11 @@
+﻿@page "/DisableDateRangePicker"
+
+@using Syncfusion.Blazor.Calendars
+<HowToRoute></HowToRoute>
+
+<SfDateRangePicker TValue="DateTime?" Enabled=false StartDate="@Start" EndDate="@End"></SfDateRangePicker>
+
+@code {
+    public DateTime? Start { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 20);
+    public DateTime? End { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month + 1, 25);
+}

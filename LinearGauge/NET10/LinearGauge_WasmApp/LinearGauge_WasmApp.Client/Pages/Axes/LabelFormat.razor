@@ -1,0 +1,16 @@
+﻿@page "/LabelFormat"
+<AxesRoute></AxesRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum=20 Maximum=140>
+            <LinearGaugeAxisLabelStyle Format="{value}°C">
+            </LinearGaugeAxisLabelStyle>
+            <LinearGaugePointers>
+                <LinearGaugePointer></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

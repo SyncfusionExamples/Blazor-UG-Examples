@@ -1,0 +1,69 @@
+﻿@page "/DualListBox"
+<DragDropRoute></DragDropRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<div id="listbox1">
+    <h4>Group A</h4>
+    <SfListBox TValue="string[]" DataSource="@GroupA" Scope="scope2" TItem="CountryCode" @attributes="listbox1Attr">
+        <ListBoxFieldSettings Text="Name"></ListBoxFieldSettings>
+        <ListBoxToolbarSettings Items="@Items"></ListBoxToolbarSettings>
+    </SfListBox>
+</div>
+<div id="listbox2">
+    <h4>Group B</h4>
+    <SfListBox TValue="string[]" Scope="scope1" DataSource="@GroupB" TItem="CountryCode" @attributes="listbox2Attr">
+        <ListBoxFieldSettings Text="Name"></ListBoxFieldSettings>
+    </SfListBox>
+</div>
+
+@code {
+    private readonly Dictionary<string, object> listbox1Attr = new Dictionary<string, object>
+    {
+        { "id", "scope1" }
+    };
+    private readonly Dictionary<string, object> listbox2Attr = new Dictionary<string, object>
+    {
+        { "id", "scope2" }
+    };
+    public string[] Items = new string[] { "MoveUp", "MoveDown", "MoveTo", "MoveFrom", "MoveAllTo", "MoveAllFrom" };
+    public List<CountryCode> GroupA = new List<CountryCode>
+    {
+        new CountryCode{ Name = "Australia", Code = "AU" },
+        new CountryCode{ Name = "Bermuda", Code = "BM" },
+        new CountryCode{ Name = "Canada", Code = "CA" },
+        new CountryCode{ Name = "Cameroon", Code = "CM" },
+        new CountryCode{ Name = "Denmark", Code = "DK" },
+        new CountryCode{ Name = "France", Code = "FR" },
+        new CountryCode{ Name = "Finland", Code = "FI" }
+    };
+
+    public List<CountryCode> GroupB = new List<CountryCode>
+  {
+        new CountryCode{ Name = "India", Code = "IN" },
+        new CountryCode{ Name = "Italy", Code = "IT" },
+        new CountryCode{ Name = "Japan", Code = "JP" },
+        new CountryCode{ Name = "Mexico", Code = "MX" },
+        new CountryCode{ Name = "Norway", Code = "NO" },
+        new CountryCode{ Name = "Poland", Code = "PL" },
+        new CountryCode{ Name = "Switzerland", Code = "CH" }
+    };
+
+    public class CountryCode
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+}
+
+<style>
+    #listbox1 {
+        width: 48%;
+        float: left;
+    }
+
+    #listbox2 {
+        width: 48%;
+        float: right;
+    }
+</style>

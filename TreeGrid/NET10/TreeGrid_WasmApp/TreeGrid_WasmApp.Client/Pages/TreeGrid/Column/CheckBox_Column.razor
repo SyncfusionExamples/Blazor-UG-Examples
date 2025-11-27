@@ -1,0 +1,24 @@
+﻿<h3>CheckBox_Column</h3>
+@page "/TreeGrid/Column/checkbox_column"
+@rendermode InteractiveWebAssembly
+
+@using TreeGrid_WasmApp.Client.Pages.Data;
+@using Syncfusion.Blazor.TreeGrid;
+
+<SfTreeGrid IdMapping="TaskId" ParentIdMapping="ParentId" DataSource="@TreeGridData" TreeColumnIndex="1" AutoCheckHierarchy="true">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" ShowCheckbox="true" Width="90"></TreeGridColumn>
+        <TreeGridColumn Field="StartDate" HeaderText=" Start Date" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Format="yMd" Type="Syncfusion.Blazor.Grids.ColumnType.Date" Width="90"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="80"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public List<TreeData.BusinessObject> TreeGridData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeData.GetSelfDataSource().ToList();
+    }
+}

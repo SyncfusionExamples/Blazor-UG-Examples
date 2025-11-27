@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chart_WasmApp", "Chart_WasmApp\Chart_WasmApp.csproj", "{455B55D6-6E1C-451D-A884-98671F0FC10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chart_WasmApp.Client", "Chart_WasmApp.Client\Chart_WasmApp.Client.csproj", "{B432F892-0945-4612-AD79-07F443D10477}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{455B55D6-6E1C-451D-A884-98671F0FC10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455B55D6-6E1C-451D-A884-98671F0FC10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455B55D6-6E1C-451D-A884-98671F0FC10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455B55D6-6E1C-451D-A884-98671F0FC10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B432F892-0945-4612-AD79-07F443D10477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B432F892-0945-4612-AD79-07F443D10477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B432F892-0945-4612-AD79-07F443D10477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B432F892-0945-4612-AD79-07F443D10477}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {737FB2C4-D965-4D7E-86F7-C52F321E6F6C}
+	EndGlobalSection
+EndGlobal

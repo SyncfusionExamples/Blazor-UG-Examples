@@ -1,0 +1,34 @@
+﻿@page "/MultiLevelNesting"
+
+@using Syncfusion.Blazor.Navigations
+<CustomRoute></CustomRoute>
+
+<div id="target">Right click/Touch hold to open the ContextMenu </div>
+<SfContextMenu Target="#target" TValue="MenuItem">
+    <MenuItems>
+        <MenuItem Text="Show All Bookmarks"></MenuItem>
+        <MenuItem Text="Bookmarks Toolbar">
+            <MenuItems>
+                <MenuItem Text="Most Visited">
+                    <MenuItems>
+                        <MenuItem Text="Google"></MenuItem>
+                        <MenuItem Text="Gmail"></MenuItem>
+                    </MenuItems>
+                </MenuItem>
+            </MenuItems>
+        </MenuItem>
+        <MenuItem Text="Recently Added"></MenuItem>
+    </MenuItems>
+</SfContextMenu>
+
+<style>
+    #target {
+        border: 1px dashed;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+        text-align: justify;
+        color: gray;
+        user-select: none;
+    }
+</style>

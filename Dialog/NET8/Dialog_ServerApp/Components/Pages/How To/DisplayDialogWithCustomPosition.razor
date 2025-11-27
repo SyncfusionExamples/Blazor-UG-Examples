@@ -1,0 +1,28 @@
+﻿@page "/DisplayDialogWithCustomPosition"
+
+@using Syncfusion.Blazor.Popups
+<HowToRoute></HowToRoute>
+
+<div id="target">
+    <SfDialog Width="360px" Target="#target" Height="120px">
+        <DialogTemplates>
+            <Header> Position-01 </Header>
+            <Content> The dialog is positioned at {X: 420, Y: 14} coordinates </Content>
+        </DialogTemplates>
+        <DialogPositionData X="420" Y="14" />
+    </SfDialog>
+
+    <SfDialog Width="360px" Target="#target" Height="120px">
+        <DialogTemplates>
+            <Header> Position-02 </Header>
+            <Content> The dialog is positioned at {X: 420, Y: 240} coordinates </Content>
+        </DialogTemplates>
+        <DialogPositionData X="420" Y="240" />
+    </SfDialog>
+</div>
+
+<style>
+    #target {
+        min-height: 400px;
+    }
+</style>

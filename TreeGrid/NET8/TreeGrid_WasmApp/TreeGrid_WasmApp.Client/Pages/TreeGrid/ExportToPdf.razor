@@ -1,0 +1,183 @@
+﻿@page "/treegrid/exporttopdf"
+@rendermode InteractiveWebAssembly
+
+@using TreeGrid_WasmApp.Client.Pages.Data
+@using Syncfusion.Blazor.TreeGrid;
+@using Syncfusion.Blazor.Navigations;
+@using Syncfusion.Blazor.Grids;
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.DropDowns;
+@using Syncfusion.Blazor.Buttons;
+
+<h3>PDF Export Configuration</h3>
+
+
+
+<div style="display:flex;justify-content:space-evenly">
+    <div style="width:300px;padding:20px;">
+        <SfTextBox @bind-Value="@FileName" Placeholder="File Name (e.g., treegrid.pdf)"></SfTextBox>
+        <SfDropDownList TValue="string" TItem="DropdownItem" @bind-Value="@OrientationValue" DataSource="@OrientationOptions" Placeholder="Page Orientation">
+            <DropDownListFieldSettings Value="Value" Text="Text"></DropDownListFieldSettings>
+            <DropDownListEvents TValue="string" TItem="DropdownItem" ValueChange="OnOrientationChange"></DropDownListEvents>
+        </SfDropDownList>
+
+        <SfDropDownList TValue="string" TItem="DropdownItem" @bind-Value="@PageSizeValue" DataSource="@PageSizeOptions" Placeholder="Page Size">
+            <DropDownListFieldSettings Value="Value" Text="Text"></DropDownListFieldSettings>
+            <DropDownListEvents TValue="string" TItem="DropdownItem" ValueChange="OnPageSizeChange"></DropDownListEvents>
+        </SfDropDownList>
+
+        <SfDropDownList TValue="string" TItem="DropdownItem" @bind-Value="@ExportTypeValue" DataSource="@ExportTypeOptions" Placeholder="Export Type">
+            <DropDownListFieldSettings Value="Value" Text="Text"></DropDownListFieldSettings>
+            <DropDownListEvents TValue="string" TItem="DropdownItem" ValueChange="OnExportTypeChange"></DropDownListEvents>
+        </SfDropDownList>
+    </div>
+
+    <div style="padding:10px;">
+        <div style="margin:10px">
+            <SfCheckBox @bind-Checked="@IncludeHiddenColumn" Label="Include Hidden Columns"></SfCheckBox>
+
+            <SfCheckBox @bind-Checked="@AllowHorizontalOverflow" Label="Allow Horizontal Overflow"></SfCheckBox>
+        </div>
+
+        <div style="margin:10px">
+            <SfCheckBox @bind-Checked="@DisableAutoFitWidth" Label="Disable Auto Fit Width"></SfCheckBox>
+
+            <SfCheckBox @bind-Checked="@ApplyCustomTheme" Label="Apply Custom Theme"></SfCheckBox>
+       </div>
+    </div>
+</div>
+
+<SfTreeGrid @ref="TreeGrid" DataSource="@TreeGridData" AllowPdfExport="true" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1"
+            Toolbar="@(new List<string>() { "PdfExport" })">
+    <TreeGridEvents OnToolbarClick="ToolbarClickHandler" TValue="TreeDatas"></TreeGridEvents>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" Format="C2" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="StartDate" Visible="false" HeaderText=" Start Date" Format="yMd" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="100"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    SfTreeGrid<TreeDatas> TreeGrid;
+
+    public List<TreeDatas> TreeGridData { get; set; }
+
+    // Properties bound to UI
+    public string FileName { get; set; } = "treegrid.pdf";
+    public PageOrientation Orientation { get; set; } = PageOrientation.Portrait;
+    public string OrientationValue { get; set; } = "Portrait"; // For dropdown binding
+    public PdfPageSize PageSize { get; set; } = PdfPageSize.Letter;
+    public string PageSizeValue { get; set; } = "Letter"; // For dropdown binding
+    public ExportType ExportType { get; set; } = ExportType.AllPages;
+    public string ExportTypeValue { get; set; } = "AllPages"; // For dropdown binding
+    public bool IncludeHiddenColumn { get; set; } = false;
+    public bool AllowHorizontalOverflow { get; set; } = false;
+    public bool DisableAutoFitWidth { get; set; } = false;
+    public bool ApplyCustomTheme { get; set; } = false;
+
+    // Dropdown data
+    public class DropdownItem
+    {
+        public string Value { get; set; }
+        public string Text { get; set; }
+    }
+
+    public List<DropdownItem> OrientationOptions { get; set; } = new List<DropdownItem>
+    {
+        new DropdownItem { Value = "Portrait", Text = "Portrait" },
+        new DropdownItem { Value = "Landscape", Text = "Landscape" }
+    };
+
+    public List<DropdownItem> PageSizeOptions { get; set; } = new List<DropdownItem>
+    {
+        new DropdownItem { Value = "Letter", Text = "Letter" },
+        new DropdownItem { Value = "Note", Text = "Note" },
+        new DropdownItem { Value = "Legal", Text = "Legal" },
+        new DropdownItem { Value = "A0", Text = "A0" },
+        new DropdownItem { Value = "A1", Text = "A1" },
+        new DropdownItem { Value = "A2", Text = "A2" },
+        new DropdownItem { Value = "A3", Text = "A3" },
+        new DropdownItem { Value = "A4", Text = "A4" },
+        new DropdownItem { Value = "A5", Text = "A5" },
+        new DropdownItem { Value = "A6", Text = "A6" },
+        new DropdownItem { Value = "A7", Text = "A7" },
+        new DropdownItem { Value = "A8", Text = "A8" },
+        new DropdownItem { Value = "A9", Text = "A9" },
+        new DropdownItem { Value = "B0", Text = "B0" },
+        new DropdownItem { Value = "B1", Text = "B1" },
+        new DropdownItem { Value = "B2", Text = "B2" },
+        new DropdownItem { Value = "B3", Text = "B3" },
+        new DropdownItem { Value = "B4", Text = "B4" },
+        new DropdownItem { Value = "B5", Text = "B5" },
+        new DropdownItem { Value = "Archa", Text = "Archa" },
+        new DropdownItem { Value = "Archb", Text = "Archb" },
+        new DropdownItem { Value = "Archc", Text = "Archc" },
+        new DropdownItem { Value = "Archd", Text = "Archd" },
+        new DropdownItem { Value = "Arche", Text = "Arche" },
+        new DropdownItem { Value = "Flsa", Text = "Flsa" },
+        new DropdownItem { Value = "HalfLetter", Text = "HalfLetter" },
+        new DropdownItem { Value = "Letter11x17", Text = "Letter11x17" },
+        new DropdownItem { Value = "Ledger", Text = "Ledger" }
+    };
+
+    public List<DropdownItem> ExportTypeOptions { get; set; } = new List<DropdownItem>
+    {
+        new DropdownItem { Value = "AllPages", Text = "All Pages" },
+        new DropdownItem { Value = "CurrentPage", Text = "Current Page" }
+    };
+
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+
+    private void OnOrientationChange(ChangeEventArgs<string, DropdownItem> args)
+    {
+        Orientation = (PageOrientation)Enum.Parse(typeof(PageOrientation), args.Value);
+    }
+
+    private void OnPageSizeChange(ChangeEventArgs<string, DropdownItem> args)
+    {
+        PageSize = (PdfPageSize)Enum.Parse(typeof(PdfPageSize), args.Value);
+    }
+
+    private void OnExportTypeChange(ChangeEventArgs<string, DropdownItem> args)
+    {
+        ExportType = (ExportType)Enum.Parse(typeof(ExportType), args.Value);
+    }
+
+    private async Task ToolbarClickHandler(ClickEventArgs args)
+    {
+        if (args.Item.Text == "PDF Export")
+        {
+            PdfExportProperties ExportProperties = new PdfExportProperties();
+            ExportProperties.FileName = FileName;
+            ExportProperties.PageOrientation = Orientation;
+            ExportProperties.PageSize = PageSize;
+            ExportProperties.ExportType = ExportType;
+            ExportProperties.IncludeHiddenColumn = IncludeHiddenColumn;
+            ExportProperties.AllowHorizontalOverflow = AllowHorizontalOverflow;
+            ExportProperties.DisableAutoFitWidth = DisableAutoFitWidth;
+
+            if (ApplyCustomTheme)
+            {
+                PdfTheme theme = new PdfTheme();
+                PdfThemeStyle recordFontStyle = new PdfThemeStyle()
+                    {
+                        FontColor = "#64FA50",
+                        FontName = "Calibri",
+                        FontSize = 10
+                    };
+                theme.Record = recordFontStyle;
+                // Add similar for Header and Caption if needed
+                ExportProperties.Theme = theme;
+            }
+
+
+            await this.TreeGrid.ExportToPdfAsync(ExportProperties);
+        }
+    }
+
+}

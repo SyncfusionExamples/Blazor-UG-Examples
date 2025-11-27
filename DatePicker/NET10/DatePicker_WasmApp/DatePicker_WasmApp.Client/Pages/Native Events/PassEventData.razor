@@ -1,0 +1,16 @@
+﻿@page "/PassEventData"
+
+@using Syncfusion.Blazor.Calendars
+<NativeRoute></NativeRoute>
+
+<SfDatePicker TValue="DateTime?" @onkeypress='@(e => KeyPressed(e))'></SfDatePicker>
+
+@code {
+    public void KeyPressed(KeyboardEventArgs args)
+    {
+        if (args.Key == "5")
+        {
+            Console.WriteLine("5 was pressed");
+        }
+    }
+}

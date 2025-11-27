@@ -1,0 +1,47 @@
+﻿@page "/ChartAxisLabels/TextCustomization"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+        <ChartMultiLevelLabels>
+            <ChartMultiLevelLabel>
+                <ChartCategories>
+                    <ChartCategory Start="-0.5" End="3.5" Text="Half yearly 1" MaximumTextWidth=100></ChartCategory>
+                    <ChartCategory Start="3.5" End="7.5" Text="Half yearly 2" MaximumTextWidth=100></ChartCategory>
+                </ChartCategories>
+                <ChartAxisMultiLevelLabelTextStyle Size="14px" Color="red" />
+            </ChartMultiLevelLabel>
+        </ChartMultiLevelLabels>
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="Y" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+
+    public int start = 0, end = 30;
+
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "Russia", Y= 50 },
+        new ChartData { X= "China", Y= 40 },
+        new ChartData { X= "Japan", Y= 70 },
+        new ChartData { X= "Australia", Y= 60 },
+        new ChartData { X= "France", Y= 70 },
+        new ChartData { X= "Germany", Y= 40 },
+        new ChartData { X= "Italy", Y= 40 },
+        new ChartData { X= "United states", Y= 30 },
+    };
+}

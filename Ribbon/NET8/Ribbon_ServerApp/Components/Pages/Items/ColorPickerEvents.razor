@@ -1,0 +1,56 @@
+@page "/colorpickerevents"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Inputs
+
+<ItemsNav></ItemsNav>
+
+<div style="width:30%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Font">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.ColorPicker AllowedSizes="RibbonItemSize.Small">
+                                        <RibbonColorPickerSettings Value="#123456"
+                                                                   Created="Created" 
+                                                                   Opening="Opening" 
+                                                                   Closing="Closing" 
+                                                                   Opened="Opened" 
+                                                                   TileRendering="TileRendering" 
+                                                                   Selected="Selected" 
+                                                                   ValueChange="ValueChange"
+                                                                   >
+                                        </RibbonColorPickerSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    private void Created() { /* your actions here */ }
+
+    private void Opening(ColorPickerOpenEventArgs args) { /* your actions here */ }
+
+    private void Closing(ColorPickerCloseEventArgs args) { /* your actions here */ }
+
+    private void Opened(ColorPickerOpenedEventArgs args) { /* your actions here */ }
+
+    private void ValueChange(ColorPickerEventArgs args) { /* your actions here */ }
+
+    private void TileRendering(TileRenderEventArgs args) { /* your actions here */ }
+
+    private void Selected(ColorPickerSelectedEventArgs args) { /* your actions here */ }
+
+}

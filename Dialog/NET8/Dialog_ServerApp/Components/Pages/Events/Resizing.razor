@@ -1,0 +1,15 @@
+﻿@page "/Resizing"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents Resizing="@ResizingHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void ResizingHandler(MouseEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

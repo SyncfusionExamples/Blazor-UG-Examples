@@ -1,0 +1,14 @@
+﻿@page "/Event/PassEvent"
+<EventRoute></EventRoute>
+
+<SfMaskedTextBox Mask='000-000-0000' @onkeypress='@(e => KeyPressed(e))'></SfMaskedTextBox>
+
+@code {
+    public void KeyPressed(KeyboardEventArgs args)
+    {
+        if (args.Key == "m")
+        {
+            Console.WriteLine("M was pressed");
+        }
+    }
+}

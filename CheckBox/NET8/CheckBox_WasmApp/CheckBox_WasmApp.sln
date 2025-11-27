@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBox_WasmApp", "CheckBox_WasmApp\CheckBox_WasmApp.csproj", "{00C68DBC-35B5-4445-B159-78A00ECF1038}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckBox_WasmApp.Client", "CheckBox_WasmApp.Client\CheckBox_WasmApp.Client.csproj", "{8D69A091-41BA-4FC8-97DA-D2C78FEFDE01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00C68DBC-35B5-4445-B159-78A00ECF1038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00C68DBC-35B5-4445-B159-78A00ECF1038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00C68DBC-35B5-4445-B159-78A00ECF1038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00C68DBC-35B5-4445-B159-78A00ECF1038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D69A091-41BA-4FC8-97DA-D2C78FEFDE01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D69A091-41BA-4FC8-97DA-D2C78FEFDE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D69A091-41BA-4FC8-97DA-D2C78FEFDE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D69A091-41BA-4FC8-97DA-D2C78FEFDE01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {398171B7-6975-4AF9-9AF4-06F7406170A1}
+	EndGlobalSection
+EndGlobal

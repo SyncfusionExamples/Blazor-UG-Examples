@@ -1,0 +1,37 @@
+﻿<h3>Show_Hide_Column</h3>
+@page "/TreeGrid/Column/show_hide_column"
+@rendermode InteractiveWebAssembly
+
+@using TreeGrid_ServerApp.Components.Data;
+@using Syncfusion.Blazor.TreeGrid;
+
+<button id="hide" @onclick="HideColumns">Hide Column</button>
+<button id="show" @onclick="ShowColumns">Show Column</button>
+
+<SfTreeGrid @ref="TreeGrid" IdMapping="TaskId" ParentIdMapping="ParentId" DataSource="@TreeGridData" TreeColumnIndex="1" AllowFiltering="true" AllowSorting="true">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" AllowSorting="false" AllowFiltering="false" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="90"></TreeGridColumn>
+        <TreeGridColumn Field="StartDate" HeaderText=" Start Date" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Format="yMd" Type="Syncfusion.Blazor.Grids.ColumnType.Date" Width="90">
+        </TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    SfTreeGrid<TreeData.BusinessObject> TreeGrid;
+    public List<TreeData.BusinessObject> TreeGridData { get; set; }
+    public string[] ColumnItems = new string[] { "Task ID", "Duration" };
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeData.GetSelfDataSource().ToList();
+    }
+    private void HideColumns()
+    {
+        this.TreeGrid.HideColumnsAsync(ColumnItems);  //hide by HeaderText
+    }
+    private void ShowColumns()
+    {
+        this.TreeGrid.ShowColumnsAsync(ColumnItems); //show by HeaderText
+    }
+}

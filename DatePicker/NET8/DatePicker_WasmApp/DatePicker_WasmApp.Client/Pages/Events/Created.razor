@@ -1,0 +1,15 @@
+﻿@page "/Created"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDatePicker TValue="DateTime?">
+    <DatePickerEvents TValue="DateTime?" Created="CreatedHandler"></DatePickerEvents>
+</SfDatePicker>
+@code {
+
+    public void CreatedHandler(object args)
+    {
+        // Here, you can customize your code.
+    }
+}

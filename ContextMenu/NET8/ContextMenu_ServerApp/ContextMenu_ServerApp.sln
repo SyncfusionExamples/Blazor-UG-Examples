@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenu_ServerApp", "ContextMenu_ServerApp.csproj", "{CBF5CD13-C611-455C-9E1D-516BC882701F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBF5CD13-C611-455C-9E1D-516BC882701F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBF5CD13-C611-455C-9E1D-516BC882701F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBF5CD13-C611-455C-9E1D-516BC882701F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBF5CD13-C611-455C-9E1D-516BC882701F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53E3F25B-2424-4A04-AD87-90D8B2B177E1}
+	EndGlobalSection
+EndGlobal

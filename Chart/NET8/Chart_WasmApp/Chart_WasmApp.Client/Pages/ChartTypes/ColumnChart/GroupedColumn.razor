@@ -1,0 +1,39 @@
+﻿@page "/ChartTypes/ColumnChart/Group"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="@Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ChartPoints" XName="Year" YName="USA_Total" GroupName="USA" ColumnWidth="0.7" ColumnSpacing="0.1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@ChartPoints" XName="Year" YName="USA_Gold" GroupName="USA" ColumnWidth="0.5" ColumnSpacing="0.1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@ChartPoints" XName="Year" YName="UK_Total" GroupName="UK" ColumnWidth="0.7" ColumnSpacing="0.1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+        <ChartSeries DataSource="@ChartPoints" XName="Year" YName="UK_Gold" GroupName="UK" ColumnWidth="0.5" ColumnSpacing="0.1" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ColumnData
+    {
+        public string Year { get; set; }
+        public double USA_Total { get; set; }
+        public double USA_Gold { get; set; }
+        public double UK_Total { get; set; }
+        public double UK_Gold { get; set; }
+        public double China_Total { get; set; }
+        public double China_Gold { get; set; }
+    }
+    public List<ColumnData> ChartPoints { get; set; } = new List<ColumnData>
+    {
+        new ColumnData { Year = "2012", USA_Total = 104, USA_Gold = 46, UK_Total = 65, UK_Gold = 29, China_Total = 91, China_Gold = 38},
+        new ColumnData { Year = "2016", USA_Total = 121, USA_Gold = 46, UK_Total = 67, UK_Gold = 27, China_Total = 70, China_Gold = 26},
+        new ColumnData { Year = "2020", USA_Total = 113, USA_Gold = 39, UK_Total = 65, UK_Gold = 22, China_Total = 88, China_Gold = 38},
+    };
+}

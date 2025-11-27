@@ -1,0 +1,44 @@
+﻿@page "/accumulationtypes/funnel/smartdatalabel"
+@using Syncfusion.Blazor.Charts
+<FunnelsRoute></FunnelsRoute>
+
+<SfAccumulationChart Title="World Population" EnableAnimation="false" ID="accumulation">
+    <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+
+    <AccumulationChartSeriesCollection>
+        <AccumulationChartSeries DataSource="@StatisticsDetails" XName="Country" YName="Users"
+                                 Type="AccumulationType.Funnel" Explode="false" Width="50%" Height="80%" NeckWidth="15%" NeckHeight="18%">
+            <AccumulationDataLabelSettings Visible="true" Name="Country" Position="AccumulationLabelPosition.Outside">
+                <AccumulationChartConnector Length="6%"></AccumulationChartConnector>
+            </AccumulationDataLabelSettings>
+        </AccumulationChartSeries>
+    </AccumulationChartSeriesCollection>
+</SfAccumulationChart>
+
+@code{
+    public class Statistics
+    {
+        public string Country { get; set; }
+        public double Users { get; set; }
+    }
+	
+    public List<Statistics> StatisticsDetails = new List<Statistics>
+	{
+        new Statistics { Country = "China", Users = 1409517397 },
+        new Statistics { Country = "India", Users = 1339180127 },
+        new Statistics { Country = "United States", Users = 324459463 },
+        new Statistics { Country = "Indonesia", Users = 263991379  },
+        new Statistics { Country = "Brazil", Users = 209288278 },
+        new Statistics { Country = "Pakistan", Users = 197015955 },
+        new Statistics { Country = "Nigeria", Users = 190886311 },
+        new Statistics { Country = "Bangladesh", Users = 164669751 },
+        new Statistics { Country = "Russia", Users = 143989754 },
+        new Statistics { Country = "Mexico", Users = 129163276 },
+        new Statistics { Country = "Japan", Users = 127484450 },
+        new Statistics { Country = "Ethiopia", Users = 104957438 },
+        new Statistics { Country = "Philippines", Users = 104918090 },
+        new Statistics { Country = "Egypt", Users = 97553151 },
+        new Statistics { Country = "Vietnam", Users = 95540800 },
+        new Statistics { Country = "Germany", Users = 82114224 },
+    };
+}

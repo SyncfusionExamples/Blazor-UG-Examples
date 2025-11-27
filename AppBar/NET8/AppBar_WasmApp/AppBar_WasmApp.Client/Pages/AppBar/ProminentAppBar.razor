@@ -1,0 +1,48 @@
+﻿@page "/AppBar/Prominent"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br />
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary" Mode="AppBarMode.Prominent" CssClass="prominent-appbar">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-menu"></SfButton>
+        <span class="prominent">AppBar Component with Prominent mode</span>
+        <AppBarSpacer></AppBarSpacer>
+        <SfButton CssClass="e-inherit" Content="FREE TRIAL"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-appbar .prominent {
+        align-self: center;
+        white-space: break-spaces;
+        text-align: inherit;
+        font-size: 35px;
+        line-height: 50px;
+    }
+
+    .control-container .e-appbar.prominent-appbar {
+        background-image: url("https://blazor.syncfusion.com/demos/_content/blazor_server_common_net8/images/appbar/prominent.png");
+        background-size: 100% 400px;
+        color: #ffffff;
+        background-repeat: no-repeat;
+        height: 400px;
+    }
+
+    .control-container .prominent-appbar .e-inherit.e-btn {
+        background: transparent;
+    }
+
+        .control-container .prominent-appbar .e-inherit.e-btn:hover,
+        .control-container .prominent-appbar .e-inherit.e-btn:focus,
+        .control-container .prominent-appbar .e-inherit.e-btn:active,
+        .control-container .prominent-appbar .e-inherit.e-btn.e-active,
+        .control-container .prominent-appbar .e-inherit.e-css.e-btn:hover,
+        .control-container .prominent-appbar .e-inherit.e-css.e-btn:focus
+        .control-container .prominent-appbar .e-inherit.e-css.e-btn:active
+        .control-container .prominent-appbar .e-inherit.e-css.e-btn.e-active {
+            background: rgba(255, 255, 255, .08);
+        }
+</style>

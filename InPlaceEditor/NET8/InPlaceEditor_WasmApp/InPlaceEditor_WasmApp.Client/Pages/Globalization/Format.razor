@@ -1,0 +1,22 @@
+﻿@page "/Format"
+
+@using Syncfusion.Blazor.InPlaceEditor
+@using Syncfusion.Blazor.Calendars
+<GlobalRoute></GlobalRoute>
+
+<table>
+    <tr>
+        <td class="control-title"> DatePicker </td>
+        <td>
+            <SfInPlaceEditor Type="Syncfusion.Blazor.InPlaceEditor.InputType.Date" TValue="DateTime?" @bind-Value="@DateValue">
+                <EditorComponent>
+                    <SfDatePicker TValue="DateTime?" @bind-Value="@DateValue" Format="yyyy-MM-dd" Placeholder="Choose a Date"></SfDatePicker>
+                </EditorComponent>
+            </SfInPlaceEditor>
+        </td>
+    </tr>
+</table>
+
+@code {
+    public DateTime? DateValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+}

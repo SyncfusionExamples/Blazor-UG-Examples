@@ -1,0 +1,19 @@
+﻿@page "/CustomAlert"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Popups
+@inject SfDialogService DialogService
+<CustomRoute></CustomRoute>
+<div>
+    <SfButton @onclick="@AlertBtn">Alert</SfButton>
+</div>
+@code {
+
+    private async Task AlertBtn()
+    {
+        await DialogService.AlertAsync("You clicked the alert button!", "Good job!", new DialogOptions()
+            {
+                PrimaryButtonOptions = new DialogButtonOptions() { Content = "Okay" }
+            });
+    }
+}

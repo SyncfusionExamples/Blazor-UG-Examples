@@ -1,0 +1,35 @@
+﻿@page "/ChartAxisLabels/Title"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartPrimaryXAxis Title="Countries" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+        <ChartAxisTitleStyle Size="16px" Color="red" FontFamily="Segoe UI" FontWeight="bold" />
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="YValue" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+         new ChartData { X= "USA", YValue= 46 },
+         new ChartData { X= "GBR", YValue= 27 },
+         new ChartData { X= "CHN", YValue= 26 },
+         new ChartData { X= "UK", YValue= 26 },
+         new ChartData { X= "AUS", YValue= 26 },
+         new ChartData { X= "IND", YValue= 26 },
+         new ChartData { X= "DEN", YValue= 26 },
+         new ChartData { X= "MEX", YValue= 26 },
+    };
+}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeatMap_ServerApp", "HeatMap_ServerApp.csproj", "{34DBB597-DCFF-4CAC-9DC0-7C166EC839CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34DBB597-DCFF-4CAC-9DC0-7C166EC839CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DBB597-DCFF-4CAC-9DC0-7C166EC839CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DBB597-DCFF-4CAC-9DC0-7C166EC839CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DBB597-DCFF-4CAC-9DC0-7C166EC839CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F62F787-3EC7-455C-9E49-83F2311ADE4F}
+	EndGlobalSection
+EndGlobal

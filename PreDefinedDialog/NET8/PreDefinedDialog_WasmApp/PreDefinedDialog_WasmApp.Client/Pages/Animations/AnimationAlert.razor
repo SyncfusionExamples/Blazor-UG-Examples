@@ -1,0 +1,18 @@
+﻿@page "/AnimationAlert"
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Popups
+@inject SfDialogService DialogService
+<AnimationRoute></AnimationRoute>
+<div>
+    <SfButton @onclick="@AlertBtn">Alert</SfButton>
+</div>
+@code {
+    private async Task AlertBtn()
+    {
+        await DialogService.AlertAsync("10% of battery remaining", "Low Battery", new DialogOptions()
+            {
+                 AnimationSettings = new DialogAnimationOptions() { Effect = DialogEffect.Zoom },
+            });
+    }
+}

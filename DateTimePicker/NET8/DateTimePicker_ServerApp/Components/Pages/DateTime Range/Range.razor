@@ -1,0 +1,11 @@
+﻿@page "/Range"
+
+@using Syncfusion.Blazor.Calendars
+
+<SfDateTimePicker TValue="DateTime?" Min='@MinDateTime' Max='@MaxDateTime' Value='@DateTimeValue'></SfDateTimePicker>
+
+@code {
+    public DateTime MinDateTime { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 7, 0, 0, 0);
+    public DateTime MaxDateTime { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 27, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+    public DateTime? DateTimeValue { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 14, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+}

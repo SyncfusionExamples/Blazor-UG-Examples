@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechToText_WasmApp", "SpeechToText_WasmApp\SpeechToText_WasmApp.csproj", "{185E0CBC-B0E2-4EB8-A04A-556F04190875}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeechToText_WasmApp.Client", "SpeechToText_WasmApp.Client\SpeechToText_WasmApp.Client.csproj", "{306B8F45-29F2-47CB-899A-0363839D380A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{185E0CBC-B0E2-4EB8-A04A-556F04190875}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185E0CBC-B0E2-4EB8-A04A-556F04190875}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185E0CBC-B0E2-4EB8-A04A-556F04190875}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185E0CBC-B0E2-4EB8-A04A-556F04190875}.Release|Any CPU.Build.0 = Release|Any CPU
+		{306B8F45-29F2-47CB-899A-0363839D380A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306B8F45-29F2-47CB-899A-0363839D380A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306B8F45-29F2-47CB-899A-0363839D380A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306B8F45-29F2-47CB-899A-0363839D380A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C57F10E1-F4B8-494F-B580-AEA3C784ADCE}
+	EndGlobalSection
+EndGlobal

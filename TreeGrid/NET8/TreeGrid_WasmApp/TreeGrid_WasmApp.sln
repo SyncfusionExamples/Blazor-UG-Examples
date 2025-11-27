@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeGrid_WasmApp", "TreeGrid_WasmApp\TreeGrid_WasmApp.csproj", "{1450974D-6826-4276-A1E9-AA388C2C39FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeGrid_WasmApp.Client", "TreeGrid_WasmApp.Client\TreeGrid_WasmApp.Client.csproj", "{61D3DE18-030C-4066-90FB-9DC365768045}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1450974D-6826-4276-A1E9-AA388C2C39FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1450974D-6826-4276-A1E9-AA388C2C39FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1450974D-6826-4276-A1E9-AA388C2C39FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1450974D-6826-4276-A1E9-AA388C2C39FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61D3DE18-030C-4066-90FB-9DC365768045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61D3DE18-030C-4066-90FB-9DC365768045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61D3DE18-030C-4066-90FB-9DC365768045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61D3DE18-030C-4066-90FB-9DC365768045}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {489627D2-8A93-45D5-81E9-B46802E10611}
+	EndGlobalSection
+EndGlobal

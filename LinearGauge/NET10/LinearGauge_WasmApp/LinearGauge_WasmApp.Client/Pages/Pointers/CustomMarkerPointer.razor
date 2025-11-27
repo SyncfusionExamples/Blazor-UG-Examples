@@ -1,0 +1,17 @@
+﻿@page "/CustomMarkerPointer"
+<PointerRoute></PointerRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="60" MarkerType="MarkerType.Circle"
+                                    Height="15" Width="15" Color="#cd41f4"
+                                    Position="Position.Outside">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

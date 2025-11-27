@@ -1,0 +1,24 @@
+﻿@page "/OpenCloseContextMenu"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<HowToRoute></HowToRoute>
+
+<div id="target">
+    <SfContextMenu @ref="contextMenuObj" TValue="MenuItem">
+        <MenuItems>
+            <MenuItem Text="Cut"></MenuItem>
+            <MenuItem Text="Copy"></MenuItem>
+            <MenuItem Text="Paste"></MenuItem>
+        </MenuItems>
+    </SfContextMenu>
+    <SfButton @onclick="OpenContextMenu">Open ContextMenu</SfButton>
+</div>
+
+@code {
+    SfContextMenu<MenuItem> contextMenuObj;
+    private void OpenContextMenu(MouseEventArgs e)
+    {
+        contextMenuObj.Open(e.ClientX, e.ClientY);
+    }
+}

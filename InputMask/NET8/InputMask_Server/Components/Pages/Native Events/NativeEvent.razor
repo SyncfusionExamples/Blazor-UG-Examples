@@ -1,0 +1,11 @@
+﻿@page "/Event/NativeEvent"
+<EventRoute></EventRoute>
+
+<SfMaskedTextBox Mask='000-000-0000' @onkeypress='@KeyPressed'></SfMaskedTextBox>
+
+@code {
+    public void KeyPressed()
+    {
+        Console.WriteLine("Key Pressed!");
+    }
+}

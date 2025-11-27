@@ -1,0 +1,99 @@
+﻿@page "/Template"
+<DragDropRoute></DragDropRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfListBox TValue="string[]" DataSource="@Data" TItem="ListData">
+    <ListBoxFieldSettings Text="Text"></ListBoxFieldSettings>
+    <ListBoxTemplates TItem="ListData">
+        <ItemTemplate>
+            <div class="list-wrapper">
+                <span class="@((context as ListData).Pic) e-avatar e-avatar-xlarge e-avatar-circle"></span>
+                <span class="text">@((context as ListData).Text)</span><span class="description">@((context as ListData).Description)</span>
+            </div>
+        </ItemTemplate>
+    </ListBoxTemplates>
+</SfListBox>
+
+@code {
+    public ListData Model = new ListData();
+    public List<ListData> Data = new List<ListData>
+    {
+        new ListData { Text = "Javascript", Pic = "javascript", Description = "It is a lightweight interpreted or JIT-compiled programming language." },
+        new ListData { Text = "Typescript", Pic = "typescript", Description = "It is a typed superset of Javascript that compiles to plain JavaScript." },
+        new ListData { Text = "Angular", Pic = "angular", Description = "It is a TypeScript-based open-source web application framework." },
+        new ListData { Text = "React", Pic = "react", Description = "A JavaScript library for building user interfaces. It can also render on the server using Node." },
+        new ListData { Text = "Vue", Pic = "vue", Description = "A progressive framework for building user interfaces. it is incrementally adoptable." }
+    };
+
+    public class ListData
+    {
+        public string Text { get; set; }
+        public string Pic { get; set; }
+        public string Description { get; set; }
+    }
+}
+
+<style>
+    .e-listbox-container {
+        margin: auto;
+        max-width: 400px;
+        box-sizing: border-box;
+    }
+
+    .list-wrapper {
+        height: inherit;
+        position: relative;
+        padding: 14px 12px 14px 78px;
+    }
+
+        .list-wrapper .text,
+        .list-wrapper .description {
+            display: block;
+            margin: 0;
+            padding-bottom: 3px;
+            white-space: normal;
+        }
+
+        .list-wrapper .description {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+    .e-listbox-container .list-wrapper .text {
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .list-wrapper .e-avatar {
+        position: absolute;
+        left: 5px;
+        background-color: transparent;
+        font-size: 22px;
+        top: calc(50% - 33px);
+    }
+
+    .e-listbox-container .e-list-item {
+        height: auto !important;
+    }
+
+    .javascript {
+        background-image: url('javascript.svg');
+    }
+
+    .typescript {
+        background-image: url('typescript.svg')
+    }
+
+    .angular {
+        background-image: url('angular.svg');
+    }
+
+    .vue {
+        background-image: url('/vue.svg');
+    }
+
+    .react {
+        background-image: url('/react.svg');
+    }
+</style>

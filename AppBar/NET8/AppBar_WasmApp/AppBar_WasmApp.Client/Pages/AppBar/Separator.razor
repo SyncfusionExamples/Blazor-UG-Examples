@@ -1,0 +1,29 @@
+﻿@page "/AppBar/Separator"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-cut"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-copy"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-paste"></SfButton>
+        <AppBarSeparator></AppBarSeparator>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-bold"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-underline"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-italic"></SfButton>
+        <AppBarSeparator></AppBarSeparator>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-align-left"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-align-right"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-align-center"></SfButton>
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-justify"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-btn.e-inherit {
+        margin: 0 3px;
+    }
+</style>

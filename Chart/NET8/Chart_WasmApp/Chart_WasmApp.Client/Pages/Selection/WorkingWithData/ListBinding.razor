@@ -1,0 +1,33 @@
+﻿@page "/Selection/WorkingWithData/List"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart Title="Inflation - Consumer Price" Width="60%">
+    <ChartPrimaryXAxis IntervalType="IntervalType.Years" LabelFormat="yyyy" ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime">
+    </ChartPrimaryXAxis>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ConsumerReports" XName="XValue" YName="YValue" Type="ChartSeriesType.Line">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public DateTime XValue { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> ConsumerReports = new List<ChartData>
+    {
+        new ChartData { XValue = new DateTime(2005, 01, 01), YValue = 21 },
+        new ChartData { XValue = new DateTime(2006, 01, 01), YValue = 24 },
+        new ChartData { XValue = new DateTime(2007, 01, 01), YValue = 36 },
+        new ChartData { XValue = new DateTime(2008, 01, 01), YValue = 38 },
+        new ChartData { XValue = new DateTime(2009, 01, 01), YValue = 54 },
+        new ChartData { XValue = new DateTime(2010, 01, 01), YValue = 57 },
+        new ChartData { XValue = new DateTime(2011, 01, 01), YValue = 70 },
+    };
+}

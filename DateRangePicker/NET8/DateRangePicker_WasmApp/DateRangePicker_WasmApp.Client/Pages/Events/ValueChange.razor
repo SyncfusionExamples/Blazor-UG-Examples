@@ -1,0 +1,15 @@
+﻿@page "/ValueChange"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateRangePicker TValue="DateTime?">
+    <DateRangePickerEvents TValue="DateTime?" ValueChange="ValueChangeHandler"></DateRangePickerEvents>
+</SfDateRangePicker>
+@code {
+
+    public void ValueChangeHandler(RangePickerEventArgs<DateTime?> args)
+    {
+        // Here, you can customize your code.
+    }
+}

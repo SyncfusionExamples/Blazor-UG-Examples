@@ -1,0 +1,30 @@
+﻿@page "/Accessibility"
+
+@using Syncfusion.Blazor.Buttons
+
+<SfChip ID="chip-avatar" EnableDelete="true" CssClass="e-chip-avatar" Selection="SelectionType.Single">
+    <ChipItems>
+        <ChipItem Text="Andrew" LeadingIconCss='andrew'></ChipItem>
+        <ChipItem Text="Janet" LeadingIconCss='janet'></ChipItem>
+        <ChipItem Text="Laura" LeadingIconCss='laura'></ChipItem>
+        <ChipItem Text="Margaret" LeadingIconCss='margaret'></ChipItem>
+    </ChipItems>
+</SfChip>
+
+<style>
+    #chip-avatar .andrew {
+        background-image: url('css/images/andrew.png')
+    }
+
+    #chip-avatar .margaret {
+        background-image: url('css/images/margaret.png')
+    }
+
+    #chip-avatar .laura {
+        background-image: url('css/images/laura.png')
+    }
+
+    #chip-avatar .janet {
+        background-image: url('css/images/janet.png')
+    }
+</style>

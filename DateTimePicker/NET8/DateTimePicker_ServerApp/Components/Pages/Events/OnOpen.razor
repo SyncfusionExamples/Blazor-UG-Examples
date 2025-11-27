@@ -1,0 +1,17 @@
+﻿@page "/OnOpen"
+
+@using Syncfusion.Blazor.Calendars
+<EventRoute></EventRoute>
+
+<SfDateTimePicker TValue="DateTime?">
+    <DateTimePickerEvents TValue="DateTime?" OnOpen="OpenHandler"></DateTimePickerEvents>
+</SfDateTimePicker>
+
+
+@code {
+
+    public void OpenHandler(object args)
+    {
+        // Here, you can customize your code.
+    }
+}

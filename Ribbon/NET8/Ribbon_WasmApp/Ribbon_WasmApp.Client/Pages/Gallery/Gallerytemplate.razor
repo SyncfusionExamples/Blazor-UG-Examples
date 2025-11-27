@@ -1,0 +1,221 @@
+@page "/gallerytemplate"
+
+
+@using Syncfusion.Blazor.Ribbon
+@using Syncfusion.Blazor.SplitButtons
+
+<GalleryNav></GalleryNav>
+
+<div style="width: 70%; margin: 0 auto;">
+    <SfRibbon>
+        <RibbonTabs>
+            <!-- Home tab -->
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <!-- Clipboard group -->
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type="RibbonItemType.SplitButton">
+                                        <RibbonSplitButtonSettings Content="Paste"
+                                                                   IconCss="e-icons e-paste"
+                                                                   Items="@pasteFormatItems">
+                                        </RibbonSplitButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Copy" IconCss="e-icons e-copy"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Format Painter" IconCss="e-icons e-format-painter"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+
+                    <!-- Table Styles group (Gallery) -->
+                    <RibbonGroup HeaderText="Table Styles">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type="RibbonItemType.Gallery">
+                                        <RibbonGallerySettings Groups="@galleryGroups"
+                                                               Template="@GalleryItemTemplate"
+                                                               PopupTemplate="@GalleryItemTemplate"
+                                                               PopupWidth="auto"
+                                                               PopupHeight="auto">
+                                        </RibbonGallerySettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+
+            <!-- Insert tab -->
+            <RibbonTab HeaderText="Insert">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Rows">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Above" IconCss="e-icons e-insert-above"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Below" IconCss="e-icons e-insert-below"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+
+                    <RibbonGroup HeaderText="Columns">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Left" IconCss="e-icons e-insert-left"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type="RibbonItemType.Button">
+                                        <RibbonButtonSettings Content="Right" IconCss="e-icons e-insert-right"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    // SplitButton items (Paste dropdown)
+    private List<DropDownMenuItem> pasteFormatItems = new()
+    {
+        new DropDownMenuItem { Text = "Keep Source Format" },
+        new DropDownMenuItem { Text = "Merge Format" },
+        new DropDownMenuItem { Text = "Keep Text Only" }
+    };
+
+    // Gallery data (maps the EJ2 CSS classes to Blazor GalleryItem.CssClass)
+    private List<GalleryGroup> galleryGroups = new()
+    {
+        new GalleryGroup
+        {
+            Header = "Plain Tables",
+            Items = new List<GalleryItem>
+            {
+                new GalleryItem { CssClass = "plainTables_item_1" },
+                new GalleryItem { CssClass = "plainTables_item_2" },
+                new GalleryItem { CssClass = "plainTables_item_3" },
+                new GalleryItem { CssClass = "plainTables_item_4" }
+            }
+        },
+        new GalleryGroup
+        {
+            Header = "List Tables",
+            Items = new List<GalleryItem>
+            {
+                new GalleryItem { CssClass = "listTables_item_1" },
+                new GalleryItem { CssClass = "listTables_item_2" },
+                new GalleryItem { CssClass = "listTables_item_3" },
+                new GalleryItem { CssClass = "listTables_item_4" }
+            }
+        }
+    };
+
+    private RenderFragment<GalleryItemContext> GalleryItemTemplate => ctx => @<div class="gallery-template @(ctx.Item.CssClass)">
+        <table class="table">
+            <tbody>
+                <tr class="row_one">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+                <tr class="row_two">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+                <tr class="row_three">
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                    <td class="tableContent">—</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>;
+}
+<style>
+        .table {
+            border-collapse: collapse; 
+        }
+
+        /* plain table styles */
+
+        .plainTables_item_1 .tableContent {
+            border: 1px solid black;
+        }
+
+        .plainTables_item_2 .tableContent,
+        .plainTables_item_3 .tableContent {
+            border: 1px solid #c1c1c1;
+        }
+
+        .plainTables_item_4 .row_one .tableContent {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+        }
+        .plainTables_item_4 .row_three .tableContent {
+            border-bottom: 1px solid black;
+        }
+
+        /* list table styles */
+
+        .listTables_item_1 .row_one .tableContent {
+            border-bottom: 1px solid #83caeb;
+        }
+
+        .listTables_item_2 .row_one .tableContent,
+        .listTables_item_2 .row_two .tableContent ,
+        .listTables_item_2 .row_three .tableContent  {
+            border-bottom: 1px solid #83caeb;
+            border-top: 1px solid #83caeb;
+        }
+
+        .listTables_item_3 .row_one .tableContent {
+            border-top: 1px solid #156082;
+            border-bottom: 1px solid #156082;
+            background-color: #156082;
+            color: white;
+        }
+        .listTables_item_3 .row_three .tableContent {
+            border-bottom: 1px solid #156082;
+        }
+
+        .listTables_item_4 .row_one .tableContent {
+            border-top: 1px solid #156082;
+            border-bottom: 1px solid #156082;
+        }
+        .listTables_item_4 .row_three .tableContent {
+            border-bottom: 1px solid #156082;
+        }
+    </style>

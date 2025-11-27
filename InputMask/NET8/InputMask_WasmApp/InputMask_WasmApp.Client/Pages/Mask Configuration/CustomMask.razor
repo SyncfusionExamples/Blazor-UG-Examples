@@ -1,0 +1,12 @@
+﻿@page "/MaskConfiguration/CustomMask"
+<MaskRoute></MaskRoute>
+
+<SfMaskedTextBox Mask="00:00 >PM" Placeholder="Time (ex: 10:00 PM, 10:00 AM)" CustomCharacters="@customMask"></SfMaskedTextBox>
+
+@code {
+    public Dictionary<string, string> customMask = new Dictionary<string, string>()
+    {
+        {"P" , "P,p,A,a" },
+        {"M" , "m,M" }
+    };
+}

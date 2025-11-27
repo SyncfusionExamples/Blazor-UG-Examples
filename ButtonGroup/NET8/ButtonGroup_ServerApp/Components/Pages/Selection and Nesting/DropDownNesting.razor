@@ -1,0 +1,17 @@
+﻿@page "/DropDownNesting"
+
+@using Syncfusion.Blazor.SplitButtons
+<SelectionRoute></SelectionRoute>
+
+<SfButtonGroup>
+    <ButtonGroupButton CssClass="e-btn e-success">View</ButtonGroupButton>
+    <ButtonGroupButton CssClass="e-btn e-success">Edit</ButtonGroupButton>
+    <SfDropDownButton Content="Profile">
+        <DropDownMenuItems>
+            <DropDownMenuItem Text="Dashboard"></DropDownMenuItem>
+            <DropDownMenuItem Text="Notifications"></DropDownMenuItem>
+            <DropDownMenuItem Text="User Settings"></DropDownMenuItem>
+            <DropDownMenuItem Text="Log Out"></DropDownMenuItem>
+        </DropDownMenuItems>
+    </SfDropDownButton>
+</SfButtonGroup>

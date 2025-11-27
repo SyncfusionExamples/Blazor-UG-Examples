@@ -1,0 +1,32 @@
+﻿@page "/Toolbar/HowTo/CommandCustomization"
+
+@using Syncfusion.Blazor.Navigations
+<HowToRoute></HowToRoute>
+
+<SfToolbar Width="500">
+    <ToolbarItems>
+        <ToolbarItem Text="Bold" Type="ItemType.Button" HtmlAttributes="@Item1"></ToolbarItem>
+        <ToolbarItem Text="Italic" Type="ItemType.Button"></ToolbarItem>
+        <ToolbarItem Type="ItemType.Button" Text="Underline"></ToolbarItem>
+        <ToolbarItem Type="ItemType.Separator"></ToolbarItem>
+        <ToolbarItem Text="Uppercase" CssClass="e-txt-casing"></ToolbarItem>
+    </ToolbarItems>
+</SfToolbar>
+
+<style>
+    .custom_bold .e-tbar-btn-text {
+        font-weight: 900;
+    }
+
+    .e-txt-casing .e-tbar-btn-text {
+        font-variant: small-caps;
+    }
+</style>
+
+@code {
+    Dictionary<string, object> Item1 = new Dictionary<string, object>()
+    {
+    	{ "class" , "custom_bold" },
+    	{ "id" , "itemId" }
+     };
+}

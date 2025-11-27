@@ -1,0 +1,24 @@
+﻿@page "/DefaultNoColor"
+
+@using Syncfusion.Blazor.Inputs
+<HowToRoute></HowToRoute>
+
+<div id="preview" style="@colorValue"></div>
+<SfColorPicker NoColor="true" Mode="ColorPickerMode.Palette" ShowButtons="false" ModeSwitcher="false" ValueChange="@Changed"></SfColorPicker>
+
+@code {
+    private string colorValue = "background-color: #008000";
+    private void Changed(ColorPickerEventArgs args)
+    {
+        colorValue = "background-color:" + args.CurrentValue.Hex;
+    }
+}
+
+<style>
+    #preview {
+        border: 1px solid;
+        height: 40px;
+        margin-bottom: 10px;
+        width: 300px;
+    }
+</style>

@@ -1,0 +1,37 @@
+﻿@page "/TreeGrid/Template"
+@rendermode InteractiveWebAssembly
+
+
+@using Syncfusion.Blazor.TreeGrid;
+@using Syncfusion.Blazor.Grids
+@using TreeGrid_ServerApp.Components.Data
+@inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
+
+<SfTreeGrid ModelType="@model" Height="400" DataSource="@TreeData" IdMapping="EmployeeID" ParentIdMapping="ParentId" TreeColumnIndex="0">
+    <TreeGridColumns>
+        <TreeGridColumn Field="Name" HeaderText="Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn HeaderText="Employee Image" Width="80">
+            <Template>
+                @{
+                    var employee = (context as Employee);
+                    <div class="image">
+                        <img src="@UriHelper.ToAbsoluteUri($"images/TreeGrid/{employee.Name}.png")" alt="@employee.EmployeeID" />
+                    </div>
+                }
+            </Template>
+        </TreeGridColumn>
+        <TreeGridColumn Field="DOB" HeaderText="DOB" Width="10" Type="Syncfusion.Blazor.Grids.ColumnType.Date" Format="yMd"></TreeGridColumn>
+        <TreeGridColumn Field="Designation" HeaderText="Designation" Width="120"></TreeGridColumn>
+        <TreeGridColumn Field="EmpID" HeaderText="Progress" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Country" HeaderText="Priority" Width="100"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public Employee model = new Employee();
+    public IEnumerable<Employee> TreeData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeData = Employee.GetTemplateData();
+    }
+}

@@ -1,0 +1,22 @@
+﻿@page "/CustomRange"
+<RangeRoute></RangeRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum="0" Maximum="100">
+            <LinearGaugeRanges>
+                <LinearGaugeRange Start="50" End="80" StartWidth="2" EndWidth="15"
+                                  Color="orange" Position="Position.Inside"
+                                  Offset="4">
+                    <LinearGaugeRangeBorder Color="red" Width="2">
+                    </LinearGaugeRangeBorder>
+                </LinearGaugeRange>
+            </LinearGaugeRanges>
+            <LinearGaugePointers>
+                <LinearGaugePointer></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

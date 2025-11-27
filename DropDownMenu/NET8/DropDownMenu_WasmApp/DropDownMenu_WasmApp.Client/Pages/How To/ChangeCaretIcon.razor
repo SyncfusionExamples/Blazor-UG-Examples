@@ -1,0 +1,38 @@
+﻿@page "/ChangeCaretIcon"
+
+@using Syncfusion.Blazor.SplitButtons
+<HowToRoute></HowToRoute>
+
+<SfDropDownButton CssClass="@IconCss" Content="Clipboard">
+    <DropDownButtonEvents OnOpen="beforeOpen" OnClose="beforeClose"></DropDownButtonEvents>
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Edit"></DropDownMenuItem>
+        <DropDownMenuItem Text="Copy"></DropDownMenuItem>
+        <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+@code {
+    public string IconCss = "";
+    private void beforeOpen(BeforeOpenCloseMenuEventArgs args)
+    {
+        this.IconCss = "e-caret-up";
+        this.StateHasChanged();
+    }
+    private void beforeClose(BeforeOpenCloseMenuEventArgs args)
+    {
+        this.IconCss = "";
+        this.StateHasChanged();
+    }
+}
+
+<style>
+    .e-caret {
+        transform: rotate(0deg);
+        transition: transform 200ms ease-in-out;
+    }
+
+    .e-caret-up .e-caret {
+        transform: rotate(180deg);
+    }
+</style>

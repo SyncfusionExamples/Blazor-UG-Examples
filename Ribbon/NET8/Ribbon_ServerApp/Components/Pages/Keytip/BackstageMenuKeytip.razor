@@ -1,0 +1,64 @@
+@page "/backstagemenukeytip"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon;
+@using Syncfusion.Blazor.Navigations;
+@using  Syncfusion.Blazor.Buttons;
+@using Syncfusion.Blazor.DropDowns;
+@using Syncfusion.Blazor.SplitButtons;
+
+<KeytipNav></KeytipNav>
+
+<div id="ribbonContainer">
+    <SfRibbon ID="ribbon" EnableKeyTips="true">
+        <RibbonBackstageMenuSettings KeyTip="F" Visible="true" BackButtonSettings="@backStageBackButton">
+            <BackstageMenuItems>
+                <BackstageMenuItem KeyTip="H" ID="home" Text="Home" IconCss="e-icons e-home"></BackstageMenuItem>
+                <BackstageMenuItem KeyTip="N" ID="new" Text="New" IconCss="e-icons e-file-new"></BackstageMenuItem>
+                <BackstageMenuItem KeyTip="O" ID="open" Text="Open" IconCss="e-icons e-folder-open"></BackstageMenuItem>
+            </BackstageMenuItems>
+        </RibbonBackstageMenuSettings>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.SplitButton AllowedSizes="RibbonItemSize.Large">
+                                        <RibbonSplitButtonSettings Content="Paste" IconCss="e-icons e-paste" Items="@formatItems"></RibbonSplitButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut" IconCss="e-icons e-cut"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Copy" IconCss="e-icons e-copy"></RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+
+    List<DropDownMenuItem> formatItems = new List<DropDownMenuItem>()
+    {
+        new DropDownMenuItem{ Text = "Keep Source Format" },
+        new DropDownMenuItem{ Text = "Merge Format" },
+        new DropDownMenuItem{ Text = "Keep Text Only" }
+    };
+
+    BackstageBackButtonSettings backStageBackButton = new BackstageBackButtonSettings
+        {
+            Text = "Close",
+            IconCss = "e-icons e-arrow-left",
+            Visible = true
+        };
+}

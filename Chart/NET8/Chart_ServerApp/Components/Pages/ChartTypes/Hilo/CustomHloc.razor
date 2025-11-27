@@ -1,0 +1,35 @@
+﻿@page "/ChartTypes/Hilo/CustomHLOC"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<Type1Route></Type1Route>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@StockDetails" XName="X" High="High" Width="5" BearFillColor="darkred" BullFillColor="darkgreen" Low="Low" Open="Open" Close="Close" Type="ChartSeriesType.HiloOpenClose">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class Data
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+        public double High { get; set; }
+        public double Low { get; set; }
+        public double Open { get; set; }
+        public double Close { get; set; }
+    }
+
+    public List<Data> StockDetails = new List<Data>
+    {
+        new Data{ X= "Jan", Open= 120, High= 160, Low= 100, Close= 140 },
+        new Data{ X= "Feb", Open= 150, High= 190, Low= 130, Close= 170 },
+        new Data{ X= "Mar", Open= 130, High= 170, Low= 110, Close= 150 },
+        new Data{ X= "Apr", Open= 160, High= 180, Low= 120, Close= 140 },
+        new Data{ X= "May", Open= 150, High= 170, Low= 110, Close= 130 }
+    };
+}

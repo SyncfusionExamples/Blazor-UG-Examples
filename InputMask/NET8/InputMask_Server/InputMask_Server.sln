@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputMask_Server", "InputMask_Server.csproj", "{C257BC32-8CD9-4A61-99EF-0DC28676020A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C257BC32-8CD9-4A61-99EF-0DC28676020A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C257BC32-8CD9-4A61-99EF-0DC28676020A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C257BC32-8CD9-4A61-99EF-0DC28676020A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C257BC32-8CD9-4A61-99EF-0DC28676020A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F5054E80-DAA7-44F4-99CF-5F8D23083097}
+	EndGlobalSection
+EndGlobal

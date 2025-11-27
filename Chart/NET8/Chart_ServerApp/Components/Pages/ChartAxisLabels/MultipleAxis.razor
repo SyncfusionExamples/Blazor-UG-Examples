@@ -1,0 +1,39 @@
+﻿@page "/ChartAxisLabels/MultipleAxis"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Weather Reports">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartAxes>
+        <ChartAxis Name="YAxis" OpposedPosition="true" />
+    </ChartAxes>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.Column" />
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y1" YAxisName="YAxis" />
+    </ChartSeriesCollection>
+
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+        public double Y1 { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+        new ChartData { X = "Sun", Y = 35, Y1 = 30 },
+        new ChartData { X = "Mon", Y = 40, Y1 = 28 },
+        new ChartData { X = "Tue", Y = 80, Y1 = 29 },
+        new ChartData { X = "Wed", Y = 70, Y1 = 30 },
+        new ChartData { X = "Thu", Y = 65, Y1 = 33 },
+        new ChartData { X = "Fri", Y = 55, Y1 = 32 },
+        new ChartData { X = "Sat", Y = 50, Y1 = 34 }
+    };
+}

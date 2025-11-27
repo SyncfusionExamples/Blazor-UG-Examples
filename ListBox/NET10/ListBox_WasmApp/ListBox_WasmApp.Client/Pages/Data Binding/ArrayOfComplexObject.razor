@@ -1,0 +1,32 @@
+﻿@page "/ArrayOfComplexObject"
+<BindingRoute></BindingRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfListBox TValue="string[]" DataSource="@SprotsDetails" TItem="SportsData">
+    <ListBoxFieldSettings Text="Sports.Name" Value="Id" />
+</SfListBox>
+
+@code {
+    public List<SportsData> SprotsDetails = new List<SportsData>
+    {
+        new SportsData{ Id = "game0", Sports = new GameData{ Name = "Badminton" } },
+        new SportsData{ Id = "game1", Sports = new GameData{ Name = "Cricket" } },
+        new SportsData{ Id = "game2", Sports = new GameData{ Name = "Football" } },
+        new SportsData{ Id = "game3", Sports = new GameData{ Name = "Golf" } },
+        new SportsData{ Id = "game4", Sports = new GameData{ Name = "Tennis" } },
+        new SportsData{ Id = "game5", Sports = new GameData{ Name = "Basket Ball" } },
+        new SportsData{ Id = "game6", Sports = new GameData{ Name = "Base Ball" } },
+        new SportsData{ Id = "game7", Sports = new GameData{ Name = "Hockey" } }
+    };
+
+    public class GameData
+    {
+        public string Name { get; set; }
+    }
+    public class SportsData
+    {
+        public string Id { get; set; }
+        public GameData Sports { get; set; }
+    }
+}

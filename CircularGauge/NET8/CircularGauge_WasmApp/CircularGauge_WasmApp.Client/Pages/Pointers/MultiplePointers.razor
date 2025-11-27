@@ -1,0 +1,38 @@
+﻿@page "/MultiplePointers"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="90"
+                                      MarkerShape="GaugeShape.InvertedTriangle"
+                                      Radius="100%"
+                                      MarkerHeight="15"
+                                      MarkerWidth="15">
+                </CircularGaugePointer>
+                <CircularGaugePointer Value="90"
+                                      Type="PointerType.RangeBar"
+                                      Radius="60%"
+                                      MarkerWidth="10">
+                </CircularGaugePointer>
+                <CircularGaugePointer Value="90"
+                                      Radius="50%"
+                                      PointerWidth="25"
+                                      Color="#007DD1">
+                    <CircularGaugeCap Radius="15">
+                        <CircularGaugeCapBorder Width="5">
+                        </CircularGaugeCapBorder>
+                    </CircularGaugeCap>
+                    <CircularGaugeNeedleTail Length="25%">
+                    </CircularGaugeNeedleTail>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+            <CircularGaugeAxisLabelStyle UseRangeColor="true">
+            </CircularGaugeAxisLabelStyle>
+            <CircularGaugeAxisMinorTicks UseRangeColor="true"></CircularGaugeAxisMinorTicks>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

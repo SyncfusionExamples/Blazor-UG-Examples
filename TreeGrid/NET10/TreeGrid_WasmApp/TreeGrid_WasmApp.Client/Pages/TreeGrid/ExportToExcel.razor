@@ -1,0 +1,126 @@
+﻿@page "/treegrid/exporttoexcel"
+@rendermode InteractiveWebAssembly
+@using TreeGrid_WasmApp.Client.Pages.Data
+@using Syncfusion.Blazor.TreeGrid;
+@using Syncfusion.Blazor.Navigations;
+@using Syncfusion.Blazor.Grids;
+@using Syncfusion.Blazor.Inputs;
+@using Syncfusion.Blazor.DropDowns;
+@using Syncfusion.Blazor.Buttons;
+
+<h3>Excel Export Configuration</h3>
+
+<div style="display:flex;justify-content:space-evenly">
+    <div style="width:300px;padding:20px;">
+        <SfTextBox @bind-Value="@FileName" Placeholder="File Name (e.g., treegrid.xlsx)"></SfTextBox>
+
+        <SfDropDownList TValue="string" TItem="DropdownItem" @bind-Value="@ExportTypeValue" DataSource="@ExportTypeOptions" Placeholder="Export Type">
+            <DropDownListFieldSettings Value="Value" Text="Text"></DropDownListFieldSettings>
+            <DropDownListEvents TValue="string" TItem="DropdownItem" ValueChange="OnExportTypeChange"></DropDownListEvents>
+        </SfDropDownList>
+
+        <SfDropDownList TValue="string" TItem="DropdownItem" @bind-Value="@HierarchyModeValue" DataSource="@HierarchyModeOptions" Placeholder="Hierarchy Export Mode">
+            <DropDownListFieldSettings Value="Value" Text="Text"></DropDownListFieldSettings>
+            <DropDownListEvents TValue="string" TItem="DropdownItem" ValueChange="OnHierarchyModeChange"></DropDownListEvents>
+        </SfDropDownList>
+    </div>
+
+    <div style="padding:10px;">
+        <SfCheckBox @bind-Checked="@IncludeHiddenColumn" Label="Include Hidden Columns"></SfCheckBox>
+
+        <SfCheckBox @bind-Checked="@IsCollapsedStatePersist" Label="Persist Collapsed State"></SfCheckBox>
+
+        <SfCheckBox @bind-Checked="@ApplyCustomTheme" Label="Apply Custom Theme"></SfCheckBox>
+    </div>
+</div>
+
+<SfTreeGrid @ref="TreeGrid" DataSource="@TreeGridData" AllowExcelExport="true" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1"
+             Toolbar="@(new List<string>() { "ExcelExport" })">
+    <TreeGridEvents OnToolbarClick="ToolbarClickHandler" TValue="TreeDatas"></TreeGridEvents>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" Format="C2" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="StartDate" Visible="false" HeaderText=" Start Date" Format="yMd" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right" Width="100"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    SfTreeGrid<TreeDatas> TreeGrid;
+
+    public List<TreeDatas> TreeGridData { get; set; }
+
+    // Properties bound to UI
+    public string FileName { get; set; } = "treegrid.xlsx";
+    public ExportType ExportType { get; set; } = ExportType.AllPages;
+    public string ExportTypeValue { get; set; } = "AllPages"; // For dropdown binding
+    public HierarchyExportMode HierarchyExportMode { get; set; } = HierarchyExportMode.Expanded;
+    public string HierarchyModeValue { get; set; } = "Expanded"; // For dropdown binding
+    public bool IncludeHiddenColumn { get; set; } = false;
+    public bool IsCollapsedStatePersist { get; set; } = false;
+    public bool ApplyCustomTheme { get; set; } = false;
+
+    // Dropdown data
+    public class DropdownItem
+    {
+        public string Value { get; set; }
+        public string Text { get; set; }
+    }
+
+    public List<DropdownItem> ExportTypeOptions { get; set; } = new List<DropdownItem>
+    {
+        new DropdownItem { Value = "AllPages", Text = "All Pages" },
+        new DropdownItem { Value = "CurrentPage", Text = "Current Page" }
+    };
+
+    public List<DropdownItem> HierarchyModeOptions { get; set; } = new List<DropdownItem>
+    {
+        new DropdownItem { Value = "All", Text = "All" },
+        new DropdownItem { Value = "Expanded", Text = "Expanded" },
+        new DropdownItem { Value = "None", Text = "None" }
+    };
+
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+
+    private void OnExportTypeChange(ChangeEventArgs<string, DropdownItem> args)
+    {
+        ExportType = (ExportType)Enum.Parse(typeof(ExportType), args.Value);
+    }
+
+    private void OnHierarchyModeChange(ChangeEventArgs<string, DropdownItem> args)
+    {
+        HierarchyExportMode = (HierarchyExportMode)Enum.Parse(typeof(HierarchyExportMode), args.Value);
+    }
+
+    private async Task ToolbarClickHandler(ClickEventArgs args)
+    {
+        if (args.Item.Text == "Excel Export")
+        {
+            TreeGridExcelExportProperties ExportProperties = new TreeGridExcelExportProperties();
+            ExportProperties.FileName = FileName;
+            ExportProperties.ExportType = ExportType;
+            ExportProperties.HierarchyExportMode = HierarchyExportMode;
+            ExportProperties.IncludeHiddenColumn = IncludeHiddenColumn;
+            ExportProperties.IsCollapsedStatePersist = IsCollapsedStatePersist;
+
+            if (ApplyCustomTheme)
+            {
+                ExcelTheme theme = new ExcelTheme();
+                ExcelStyle recordStyle = new ExcelStyle()
+                    {
+                        FontName = "Segoe UI",
+                        FontColor = "#666666"
+                    };
+                theme.Header = recordStyle;
+                theme.Record = recordStyle;
+                theme.Caption = recordStyle;
+                ExportProperties.Theme = theme;
+            }
+            await this.TreeGrid.ExportToExcelAsync(ExportProperties);
+        }
+    }
+}

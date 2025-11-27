@@ -1,0 +1,22 @@
+﻿@page "/Template"
+
+@using Syncfusion.Blazor.SplitButtons
+<PopupRoute></PopupRoute>
+
+<SfDropDownButton Content="Edit" CssClass="custom">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Cut"></DropDownMenuItem>
+        <DropDownMenuItem Text="Copy"></DropDownMenuItem>
+        <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+  
+    .custom li {
+        float: left;
+        font-size: 10px;
+        padding-left: 50px;
+        font-style: oblique;
+    }
+</style>

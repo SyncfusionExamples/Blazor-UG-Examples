@@ -1,0 +1,19 @@
+﻿@page "/DimensionConfirm"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@inject SfDialogService DialogService
+<DimensionRoute></DimensionRoute>
+<div>
+    <SfButton @onclick="@ConfirmBtn">Confirm</SfButton>
+</div>
+@code {
+    private async Task ConfirmBtn()
+    {
+        bool isConfirm = await DialogService.ConfirmAsync("Are you sure you want to permanently delete these items?", "Delete Multiple Items", new DialogOptions()
+            {
+                Width = "400px",
+                Height = "200px",
+            });
+    }
+}

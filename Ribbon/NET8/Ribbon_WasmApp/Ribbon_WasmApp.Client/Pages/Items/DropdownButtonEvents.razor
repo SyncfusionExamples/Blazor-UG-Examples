@@ -1,0 +1,61 @@
+@page "/dropdownbuttonevents"
+
+
+@using Syncfusion.Blazor.Ribbon
+@using Syncfusion.Blazor.SplitButtons
+
+<ItemsNav></ItemsNav>
+
+<div style="width:30%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Header">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.DropDown>
+                                        <RibbonDropDownSettings Content="Header" IconCss="e-icons e-header" Items="@headerItems" 
+                                                                Created="Created" 
+                                                                PopupOpening="PopupOpening" 
+                                                                PopupClosing="PopupClosing" 
+                                                                PopupOpened="PopupOpened" 
+                                                                PopupClosed="PopupClosed" 
+                                                                ItemRendering="ItemRendering" 
+                                                                ItemSelecting="ItemSelecting">
+                                        </RibbonDropDownSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    private void Created() { /* your actions here */ }
+
+    private void PopupOpening(DropDownPopupOpenEventArgs args) { /* your actions here */ }
+
+    private void PopupClosing(DropDownPopupCloseEventArgs args) { /* your actions here */ }
+
+    private void PopupOpened(DropDownPopupOpenedEventArgs args) { /* your actions here */ }
+
+    private void PopupClosed(DropDownPopupClosedEventArgs args) { /* your actions here */ }
+
+    private void ItemRendering(DropDownItemRenderEventArgs args) { /* your actions here */ }
+
+    private void ItemSelecting(DropDownItemSelectEventArgs args) { /* your actions here */ }
+
+    List<DropDownMenuItem> headerItems = new List<DropDownMenuItem>()
+    {
+        new DropDownMenuItem{ Text = "Insert Header" },
+        new DropDownMenuItem{ Text = "Edit Header" },
+        new DropDownMenuItem{ Text = "Remove Header" }
+    };
+
+}

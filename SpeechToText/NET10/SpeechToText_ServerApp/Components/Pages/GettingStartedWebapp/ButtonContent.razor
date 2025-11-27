@@ -1,0 +1,30 @@
+@page "/webappbuttoncontent"
+
+
+@using Syncfusion.Blazor.Inputs
+
+<GettingStartedWebappNav></GettingStartedWebappNav>
+
+<div class="speechtext-container">
+    <SfSpeechToText ButtonSettings="@buttonSettings" @bind-Transcript="@transcript"></SfSpeechToText>
+    <SfTextArea RowCount="5" ColumnCount="50" @bind-Value="@transcript" ResizeMode="Resize.None" Placeholder="Transcribed text will be shown here..."></SfTextArea>
+</div>
+
+<style>
+    .speechtext-container {
+        margin: 50px auto;
+        gap: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+@code {
+    string transcript = "";
+    SpeechToTextButtonSettings buttonSettings = new SpeechToTextButtonSettings()
+    {
+        Text = "Start Listening", // Displays when idle
+        StopStateText = "Stop Listening" // Displays when speech recognition is active
+    };
+}

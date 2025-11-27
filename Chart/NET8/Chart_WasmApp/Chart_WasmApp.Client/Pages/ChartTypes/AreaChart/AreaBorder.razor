@@ -1,0 +1,31 @@
+﻿@page "/ChartTypes/AreaChart/AreaBorder"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="Y" Opacity="0.5" Type="ChartSeriesType.Area">
+            <ChartSeriesBorder Width="2"></ChartSeriesBorder>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "South Korea", Y= 39.4 },
+        new ChartData { X= "India", Y= 61.3 },
+        new ChartData { X= "Pakistan", Y= 20.4 },
+        new ChartData { X= "Germany", Y= 65.1 },
+        new ChartData { X= "Australia", Y= 15.8 }
+    };
+}

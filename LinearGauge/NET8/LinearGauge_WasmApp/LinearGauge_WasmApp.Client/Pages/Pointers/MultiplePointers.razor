@@ -1,0 +1,19 @@
+﻿@page "/MultiplePointers"
+<PointerRoute></PointerRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="30" MarkerType="MarkerType.Circle">
+                </LinearGaugePointer>
+                <LinearGaugePointer PointerValue="60" MarkerType="MarkerType.Diamond">
+                </LinearGaugePointer>
+                <LinearGaugePointer PointerValue="80" AnimationDuration="1000">
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

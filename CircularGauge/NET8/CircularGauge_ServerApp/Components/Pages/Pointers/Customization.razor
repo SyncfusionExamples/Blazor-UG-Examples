@@ -1,0 +1,28 @@
+﻿@page "/Customization"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge Height="250px" Width="250px">
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="90"
+                                      Radius="40%"
+                                      PointerWidth="30"
+                                      Color="#007DD1"
+                                      Position="PointerRangePosition.Inside">
+                    <CircularGaugeCap Radius="15"
+                                      Color="white">
+                        <CircularGaugeCapBorder Width="4"
+                                                Color="#007DD1">
+                        </CircularGaugeCapBorder>
+                    </CircularGaugeCap>
+                    <CircularGaugeNeedleTail Length="35%"
+                                             Color="#007DD1">
+                    </CircularGaugeNeedleTail>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

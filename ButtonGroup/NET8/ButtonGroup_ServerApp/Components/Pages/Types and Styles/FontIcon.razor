@@ -1,0 +1,21 @@
+﻿@page "/FontIcon"
+
+@using Syncfusion.Blazor.SplitButtons
+@using Syncfusion.Blazor.Buttons
+<TypesRoute></TypesRoute>
+
+<SfButtonGroup Mode="SelectionMode.Single">
+    <ButtonGroupButton IconCss="e-icons e-play-icon" IconPosition="IconPosition.Right">PLAY</ButtonGroupButton>
+    <ButtonGroupButton IconCss="e-icons e-pause-icon">PAUSE</ButtonGroupButton>
+    <ButtonGroupButton>Delete</ButtonGroupButton>
+</SfButtonGroup>
+
+<style>
+    .e-play-icon::before {
+        content: '\e324';
+    }
+
+    .e-pause-icon::before {
+        content: '\e326';
+    }
+</style>

@@ -1,0 +1,39 @@
+﻿@page "/LinearGradientGauge"
+<PointerRoute></PointerRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge Orientation="Orientation.Horizontal">
+    <LinearGaugeContainer Width="30" Offset="30">
+        <LinearGaugeContainerBorder Width="0" />
+        <LinearGaugeAxes>
+            <LinearGaugeAxis>
+                <LinearGaugeAxisLabelStyle Offset="55">
+                    <LinearGaugeAxisLabelFont Color="#424242" />
+                </LinearGaugeAxisLabelStyle>
+                <LinearGaugeLine Width="0.01" />
+                <LinearGaugeMajorTicks Height="0.01" Interval="25" />
+                <LinearGaugeMinorTicks Height="0.01" />
+                <LinearGaugePointers>
+                    <LinearGaugePointer PointerValue="80" Height="25" Width="35"
+                                        Offset="-40" MarkerType="MarkerType.Triangle"
+                                        Placement="Syncfusion.Blazor.LinearGauge.Placement.Near">
+                        <LinearGradient StartValue="1%" EndValue="99%">
+                            <ColorStops>
+                                <ColorStop Opacity="1" Color="#fef3f9" Offset="1%">
+                                </ColorStop>
+                                <ColorStop Opacity="1" Color="#f54ea2" Offset="100%">
+                                </ColorStop>
+                            </ColorStops>
+                        </LinearGradient>
+                    </LinearGaugePointer>
+                </LinearGaugePointers>
+                <LinearGaugeRanges>
+                    <LinearGaugeRange Color="#f54ea2" Start="0" End="80"
+                                      StartWidth="30" EndWidth="30" Offset="30">
+                    </LinearGaugeRange>
+                </LinearGaugeRanges>
+            </LinearGaugeAxis>
+        </LinearGaugeAxes>
+    </LinearGaugeContainer>
+</SfLinearGauge>

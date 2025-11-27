@@ -1,0 +1,30 @@
+﻿@page "/CustomLegendText"
+
+@using Syncfusion.Blazor.CircularGauge
+<LegendRoute></LegendRoute>
+
+<SfCircularGauge>
+    <CircularGaugeLegendSettings Visible="true" Height="50">
+        <CircularGaugeLegendBorder Color="green" Width="3"></CircularGaugeLegendBorder>
+    </CircularGaugeLegendSettings>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis Minimum="0" Maximum="100">
+            <CircularGaugeAxisMajorTicks UseRangeColor="true">
+            </CircularGaugeAxisMajorTicks>
+            <CircularGaugeAxisMinorTicks UseRangeColor="true">
+            </CircularGaugeAxisMinorTicks>
+            <CircularGaugeAxisLabelStyle UseRangeColor="true">
+            </CircularGaugeAxisLabelStyle>
+            <CircularGaugeRanges>
+                <CircularGaugeRange Start="0" End="25" Radius="108%" LegendText="light air">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="25" End="50" Radius="108%" LegendText="light air">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="50" End="75" Radius="108%" LegendText="light breez">
+                </CircularGaugeRange>
+                <CircularGaugeRange Start="75" End="100" Radius="108%" LegendText="Gentle breez">
+                </CircularGaugeRange>
+            </CircularGaugeRanges>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

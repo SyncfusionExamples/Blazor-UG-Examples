@@ -1,0 +1,23 @@
+﻿@page "/ActionFailureTemplate"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfDropDownList TValue="string" TItem="EmployeeData" Placeholder="Select a customer" Query="@Query">
+    <DropDownListTemplates TItem="EmployeeData">
+        <ActionFailureTemplate>
+            <span class='norecord'>Data fetch get fails </span>
+        </ActionFailureTemplate>
+    </DropDownListTemplates>
+    <SfDataManager Url="https://services.odata.org/V4/Northwind/Northwind.svcs/Employees" Adaptor="Syncfusion.Blazor.Adaptors.ODataV4Adaptor" CrossDomain=true></SfDataManager>
+    <DropDownListFieldSettings Value="Country" Text="FirstName"></DropDownListFieldSettings>
+</SfDropDownList>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+    }
+    public Query Query = new Query();
+}

@@ -1,0 +1,71 @@
+﻿@page "/IndicatorsTemplate"
+
+@using Syncfusion.Blazor.Navigations
+<NavigationRoute></NavigationRoute>
+
+<div class="control-container">
+    <SfCarousel ShowIndicators="true">
+        <ChildContent>
+            <CarouselItem>
+                <div class="slide-content">Slide 1</div>
+            </CarouselItem>
+            <CarouselItem>
+                <div class="slide-content">Slide 2</div>
+            </CarouselItem>
+            <CarouselItem>
+                <div class="slide-content">Slide 3</div>
+            </CarouselItem>
+            <CarouselItem>
+                <div class="slide-content">Slide 4</div>
+            </CarouselItem>
+            <CarouselItem>
+                <div class="slide-content">Slide 5</div>
+            </CarouselItem>
+        </ChildContent>
+        <IndicatorsTemplate>
+            @{
+                string slideName = (context.Index + 1).ToString();
+                <div class="indicator">
+                    <div class="fs-6">@slideName</div>
+                </div>
+            }
+        </IndicatorsTemplate>
+    </SfCarousel>
+</div>
+
+<style>
+    .control-container {
+        background-color: #adb5bd;
+        height: 300px;
+        margin: 0 auto;
+        width: 500px;
+    }
+
+    .e-carousel .slide-content {
+        align-items: center;
+        display: flex;
+        font-size: 1.25rem;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .e-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar .indicator {
+        background-color: #ECECEC;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        margin: 0.5rem;
+        width: 3rem;
+    }
+
+        .e-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar .indicator .fs-6 {
+            margin: auto;
+        }
+
+    .e-carousel .e-carousel-indicators .e-indicator-bars .e-indicator-bar.e-active .indicator {
+        background-color: #3C78EF;
+        color: #fff;
+    }
+</style>

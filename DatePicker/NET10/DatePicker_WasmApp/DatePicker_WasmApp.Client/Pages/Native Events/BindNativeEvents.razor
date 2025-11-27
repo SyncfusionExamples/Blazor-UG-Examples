@@ -1,0 +1,13 @@
+﻿@page "/BindNativeEvents"
+
+@using Syncfusion.Blazor.Calendars
+<NativeRoute></NativeRoute>
+
+<SfDatePicker TValue="DateTime?" @onkeypress='@KeyPressed'></SfDatePicker>
+
+@code {
+    public void KeyPressed()
+    {
+        Console.WriteLine("Key Pressed!");
+    }
+}

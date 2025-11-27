@@ -1,0 +1,28 @@
+﻿@page "/CustomConfirm"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@inject SfDialogService DialogService
+<CustomRoute></CustomRoute>
+<div>
+    <SfButton @onclick="@ConfirmBtn">Confirm</SfButton>
+</div>
+<style>
+    .e-btn-icon.e-icons.e-check icon.e-icon-left:before {
+        content: '\e7ff';
+    }
+
+    .e-btn-icon.e-icons.e-close icon.e-icon-left:before {
+        content: '\e7fc';
+    }
+</style>
+@code {
+    private async Task ConfirmBtn()
+    {
+        bool isConfirm = await DialogService.ConfirmAsync("Are you sure you want to permanently delete these file?", "Delete File", new DialogOptions()
+            {
+                PrimaryButtonOptions = new DialogButtonOptions() { Content = "Yes", IconCss = "e-icons e-check" },
+                CancelButtonOptions = new DialogButtonOptions() { Content = "No", IconCss = "e-icons e-close" },
+            });
+    }
+}

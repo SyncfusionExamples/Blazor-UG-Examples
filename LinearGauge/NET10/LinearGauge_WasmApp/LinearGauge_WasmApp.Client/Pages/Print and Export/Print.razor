@@ -1,0 +1,27 @@
+﻿@page "/Print"
+<PrintExportRoute></PrintExportRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<button @onclick="PrintGauge">Print</button>
+
+<SfLinearGauge @ref="gauge" AllowPrint="true">
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum="0" Maximum="100">
+            <LinearGaugeMajorTicks Interval="20"></LinearGaugeMajorTicks>
+            <LinearGaugeMinorTicks Interval="10"></LinearGaugeMinorTicks>
+            <LinearGaugePointers>
+                <LinearGaugePointer>
+                </LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+@code {
+    SfLinearGauge gauge;
+    public async Task PrintGauge()
+    {
+        await this.gauge.PrintAsync();
+    }
+}

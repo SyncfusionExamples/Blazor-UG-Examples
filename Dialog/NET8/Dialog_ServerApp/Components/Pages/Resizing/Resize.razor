@@ -1,0 +1,43 @@
+﻿@page "/Resize"
+
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<div id="target">
+    <SfButton @onclick="@OpenDialog">Open Dialog</SfButton>
+
+    <SfDialog Target="#target" Width="250px" EnableResize="true" AllowDragging="true" ResizeHandles="@dialogResizeDirections" ShowCloseIcon="true" @bind-Visible="@IsVisible">
+        <DialogTemplates>
+            <Header> Dialog </Header>
+            <Content> This is a Dialog with drag enabled </Content>
+        </DialogTemplates>
+        <DialogButtons>
+            <DialogButton Content="OK" IsPrimary="true" OnClick="@CloseDialog" />
+            <DialogButton Content="Cancel" OnClick="@CloseDialog" />
+        </DialogButtons>
+    </SfDialog>
+</div>
+
+<style>
+    #target {
+        min-height: 400px;
+        height: 100%;
+        position: relative;
+    }
+</style>
+
+@code {
+    private bool IsVisible { get; set; } = true;
+
+    private ResizeDirection[] dialogResizeDirections { get; set; } = new ResizeDirection[] { ResizeDirection.All };
+
+    private void OpenDialog()
+    {
+        this.IsVisible = true;
+    }
+
+    private void CloseDialog()
+    {
+        this.IsVisible = false;
+    }
+}

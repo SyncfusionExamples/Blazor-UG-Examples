@@ -1,0 +1,15 @@
+﻿@page "/OnDragStop"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents OnDragStop="@OnDragStopHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void OnDragStopHandler(DragStopEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

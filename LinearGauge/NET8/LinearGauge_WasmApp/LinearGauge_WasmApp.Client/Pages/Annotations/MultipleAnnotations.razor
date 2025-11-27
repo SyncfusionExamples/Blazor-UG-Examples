@@ -1,0 +1,45 @@
+﻿@page "/MultipleAnnotations"
+<AnnotationRoute></AnnotationRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAnnotations>
+        <LinearGaugeAnnotation ZIndex="1" AxisValue="100"
+                               X="-110" Y="-35">
+            <ContentTemplate>
+                <div class="custom-annotation">Speed to get higher milage</div>
+            </ContentTemplate>
+        </LinearGaugeAnnotation>
+        <LinearGaugeAnnotation AxisValue="0" ZIndex="1">
+            <ContentTemplate>
+                <div class="speed">40</div>
+            </ContentTemplate>
+        </LinearGaugeAnnotation>
+    </LinearGaugeAnnotations>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="40"></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+<style type="text/css">
+    .speed {
+        color: white;
+        background-color: blue;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        padding: 4px 0 0 6px;
+        font-weight: bold;
+    }
+
+    .custom-annotation {
+        background-color: lightgray;
+        width: 210px;
+        padding: 2px 5px;
+    }
+</style>

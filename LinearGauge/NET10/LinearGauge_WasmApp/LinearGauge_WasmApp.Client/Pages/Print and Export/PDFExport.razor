@@ -1,0 +1,24 @@
+﻿@page "/PDFExport"
+<PrintExportRoute></PrintExportRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<button @onclick="ExportGauge">Export</button>
+
+<SfLinearGauge @ref="gauge" AllowPdfExport="true">
+    <LinearGaugeAxes>
+        <LinearGaugeAxis Minimum="0" Maximum="100">
+            <LinearGaugeMajorTicks Interval="20"></LinearGaugeMajorTicks>
+            <LinearGaugeMinorTicks Interval="10"></LinearGaugeMinorTicks>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+@code {
+    SfLinearGauge gauge;
+
+    public async Task ExportGauge()
+    {
+        await this.gauge.ExportAsync(ExportType.PDF, "LinearGauge");
+    }
+}

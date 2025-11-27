@@ -1,0 +1,30 @@
+﻿@page "/Binding"
+
+@using Syncfusion.Blazor.DropDowns
+<BindRoute></BindRoute>
+
+<p>ComboBox value is:<strong>@ComboVal</strong></p>
+
+<SfComboBox Placeholder="e.g. Australia" @bind-Value="@ComboVal" DataSource="@Countries">
+    <ComboBoxFieldSettings Value="Name"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+
+    public string ComboVal = "Austarila";
+
+    public class Country
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+    }
+
+    List<Country> Countries = new List<Country>
+    {
+        new Country() { Name = "Australia", Code = "AU" },
+        new Country() { Name = "Bermuda", Code = "BM" },
+        new Country() { Name = "Canada", Code = "CA" },
+        new Country() { Name = "Cameroon", Code = "CM" },
+    };
+}

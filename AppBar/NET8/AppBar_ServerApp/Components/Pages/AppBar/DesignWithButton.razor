@@ -1,0 +1,30 @@
+﻿@page "/AppBar/Button"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.SplitButtons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-menu"></SfButton>
+        <SfDropDownButton CssClass="e-inherit" Content="Products">
+            <DropDownMenuItems>
+                <DropDownMenuItem Text="Developer"></DropDownMenuItem>
+                <DropDownMenuItem Text="Analytics"></DropDownMenuItem>
+                <DropDownMenuItem Text="Reporting"></DropDownMenuItem>
+                <DropDownMenuItem Text="E-Signature"></DropDownMenuItem>
+                <DropDownMenuItem Text="Help Desk"></DropDownMenuItem>
+            </DropDownMenuItems>
+        </SfDropDownButton>
+        <AppBarSpacer></AppBarSpacer>
+        <SfButton CssClass="e-inherit" Content="Login"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-btn.e-inherit {
+        margin: 0 3px;
+    }
+</style>

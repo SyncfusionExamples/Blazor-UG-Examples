@@ -1,0 +1,37 @@
+﻿@page "/ToggleButton"
+
+@using Syncfusion.Blazor.Buttons
+<TypesRoute></TypesRoute>
+
+<SfButton CssClass="e-flat" IsPrimary="true" IconCss="@IconCss" Content="@Content" IsToggle="true" @onclick="OnToggleClick" @ref="ToggleBtnObj"></SfButton>
+
+@code {
+    SfButton ToggleBtnObj;
+    public string IconCss = "e-icons e-play";
+    public string Content = "Play";
+    public void OnToggleClick()
+    {
+        if (ToggleBtnObj.Content == "Play")
+        {
+            this.Content = "Pause";
+            this.IconCss = "e-icons e-pause";
+        }
+        else
+        {
+            this.Content = "Play";
+            this.IconCss = "e-icons e-play";
+        }
+    }
+}
+
+<style>
+
+    .e-play::before {
+        content: '\e324';
+    }
+
+    .e-pause::before {
+        content: '\e326';
+    }
+
+</style>

@@ -1,0 +1,39 @@
+﻿@page "/Tooltip/CustomTooltip"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TooltipRoute></TooltipRoute>
+<br/>
+<SfChart Title="Product Sales" HighlightColor="red">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartPrimaryYAxis LabelFormat="{value}M">
+
+    </ChartPrimaryYAxis>
+
+    <ChartTooltipSettings Enable="true" Fill="gray">
+        <ChartTooltipBorder Color="#FF0000" Width="2"></ChartTooltipBorder>
+    </ChartTooltipSettings>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesReports" XName="X" YName="Y" Type="ChartSeriesType.Column">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class Data
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+        public string Text { get; set; }
+    }
+
+    public List<Data> SalesReports = new List<Data>
+    {
+       new Data{ X= "Jan", Y= 3, Text= "January" },
+       new Data{ X= "Feb", Y= 3.5, Text= "February" },
+       new Data{ X= "Mar", Y= 7, Text= "March" },
+       new Data{ X= "Apr", Y= 13.5, Text= "April" }
+    };
+}

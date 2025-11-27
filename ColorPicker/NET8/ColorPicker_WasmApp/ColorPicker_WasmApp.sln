@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPicker_WasmApp", "ColorPicker_WasmApp\ColorPicker_WasmApp.csproj", "{6DD1DCA9-507B-45B5-B720-E3A2ACAD0ADC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorPicker_WasmApp.Client", "ColorPicker_WasmApp.Client\ColorPicker_WasmApp.Client.csproj", "{5D89573D-E376-4990-8C82-E3332639FC68}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DD1DCA9-507B-45B5-B720-E3A2ACAD0ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD1DCA9-507B-45B5-B720-E3A2ACAD0ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD1DCA9-507B-45B5-B720-E3A2ACAD0ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD1DCA9-507B-45B5-B720-E3A2ACAD0ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D89573D-E376-4990-8C82-E3332639FC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D89573D-E376-4990-8C82-E3332639FC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D89573D-E376-4990-8C82-E3332639FC68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D89573D-E376-4990-8C82-E3332639FC68}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70438119-520E-437F-9BD0-79D872AE1ED0}
+	EndGlobalSection
+EndGlobal

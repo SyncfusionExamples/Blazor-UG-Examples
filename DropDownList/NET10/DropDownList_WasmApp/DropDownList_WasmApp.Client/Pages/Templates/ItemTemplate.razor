@@ -1,0 +1,32 @@
+﻿@page "/ItemTemplate"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfDropDownList TValue="string" TItem="EmployeeData" Placeholder="Select a customer" Query="@Query">
+    <DropDownListTemplates TItem="EmployeeData">
+        <ItemTemplate>
+            <span><span class='name'>@((context as EmployeeData).FirstName)</span><span class='country'>@((context as EmployeeData).Country)</span></span>
+        </ItemTemplate>
+    </DropDownListTemplates>
+    <SfDataManager Url="https://ej2services.syncfusion.com/production/web-services/api/Employees" Adaptor="Syncfusion.Blazor.Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+    <DropDownListFieldSettings Text="FirstName" Value="Country"></DropDownListFieldSettings>
+</SfDropDownList>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+        public string Country { get; set; }
+    }
+    public EmployeeData Data = new EmployeeData();
+    public Query Query = new Query();
+}
+
+<style>
+    .country {
+        right: 15px;
+        position: absolute;
+    }
+</style>

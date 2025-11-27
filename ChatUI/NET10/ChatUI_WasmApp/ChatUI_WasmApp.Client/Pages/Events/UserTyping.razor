@@ -1,0 +1,17 @@
+@page "/usertyping"
+
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<EventsNav></EventsNav>
+
+<div style="height: 400px; width: 400px;">
+    <SfChatUI UserTyping="OnUserTyping"></SfChatUI>
+</div>
+
+@code {
+    private void OnUserTyping(ChatUserTypingEventArgs args)
+    {
+        // Your required action here
+    }
+}

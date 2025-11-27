@@ -1,0 +1,29 @@
+﻿@page "/treegrid/virtualization/columnvirtualization"
+@rendermode InteractiveWebAssembly
+@using TreeGrid_ServerApp.Components.Data
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.TreeGrid;
+
+<SfTreeGrid DataSource="@TreeData" IdMapping="TaskID" TreeColumnIndex="1" ParentIdMapping="ParentID" Height="400" Width="600" EnableHover="false" EnableVirtualization="true" EnableColumnVirtualization="true">
+    <TreeGridPageSettings PageSize="40"></TreeGridPageSettings>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskID" HeaderText="Jersey No" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD1" HeaderText="Name" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD2" HeaderText="Year" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD3" HeaderText="Stint" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD4" HeaderText="TMID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD5" HeaderText="LGID" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="FIELD6" HeaderText="GP" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field7" HeaderText="GS" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field8" HeaderText="Minutes" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+        <TreeGridColumn Field="Field9" HeaderText="Points" TextAlign="TextAlign.Right" Width="150"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public List<VirtualData> TreeData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeData = VirtualData.GetTreeVirtualData().ToList();
+    }
+}

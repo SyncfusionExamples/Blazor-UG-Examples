@@ -1,0 +1,60 @@
+﻿@page "/DisplayModes"
+
+@using Syncfusion.Blazor.InPlaceEditor
+@using Syncfusion.Blazor.Inputs
+<ConfigRoute></ConfigRoute>
+
+<h4>Example of data-underline attribute</h4>
+<table class="table-section">
+    <tr>
+        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-title"> Intractable UI </td>
+        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <SfInPlaceEditor @bind-Value="@TextValue" TValue="string" SubmitOnEnter="true">
+                <EditorComponent>
+                    <SfTextBox @bind-Value="@TextValue" Placeholder="Enter some text"></SfTextBox>
+                </EditorComponent>
+            </SfInPlaceEditor>
+        </td>
+    </tr>
+    <tr>
+        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6 control-title"> Normal UI </td>
+        <td class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <SfInPlaceEditor @bind-Value="@TextValue" TValue="string" SubmitOnEnter="true" @attributes="htmlAttribute">
+                <EditorComponent>
+                    <SfTextBox @bind-Value="@TextValue" Placeholder="Enter some text"></SfTextBox>
+                </EditorComponent>
+            </SfInPlaceEditor>
+        </td>
+    </tr>
+</table>
+
+<style>
+    .table-section {
+        margin: 0 auto;
+    }
+
+    td {
+        padding: 20px 0;
+        min-width: 230px;
+        height: 100px;
+    }
+
+    .control-title {
+        font-weight: 600;
+        padding-right: 20px;
+        text-align: right;
+        width: 50%;
+    }
+
+    h4 {
+        text-align: center;
+    }
+</style>
+
+@code {
+    public string TextValue = "Andrew";
+
+    Dictionary<string, object> htmlAttribute = new Dictionary<string, object>() {
+        {"data-underline", "false" }
+    };
+}

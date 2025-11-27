@@ -1,0 +1,52 @@
+﻿@page "/BindEvent"
+
+@using Syncfusion.Blazor.SplitButtons
+
+<SfDropDownButton Content="Profile">
+    <DropDownButtonEvents Created="Created" OnOpen="OnOpen" Opened="Opened" ItemSelected="ItemSelected" OnClose="OnClose" OnItemRender="ItemRender" Closed="Closed">
+    </DropDownButtonEvents>
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Dashboard" Id="Dashboard"></DropDownMenuItem>
+        <DropDownMenuItem Text="Notifications" Id="Notifications"></DropDownMenuItem>
+        <DropDownMenuItem Text="User Settings" Id="UserSettings"></DropDownMenuItem>
+        <DropDownMenuItem Text="Log Out" Id="LogOut"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+@code {
+
+    private void Created()
+    {
+
+    }
+
+    private void OnOpen(BeforeOpenCloseMenuEventArgs args)
+    {
+
+    }
+
+    private void Opened(OpenCloseMenuEventArgs args)
+    {
+
+    }
+
+    private void ItemSelected(MenuEventArgs args)
+    {
+
+    }
+
+    private void OnClose(BeforeOpenCloseMenuEventArgs args)
+    {
+
+    }
+
+    private void ItemRender(MenuEventArgs args)
+    {
+
+    }
+
+    private void Closed(OpenCloseMenuEventArgs args)
+    {
+
+    }
+}

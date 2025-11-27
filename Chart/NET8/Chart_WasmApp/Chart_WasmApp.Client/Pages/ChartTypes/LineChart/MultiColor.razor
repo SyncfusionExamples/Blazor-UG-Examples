@@ -1,0 +1,33 @@
+﻿@page "/ChartTypes/LineChart/MultiColor"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="X" YName="Y" PointColorMapping="Color" Type="ChartSeriesType.MultiColoredLine">
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+        public string Color { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData { X= "South Korea", Y= 39.4, Color="red" },
+        new ChartData { X= "India", Y= 61.3, Color="green" },
+        new ChartData { X= "Pakistan", Y= 20.4, Color="#ff0097" },
+        new ChartData { X= "Germany", Y= 65.1, Color="crimson" },
+        new ChartData { X= "Australia", Y= 15.8, Color="blue" },
+        new ChartData { X= "Italy", Y= 29.2, Color="darkorange" },
+    };
+}

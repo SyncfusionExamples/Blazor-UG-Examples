@@ -1,0 +1,70 @@
+﻿@page "/treegrid/print"
+@rendermode InteractiveWebAssembly
+@using TreeGrid_ServerApp.Components.Data
+@using Syncfusion.Blazor.TreeGrid
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Grids
+
+<input type="button" @onclick="onClick" value="Print Tree" />
+<div style="margin-bottom:5px">
+    <label>Change Print mode to current page</label>
+    <SfSwitch ValueChange="@Change" TChecked="bool" style="margin-top:5px"></SfSwitch>
+</div>
+<SfTreeGrid DataSource="@TreeGridData" @ref="TreeGrid" IdMapping="TaskId" AllowPaging=true PrintMode="@printMode" ParentIdMapping="ParentId" TreeColumnIndex="1" Toolbar="@(new List<string>() { "Print" })">
+    <TreeGridPageSettings PageSize="1"></TreeGridPageSettings>
+    <TreeGridEvents OnToolbarClick="ToolbarClickHandler" TValue="TreeDatas"></TreeGridEvents>
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    SfTreeGrid<TreeDatas> TreeGrid;
+    public List<TreeDatas> TreeGridData { get; set; }
+    public Syncfusion.Blazor.Grids.PrintMode printMode { get; set; } = Syncfusion.Blazor.Grids.PrintMode.AllPages;
+    public bool printModeChange { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+    private void Change(Syncfusion.Blazor.Buttons.ChangeEventArgs<bool> args)
+    {
+        printModeChange = args.Checked;
+        StateHasChanged();
+    }
+    public void ToolbarClickHandler(ClickEventArgs args)
+    {
+        if(args.Item.Text == "Print")
+        {
+            if (printModeChange)
+            {
+                printMode = Syncfusion.Blazor.Grids.PrintMode.CurrentPage;
+            }
+            else
+            {
+                printMode = Syncfusion.Blazor.Grids.PrintMode.AllPages;
+            }
+            TreeGrid.PrintAsync();
+        }
+    }
+    private void onClick()
+    {
+        if (printModeChange)
+        {
+            printMode = Syncfusion.Blazor.Grids.PrintMode.CurrentPage;
+        }
+        else
+        {
+            printMode = Syncfusion.Blazor.Grids.PrintMode.AllPages;
+        }
+        TreeGrid.PrintAsync();
+    }
+}

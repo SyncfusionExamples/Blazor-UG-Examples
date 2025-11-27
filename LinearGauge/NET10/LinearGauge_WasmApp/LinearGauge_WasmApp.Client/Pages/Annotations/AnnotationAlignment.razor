@@ -1,0 +1,35 @@
+﻿@page "/AnnotationAlignment"
+<AnnotationRoute></AnnotationRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAnnotations>
+        <LinearGaugeAnnotation ZIndex="1"
+                               HorizontalAlignment="Placement.Center"
+                               VerticalAlignment="Placement.Center">
+            <ContentTemplate>
+                <div class="custom-annotation">40</div>
+            </ContentTemplate>
+        </LinearGaugeAnnotation>
+    </LinearGaugeAnnotations>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer PointerValue="40"></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+<style type="text/css">
+    .custom-annotation {
+        color: white;
+        background-color: blue;
+        height: 30px;
+        width: 30px;
+        border-radius: 15px;
+        padding: 4px 0 0 6px;
+        font-weight: bold;
+    }
+</style>

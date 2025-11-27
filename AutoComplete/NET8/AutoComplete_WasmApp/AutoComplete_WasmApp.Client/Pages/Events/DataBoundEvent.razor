@@ -1,0 +1,29 @@
+﻿@page "/DataBoundEvent"
+
+@using Syncfusion.Blazor.DropDowns
+<EventRoute></EventRoute>
+
+<SfAutoComplete TItem="GameFields" TValue="string" DataSource="@Games">
+    <AutoCompleteEvents TItem="GameFields" TValue="string" DataBound="@DataBoundHandler"></AutoCompleteEvents>
+    <AutoCompleteFieldSettings Text="Text" Value="ID"></AutoCompleteFieldSettings>
+</SfAutoComplete>
+
+@code {
+    public class GameFields
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+
+    private List<GameFields> Games = new List<GameFields>() {
+        new GameFields(){ ID= "Game1", Text= "American Football" },
+        new GameFields(){ ID= "Game2", Text= "Badminton" },
+        new GameFields(){ ID= "Game3", Text= "Basketball" },
+        new GameFields(){ ID= "Game4", Text= "Cricket" },
+     };
+
+    private void DataBoundHandler(DataBoundEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

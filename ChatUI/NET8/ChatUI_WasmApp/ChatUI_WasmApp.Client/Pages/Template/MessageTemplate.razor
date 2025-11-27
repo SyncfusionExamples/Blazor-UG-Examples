@@ -1,0 +1,44 @@
+@page "/messagetemplate"
+
+
+@using Syncfusion.Blazor.InteractiveChat
+
+<TemplateNav></TemplateNav>
+
+<div class="template-chatui" style="height: 400px; width: 400px;">
+    <SfChatUI ID="chatUser" User="CurrentUserModel" Messages="ChatUserMessages">
+        <MessageTemplate>
+            <div class="message-items e-card">
+                <div class="message-text">@((MarkupString)context.Message.Text)</div>
+            </div>
+        </MessageTemplate>
+    </SfChatUI>
+</div>
+
+@code {
+    private static UserModel CurrentUserModel = new UserModel() { ID = "User1", User = "Albert" };
+    private static UserModel MichaleUserModel = new UserModel() { ID = "User2", User = "Michale Suyama" };
+
+    private List<ChatMessage> ChatUserMessages = new List<ChatMessage>()
+    {
+        new ChatMessage() { Text = "Hi, thinking of painting this weekend.", Author = CurrentUserModel },
+        new ChatMessage() { Text = "That’s fun! What will you paint?", Author = MichaleUserModel },
+        new ChatMessage() { Text = "Maybe landscapes.", Author = CurrentUserModel }
+    };
+}
+
+<style>
+    .template-chatui .e-right .message-items {
+        border-radius: 16px 16px 2px 16px;
+        background-color: #c5ffbf;
+    }
+
+    .template-chatui .e-left .message-items {
+        border-radius: 16px 16px 16px 2px;
+        background-color: #f5f5f5;
+    }
+
+    .template-chatui .message-items {
+        padding: 5px;
+    }
+</style>

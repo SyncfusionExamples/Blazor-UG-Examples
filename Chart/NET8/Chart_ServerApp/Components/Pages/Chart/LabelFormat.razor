@@ -1,0 +1,37 @@
+﻿@page "/Chart/LabelFormat"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<ChartsRoute></ChartsRoute>
+<br/>
+<SfChart Title="Sales Comparison">
+    <ChartPrimaryYAxis LabelFormat="c" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@Data" XName="X" YName="Y" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public double X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> Data = new List<ChartData>
+    {
+          new ChartData{ X= 10, Y=7000 },
+          new ChartData{ X= 20, Y= 1000 },
+          new ChartData{ X= 30, Y= 12000 },
+          new ChartData{ X= 40, Y= 14000 },
+          new ChartData{ X= 50, Y= 11000 },
+          new ChartData{ X= 60, Y= 5000 },
+          new ChartData{ X= 70, Y= 7300 },
+          new ChartData{ X= 80, Y= 9000 },
+          new ChartData{ X= 90, Y= 12000 },
+          new ChartData{ X= 100, Y= 14000 },
+          new ChartData{ X= 110, Y= 11000 },
+          new ChartData{ X= 120, Y= 5000 }
+    };
+}

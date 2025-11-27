@@ -1,0 +1,15 @@
+﻿@page "/OnOpen"
+
+@using Syncfusion.Blazor.Popups
+<EventRoute></EventRoute>
+
+<SfDialog>
+    <DialogEvents OnOpen="@OnOpenHandler"></DialogEvents>
+</SfDialog>
+@code {
+
+    public void OnOpenHandler(BeforeOpenEventArgs args)
+    {
+        // Here, you can customize your code.
+    }
+}

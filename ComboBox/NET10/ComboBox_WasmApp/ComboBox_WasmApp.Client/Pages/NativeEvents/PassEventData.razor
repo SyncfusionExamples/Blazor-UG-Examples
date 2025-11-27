@@ -1,0 +1,32 @@
+﻿@page "/PassEventData"
+
+<NativeRoute></NativeRoute>
+
+<SfComboBox TValue="string" TItem="Country" @onkeypress="@(e => KeyPressed(e))" DataSource="@Countries">
+    <ComboBoxFieldSettings Text="Name" Value="Code"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public void KeyPressed(KeyboardEventArgs args)
+    {
+        if (args.Key == "c")
+        {
+            Console.WriteLine("C was pressed");
+        }
+    }
+    public class Country
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+    }
+    List<Country> Countries = new List<Country>
+    {
+        new Country() { Name = "Australia", Code = "AU" },
+        new Country() { Name = "Bermuda", Code = "BM" },
+        new Country() { Name = "Canada", Code = "CA" },
+        new Country() { Name = "Cameroon", Code = "CM" },
+        new Country() { Name = "Denmark", Code = "DK" },
+        new Country() { Name = "France", Code = "FR" },
+    };
+}

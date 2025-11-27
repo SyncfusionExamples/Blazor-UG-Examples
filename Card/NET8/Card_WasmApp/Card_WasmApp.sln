@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Card_WasmApp", "Card_WasmApp\Card_WasmApp.csproj", "{12BCA659-49DE-4E3D-8F67-6898FD888A96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Card_WasmApp.Client", "Card_WasmApp.Client\Card_WasmApp.Client.csproj", "{B1E70257-935A-4859-8199-8C0CAD5A63EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12BCA659-49DE-4E3D-8F67-6898FD888A96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12BCA659-49DE-4E3D-8F67-6898FD888A96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12BCA659-49DE-4E3D-8F67-6898FD888A96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12BCA659-49DE-4E3D-8F67-6898FD888A96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1E70257-935A-4859-8199-8C0CAD5A63EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1E70257-935A-4859-8199-8C0CAD5A63EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1E70257-935A-4859-8199-8C0CAD5A63EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1E70257-935A-4859-8199-8C0CAD5A63EC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F3EA02A-AC93-4051-B9FD-12905EDD02A0}
+	EndGlobalSection
+EndGlobal

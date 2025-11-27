@@ -1,0 +1,22 @@
+﻿@page "/CustomMarkerPointer"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge>
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="90"
+                                      Type="PointerType.Marker"
+                                      MarkerShape="GaugeShape.InvertedTriangle"
+                                      MarkerHeight="15"
+                                      MarkerWidth="15"
+                                      Color="white"
+                                      Radius="110%">
+                    <CircularGaugePointerBorder Width="2" Color="#007DD1"></CircularGaugePointerBorder>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

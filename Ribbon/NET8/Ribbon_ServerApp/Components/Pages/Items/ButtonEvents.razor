@@ -1,0 +1,37 @@
+@page "/buttonevents"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Ribbon
+
+<ItemsNav></ItemsNav>
+
+<div style="width:30%">
+    <SfRibbon>
+        <RibbonTabs>
+            <RibbonTab HeaderText="Home">
+                <RibbonGroups>
+                    <RibbonGroup HeaderText="Clipboard">
+                        <RibbonCollections>
+                            <RibbonCollection>
+                                <RibbonItems>
+                                    <RibbonItem Type=RibbonItemType.Button>
+                                        <RibbonButtonSettings Content="Cut"
+                                                              IconCss="e-icons e-cut"
+                                                              OnClick="ClickHandler" Created="Created">
+                                        </RibbonButtonSettings>
+                                    </RibbonItem>
+                                </RibbonItems>
+                            </RibbonCollection>
+                        </RibbonCollections>
+                    </RibbonGroup>
+                </RibbonGroups>
+            </RibbonTab>
+        </RibbonTabs>
+    </SfRibbon>
+</div>
+
+@code {
+    private void Created() { /* your actions here */ }
+
+    private void ClickHandler(MouseEventArgs args) { /* your actions here */ }
+}

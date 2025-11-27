@@ -1,0 +1,35 @@
+﻿@page "/ChartAxisLabels/OpposedPosition"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Weather Reports">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartPrimaryYAxis OpposedPosition="true" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@WeatherReports" XName="X" YName="Y" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double Y { get; set; }
+    }
+
+    public List<ChartData> WeatherReports = new List<ChartData>
+    {
+        new ChartData { X = "Sun", Y = 35 },
+        new ChartData { X = "Mon", Y = 40 },
+        new ChartData { X = "Tue", Y = 80 },
+        new ChartData { X = "Wed", Y = 70 },
+        new ChartData { X = "Thu", Y = 65 },
+        new ChartData { X = "Fri", Y = 55 },
+        new ChartData { X = "Sat", Y = 50 }
+    };
+}

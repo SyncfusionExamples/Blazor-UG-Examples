@@ -1,0 +1,37 @@
+﻿@page "/ChartAxisLabels/TIckLines"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AxisRoute></AxisRoute>
+<br/>
+<SfChart Title="Sales History of Product X">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" MinorTicksPerInterval="2">
+        <ChartAxisMajorTickLines Width="5" Color="blue" />
+        <ChartAxisMinorTickLines Width="1" Color="red" />
+    </ChartPrimaryXAxis>
+
+    <ChartPrimaryYAxis Title="Profit($)" MinorTicksPerInterval="1">
+        <ChartAxisMajorTickLines Width="5" Color="blue" />
+        <ChartAxisMinorTickLines Width="1" Color="red" />
+    </ChartPrimaryYAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@SalesData" XName="X" YName="YValue" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string X { get; set; }
+        public double YValue { get; set; }
+    }
+
+    public List<ChartData> SalesData = new List<ChartData>
+    {
+        new ChartData { X= "John", YValue= 10000 },
+        new ChartData { X= "Jake", YValue= 12000 },
+        new ChartData { X= "Peter", YValue= 18000 },
+        new ChartData { X= "James", YValue= 11000 }
+    };
+}

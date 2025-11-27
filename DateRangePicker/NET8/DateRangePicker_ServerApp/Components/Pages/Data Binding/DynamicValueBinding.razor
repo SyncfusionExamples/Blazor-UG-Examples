@@ -1,0 +1,24 @@
+﻿@page "/DynamicValueBinding"
+
+@using Syncfusion.Blazor.Calendars
+<BindingRoute></BindingRoute>
+
+<p>DateRangePicker StarteDate and EndDate is: <strong> @StartValue </strong> and <strong> @EndValue </strong></p>
+
+<SfDateRangePicker TValue="DateTime?" StartDate="@StartValue" EndDate="@EndValue">
+    <DateRangePickerEvents TValue="DateTime?" ValueChange="@onChange"></DateRangePickerEvents>
+</SfDateRangePicker>
+
+@code {
+
+    public DateTime? StartValue { get; set; } = DateTime.Now;
+
+    public DateTime? EndValue { get; set; } = DateTime.Now;
+
+    private void onChange(RangePickerEventArgs<DateTime?> args)
+    {
+        StartValue = args.StartDate;
+        EndValue = args.EndDate;
+        StateHasChanged();
+    }
+}

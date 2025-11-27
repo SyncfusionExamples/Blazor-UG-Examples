@@ -1,0 +1,14 @@
+﻿@page "/RoundButton"
+
+@using Syncfusion.Blazor.Buttons
+<TypesRoute></TypesRoute>
+
+<SfButton CssClass="e-flat">Flat</SfButton>
+<SfButton CssClass="e-outline">Outline</SfButton>
+<SfButton CssClass="e-round" IconCss="e-icons e-plus-icon" IsPrimary="true"></SfButton>
+
+<style>
+    .e-plus-icon::before {
+        content: '\e823';
+    }
+</style>

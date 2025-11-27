@@ -1,0 +1,18 @@
+﻿@page "/NoRecordsTemplate"
+
+@using Syncfusion.Blazor.DropDowns
+<TemplateRoute></TemplateRoute>
+
+<SfDropDownList TValue="string" TItem="Country" Placeholder="Select a customer" DataSource="@Countries">
+    <DropDownListTemplates TItem="Country">
+        <NoRecordsTemplate>
+            <span class='norecord'> NO DATA AVAILABLE</span>
+        </NoRecordsTemplate>
+    </DropDownListTemplates>
+</SfDropDownList>
+
+@code {
+    public class Country { }
+
+    List<Country> Countries = new List<Country> { };
+}

@@ -1,0 +1,81 @@
+﻿@page "/ActionOnFocusOut"
+
+@using Syncfusion.Blazor.InPlaceEditor
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Inputs
+<ConfigRoute></ConfigRoute>
+
+<table class="table-section">
+    <tr>
+        <td> ActionOnBlur: </td>
+        <td>
+            <SfDropDownList Width="90%" TItem="DropDownFields" TValue="string" DataSource="@Modes" @bind-Value="@DropdownValue">
+                <DropDownListEvents TValue="string" TItem="DropDownFields" ValueChange="@OnChange"></DropDownListEvents>
+                <DropDownListFieldSettings Text="Text" Value="Text"></DropDownListFieldSettings>
+            </SfDropDownList>
+        </td>
+    </tr>
+    <tr>
+        <td class="sample-td">Enter your name: </td>
+        <td class="sample-td">
+            <SfInPlaceEditor @bind-Value="@TextValue" ActionOnBlur="OnBlur" SubmitOnEnter="true" TValue="string">
+                <EditorComponent>
+                    <SfTextBox @bind-Value="@TextValue" Placeholder="Enter some text"></SfTextBox>
+                </EditorComponent>
+            </SfInPlaceEditor>
+        </td>
+    </tr>
+</table>
+
+<style>
+    .table-section {
+        margin: 0 auto;
+    }
+
+    tr td:first-child {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+    .sample-td {
+        padding-top: 10px;
+        min-width: 230px;
+        height: 100px;
+    }
+</style>
+
+@code {
+    public string TextValue = "Andrew";
+    public string DropdownValue = "Submit";
+    public ActionBlur OnBlur = ActionBlur.Ignore;
+
+
+    public class DropDownFields
+    {
+        public string Text { get; set; }
+    }
+
+    public List<DropDownFields> Modes = new List<DropDownFields>
+{
+        new DropDownFields() { Text= "Submit" },
+        new DropDownFields() { Text= "Cancel" },
+        new DropDownFields() { Text= "Ignore" }
+    };
+
+    private void OnChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, DropDownFields> args)
+    {
+        if (args.Value.ToString() == "Submit")
+        {
+            this.OnBlur = ActionBlur.Submit;
+        }
+        else if (args.Value.ToString() == "Cancel")
+        {
+            this.OnBlur = ActionBlur.Cancel;
+        }
+        else
+        {
+            this.OnBlur = ActionBlur.Ignore;
+        }
+        this.StateHasChanged();
+    }
+}

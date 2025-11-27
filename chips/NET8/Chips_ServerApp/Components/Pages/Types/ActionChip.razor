@@ -1,0 +1,26 @@
+﻿@page "/ActionChip"
+
+@using Syncfusion.Blazor.Buttons
+<TypesRoute></TypesRoute>
+
+<SfChip>
+    <ChipEvents OnClick="@OnClick"></ChipEvents>
+    <ChipItems>
+        <ChipItem Text="Sent a text"></ChipItem>
+        <ChipItem Text="Set a remainder"></ChipItem>
+        <ChipItem Text="Read my emails"></ChipItem>
+        <ChipItem Text="Set alarm"></ChipItem>
+    </ChipItems>
+</SfChip>
+
+<div>@ChipText</div>
+
+@code
+{
+    public string ChipText = "";
+    private void OnClick(Syncfusion.Blazor.Buttons.ChipEventArgs args)
+    {
+        ChipText = args.Text;
+        this.StateHasChanged();
+    }
+}

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputMask_WasmApp", "InputMask_WasmApp\InputMask_WasmApp.csproj", "{8175211B-CA78-47F9-8E11-8A733836D925}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputMask_WasmApp.Client", "InputMask_WasmApp.Client\InputMask_WasmApp.Client.csproj", "{B751D7B2-7F7E-450F-8974-151D7C1F31D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8175211B-CA78-47F9-8E11-8A733836D925}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8175211B-CA78-47F9-8E11-8A733836D925}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8175211B-CA78-47F9-8E11-8A733836D925}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8175211B-CA78-47F9-8E11-8A733836D925}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B751D7B2-7F7E-450F-8974-151D7C1F31D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B751D7B2-7F7E-450F-8974-151D7C1F31D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B751D7B2-7F7E-450F-8974-151D7C1F31D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B751D7B2-7F7E-450F-8974-151D7C1F31D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {297FD6AC-AC5D-423A-A661-D15063DE547D}
+	EndGlobalSection
+EndGlobal

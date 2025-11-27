@@ -1,0 +1,37 @@
+﻿@page "/Annotation/CustomChartArea"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<AnnotationsRoute></AnnotationsRoute>
+<br/>
+<SfChart Title="Olympic Medals">
+    <ChartArea Background="skyblue" Width="80%">
+        <ChartAreaBorder Color="#FF0000" Width="2" />
+    </ChartArea>
+
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" />
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@MedalDetails" XName="Country" YName="Gold" Type="ChartSeriesType.Column" />
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    public class ChartData
+    {
+        public string Country { get; set; }
+        public double Gold { get; set; }
+    }
+
+    public List<ChartData> MedalDetails = new List<ChartData>
+    {
+        new ChartData{ Country= "USA", Gold=50  },
+        new ChartData{ Country="China", Gold=40 },
+        new ChartData{ Country= "Japan", Gold=70 },
+        new ChartData{ Country= "Australia", Gold=60},
+        new ChartData{ Country= "France", Gold=50 },
+        new ChartData{ Country= "Germany", Gold=40 },
+        new ChartData{ Country= "Italy", Gold=40 },
+        new ChartData{ Country= "Sweden", Gold=30 }
+    };
+}

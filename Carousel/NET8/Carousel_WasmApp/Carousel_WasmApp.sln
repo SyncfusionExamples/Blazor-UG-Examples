@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36705.20 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carousel_WasmApp", "Carousel_WasmApp\Carousel_WasmApp.csproj", "{93FAB9A6-66D5-4FD7-8AD9-C8720D331D08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carousel_WasmApp.Client", "Carousel_WasmApp.Client\Carousel_WasmApp.Client.csproj", "{13D6E547-72FA-4DA6-9F6D-A8D2EF955DEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93FAB9A6-66D5-4FD7-8AD9-C8720D331D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FAB9A6-66D5-4FD7-8AD9-C8720D331D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FAB9A6-66D5-4FD7-8AD9-C8720D331D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FAB9A6-66D5-4FD7-8AD9-C8720D331D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13D6E547-72FA-4DA6-9F6D-A8D2EF955DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13D6E547-72FA-4DA6-9F6D-A8D2EF955DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13D6E547-72FA-4DA6-9F6D-A8D2EF955DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13D6E547-72FA-4DA6-9F6D-A8D2EF955DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19754F49-400B-4184-A8BB-00D6AAB3CA26}
+	EndGlobalSection
+EndGlobal

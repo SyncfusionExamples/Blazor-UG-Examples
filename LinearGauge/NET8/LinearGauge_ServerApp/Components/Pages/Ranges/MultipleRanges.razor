@@ -1,0 +1,25 @@
+﻿@page "/MultipleRanges"
+<RangeRoute></RangeRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<SfLinearGauge>
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugeRanges>
+                <LinearGaugeRange Start="1" End="30" StartWidth="10" EndWidth="10"
+                                  Color="#41f47f">
+                </LinearGaugeRange>
+                <LinearGaugeRange Start="30" End="50" StartWidth="10" EndWidth="10"
+                                  Color="#f49441">
+                </LinearGaugeRange>
+                <LinearGaugeRange Start="50" End="80" StartWidth="10" EndWidth="10"
+                                  Color="#cd41f4">
+                </LinearGaugeRange>
+            </LinearGaugeRanges>
+            <LinearGaugePointers>
+                <LinearGaugePointer></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>

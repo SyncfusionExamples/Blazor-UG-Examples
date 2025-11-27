@@ -1,0 +1,17 @@
+﻿@page "/Toolbar/HowTo/TooltipCommands"
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Popups
+<HowToRoute></HowToRoute>
+
+<SfTooltip ID="Tooltip" Target="#Element [title]">
+    <SfToolbar ID="Element" Width="300">
+        <ToolbarItems>
+            <ToolbarItem Type="ItemType.Button" Text="Cut" TooltipText="Cut"></ToolbarItem>
+            <ToolbarItem Type="ItemType.Button" Text="Copy" TooltipText="Copy"></ToolbarItem>
+            <ToolbarItem Type="ItemType.Button" Text="Paste" TooltipText="Paste"></ToolbarItem>
+            <ToolbarItem Type="ItemType.Button" Text="Undo" TooltipText="Undo"></ToolbarItem>
+            <ToolbarItem Type="ItemType.Button" Text="Redo" TooltipText="Redo"></ToolbarItem>
+        </ToolbarItems>
+    </SfToolbar>
+</SfTooltip>

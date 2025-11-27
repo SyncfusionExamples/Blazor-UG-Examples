@@ -1,0 +1,18 @@
+﻿@page "/VerticalButtons"
+
+@using Syncfusion.Blazor.SplitButtons
+<IconRoute></IconRoute>
+
+<SfDropDownButton IconCss="e-icons e-message" CssClass="e-vertical" Content="Message">
+    <DropDownMenuItems>
+        <DropDownMenuItem Text="Cut"></DropDownMenuItem>
+        <DropDownMenuItem Text="Copy"></DropDownMenuItem>
+        <DropDownMenuItem Text="Paste"></DropDownMenuItem>
+    </DropDownMenuItems>
+</SfDropDownButton>
+
+<style>
+    .e-message::before {
+        content: '\e7cb';
+    }
+</style>

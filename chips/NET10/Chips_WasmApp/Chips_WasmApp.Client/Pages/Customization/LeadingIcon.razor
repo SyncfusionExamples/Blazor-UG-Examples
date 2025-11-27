@@ -1,0 +1,31 @@
+﻿@page "/LeadingIcon"
+
+@using Syncfusion.Blazor.Buttons
+<CustomRoute></CustomRoute>
+
+<SfChip ID="chip-avatar" EnableDelete="true">
+    <ChipItems>
+        <ChipItem Text="Anne" LeadingIconCss="anne"></ChipItem>
+        <ChipItem Text="Janet" LeadingIconCss="janet"></ChipItem>
+        <ChipItem Text="Laura" LeadingIconCss="laura"></ChipItem>
+        <ChipItem Text="Margaret" LeadingIconCss="margaret"></ChipItem>
+    </ChipItems>
+</SfChip>
+
+<style>
+    #chip-avatar .anne {
+        background-image: url('css/images/anne.png')
+    }
+
+    #chip-avatar .margaret {
+        background-image: url('css/images/margaret.png')
+    }
+
+    #chip-avatar .laura {
+        background-image: url('css/images/laura.png')
+    }
+
+    #chip-avatar .janet {
+        background-image: url('css/images/janet.png')
+    }
+</style>

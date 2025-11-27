@@ -1,0 +1,51 @@
+@page "/legend"
+ 
+@using Syncfusion.Blazor.HeatMap
+<LegendsRoute></LegendsRoute>
+
+<SfHeatMap DataSource="@HeatMapData">
+    <HeatMapTitleSettings Text="Sales Revenue per Employee (in 1000 US$)">
+    </HeatMapTitleSettings>
+    <HeatMapXAxis Labels="@XAxisLabels"></HeatMapXAxis>
+    <HeatMapYAxis Labels="@YAxisLabels"></HeatMapYAxis>
+    <HeatMapCellSettings ShowLabel="true" TileType="CellType.Rect"></HeatMapCellSettings>
+    <HeatMapPaletteSettings Type="PaletteType.Gradient">
+        <HeatMapPalettes>
+            <HeatMapPalette Value="0" Color="#C2E7EC"></HeatMapPalette>
+            <HeatMapPalette Value="10" Color="#AEDFE6"></HeatMapPalette>
+            <HeatMapPalette Value="20" Color="#9AD7E0"></HeatMapPalette>
+            <HeatMapPalette Value="30" Color="#72C7D4"></HeatMapPalette>
+            <HeatMapPalette Value="40" Color="#5EBFCE"></HeatMapPalette>
+            <HeatMapPalette Value="50" Color="#4AB7C8"></HeatMapPalette>
+            <HeatMapPalette Value="60" Color="#309DAE"></HeatMapPalette>
+            <HeatMapPalette Value="70" Color="#2B8C9B"></HeatMapPalette>
+            <HeatMapPalette Value="80" Color="#257A87"></HeatMapPalette>
+            <HeatMapPalette Value="90" Color="#15464D"></HeatMapPalette>
+            <HeatMapPalette Value="100" Color="#000000"></HeatMapPalette>
+        </HeatMapPalettes>
+    </HeatMapPaletteSettings>
+    <HeatMapLegendSettings Visible="true"></HeatMapLegendSettings>
+</SfHeatMap>
+
+@code{
+    int[,] GetDefaultData()
+    {
+        int[,] dataSource = new int[,]
+        {
+            {73, 39, 26, 39, 94, 0},
+            {93, 58, 53, 38, 26, 68},
+            {99, 28, 22, 4, 66, 90},
+            {14, 26, 97, 69, 69, 3},
+            {7, 46, 47, 47, 88, 6},
+            {41, 55, 73, 23, 3, 79}
+        };
+        return dataSource;
+    }
+    string[] XAxisLabels = new string[] {"Nancy", "Andrew", "Janet", "Margaret", "Steven", "Michael" };
+    string[] YAxisLabels = new string[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+    public object HeatMapData { get; set; }
+    protected override void OnInitialized()
+    {
+        HeatMapData = GetDefaultData();
+    }
+}

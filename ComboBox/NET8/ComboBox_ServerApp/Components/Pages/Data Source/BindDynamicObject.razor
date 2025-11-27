@@ -1,0 +1,42 @@
+﻿@page "/BindDynamicObject"
+
+@using Syncfusion.Blazor.DropDowns
+@using System.Dynamic
+<SourceRoute></SourceRoute>
+
+<SfComboBox TValue="string" TItem="DynamicDictionary" Placeholder="Select a name" DataSource="@Orders">
+    <ComboBoxFieldSettings Text="CustomerName" Value="CustomerName"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public List<DynamicDictionary> Orders = new List<DynamicDictionary>() { };
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 15).Select((x) =>
+        {
+            dynamic d = new DynamicDictionary();
+            d.OrderID = 1000 + x;
+            d.CustomerName = (new string[] { "Nancy", "Andrew", "Janet", "Margaret", "Steven", "Michael", "Robert", "Anne", "Nige", "Fuller", "Dodsworth", "Leverling", "Callahan", "Suyama", "Davolio" }[x - 1]);
+            return d;
+        }).Cast<DynamicDictionary>().ToList<DynamicDictionary>();
+    }
+    public class DynamicDictionary : System.Dynamic.DynamicObject
+    {
+        Dictionary<string, object> dictionary = new Dictionary<string, object>();
+        public override bool TryGetMember(GetMemberBinder binder, out object result)
+        {
+            string name = binder.Name;
+            return dictionary.TryGetValue(name, out result);
+        }
+        public override bool TrySetMember(SetMemberBinder binder, object value)
+        {
+            dictionary[binder.Name] = value;
+            return true;
+        }
+        //The GetDynamicMemberNames method of DynamicObject class must be overridden and return the property names to perform data operation and editing while using DynamicObject.
+        public override System.Collections.Generic.IEnumerable<string> GetDynamicMemberNames()
+        {
+            return this.dictionary?.Keys;
+        }
+    }
+}

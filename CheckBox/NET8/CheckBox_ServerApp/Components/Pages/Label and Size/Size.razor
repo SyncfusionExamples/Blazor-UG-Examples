@@ -1,0 +1,19 @@
+﻿@page "/Size"
+
+@using Syncfusion.Blazor.Buttons
+<LabelSizeRoute></LabelSizeRoute>
+
+<SfCheckBox @bind-Checked="isSmallChecked" Label="Small" CssClass="e-small"></SfCheckBox>
+<br />
+<SfCheckBox @bind-Checked="isDefaultChecked" Label="Default"></SfCheckBox>
+
+@code {
+    private bool isSmallChecked = true;
+    private bool isDefaultChecked = true;
+}
+
+<style>
+    .e-checkbox-wrapper {
+        margin-top: 18px;
+    }
+</style>

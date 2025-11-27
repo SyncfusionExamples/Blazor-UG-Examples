@@ -1,0 +1,52 @@
+﻿@page "/Icons"
+<DragDropRoute></DragDropRoute>
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfListBox TValue="string[]" DataSource="@SettingsData" TItem="SettingItems">
+    <ListBoxFieldSettings Text="Text" IconCss="IconCss" />
+</SfListBox>
+
+@code {
+    public List<SettingItems> SettingsData = new List<SettingItems> {
+        new SettingItems{ Text = "Settings", IconCss = "e-icons e-list-settings" },
+        new SettingItems{ Text = "Save", IconCss = "e-icons e-list-save" },
+        new SettingItems{ Text = "Save As", IconCss = "e-icons e-list-saveas" },
+        new SettingItems{ Text = "Undo", IconCss = "e-icons e-list-undo" },
+        new SettingItems{ Text = "Print", IconCss = "e-icons e-list-print" },
+        new SettingItems{ Text = "Delete", IconCss = "e-icons e-list-delete" }
+    };
+
+    public class SettingItems
+    {
+        public string Text { get; set; }
+        public string IconCss { get; set; }
+    }
+
+}
+<style>
+    .e-list-settings:before {
+        content: "\e679";
+    }
+
+    .e-list-print:before {
+        content: "\e743";
+    }
+
+    .e-list-save:before {
+        content: "\e74d";
+    }
+
+    .e-list-saveas:before {
+        content: "\e72b";
+    }
+
+    .e-list-delete:before {
+        content: "\e773";
+    }
+
+    .e-list-undo:before {
+        content: "\e752";
+    }
+
+</style>

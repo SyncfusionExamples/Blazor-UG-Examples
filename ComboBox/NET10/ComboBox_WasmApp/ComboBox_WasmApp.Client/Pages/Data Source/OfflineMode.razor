@@ -1,0 +1,22 @@
+﻿@page "/OfflineMode"
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+<SourceRoute></SourceRoute>
+
+<SfComboBox TValue="string" TItem="EmployeeData" Placeholder="Select a Employee" Query="@Query">
+    <SfDataManager Url="https://ej2services.syncfusion.com/production/web-services/api/Employees" Offline=true Adaptor="Adaptors.WebApiAdaptor" CrossDomain=true></SfDataManager>
+    <ComboBoxFieldSettings Text="FirstName" Value="EmployeeID"></ComboBoxFieldSettings>
+</SfComboBox>
+
+@code {
+    public Query Query = new Query();
+
+    public class EmployeeData
+    {
+        public int EmployeeID { get; set; }
+        public string FirstName { get; set; }
+        public string Designation { get; set; }
+        public string Country { get; set; }
+    }
+}

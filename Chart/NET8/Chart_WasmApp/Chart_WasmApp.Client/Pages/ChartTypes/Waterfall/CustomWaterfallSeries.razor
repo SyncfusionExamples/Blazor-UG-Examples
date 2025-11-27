@@ -1,0 +1,39 @@
+﻿@page "/ChartTypes/Waterfall/CustomWaterfallSeries"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Charts
+<TypeRoute></TypeRoute>
+<br/>
+<SfChart>
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+    </ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@ExpenseDetails" XName="XValue" SummaryFillColor="#e56590" NegativeFillColor="#f8b883"
+                     YName="YValue" Type="ChartSeriesType.Waterfall" IntermediateSumIndexes="@intermediateSumIndexes" SumIndexes="@sumIndexes">
+            <ChartMarker Height="10" Width="10" Visible="true"></ChartMarker>
+        </ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>
+
+@code {
+    double[] intermediateSumIndexes = new double[] { 4 };
+    double[] sumIndexes = new double[] { 7 };
+
+    public class ChartData
+    {
+        public string XValue;
+        public double YValue;
+    }
+    public List<ChartData> ExpenseDetails = new List<ChartData>
+    {
+        new ChartData { XValue = "Income", YValue = 4711 },
+        new ChartData { XValue = "Sales", YValue = -1015 },
+        new ChartData { XValue = "Development", YValue = -688 },
+        new ChartData { XValue = "Revenue", YValue = 1030 },
+        new ChartData { XValue = "Balance" },
+        new ChartData { XValue = "Expense", YValue = -361 },
+        new ChartData { XValue = "Tax", YValue = -695 },
+        new ChartData { XValue = "Net Profit" },
+    };
+}

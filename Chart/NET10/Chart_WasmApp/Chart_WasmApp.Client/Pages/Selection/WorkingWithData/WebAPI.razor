@@ -1,0 +1,16 @@
+﻿@page "/Selection/WorkingWithData/Web"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Charts
+<SelectRoute></SelectRoute>
+<br/>
+<SfChart>
+    <SfDataManager Url="https://ej2services.syncfusion.com/production/web-services/api/Orders" Adaptor="Adaptors.WebApiAdaptor"></SfDataManager>
+
+    <ChartPrimaryXAxis Title="Orders" ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+
+    <ChartSeriesCollection>
+        <ChartSeries XName="OrderID" YName="Freight" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+</SfChart>

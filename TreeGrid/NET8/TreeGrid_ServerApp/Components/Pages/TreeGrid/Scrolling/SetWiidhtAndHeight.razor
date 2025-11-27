@@ -1,0 +1,23 @@
+﻿@page "/treegrid/scrolling/setwidthandheight"
+@rendermode InteractiveWebAssembly
+
+@using TreeGrid_ServerApp.Components.Data;
+@using Syncfusion.Blazor.TreeGrid;
+
+<SfTreeGrid Width="500" Height="300" DataSource="@TreeGridData" IdMapping="TaskId" ParentIdMapping="ParentId" TreeColumnIndex="1">
+    <TreeGridColumns>
+        <TreeGridColumn Field="TaskId" HeaderText="Task ID" Width="80" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="TaskName" HeaderText="Task Name" Width="160"></TreeGridColumn>
+        <TreeGridColumn Field="Duration" HeaderText="Duration" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Progress" HeaderText="Progress" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></TreeGridColumn>
+        <TreeGridColumn Field="Priority" HeaderText="Priority" Width="80"></TreeGridColumn>
+    </TreeGridColumns>
+</SfTreeGrid>
+
+@code {
+    public List<TreeDatas> TreeGridData { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TreeGridData = TreeDatas.GetSelfDataSources().ToList();
+    }
+}

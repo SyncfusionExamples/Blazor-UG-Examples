@@ -1,0 +1,17 @@
+﻿@page "/PointerAnimation"
+
+@using Syncfusion.Blazor.CircularGauge
+<PointerRoute></PointerRoute>
+
+<SfCircularGauge Height="250" Width="250">
+    <CircularGaugeAxes>
+        <CircularGaugeAxis>
+            <CircularGaugePointers>
+                <CircularGaugePointer Value="70">
+                    <CircularGaugePointerAnimation Enable="true" Duration="1500">
+                    </CircularGaugePointerAnimation>
+                </CircularGaugePointer>
+            </CircularGaugePointers>
+        </CircularGaugeAxis>
+    </CircularGaugeAxes>
+</SfCircularGauge>

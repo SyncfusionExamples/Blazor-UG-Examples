@@ -1,0 +1,25 @@
+﻿@page "/PointerValue"
+<GlobalRoute></GlobalRoute>
+
+@using Syncfusion.Blazor.LinearGauge
+
+<button style="margin-left:34px" @onclick="ChangePoinerValue">
+    Update pointer value
+</button>
+<SfLinearGauge @ref="lineargauge" Width="250px" Height="250px">
+    <LinearGaugeAxes>
+        <LinearGaugeAxis>
+            <LinearGaugePointers>
+                <LinearGaugePointer Value="10"></LinearGaugePointer>
+            </LinearGaugePointers>
+        </LinearGaugeAxis>
+    </LinearGaugeAxes>
+</SfLinearGauge>
+
+@code {
+    SfLinearGauge lineargauge;
+    public void ChangePoinerValue()
+    {
+        lineargauge.SetPointerValue(0, 0, 30);
+    }
+}
