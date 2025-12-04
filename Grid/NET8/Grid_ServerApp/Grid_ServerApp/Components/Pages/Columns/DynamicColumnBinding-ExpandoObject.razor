@@ -1,0 +1,49 @@
+﻿@page "/DynamicColumnBinding-ExpandoObject"
+
+@using System.Dynamic
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+
+<ColumnRoute></ColumnRoute>
+
+<SfGrid TValue="ExpandoObject" DataSource=@GridData>
+    <GridColumns>
+        @if (GridData != null && GridData.Any())
+        {
+            foreach (var item in (IDictionary<string, object>)GridData.First())
+            {
+                <GridColumn Field="@item.Key"></GridColumn>
+            }
+        }
+    </GridColumns>
+</SfGrid>
+
+@code {
+    private List<ExpandoObject> GridData = GenerateNewData();
+
+    private static List<ExpandoObject> GenerateNewData()
+    {
+        var data = new List<ExpandoObject>();
+        var random = new Random();
+        var ColCount = random.Next(2, 6);
+        var ColNames = new string[ColCount];
+
+        // Generate random number of columns.
+        for (var col = 0; col < ColCount; col++)
+        {
+            ColNames[col] = "Col" + random.Next(0, 5000);
+        }
+        // Generate 25 rows based on the generated columns name.
+        for (var row = 0; row < 25; row++)
+        {
+            dynamic item = new ExpandoObject();
+            var dict = (IDictionary<string, object>)item;
+            for (var col = 0; col < ColCount; col++)
+            {
+                dict[ColNames[col]] = random.Next(0, 10000);
+            }
+            data.Add(item);
+        }
+        return data;
+    }
+}

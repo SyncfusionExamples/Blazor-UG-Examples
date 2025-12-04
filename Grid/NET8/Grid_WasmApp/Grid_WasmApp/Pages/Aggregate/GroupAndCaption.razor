@@ -1,0 +1,76 @@
+﻿@page "/groupAndCaption"
+
+@using Syncfusion.Blazor.Grids
+
+<AggregateRoute></AggregateRoute>
+
+
+<SfGrid DataSource="@Products" AllowGrouping="true" AllowPaging="true">
+    <GridGroupSettings Columns=@Units></GridGroupSettings>
+    <GridAggregates>
+        <GridAggregate>
+            <GridAggregateColumns>
+                <GridAggregateColumn Field=@nameof(Product.UnitsInStock) Type="AggregateType.Sum">
+                    <GroupFooterTemplate>
+                        @{
+                            var aggregate = (context as AggregateTemplateContext);
+                            <div>
+                                <p>Total units: @aggregate.Sum</p>
+                            </div>
+                        }
+                    </GroupFooterTemplate>
+                </GridAggregateColumn>
+                <GridAggregateColumn Field=@nameof(Product.Discontinued) Type="AggregateType.TrueCount">
+                    <GroupFooterTemplate>
+                        @{
+                            var aggregate = (context as AggregateTemplateContext);
+                            <div>
+                                <p>Truecount: @aggregate.TrueCount</p>
+                            </div>
+                        }
+                    </GroupFooterTemplate>
+                </GridAggregateColumn>
+                <GridAggregateColumn Field=@nameof(Product.UnitsInStock) Type="AggregateType.Max">
+                    <GroupCaptionTemplate>
+                        @{
+                            var aggregate = (context as AggregateTemplateContext);
+                            <div>
+                                <p>Maximum: @aggregate.Max</p>
+                            </div>
+                        }
+                    </GroupCaptionTemplate>
+                </GridAggregateColumn>
+            </GridAggregateColumns>
+        </GridAggregate>
+    </GridAggregates>
+    <GridColumns>
+        <GridColumn Field=@nameof(Product.ProductName) HeaderText="Product Name" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Product.QuantityPerUnit) HeaderText="Quantity Per Unit" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Product.UnitsInStock) HeaderText="Units In Stock" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(Product.Discontinued) HeaderText="Discontinued" TextAlign="TextAlign.Right" DisplayAsCheckBox="true" Type="ColumnType.Boolean"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+
+    public List<Product> Products { get; set; }
+    private string[] Units = (new string[] { "QuantityPerUnit" });
+    protected override void OnInitialized()
+    {
+        Products = Enumerable.Range(1, 10).Select(x => new Product
+        {
+            ProductName = (new string[] { "Chai", "Chang", "Aniseed Syrup", "Chef Anton's Cajun Seasoning", "Chef Anton's Gumbo Mix" })[new Random().Next(5)],
+            QuantityPerUnit = (new string[] { "10 boxes x 20 bags", "24 - 12 oz bottles", "12 - 550 ml bottles", "48 - 6 oz jars", "36 boxes" })[new Random().Next(5)],
+            UnitsInStock = x,
+            Discontinued = (new bool[] { true, false })[new Random().Next(2)]
+        }).ToList();
+    }
+
+    public class Product
+    {
+        public string ProductName { get; set; }
+        public string QuantityPerUnit { get; set; }
+        public int UnitsInStock { get; set; }
+        public bool Discontinued { get; set; }
+    }
+}

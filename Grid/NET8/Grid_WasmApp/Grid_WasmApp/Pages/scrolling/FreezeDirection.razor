@@ -1,0 +1,60 @@
+﻿@page "/freezedirection"
+
+@using Syncfusion.Blazor.Grids
+
+<ScrollRoute></ScrollRoute>
+
+<SfGrid DataSource="@Orders" Height="364" FrozenRows="2"  EnableHover="false" AllowSelection="false" AllowSorting="true">
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID"  IsFrozen="true" Freeze="Syncfusion.Blazor.Grids.FreezeDirection.Left" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="170"></GridColumn>
+        <GridColumn Field=@nameof(Order.EmployeeID) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipName) HeaderText="Ship Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipCity) HeaderText="Ship City" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipAddress) HeaderText="Ship Address" Width="170"></GridColumn>
+        <GridColumn Field=@nameof(Order.Mail) HeaderText="Email" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.Location) HeaderText="Location" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipCountry) HeaderText="Ship Country" Freeze="Syncfusion.Blazor.Grids.FreezeDirection.Right" IsFrozen="true" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+
+    public List<Order> Orders { get; set; }
+    public SfGrid<Order> Grid { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            EmployeeID = x,
+            OrderDate = DateTime.Now.AddDays(-x),
+            ShipCountry = (new string[] { "USA", "UK", "JAPAN" })[new Random().Next(3)],
+            ShipName = "MOS",
+            ShipCity = (new string[] { "New york", "London", "Hue" })[new Random().Next(3)],
+            ShipAddress = (new string[] { "55, Baker street", "65/5 Kings landing", "56, Winterfell" })[new Random().Next(3)],
+            Mail = (new string[] { "alf32@arpy.com", "anat81@jourrapide.com", "anton99@rpy.com", "blonp97@gmail.com", "bolid@mail.com" })[new Random().Next(5)],
+            Location = (new string[] { "Morbi Leo", "Sed Blandit", "Congue Nisi", "Aliquet Lectus", "Viverra Mauris In" })[new Random().Next(5)]
+            }).ToList();
+        }
+
+        public class Order
+        {
+            public int? OrderID { get; set; }
+            public string CustomerID { get; set; }
+            public int? EmployeeID { get; set; }
+            public DateTime? OrderDate { get; set; }
+            public double? Freight { get; set; }
+            public string ShipCountry { get; set; }
+            public string ShipCity { get; set; }
+            public string ShipName { get; set; }
+            public string ShipAddress { get; set; }
+            public string Mail { get; set; }
+            public string Location { get; set; }
+        }
+}

@@ -1,0 +1,63 @@
+﻿@page "/PreventFilterQueryGeneration"
+
+@using System.ComponentModel.DataAnnotations;
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.DropDowns
+@using Newtonsoft.Json
+<ColumnRoute></ColumnRoute>
+
+<SfGrid ID="Grid" @ref="Grid" Query="@currentQuery" TValue="Book" Toolbar="@ToolbarItems" Height="100%" AllowPaging="true" AllowSorting="true" AllowFiltering="true">
+    <GridPageSettings PageSize="10" PageSizes="true"></GridPageSettings>
+    <SfDataManager Url="http://localhost:64956/odata/books" Adaptor="Adaptors.ODataV4Adaptor"></SfDataManager>
+    <GridEvents TValue="Book" OnActionBegin="OnActionBegin"/>
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="@EditMode.Normal"></GridEditSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(Book.Id) IsPrimaryKey="true" Width="150"></GridColumn>
+        <GridForeignColumn TValue="Customer" Field=@nameof(Book.CustomerId)  AllowFiltering="true" ForeignKeyValue="Name" ForeignKeyField="Id" HeaderText="Name" Width="100" >
+            <SfDataManager Url="http://localhost:64956/odata/customers" Adaptor="Adaptors.ODataV4Adaptor"></SfDataManager>
+        </GridForeignColumn>
+        <GridColumn Field=@nameof(Book.CreditLimit) Width="200" EditType="EditType.NumericEdit"></GridColumn>
+        <GridColumn Field=@nameof(Book.Active) Width="200" EditType="EditType.BooleanEdit"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    SfGrid<Book> Grid { get; set; }
+    private Query currentQuery = new Query();
+    public List<string> ToolbarItems = new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" };
+ 
+    private void OnActionBegin(Syncfusion.Blazor.Grids.ActionEventArgs<Book> args)
+    {  
+        if (args.RequestType == Syncfusion.Blazor.Grids.Action.Filtering)
+        {
+            if (String.Equals(args.CurrentFilteringColumn, nameof(Book.CustomerId), StringComparison.OrdinalIgnoreCase))
+            {
+                args.PreventFilterQuery = true;
+                currentQuery = new Query().Where("Customer/Name", args.CurrentFilterObject.Operator.ToString().ToLower(), args.CurrentFilterObject.Value, true, true);
+            }
+        }
+    }
+
+    public class Book
+    {
+        [Key]
+        public Guid Id { get; set; }
+        public Guid CustomerId { get; set; }
+        public Guid CustomerId1 { get; set; }
+        public virtual Customer Customer { get; set; }
+        public int CreditLimit { get; set; }
+        public bool Active { get; set; }
+        public bool IsDeleted { get; set; }
+    }
+
+    public class Customer
+    {
+        [Key]
+        public Guid Id { get; set; }
+        public string Name { get; set; }      
+        [JsonIgnore]
+        public List<Book> CustomerBooks { get; set; }
+    }
+}

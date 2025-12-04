@@ -1,0 +1,87 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">UGSamples</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Dummy Grid
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pdfExport">
+                <span class="oi oi-plus" aria-hidden="true"></span> pdfExport
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pdfFileName">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> pdfFileName
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="textinHeader">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> textinHeader
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="lineInHeader">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> lineInHeader
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pageInHeader">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> pageInHeader
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="imageInHeader">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> imageInHeader
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="pageOrientation">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> pageOrientation
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="changePageSize">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> changePageSize
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="exportCurrentPage">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> exportCurrentPage
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="exportHiddenCols">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> exportHiddenCols
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="theme">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> theme
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="customDataSource">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> customDataSource
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

@@ -1,0 +1,60 @@
+﻿@page "/ColTemplate"
+
+@using Syncfusion.Blazor.Grids
+<ColumnRoute></ColumnRoute>
+
+<SfGrid DataSource="@Employees">
+    <GridColumns>
+        <GridColumn HeaderText="Employee Image" TextAlign="TextAlign.Center" Width="120">
+            <Template>
+                @{
+                    var employee = (context as EmployeeData);
+                    <div class="image">
+                        <img src="@($"scripts/Images/Employees/{employee.EmployeeID}.png")" alt="@employee.EmployeeID" />
+                    </div>
+                }
+            </Template>
+        </GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.EmployeeID) HeaderText="Employee ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.FirstName) HeaderText="First Name" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Title) HeaderText="Title" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.HireDate) HeaderText="Hire Date" Format="d" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+<style>
+
+    .image img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50px;
+        box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+@code{
+    public List<EmployeeData> Employees { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Employees = Enumerable.Range(1, 9).Select(x => new EmployeeData()
+        {
+            EmployeeID = x,
+            FirstName = (new string[] { "Nancy", "Andrew", "Janet", "Margaret", "Steven" })[new Random().Next(5)],
+            LastName = (new string[] { "Davolio", "Fuller", "Leverling", "Peacock", "Buchanan" })[new Random().Next(5)],
+            Title = (new string[] { "Sales Representative", "Vice President, Sales", "Sales Manager",
+                                    "Inside Sales Coordinator" })[new Random().Next(4)],
+            HireDate = DateTime.Now.AddDays(-x),
+        }).ToList();
+    }
+
+    public class EmployeeData
+    {
+        public int? EmployeeID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Title { get; set; }
+        public DateTime? HireDate { get; set; }
+    }
+}
+
