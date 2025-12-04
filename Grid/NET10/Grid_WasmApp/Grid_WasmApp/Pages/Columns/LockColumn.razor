@@ -1,0 +1,33 @@
+﻿@page "/LockColumns"
+
+@using Syncfusion.Blazor.Grids
+<ColumnRoute></ColumnRoute>
+
+<SfGrid DataSource="@Employees" AllowReordering="true" Height="215">
+    <GridColumns>
+        <GridColumn Field=@nameof(EmployeeData.EmployeeID) FixedColumn="true" TextAlign="TextAlign.Center" HeaderText="Employee ID" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Name) HeaderText="First Name" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Title) HeaderText="Title" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.HireDate) HeaderText="Hire Date" Format="d" TextAlign="TextAlign.Right" Width="150" Type="ColumnType.Date"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<EmployeeData> Employees = new List<EmployeeData>
+{
+        new EmployeeData() { EmployeeID = 1, Name = "Nancy Fuller", Title = "Vice President", HireDate = DateTime.Now.AddDays(-80) },
+        new EmployeeData() { EmployeeID = 2, Name = "Steven Buchanan", Title = "Sales Manager", HireDate = DateTime.Now.AddDays(-60) },
+        new EmployeeData() { EmployeeID = 3, Name = "Janet Leverling", Title = "Sales Representative", HireDate = DateTime.Now.AddDays(-34) },
+        new EmployeeData() { EmployeeID = 4, Name = "Andrew Davolio", Title = "Inside Sales Coordinator", HireDate = DateTime.Now.AddDays(-22) },
+        new EmployeeData() { EmployeeID = 5, Name = "Margaret Peacock", Title = "Sales", HireDate = DateTime.Now.AddDays(-12) },
+    };
+
+    public class EmployeeData
+    {
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public DateTime HireDate { get; set; }
+    }
+}
+

@@ -1,0 +1,72 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">UGSamples</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Selectionmode">
+                <span class="oi oi-plus" aria-hidden="true"></span> Selectionmode
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="cellselection">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> cellselection
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="checkboxSelection">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> checkboxSelection
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="checkboxSelectionmode">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> checkboxSelectionmode
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="toggle">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> toggleSelection
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="selectAtInitial">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> selectAtInitial
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="getSelectedRowIndex">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> getSelectedRowIndex
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="selectBasedOnCondition">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> selectBasedOnCondition
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="simpleMultiSelection">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> simpleMultiSelection
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

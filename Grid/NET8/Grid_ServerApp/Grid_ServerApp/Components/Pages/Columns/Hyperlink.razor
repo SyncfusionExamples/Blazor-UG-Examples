@@ -1,0 +1,17 @@
+﻿@page "/nancy_fuller/{EmpID}/{Name}/{Title}"
+
+<h2>Hello @Name!</h2>
+<br>
+<h4><u>Employee Details</u></h4>
+<br>
+<div><b>Employee ID:</b><div class="details">@EmpID</div></div>
+<div><b>Position:</b><div class="details">@Title</div></div>
+
+@code {
+    [Parameter]
+    public string EmpID { get; set; }
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public string Title { get; set; }
+}

@@ -1,0 +1,60 @@
+﻿@page "/Footer_ColumnChooser"
+
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+<ColumnRoute></ColumnRoute>
+
+<SfGrid @ref="grid" TValue="OrdersDetails" DataSource="@GridData" ShowColumnChooser="true" Toolbar="@( new List<string>() { "ColumnChooser"})" AllowPaging="true">
+    <GridColumnChooserSettings>
+        <FooterTemplate>
+            @{
+                var ContextData = context as ColumnChooserFooterTemplateContext;
+                var visibles = ContextData.Columns.Where(x => x.Visible).Select(x => x.HeaderText).ToArray();
+                var hiddens = ContextData.Columns.Where(x => !x.Visible).Select(x => x.HeaderText).ToArray();
+            }
+            <SfButton IsPrimary="true" OnClick="@(async () => {
+            await grid.ShowColumnsAsync(visibles);
+            await grid.HideColumnsAsync(hiddens); })">Submit</SfButton>
+            <SfButton @onclick="@(async () => await ContextData.CancelAsync())">Abort</SfButton>
+        </FooterTemplate>
+    </GridColumnChooserSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(OrdersDetails.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" IsPrimaryKey="true" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.OrderDate) HeaderText="Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.ShippedDate) HeaderText="Shipped Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.ShipCountry) HeaderText="Ship Country" Visible="false" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(OrdersDetails.ShipCity) HeaderText="Ship City" Visible="false" Width="150"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<OrdersDetails> GridData { get; set; }
+    SfGrid<OrdersDetails> grid { get; set; }
+
+    protected override void OnInitialized()
+    {
+        GridData = Enumerable.Range(1, 75).Select(x => new OrdersDetails()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            OrderDate = DateTime.Now.AddDays(-x),
+            ShippedDate = DateTime.Now.AddDays(+x),
+            ShipCountry = (new string[] { "Denmark", "Brazil", "Germany", "Austria" })[new Random().Next(4)],
+            ShipCity = (new string[] { "Berlin", "Madrid", "Marseille" })[new Random().Next(3)]
+        }).ToList();
+    }
+
+    public class OrdersDetails
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+        public DateTime? ShippedDate { get; set; }
+        public string ShipCountry { get; set; }
+        public string ShipCity { get; set; }
+    }
+}
