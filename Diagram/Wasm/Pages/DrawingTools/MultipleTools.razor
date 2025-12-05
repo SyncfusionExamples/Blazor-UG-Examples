@@ -1,0 +1,15 @@
+﻿@page "/MultipleTools"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Connectors="@connectors" @ref="diagram" Height="600px" InteractionController="@tool" />
+
+@code
+{
+    //Reference to diagram.
+    private SfDiagramComponent diagram;
+    //Enable the multiple tools.
+    private DiagramInteractions tool = DiagramInteractions.DrawOnce | DiagramInteractions.ZoomPan;
+    //Defines diagram's connectors collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+}

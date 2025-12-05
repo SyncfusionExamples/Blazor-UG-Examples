@@ -1,0 +1,46 @@
+﻿@page "/RotationChange"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" RotationChanging="OnRotateChanging" RotationChanged="OnRotateChanged" />
+
+@code
+{
+    // To define node collection.
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes collection.
+        Node node = new Node()
+        {
+            // Position of the node.
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeColor = "white"
+            }
+        };
+        // Add node.
+        nodes.Add(node);
+    }
+
+    // Event to notify the rotation changing event before the node is rotated.
+    private void OnRotateChanging(RotationChangingEventArgs args)
+    {
+        // Sets true to cancel the rotation
+        args.Cancel = true;
+    }
+
+    // Event to notify the rotation changed event after the node is rotated.
+    private void OnRotateChanged(RotationChangedEventArgs args)
+    {
+        // Action to be performed.
+    }
+}

@@ -1,0 +1,39 @@
+﻿@page "/UpdateAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Updatelabel" OnClick="@UpdateLabel" />
+<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+
+@code
+{
+    // Reference to diagram.
+    private SfDiagramComponent diagram;
+    // Defines diagram's node collection.
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation { Content = "Node" }
+            },
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+        };
+        nodes.Add(node);
+    }
+
+    // Method to update the annotation at runtime.
+    private void UpdateLabel()
+    {
+        diagram.Nodes[0].Annotations[0].Content = "Updated Annotation";
+    }
+}

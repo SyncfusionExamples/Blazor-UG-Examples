@@ -1,0 +1,56 @@
+﻿@page "/DraggingEvent"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.SymbolPalette
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" Dragging="Dragging" />
+<SfSymbolPaletteComponent @ref="PaletteInstance" Height="600px" Palettes="@Palettes" SymbolDragPreviewSize="@SymbolPreview" SymbolHeight="40" GetSymbolInfo="GetSymbolInfo" SymbolWidth="40" >
+</SfSymbolPaletteComponent >
+
+@code
+{
+    private SfDiagramComponent Diagram;
+	private SfSymbolPaletteComponent PaletteInstance;
+    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> TNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramSize SymbolPreview;
+	
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        PaletteInstance.Targets.Add(Diagram);
+    }
+
+    private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
+    {
+        SymbolInfo SymbolInfo = new SymbolInfo();
+        SymbolInfo.Fit = true;
+        return SymbolInfo;
+    }
+
+    protected override void OnInitialized()
+    {
+        SymbolPreview = new DiagramSize();
+        SymbolPreview.Width = 80;
+        SymbolPreview.Height = 80;
+        TNodes = new DiagramObjectCollection<NodeBase>();
+        Node TNode2 = new Node()
+        { 
+            ID = "node1", 
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
+        };
+        TNodes.Add(TNode2);
+        Palettes = new DiagramObjectCollection<Palette>()
+        {
+        new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
+        };
+    }
+
+    // Notify the dragging event.
+    private void Dragging(DraggingEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

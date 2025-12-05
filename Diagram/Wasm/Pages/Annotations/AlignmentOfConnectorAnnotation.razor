@@ -1,0 +1,39 @@
+﻿@page "/AlignmentOfConnectorAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+        {
+            SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new TextStyle() { StrokeColor = "#6495ED" },
+            Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+                new PathAnnotation
+                {
+                    Content = "Before",
+                    // Sets the alignment of the annotation as Before.
+                    Alignment = AnnotationAlignment.Before
+                },
+                new PathAnnotation
+                {
+                    Content = "After",
+                    // Sets the alignment of the annotation as After.
+                    Alignment = AnnotationAlignment.After
+                },
+            }
+        };
+        connectors.Add(connector);
+    }
+}

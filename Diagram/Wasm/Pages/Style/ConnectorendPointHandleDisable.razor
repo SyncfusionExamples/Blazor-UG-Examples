@@ -1,0 +1,35 @@
+﻿@page "/ConnectorendPointHandleDisable"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px"  Height="500px" Connectors="@connectors" />
+
+<style>
+    .e-diagram-endpoint-handle.e-disabled {
+        fill: red;
+        opacity: 1;
+        stroke: green;
+    }
+</style>
+
+@code
+{
+    //Defines diagram's connector collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            Constraints = ConnectorConstraints.Default & ~ConnectorConstraints.DragSourceEnd,
+            SourcePoint = new DiagramPoint()
+            {
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+        };
+        connectors.Add(Connector);
+    }
+}

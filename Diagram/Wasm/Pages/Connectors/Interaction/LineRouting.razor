@@ -1,0 +1,39 @@
+﻿@page "/LineRouting"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" Nodes="@nodes" Constraints="@diagramConstraints">
+    <LineRoutingSettings RoutingType ="@routingTypes" ObstaclePadding="@padding"></LineRoutingSettings>
+</SfDiagramComponent>
+
+@code 
+{
+    // Set the type of the routing
+    private RoutingTypes routingTypes = RoutingTypes.Advanced;
+    // Set the padding for the obstable
+    private double padding = 20;
+    // Enable routing constraints for diagram.
+    private DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Routing;
+    // Intialize the node collection.
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    // Intialize the connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node() { ID = "node1", OffsetX = 100, OffsetY = 300, Width = 100, Height =100 },
+            new Node() { ID = "node2", OffsetX = 600, OffsetY = 100, Width = 100, Height = 100 },
+            new Node() { ID = "node3", OffsetX = 400, OffsetY = 250, Width = 100, Height = 100 }
+        };
+        connectors = new DiagramObjectCollection<Connector>(){
+            new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1", TargetID = "node2",
+                Type = ConnectorSegmentType.Orthogonal
+            }
+        };
+    }
+}

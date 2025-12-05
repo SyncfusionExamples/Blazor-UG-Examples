@@ -1,0 +1,94 @@
+﻿@page "/LocalData"
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@Diagram" Height="499px" InteractionController="DiagramInteractions.ZoomPan" ConnectorCreating="@ConnectorDefaults"
+                    NodeCreating="@NodeDefaults">
+    <DataSourceSettings ID="Name" ParentID="Category" DataSource="DataSource" />
+    <Layout @bind-Type="type"
+            @bind-HorizontalSpacing="@HorizontalSpacing"
+            @bind-Orientation="@orientation"
+            @bind-VerticalSpacing="@VerticalSpacing"
+            @bind-HorizontalAlignment="@horizontalAlignment"
+            @bind-VerticalAlignment="@verticalAlignment"
+            GetLayoutInfo="GetLayoutInfo">
+        <LayoutMargin Top="50" Bottom="50" Right="50" Left="50" />
+    </Layout>
+</SfDiagramComponent>
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent Diagram;
+    // Specify the layout type.
+    private LayoutType type = LayoutType.HierarchicalTree;
+    // Specify the orientation of the layout.
+    private LayoutOrientation orientation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
+    private int HorizontalSpacing = 30;
+    private int VerticalSpacing = 30;
+
+    // Defines the connector's default values.
+    private void ConnectorDefaults(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).TargetDecorator.Shape = DecoratorShape.None;
+        (connector as Connector).Style = new ShapeStyle() { StrokeColor = "#6d6d6d" };
+        (connector as Connector).Constraints = 0;
+        (connector as Connector).CornerRadius = 5;
+    }
+
+    // Create the layout info.
+    private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
+    {
+        // Enable the sub-tree.
+        options.EnableSubTree = true;
+        // Specify the subtree orientation.
+        options.Orientation = Orientation.Horizontal;
+        return options;
+    }
+
+    // Defines the node's default values.
+    private void NodeDefaults(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        HierarchicalDetails hierarchicalData = node.Data as HierarchicalDetails;
+        node.Style = new ShapeStyle() { Fill = "#659be5", StrokeColor = "none", StrokeWidth = 2, };
+        node.BackgroundColor = "#659be5";
+        node.Width = 150;
+        node.Height = 50;
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation()
+            {
+                Content = hierarchicalData.Name,
+                Style =new TextStyle(){Color = "white"}
+            }
+        };
+    }
+
+    // Create the hierarchical details with needed properties.
+    public class HierarchicalDetails
+    {
+        public string Name { get; set; }
+        public string FillColor { get; set; }
+        public string Category { get; set; }
+    }
+
+    // Create the data source with node name and fill color values.
+    public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
+    {
+        new HierarchicalDetails(){ Name ="Diagram", Category="",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Layout", Category="Diagram",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Tree layout", Category="Layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Organizational chart", Category="Layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Hierarchical tree", Category="Tree layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Radial tree", Category="Tree layout",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Mind map", Category="Hierarchical tree",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Family tree", Category="Hierarchical tree",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Management", Category="Organizational chart",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Human resources", Category="Management",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="University", Category="Management",FillColor="#659be5"},
+        new HierarchicalDetails(){ Name ="Business", Category="#Management",FillColor="#659be5"}
+    };
+}

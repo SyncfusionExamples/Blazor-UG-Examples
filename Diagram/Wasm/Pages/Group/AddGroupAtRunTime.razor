@@ -1,0 +1,60 @@
+﻿@page "/AddGroupAtRunTime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="AddGroup" OnClick="@AddGroup" />
+@* Initialize the diagram with NodeCollection *@
+<SfDiagramComponent Height="500px" Nodes="@nodes" />
+
+@code
+{
+    //Intialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private NodeGroup groupnode = new NodeGroup();
+
+    protected override void OnInitialized()
+    {
+        Node node1 = createNode("node1", 100, 100, "Node1");
+        Node node2 = createNode("node2", 300, 100, "Node2");
+        // Grouping node 1 and node 2 into a single group
+        groupnode.Children = new string[] { "node1", "node2" };
+        nodes.Add(node1);
+        nodes.Add(node2);
+    }
+
+    private Node createNode(string id, double offx, double offy, string content)
+    {
+        Node node = new Node()
+        {
+            ID = id,
+            OffsetX = offx,
+            OffsetY = offy,
+            Height = 100,
+            Width = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED" }
+        };
+        ShapeAnnotation annotation = new ShapeAnnotation()
+        {
+            ID = "annotation1",
+            Content = content,
+            Style = new TextStyle()
+            {
+                Color = "white",
+                Fill = "transparent",
+                StrokeColor = "None"
+            },
+        };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            annotation
+        };
+        return node;
+    }
+
+    //Method to add group at runtime
+    private void AddGroup()
+    {
+        nodes.Add(groupnode);
+    }
+}

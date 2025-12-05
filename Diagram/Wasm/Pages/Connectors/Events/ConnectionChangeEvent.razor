@@ -1,0 +1,71 @@
+﻿@page "/ConnectionChangeEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" ConnectionChanging="@OnConnectionChanging" ConnectionChanged="@OnConnectionChange"
+                    Height="500px" Connectors="@connectors" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent Diagram;
+    //Intialize the diagram connector's collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Intialize the diagram node's collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node()
+            {
+            OffsetX = 100,
+            OffsetY = 100,
+            Height = 50,
+            Width = 100,
+            ID = "node1",
+            },
+        };
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            TargetID = "node1",
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
+                {
+                    Fill = "black",
+                    StrokeColor = "black",
+                    StrokeWidth = 1
+                }
+            },
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "black",
+                StrokeWidth = 1
+            },
+        };
+        connectors.Add(Connector);
+    }
+
+    // To notify the connection changing event before the connection change.
+    private void OnConnectionChanging(ConnectionChangingEventArgs args)
+    {
+        //Sets true to cancel the connection change.
+        args.Cancel = true;
+    }
+
+    // To notify the connection changed event after the connection has changed.
+    private void OnConnectionChange(ConnectionChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}
