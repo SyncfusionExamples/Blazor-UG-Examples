@@ -1,0 +1,38 @@
+﻿<h3>Handle_Exceptions</h3>
+
+@page "/Gantt/Handle_Exceptions"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+
+<label class="error" style="display:block; color: red; margin-bottom: 20px;">@ErrorDetails</label>
+<SfGantt TValue="TaskData" Height="450px" Width="700px">
+    <SfDataManager Url="https://some.com/invalidUrl" Adaptor="Adaptors.UrlAdaptor"></SfDataManager>
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration"
+                     Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEvents TValue="TaskData" OnActionFailure="ActionFailure"></GanttEvents>
+</SfGantt>
+
+@code {
+    private string ErrorDetails = "";
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public void ActionFailure(Syncfusion.Blazor.Grids.FailureEventArgs args)
+    {
+        this.ErrorDetails = args.Error.Message.ToString();
+        StateHasChanged();
+    }
+}

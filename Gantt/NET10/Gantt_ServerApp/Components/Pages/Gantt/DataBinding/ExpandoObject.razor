@@ -1,0 +1,68 @@
+﻿<h3>ExpandoObject</h3>
+
+@page "/Gantt/DataBinding/ExpandoObject"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using System.Dynamic
+
+<SfGantt TValue="ExpandoObject" DataSource="@TreeData" @ref="Gantt" Height="450px" Width="700px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" Duration="Duration"
+                     Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" AllowTaskbarEditing="true"></GanttEditSettings>
+</SfGantt>
+
+@code {
+    SfGantt<ExpandoObject> Gantt;
+    private List<ExpandoObject> TreeData { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.TreeData = GetData().ToList();
+    }
+    private static List<ExpandoObject> Data = new List<ExpandoObject>();
+    private static int ParentRecordID { get; set; }
+    private static int ChildRecordID { get; set; }
+    public static List<ExpandoObject> GetData()
+    {
+        Data.Clear();
+        ParentRecordID = 0;
+        ChildRecordID = 0;
+        for (var i = 1; i <= 60; i++)
+        {
+            Random ran = new Random();
+            DateTime start = new DateTime(2022, 03, 07);
+            int range = (DateTime.Today - start).Days;
+            DateTime startingDate = start.AddDays(ran.Next(range));
+            dynamic ParentRecord = new ExpandoObject();
+            ParentRecord.TaskID = ++ParentRecordID;
+            ParentRecord.TaskName = "Parent Task " + i;
+            ParentRecord.StartDate = startingDate;
+            ParentRecord.Progress = ran.Next(10, 100);
+            ParentRecord.Duration = ParentRecordID % 2 == 0 ? (32).ToString() : (76).ToString();
+            ParentRecord.ParentID = null;
+            Data.Add(ParentRecord);
+            AddChildRecords(ParentRecordID);
+        }
+        return Data;
+    }
+    public static void AddChildRecords(int ParentID)
+    {
+        for (var i = 1; i < 4; i++)
+        {
+            Random ran = new Random();
+            DateTime start = new DateTime(2022, 03, 07);
+            int range = (DateTime.Today - start).Days;
+            DateTime startingDate = start.AddDays(ran.Next(range));
+            dynamic ChildRecord = new ExpandoObject();
+            ChildRecord.TaskID = ++ParentRecordID;
+            ChildRecord.TaskName = "Child Task " + ++ChildRecordID;
+            ChildRecord.StartDate = startingDate;
+            ChildRecord.Progress = ran.Next(10, 100);
+            ChildRecord.Duration = ParentRecordID % 3 == 0 ? (64).ToString() : (98).ToString();
+            ChildRecord.ParentID = ParentID;
+            Data.Add(ChildRecord);
+        }
+    }
+}

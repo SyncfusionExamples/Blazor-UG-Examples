@@ -1,0 +1,95 @@
+﻿<h3>Column_Header_Template_Export</h3>
+
+@page "/Gantt/PDFExport/Column_Header_Template_Export"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.PdfExport
+@using System.Net.Http
+@using System.IO
+@inject HttpClient Http
+
+<SfGantt @ref="Gantt" ID="GanttExport" DataSource="@TaskCollection" Width="700px" Height="400px" AllowPdfExport="true" Toolbar="toolbarItem">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="Parent_Id"></GanttTaskFields>
+    <GanttColumns>
+        <GanttColumn Field="TaskName" HeaderText="Job Name" Width="250">
+            <HeaderTemplate>
+                <div>
+                    <img src="https://cdn.syncfusion.com/content/images/landing-page/yes.png" width="20" height="20" style="margin-right: 8px">
+                    @((context as GridColumn).HeaderText)
+                </div>
+            </HeaderTemplate>
+        </GanttColumn>
+        <GanttColumn Field="StartDate" HeaderText="Start Date" Width="250">
+            <HeaderTemplate>
+                <div>
+                    <img src="https://cdn.syncfusion.com/content/images/landing-page/yes.png" width="20" height="20" style="margin-right: 8px">
+                    @((context as GridColumn).HeaderText)
+                </div>
+            </HeaderTemplate>
+        </GanttColumn>
+    </GanttColumns>
+    <GanttEvents OnToolbarClick="ToolbarClickHandler" PdfColumnHeaderQueryCellInfo="PdfHeaderQueryCellInfoHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+@code {
+    private List<TaskData> TaskCollection { get; set; }
+    private SfGantt<TaskData> Gantt;
+    private List<object> toolbarItem = new List<object>() {
+        new Syncfusion.Blazor.Navigations.ToolbarItem() {
+            Text = "PDF Export", TooltipText = "PDF Export", Id = "PdfExport", PrefixIcon = "e-pdfexport"
+        }
+    };
+
+    public PdfImage image;
+    protected override async Task OnInitializedAsync()
+    {
+        TaskCollection = GetTaskCollection();
+        var imageBytes = await Http.GetByteArrayAsync("https://cdn.syncfusion.com/content/images/landing-page/yes.png");
+        using var imageStream = new MemoryStream(imageBytes);
+        image = PdfImage.FromStream(imageStream);
+    }
+
+
+    public async void ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id == "PdfExport")
+        {
+            await Gantt.ExportToPdfAsync();
+        }
+    }
+
+    public void PdfHeaderQueryCellInfoHandler(Syncfusion.Blazor.Gantt.PdfHeaderQueryCellInfoEventArgs args)
+    {
+        args.Cell.CellStyle = new PdfElementStyle() { Image = image };
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? Parent_Id { get; set; }
+
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+                {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 21)},
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, Parent_Id = 1},
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Progress = 40, Parent_Id = 1},
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, Parent_Id =1},
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new DateTime(2022, 04, 21)},
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, Parent_Id =5},
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 40, Parent_Id =5},
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Progress = 30, Parent_Id =5}
+
+        };
+        return Tasks;
+    }
+}

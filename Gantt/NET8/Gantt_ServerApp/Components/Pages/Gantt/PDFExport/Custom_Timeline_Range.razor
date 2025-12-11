@@ -1,0 +1,107 @@
+﻿<h3>Custom_Timeline_Range</h3>
+
+@page "/Gantt/PDFExport/Custom_Timeline_Range"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Navigations
+
+<SfGantt @ref="Gantt" DataSource="@TaskCollection" Height="450px" Width="100%" AllowPdfExport="true" TreeColumnIndex="1" Toolbar="@toolbarItem">
+    <GanttLabelSettings LeftLabel="TaskName" TValue="TaskData"></GanttLabelSettings>
+    <GanttTaskFields ParentID="ParentID" Work="Work" Id="ID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" TaskType="TaskType" Dependency="Predecessor">
+    </GanttTaskFields>
+    <GanttColumns>
+        <GanttColumn Field="ID" HeaderText="Task Id" Width="100" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></GanttColumn>
+        <GanttColumn Field="TaskName" HeaderText="Task Name"></GanttColumn>
+        <GanttColumn Field="StartDate" HeaderText="Start Date"></GanttColumn>
+        <GanttColumn Field="EndDate" HeaderText="End Date"></GanttColumn>
+        <GanttColumn Field="Duration" HeaderText="Duration"></GanttColumn>
+        <GanttColumn Field="Assignee" HeaderText="Assignee"></GanttColumn>
+        <GanttColumn Field="Reporter" HeaderText="Reporter"></GanttColumn>
+        <GanttColumn Field="Progress" HeaderText="Progress" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Center"></GanttColumn>
+    </GanttColumns>
+    <GanttEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode="Syncfusion.Blazor.Gantt.EditMode.Auto" ShowDeleteConfirmDialog="true">
+    </GanttEditSettings>
+    <GanttEvents OnToolbarClick="ToolbarClickHandler" PdfExporting=" PdfExportingHandler" TValue="TaskData"></GanttEvents>
+    <GanttSplitterSettings Position="40%"></GanttSplitterSettings>
+</SfGantt>
+@code {
+    private SfGantt<TaskData> Gantt { get; set; }
+    private List<object> toolbarItem = new List<Object>() { new Syncfusion.Blazor.Navigations.ToolbarItem() { Text = "PDF Export", TooltipText = "PDF Export", Id = "PdfExport", PrefixIcon = "e-pdfexport" } };
+    private List<TaskData> TaskCollection { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = VirtualData.GetTreeVirtualData(30);
+    }
+    public async void ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id == "PdfExport")
+        {
+            await Gantt.ExportToPdfAsync();
+        }
+    }
+    public void PdfExportingHandler(PdfExportEventArgs args)
+    {
+        args.RangeStart = new DateTime(2000, 1, 14);
+        args.RangeEnd = new DateTime(2000, 05, 12);
+    }
+    public class VirtualData
+    {
+        public static List<TaskData> GetTreeVirtualData(int count)
+        {
+            List<TaskData> DataCollection = new List<TaskData>();
+            var x = 0;
+            int duration = 0;
+            DateTime startDate = new DateTime(2000, 1, 5);
+            DateTime endDate = new DateTime(2000, 1, 12);
+            string[] assignee = { "Allison Janney", "Bryan Fogel", "Richard King", "Alex Gibson" };
+            string[] reporter = { "James Ivory", "Jordan Peele", "Guillermo del Toro", "Gary Oldman" };
+            for (var i = 1; i <= count / 5; i++)
+            {
+                TaskData Parent = new TaskData()
+                {
+                    ID = ++x,
+                    TaskName = "Task " + x,
+                    StartDate = startDate,
+                    EndDate = startDate.AddDays(26),
+                    Duration = "20",
+                    Assignee = "Mark Bridges",
+                    Reporter = "Kobe Bryant",
+                    Progress = 50,
+                };
+                DataCollection.Add(Parent);
+                for (var j = 1; j <= 4; j++)
+                {
+                    startDate = startDate.AddDays(j == 1 ? 0 : duration + 2);
+                    duration = 5;
+                    DataCollection.Add(new TaskData()
+                    {
+                        ID = ++x,
+                        TaskName = "Task " + x,
+                        StartDate = startDate,
+                        EndDate = startDate.AddDays(5),
+                        Duration = duration.ToString(),
+                        Assignee = assignee[j - 1],
+                        Reporter = reporter[j - 1],
+                        Progress = 50,
+                        ParentID = Parent.ID,
+                    });
+                }
+            }
+            return DataCollection;
+        }
+    }
+    public class TaskData
+    {
+        public int ID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public string Assignee { get; set; }
+        public string Reporter { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+        public string Predecessor { get; set; }
+    }
+}

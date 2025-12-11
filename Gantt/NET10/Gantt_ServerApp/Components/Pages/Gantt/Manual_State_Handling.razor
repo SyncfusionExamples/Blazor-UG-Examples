@@ -1,0 +1,80 @@
+﻿<h3>Manual_State_Handling</h3>
+
+@page "/Gantt/Manual_State_Handling"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Navigations
+
+<SfGantt ID="Persist" @ref="Gantt" DataSource="@TaskCollection" Width="750px"
+         Toolbar="Toolbaritems" AllowReordering="true" AllowFiltering="true" AllowSorting="true"
+         AllowResizing="true" ShowColumnMenu="true" EnablePersistence="true">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress"
+                      ParentID="ParentID"></GanttTaskFields>
+    <GanttEvents OnToolbarClick="ToolbarClickHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+<style>
+    .e-savestate::before {
+        content: '\e74d';
+    }
+
+    .e-setstate::before {
+        content: '\e75d';
+    }
+
+    .e-resetstate::before {
+        content: '\e710';
+    }
+</style>
+@code {
+    private SfGantt<TaskData> Gantt;
+    private List<TaskData> TaskCollection { get; set; }
+    private string PersistedState = null;
+    private List<Object> Toolbaritems = new List<Object>() {
+         "ZoomIn", "ZoomOut", "ZoomToFit",
+         new ToolbarItem() { Text = "Save state", TooltipText = "Save state", Id = "GetPersistence", PrefixIcon= "e-savestate" },
+         new ToolbarItem() { Text = "Load state", TooltipText = "Load state", Id = "SetPersistence", PrefixIcon= "e-setstate" },
+         new ToolbarItem() { Text = "Reset state", TooltipText = "Reset state", Id = "ClearPersistence", PrefixIcon= "e-resetstate" }
+    };
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+    private async void ToolbarClickHandler(ClickEventArgs args)
+    {
+        if (args.Item.Id == "GetPersistence")
+        {
+            PersistedState = await Gantt.GetPersistDataAsync();
+        }
+        else if (args.Item.Id == "SetPersistence")
+        {
+            await Gantt.SetPersistDataAsync(PersistedState);
+        }
+        else if (args.Item.Id == "ClearPersistence")
+        {
+            await Gantt.ResetPersistDataAsync();
+        }
+    }
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>() {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2021, 04, 05), EndDate = new DateTime(2021, 04, 21), },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2021, 04, 05), Duration = "4", Progress = 50, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2021, 04, 05), Duration = "4", Progress = 50, ParentID = 1 },
+            new TaskData() { TaskID = 4, TaskName = "Prepare product sketch and notes", StartDate = new DateTime(2021, 04, 05), Duration = "2", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 5, TaskName = "Concept approval", StartDate = new DateTime(2021, 04, 08), EndDate = new DateTime(2021, 04, 08), Duration="0", ParentID = 1 }
+        };
+        return Tasks;
+    }
+}

@@ -1,0 +1,119 @@
+﻿<h3>Enable_Filter</h3>
+
+@page "/Gantt/Filtering/Enable_Filter"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Grids
+
+<div style="margin-bottom:20px">
+    <label style="font-weight:bold">Select Column</label>
+    <SfDropDownList TValue="string" TItem="string" Width="130px" Placeholder="Eg: TaskID" DataSource="@ColumnData">
+        <DropDownListEvents TValue="string" TItem="string" ValueChange="onFieldChange"></DropDownListEvents>
+    </SfDropDownList>
+
+    <label style="font-weight:bold">Select Filter Type</label>
+    <SfDropDownList TValue="string" TItem="string" Width="130px" Placeholder="Eg: Menu" Enabled="@flag" DataSource="@LocalData">
+        <DropDownListEvents TValue="string" TItem="string" ValueChange="onTypeChange"></DropDownListEvents>
+    </SfDropDownList>
+</div>
+<SfGantt @ref="GanttInstance" DataSource="@TaskCollection" Height="450px" Width="100%" AllowFiltering="true">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID" />
+    <GanttColumns>
+        <GanttColumn Field="TaskID" HeaderText="Task ID" Width="100" FilterSettings="@TaskIDFilterSettings" />
+        <GanttColumn Field="TaskName" HeaderText="Task Name" Width="150" FilterSettings="@TaskNameFilterSettings" />
+        <GanttColumn Field="StartDate" HeaderText="Start Date" Width="120" Format="d" FilterSettings="@StartDateFilterSettings" />
+        <GanttColumn Field="EndDate" HeaderText="End Date" Width="120" Format="d" FilterSettings="@EndDateFilterSettings" />
+        <GanttColumn Field="Duration" HeaderText="Duration" Width="100" FilterSettings="@DurationFilterSettings" />
+        <GanttColumn Field="Progress" HeaderText="Progress" Width="100" FilterSettings="@ProgressFilterSettings" />
+    </GanttColumns>
+    <GanttFilterSettings FilterType="Syncfusion.Blazor.Gantt.FilterType.Menu"></GanttFilterSettings>
+</SfGantt>
+
+@code {
+    public SfGantt<TaskData> GanttInstance;
+    private List<TaskData> TaskCollection { get; set; } = GetTaskCollection();
+    public bool flag = false;
+    public string SelectedColumn { get; set; }
+    public string SelectedOperator { get; set; }
+    List<string> LocalData = new List<string>() { "Menu", "Excel" };
+    List<string> ColumnData = new List<string>() { "TaskID", "TaskName", "StartDate", "EndDate", "Duration", "Progress", "ParentID" };
+
+    // Filter settings for each column.
+    FilterSettings TaskIDFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings TaskNameFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings StartDateFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings EndDateFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings DurationFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings ProgressFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+    FilterSettings ParentIDFilterSettings = new FilterSettings { Type = Syncfusion.Blazor.Grids.FilterType.Menu };
+
+    public void onFieldChange(ChangeEventArgs<string, string> args)
+    {
+        SelectedColumn = args.Value;
+        flag = true;
+    }
+
+    public async Task onTypeChange(ChangeEventArgs<string, string> args)
+    {
+        SelectedOperator = args.Value;
+        await onSingleValueFilter();
+    }
+
+    public async Task onSingleValueFilter()
+    {
+        Enum.TryParse(SelectedOperator, out Syncfusion.Blazor.Grids.FilterType filterType);
+
+        switch (SelectedColumn)
+        {
+            case "TaskID":
+                TaskIDFilterSettings.Type = filterType;
+                break;
+            case "TaskName":
+                TaskNameFilterSettings.Type = filterType;
+                break;
+            case "StartDate":
+                StartDateFilterSettings.Type = filterType;
+                break;
+            case "EndDate":
+                EndDateFilterSettings.Type = filterType;
+                break;
+            case "Duration":
+                DurationFilterSettings.Type = filterType;
+                break;
+            case "Progress":
+                ProgressFilterSettings.Type = filterType;
+                break;
+        }
+
+        await GanttInstance.RefreshAsync();
+    }
+
+    private static List<TaskData> GetTaskCollection()
+    {
+        return new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 07) },
+            new TaskData { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 40, ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 10) },
+            new TaskData { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 40, ParentID = 5 },
+            new TaskData { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 01, 06), Duration = "0", Progress = 30, ParentID = 5 }
+        };
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

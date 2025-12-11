@@ -1,0 +1,62 @@
+﻿<h3>Custom_ContextMenu</h3>
+
+@page "/Gantt/ContextMenu/Custom_ContextMenu"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+
+<SfGantt @ref="GanttInstance" DataSource="@TaskCollection" Height="450px" Width="700px" ContextMenuItems="@contextMenuItems">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEvents ContextMenuItemClicked=ContextMenuItemClickedHandler TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    public List<TaskData> TaskCollection { get; set; }
+    private SfGantt<TaskData> GanttInstance;
+
+    private List<ContextMenuItemModel> contextMenuItems = new List<ContextMenuItemModel>()
+    {
+        new ContextMenuItemModel(){Text="Refresh", Target=".e-content",Id="Refresh"}
+    };
+
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    private async void ContextMenuItemClickedHandler(ContextMenuClickEventArgs<TaskData> args)
+    {
+        if (args.Item.Id == "Refresh")
+        {
+            await GanttInstance.RefreshAsync();
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>() {
+        new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 04), EndDate = new DateTime(2022, 04, 08)},
+        new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 04), Duration = "4", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 04), Duration = "4", Progress = 40, ParentID = 1 },
+        new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 04), Duration = "5", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 12), EndDate = new DateTime(2022, 05, 17) },
+        new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 12), Duration = "3", Progress = 30, ParentID = 5 },
+        new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 05, 13), Duration = "3", Progress = 40, ParentID = 5 },
+        new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 05, 16), Duration = "0", Progress = 30, ParentID = 5 }
+    };
+        return Tasks;
+    }
+}

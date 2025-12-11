@@ -1,0 +1,47 @@
+﻿<h3>Multiple_Dependency</h3>
+
+@page "/Gantt/TaskScheduling/Multiple_Dependency"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+
+<SfGantt DataSource="@TaskCollection" Height="450px" Width="700px">
+    <GanttTaskFields Id="TaskID"
+                     Name="TaskName"
+                     StartDate="StartDate"
+                     EndDate="EndDate"
+                     Duration="Duration"
+                     Progress="Progress"
+                     Dependency="Predecessor"
+                     ParentID="ParentID">
+    </GanttTaskFields>
+</SfGantt>
+
+@code {
+    public List<TaskData> TaskCollection { get; set; }
+
+    protected override void OnInitialized()
+    {
+        TaskCollection = new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Project Kickoff", StartDate = new DateTime(2023, 04, 04), Duration = "2", Progress = 20 },
+            new TaskData { TaskID = 2, TaskName = "Planning", StartDate = new DateTime(2023, 04, 04), Duration = "3", Progress = 40, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Design", StartDate = new DateTime(2023, 04, 10), Duration = "2", ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Implementation", StartDate = new DateTime(2023, 04, 13), Duration = "3", ParentID = 1 },
+            new TaskData { TaskID = 5, TaskName = "Testing", StartDate = new DateTime(2023, 04, 18), Duration = "2", ParentID = 1 },
+            new TaskData { TaskID = 6, TaskName = "Review", StartDate = new DateTime(2023, 04, 18), Duration = "2", Predecessor = "4FS,5SS" }
+        };
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

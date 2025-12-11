@@ -1,0 +1,57 @@
+﻿<h3>Filter_Choice_Count</h3>
+
+@page "/Gantt/Filtering/Filter_Choice_Count"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+
+<SfGantt DataSource="@TaskCollection" AllowFiltering="true" Height="450px" Width="900px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttFilterSettings FilterType="Syncfusion.Blazor.Gantt.FilterType.Excel"></GanttFilterSettings>
+    <GanttEvents FilterDialogOpening="FilterDialogOpeningHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    private List<TaskData> TaskCollection { get; set; } = new();
+    SfGantt<TaskData> Gantt { get; set; }
+
+    public void FilterDialogOpeningHandler(FilterDialogOpeningEventArgs args)
+    {
+        args.FilterChoiceCount = 100;
+    }
+
+    protected override void OnInitialized()
+    {
+        TaskCollection = GetTaskCollection();
+    }
+
+    private List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> tasks = new List<TaskData>();
+        int TaskID = 1;
+
+        // Generate larger dataset for demonstration.
+        for (int i = 1; i <= 50; i++)
+        {
+            tasks.Add(new TaskData() { TaskID = TaskID++, TaskName = $"Project Phase {i}", StartDate = new DateTime(2023, 04, 02), Duration = 10, Progress = 25, ParentID = null });
+            tasks.Add(new TaskData() { TaskID = TaskID++, TaskName = $"Task A-{i}", StartDate = new DateTime(2023, 04, 02), Duration = 3, Progress = 50, ParentID = TaskID - 2 });
+            tasks.Add(new TaskData() { TaskID = TaskID++, TaskName = $"Task B-{i}", StartDate = new DateTime(2023, 04, 05), Duration = 4, Progress = 75, ParentID = TaskID - 3 });
+            tasks.Add(new TaskData() { TaskID = TaskID++, TaskName = $"Task C-{i}", StartDate = new DateTime(2023, 04, 09), Duration = 3, Progress = 30, ParentID = TaskID - 4 });
+        }
+
+        return tasks;
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

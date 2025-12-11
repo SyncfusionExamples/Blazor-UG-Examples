@@ -1,0 +1,38 @@
+﻿<h3>Bind_Gantt_Chart</h3>
+
+@page "/Gantt/HowTo/Bind_Gantt_Chart"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+<SfGantt DataSource="@TaskCollection" Height="450px" Width="700px">
+</SfGantt>
+
+@code{
+private List<TaskData> TaskCollection { get; set; }
+protected override void OnInitialized()
+{
+    this.TaskCollection = GetTaskCollection();
+}
+
+public class TaskData
+{
+    public int TaskId { get; set; }
+    public string TaskName { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public string Duration { get; set; }
+    public int Progress { get; set; }
+    public int? ParentId { get; set; }
+}
+
+public static List<TaskData> GetTaskCollection()
+{
+    List<TaskData> Tasks = new List<TaskData>()
+    {
+        new TaskData() { TaskId = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 23)},
+        new TaskData() { TaskId = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 50, ParentId = 1 },
+        new TaskData() { TaskId = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 50, ParentId = 1 }
+    };
+    return Tasks;
+}
+}

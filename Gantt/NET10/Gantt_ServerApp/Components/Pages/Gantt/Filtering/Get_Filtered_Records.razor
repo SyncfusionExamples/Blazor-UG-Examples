@@ -1,0 +1,99 @@
+﻿<h3>Get_Filtered_Records</h3>
+
+@page "/Gantt/Filtering/Get_Filtered_Records"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Buttons
+
+<div style="margin-bottom: 20px;">
+    <SfButton OnClick="click" CssClass="e-primary" style="margin-right: 10px;">Get Filtered Records</SfButton>
+    <SfButton OnClick="clear" CssClass="e-danger">Clear Filters</SfButton>
+</div>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div style="margin-bottom: 20px; color: red; text-align: center;">
+        <strong>@message</strong>
+    </div>
+}
+
+<SfGantt @ref="GanttInstance" DataSource="@TaskCollection" Height="450px" Width="100%" AllowFiltering="true" ProjectStartDate="@(new DateTime(2022, 01, 02))" ProjectEndDate="@(new DateTime(2022, 01, 15))">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID" />
+    <GanttFilterSettings FilterType="@CurrentFilterType"></GanttFilterSettings>
+    <GanttEvents Filtering="FilteringHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@if (showRecords)
+{
+    <h3 style="margin-top: 30px;">Filtered Records</h3>
+    <SfGantt DataSource="@FilteredTasks" Height="450px" Width="100%" ProjectStartDate="@(new DateTime(2022, 01, 02))" ProjectEndDate="@(new DateTime(2022, 01, 15))">
+        <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID" />
+    </SfGantt>
+}
+
+@code {
+    public SfGantt<TaskData> GanttInstance;
+    private List<TaskData> TaskCollection { get; set; } = GetTaskCollection();
+    public List<TaskData> FilteredTasks { get; set; } = new();
+    public bool showRecords = false;
+    public string message = string.Empty;
+    public bool flag = false;
+
+    public Syncfusion.Blazor.Gantt.FilterType CurrentFilterType { get; set; } = Syncfusion.Blazor.Gantt.FilterType.Menu;
+
+    public async Task click()
+    {
+        if (flag)
+        {
+            var filteredRecords = await GanttInstance.GetFilteredRecordsAsync();
+            FilteredTasks = filteredRecords.Cast<TaskData>().ToList();
+            showRecords = true;
+            message = string.Empty;
+        }
+        else
+        {
+            showRecords = false;
+            message = "No Records is filtered ";
+        }
+    }
+
+    public void FilteringHandler(Syncfusion.Blazor.Grids.FilteringEventArgs args)
+    {
+        flag = args.FilterPredicates != null && args.FilterPredicates.Any();
+    }
+
+    public async Task clear()
+    {
+        await GanttInstance.ClearFilteringAsync();
+        showRecords = false;
+        message = string.Empty;
+        flag = false;
+    }
+
+    private static List<TaskData> GetTaskCollection()
+    {
+        return new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 07), Duration = "3", Progress = 50 },
+            new TaskData { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 40, ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 10), Duration = "6", Progress = 60 },
+            new TaskData { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 40, ParentID = 5 },
+            new TaskData { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 01, 06), Duration = "0", Progress = 30, ParentID = 5 }
+        };
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

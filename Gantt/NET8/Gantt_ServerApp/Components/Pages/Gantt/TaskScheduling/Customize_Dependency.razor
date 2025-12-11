@@ -1,0 +1,45 @@
+﻿<h3>Customize_Dependency</h3>
+
+@page "/Gantt/TaskScheduling/Customize_Dependency"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+<SfGantt DataSource="@TaskCollection" ConnectorLineBackground="#ff0000" ConnectorLineWidth="2" Height="450px" Width="750px">
+    <GanttTaskFields Id="TaskID"
+                     Name="TaskName"
+                     StartDate="StartDate"
+                     EndDate="EndDate"
+                     Duration="Duration"
+                     Progress="Progress"
+                     Dependency="Predecessor"
+                     ParentID="ParentID">
+    </GanttTaskFields>
+</SfGantt>
+@code {
+    public List<TaskData> TaskCollection { get; set; }
+
+    protected override void OnInitialized()
+    {
+        TaskCollection = new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Research Phase", StartDate = new DateTime(2023, 05, 01) },
+            new TaskData { TaskID = 2, TaskName = "Literature Review", StartDate = new DateTime(2023, 05, 01), Duration = "4", Progress = 50, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Data Collection", StartDate = new DateTime(2023, 05, 05), Duration = "3", Progress = 0, Predecessor = "2FS", ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Concurrent Task Preparation", StartDate = new DateTime(2023, 05, 05), Duration = "3", Progress = 0, Predecessor = "3SS" },
+            new TaskData { TaskID = 5, TaskName = "Data Analysis", StartDate = new DateTime(2023, 05, 05), Duration = "3", Progress = 0, Predecessor = "4FF" },
+            new TaskData { TaskID = 6, TaskName = "Report Writing", StartDate = new DateTime(2023, 05, 01), Duration = "4", Progress = 0, Predecessor = "5SF" }
+        };
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

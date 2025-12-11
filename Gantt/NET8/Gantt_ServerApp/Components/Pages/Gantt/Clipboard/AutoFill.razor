@@ -1,0 +1,90 @@
+﻿<h3>AutoFill</h3>
+
+@page "/Gantt/Clipboard/AutoFill"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+
+<SfGantt @ref=GanttChart DataSource="@TaskCollection" @onkeyup="KeyUp" Height="450px" Width="1000px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttSelectionSettings Mode="Syncfusion.Blazor.Grids.SelectionMode.Cell" Type="Syncfusion.Blazor.Grids.SelectionType.Multiple" AllowDragSelection="true" CellSelectionMode="CellSelectionMode.Box"></GanttSelectionSettings>
+    <GanttEditSettings AllowEditing="true"> </GanttEditSettings>
+    <GanttEvents CellSelected="CellSelectedHandler" CellDeselected="CellDeSelectedHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    private SfGantt<TaskData> GanttChart;
+
+    private List<TaskData> TaskCollection { get; set; }
+
+    private object Value { get; set; }
+
+    private string ColumnField { get; set; }
+
+    private void CellSelectedHandler(CellSelectEventArgs<TaskData> args)
+    {
+        if (Value == null)
+        {
+            ColumnField = GanttChart.GetColumnsAsync().Result[Convert.ToInt32(args.CellIndex)].Field;
+            Value = args.Data.GetType().GetProperty(ColumnField).GetValue(args.Data);
+        }
+    }
+
+    private void CellDeSelectedHandler()
+    {
+        Value = null;
+    }
+
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    private async Task KeyUp(KeyboardEventArgs args)
+    {
+        if (args.Code == "AltLeft" || args.Code == "AltRight")
+        {
+            var data = GanttChart.GetSelectedRowCellIndexesAsync();
+            List<TaskData> AutofillData = new List<TaskData>();
+            for (var i = 0; i < data.Result.Count; i++)
+            {
+                TaskData currentRecord = GanttChart.GetCurrentViewRecords().ElementAt(Convert.ToInt32(data.Result[i].Item1));
+                AutofillData.Add(currentRecord);
+            }
+            for (var j = 0; j < AutofillData.Count; j++)
+            {
+                AutofillData[j].GetType().GetProperty(ColumnField).SetValue(AutofillData[j], Value);
+                await GanttChart.UpdateRecordByIDAsync(AutofillData[j]);
+            }
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+        {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 08), },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Progress = 40, ParentID = 1 },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30,  ParentID = 1 },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new DateTime(2022, 04, 08), },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 40, ParentID = 5 },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Progress = 30,  ParentID = 5 },
+        };
+        return Tasks;
+    }
+}

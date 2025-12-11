@@ -1,0 +1,145 @@
+﻿<h3>Crud_CustomAdaptor</h3>
+
+@page "/Gantt/DataBinding/Crud-CustomAdaptor"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt;
+@using Syncfusion.Blazor.Data;
+@using Syncfusion.Blazor;
+
+<SfGantt TValue="TaskData" Height="450px" Width="1000px" LoadChildOnDemand="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
+    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Progress="Progress" Duration="Duration" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEditSettings AllowEditing="true" AllowAdding="true" AllowDeleting="true"></GanttEditSettings>
+    <GanttEvents RowUpdating="RowUpdatingHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    public static List<TaskData> GanttData { get; set; }
+    public static List<TaskData> gantt = new List<TaskData>();
+    public static int index = 0;
+
+    public void RowUpdatingHandler(GanttRowUpdatingEventArgs<TaskData> args)
+    {
+        index = args.Index;
+    }
+
+    public class TaskData
+    {
+        public int? TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Progress { get; set; }
+        public int Duration { get; set; }
+        public int? ParentID { get; set; }
+        public TaskData() { }
+    }
+
+    protected override void OnInitialized()
+    {
+        GanttData = GetGantt().ToList();
+    }
+    public static List<TaskData> GetGantt()
+    {
+        if (gantt.Count == 0)
+        {
+            int root = -1;
+            for (var t = 1; t <= 8; t++)
+            {
+                string math = (42 % 3) == 0 ? "High" : (42 % 2) == 0 ? "Release Breaker" : "Critical";
+                root++;
+                int rootItem = gantt.Count + root + 1;
+                gantt.Add(new TaskData() { TaskID = rootItem, TaskName = "Parent Task " + rootItem.ToString(), StartDate = new DateTime(2022, 06, 07), EndDate = new DateTime(2022, 08, 25), Progress = 70, ParentID = null, Duration = 20 });
+                int parent = gantt.Count;
+                for (var c = 0; c < 3; c++)
+                {
+                    root++;
+                    string val = ((parent + c + 1) % 3 == 0) ? "Low" : "Critical";
+                    int parn = parent + c + 1;
+                    int iD = gantt.Count + root + 1;
+                    gantt.Add(new TaskData() { TaskID = iD, TaskName = "Child Task " + iD.ToString(), StartDate = new DateTime(2022, 06, 07), EndDate = new DateTime(2022, 08, 25), Progress = 30, ParentID = rootItem, Duration = 5 });
+                    if ((((parent + c + 1) % 3) == 0))
+                    {
+                        int immParent = gantt.Count;
+                        for (var s = 0; s <= 1; s++)
+                        {
+                            root++;
+                            gantt.Add(new TaskData() { TaskID = gantt.Count + root + 1, TaskName = "Sub Task " + (gantt.Count + root + 1).ToString(), StartDate = new DateTime(2022, 06, 07), EndDate = new DateTime(2022, 08, 25), Progress = 50, ParentID = iD, Duration = 8 });
+                        }
+                    }
+                }
+            }
+        }
+        return gantt;
+    }
+
+    // Implementing custom adaptor by extending the DataAdaptor class.
+    public class CustomAdaptor : DataAdaptor
+    {
+        // Performs data Read operation.
+        public override object Read(DataManagerRequest dm, string key = null)
+        {
+            IEnumerable<TaskData> DataSource = GanttData;
+            if (dm.Search != null && dm.Search.Count > 0)
+            {
+                // Searching
+                DataSource = DataOperations.PerformSearching(DataSource, dm.Search);
+            }
+            if (dm.Sorted != null && dm.Sorted.Count > 0)
+            {
+                // Sorting
+                DataSource = DataOperations.PerformSorting(DataSource, dm.Sorted);
+            }
+            if (dm.Where != null && dm.Where.Count > 0)
+            {
+                // Filtering
+                if (dm.Where[0].Field != null && dm.Where[0].Field == "ParentID") { }
+                else
+                {
+                    DataSource = DataOperations.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
+                }
+            }
+            int count = DataSource.Cast<TaskData>().Count();
+            if (dm.Skip != 0)
+            {
+                //Paging
+                DataSource = DataOperations.PerformSkip(DataSource, dm.Skip);
+            }
+            if (dm.Take != 0)
+            {
+                DataSource = DataOperations.PerformTake(DataSource, dm.Take);
+            }
+            return dm.RequiresCounts ? new DataResult() { Result = DataSource, Count = count } : (object)DataSource;
+        }
+        public override object Insert(DataManager dm, object value, string key)
+        {
+            GanttData.Insert(index, value as TaskData);
+            return value;
+        }
+
+        // Performs Remove operation.
+        public override object Remove(DataManager dm, object value, string keyField, string key)
+        {
+            GanttData.Remove(GanttData.Where(or => or.TaskID == int.Parse(value.ToString())).FirstOrDefault());
+            return value;
+        }
+
+        // Performs Update operation.
+        public override object Update(DataManager dm, object value, string keyField, string key)
+        {
+            var data = GanttData.Where(or => or.TaskID == (value as TaskData).TaskID).FirstOrDefault();
+            if (data != null)
+            {
+                data.TaskID = (value as TaskData).TaskID;
+                data.TaskName = (value as TaskData).TaskName;
+                data.StartDate = (value as TaskData).StartDate;
+                data.EndDate = (value as TaskData).EndDate;
+                data.Duration = (value as TaskData).Duration;
+                data.Progress = (value as TaskData).Progress;
+            }
+            return value;
+        }
+    }
+}

@@ -1,0 +1,122 @@
+﻿<h3>Row_Copy_Paste</h3>
+
+@page "/Gantt/Clipboard/Row_Copy_Paste"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+
+<SfGantt @ref=GanttChart DataSource="@TaskCollection" @onkeyup="KeyUp" Height="350px" Width="750px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration"
+                     ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttSelectionSettings Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GanttSelectionSettings>
+    <GanttEditSettings AllowAdding="true"> </GanttEditSettings>
+    <GanttEvents BeforeCopy="BeforeCopyHandler" RowSelected="RowSelect" RowDeselected="RowDeselect" TValue="TaskData">
+    </GanttEvents>
+</SfGantt>
+
+@code {
+    private SfGantt<TaskData> GanttChart;
+    private List<TaskData> TaskCollection { get; set; }
+    public List<TaskData> CopiedRecords { get; set; } = new List<TaskData>();
+    public double SelectedIndex { get; set; }
+
+    public void RowDeselect(RowDeselectEventArgs<TaskData> Args)
+    {
+        SelectedIndex = -1;
+    }
+    private async void BeforeCopyHandler(Syncfusion.Blazor.Gantt.BeforeCopyEventArgs args)
+    {
+        var columns = GanttChart.GetColumnsAsync().Result;
+        var clip = args.ClipboardText;
+        if (clip != "" || clip != null)
+        {
+            var record = clip.Split("\n");
+            int index = 0;
+            foreach (var rec in record)
+            {
+                var colVal = rec.Split("\t");
+                int colIndex = 0;
+                int id = TaskCollection.Max(a => a.TaskID) + 1;
+                TaskData ganttData = new TaskData() { };
+                foreach (var col in columns)
+                {
+                    if (col.Field == GanttChart.TaskFields.Id)
+                    {
+                        ganttData.GetType().GetProperty(col.Field).SetValue(ganttData, id + index);
+                    }
+                    else if (col.Type == Syncfusion.Blazor.Grids.ColumnType.Date)
+                    {
+                        ganttData.GetType().GetProperty(col.Field).SetValue(ganttData, Convert.ToDateTime(colVal[colIndex]));
+                    }
+                    else if (col.Type == Syncfusion.Blazor.Grids.ColumnType.String)
+                    {
+                        ganttData.GetType().GetProperty(col.Field).SetValue(ganttData, colVal[colIndex]);
+                    }
+                    colIndex++;
+                }
+                index++;
+                CopiedRecords.Add(ganttData);
+            }
+        }
+    }
+
+    public void RowSelect(RowSelectEventArgs<TaskData> Args)
+    {
+        SelectedIndex = Args.RowIndex;
+    }
+
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    private async Task KeyUp(KeyboardEventArgs Args)
+    {
+        if (Args.CtrlKey && Args.Code == "KeyV" && CopiedRecords.Count > 0 && SelectedIndex > -1)
+        {
+            var parentID = TaskCollection[(int)SelectedIndex].ParentID;
+            for (var i = 0; i < CopiedRecords.Count; i++)
+            {
+                CopiedRecords[i].ParentID = parentID;
+                GanttChart.AddRecordAsync(CopiedRecords[i], (int)SelectedIndex, Syncfusion.Blazor.Gantt.RowPosition.Above);
+            }
+            CopiedRecords = new List<TaskData>();
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>() {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new
+            DateTime(2022, 04, 08) },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration =
+            "0", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4",
+            Progress = 40, ParentID = 1 },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0",
+            Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new
+            DateTime(2022, 04, 08) },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06),
+            Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3",
+            Progress = 40, ParentID = 5 },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0",
+            Progress = 30, ParentID = 5 }
+        };
+        return Tasks;
+    }
+}

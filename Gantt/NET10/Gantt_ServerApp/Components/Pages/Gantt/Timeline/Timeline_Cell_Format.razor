@@ -1,0 +1,79 @@
+﻿<h3>Timeline_Cell_Format</h3>
+
+@page "/Gantt/Timeline/Timeline_Cell_Format"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+<SfGantt DataSource="@TaskCollection" Height="450px" Width="700px" ProjectStartDate="@ProjectStart" ProjectEndDate="@ProjectEnd">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttTimelineSettings TimelineUnitSize=50>
+        <GanttTopTierSettings Unit="TimelineViewMode.Month" Count="3">
+            <FormatterTemplate>
+                @{
+                    @if (context.Tier == "top")
+                    {
+                        @this.Formatter((context.Date))
+                    }
+                }
+            </FormatterTemplate>
+        </GanttTopTierSettings>
+        <GanttBottomTierSettings Unit="TimelineViewMode.Month" Format="MMM"></GanttBottomTierSettings>
+    </GanttTimelineSettings>
+</SfGantt>
+
+@code {
+    private DateTime ProjectStart = new DateTime(2022, 01, 10);
+    private DateTime ProjectEnd = new DateTime(2022, 12, 10);
+    private List<TaskData> TaskCollection { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+    public string Formatter(DateTime? date)
+    {
+        DateTime dateTime = (DateTime)(date);
+        var month = dateTime.Month;
+        if (month >= 0 && month <= 2)
+        {
+            return "Q1";
+        }
+        else if (month >= 3 && month <= 5)
+        {
+            return "Q2";
+        }
+        else if (month >= 6 && month <= 8)
+        {
+            return "Q3";
+        }
+        else
+        {
+            return "Q4";
+        }
+    }
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>() {
+        new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 06, 08) },
+        new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "20", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "24", Progress = 40, ParentID = 1 },
+        new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 05, 05), Duration = "25", Progress = 30, ParentID = 1 },
+        new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 06, 06), EndDate = new DateTime(2022, 09, 02) },
+        new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 06, 06), Duration = "33", Progress = 30, ParentID = 5 },
+        new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 07, 06), Duration = "23", Progress = 40, ParentID = 5 },
+        new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 08, 06), Duration = "20", Progress = 30, ParentID = 5 }
+    };
+        return Tasks;
+    }
+}

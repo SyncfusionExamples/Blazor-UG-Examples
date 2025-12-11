@@ -1,0 +1,88 @@
+﻿<h3>Resource_Edit_Methods</h3>
+
+@page "/Gantt/Resources/Resource_Edit_Methods"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+@using Gantt_ServerApp.Components.Pages.Gantt.Resources
+
+
+<button @onclick="AddAssignment">Add Assignment</button>
+<button @onclick="UpdateAssignment">Update Assignment</button>
+<button @onclick="DeleteAssignment">Delete Assignment</button>
+<button @onclick="GetResource">GetResource</button>
+<button @onclick="GetAssignment">GetAssignments</button>
+<button @onclick="AddNewRecord">AddRecord</button>
+
+<SfGantt @ref="ganttInstance" DataSource="@TaskCollection" Height="450px" Width="850px" TreeColumnIndex="1" ProjectStartDate="@ProjectStart" ProjectEndDate="@ProjectEnd" WorkUnit="WorkUnit.Hour"
+         Toolbar="@(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })">
+    <GanttTaskFields Id="@nameof(ResourceData.TaskInfoModel.Id)" Name="@nameof(ResourceData.TaskInfoModel.Name)" StartDate="@nameof(ResourceData.TaskInfoModel.StartDate)" EndDate="@nameof(ResourceData.TaskInfoModel.EndDate)" Duration="@nameof(ResourceData.TaskInfoModel.Duration)" Progress="@nameof(ResourceData.TaskInfoModel.Progress)"
+                     ParentID="@nameof(ResourceData.TaskInfoModel.ParentID)" Work="@nameof(ResourceData.TaskInfoModel.Work)" TaskType="@nameof(ResourceData.TaskInfoModel.TaskType)">
+    </GanttTaskFields>
+    <GanttResource DataSource="ResourceCollection" Id="@nameof(ResourceData.ResourceInfoModel.Id)" Name="@nameof(ResourceData.ResourceInfoModel.Name)" MaxUnits="@nameof(ResourceData.ResourceInfoModel.MaxUnit)" TValue="ResourceData.TaskInfoModel" TResources="ResourceData.ResourceInfoModel"></GanttResource>
+    <GanttAssignmentFields DataSource="AssignmentCollection" PrimaryKey="@nameof(ResourceData.AssignmentModel.PrimaryId)" TaskID="@nameof(ResourceData.AssignmentModel.TaskID)" ResourceID="@nameof(ResourceData.AssignmentModel.ResourceId)" Units="@nameof(ResourceData.AssignmentModel.Unit)" TValue="ResourceData.TaskInfoModel" TAssignment="ResourceData.AssignmentModel">
+    </GanttAssignmentFields>
+    <GanttLabelSettings RightLabel="Resources" TValue="ResourceData.TaskInfoModel"></GanttLabelSettings>
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowTaskbarEditing="true"
+                       ShowDeleteConfirmDialog="true"></GanttEditSettings>
+    <GanttColumns>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Id)" HeaderText="ID"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Name)" HeaderText="Event Name" Width="250px"></GanttColumn>
+        <GanttResourceColumn HeaderText="Event Resources" Width="300px"></GanttResourceColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Work)" HeaderText="Work"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Duration)" HeaderText="Duration"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.TaskType)" HeaderText="Task Type"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.StartDate)" HeaderText="Start Date"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.EndDate)" HeaderText="End Date"></GanttColumn>
+    </GanttColumns>
+    <GanttSplitterSettings Position="28%"> </GanttSplitterSettings>
+</SfGantt>
+
+@code {
+    private SfGantt<ResourceData.TaskInfoModel> ganttInstance { get; set; } = new();
+    private DateTime ProjectStart = new DateTime(2021, 3, 28);
+    private DateTime ProjectEnd = new DateTime(2021, 7, 28);
+    private List<ResourceData.TaskInfoModel> TaskCollection { get; set; } = new();
+    private List<ResourceData.ResourceInfoModel> ResourceCollection { get; set; } = new();
+    private static List<ResourceData.AssignmentModel> AssignmentCollection { get; set; } = new();
+    protected override void OnInitialized()
+    {
+        TaskCollection = ResourceData.GetTaskCollection();
+        ResourceCollection = ResourceData.GetResources;
+        AssignmentCollection = ResourceData.GetAssignmentCollection();
+    }
+    private async void AddAssignment()
+    {
+        var record = new ResourceData.AssignmentModel() { PrimaryId = 15, TaskID = 8, ResourceId = 8 };
+        await ganttInstance.AddResourceAssignmentAsync(record);
+    }
+    private async void UpdateAssignment()
+    {
+        var record = new ResourceData.AssignmentModel() { PrimaryId = 7, TaskID = 4, ResourceId = 3, Unit = 50 };
+        await ganttInstance.UpdateResourceAssignmentAsync(record);
+    }
+    private async void DeleteAssignment()
+    {
+        var record = new ResourceData.AssignmentModel() { TaskID = 2, ResourceId = 6 };
+        await ganttInstance.DeleteResourceAssignmentAsync(record);
+    }
+
+    private void GetResource()
+    {
+        ResourceData.TaskInfoModel data = new ResourceData.TaskInfoModel() { Id = 2 };
+        var resources = ganttInstance.GetResources<ResourceData.ResourceInfoModel>(data);
+        Console.WriteLine(resources);
+    }
+    private void GetAssignment()
+    {
+        ResourceData.TaskInfoModel data = new ResourceData.TaskInfoModel() { Id = 2 };
+        var assignments = ganttInstance.GetResourceAssignments<ResourceData.AssignmentModel>(data);
+        Console.WriteLine(assignments);
+    }
+    private async void AddNewRecord()
+    {
+        var record = new ResourceData.AssignmentModel() { PrimaryId = 19, TaskID = 10, ResourceId = 8 };
+        ResourceData.TaskInfoModel data = new ResourceData.TaskInfoModel() { Id = 10, Name = "NewRecord", StartDate = new DateTime(2021, 03, 29), Duration = "2", TaskType = "FixedDuration" };
+        await ganttInstance.AddRecordAsync(data, 0, null, record);
+    }
+}

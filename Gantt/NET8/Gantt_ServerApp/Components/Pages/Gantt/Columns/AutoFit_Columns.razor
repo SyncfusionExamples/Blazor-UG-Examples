@@ -1,0 +1,64 @@
+﻿<h3>AutoFit_Columns</h3>
+
+@page "/Gantt/Columns/AutoFit"
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Gantt
+
+<SfGantt @ref="Gantt" DataSource="@TaskCollection" Height="450px" Width="700px" AllowResizing="true">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttColumns>
+        <GanttColumn Field="TaskID" Width="150"></GanttColumn>
+        <GanttColumn Field="TaskName" HeaderText="Job Name" Width="150"></GanttColumn>
+        <GanttColumn Field="StartDate" HeaderText="Start Date" Width="150"></GanttColumn>
+        <GanttColumn Field="EndDate" HeaderText="End Date" Width="150"></GanttColumn>
+        <GanttColumn Field="Duration" HeaderText="Duration" Width="150"></GanttColumn>
+        <GanttColumn Field="Progress" HeaderText="Progress" Width="150"></GanttColumn>
+        <GanttColumn Field="StartDateOnly" HeaderText="Start Date Only" Format="d" Type="Syncfusion.Blazor.Grids.ColumnType.DateOnly" Width="152" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></GanttColumn>
+        <GanttColumn Field="StartTimeOnly" HeaderText="Start Time Only" Type="Syncfusion.Blazor.Grids.ColumnType.TimeOnly" Width="150" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></GanttColumn>
+        <GanttColumn Field="Status" HeaderText="Status" Width="150"></GanttColumn>
+        <GanttColumn Field="WorkersCount" HeaderText="Workers Count" Width="150"></GanttColumn>
+    </GanttColumns>
+</SfGantt>
+
+@code {
+    private SfGantt<TaskData> Gantt;
+    private List<TaskData> TaskCollection { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+        {
+             new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 21), Status="Progress", WorkersCount=20, StartDateOnly = new DateOnly(2021, 03, 02), StartTimeOnly = new TimeOnly(10, 00, 00)},
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 5, Status="Progress", WorkersCount=10, ParentID = 1, StartDateOnly = new DateOnly(2021, 03, 04), StartTimeOnly = new TimeOnly(11, 30, 00)},
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Progress = 10, Status="Hold", WorkersCount=15, ParentID = 1, StartDateOnly = new DateOnly(2021, 03, 06), StartTimeOnly = new TimeOnly(12, 00, 00)},
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, Status="PostPoned", WorkersCount=5, ParentID = 1, StartDateOnly = new DateOnly(2021, 03, 08), StartTimeOnly = new TimeOnly(13, 30, 00)},
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new DateTime(2022, 04, 21), Status="Progress", WorkersCount=25,StartDateOnly = new DateOnly(2021, 07, 10), StartTimeOnly = new TimeOnly(14, 00, 00) },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, Status="PostPoned", WorkersCount=10, ParentID = 5 , StartDateOnly = new DateOnly(2021, 10, 12), StartTimeOnly = new TimeOnly(16, 00, 00)},
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 40, Status="Progress", WorkersCount=5, ParentID = 5, StartDateOnly = new DateOnly(2021, 10, 14), StartTimeOnly = new TimeOnly(17, 30, 00) },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Progress = 30, Status="Progress", WorkersCount=10, ParentID = 5,StartDateOnly = new DateOnly(2021, 10, 16), StartTimeOnly = new TimeOnly(18, 00, 00) }
+        };
+        return Tasks;
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public DateOnly? StartDateOnly { get; set; }
+        public TimeOnly? StartTimeOnly { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Status { get; set; }
+        public int WorkersCount { get; set; }
+        public int? ParentID { get; set; }
+    }
+}
