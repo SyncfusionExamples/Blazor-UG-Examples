@@ -1,0 +1,63 @@
+﻿<h3>Prevent_Render</h3>
+
+@page "/Prevent_Render"
+@rendermode InteractiveServer
+<PerformanceNavigation></PerformanceNavigation>
+
+@using Syncfusion.Blazor.Gantt
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<SfGantt @ref="Gantt" DataSource="@TaskCollection" Height="450px" Width="800px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+</SfGantt>
+
+@code {
+    public SfGantt<TaskData> Gantt;
+    private int currentCount = 0;
+    private void IncrementCount()
+    {
+        Gantt.PreventRender();
+        currentCount++;
+    }
+
+    public List<TaskData> TaskCollection { get; set; }
+
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+            {
+                new TaskData() { TaskID = 1, TaskName = "Product concept", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 10), Duration = "5days" },
+                new TaskData() { TaskID = 2, TaskName = "Defining the product usage", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 30, ParentID = 1 },
+                new TaskData() { TaskID = 3, TaskName = "Defining the Target audience", EndDate = new DateTime(2022, 01, 10), Progress = 40, ParentID = 1 },
+                new TaskData() { TaskID = 4, TaskName = "Prepare product sketch and notes", StartDate = new DateTime(2022, 01, 04), Duration = "2", EndDate = new DateTime(2022, 01, 05), Progress = 30, ParentID = 1 },
+                new TaskData() { TaskID = 5, TaskName = "Concept approval", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 04), Duration="0" },
+                new TaskData() { TaskID = 6, TaskName = "Market Research", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 13), Duration = "4", Progress = 30 },
+                new TaskData() { TaskID = 7, TaskName = "Demand Analysis", Duration = "4", Progress = 40, ParentID = 6 },
+                new TaskData() { TaskID = 8, TaskName = "Customer Strength", StartDate = new DateTime(2022, 01, 10), EndDate = new DateTime(2022, 01, 13), Duration = "4", Progress = 30, ParentID = 7 },
+                new TaskData() { TaskID = 9, TaskName = "Market Opportunity analysis", StartDate = new DateTime(2022, 01, 10), EndDate = new DateTime(2022, 01, 13), Duration="4", ParentID= 7 }
+            };
+        return Tasks;
+    }
+}

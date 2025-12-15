@@ -1,0 +1,125 @@
+﻿<h3>Get_Selected_Row</h3>
+
+@page "/Get_Selected_Row"
+@rendermode InteractiveServer
+<SelectionNavigation></SelectionNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+
+<div style="padding-bottom:20px">
+    <SfButton CssClass="action-button" @onclick="GetSelectedRowInfo">Show Selected Tasks</SfButton>
+</div>
+@if (SelectedRecords?.Count > 0 && SelectedIndexes?.Count > 0)
+{
+    <div class="table-container">
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Task Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Math.Min(SelectedRecords.Count, SelectedIndexes.Count); i++)
+                {
+                    var record = SelectedRecords[i];
+                    var index = SelectedIndexes[i];
+                    <tr>
+                        <td>@index</td>
+                        <td>
+                            <div><strong>Task ID:</strong> @record.TaskID</div>
+                            <div><strong>Task Name:</strong> @record.TaskName</div>
+                            <div><strong>Start Date:</strong> @record.StartDate.ToString("MM/dd/yyyy")</div>
+                            <div><strong>Duration:</strong> @(record.Duration ?? "N/A")</div>
+                            <div><strong>Progress:</strong> @record.Progress %</div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<SfGantt @ref="Gantt" DataSource="@TaskCollection" Height="450px" Width="100%" AllowSelection="true">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate"
+                     Duration="Duration" Progress="Progress" ParentID="ParentID" />
+  <GanttSelectionSettings Mode="Syncfusion.Blazor.Grids.SelectionMode.Row" Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GanttSelectionSettings></SfGantt>
+
+<style>
+    .table-container {
+        margin: 20px auto;
+        width: 90%;
+        max-width: 960px;
+    }
+
+    .task-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .task-table th,
+    .task-table td {
+        padding: 10px 14px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .task-table th {
+        background-color: #f0f0f0;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .task-table td div {
+        margin-bottom: 4px;
+    }
+</style>
+
+@code {
+    private SfGantt<TaskData> Gantt;
+    private List<TaskData> TaskCollection { get; set; }
+    private List<TaskData> SelectedRecords { get; set; } = new();
+    private List<int> SelectedIndexes { get; set; } = new();
+
+    protected override void OnInitialized()
+    {
+        TaskCollection = GetTaskCollection();
+    }
+
+    private async Task GetSelectedRowInfo()
+    {
+        SelectedIndexes = await Gantt.GetSelectedRowIndexesAsync();
+        SelectedRecords = await Gantt.GetSelectedRecordsAsync();
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        return new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 08) },
+            new TaskData { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "3", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Progress = 40, ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new DateTime(2022, 04, 08) },
+            new TaskData { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 40, ParentID = 5 },
+            new TaskData { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Progress = 30, ParentID = 5 }
+        };
+    }
+}

@@ -1,0 +1,166 @@
+﻿<h3>TaskLabel_Template</h3>
+
+@page "/TaskLabel_Template"
+@rendermode InteractiveServer
+<PdfNavigation></PdfNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.PdfExport
+@using System.Net.Http
+@using System.IO
+
+<SfGantt @ref="Gantt" ID="GanttExport" DataSource="@TaskCollection" Height="450px" Width="900px" AllowPdfExport="true" Toolbar="toolbarItem"
+         ProjectStartDate="new DateTime(2022, 03, 28)" ProjectEndDate="new DateTime(2022, 04, 17)">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Dependency="Predecessor"
+                     Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttColumns>
+        <GanttColumn Field="TaskID" HeaderText="Task Id" Width="100" HeaderTextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></GanttColumn>
+        <GanttColumn Field="TaskName" HeaderText="Task Name"></GanttColumn>
+        <GanttColumn Field="StartDate" HeaderText="Start Date" TextAlign="Syncfusion.Blazor.Grids.TextAlign.Right"></GanttColumn>
+        <GanttColumn Field="EndDate" HeaderText="End Date"></GanttColumn>
+        <GanttColumn Field="Duration" HeaderText="Duration"></GanttColumn>
+        <GanttColumn Field="Predecessor" HeaderText="Dependency"></GanttColumn>
+    </GanttColumns>
+    <GanttLabelSettings TValue="TaskData">
+        <RightLabelTemplate>
+            @{
+                if ((context as TaskData).TaskID == 5)
+                {
+                    <div class="e-right-label-inner-div" style="height:22px;margin-top:7px;">
+                        <img src="https://cdn.syncfusion.com/content/images/landing-page/yes.png
+                    </div>
+                    }
+                    else
+                    {
+                    <div class="e-right-label-inner-div" style="height:22px;margin-top:7px;">
+                        <span class="e-label">@((context as TaskData).TaskName)</span>
+                    </div>
+                }
+            }
+        </RightLabelTemplate>
+        <LeftLabelTemplate>
+            @if ((context as TaskData).TaskID == 2)
+            {
+                <div class="e-left-label-inner-div" style="height:22px;margin-top:7px;">
+                    <span class="e-label">Updated Value</span>
+                </div>
+            }
+            else
+            {
+                <div class="e-left-label-inner-div" style="height:22px;margin-top:7px;">
+                    <span class="e-label">@((context as TaskData).TaskName)</span>
+                </div>
+            }
+        </LeftLabelTemplate>
+        <TaskLabelTemplate>
+            @if ((context as TaskData).TaskID == 3)
+            {
+                <div class="e-task-label-inner-div" style="line-height:21px; height:22px;">
+                    <span class="e-label" style="color:white;">-@((context as TaskData).Progress)%</span>
+                </div>
+            }
+            else
+            {
+                <div class="e-task-label-inner-div" style="line-height:21px; height:22px;">
+                    <span class="e-label" style="color:white;">@((context as TaskData).Progress)%</span>
+                </div>
+            }
+        </TaskLabelTemplate>
+    </GanttLabelSettings>
+    <GanttEvents OnToolbarClick="ToolbarClickHandler" PdfQueryTaskbarInfo="PdfQueryTaskbarInfoHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    private List<TaskData> TaskCollection { get; set; }
+    private SfGantt<TaskData> Gantt;
+    private List<object> toolbarItem = new List<object>()
+    {
+        new Syncfusion.Blazor.Navigations.ToolbarItem()
+        {
+            Text = "PDF Export",
+            TooltipText = "PDF Export",
+            Id = "PdfExport",
+            PrefixIcon = "e-pdfexport"
+        }
+    };
+
+    public static PdfImage image;
+
+    protected override async Task OnInitializedAsync()
+    {
+        this.TaskCollection = GetTaskCollection();
+
+        using var httpClient = new HttpClient();
+        var imageBytes = await httpClient.GetByteArrayAsync("https://cdn.syncfusion.com/content/images/landing-page/yes.png");
+        var imageStream = new MemoryStream(imageBytes);
+        image = PdfImage.FromStream(imageStream);
+    }
+
+    public async void ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id == "PdfExport")
+        {
+            await Gantt.ExportToPdfAsync();
+        }
+    }
+
+    public void PdfQueryTaskbarInfoHandler(PdfQueryTaskbarInfoEventArgs<TaskData> args)
+    {
+        if (args.Data.TaskID == 2)
+        {
+            args.LabelSettings.LeftLabelValue = "Updated Value";
+        }
+        else
+        {
+            args.LabelSettings.LeftLabelValue = args.Data.TaskName;
+        }
+
+        if (args.Data.TaskID == 5)
+        {
+            args.LabelSettings.RightLabel = new PdfElementStyle() { Image = image };
+        }
+        else
+        {
+            args.LabelSettings.RightLabelValue = args.Data.TaskName;
+        }
+
+        if (args.Data.TaskID == 3)
+        {
+            args.LabelSettings.TaskbarLabelValue = $"-{args.Data.Progress}%";
+        }
+        else
+        {
+            args.LabelSettings.TaskbarLabelValue = $"{args.Data.Progress}%";
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+        public string Predecessor { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        return new List<TaskData>()
+        {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 21) },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Progress = 40, ParentID = 1, Predecessor = "2" },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, ParentID = 1 , Predecessor = "3" },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new DateTime(2022, 04, 21) },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 40, ParentID = 5 },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Progress = 30, ParentID = 5 }
+        };
+    }
+}

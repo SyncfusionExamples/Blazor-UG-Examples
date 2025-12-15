@@ -1,0 +1,119 @@
+﻿<h3>Cell_Copy_Paste</h3>
+
+@page "/Cell_Copy_Paste"
+@rendermode InteractiveServer
+<ClipboardNavigation></ClipboardNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+<SfGantt @ref=GanttChart DataSource="@TaskCollection" @onkeydown="KeyDown" @onkeyup="KeyUp" Height="450px" Width="1000px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttSelectionSettings Mode="Syncfusion.Blazor.Grids.SelectionMode.Cell" Type="Syncfusion.Blazor.Grids.SelectionType.Multiple"></GanttSelectionSettings>
+    <GanttEditSettings AllowEditing="true"> </GanttEditSettings>
+    <GanttEvents CellSelected="CellSelected" CellDeselected="CellDeSelected" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    private SfGantt<TaskData> GanttChart;
+    private List<TaskData> TaskCollection { get; set; }
+    public int SelectedIndex { get; set; }
+    private List<ValueTuple<int, int>> clonedRecordIndex;
+
+    public void CellDeSelected(CellDeselectEventArgs<TaskData> Args)
+    {
+        SelectedIndex = -1;
+    }
+    public async void CellSelected(CellSelectEventArgs<TaskData> Args)
+    {
+        SelectedIndex = Convert.ToInt32(Args.RowIndex);
+    }
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+    private async Task KeyDown(KeyboardEventArgs Args)
+    {
+        if (Args.CtrlKey && Args.Code == "KeyC")
+        {
+            clonedRecordIndex = await GanttChart.GetSelectedRowCellIndexesAsync();
+        }
+    }
+    private async Task KeyUp(KeyboardEventArgs Args)
+    {
+        if (Args.CtrlKey && Args.Code == "KeyV" && clonedRecordIndex.Count > 0 && SelectedIndex > -1)
+        {
+            var columns = GanttChart.GetColumnsAsync().Result;
+            var currentRecords = GanttChart.GetCurrentViewRecords();
+            IDictionary<double, List<double>> clonedRecords = new Dictionary<double, List<double>>(); ;
+            for (int i = 0; i < clonedRecordIndex.Count; i++)
+            {
+                if (!clonedRecords.ContainsKey(clonedRecordIndex[i].Item1))
+                {
+                    List<double> cellIndex = new List<double>();
+                    cellIndex.Add(clonedRecordIndex[i].Item2);
+                    clonedRecords[clonedRecordIndex[i].Item1] = cellIndex;
+                }
+                else
+                {
+                    List<double> cellIndex = (List<double>)clonedRecords[clonedRecordIndex[i].Item1];
+                    cellIndex.Add(clonedRecordIndex[i].Item2);
+                }
+            }
+            for (int i = 0; i < clonedRecords.Count; i++)
+            {
+                double clonedRecRowIndex = clonedRecords.ElementAt(i).Key;
+                List<double> clonedRecCellIndex = clonedRecords.ElementAt(i).Value;
+                TaskData clonedRec = currentRecords[Convert.ToInt32(clonedRecRowIndex)];
+                if (SelectedIndex + i < currentRecords.Count)
+                {
+                    TaskData updatedRec = currentRecords[SelectedIndex + i];
+                    for (int j = 0; j < clonedRecCellIndex.Count; j++)
+                    {
+                        GanttColumn col = columns[Convert.ToInt32(clonedRecCellIndex[j])];
+                        if (!col.IsPrimaryKey)
+                        {
+                            var clonedValue = clonedRec.GetType().GetProperty(col.Field).GetValue(clonedRec);
+                            updatedRec.GetType().GetProperty(col.Field).SetValue(updatedRec, clonedValue);
+                        }
+                    }
+                    GanttChart.UpdateRecordByIDAsync(updatedRec);
+                }
+            }
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>() {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new
+            DateTime(2022, 04, 08) },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration =
+            "0", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4",
+            Progress = 40, ParentID = 1 },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0",
+            Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 06), EndDate = new
+            DateTime(2022, 04, 08) },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06),
+            Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3",
+            Progress = 40, ParentID = 5 },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0",
+            Progress = 30, ParentID = 5 }
+        };
+        return Tasks;
+    }
+}
