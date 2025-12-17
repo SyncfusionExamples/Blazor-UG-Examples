@@ -9,10 +9,10 @@
 	
   <ItemGroup>
 	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	<PackageReference Include="Syncfusion.Blazor.Buttons" Version="31.2.12" />
-	<PackageReference Include="Syncfusion.Blazor.Charts" Version="31.2.12" />
-	<PackageReference Include="Syncfusion.Blazor.Grid" Version="31.2.12" />
-	<PackageReference Include="Syncfusion.Blazor.Themes" Version="31.2.12" />
+	<PackageReference Include="Syncfusion.Blazor.Buttons" Version="32.1.19" />
+	<PackageReference Include="Syncfusion.Blazor.Charts" Version="32.1.19" />
+	<PackageReference Include="Syncfusion.Blazor.Grid" Version="32.1.19" />
+	<PackageReference Include="Syncfusion.Blazor.Themes" Version="32.1.19" />
   </ItemGroup>
 	
 </Project>
