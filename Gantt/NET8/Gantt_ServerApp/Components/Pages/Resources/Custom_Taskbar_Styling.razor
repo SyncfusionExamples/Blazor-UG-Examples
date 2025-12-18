@@ -1,0 +1,105 @@
+﻿<h3>Custom_Taskbar_Styling</h3>
+
+@page "/Custom_Taskbar_Styling"
+@rendermode InteractiveServer
+<ResourceNavigation></ResourceNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Gantt_ServerApp.Components.Pages.Gantt.Resources
+
+
+<SfGantt @ref="ganttInstance" DataSource="@TaskCollection" Height="450px" Width="850px" TreeColumnIndex="1" WorkUnit="WorkUnit.Hour"
+         Toolbar="@(new List<string>() { "Add", "Edit", "Update", "Delete", "Cancel", "ExpandAll", "CollapseAll" })">
+    <GanttTaskFields Id="@nameof(ResourceData.TaskInfoModel.Id)" Name="@nameof(ResourceData.TaskInfoModel.Name)" StartDate="@nameof(ResourceData.TaskInfoModel.StartDate)" EndDate="@nameof(ResourceData.TaskInfoModel.EndDate)" Duration="@nameof(ResourceData.TaskInfoModel.Duration)"
+                     ParentID="@nameof(ResourceData.TaskInfoModel.ParentID)" Work="@nameof(ResourceData.TaskInfoModel.Work)" TaskType="@nameof(ResourceData.TaskInfoModel.TaskType)">
+    </GanttTaskFields>
+    <GanttResource DataSource="ResourceCollection" Id="@nameof(ResourceData.ResourceInfoModel.Id)" Name="@nameof(ResourceData.ResourceInfoModel.Name)" MaxUnits="@nameof(ResourceData.ResourceInfoModel.MaxUnit)" TValue="ResourceData.TaskInfoModel" TResources="ResourceData.ResourceInfoModel"></GanttResource>
+    <GanttAssignmentFields DataSource="AssignmentCollection" PrimaryKey="@nameof(ResourceData.AssignmentModel.PrimaryId)" TaskID="@nameof(ResourceData.AssignmentModel.TaskID)" ResourceID="@nameof(ResourceData.AssignmentModel.ResourceId)" Units="@nameof(ResourceData.AssignmentModel.Unit)" TValue="ResourceData.TaskInfoModel" TAssignment="ResourceData.AssignmentModel">
+    </GanttAssignmentFields>
+    <GanttLabelSettings RightLabel="Resources" TValue="ResourceData.TaskInfoModel"></GanttLabelSettings>
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowTaskbarEditing="true"
+                       ShowDeleteConfirmDialog="true"></GanttEditSettings>
+    <GanttTemplates TValue="ResourceData.TaskInfoModel">
+        <TaskbarTemplate>
+            @{
+                var task = context as ResourceData.TaskInfoModel;
+                if (task is null)
+                {
+                    return;
+                }
+                var taskModel = ganttInstance.GetRowTaskModel(task);
+                string resource = GetResourceName(task);
+                progressColor = "#5869c5";
+                string backgroundColor = GetBGColor(resource);
+                <div class="e-gantt-child-taskbar e-gantt-child-taskbar-inner-div" style="height:24px;background:@backgroundColor" tabindex=-1>
+                    <div class="e-gantt-child-progressbar-inner-div e-gantt-child-progressbar" style="height:24px;width:@(taskModel.ProgressWidth + "px");text-align: right;border-radius: 0px;background:@progressColor">
+                    </div>
+                    <div style="position: absolute;font-size: 13px; top: 3px; color: #ffffff;left: 7px;overflow: hidden; width: @(taskModel.Width + "px"); text-wrap: nowrap;text-overflow: ellipsis;">
+                        @resource
+                    </div>
+                </div>
+            }
+        </TaskbarTemplate>
+    </GanttTemplates>
+    <GanttColumns>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Id)" HeaderText="ID"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Name)" HeaderText="Event Name" Width="250px"></GanttColumn>
+        <GanttResourceColumn HeaderText="Event Resources" Width="300px"></GanttResourceColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Work)" HeaderText="Work"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.Duration)" HeaderText="Duration"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.TaskType)" HeaderText="Task Type"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.StartDate)" HeaderText="Start Date"></GanttColumn>
+        <GanttColumn Field="@nameof(ResourceData.TaskInfoModel.EndDate)" HeaderText="End Date"></GanttColumn>
+    </GanttColumns>
+    <GanttSplitterSettings Position="28%"> </GanttSplitterSettings>
+</SfGantt>
+
+@code {
+    private SfGantt<ResourceData.TaskInfoModel> ganttInstance { get; set; } = new();
+    private List<ResourceData.TaskInfoModel> TaskCollection { get; set; } = new();
+    private List<ResourceData.ResourceInfoModel> ResourceCollection { get; set; } = new();
+    private static List<ResourceData.AssignmentModel> AssignmentCollection { get; set; } = new();
+    private string progressColor = "#5869C5";
+    protected override void OnInitialized()
+    {
+        TaskCollection = ResourceData.GetTaskCollection();
+        ResourceCollection = ResourceData.GetResources;
+        AssignmentCollection = ResourceData.GetAssignmentCollection();
+    }
+
+    private string GetResourceName(ResourceData.TaskInfoModel record)
+    {
+        var assignment = ganttInstance.GetResourceAssignments<ResourceData.AssignmentModel>(record);
+        if (assignment is not null && assignment.Any())
+        {
+            var resourceId = (assignment[0] as ResourceData.AssignmentModel).ResourceId - 1;
+            return (ResourceData.GetResources[(int)resourceId]).Name;
+        }
+        return string.Empty;
+    }
+
+    private string GetBGColor(string resource)
+    {
+        if (string.IsNullOrEmpty(resource))
+        {
+            return "#87B7FE";
+        }
+        string color = string.Empty;
+        if (resource == "Martin Tamer")
+        {
+            color = "#5869C5";
+            progressColor = "#AD7A66";
+        }
+        else if (resource == "Rose Fuller")
+        {
+            color = "#8553F1";
+            progressColor = "#0056B3";
+        }
+        else if (resource == "Fuller King")
+        {
+            color = "#7AB748";
+            progressColor = "#5869c5";
+        }
+        return color;
+    }
+}

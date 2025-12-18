@@ -1,0 +1,85 @@
+﻿<h3>TaskDependencies</h3>
+
+@page "/TaskDependencies"
+@rendermode InteractiveServer
+<SchedulingNavigation></SchedulingNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.DropDowns
+
+<SfDropDownList TItem="Types" TValue="string" PopupHeight="230px" Width="250px" @bind-Value="@DropDownValue" DataSource="@PTypes">
+    <DropDownListEvents TItem="Types" TValue="string" ValueChange="OnChange" />
+    <DropDownListFieldSettings Text="Text" Value="ID" />
+</SfDropDownList>
+<SfGantt DataSource="@TaskCollection" Height="450px" Width="650px" DependencyTypes="@types" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
+    <GanttTaskFields Id="TaskID"
+                     Name="TaskName"
+                     StartDate="StartDate"
+                     EndDate="EndDate"
+                     Duration="Duration"
+                     Progress="Progress"
+                     Dependency="Predecessor"
+                     ParentID="ParentID">
+    </GanttTaskFields>
+</SfGantt>
+@code {
+    public List<TaskData> TaskCollection { get; set; }
+    public List<DependencyType> types = new List<DependencyType>() { DependencyType.FS, DependencyType.SS, DependencyType.SF, DependencyType.FF };
+    public class Types
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+    private List<Types> PTypes = new List<Types>()
+    {
+        new Types(){ ID= "Type1", Text= "FS" },
+        new Types(){ ID= "Type2", Text= "FS, SS" },
+        new Types(){ ID= "Type3", Text= "FS, SS, SF" },
+        new Types(){ ID= "Type4", Text= "FS, SS, SF, FF" }
+     };
+    public string DropDownValue = "Type4";
+    public void OnChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, Types> args)
+    {
+        if (args.ItemData.ID == "Type1")
+        {
+            types = new List<DependencyType>() { DependencyType.FS };
+        }
+        else if (args.ItemData.ID == "Type2")
+        {
+            types = new List<DependencyType>() { DependencyType.FS, DependencyType.SS };
+        }
+        else if (args.ItemData.ID == "Type3")
+        {
+            types = new List<DependencyType>() { DependencyType.FS, DependencyType.SS, DependencyType.SF };
+        }
+        if (args.ItemData.ID == "Type4")
+        {
+            types = new List<DependencyType>() { DependencyType.FS, DependencyType.SS, DependencyType.SF, DependencyType.FF };
+        }
+    }
+    protected override void OnInitialized()
+    {
+        TaskCollection = new List<TaskData>
+        {
+            new TaskData { TaskID = 1, TaskName = "Project Initiation", StartDate = new DateTime(2023, 04, 02), EndDate = new DateTime(2023, 04, 06) },
+            new TaskData { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2023, 04, 02), Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData { TaskID = 3, TaskName = "Perform Soil test", StartDate = new DateTime(2023, 04, 02), Duration = "4", Progress = 40, Predecessor = "2FS", ParentID = 1 },
+            new TaskData { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2023, 04, 02), Duration = "0", Progress = 30, Predecessor = "3FF", ParentID = 1 },
+            new TaskData { TaskID = 5, TaskName = "Project Estimation", StartDate = new DateTime(2023, 04, 02), EndDate = new DateTime(2023, 04, 06) },
+            new TaskData { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2023, 04, 04), Duration = "3", Progress = 30, ParentID = 5 },
+            new TaskData { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2023, 04, 04), Duration = "3", Progress = 40, Predecessor = "6SS", ParentID = 5 },
+            new TaskData { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2023, 04, 04), Duration = "0", Progress = 30, Predecessor = "7SF", ParentID = 5 }
+        };
+    }
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public int? ParentID { get; set; }
+    }
+}

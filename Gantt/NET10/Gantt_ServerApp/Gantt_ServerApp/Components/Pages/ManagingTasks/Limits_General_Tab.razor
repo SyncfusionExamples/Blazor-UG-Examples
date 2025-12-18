@@ -1,0 +1,69 @@
+﻿<h3>Limits_General_Tab</h3>
+
+@page "/Limits_General_Tab"
+@rendermode InteractiveServer
+<ManagingTasksNavigation></ManagingTasksNavigation>
+
+@using Syncfusion.Blazor.Gantt
+<SfGantt DataSource="@TaskCollection" Toolbar="@(new List<string>() { "Add", "Edit" })" Height="450px" Width="700px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate"
+                     Duration="Duration" Progress="Progress" ParentID="ParentID" Notes="Notes"
+                     Dependency="Predecessor">
+    </GanttTaskFields>
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" Mode="Syncfusion.Blazor.Gantt.EditMode.Dialog">
+    </GanttEditSettings>
+    <GanttColumns>
+        <GanttColumn Field="TaskID" Width="100"></GanttColumn>
+        <GanttColumn Field="TaskName"></GanttColumn>
+        <GanttColumn Field="StartDate"></GanttColumn>
+        <GanttColumn Field="Duration"></GanttColumn>
+        <GanttColumn Field="Progress"></GanttColumn>
+    </GanttColumns>
+    <GanttEditDialogFields>
+        <GanttEditDialogField Type="GanttDialogFieldType.General" HeaderText="General"
+                              Fields="@(new string[]{ "TaskID", "TaskName", "Duration" })"></GanttEditDialogField>
+        <GanttEditDialogField Type="GanttDialogFieldType.Notes"></GanttEditDialogField>
+    </GanttEditDialogFields>
+    <GanttAddDialogFields>
+        <GanttAddDialogField Type="GanttDialogFieldType.General" HeaderText="General Tab"
+                             Fields="@(new string[]{ "TaskID", "TaskName", "Duration" })"></GanttAddDialogField>
+        <GanttAddDialogField Type="GanttDialogFieldType.Dependency"></GanttAddDialogField>
+    </GanttAddDialogFields>
+</SfGantt>
+
+@code {
+    private List<TaskInfoModel> TaskCollection { get; set; }
+    protected override void OnInitialized()
+    {
+        TaskCollection = GetTaskCollection();
+    }
+
+    public class TaskInfoModel
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+        public string Notes { get; set; }
+        public string Predecessor { get; set; }
+    }
+
+    public static List<TaskInfoModel> GetTaskCollection()
+    {
+        List<TaskInfoModel> Tasks = new List<TaskInfoModel>()
+        {
+            new TaskInfoModel() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 04, 05), EndDate = new DateTime(2022, 04, 08), },
+            new TaskInfoModel() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, Notes = "Measure the total property area alloted for construction", ParentID = 1 },
+            new TaskInfoModel() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 04, 05), Duration = "4", Predecessor = "2", Notes = "Obtain an engineered soil test of a plot where construction is planned from an engineer or company specializing in soil testing", ParentID = 1 },
+            new TaskInfoModel() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 04, 05), Duration = "0", Progress = 30, Predecessor = "3", ParentID = 1 },
+            new TaskInfoModel() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 04, 11), EndDate = new DateTime(2022, 04, 18), },
+            new TaskInfoModel() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 04, 06), Duration = "3", Progress = 30, Predecessor = "4", Notes = "Develop floor plans and obtain a materials list for estimations", ParentID = 5 },
+            new TaskInfoModel() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 04, 06), Duration = "3", Predecessor = "6", Notes = "", ParentID = 5 },
+            new TaskInfoModel() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 04, 06), Duration = "0", Predecessor = "7", Notes = "", ParentID = 5 }
+        };
+        return Tasks;
+    }
+}

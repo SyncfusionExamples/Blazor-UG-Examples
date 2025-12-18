@@ -1,0 +1,86 @@
+﻿<h3>Row_Task_Model</h3>
+
+@page "/Row_Task_Model"
+@rendermode InteractiveServer
+<RowNavigation></RowNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids;
+
+<div>
+    <div style="font-weight:bold;">Task Model Properties:</div>
+    <div style="display:flex;visibility:@Visible">
+        <div>
+            <span class="showhide">Level: @Level </span>
+            <span class="showhide">Expanded: @ExpandStatus </span>
+            <span class="showhide">HasChildRecord: @ChildRecords </span>
+            <span class="showhide">IsCritical: @IsCritical </span>
+            <span class="showhide">Slack: @Slack </span>
+            <span class="showhide">Progress width: @ProgressWidth </span>
+        </div>
+    </div>
+</div>
+<SfGantt @ref=Gantt DataSource="@TaskCollection" Height="450px" Width="900px" TreeColumnIndex="1" EnableCriticalPath="true">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress"
+                     ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEvents TValue="TaskData" RowSelected="RowSelect"></GanttEvents>
+</SfGantt>
+
+<style>
+    .showhide {
+        padding: 10px;
+    }
+</style>
+@code {
+    private SfGantt<TaskData> Gantt;
+    private List<TaskData> TaskCollection { get; set; }
+    private int Level { get; set; }
+    private bool ExpandStatus { get; set; }
+    private bool ChildRecords { get; set; }
+    private bool IsCritical { get; set; }
+    private double? Slack { get; set; }
+    private double ProgressWidth { get; set; }
+    private string Visible { get; set; } = "hidden";
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+    public void RowSelect(RowSelectEventArgs<TaskData> args)
+    {
+        var ganttItem = Gantt.GetRowTaskModel(args.Data);
+        Level = ganttItem.Level;
+        ExpandStatus = ganttItem.IsExpanded;
+        ChildRecords = ganttItem.HasChildRecords;
+        IsCritical = ganttItem.IsCritical;
+        Slack = ganttItem.Slack;
+        ProgressWidth = ganttItem.ProgressWidth;
+        Visible = "visible";
+    }
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public int? ParentID { get; set; }
+    }
+
+    private static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+        {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 07), },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1, },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 40, ParentID = 1, },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1, },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 01, 14), EndDate = new DateTime(2022, 01, 18), },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 01, 14), Duration = "3", Progress = 30, ParentID = 5, },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 01, 14), Duration = "3", Progress = 40, ParentID = 5, },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 01, 14), Duration = "0", Progress = 30, ParentID = 5, }
+        };
+        return Tasks;
+    }
+}

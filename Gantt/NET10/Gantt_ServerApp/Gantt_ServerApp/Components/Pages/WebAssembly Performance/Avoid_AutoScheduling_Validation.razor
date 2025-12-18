@@ -1,0 +1,53 @@
+﻿<h3>Avoid_AutoScheduling_Validation</h3>
+
+@page "/Avoid_AutoScheduling_Validation"
+@rendermode InteractiveServer
+<PerformanceNavigation></PerformanceNavigation>
+
+@using Syncfusion.Blazor.Gantt
+<SfGantt DataSource="@TaskCollection" Height="450px" Width="700px" AutoCalculateDateScheduling=@autoCalculateDateScheduling EnablePredecessorValidation=@enablePredecessorValidation>
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentID" Dependency="Predecessor">
+    </GanttTaskFields>
+    <GanttEditSettings AllowEditing="true" AllowTaskbarEditing="true"></GanttEditSettings>
+    <GanttEvents Created="GanttCreated" TValue="TaskData"></GanttEvents>
+</SfGantt>
+@code {
+    private bool autoCalculateDateScheduling { get; set; } = false;
+    private bool enablePredecessorValidation { get; set; } = false;
+    private void GanttCreated()
+    {
+        autoCalculateDateScheduling = true;
+        enablePredecessorValidation = true;
+    }
+    private List<TaskData> TaskCollection { get; set; }
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = GetTaskCollection();
+    }
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public int? ParentID { get; set; }
+    }
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+        {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2019, 04, 05), EndDate = new DateTime(2019, 04, 10), },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2019, 04, 05), EndDate = new DateTime(2019, 04, 05),Duration = "0", Progress = 30, ParentID = 1 },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2019, 04, 05), EndDate = new DateTime(2019, 04, 10), Duration = "4", Progress = 40, Predecessor = "2", ParentID = 1 },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2019, 04, 05), Duration = "0", Progress = 30,  ParentID = 1 },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2019, 04, 11), EndDate = new DateTime(2019, 04, 18), Predecessor = "1FS", },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2019, 04, 11),EndDate = new DateTime(2019, 04, 15), Duration = "3", Progress = 30, Predecessor = "4" , ParentID = 5 },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2019, 04, 16),EndDate = new DateTime(2019, 04, 18), Duration = "3", Progress = 40, Predecessor = "6" , ParentID = 5 },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2019, 04, 18), EndDate = new DateTime(2019, 04, 18),Duration = "0", Progress = 30, Predecessor = "7" , ParentID = 5 },
+        };
+        return Tasks;
+    }
+}

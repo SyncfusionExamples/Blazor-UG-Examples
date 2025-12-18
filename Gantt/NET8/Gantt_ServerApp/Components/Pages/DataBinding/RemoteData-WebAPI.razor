@@ -1,0 +1,28 @@
+﻿<h3>RemoteData_WebAPI</h3>
+
+@page "/RemoteData-WebAPI"
+@rendermode InteractiveServer
+<DataBindingNavigation></DataBindingNavigation>
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Data
+
+<SfGantt TValue="GanttRemoteData" Height="450px">
+    <SfDataManager Url="https://blazor.syncfusion.com/services/production/api/GanttData" Adaptor="Adaptors.WebApiAdaptor" CrossDomain="true"></SfDataManager>
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" Duration="Duration" Progress="Progress" Dependency="Predecessor" Child="SubTasks">
+    </GanttTaskFields>
+</SfGantt>
+
+@code {
+    public class GanttRemoteData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public int? Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public List<GanttRemoteData> SubTasks { get; set; }
+    }
+}

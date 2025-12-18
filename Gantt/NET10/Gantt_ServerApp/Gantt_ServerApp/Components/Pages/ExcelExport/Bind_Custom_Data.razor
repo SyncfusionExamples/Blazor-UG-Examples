@@ -1,0 +1,68 @@
+﻿<h3>Bind_Custom_Data</h3>
+
+@page "/Bind_Custom_Data"
+@rendermode InteractiveServer
+<ExcelNavigation></ExcelNavigation>
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Navigations
+
+<SfGantt ID="GanttContainer" @ref="Gantt" AllowExcelExport="true" Toolbar="@(new List<string>() { "ExcelExport", "CsvExport" })"
+         DataSource="@TaskCollection" Height="450px" Width="700px">
+    <GanttTaskFields Id="TaskID" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress"
+                     Dependency="Predecessor" ParentID="ParentID">
+    </GanttTaskFields>
+    <GanttEvents OnToolbarClick="ToolbarClickHandler" TValue="TaskData"></GanttEvents>
+</SfGantt>
+
+@code {
+    public SfGantt<TaskData> Gantt;
+    private List<TaskData> TaskCollection { get; set; }
+
+    protected override void OnInitialized()
+    {
+        TaskCollection = GetTaskCollection();
+    }
+
+    private async Task ToolbarClickHandler(Syncfusion.Blazor.Navigations.ClickEventArgs args)
+    {
+        if (args.Item.Id == "GanttContainer_excelexport")
+        {
+            ExcelExportProperties exportProperties = new ExcelExportProperties
+            {
+                DataSource = TaskCollection.Take(4).ToList()
+            };
+            await Gantt.ExportToExcelAsync(exportProperties);
+        }
+    }
+
+    public class TaskData
+    {
+        public int TaskID { get; set; }
+        public string TaskName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public string Duration { get; set; }
+        public int Progress { get; set; }
+        public string Predecessor { get; set; }
+        public int? ParentID { get; set; }
+        public int[] ResourceId { get; set; }
+    }
+
+    public static List<TaskData> GetTaskCollection()
+    {
+        List<TaskData> Tasks = new List<TaskData>()
+        {
+            new TaskData() { TaskID = 1, TaskName = "Project initiation", StartDate = new DateTime(2022, 01, 04), EndDate = new DateTime(2022, 01, 07), },
+            new TaskData() { TaskID = 2, TaskName = "Identify Site location", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1, },
+            new TaskData() { TaskID = 3, TaskName = "Perform soil test", StartDate = new DateTime(2022, 01, 04), Duration = "4", Progress = 40, ParentID = 1, Predecessor="2", },
+            new TaskData() { TaskID = 4, TaskName = "Soil test approval", StartDate = new DateTime(2022, 01, 04), Duration = "0", Progress = 30, ParentID = 1, Predecessor="3", },
+            new TaskData() { TaskID = 5, TaskName = "Project estimation", StartDate = new DateTime(2022, 01, 10), EndDate = new DateTime(2022, 01, 17), },
+            new TaskData() { TaskID = 6, TaskName = "Develop floor plan for estimation", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 30, ParentID = 5, Predecessor="4", },
+            new TaskData() { TaskID = 7, TaskName = "List materials", StartDate = new DateTime(2022, 01, 06), Duration = "3", Progress = 40, ParentID = 5, Predecessor="6", },
+            new TaskData() { TaskID = 8, TaskName = "Estimation approval", StartDate = new DateTime(2022, 01, 06), Duration = "0", Progress = 30, ParentID = 5, Predecessor="7", }
+        };
+        return Tasks;
+    }
+}

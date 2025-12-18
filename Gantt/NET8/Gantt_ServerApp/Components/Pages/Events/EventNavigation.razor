@@ -1,0 +1,139 @@
+﻿@using Syncfusion.Blazor.Lists
+@using Syncfusion.Blazor.Navigations
+@inject NavigationManager Nav
+
+<SfSidebar @ref="SidebarRef" Target="@Target" MediaQuery="(min-width: 640px)" Position="SidebarPosition.Left"
+    Width="260px" DockSize="56px" EnableDock="true" Type="SidebarType.Push">
+    <ChildContent>
+        <div class="sf-sidebar-header">Events</div>
+        <ul class="sf-sidebar-links">
+            @foreach (var item in EventPages)
+            {
+                <li class="sf-sidebar-link" @onclick="() => Nav.NavigateTo(item.Url)">
+                    @item.Text
+                </li>
+            }
+        </ul>
+    </ChildContent>
+</SfSidebar>
+
+
+@code {
+    [Parameter] public string Target { get; set; } = "#events-shell";
+    private SfSidebar SidebarRef;
+    private List<NavItem> EventPages = new()
+    {
+        new("BeforeCopy", "/Events/BeforeCopy"),
+        new("BeforeTooltipRender", "/Events/BeforeTooltipRender"),
+        new("CellDeselected", "/Events/CellDeselected"),
+        new("CellDeselecting", "/Events/CellDeselecting"),
+        new("CellSaved", "/Events/CellSaved"),
+        new("CellSelected", "/Events/CellSelected"),
+        new("CellSelecting", "/Events/CellSelecting"),
+        new("Collapsed", "/Events/Collapsed"),
+        new("Collapsing", "/Events/Collapsing"),
+        new("ColumnMenuClicked", "/Events/ColumnMenuClicked"),
+        new("ColumnReordered", "/Events/ColumnReordered"),
+        new("ColumnReordering", "/Events/ColumnReordering"),
+
+        new("ColumnResized", "/Events/ColumnResized"),
+        new("ColumnResizeStart", "/Events/ColumnResizeStart"),
+        new("ContextMenuItemClicked", "/Events/ContextMenuItemClicked"),
+        new("ContextMenuOpen", "/Events/ContextMenuOpen"),
+        new("Created", "/Events/Created"),
+        new("DataBound", "/Events/DataBound"),
+        new("Destroyed", "/Events/Destroyed"),
+        new("EndEdit", "/Events/EndEdit"),
+        new("Expanded", "/Events/Expanded"),
+        new("Expanding", "/Events/Expanding"),
+        new("FilterDialogOpened", "/Events/FilterDialogOpened"),
+        new("FilterDialogOpening", "/Events/FilterDialogOpening"),
+
+        new("Filtered", "/Events/Filtered"),
+        new("Filtering", "/Events/Filtering"),
+        new("GanttDialogClosing", "/Events/GanttDialogClosing"),
+        new("GanttDialogOpened", "/Events/GanttDialogOpened"),
+        new("GanttDialogOpening", "/Events/GanttDialogOpening"),
+        new("IndentationChanged", "/Events/IndentationChanged"),
+        new("IndentationChanging", "/Events/IndentationChanging"),
+        new("OnActionFailure", "/Events/OnActionFailure"),
+        new("OnCellEdit", "/Events/OnCellEdit"),
+        new("OnCellSave", "/Events/OnCellSave"),
+        new("OnLoad", "/Events/OnLoad"),
+        new("OnToolbarClick", "/Events/OnToolbarClick"),
+
+        new("PdfColumnHeaderQueryCellInfo", "/Events/PdfColumnHeaderQueryCellInfo"),
+        new("PdfExported", "/Events/PdfExported"),
+        new("PdfExporting", "/Events/PdfExporting"),
+        new("PdfQueryCellInfo", "/Events/PdfQueryCellInfo"),
+        new("PdfQueryTaskbarInfo", "/Events/PdfQueryTaskbarInfo"),
+        new("PdfQueryTimelineCellInfo", "/Events/PdfQueryTimelineCellInfo"),
+        new("QueryCellInfo", "/Events/QueryCellInfo"),
+        new("QueryChartRowInfo", "/Events/QueryChartRowInfo"),
+        new("RowCreated", "/Events/RowCreated"),
+        new("RowCreating", "/Events/RowCreating"),
+        new("RowDataBound", "/Events/RowDataBound"),
+        new("RowDeleted", "/Events/RowDeleted"),
+
+        new("RowDeleting", "/Events/RowDeleting"),
+        new("RowDeselected", "/Events/RowDeselected"),
+        new("RowDeselecting", "/Events/RowDeselecting"),
+        new("RowDragSelectionCompleted", "/Events/RowDragSelectionCompleted"),
+        new("RowDragSelectionCompleting", "/Events/RowDragSelectionCompleting"),
+        new("RowDragSelectionStarting", "/Events/RowDragSelectionStarting"),
+        new("RowDragStarting", "/Events/RowDragStarting"),
+        new("RowDropped", "/Events/RowDropped"),
+        new("RowDropping", "/Events/RowDropping"),
+        new("RowSelected", "/Events/RowSelected"),
+        new("RowSelecting", "/Events/RowSelecting"),
+        new("RowUpdated", "/Events/RowUpdated"),
+
+         new("RowUpdating", "/Events/RowUpdating"),
+        new("Searched", "/Events/Searched"),
+        new("Searching", "/Events/Searching"),
+        new("Sorted", "/Events/Sorted"),
+        new("Sorting", "/Events/Sorting"),
+        new("SplitterCreated", "//SplitterCreated"),
+        new("SplitterResized", "/Events/SplitterResized"),
+        new("SplitterResizeStart", "/Events/SplitterResizeStart"),
+        new("SplitterResizing", "/Events/SplitterResizing"),
+        new("TaskbarEdited", "/Events/TaskbarEdited"),
+        new("TaskbarEditing", "/Events/TaskbarEditing"),
+        new("TaskConnectorChanged", "/Events/TaskConnectorChanged"),
+        new("TaskConnectorChanging", "/Events/TaskConnectorChanging"),
+        new("Zoomed", "/Events/Zoomed"),
+        new("Zooming", "/Events/Zooming"),
+    };
+
+    public record NavItem(string Text, string Url);
+}
+<style>
+
+    /* Header */
+    .sf-sidebar-header {
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 12px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* UL reset (remove bullets, tighten spacing) */
+    .sf-sidebar-links {
+        list-style: none;
+        margin: 0;
+        padding: 6px 0;
+    }    
+    /* Link item */
+    .sf-sidebar-link {
+        font-size: 13px;
+        padding: 6px 12px;
+        cursor: pointer;
+        user-select: none;
+        border-radius: 4px;
+    }
+
+        .sf-sidebar-link:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }   
+
+</style>
