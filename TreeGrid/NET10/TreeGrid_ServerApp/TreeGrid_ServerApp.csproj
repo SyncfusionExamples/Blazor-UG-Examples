@@ -9,9 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="31.2.12" />
-    <PackageReference Include="Syncfusion.Blazor.Themes" Version="31.2.12" />
-    <PackageReference Include="Syncfusion.Blazor.TreeGrid" Version="31.2.12" />
+    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="32.1.19" />
+    <PackageReference Include="Syncfusion.Blazor.TreeGrid" Version="32.1.19" />
   </ItemGroup>
 	
 </Project>

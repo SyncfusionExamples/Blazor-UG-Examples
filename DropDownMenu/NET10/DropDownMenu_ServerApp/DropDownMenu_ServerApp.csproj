@@ -8,9 +8,9 @@
   </PropertyGroup>
 	
   <ItemGroup>
-	<PackageReference Include="Syncfusion.Blazor.Navigations" Version="31.2.12" />
-	<PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="31.2.12" />
-	<PackageReference Include="Syncfusion.Blazor.Themes" Version="31.2.12" />
+	<PackageReference Include="Syncfusion.Blazor.Navigations" Version="32.1.19" />
+	<PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="32.1.19" />
+	<PackageReference Include="Syncfusion.Blazor.Themes" Version="32.1.19" />
   </ItemGroup>
 	
 </Project>
