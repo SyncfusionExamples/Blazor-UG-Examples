@@ -1,0 +1,39 @@
+﻿@page "/MarkdownEditor/GettingStarted/NumberCharacters"
+
+<PageTitle>Retrieve the number of characters</PageTitle>
+
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.RichTextEditor
+@using Syncfusion.Blazor.Popups
+
+<SfButton @onclick="@GetCharCount">Get Char Count</SfButton>
+
+<br />
+<SfDialog @ref="DialogObj" @bind-Visible="@Visibility" Content="@Content" Header="@Header" Target="#target" Height="200px"
+          Width="400px" ShowCloseIcon="true">
+    <DialogButtons>
+        <DialogButton Content="Ok" IsPrimary="true" OnClick="@DlgButtonClick" />
+    </DialogButtons>
+
+</SfDialog>
+<SfRichTextEditor @ref="RteObj" Value="@RteValue" EditorMode="EditorMode.Markdown" />
+
+@code {
+    SfRichTextEditor RteObj;
+    SfDialog DialogObj;
+    private string Content;
+    private bool Visibility = false;
+    private string Header = "Rich Text Editor's Value";
+    private string RteValue = @"In Rich Text Editor, you click the toolbar buttons to format the words and
+    the changes are visible immediately. Markdown is not like that. When you format the word in Markdown format, you need to add Markdown syntax to the word to indicate which words and phrases should look different from each other. Rich Text Editor supports markdown editing when the editorMode set as **markdown** and using both *keyboard interaction* and *toolbar action*, you can apply the formatting to text. You can add our own custom formation syntax for the Markdown formation, [sample link](https://ej2.syncfusion.com/home/). The third-party library <b>Marked</b> is used in this sample to convert markdown into HTML content.";
+    private async Task GetCharCount()
+    {
+        double charCount = await this.RteObj.GetCharCountAsync();
+        this.Content = charCount.ToString(); // Convert double to string
+        await this.DialogObj.ShowAsync();
+    }
+    private async Task DlgButtonClick(object arg)
+    {
+        await this.DialogObj.HideAsync();
+    }
+}
