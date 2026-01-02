@@ -1,0 +1,51 @@
+﻿@page "/dataannotation"
+
+@using Syncfusion.Blazor.Grids
+@using System.ComponentModel.DataAnnotations;
+
+<SfGrid TValue="Order" DataSource="@Orders" Height="315" AllowPaging="true" Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true"></GridEditSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) EditType="EditType.DatePickerEdit" Format="d" TextAlign="TextAlign.Right" Width="130" Type="ColumnType.Date"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" TextAlign="TextAlign.Right" Format="C2" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            OrderDate = DateTime.Now.AddDays(-x),
+        }).ToList();
+    }
+
+    public class Order
+    {
+        // Sets column as primary key
+        [Key]
+        // Sets header text to the column
+        [Display(Name = "Order ID")]
+        [Required(ErrorMessage ="Order ID  is required")]
+        public int? OrderID { get; set; }
+        [Display(Name = "Customer Name")]
+        // Sets column as required and error message to be displayed when empty
+        [Required(ErrorMessage = "Field should not be empty")]
+        public string CustomerID { get; set; }
+        // Sets data type of column as Date
+        [DataType(DataType.Date)]
+        [Display(Name = "Order Date")]
+        // Sets column as read only
+        [Editable(false)]
+        public DateTime? OrderDate { get; set; }
+        [Display(Name = "Freight")]
+        public double? Freight { get; set; }
+    }
+}

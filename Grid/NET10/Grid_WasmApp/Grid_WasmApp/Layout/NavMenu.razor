@@ -1,0 +1,196 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Grid_WasmApp</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Getting started
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="ODataAdaptor">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> DataBinding
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="customAdaptor">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> CustomBinding
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="dataannotation">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span>  Data Annotation
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="AutoGeneration">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Columns
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="rowtemplate">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Row
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="disablehtml">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Cell
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="grouping">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Grouping
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="columntemplate">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Templates
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="filterinitial">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Filtering
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="sorting">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Sorting
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Search">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Searching
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="NormalEditing">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Editing
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="paging">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Paging
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="widthAndHeight">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Scrolling
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="rowVirtualization">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Virtualization
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Selectionmode">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Selection
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="footer">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Aggregates
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="print">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Print
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RenderAdaptiveDialog">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> AdaptiveLayout
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="EnablePersistence">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> State Management
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="RTL">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Globalization
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="buildintoolbar">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Toolbar
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="pdfExport">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> PdfExport
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="excelcustomization">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> ExcelExport
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="clipboard">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Clipboard
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="contextmenu">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> ContextMenu
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="actionBegin">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Events
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="showhideediting">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> How To
+            </NavLink>
+        </div>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

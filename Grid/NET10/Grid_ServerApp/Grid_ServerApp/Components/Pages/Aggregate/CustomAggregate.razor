@@ -1,0 +1,58 @@
+﻿@page "/CustomAggregate"
+
+@using Syncfusion.Blazor.Grids
+<AggregateRoute></AggregateRoute>
+
+<SfGrid @ref="Grid" DataSource="@Products" AllowPaging="true">
+    <GridAggregates>
+        <GridAggregate>
+            <GridAggregateColumns>
+                <GridAggregateColumn Field=@nameof(Product.TotalSales) Type="AggregateType.Custom">
+                    <FooterTemplate>
+                        @{
+                            <div>
+                                <p>Custom: @GetWeightedAggregate()</p>
+                            </div>
+                        }
+                    </FooterTemplate>
+                </GridAggregateColumn>
+            </GridAggregateColumns>
+        </GridAggregate>
+    </GridAggregates>
+    <GridColumns>
+        <GridColumn Field=@nameof(Product.ProductName) HeaderText="Product Name" TextAlign="TextAlign.Right" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Product.QuantityPerUnit) HeaderText="Quantity Per Unit" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Product.TotalSales) HeaderText="TotalSales" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(Product.TotalCosts) HeaderText="TotalCosts" TextAlign="TextAlign.Right" Width="180"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    SfGrid<Product> Grid { get; set; }
+    public List<Product> Products { get; set; }
+    public string GetWeightedAggregate()
+    {
+        // Here, you can calculate custom aggregate operations and return the result.
+        return Queryable.Sum(Products.Select(x => (x.TotalSales + x.TotalCosts) / x.TotalSales).AsQueryable()).ToString();
+    }
+    protected override void OnInitialized()
+    {
+        Products = Enumerable.Range(1, 5).Select(x => new Product
+        {
+            ProductName = (new string[] { "Chai", "Chang", "Aniseed Syrup", "Chef Anton's Cajun Seasoning", "Chef Anton's Gumbo Mix" })[new Random().Next(5)],
+            QuantityPerUnit = (new string[] { "10 boxes x 20 bags", "24 - 12 oz bottles", "12 - 550 ml bottles", "48 - 6 oz jars", "36 boxes" })[new Random().Next(5)],
+            TotalSales = 100 * x,
+            TotalCosts = 200 * x,
+            Discontinued = (new bool[] { true, false })[new Random().Next(2)]
+        }).ToList();
+    }
+
+    public class Product
+    {
+        public string ProductName { get; set; }
+        public string QuantityPerUnit { get; set; }
+        public int TotalSales { get; set; }
+        public int TotalCosts { get; set; }
+        public bool Discontinued { get; set; }
+    }
+}

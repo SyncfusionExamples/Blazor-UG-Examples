@@ -1,0 +1,54 @@
+﻿@page "/HyperLinkColumn"
+
+@inject NavigationManager UriHelper
+@using Syncfusion.Blazor.Grids
+<ColumnRoute></ColumnRoute>
+
+<SfGrid DataSource="@Employees">
+    <GridColumns>
+        <GridColumn Field=@nameof(EmployeeData.EmployeeID) TextAlign="TextAlign.Center" HeaderText="Employee ID" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Name) HeaderText="First Name" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(EmployeeData.Title) HeaderText="Title" Width="120"></GridColumn>
+        <GridColumn HeaderText="User profile" TextAlign="TextAlign.Center" Width="120">
+            <Template>
+                @{
+                    var Employee = (context as EmployeeData);
+                    <div><a href="#" @onclick="@(() => Navigate(Employee))">View</a></div>
+                }
+            </Template>
+        </GridColumn>
+    </GridColumns>
+</SfGrid>
+
+<style>
+
+    .image img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50px;
+        box-shadow: inset 0 0 1px #e0e0e0, inset 0 0 14px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+@code{
+
+    List<EmployeeData> Employees = new List<EmployeeData>
+{
+        new EmployeeData() { EmployeeID = 1, Name = "Nancy Fuller", Link = "nancy_fuller", Title = "Vice President" },
+        new EmployeeData() { EmployeeID = 2, Name = "Steven Buchanan", Link = "steven_buchanan", Title = "Sales Manager" },
+        new EmployeeData() { EmployeeID = 3, Name = "Janet Leverling", Link = "janet_leverling", Title = "Sales Representative" },
+        new EmployeeData() { EmployeeID = 4, Name = "Andrew Davolio", Link = "andrew_davolio", Title = "Inside Sales Coordinator" }
+    };
+
+    public class EmployeeData
+    {
+        public int EmployeeID { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public string Link { get; set; }
+    }
+    private void Navigate(EmployeeData Employee)
+    {
+        UriHelper.NavigateTo($"{ Employee.Link}/{Employee.EmployeeID.ToString()}/{Employee.Name}/{ Employee.Title}");
+    }
+}

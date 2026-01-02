@@ -1,0 +1,62 @@
+﻿@page "/Sort_Comparer"
+
+@using Syncfusion.Blazor.Grids
+<SortNavigation></SortNavigation>
+
+<SfGrid DataSource="@Orders" AllowSorting="true" Width="600" Height="270">
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) Visible="false" HeaderText="Order ID" Width="80"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) SortComparer="new CustomComparer()" HeaderText="Customer Name" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date"  Width="100"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2"  Width="80"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipCountry) HeaderText="ShipCountry" Format="C2"  Width="100"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 10).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            Freight = 2.1 * x,
+            OrderDate = DateTime.Now.AddDays(-x),
+            ShipCountry = (new string[] {"USA","UK","INDIA","CHINA","ENGLAND"})[new Random().Next(5)],
+        }).ToList();
+    }
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+        public string ShipCountry { get; set; }
+    }
+
+    public class CustomComparer : IComparer<Object>
+    {
+        public int Compare(object XRowDataToCompare, object YRowDataToCompare)
+        {
+            Order XRowData = XRowDataToCompare as Order;
+            Order YRowData = YRowDataToCompare as Order;
+            int XRowDataOrderID = (int)XRowData.OrderID;
+            int YRowDataOrderID = (int)YRowData.OrderID;
+            if (XRowDataOrderID < YRowDataOrderID)
+            {
+                return -1;
+            }
+            else if (XRowDataOrderID > YRowDataOrderID)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+}

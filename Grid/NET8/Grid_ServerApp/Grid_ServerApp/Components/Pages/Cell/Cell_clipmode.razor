@@ -1,0 +1,41 @@
+﻿@page "/clipmode"
+
+@using Syncfusion.Blazor.Grids
+
+    <CellNavigation></CellNavigation>
+
+<SfGrid DataSource="@Orders" AllowPaging="true" Height="315">
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.RollNo) HeaderText="Roll No" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(Order.Name) HeaderText="Name of the inventor" ClipMode="ClipMode.Clip" Width="70"></GridColumn>
+        <GridColumn Field=@nameof(Order.PatentFamilies) HeaderText="No of patent families" ClipMode="ClipMode.Ellipsis" Width="80"></GridColumn>
+        <GridColumn Field=@nameof(Order.Country) HeaderText="Country" Width="100"></GridColumn>
+        <GridColumn Field=@nameof(Order.MainFields) HeaderText="Main fields of Invention" ClipMode="ClipMode.EllipsisWithTooltip" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            RollNo = 1000 + x,
+            Name = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            PatentFamilies = 1000 + x * 5,
+            Country = (new string[] { "Australia", "Japan", "Canada", "India", "USA" })[new Random().Next(5)],
+            MainFields = (new string[] { "Printing, Digital paper, Internet, Electronics,Lab-on-a-chip, MEMS, Mechanical, VLSI", "Various", "Printing, Digital paper, Internet, Electronics, CGI, VLSI", "Automotive, Stainless steel products", "Gaming machines" })[new Random().Next(5)],
+        }).ToList();
+    }
+
+    public class Order
+    {
+        public int? RollNo { get; set; }
+        public string Name { get; set; }
+        public int PatentFamilies { get; set; }
+        public string Country { get; set; }
+        public string MainFields { get; set; }
+    }
+}
+

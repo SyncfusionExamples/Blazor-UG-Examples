@@ -1,0 +1,39 @@
+﻿@page "/CAdapAllService"
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+
+    <CustomBindingRoute></CustomBindingRoute>
+
+    <SfGrid TValue="OrderAllServiceClass" ID="Grid" AllowSorting="true" AllowFiltering="true" AllowPaging="true">
+        <SfDataManager Adaptor="Adaptors.CustomAdaptor">
+            <CAdpAllServiceComponent></CAdpAllServiceComponent>
+        </SfDataManager>
+        <GridPageSettings PageSize="8"></GridPageSettings>
+        <GridColumns>
+            <GridColumn Field=@nameof(OrderAllServiceClass.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="@TextAlign.Center" Width="140"></GridColumn>
+            <GridColumn Field=@nameof(OrderAllServiceClass.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+            <GridColumn Field=@nameof(OrderAllServiceClass.Freight) HeaderText="Freight" TextAlign="@TextAlign.Center" Width="140"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+@code{
+        public static List<OrderAllServiceClass> Orders { get; set; }
+    public class OrderAllServiceClass
+    {
+        public List<OrderAllServiceClass> GetAllRecords()
+        {
+            Orders = Enumerable.Range(1, 75).Select(x => new OrderAllServiceClass()
+            {
+                OrderID = 1000 + x,
+                CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+                Freight = 2.1 * x,
+            }).ToList();
+            return Orders;
+        }
+        public int OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public double Freight { get; set; }
+    }
+}

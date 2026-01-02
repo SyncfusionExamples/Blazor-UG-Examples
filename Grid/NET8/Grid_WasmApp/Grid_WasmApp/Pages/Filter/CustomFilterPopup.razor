@@ -1,0 +1,79 @@
+﻿@page "/CustomFilterPopup"
+
+@using Syncfusion.Blazor.Grids
+<FilterNavigation></FilterNavigation>
+
+<SfGrid ID= "Grid" DataSource="@Orders" AllowFiltering="true">
+    <GridEvents OnActionBegin="OnActionBegin" TValue="Order"></GridEvents>
+    <GridFilterSettings Type ="Syncfusion.Blazor.Grids.FilterType.Excel"></GridFilterSettings>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) HeaderText=" Order Date" Format="d" Type="ColumnType.Date" TextAlign="TextAlign.Right" Width="130"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@if(IsLarge)
+{
+    <style>
+        #Grid .e-excelfilter.e-popup.e-popup-open {
+            height: 400px;
+            width: 350px !important;
+        }
+    </style>
+}
+@if(IsSmall)
+{
+    <style>
+        #Grid .e-excelfilter.e-popup.e-popup-open {
+            height: 450px;
+            width: 280px !important;
+        }
+    </style>   
+}
+
+@code{
+    public List<Order> Orders { get; set; }
+    public bool IsLarge { get; set; } = false;
+    public bool IsSmall { get; set; } = false;
+    public void OnActionBegin(ActionEventArgs<Order> Args)
+    {
+        if (Args.RequestType == Syncfusion.Blazor.Grids.Action.FilterBeforeOpen)
+        {
+            if(Args.ColumnName == "CustomerID")
+            {
+                IsLarge = true;
+                IsSmall = false;
+            }
+            else if(Args.ColumnName == "OrderDate")
+            {
+                IsSmall = true;
+                IsLarge = false;
+            }
+            else
+            {
+                IsLarge = false;
+                IsSmall = false;
+            }
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+            {
+                OrderID = 1000 + x,
+                CustomerID = (new string[] { "ALFKII", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+                Freight = 2.1 * x,
+                OrderDate = (new DateTime[] { new DateTime(2010, 5, 1), new DateTime(2010, 5, 2), new DateTime(2010, 5, 3), })[new Random().Next(3)],
+            }).ToList();
+    }
+
+    public class Order {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+    }
+}
