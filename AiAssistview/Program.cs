@@ -1,6 +1,10 @@
 using AiAssistview.Components;
-using AIAssistView_AzureAI.Components.Services;
 using Syncfusion.Blazor;
+using AIAssistview.Components.Services;
+using Microsoft.Extensions.AI;
+using OllamaSharp;
+using Azure.AI.OpenAI;
+using Azure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 builder.Services.AddSyncfusionBlazor();
-
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<AzureOpenAIService>(sp =>
 {
     var httpClientFactory = sp.GetRequiredService<IHttpClientFactory>();
@@ -20,6 +24,13 @@ builder.Services.AddScoped<AzureOpenAIService>(sp =>
 
     return new AzureOpenAIService(httpClient, endpoint, apiKey, deploymentName);
 });
+
+builder.Services.AddDistributedMemoryCache();
+
+// Ollama configuration
+builder.Services.AddChatClient(new OllamaApiClient(new Uri("http://localhost:11434/"), "llama3.2"))
+    .UseDistributedCache()
+    .UseLogging();
 
 var app = builder.Build();
 
