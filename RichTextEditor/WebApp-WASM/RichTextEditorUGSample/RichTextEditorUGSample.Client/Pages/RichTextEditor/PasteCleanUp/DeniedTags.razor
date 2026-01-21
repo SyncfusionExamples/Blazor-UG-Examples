@@ -1,0 +1,19 @@
+﻿@page "/RichTextEditor/PasteCleanUp/DeniedTags"
+
+<h5>Denied Tags</h5>
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorPasteCleanupSettings DeniedTags="@DeniedTag" />
+    <p>Rich Text Editor is a WYSIWYG editing control which will reduce the effort for users while trying to express their formatting word content as HTML or Markdown format.</p>
+    <p><b>Paste Cleanup properties:</b></p>
+    <ul>
+        <li><p>deniedTags - specifies the tags to restrict when pasting in Rich Text Editor.</p></li>
+    </ul>
+</SfRichTextEditor>
+
+@code {
+    private string[] DeniedTag = new string[] { "a", "a[!href]" };
+}

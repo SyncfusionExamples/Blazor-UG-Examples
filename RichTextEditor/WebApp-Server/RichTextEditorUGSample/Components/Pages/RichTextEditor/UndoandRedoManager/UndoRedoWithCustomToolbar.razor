@@ -1,0 +1,35 @@
+﻿<h5>Undo redo manager with custom toolbar</h5>
+
+@page "/RichTextEditor/UndoandRedoManager/UndoRedoWithCustomToolbar"
+
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Tools">
+                <RichTextEditorCustomToolbarItems>
+                    <RichTextEditorCustomToolbarItem Name="Insert HTML">
+                        <Template>                           
+                           <SfButton Content="Insert HTML" @onclick="onClick"></SfButton>
+                        </Template>
+                    </RichTextEditorCustomToolbarItem>                    
+                </RichTextEditorCustomToolbarItems>
+    </RichTextEditorToolbarSettings>
+    <p>The Rich Text Editor component is WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    SfRichTextEditor rteObj;
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+        new ToolbarItemModel() { Name = "Insert HTML", TooltipText = "Insert HTML" },
+    };
+    public async Task  onClick()
+    {
+        ExecuteCommandOption executeCommandOption = new ExecuteCommandOption();
+        executeCommandOption.Undo = true;
+        string value = "Inserted a text";
+        await this.rteObj.ExecuteCommandAsync(CommandName.InsertHTML, value, executeCommandOption);
+    }
+}

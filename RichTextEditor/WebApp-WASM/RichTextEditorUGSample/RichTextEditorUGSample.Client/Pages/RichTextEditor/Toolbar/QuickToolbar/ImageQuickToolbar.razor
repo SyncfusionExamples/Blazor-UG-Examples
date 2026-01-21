@@ -1,0 +1,31 @@
+﻿<h5>Image Quick Toolbar</h5>
+
+@page "/RichTextEditor/Toolbar/QuickToolbar/ImageQuickToolbar"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorQuickToolbarSettings Image="@Image" />
+    <p>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</p>
+    <p><b>Get started Quick Toolbar to click on the image</b></p>
+    <p>It is possible to add custom style on the selected image inside the Rich Text Editor through quick toolbar.</p>
+    <img alt='Logo' style='width: 150px; height: 150px; transform: rotate(0deg);' src='https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Portrait.png' />
+</SfRichTextEditor>
+
+@code {
+    private List<ImageToolbarItemModel> Image = new List<ImageToolbarItemModel>()
+    {
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Replace },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Align },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Caption },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Remove },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.OpenImageLink },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Separator },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.EditImageLink },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.RemoveImageLink },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Display },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.AltText },
+        new ImageToolbarItemModel() { Command = ImageToolbarCommand.Dimension }
+    };
+}

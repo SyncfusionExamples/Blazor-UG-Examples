@@ -1,0 +1,22 @@
+﻿<h5>Link Quick Toolbar</h5>
+
+@page "/RichTextEditor/Toolbar/QuickToolbar/LinkQuickToolbar"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorQuickToolbarSettings Link="@Link" />
+    <p>Rich Text Editor allows to insert images from online source as well as local computer where you want to insert the image in your content.</p>
+    <p><b>Get started Quick Toolbar to click on the link</b></p>
+    <p>It is possible to add custom style on the selected link inside the Rich Text Editor through quick toolbar.</p>
+    <img alt='Logo' style='width: 150px; height: 150px; transform: rotate(0deg);' src='https://cdn.syncfusion.com/ej2/richtexteditor-resources/RTE-Portrait.png' />
+</SfRichTextEditor>
+
+@code {
+    private List<LinkToolbarItemModel> Link = new List<LinkToolbarItemModel>()
+    {
+        new LinkToolbarItemModel() { Command = LinkToolbarCommand.Open },
+        new LinkToolbarItemModel() { Command = LinkToolbarCommand.Edit },
+        new LinkToolbarItemModel() { Command = LinkToolbarCommand.UnLink }
+    };
+}

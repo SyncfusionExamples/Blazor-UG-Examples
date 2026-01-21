@@ -1,0 +1,20 @@
+﻿<h5>Applying font and background colors</h5>
+
+@page "/RichTextEditor/Tools/StylingTools/FontAndBackgroundColors"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor>
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorBackgroundColor ModeSwitcher="true" />
+    <RichTextEditorFontColor ModeSwitcher="true" />
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.FontColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.BackgroundColor },
+    };
+}
