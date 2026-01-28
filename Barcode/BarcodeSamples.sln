@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeSamples", "BarcodeSamples\BarcodeSamples\BarcodeSamples.csproj", "{1B5E069D-A2C3-4399-B142-8FFD02E2E98B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarcodeSamples.Client", "BarcodeSamples\BarcodeSamples.Client\BarcodeSamples.Client.csproj", "{A5F2A894-F403-4F4C-A402-1463F822ABA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B5E069D-A2C3-4399-B142-8FFD02E2E98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5E069D-A2C3-4399-B142-8FFD02E2E98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5E069D-A2C3-4399-B142-8FFD02E2E98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5E069D-A2C3-4399-B142-8FFD02E2E98B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F2A894-F403-4F4C-A402-1463F822ABA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F2A894-F403-4F4C-A402-1463F822ABA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F2A894-F403-4F4C-A402-1463F822ABA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F2A894-F403-4F4C-A402-1463F822ABA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
