@@ -1,0 +1,30 @@
+﻿@page "/BasicShape"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize Diagram *@
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    //Initialize node collection with node
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            //Size of the node
+            Height = 100,
+            Width = 100,
+            //Position of the node
+            OffsetX = 100,
+            OffsetY = 100,
+            //sets the type of the shape as basic
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle, CornerRadius = 10 },
+            Style = new ShapeStyle() { Fill = "#6495ED" }
+        };
+        nodes.Add(node);
+    }
+}

@@ -1,0 +1,62 @@
+﻿@page "/GroupingCommands"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Group" OnClick="@OnGroup" />
+<SfButton Content="Ungroup" OnClick="@OnUngroup" />
+<SfButton Content="SelectAll" OnClick="@OnSelectAll" />
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes"  />
+
+@code
+{
+    //Reference to diagram
+    private SfDiagramComponent diagram;
+    // Initialize diagram's node collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+   
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 30,
+            OffsetX = 500,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
+        nodes.Add(node1);
+        Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 60,
+            Height = 40,
+            OffsetX = 400,
+            OffsetY = 200,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
+        };
+        nodes.Add(node2);
+    }
+
+    // Method to group the selected nodes and connectors.
+    private void OnGroup()
+    {
+        diagram.Group();
+    }
+
+    // Method to ungroup the selected nodes and connectors.
+    private void OnUngroup()
+    {
+        diagram.Ungroup();
+    }
+
+    // Method to select all objects.
+    private void OnSelectAll()
+    {
+        diagram.SelectAll();
+    }
+}

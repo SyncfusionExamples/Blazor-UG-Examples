@@ -1,0 +1,31 @@
+﻿@page "/Message"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize Diagram *@
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
+
+@code
+{
+    // Create connector and store it in the connector collection.
+    private DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+        {
+            // Unique Id of the connector.
+            ID = "connector1",
+            // Start and end point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 300, Y = 300 },
+            // Sets the flow to MessageFlow.
+            Shape = new BpmnFlow()
+            {
+                Flow = BpmnFlowType.MessageFlow,
+            }
+        };
+        connectors.Add(connector);
+    }
+}

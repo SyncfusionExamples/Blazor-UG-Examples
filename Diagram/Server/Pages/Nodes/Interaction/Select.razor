@@ -1,0 +1,47 @@
+﻿@page "/Select"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Select" OnClick="@OnSelect" />
+<SfButton Content="UnSelect" OnClick="@UnSelect" />
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Reference of the diagram
+    private SfDiagramComponent diagram;
+    // To define node collection
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes collection.
+        Node node = new Node()
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
+        // Add node
+        nodes.Add(node);
+    }
+
+    private void OnSelect()
+    {
+        // Select the node
+        diagram.Select(new ObservableCollection<IDiagramObject> { diagram.Nodes[0] });
+    }
+
+    private void UnSelect()
+    {
+        // clear selection in the diagram
+        diagram.ClearSelection();
+    }
+}

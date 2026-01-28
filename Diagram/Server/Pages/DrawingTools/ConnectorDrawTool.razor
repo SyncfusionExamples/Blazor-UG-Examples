@@ -1,0 +1,61 @@
+﻿@page "/ConnectorDrawTool"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="AddConnector" OnClick="@AddConnector" />
+
+<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px" />
+
+@code
+{
+    //Reference to diagram
+    private SfDiagramComponent diagram;
+    //Defines diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "group",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "Node",
+                    Style = new TextStyle()
+                    {
+                        Color = "white",
+                    }
+                }
+            },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
+        nodes.Add(node);
+    }
+
+    private void AddConnector()
+    {
+        //To draw an object once, activate draw once
+        diagram.InteractionController = DiagramInteractions.DrawOnce;
+        //Initialize the drawing object to draw the connectors
+        diagram.DrawingObject = new Connector()
+        {
+            ID = "connector1",
+            Type = ConnectorSegmentType.Straight,
+            Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new ConnectorSegment()
+                {
+                    Type = ConnectorSegmentType.Polyline,
+                }
+            },
+        };
+    }
+}

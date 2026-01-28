@@ -1,0 +1,37 @@
+﻿@page "/ConnectorPropertyChangedEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@diagram" Width="100%" Height="700px" Connectors="@connectors" PropertyChanged="OnNodePropertyChanged" />
+
+@code 
+{
+    private SfDiagramComponent diagram;
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Straight
+        };
+        connectors.Add(Connector);
+    }
+
+    // Method to handle Property Changed event
+    private void OnNodePropertyChanged(PropertyChangedEventArgs args)
+    {
+        if (args.Element is Connector changedNode)
+        {
+            // Logic to handle the property change for the specific connector
+            Console.WriteLine($"Node ID: {changedNode.ID} property changed.");
+            // Additional logic to handle updates
+        }
+    }
+}

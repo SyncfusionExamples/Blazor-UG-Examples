@@ -1,0 +1,29 @@
+﻿@page "/StickyForConnector"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Connectors="connectors" />
+
+@code
+{
+    //Define diagram's connectors collection
+    private DiagramObjectCollection<Connector> connectors;
+    //Refrence the diagram
+    private SfDiagramComponent diagram;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's nodes collection
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+        {
+            ID = "Connector1",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 100 },
+            Tooltip = new DiagramTooltip() { Content = "Tooltip", IsSticky=true  },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
+        };
+        connectors.Add(connector);
+    }
+} 

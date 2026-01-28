@@ -1,0 +1,13 @@
+﻿@page "/GridLineAppearance"
+
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px">
+    @* Shows both horizontal and vertical gridlines *@
+    <SnapSettings Constraints="SnapConstraints.ShowLines">
+        @* Customizes the line color and line style to the gridlines *@
+        <HorizontalGridLines LineColor="blue" LineDashArray="2,2" />
+        <VerticalGridLines LineColor="blue" LineDashArray="2,2" />
+    </SnapSettings>
+</SfDiagramComponent>

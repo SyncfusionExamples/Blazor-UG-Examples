@@ -1,0 +1,59 @@
+﻿@page "/PolygonShapeTool"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Polygon" OnClick="@Polygon" />
+<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Reference to diagram
+    private SfDiagramComponent diagram;
+    //Defines diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "group",
+            OffsetX = 200,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation()
+                {
+                    Content = "Node",
+                    Style = new TextStyle()
+                    {
+                        Color = "white",
+                    }
+                }
+            },
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        };
+        nodes.Add(node);
+    }
+
+    private void Polygon()
+    {
+        //To draw an object once, activate draw once
+        diagram.InteractionController = DiagramInteractions.DrawOnce;
+        //Initialize the drawing object to draw the polygon shape
+        diagram.DrawingObject = new Node()
+        {
+            ID = "polygon",
+            Shape = new BasicShape()
+            {
+                Type = NodeShapes.Basic,
+                Shape = NodeBasicShapes.Polygon,
+            },
+        };
+    }
+}

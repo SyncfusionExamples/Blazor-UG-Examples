@@ -1,0 +1,143 @@
+﻿@page "/RadialTreeWithDataSource"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Diagram.Internal
+@using System.Collections.ObjectModel
+@using Syncfusion.Blazor.Popups;
+
+<style>
+    #diagram-space {
+        width: 80%;
+        float: left;
+    }
+
+</style>
+
+<div id="diagram-space">
+    <br />
+    <SfDiagramComponent @ref="diagram" Width="100%" Height="800px" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
+        <DataSourceSettings DataSource="RadialSource" ID="Id" ParentID="ReportingPerson"></DataSourceSettings>
+        <Layout Type="LayoutType.RadialTree" HorizontalSpacing="30" VerticalSpacing="30">
+
+        </Layout>
+        <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
+    </SfDiagramComponent>
+</div>
+
+@code
+{
+
+    private SfDiagramComponent diagram;
+    
+    public class RadialTreeDetails
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Designation { get; set; }
+        public string ReportingPerson { get; set; }
+    }
+    
+    private void OnFittoPage()
+    {
+        //Console.WriteLine("Created - "+DateTime.Now.ToString("yyyy-MM-dd HH: mm:ss.fff"));
+        FitOptions options = new FitOptions() { Mode = FitMode.Both, Region = DiagramRegion.Content };
+        diagram.FitToPage(options);
+    }
+
+    public List<RadialTreeDetails> RadialSource = new List<RadialTreeDetails>()
+    {
+        new RadialTreeDetails()   { Id = "parent", Name = "Maria Anders", Designation = "Managing Director" },
+        new RadialTreeDetails()   { Id = "1", Name = "Ana Trujillo", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   { Id = "2", Name = "Lino Rodri", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   {  Id = "3", Name = "Philip Cramer", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   {  Id = "4", Name = "Pedro Afonso", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   { Id = "15", Name = "Paul Henriot", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   { Id = "18", Name = "Laura Callahan", Designation = "Project Manager",
+            ReportingPerson = "parent" },
+        new RadialTreeDetails()   { Id = "5", Name = "Anto Moreno", Designation = "Project Lead",
+            ReportingPerson = "1" },
+        new RadialTreeDetails()   { Id = "6", Name = "Elizabeth Roel", Designation = "Project Lead",
+            ReportingPerson = "1" },
+        new RadialTreeDetails()   { Id = "7", Name = "Aria Cruz", Designation = "Project Lead",
+            ReportingPerson = "18" },
+        new RadialTreeDetails()   { Id = "8", Name = "Eduardo Roel", Designation = "Project Lead",
+            ReportingPerson = "18" },
+        new RadialTreeDetails()   { Id = "9", Name = "Howard Snyd", Designation = "Project Lead",
+            ReportingPerson = "2"  },
+        new RadialTreeDetails()   { Id = "10", Name = "Daniel Tonini", Designation = "Project Lead",
+            ReportingPerson = "2" },
+        new RadialTreeDetails()   { Id = "11", Name = "Nardo Batista", Designation = "Project Lead",
+            ReportingPerson = "3" },
+        new RadialTreeDetails()   { Id = "12", Name = "Michael Holz", Designation = "Project Lead",
+            ReportingPerson = "3" },
+        new RadialTreeDetails()   { Id = "13", Name = "Kloss Perrier", Designation = "Project Lead",
+            ReportingPerson = "4" },
+        new RadialTreeDetails()   { Id = "14", Name = "Liz Nixon", Designation = "Project Lead",
+            ReportingPerson = "4" },
+        new RadialTreeDetails()   { Id = "16", Name = "Paula Parente", Designation = "Project Lead",
+            ReportingPerson = "15" },
+        new RadialTreeDetails()   { Id = "17", Name = "Matti Kenna", Designation = "Project Lead",
+            ReportingPerson = "15" },  
+    };
+    
+    private void NodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        RadialTreeDetails radialData = node.Data as RadialTreeDetails;
+        double size = 0;
+        string color;
+        if (radialData.Id == "parent")
+        {
+            size = 20;
+            color="white";
+        }
+        else
+        {
+            size = 10;
+            color = "black";
+        }
+        ShapeAnnotation annotation = new ShapeAnnotation() { Content = radialData.Name, Style = new TextStyle() { Color = color, FontSize=size } };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>() { annotation };
+
+        if (radialData.Designation == "Managing Director")
+        {
+            node.Shape = new BasicShape()
+            {
+                Type = NodeShapes.Basic,
+                Shape = NodeBasicShapes.Ellipse,
+                CornerRadius = 10
+            };
+            node.Width = 150;
+            node.Height = 150;
+            node.Style.Fill = "black";
+        }
+        else if (radialData.Designation == "Project Manager")
+        {
+            node.Width = 65;
+            node.Height = 65;
+            node.Style.Fill = "#f8ab52";
+        }
+        else
+        {
+            node.Shape = new BasicShape()
+            {
+                Type = NodeShapes.Basic,
+                Shape = NodeBasicShapes.Ellipse,
+                CornerRadius = 10
+            };
+            node.Style.Fill = "#afeeee";
+            node.Width = 50;
+            node.Height = 50;
+        }
+    }
+
+    private void ConnectorCreating(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Straight;
+    } 
+}

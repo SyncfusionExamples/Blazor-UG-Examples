@@ -1,0 +1,66 @@
+﻿@page "/TooltipForSpecificPort"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent  Height="700px" Nodes="@nodes" ></SfDiagramComponent>
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes;
+    
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() 
+            { 
+                Fill = "#6495ED", 
+                StrokeColor = "white" 
+            },
+            Ports = new DiagramObjectCollection<PointPort>()
+            {
+                new PointPort(){
+                    ID="Port1",
+                    Style = new ShapeStyle(){ Fill = "gray" },
+                    Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                    Visibility = PortVisibility.Visible,
+                    Tooltip = new DiagramTooltip(){ Content = "OutConnectPort"},
+                    Constraints = PortConstraints.Default | PortConstraints.Draw
+                } 
+            }
+        };
+        nodes.Add(node);
+        Node node2 = new Node()
+        {
+             ID = "node2",
+             OffsetX = 450,
+             OffsetY = 250,
+             Width = 100,
+             Height = 100,
+             Style = new ShapeStyle()
+             {
+                 Fill = "#6495ED",
+                 StrokeColor = "white"
+             },
+             Ports = new DiagramObjectCollection<PointPort>()
+             {
+                 new PointPort()
+                 {
+                    ID="Port2",
+                    Style = new ShapeStyle(){ Fill = "gray" },
+                    Offset = new DiagramPoint() { X = 0, Y = 0.5},
+                    Visibility = PortVisibility.Visible,
+                    Tooltip = new DiagramTooltip(){ Content = "InConnectPort"},
+                    Constraints = PortConstraints.Default | PortConstraints.Draw
+                 }
+             }
+        };
+        nodes.Add(node2);  
+    }
+}

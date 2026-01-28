@@ -1,0 +1,39 @@
+﻿@page "/Bezier"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" />
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
+            {
+                X = 100,
+                Y = 100
+            },
+            Style = new ShapeStyle() { StrokeColor = "#6f409f", StrokeWidth = 1 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            Type = ConnectorSegmentType.Bezier,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6f409f",
+                    StrokeColor = "#6f409f",
+                    StrokeWidth = 1
+                }
+            }
+        };
+        //Add the connector into connectors's collection.
+        connectors.Add(Connector);
+    }
+}

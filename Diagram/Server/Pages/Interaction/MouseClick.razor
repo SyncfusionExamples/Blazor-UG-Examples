@@ -1,0 +1,35 @@
+﻿@page "/MouseClick"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes" Click='@OnClick' />
+
+@code
+{
+    //Define diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes array.
+        Node node = new Node()
+        {
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            // Add node
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeDashArray = "5,5", StrokeColor = "red", StrokeWidth = 2 },
+        };
+        nodes.Add(node);
+    }
+
+    //Event to notify when a mouse button is clicked on the diagram.
+    private async void OnClick(ClickEventArgs args)
+    {
+        Console.WriteLine("Button", args.Button);
+    }
+}

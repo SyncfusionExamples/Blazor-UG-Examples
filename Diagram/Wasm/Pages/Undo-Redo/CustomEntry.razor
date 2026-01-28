@@ -1,0 +1,50 @@
+﻿@page "/CustomEntry"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+
+<SfButton Content="CustomEntry" OnClick="@OnCustomEntry" />
+
+<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+    <DiagramHistoryManager StackLimit="@stackLimit" />
+</SfDiagramComponent>
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent diagram;
+    //Intialize diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private string EventValue = string.Empty;
+    private int stackLimit = 3;
+
+    protected override void OnInitialized()
+    {
+        Dictionary<string, object> NodeInfo = new Dictionary<string, object>();
+        NodeInfo.Add("nodeInfo", "Central Node");
+        // A node is created and stored in the nodes collection.
+        Node node = new Node()
+        {
+            ID = "node1",
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            AdditionalInfo = NodeInfo
+        };
+        // Add node
+        nodes.Add(node);
+    }
+
+    private void OnCustomEntry()
+    {
+        HistoryEntry entry = new HistoryEntry();
+        entry.UndoObject = diagram.Nodes[0];
+        diagram.AddHistoryEntry(entry);
+    }
+
+}

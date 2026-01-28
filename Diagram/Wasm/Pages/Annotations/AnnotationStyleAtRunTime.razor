@@ -1,0 +1,57 @@
+﻿@page "/AnnotationStyleAtRunTime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="UpdateStyle" OnClick="@UpdateStyle" />
+<SfDiagramComponent @ref="@Diagram" Height="600px" Nodes="@nodes" />
+
+@code
+{
+    // Reference of the diagram.
+    private SfDiagramComponent Diagram;
+    // Defines diagram's node collection.
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            // Sets the annotation for the node.
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation
+                {
+                    Content = "Annotation Text",
+                    Style = new TextStyle()
+                    {
+                        Color = "black",
+                        Bold = true,
+                        Italic = true,
+                        TextDecoration = TextDecoration.Underline,
+                        FontSize = 12,
+                        FontFamily = "TimesNewRoman"
+                    }
+                }
+            },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
+        };
+        nodes.Add(node);
+    }
+
+    private void UpdateStyle()
+    {
+        // Change the style of the annotation.
+        Diagram.BeginUpdate();
+        Diagram.Nodes[0].Annotations[0].Style.Bold = false;
+        Diagram.Nodes[0].Annotations[0].Style.TextDecoration = TextDecoration.None;
+        Diagram.Nodes[0].Annotations[0].Style.Color = "Red";
+        Diagram.EndUpdateAsync();
+    }
+}

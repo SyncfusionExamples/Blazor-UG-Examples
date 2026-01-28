@@ -1,0 +1,57 @@
+﻿@page "/UserHandleImageType"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="diagram" Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent diagram;
+    //Initialize diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    // Defines diagram's SelectionSettings.
+    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+
+    protected override void OnInitialized()
+    {
+        //Creating the userhandle for cloning the objects.
+        UserHandle ImageHandle = new UserHandle()
+        {
+            //Name of the user handle.
+            Name = "clone",
+            ImageUrl = "https://www.w3schools.com/images/w3schools_green.jpg",
+            //Set visibility for the user handle.
+            Visible = true,
+            //Set the position for the user handle.
+            Offset = 1,
+            //Set the side for the user handle.
+            Side = Direction.Left,
+            //Set target of the userhandle
+            VisibleTarget = VisibleTarget.Node,
+        };
+        //Add user handle to the collection.
+        UserHandles = new DiagramObjectCollection<UserHandle>()
+        {
+            ImageHandle
+        };
+        SelectedModel = new DiagramSelectionSettings()
+        {
+            //Enable userhandle for selected model.
+            Constraints = SelectorConstraints.All,
+            UserHandles = this.UserHandles,
+        };
+
+        Node node = new Node()
+        {
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+        };
+        nodes.Add(node);
+    }
+}
+

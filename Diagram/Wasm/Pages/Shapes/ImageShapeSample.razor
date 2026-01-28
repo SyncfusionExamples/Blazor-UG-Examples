@@ -1,0 +1,32 @@
+﻿@page "/ImageShape"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize Diagram *@
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            //Size of the node
+            Height = 100,
+            Width = 100,
+            //Position of the node
+            OffsetX = 100,
+            OffsetY = 100,
+            Shape = new ImageShape()
+            {
+                Type = NodeShapes.Image,
+                Source = "/diagram/images/productmanager.png"
+            }
+        };
+        nodes.Add(node);
+    }
+}

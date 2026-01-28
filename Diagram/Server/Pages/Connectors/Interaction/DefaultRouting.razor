@@ -1,0 +1,56 @@
+﻿@page "/DefaultRouting"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating" Connectors="@connectors" Nodes="@nodes" Constraints="@diagramConstraints">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code 
+{
+    // Enable routing constraints for diagram
+    private DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Routing;
+    //Intialize the node collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Intialize the connector collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node() { ID = "node1", OffsetX = 100, OffsetY = 300, Width = 100, Height =100 },
+            new Node() { ID = "node2", OffsetX = 600, OffsetY = 100, Width = 100, Height = 100 },
+            new Node() { ID = "node3", OffsetX = 400, OffsetY = 250, Width = 100, Height = 100 }
+        };
+        connectors = new DiagramObjectCollection<Connector>(){
+            new Connector()
+            {
+                ID = "connector1",
+                SourceID = "node1", TargetID = "node2",
+                Type = ConnectorSegmentType.Orthogonal
+            }
+        };
+    }
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        if (obj is Node node)
+        {
+            node.Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" };
+        }
+    }
+
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        if (obj is Connector connector)
+        {
+            connector.Style = new ShapeStyle() { StrokeColor = "#6BA5D7", StrokeWidth = 1 };
+            connector.TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7", StrokeWidth = 1 }
+            };
+        }
+    }
+}

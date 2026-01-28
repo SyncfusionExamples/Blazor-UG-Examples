@@ -1,0 +1,34 @@
+﻿@page "/BringIntoView"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="BringIntoView" OnClick="@BringIntoView1" />
+<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>()
+        {
+            new Node { ID = "node1", Width = 150, Height = 100, OffsetX = 1100, OffsetY = 900,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation() { Content = "Node1" } } 
+            },
+        };
+    }
+
+    //Brings the specified bounds into the view port of the diagram
+    private void BringIntoView1()
+    {
+        DiagramRect bound = new DiagramRect(950, 650, 500, 500);
+        diagram.BringIntoView(bound);
+    }
+}

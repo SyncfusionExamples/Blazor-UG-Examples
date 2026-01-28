@@ -1,0 +1,154 @@
+﻿@page "/CustomYesOrNoBranch"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="100%" Height="700px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
+    <Layout Type="LayoutType.Flowchart" HorizontalSpacing="50" Orientation="LayoutOrientation.TopToBottom" VerticalSpacing="50" FlowchartLayoutSettings="@flowchartSettings">
+    </Layout>
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Initialize diagram component.
+    private SfDiagramComponent Diagram;
+    //Initialize flowchart layout settings.
+    private FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
+    {
+        YesBranchValues = new List<string> { "Accept", "Yes" },
+        NoBranchValues = new List<string> { "Reject", "No" },
+    };
+
+    private void OnDataLoaded(object obj)
+    {
+        for (int i = 0; i < Diagram.Connectors.Count; i++)
+        {
+            Connector connector = Diagram.Connectors[i];
+            Node node = Diagram.GetObject(connector.TargetID) as Node;
+            Node srcNode = Diagram.GetObject(connector.SourceID) as Node;
+			if (node.Data != null && node.Data is ItemInfo itemInfo)
+			{
+				if (itemInfo.Label != null && itemInfo.Label.Count > 0)
+				{
+					if (itemInfo.ParentId.IndexOf((srcNode.Data as ItemInfo).Id) != -1)
+					{
+						var parentIndex = itemInfo.ParentId.IndexOf((srcNode.Data as ItemInfo).Id);
+						if (itemInfo.Label.Count > parentIndex)
+						{
+							connector.Annotations = new DiagramObjectCollection<PathAnnotation>()
+							{
+								new PathAnnotation() { Content = itemInfo.Label[parentIndex], Style = new TextStyle(){ Bold = true} }
+							};
+						}
+					}
+				}
+			}
+        }
+    }
+
+    //Creates connectors with some default values.
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        if (obj is Connector connector)
+        {
+            connector.Type = ConnectorSegmentType.Orthogonal;
+            connector.Style.Fill = "#6CA0DC";
+            connector.Style.StrokeColor = "#6CA0DC";
+            connector.Style.StrokeWidth = 2;
+            connector.TargetDecorator.Style.Fill = "#6CA0DC";
+            connector.TargetDecorator.Style.StrokeColor = "#6CA0DC";
+        }
+    }
+
+    //Creates nodes with some default values.
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        if (node.Data != null && node.Data is ItemInfo)
+        {
+            ItemInfo employeeDetails = node.Data as ItemInfo;
+            node.Width = employeeDetails._Width;
+            node.Height = employeeDetails._Height;
+            if (employeeDetails._Shape == "StartOrEnd")
+            {
+                node.Shape = new FlowShape() { Shape = NodeFlowShapes.Terminator };
+            }
+            else
+                node.Shape = new FlowShape() { Shape = (NodeFlowShapes)Enum.Parse(typeof(NodeFlowShapes), employeeDetails._Shape.ToString()) };
+            node.Style.Fill = employeeDetails._Color;
+            node.Style.StrokeColor = employeeDetails._Color;
+            node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+            {
+                new ShapeAnnotation(){ Content = employeeDetails.Name, Style = new TextStyle(){ Color = "black", Bold = true} }
+            };
+        }
+    }
+    //Initialize data source collection.
+    public List<ItemInfo> DataSource = new List<ItemInfo>()
+    {
+            new ItemInfo()
+            {
+                Id = "1",
+                Name = "Start",
+                _Shape = "StartOrEnd",
+                _Width = 100,
+                _Height = 50,
+                _Color = "#6CA0DC"
+            },
+            new ItemInfo()
+            {
+                Id = "2",
+                Name = "Decision?",
+                ParentId = new List<string> { "1" },
+                _Shape = "Decision",
+                _Width = 100,
+                _Height = 80,
+                _Color = "#6CA0DC"
+            },
+            new ItemInfo()
+            {
+                Id = "3",
+                Label = new List<string> { "Reject" },
+                Name = "Process1",
+                ParentId = new List<string> { "2" },
+                _Shape = "Process",
+                _Width = 100,
+                _Height = 60,
+                _Color = "#6CA0DC"
+            },
+            new ItemInfo()
+            {
+                Id = "4",
+                Label = new List<string> { "Accept" },
+                Name = "Process2",
+                ParentId = new List<string>() { "2" },
+                _Shape = "Process",
+                _Width = 100,
+                _Height = 60,
+                _Color = "#6CA0DC"
+            },
+            new ItemInfo()
+            {
+                Id = "5",
+                Name = "End",
+                ParentId = new List<string> { "4"},
+                _Shape = "Terminator",
+                _Width = 100,
+                _Height = 50,
+                _Color = "#6CA0DC"
+            },
+    };
+
+    public class ItemInfo
+    {
+        public string Name { get; set; }
+        public string Id { get; set; }
+        public List<string> Label { get; set; }
+        public List<string> ParentId { get; set; }
+        public string _Shape { get; set; }
+        public double _Width { get; set; }
+        public double _Height { get; set; }
+        public string _Color { get; set; }
+    }
+}

@@ -1,0 +1,37 @@
+﻿@page "/DisplacementOfConnectorAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors { get; set; }
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+        {
+            SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "#6BA5D7"
+            },
+            Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+                new PathAnnotation()
+                {
+                    Content = "After",
+                    // Set the displacement to the annotation.
+                    Displacement = new DiagramPoint() { X = 50, Y = 50 },
+                    Alignment = AnnotationAlignment.After
+                },
+            }
+        };
+        connectors.Add(connector);
+    }
+}

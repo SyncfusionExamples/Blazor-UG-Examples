@@ -1,0 +1,38 @@
+﻿@page "/CustomGridline"
+<h3>customgridline</h3>
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@nodes">
+    @* Initialize the diagram snapping the custom interval *@
+    <SnapSettings Constraints="SnapConstraints.All">
+        <HorizontalGridLines SnapIntervals="@SnapInterval">
+        </HorizontalGridLines>
+        <VerticalGridLines SnapIntervals="@SnapInterval">
+        </VerticalGridLines>
+    </SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Sets the snapinterval...
+    private double[] SnapInterval { get; set; } = new double[]
+    {
+        10
+    };
+    //Initialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node diagramNode = new Node();
+        diagramNode.OffsetX = 100;
+        diagramNode.OffsetY = 100;
+        diagramNode.Width = 100;
+        diagramNode.Height = 100;
+        diagramNode.Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" };
+        diagramNode.ID = "node1";
+        nodes.Add(diagramNode);
+    }
+}

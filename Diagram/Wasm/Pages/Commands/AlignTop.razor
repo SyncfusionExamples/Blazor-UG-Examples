@@ -1,0 +1,55 @@
+﻿@page "/AlignTop"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Top" OnClick="@OnAlignTop" />
+<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent diagram;
+    // Initialize diagram's node collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+   
+    protected override void OnInitialized()
+    {
+        Node node1 = new Node()
+        {
+            ID = "node1",
+            Width = 50,
+            Height = 30,
+            OffsetX = 500,
+            OffsetY = 100,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
+        nodes.Add(node1);
+        Node node2 = new Node()
+        {
+            ID = "node2",
+            Width = 60,
+            Height = 40,
+            OffsetX = 500,
+            OffsetY = 300,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
+        nodes.Add(node2);
+        Node node3 = new Node()
+        {
+            ID = "node3",
+            Width = 70,
+            Height = 50,
+            OffsetX = 500,
+            OffsetY = 500,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        };
+        nodes.Add(node3);
+    }
+
+    //Method to align selected objects at the top of selection boundary.
+    private void OnAlignTop()
+    {
+        diagram.SetAlign(AlignmentOptions.Top);
+    }
+}

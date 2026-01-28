@@ -1,0 +1,39 @@
+﻿@page "/DiagramRotateEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Nodes="@NodeCollection" RotationChanging="OnRotationChanging"
+                    RotationChanged="OnRotationChanged">
+</SfDiagramComponent>
+
+@code
+{
+    //Initailize the diagram's nodes collection
+    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            OffsetX = 100,
+            OffsetY = 200,
+            Height = 100,
+            Width = 100,
+            ID = "node",
+        };
+        NodeCollection.Add(node);
+    }
+
+    //Event to notify while rotating the elements in the diagram.
+    private void OnRotationChanging(RotationChangingEventArgs args)
+    {
+        //sets true to cancel the element's resizing
+        args.Cancel = true;
+    }
+
+    //Event to notify once element's rotate angle has changed in the diagram'.
+    private void OnRotationChanged(RotationChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

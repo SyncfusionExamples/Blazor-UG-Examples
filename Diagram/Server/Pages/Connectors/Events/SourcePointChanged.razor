@@ -1,0 +1,48 @@
+﻿@page "/SourcePointChanged"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="Diagram" Width="1000px" SourcePointChanging="@OnSourcePointChanging" SourcePointChanged="@OnSourcePointChanged" 
+                    Height="500px" Connectors="@connectors" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram.
+    private SfDiagramComponent Diagram;
+    //Initialize the diagram's connectors collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    //Initialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint()
+            {
+                X = 200,
+                Y = 200
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 300,
+                Y = 400,
+            }
+        };
+        connectors.Add(Connector);
+    }
+
+    //Notify the source point changing event before the source point change.
+    private void OnSourcePointChanging(EndPointChangingEventArgs args)
+    {
+        //Set true to cancel the source point change.
+        args.Cancel = true;
+    }
+
+    // Notify the source point changed event after the source point has changed.
+    private void OnSourcePointChanged(EndPointChangedEventArgs args)
+    {
+        //Action to be performed.
+    }
+}

@@ -1,0 +1,45 @@
+﻿@page "/UpdateOffsetofConnectorAnnotation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors" />
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors;
+
+    protected override void OnInitialized()
+    {
+        connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
+        {
+            SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
+            TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new TextStyle() { StrokeColor = "#6495ED" },
+            Annotations = new DiagramObjectCollection<PathAnnotation>()
+            {
+                new PathAnnotation
+                {
+                    Content = "Offset as 0",
+                    // Sets the offset of the annotation as 0.
+                    Offset = 0
+                },
+                new PathAnnotation
+                {
+                    Content = "Offset as 0.5",
+                    // Sets the offset of the annotation as 0.5.
+                    Offset = 0.5
+                },
+                new PathAnnotation
+                {
+                    Content = "Offset as 1",
+                    // Sets the offset of the annotation as 1.
+                    Offset = 1
+                },
+            }
+        };
+        connectors.Add(connector);
+    }
+}

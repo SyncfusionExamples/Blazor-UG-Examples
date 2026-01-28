@@ -1,0 +1,45 @@
+﻿@page "/AnnotationConstraints"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Initialize the diagram with NodeCollection *@
+<SfDiagramComponent Height="600px" Nodes="@nodes" />
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Initialize the NodeCollection.
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+        };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation()
+            {
+                ID="annotation1",
+                Content="Annotation Text Wrapping",
+                // Sets the Constraints for Annotation...
+                Constraints=AnnotationConstraints.ReadOnly,
+                Style= new TextStyle()
+                {
+                    Color="#000000",
+                    Fill="Transparent",
+                    FontFamily="TimesNewRoman",
+                    FontSize=12,
+                    Bold=true,
+                    Italic=true
+                },
+            }
+        };
+        nodes.Add(node);
+    }
+}

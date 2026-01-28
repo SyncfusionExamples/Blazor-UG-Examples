@@ -1,0 +1,53 @@
+﻿@page "/SwimlaneHeaderCustomization"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Swimlanes="@SwimlaneCollections" NodeCreating="@OnNodeCreating" />
+
+@code
+{
+    //Define diagram's swimlane collection
+    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+
+    protected override void OnInitialized()
+    {
+        // A swimlane is created and stored in the swimlanes collection.
+        Swimlane swimlane = new Swimlane()
+        {
+            Header = new SwimlaneHeader()
+            {
+                Annotation = new ShapeAnnotation()
+                {
+                    Content = "SALES PROCESS FLOW CHART",
+                    Style = new TextStyle() { Color = "White", FontSize = 12, Bold = true, Italic = true, TextDecoration = TextDecoration.Underline }
+                },
+                Height = 50,
+                Style = new TextStyle()
+                {
+                    Fill = "teal"
+                }
+            },
+            OffsetX = 400,
+            OffsetY = 200,
+            Height = 150,
+            Width = 450,
+        };
+        // Add swimlane
+        SwimlaneCollections.Add(swimlane);
+    }
+
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        if (obj is Swimlane swimlane)
+        {
+            foreach (Phase phase in swimlane.Phases)
+            {
+                phase.Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
+            }
+            foreach (Lane lane in swimlane.Lanes)
+            {
+                lane.Header.Style = new TextStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+﻿@page "/ScrollLimit"
+@using Syncfusion.Blazor.Diagram
+
+
+<SfDiagramComponent Height="600px">
+    <ScrollSettings @bind-ScrollLimit="@scrollLimit"></ScrollSettings>
+</SfDiagramComponent>
+
+@code
+{
+    private ScrollLimitMode scrollLimit { get; set; } = ScrollLimitMode.Infinity;
+}

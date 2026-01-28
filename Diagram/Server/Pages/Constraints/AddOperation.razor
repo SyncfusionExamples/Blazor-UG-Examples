@@ -1,0 +1,11 @@
+﻿@page "/AddOperation"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Constraints="@diagramConstraint" />
+
+@code
+{
+    //To adding line routing constraint with default contraints.
+    private DiagramConstraints diagramConstraint = DiagramConstraints.Default | DiagramConstraints.Bridging;
+}

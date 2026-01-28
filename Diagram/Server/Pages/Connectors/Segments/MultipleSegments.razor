@@ -1,0 +1,45 @@
+﻿@page "/MultipleSegments"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector connector1 = new Connector()
+        {
+            ID = "Connector1",
+            Type = ConnectorSegmentType.Orthogonal,
+            SourcePoint = new DiagramPoint()
+            {
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint() { X = 300, Y = 200 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new OrthogonalSegment
+                {
+                    Length = 100,
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Right
+                },
+                new OrthogonalSegment
+                {
+                    Length = 100,
+                    Type = ConnectorSegmentType.Orthogonal,
+                    Direction = Direction.Bottom
+                }
+            },
+        };
+        //Add the connector into connectors' collection.
+        connectors.Add(connector1);
+    }
+}

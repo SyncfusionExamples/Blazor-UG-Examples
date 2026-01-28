@@ -1,0 +1,31 @@
+﻿@page "/ConnectorZIndexProperty"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
+    <SnapSettings Constraints="@snapConstraints"></SnapSettings>
+</SfDiagramComponent>
+
+@code
+{
+    private SnapConstraints snapConstraints = SnapConstraints.None;
+    //Define the diagram's connector collection.
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Straight,
+            //Define the ZIndex property.
+            ZIndex = -2,
+        };
+        connectors.Add(Connector);
+    }
+}

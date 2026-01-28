@@ -1,0 +1,59 @@
+﻿@page "/UserHandleDisplacement"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Height="600px" Connectors="@connectors" SelectionSettings="@SelectedModel">
+</SfDiagramComponent>
+
+@code
+{
+    //Intialize diagram's connectors collection
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    // Defines diagram's SelectionSettings.
+    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    
+    protected override void OnInitialized()
+    {
+        //Creating the userhandle for cloning the objects.
+        UserHandle cloneHandle = new UserHandle()
+        {
+            //Name of the user handle.
+            Name = "clone",
+            //Set path data for userhandle.
+            PathData = "M60.3,18H27.5c-3,0-5.5,2.4-5.5,5.5v38.2h5.5V23.5h32.7V18z M68.5,28.9h-30c-3,0-5.5,2.4-5.5,5.5v38.2c0,3,2.4,5.5,5.5,5.5h30c3,0,5.5-2.4,5.5-5.5V34.4C73.9,31.4,71.5,28.9,68.5,28.9z M68.5,72.5h-30V34.4h30V72.5z",
+            //Set visibility for the user handle.
+            Visible = true,
+            //Set the position for the user handle.
+            Offset = 0,
+            //Set side based on the given offset.
+            Side = Direction.Bottom,
+            //Set displacement of the userhandle
+            Displacement = 50,
+            //Set margin for the user handle.
+            Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 },
+            //Set target of the userhandle
+            VisibleTarget = VisibleTarget.Connector,
+        };
+        //Add user handle to the collection.
+        UserHandles = new DiagramObjectCollection<UserHandle>()
+        {
+            cloneHandle
+        };
+        SelectedModel = new DiagramSelectionSettings()
+        {
+            //Enable userhandle for selected model.
+            Constraints = SelectorConstraints.All,
+            UserHandles = this.UserHandles,
+
+        };
+        Connector connector = new Connector()
+        {
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+        };
+        connectors.Add(connector);
+    }
+}

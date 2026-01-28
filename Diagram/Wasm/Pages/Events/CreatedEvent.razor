@@ -1,0 +1,31 @@
+﻿@page "/CreatedEvent"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" Created="OnCreated" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent Diagram;
+    //Initialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100
+        };
+        nodes.Add(node);
+    }
+
+    private void OnCreated(object args)
+    {
+        Diagram.Select(new ObservableCollection<IDiagramObject>() { Diagram.Nodes[0] });
+    }
+}

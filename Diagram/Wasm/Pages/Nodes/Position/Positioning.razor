@@ -1,0 +1,46 @@
+﻿@page "/Positioning"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+
+@code
+{
+    //Reference the diagram
+    private SfDiagramComponent diagram;
+    //Define diagram's nodes collection
+    private DiagramObjectCollection<Node> nodes;
+
+    protected override void OnInitialized()
+    {
+        //Intialize diagram's nodes collection
+
+        nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in nodes array.
+        Node node = new Node()
+        {
+            ID = "node",
+            // Position of the node
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+            // Pivot of the node
+            Pivot = new DiagramPoint() { X = 0, Y = 0 }
+        };
+        nodes.Add(node);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            //OnAfterRenderAsync will be triggered after the component rendered.
+            await Task.Delay(200);
+            diagram.Select(new ObservableCollection<IDiagramObject>() { diagram.Nodes[0] });
+        }
+    }
+}

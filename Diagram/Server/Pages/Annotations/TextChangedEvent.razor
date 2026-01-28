@@ -1,0 +1,42 @@
+﻿@page "/TextChangedEvent"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent TextChanging="@OnLabelTextChanging" Height="600px" TextChanged="OnTextChanged" Nodes="@nodes" />
+
+@code
+{
+    // Defines diagram's nodes collection.
+    private DiagramObjectCollection<Node> nodes;
+
+    // Triggered when the node and connector's labels change in the diagram.
+    private void OnLabelTextChanging(TextChangeEventArgs args)
+    {
+        args.Cancel = true;
+    }
+
+    // Triggered this event when complete the editing for Annotation and update the old text and new text values.
+    private void OnTextChanged(TextChangeEventArgs args)
+    {
+        Console.WriteLine("OldValue", args.OldValue);
+        Console.WriteLine("NewValue", args.NewValue);
+    }
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            Width = 100,
+            Height = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
+        };
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation { Content = "Annotation" }
+        };
+        nodes.Add(node);
+    }
+}

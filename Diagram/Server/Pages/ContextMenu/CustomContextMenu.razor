@@ -1,0 +1,84 @@
+﻿@page "/CustomContextMenu"
+
+@using Syncfusion.Blazor.Diagram
+@using System.Collections.ObjectModel
+
+<SfDiagramComponent @ref="diagram" Height="600px" Width="90%" @bind-Nodes="nodes" @bind-Connectors="connectors">
+    <ContextMenuSettings Show="true" ShowCustomMenuOnly="false" Items="@Items">
+    </ContextMenuSettings>
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent diagram;
+    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Connector> connectors;
+    private List<ContextMenuItem> Items;
+
+    protected override void OnInitialized()
+    {
+        nodes = new DiagramObjectCollection<Node>();
+        connectors = new DiagramObjectCollection<Connector>();
+
+        Items = new List<ContextMenuItem>()
+        {
+            new ContextMenuItem()
+            {
+                Text = "Save As...",
+                ID = "save",
+                IconCss = "e-save",
+            },
+            new ContextMenuItem()
+            {
+                Text = "Delete",
+                ID = "delete",
+                IconCss = "e-delete"
+            }
+        };
+
+        Node node1 = new Node()
+        {
+            ID = "node1",
+            Height = 100,
+            Width = 100,
+            OffsetX = 100,
+            OffsetY = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeColor = "white",
+                StrokeWidth = 1
+            }
+        };
+        Node node2 = new Node()
+        {
+            ID = "node2",
+            Height = 100,
+            Width = 100,
+            OffsetX = 300,
+            OffsetY = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeColor = "white",
+                StrokeWidth = 1
+            }
+        };
+        nodes.Add(node1);
+        nodes.Add(node2);
+
+        Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            Type = ConnectorSegmentType.Straight,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6BA5D7",
+                StrokeWidth = 2
+            }
+        };
+        connectors.Add(connector1);
+    }
+}
