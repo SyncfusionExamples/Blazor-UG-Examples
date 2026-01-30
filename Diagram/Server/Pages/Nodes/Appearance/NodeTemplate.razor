@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent @ref="diagram" Width="1200px" Height="1000px" Nodes="@nodes">
+<SfDiagramComponent @ref="_diagram" Width="1200px" Height="1000px" Nodes="@_nodes">
     <DiagramTemplates>
         <NodeTemplate>
             @{
@@ -51,13 +51,13 @@
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Define diaram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             Width = 137,
@@ -67,12 +67,12 @@
             ID = "html1",
             Shape = new Shape() { Type = NodeShapes.HTML },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnClick()
     {
-        nodes[0].BackgroundColor = "cornflowerblue";
+        _nodes[0].BackgroundColor = "cornflowerblue";
         StateHasChanged();
     }
 }

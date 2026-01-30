@@ -6,12 +6,12 @@
 @inject IJSRuntime js
 
 <SfButton Content="Clone Node" OnClick="@CloneNodeMethod" />
-<SfDiagramComponent @ref="diagram" Width="50%" Height="500px" @bind-Nodes="NodeCollection" />
+<SfDiagramComponent @ref="_diagram" Width="50%" Height="500px" @bind-Nodes="_nodeCollection" />
 
 @functions
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -31,24 +31,24 @@
             },
             Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Process }
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
     }
 
-    public async Task CloneNodeMethod()
+    private async Task CloneNodeMethod()
     {
-        Node node = NodeCollection[0].Clone() as Node;
+        Node node = _nodeCollection[0].Clone() as Node;
         node.ID = RandomId();
         node.OffsetX += 25;
         node.OffsetY += 25;
-        await diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { node });
+        await _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { node });
     }
 
-    internal string RandomId()
+    private string RandomId()
     {
         Random random = new Random();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 #pragma warning disable CA5394 // Do not use insecure randomness
-        return new string(Enumerable.Repeat(chars, 5)
+        return new string(Enumerable.Repeat(Chars, 5)
           .Select(s => s[random.Next(s.Length)]).ToArray());
 #pragma warning restore CA5394 // Do not use insecure randomness
     }

@@ -5,16 +5,16 @@
 
 <SfButton Content="Remove Node" OnClick="@RemoveNodes" />
 
-<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Defines diagram's Node collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -27,12 +27,12 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void RemoveNodes()
     {
         // Remove Node at runtime
-        nodes.Remove(nodes[0]);
+        _nodes.Remove(_nodes[0]);
     }
 }

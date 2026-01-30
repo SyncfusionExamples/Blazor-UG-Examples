@@ -2,18 +2,18 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" NodeCreating="@NodeCreating" />
+<SfDiagramComponent Height="600px" @ref="_diagram" Nodes="@_nodes" NodeCreating="@NodeCreating" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node1 = new Node()
         {
@@ -31,8 +31,8 @@
             // Shape of the Node
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse }
         };
-        nodes.Add(node1);
-        nodes.Add(node2);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
     }
 
     //Method to define nodecreating event

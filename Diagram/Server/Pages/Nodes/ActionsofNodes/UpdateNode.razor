@@ -5,18 +5,18 @@
 
 <SfButton Content="Update Node" OnClick="@UpdateNodes" />
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Defines diagram's node collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -28,15 +28,15 @@
             Height = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Method to Update node's width and height at runtime
-    private async void UpdateNodes()
+    private async Task UpdateNodes()
     {
-        Diagram.BeginUpdate();
-        Diagram.Nodes[0].Width = 50;
-        Diagram.Nodes[0].Height = 50;
-        await Diagram.EndUpdateAsync();
+        _diagram.BeginUpdate();
+        _diagram.Nodes[0].Width = 50;
+        _diagram.Nodes[0].Height = 50;
+        await _diagram.EndUpdateAsync();
     }
 }
