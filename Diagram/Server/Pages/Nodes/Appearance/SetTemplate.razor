@@ -4,16 +4,16 @@
 @using System.Collections.ObjectModel
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@nodes" SetNodeTemplate="@SetNodeTemplate" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SetNodeTemplate="@SetNodeTemplate" />
 
 @code
 {
     // Initialize node collection with node
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
         {
             ID = "node1",
@@ -34,8 +34,8 @@
             OffsetX = 300,
             OffsetY = 100,
         };
-        nodes.Add(node1);
-        nodes.Add(node2);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
     }
 
     //SetNode Template method
@@ -51,27 +51,27 @@
             column1.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column1.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column1.Children = new ObservableCollection<CommonElement>();
-            column1.Children.Add(getTextElement("Events"));
+            column1.Children.Add(GetTextElement("Events"));
 
             StackPanel column2 = new StackPanel();
             column2.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column2.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column2.Children = new ObservableCollection<CommonElement>();
-            column2.Children.Add(getTextElement("Emails"));
+            column2.Children.Add(GetTextElement("Emails"));
             column2.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
 
             StackPanel column3 = new StackPanel();
             column3.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column3.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column3.Children = new ObservableCollection<CommonElement>();
-            column3.Children.Add(getTextElement("Calls"));
+            column3.Children.Add(GetTextElement("Calls"));
             column3.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
 
             StackPanel column4 = new StackPanel();
             column4.Margin = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column4.Padding = new DiagramThickness() { Bottom = 10, Left = 10, Right = 10, Top = 10 };
             column4.Children = new ObservableCollection<CommonElement>();
-            column4.Children.Add(getTextElement("Smart contents"));
+            column4.Children.Add(GetTextElement("Smart contents"));
             column4.Style = new ShapeStyle() { Fill = "#6F409F", StrokeColor = "#6F409F" };
 
             table.Orientation = Orientation.Vertical;
@@ -86,7 +86,7 @@
         return null;
     }
 
-    private TextElement getTextElement(string text)
+    private TextElement GetTextElement(string text)
     {
         TextElement textElement = new TextElement();
         textElement.Width = 60;
