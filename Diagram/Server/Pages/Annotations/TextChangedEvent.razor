@@ -2,12 +2,12 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent TextChanging="@OnLabelTextChanging" Height="600px" TextChanged="@OnTextChanged" Nodes="@_nodes" />
+<SfDiagramComponent TextChanging="@OnLabelTextChanging" Height="600px" TextChanged="OnTextChanged" Nodes="@nodes" />
 
 @code
 {
     // Defines diagram's nodes collection.
-    private DiagramObjectCollection<Node> _nodes;
+    private DiagramObjectCollection<Node> nodes;
 
     // Triggered when the node and connector's labels change in the diagram.
     private void OnLabelTextChanging(TextChangeEventArgs args)
@@ -24,7 +24,7 @@
 
     protected override void OnInitialized()
     {
-        _nodes = new DiagramObjectCollection<Node>();
+        nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             Width = 100,
@@ -37,6 +37,6 @@
         {
             new ShapeAnnotation { Content = "Annotation" }
         };
-        _nodes.Add(node);
+        nodes.Add(node);
     }
 }
