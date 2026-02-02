@@ -1,12 +1,12 @@
 ﻿@page "/PhaseHeader"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Swimlanes="@SwimlaneCollections" NodeCreating="@OnNodeCreating" />
+<SfDiagramComponent Height="600px" Swimlanes="@_swimlaneCollections" NodeCreating="@OnNodeCreating" />
 
 @code
 {
     //Define diagram's swimlane collection
-    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> _swimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
@@ -40,12 +40,12 @@
             }
         };
         // Add swimlane
-        SwimlaneCollections.Add(swimlane);
+        _swimlaneCollections.Add(swimlane);
     }
 
-    private void OnNodeCreating(IDiagramObject obj)
+    private void OnNodeCreating(IDiagramObject diagramObject)
     {
-        if (obj is Swimlane swimlane)
+        if (diagramObject is Swimlane swimlane)
         {
             swimlane.Header.Style = new TextStyle()
             {

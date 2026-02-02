@@ -1,7 +1,7 @@
 ﻿@page "/PhaseHeaderTemplate"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Swimlanes="@SwimlaneCollections">
+<SfDiagramComponent Height="600px" Swimlanes="@_swimlaneCollections">
     <DiagramTemplates>
         <AnnotationTemplate>
             @if (context is Annotation annotation)
@@ -27,7 +27,7 @@
 @code
 {
     //Define diagram's swimlane collection.
-    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> _swimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
@@ -66,22 +66,6 @@
             }
         };
         // Add swimlane.
-        SwimlaneCollections.Add(swimlane);
-    }
-
-    private void OnNodeCreating(IDiagramObject obj)
-    {
-        if (obj is Swimlane swimlane)
-        {
-            swimlane.Header.Style = new TextStyle()
-            {
-                Fill = "#5b9bd5",
-                StrokeColor = "#5b9bd5"
-            };
-            foreach (Lane lane in swimlane.Lanes)
-            {
-                lane.Header.Style = new TextStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
-            }
-        }
+        _swimlaneCollections.Add(swimlane);
     }
 }
