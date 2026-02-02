@@ -2,16 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             // Position of the node
@@ -20,7 +20,11 @@
             // Size of the node
             Width = 100,
             Height = 100,
-            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
+            Shape = new BasicShape() 
+            { 
+                Type = NodeShapes.Basic, 
+                Shape = NodeBasicShapes.Ellipse 
+            },
             Style = new ShapeStyle()
             {
                 Fill = "37909A#",
@@ -42,6 +46,6 @@
             },
         };
         // Add node
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

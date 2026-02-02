@@ -2,9 +2,9 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Width="1200px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <DataSourceSettings ID="Id" ParentID="Manager" DataSource="DataSource"> </DataSourceSettings>
-    <Layout Type="LayoutType.HierarchicalTree" HorizontalSpacing="@HorizontalSpacing" VerticalSpacing="@VerticalSpacing">
+<SfDiagramComponent Height="600px" Width="1200px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <DataSourceSettings ID="Id" ParentID="Manager" DataSource="_dataSource"> </DataSourceSettings>
+    <Layout Type="LayoutType.HierarchicalTree" HorizontalSpacing="@_horizontalSpacing" VerticalSpacing="@_verticalSpacing">
     </Layout>
     <SnapSettings>
         <HorizontalGridLines LineColor="white" LineDashArray="2,2">
@@ -16,12 +16,8 @@
 
 @code
 {
-    private int left = 40;
-    private int top = 50;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    private int HorizontalSpacing = 40;
-    private int VerticalSpacing = 40;
+    private int _horizontalSpacing = 40;
+    private int _verticalSpacing = 40;
 
     private void OnNodeCreating(IDiagramObject obj)
     {
@@ -37,7 +33,12 @@
             }
         };
         //Initializing the default node's shape style.
-        node.Style = new ShapeStyle() { Fill = "darkcyan", StrokeWidth = 3, StrokeColor = "Black" };
+        node.Style = new ShapeStyle() 
+        { 
+            Fill = "darkcyan", 
+            StrokeWidth = 3, 
+            StrokeColor = "Black" 
+        };
     }
 
     private void OnConnectorCreating(IDiagramObject connector)
@@ -54,7 +55,7 @@
         public string Color { get; set; }
     }
 
-    public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
+    public List<HierarchicalDetails> _dataSource = new List<HierarchicalDetails>()
     {
         new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
         new HierarchicalDetails()   { Id= "1", Role= "General Manager", Manager= "parent", ChartType= "right", Color= "#71AF17" },

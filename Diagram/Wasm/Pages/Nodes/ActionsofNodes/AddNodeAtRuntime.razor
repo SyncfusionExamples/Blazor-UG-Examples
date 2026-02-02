@@ -3,17 +3,19 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
+
 <SfButton Content="Add Node" OnClick="@AddNode" />
-<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
+    private int _count = 1;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -25,23 +27,22 @@
             Height = 100,
             Style = new ShapeStyle() { Fill = "#6495ED" }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
-
     //Method to add node at runtime
     private void AddNode()
     {
-        Node NewNode = new Node()
+        Node newNode = new Node()
         {
-            ID = "node2",
+            ID = "node" + ++_count,
             // Position of the node
             OffsetX = 450,
-            OffsetY = 450,
+            OffsetY = 250,
             // Size of the node
             Width = 100,
             Height = 100,
             Style = new ShapeStyle() { Fill = "#6495ED" }
         };
-        nodes.Add(NewNode);
+        _nodes.Add(newNode);
     }
 }
