@@ -3,14 +3,14 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -26,11 +26,11 @@
             Shape = new ImageShape()
             {
                 Type = NodeShapes.Image,
-                Source = "/diagram/images/productmanager.png",
+                Source = "https://cdn.syncfusion.com/content/images/company-logos/Syncfusion_Logo_Image.png",
                 Scale = DiagramScale.Meet,
                 ImageAlign = ImageAlignment.XMinYMax
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

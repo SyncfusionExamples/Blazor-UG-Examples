@@ -3,12 +3,12 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@nodes"></SfDiagramComponent>
+<SfDiagramComponent Height="600px" Nodes="@_nodes"></SfDiagramComponent>
 
 @code
 {
     //Initialize node collection with node
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -29,6 +29,6 @@
             },
             Style = new ShapeStyle() { StrokeColor = "White" }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

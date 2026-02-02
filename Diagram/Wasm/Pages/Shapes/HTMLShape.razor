@@ -1,0 +1,87 @@
+﻿@page "/HTMLShape"
+
+@using Syncfusion.Blazor.Diagram
+
+@* Add a Namespace for a Syncfusion<sup style="font-size:70%">&reg;</sup> control used in Diagrm HTML node *@
+@using Syncfusion.Blazor.CircularGauge
+
+@* Initialize Diagram with node template *@
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
+    <DiagramTemplates>
+        <NodeTemplate>
+            @{
+                <SfCircularGauge Width="300px" Height="300px">
+                    <CircularGaugeAxes>
+                        <CircularGaugeAxis StartAngle="210" EndAngle="150" Minimum="0" Maximum="120" Radius="80%">
+                            <CircularGaugeAxisLineStyle Width="10" Color="transparent">
+                            </CircularGaugeAxisLineStyle>
+                            <CircularGaugeAxisLabelStyle UseRangeColor="false">
+                                <CircularGaugeAxisLabelFont Size="12px" FontFamily="Roboto" FontStyle="Regular">
+                                </CircularGaugeAxisLabelFont>
+                            </CircularGaugeAxisLabelStyle>
+                            <CircularGaugeAxisMajorTicks Height="10" Offset="5" UseRangeColor="false">
+                            </CircularGaugeAxisMajorTicks>
+                            <CircularGaugeAxisMinorTicks Height="0" Width="0" UseRangeColor="false">
+                            </CircularGaugeAxisMinorTicks>
+                            <CircularGaugeAnnotations>
+                                <CircularGaugeAnnotation Radius="30%" Angle="0" ZIndex="1" Content="Speedometer">
+                                    <ContentTemplate>
+                                        <div><span style="font-size:14px; color:#9E9E9E; font-family:Regular; margin-left: -33px">Speedometer</span></div>
+                                    </ContentTemplate>
+                                </CircularGaugeAnnotation>
+                                <CircularGaugeAnnotation Radius="40%" Angle="180" ZIndex="1" Content="65 MPH">
+                                    <ContentTemplate>
+                                        <div><span style="font-size:20px; color:#424242; font-family:Regular; margin-left: -33px">65 MPH</span></div>
+                                    </ContentTemplate>
+                                </CircularGaugeAnnotation>
+                            </CircularGaugeAnnotations>
+                            <CircularGaugeRanges>
+                                <CircularGaugeRange Start="0" End="40" Color="#30B32D" StartWidth="10" EndWidth="10" RoundedCornerRadius="0">
+                                </CircularGaugeRange>
+                                <CircularGaugeRange Start="40" End="80" Color="#FFDD00" StartWidth="10" EndWidth="10" RoundedCornerRadius="0">
+                                </CircularGaugeRange>
+                                <CircularGaugeRange Start="80" End="120" Color="#F03E3E" StartWidth="10" EndWidth="10" RoundedCornerRadius="0">
+                                </CircularGaugeRange>
+                            </CircularGaugeRanges>
+                            <CircularGaugePointers>
+                                <CircularGaugePointer Value="65" Radius="60%" PointerWidth="8">
+                                    <CircularGaugePointerAnimation Enable="true"></CircularGaugePointerAnimation>
+                                    <CircularGaugeCap Radius="7">
+                                    </CircularGaugeCap>
+                                    <CircularGaugeNeedleTail Length="18%">
+                                    </CircularGaugeNeedleTail>
+                                </CircularGaugePointer>
+                            </CircularGaugePointers>
+                        </CircularGaugeAxis>
+                    </CircularGaugeAxes>
+                </SfCircularGauge>
+            }
+        </NodeTemplate>
+    </DiagramTemplates>
+</SfDiagramComponent>
+
+@code
+{
+    //Initialize node collection with node
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            //Size of the node
+            Width = 300,
+            Height = 300,
+            //Position of the node
+            OffsetX = 400,
+            OffsetY = 300,
+            //sets the type of the shape as HTML
+            Shape = new Shape()
+            {
+                Type = NodeShapes.HTML,
+            }
+        };
+        _nodes.Add(node);
+    }
+}
