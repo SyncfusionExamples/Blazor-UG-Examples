@@ -2,23 +2,23 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="diagram" Height="600px" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
+<SfDiagramComponent @ref="_diagram" Height="600px" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
     <RulerSettings>
         <HorizontalRuler></HorizontalRuler>
         <VerticalRuler></VerticalRuler>
     </RulerSettings>
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource">
     </DataSourceSettings>
-    <Layout Type="LayoutType.MindMap" @bind-Orientation="SelectedOrientation" GetBranch="GetBranch" HorizontalSpacing="50">
+        <Layout Type="LayoutType.MindMap" @bind-Orientation="@_selectedOrientation" GetBranch="GetBranch" HorizontalSpacing="50">
         <LayoutMargin Top="20" Left="20"></LayoutMargin>
     </Layout>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent? diagram;
-    private LayoutOrientation SelectedOrientation { get; set; } = LayoutOrientation.Vertical;
-    private List<OrientationItem> LayoutOrientationOptions { get; set; } = new()
+    private SfDiagramComponent? _diagram;
+    private LayoutOrientation _selectedOrientation { get; set; } = LayoutOrientation.Vertical;
+    private List<OrientationItem> _layoutOrientationOptions { get; set; } = new()
     {
         new OrientationItem { Text = "Vertical", Value = LayoutOrientation.Vertical },
         new OrientationItem { Text = "Horizontal", Value = LayoutOrientation.Horizontal },
@@ -51,7 +51,7 @@
     // Method triggered by button click at runtime to set diagram orientation to vertical.
     private void ChangeLayoutOrientation()
     {
-       diagram.Layout.Orientation = LayoutOrientation.Vertical;
+       _diagram?.Layout.Orientation = LayoutOrientation.Vertical;
     }
 
     private void OnNodeCreating(IDiagramObject obj)

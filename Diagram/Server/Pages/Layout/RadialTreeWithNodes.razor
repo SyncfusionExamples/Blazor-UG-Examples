@@ -16,18 +16,18 @@
 
 <div id="diagram-space">
     <br />
-    <SfDiagramComponent @ref="diagram" Width="1200px" Height="800px" @bind-Nodes="@nodes" @bind-Connectors="@connectors" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
-        <Layout Type="LayoutType.RadialTree" HorizontalSpacing="40" VerticalSpacing="40" Root="@root">
+    <SfDiagramComponent @ref="_diagram" Width="1200px" Height="800px" @bind-Nodes="@_nodes" @bind-Connectors="@_connectors" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
+        <Layout Type="LayoutType.RadialTree" HorizontalSpacing="40" VerticalSpacing="40" Root="@_root">
         </Layout>
     </SfDiagramComponent>
 </div>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private string root = "node1";
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent? _diagram;
+    private string _root = "node1";
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {
@@ -41,46 +41,38 @@
             };
             nodes.Add(node1);
         }
-        Connector connector1 = new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node2", };
-        connectors.Add(connector1);
-
-        Connector connector2 = new Connector() { ID = "connector2", SourceID = "node1", TargetID = "node3", };
-        connectors.Add(connector2);
-
-        Connector connector3 = new Connector() { ID = "connector3", SourceID = "node1", TargetID = "node4", };
-        connectors.Add(connector3);
-
-        Connector connector4 = new Connector() { ID = "connector4", SourceID = "node2", TargetID = "node5", };
-        connectors.Add(connector4);
-
-        Connector connector5 = new Connector() { ID = "connector5", SourceID = "node3", TargetID = "node6", };
-        connectors.Add(connector5);
-
-        Connector connector6 = new Connector() { ID = "connector6", SourceID = "node4", TargetID = "node7", };
-        connectors.Add(connector6);
-
-        Connector connector7 = new Connector() { ID = "connector7", SourceID = "node1", TargetID = "node8", };
-        connectors.Add(connector7);
-
-        Connector connector8 = new Connector() { ID = "connector8", SourceID = "node8", TargetID = "node9", };
-        connectors.Add(connector8);
-        Connector connector9 = new Connector() { ID = "connector9", SourceID = "node2", TargetID = "node10", };
-        connectors.Add(connector9);
-        Connector connector10 = new Connector() { ID = "connector10", SourceID = "node3", TargetID = "node11", };
-        connectors.Add(connector10);
-        Connector connector11 = new Connector() { ID = "connector11", SourceID = "node4", TargetID = "node12", };
-        connectors.Add(connector11);
-        Connector connector12 = new Connector() { ID = "connector12", SourceID = "node8", TargetID = "node13", };
-        connectors.Add(connector12);
-        Connector connector13 = new Connector() { ID = "connector13", SourceID = "node2", TargetID = "node14", };
-        connectors.Add(connector13);
-        Connector connector14 = new Connector() { ID = "connector14", SourceID = "node3", TargetID = "node15", };
-        connectors.Add(connector14);
-        Connector connector15 = new Connector() { ID = "connector15", SourceID = "node4", TargetID = "node16", };
-        connectors.Add(connector15);
-        Connector connector16 = new Connector() { ID = "connector16", SourceID = "node8", TargetID = "node17", };
-        connectors.Add(connector16);
-
+        Connector connector1 = new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node2" };
+        _connectors.Add(connector1);
+        Connector connector2 = new Connector() { ID = "connector2", SourceID = "node1", TargetID = "node3" };
+        _connectors.Add(connector2);
+        Connector connector3 = new Connector() { ID = "connector3", SourceID = "node1", TargetID = "node4" };
+        _connectors.Add(connector3);
+        Connector connector4 = new Connector() { ID = "connector4", SourceID = "node2", TargetID = "node5" };
+        _connectors.Add(connector4);
+        Connector connector5 = new Connector() { ID = "connector5", SourceID = "node3", TargetID = "node6" };
+        _connectors.Add(connector5);
+        Connector connector6 = new Connector() { ID = "connector6", SourceID = "node4", TargetID = "node7" };
+        _connectors.Add(connector6);
+        Connector connector7 = new Connector() { ID = "connector7", SourceID = "node1", TargetID = "node8" };
+        _connectors.Add(connector7);
+        Connector connector8 = new Connector() { ID = "connector8", SourceID = "node8", TargetID = "node9" };
+        _connectors.Add(connector8);
+        Connector connector9 = new Connector() { ID = "connector9", SourceID = "node2", TargetID = "node10" };
+        _connectors.Add(connector9);
+        Connector connector10 = new Connector() { ID = "connector10", SourceID = "node3", TargetID = "node11" };
+        _connectors.Add(connector10);
+        Connector connector11 = new Connector() { ID = "connector11", SourceID = "node4", TargetID = "node12" };
+        _connectors.Add(connector11);
+        Connector connector12 = new Connector() { ID = "connector12", SourceID = "node8", TargetID = "node13" };
+        _connectors.Add(connector12);
+        Connector connector13 = new Connector() { ID = "connector13", SourceID = "node2", TargetID = "node14" };
+        _connectors.Add(connector13);
+        Connector connector14 = new Connector() { ID = "connector14", SourceID = "node3", TargetID = "node15" };
+        _connectors.Add(connector14);
+        Connector connector15 = new Connector() { ID = "connector15", SourceID = "node4", TargetID = "node16" };
+        _connectors.Add(connector15);
+        Connector connector16 = new Connector() { ID = "connector16", SourceID = "node8", TargetID = "node17" };
+        _connectors.Add(connector16);
     }
 
     private void NodeCreating(IDiagramObject obj)
