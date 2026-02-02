@@ -3,16 +3,16 @@
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <DataSourceSettings ID="Id" ParentID="ReportingPerson" DataSource="@DataSource"></DataSourceSettings>
-    <Layout Type="LayoutType.ComplexHierarchicalTree" LinearArrangement="false" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+    <DataSourceSettings ID="Id" ParentID="ReportingPerson" DataSource="@_dataSource"></DataSourceSettings>
+    <Layout Type="LayoutType.ComplexHierarchicalTree" LinearArrangement="false" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-VerticalSpacing="@_verticalSpacing">
     </Layout>
 </SfDiagramComponent>
 
 @code
 {
     //Initializing layout.
-    private int HorizontalSpacing = 40;
-    private int VerticalSpacing = 50;
+    private int _horizontalSpacing = 40;
+    private int _verticalSpacing = 50;
 
     //Creates node with some default values.
     private void OnNodeCreating(IDiagramObject obj)
@@ -43,7 +43,7 @@
         public List<string> ReportingPerson { get; set; }
     }
 
-    public object DataSource = new List<object>()
+    private object _dataSource = new List<object>()
     {
         new ComplexHierarchical() { Id= "node11" },
         new ComplexHierarchical() { Id= "node12", ReportingPerson= new List<string>(){"node114" }},
