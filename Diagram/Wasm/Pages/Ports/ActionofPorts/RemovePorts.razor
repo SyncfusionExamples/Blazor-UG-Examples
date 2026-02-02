@@ -4,17 +4,17 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="RemovePorts" OnClick="@RemovePort" />
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         // A node is created and stored in nodes array.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             // Position of the node
@@ -39,12 +39,12 @@
                 }
             },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Method to remove ports at runtime
     private void RemovePort()
     {
-        (nodes[0].Ports as DiagramObjectCollection<PointPort>).RemoveAt(0);
+        (_nodes[0].Ports as DiagramObjectCollection<PointPort>).RemoveAt(0);
     }
 }

@@ -4,17 +4,17 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="AddPorts" OnClick="@AddPorts" />
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //A node is created and stored in nodes array
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             //Position of the node
@@ -25,7 +25,7 @@
             Height = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Method to add ports at runtime.
@@ -36,9 +36,9 @@
         PointPort port3 = new PointPort() { ID = "port3", Offset = new DiagramPoint() { X = 0.5, Y = 0 }, Visibility = PortVisibility.Visible, Style = new ShapeStyle() { Fill = "gray" } };
         PointPort port4 = new PointPort() { ID = "port4", Offset = new DiagramPoint() { X = 0.5, Y = 1 }, Visibility = PortVisibility.Visible, Style = new ShapeStyle() { Fill = "gray" } };
         // Initialize port collection
-        nodes[0].Ports.Add(port1);
-        nodes[0].Ports.Add(port2);
-        nodes[0].Ports.Add(port3);
-        nodes[0].Ports.Add(port4);
+        _nodes[0].Ports.Add(port1);
+        _nodes[0].Ports.Add(port2);
+        _nodes[0].Ports.Add(port3);
+        _nodes[0].Ports.Add(port4);
     }
 }

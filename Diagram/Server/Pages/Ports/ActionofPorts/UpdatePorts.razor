@@ -4,14 +4,14 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Update Port" OnClick="@UpdatePort" />
-<SfDiagramComponent @ref="diagram" Height="600px" Nodes="@nodes" />
+<SfDiagramComponent @ref="_diagram" Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
@@ -19,7 +19,7 @@
         DiagramObjectCollection<PointPort> ports = new DiagramObjectCollection<PointPort>();
         ports.Add(new PointPort() { ID = "port", Offset = new DiagramPoint() { X = 0, Y = 0.5 }, Visibility = PortVisibility.Visible });
         // A node is created and stored in nodes array
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             // Position of the node
@@ -31,15 +31,15 @@
             Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "white" },
             Ports = ports
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private async void UpdatePort()
     {
         //update ports at run time
-        diagram.BeginUpdate();
-        nodes[0].Ports[0].Offset.X = 1;
-        nodes[0].Ports[0].Offset.Y = 1;
-        await diagram.EndUpdateAsync();
+        _diagram.BeginUpdate();
+        _nodes[0].Ports[0].Offset.X = 1;
+        _nodes[0].Ports[0].Offset.Y = 1;
+        await _diagram.EndUpdateAsync();
     }
 }

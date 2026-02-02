@@ -2,14 +2,14 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // Create a dictionary to hold additional information for the port.
         Dictionary<string, object> PortInfo = new Dictionary<string, object>();
         PortInfo.Add("portInfo", "Port A");
@@ -35,6 +35,6 @@
             Ports = new DiagramObjectCollection<PointPort> { port }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
