@@ -3,24 +3,24 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="diagram" Height="600px" Width="90%" @bind-Nodes="nodes" @bind-Connectors="connectors">
-    <ContextMenuSettings Show="true" ShowCustomMenuOnly="false" Items="@Items">
+<SfDiagramComponent @ref="_diagram" Height="600px" Width="90%" @bind-Nodes="_nodes" @bind-Connectors="_connectors">
+    <ContextMenuSettings Show="true" ShowCustomMenuOnly="false" Items="@_items">
     </ContextMenuSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes;
-    private DiagramObjectCollection<Connector> connectors;
-    private List<ContextMenuItem> Items;
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes;
+    private DiagramObjectCollection<Connector> _connectors;
+    private List<ContextMenuItem> _items;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
-        connectors = new DiagramObjectCollection<Connector>();
+        _nodes = new DiagramObjectCollection<Node>();
+        _connectors = new DiagramObjectCollection<Connector>();
 
-        Items = new List<ContextMenuItem>()
+        _items = new List<ContextMenuItem>()
         {
             new ContextMenuItem()
             {
@@ -64,8 +64,8 @@
                 StrokeWidth = 1
             }
         };
-        nodes.Add(node1);
-        nodes.Add(node2);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
 
         Connector connector1 = new Connector()
         {
@@ -79,6 +79,6 @@
                 StrokeWidth = 2
             }
         };
-        connectors.Add(connector1);
+        _connectors.Add(connector1);
     }
 }

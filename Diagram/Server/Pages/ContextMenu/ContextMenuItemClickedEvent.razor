@@ -2,8 +2,8 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="diagram" Height="600px" Nodes="NodeCollection" Connectors="ConnectorCollection">
-    <ContextMenuSettings Show="true" Items="contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="OnContextMenuOpen"
+<SfDiagramComponent @ref="_diagram" Height="600px" Nodes="_nodeCollection" Connectors="_connectorCollection">
+    <ContextMenuSettings Show="true" Items="_contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="OnContextMenuOpen"
                          ContextMenuItemClicked="ContextMenuItemClickHandler">
     </ContextMenuSettings>
 </SfDiagramComponent>
@@ -11,10 +11,10 @@
 @code
 {
     // Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Diagram collections
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectorCollection = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -49,8 +49,8 @@
             }
         };
 
-        NodeCollection.Add(node1);
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node1);
+        _nodeCollection.Add(node2);
 
         // Connector
         Connector connector1 = new Connector()
@@ -65,11 +65,11 @@
             }
         };
 
-        ConnectorCollection.Add(connector1);
+        _connectorCollection.Add(connector1);
     }
 
     // Context menu items
-    private List<ContextMenuItem> contextMenuItemModels = new List<ContextMenuItem>()
+    private List<ContextMenuItem> _contextMenuItemModels = new List<ContextMenuItem>()
     {
         new ContextMenuItem()
         {
@@ -95,9 +95,9 @@
 
     private void OnContextMenuOpen(DiagramMenuOpeningEventArgs arg)
     {
-        if (diagram.SelectionSettings.Nodes.Count > 0)
+        if (_diagram.SelectionSettings.Nodes.Count > 0)
         {
-            Node node = diagram.SelectionSettings.Nodes[0];
+            Node node = _diagram.SelectionSettings.Nodes[0];
             if (node.ID == "node1" || node.ID == "node2")
             {
                 foreach (ContextMenuItem item in arg.Items)
@@ -110,9 +110,9 @@
             }
         }
 
-        if (diagram.SelectionSettings.Connectors.Count > 0)
+        if (_diagram.SelectionSettings.Connectors.Count > 0)
         {
-            Connector connector = diagram.SelectionSettings.Connectors[0];
+            Connector connector = _diagram.SelectionSettings.Connectors[0];
             if (connector.ID == "connector1")
             {
                 foreach (ContextMenuItem item in arg.Items)
@@ -131,19 +131,19 @@
         switch (arg.Item.Text)
         {
             case "Red":
-                diagram.SelectionSettings.Nodes[0].Style.Fill = "Red";
+                _diagram.SelectionSettings.Nodes[0].Style.Fill = "Red";
                 break;
 
             case "Yellow":
-                diagram.SelectionSettings.Nodes[0].Style.Fill = "Yellow";
+                _diagram.SelectionSettings.Nodes[0].Style.Fill = "Yellow";
                 break;
 
             case "Black":
-                diagram.SelectionSettings.Connectors[0].Style.StrokeColor = "Black";
+                _diagram.SelectionSettings.Connectors[0].Style.StrokeColor = "Black";
                 break;
 
             case "Pink":
-                diagram.SelectionSettings.Connectors[0].Style.StrokeColor = "Pink";
+                _diagram.SelectionSettings.Connectors[0].Style.StrokeColor = "Pink";
                 break;
         }
     }

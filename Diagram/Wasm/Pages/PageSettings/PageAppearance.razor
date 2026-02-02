@@ -2,10 +2,10 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="nodes">
+<SfDiagramComponent Height="600px" Nodes="_nodes">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
     @*Initialize the page settings with page orientation and break lines*@
-    <PageSettings Height="200" Width="200" Orientation="@orientation" MultiplePage="true" ShowPageBreaks="true">
+    <PageSettings Height="200" Width="200" Orientation="@_orientation" MultiplePage="true" ShowPageBreaks="true">
         @*Set the page background color*@
         <BackgroundStyle Background="LightGreen" />
         <PageMargin Left="10" Top="10" Bottom="10" />
@@ -14,9 +14,9 @@
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Set the page orientation as landscape.
-    private PageOrientation orientation = PageOrientation.Landscape;
+    private PageOrientation _orientation = PageOrientation.Landscape;
 
     protected override void OnInitialized()
     {
@@ -33,6 +33,6 @@
                 StrokeColor = "white"
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }   
 }

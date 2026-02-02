@@ -5,31 +5,31 @@
 
 <input type="checkbox" @onchange="@CustomMenuOnlyHandler"> Show CustomMenu Only
 <br />
-<SfDiagramComponent @ref="diagram" Height="600px" Width="90%" @bind-Nodes="nodes" @bind-Connectors="connectors">
-    <ContextMenuSettings @bind-Show="@show" @bind-ShowCustomMenuOnly="customMenuOnly" @bind-Items="@Items">
+<SfDiagramComponent @ref="_diagram" Height="600px" Width="90%" @bind-Nodes="_nodes" @bind-Connectors="_connectors">
+    <ContextMenuSettings @bind-Show="@_show" @bind-ShowCustomMenuOnly="_customMenuOnly" @bind-Items="@_items">
     </ContextMenuSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Define diagram nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
     //Define diagram connectors collection
-    private DiagramObjectCollection<Connector> connectors;
-    private List<ContextMenuItem> Items;
-    private bool customMenuOnly = false;
-    private bool show = true;
+    private DiagramObjectCollection<Connector> _connectors;
+    private List<ContextMenuItem> _items;
+    private bool _customMenuOnly = false;
+    private bool _show = true;
 
     protected override void OnInitialized()
     {
         //Initialize the diagram nodes collection
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         //Initialize the diagram connectors collection
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
 
-        Items = new List<ContextMenuItem>()
+        _items = new List<ContextMenuItem>()
         {
             new ContextMenuItem()
             {
@@ -73,8 +73,8 @@
                 StrokeWidth = 1
             }
         };
-        nodes.Add(node1);
-        nodes.Add(node2);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
 
         Connector connector1 = new Connector()
         {
@@ -88,18 +88,18 @@
                 StrokeWidth = 2
             }
         };
-        connectors.Add(connector1);
+        _connectors.Add(connector1);
     }
 
     private void CustomMenuOnlyHandler(ChangeEventArgs args)
     {
         if ((bool)args.Value)
         {
-            customMenuOnly = true;
+            _customMenuOnly = true;
         }
         else
         {
-            customMenuOnly = false;
+            _customMenuOnly = false;
         }
     }
 }

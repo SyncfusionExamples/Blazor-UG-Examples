@@ -2,19 +2,19 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection">
-    <ContextMenuSettings Show="true" Items="@contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="@OnContextMenuOpen">
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodeCollection" Connectors="@_connectorCollection">
+    <ContextMenuSettings Show="true" Items="@_contextMenuItemModels" ShowCustomMenuOnly="true" ContextMenuOpening="@OnContextMenuOpen">
     </ContextMenuSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Defines diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     //Defines diagram's connector collection
-    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectorCollection = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -48,8 +48,8 @@
             }
         };
         //Add node into node's collection
-        NodeCollection.Add(node1);
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node1);
+        _nodeCollection.Add(node2);
 
         Connector connector1 = new Connector()
         {
@@ -63,10 +63,10 @@
                 StrokeWidth = 2
             }
         };
-        ConnectorCollection.Add(connector1);
+        _connectorCollection.Add(connector1);
     }
 
-    List<ContextMenuItem> contextMenuItemModels = new List<ContextMenuItem>()
+    List<ContextMenuItem> _contextMenuItemModels = new List<ContextMenuItem>()
     {
         new ContextMenuItem()
         {
@@ -95,11 +95,11 @@
     // Event to notify context menu opening
     private void OnContextMenuOpen(DiagramMenuOpeningEventArgs arg)
     {
-        if (diagram.SelectionSettings.Nodes.Count > 0)
+        if (_diagram.SelectionSettings.Nodes.Count > 0)
         {
             arg.HiddenItems.Add("Connector");
         }
-        if (diagram.SelectionSettings.Connectors.Count > 0)
+        if (_diagram.SelectionSettings.Connectors.Count > 0)
         {
             arg.HiddenItems.Add("Node");
         }
