@@ -5,17 +5,15 @@
 <SfDiagramComponent Width="1000px" Height="500px">
     @* Customizes the appearance of the gridlines *@
     <SnapSettings GridType="GridType.Dots">
-        <HorizontalGridLines LineColor="Blue" @bind-LineIntervals="@HInterval" 
-                             @bind-DotIntervals="@HDotInterval"></HorizontalGridLines>
-        <VerticalGridLines LineColor="Blue" @bind-LineIntervals="@VInterval" 
-                           @bind-DotIntervals="@VDotInterval"></VerticalGridLines>
+        <HorizontalGridLines LineColor="Blue" @bind-LineIntervals="@_hInterval" @bind-DotIntervals="@_hDotInterval"></HorizontalGridLines>
+        <VerticalGridLines LineColor="Blue" @bind-LineIntervals="@_vInterval" @bind-DotIntervals="@_vDotInterval"></VerticalGridLines>
     </SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private double[] HDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20 };
-    private double[] VDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20, 1, 20, 1, 20 };
-    private double[] HInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
-    private double[] VInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
+    private double[] _hDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20 };
+    private double[] _vDotInterval { get; set; } = new double[] { 3, 20, 1, 20, 1, 20, 1, 20, 1, 20 };
+    private double[] _hInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
+    private double[] _vInterval { get; set; } = new double[] { 1.25, 18.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75, 0.25, 19.75 };
 }

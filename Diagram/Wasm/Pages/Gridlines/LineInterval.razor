@@ -6,9 +6,9 @@
 <SfDiagramComponent Height="600px">
     @* Customize the appearance of the grid lines *@
     <SnapSettings Constraints="SnapConstraints.ShowLines">
-        <HorizontalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@Interval">
+        <HorizontalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@_interval">
         </HorizontalGridLines>
-        <VerticalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@Interval">
+        <VerticalGridLines LineColor="blue" LineDashArray="2,2" LineIntervals="@_interval">
         </VerticalGridLines>
     </SnapSettings>
 </SfDiagramComponent>
@@ -16,7 +16,7 @@
 @code
 {
     //Sets the line intervals for the gridlines
-    private double[] Interval { get; set; } = new double[]
+    private double[] _interval { get; set; } = new double[]
     {
         1.25, 14, 0.25, 15, 0.25, 15, 0.25, 15, 0.25, 15
     };

@@ -2,12 +2,12 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
     @* Initialize the diagram snapping the custom interval *@
     <SnapSettings Constraints="SnapConstraints.All">
-        <HorizontalGridLines SnapIntervals="@SnapInterval">
+        <HorizontalGridLines SnapIntervals="@_snapInterval">
         </HorizontalGridLines>
-        <VerticalGridLines SnapIntervals="@SnapInterval">
+        <VerticalGridLines SnapIntervals="@_snapInterval">
         </VerticalGridLines>
     </SnapSettings>
 </SfDiagramComponent>
@@ -15,15 +15,15 @@
 @code
 {
     //Sets the snapinterval...
-    private double[] SnapInterval { get; set; } = new double[]
+    private double[] _snapInterval { get; set; } = new double[]
     {
         10
     };
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node();
         diagramNode.OffsetX = 100;
         diagramNode.OffsetY = 100;
@@ -31,6 +31,6 @@
         diagramNode.Height = 100;
         diagramNode.Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" };
         diagramNode.ID = "node1";
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 }

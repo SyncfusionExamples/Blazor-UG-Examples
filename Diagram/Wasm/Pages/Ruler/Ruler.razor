@@ -2,13 +2,13 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@diagram" Height="600px" >
-	<RulerSettings>
-        <HorizontalRuler  IsVisible="true" Interval="@RulerInterval" 
-                            TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
+<SfDiagramComponent @ref="@_diagram" Height="600px">
+    <RulerSettings>
+        <HorizontalRuler IsVisible="true" Interval="@_rulerInterval"
+                         TickAlignment="@_rulerTickAlignment" MarkerColor="@_rulerMarkerColor">
         </HorizontalRuler>
-        <VerticalRuler IsVisible="false"  Interval="@RulerInterval" 
-                        TickAlignment="@RulerTickAlignment" MarkerColor="@RulerMarkerColor">
+        <VerticalRuler IsVisible="false" Interval="@_rulerInterval"
+                       TickAlignment="@_rulerTickAlignment" MarkerColor="@_rulerMarkerColor">
         </VerticalRuler>
     </RulerSettings>
 </SfDiagramComponent>
@@ -16,13 +16,13 @@
 @code
 {
     //Reference to diagram.
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Defining Ruler Interval of Rulers
-    private int RulerInterval = 20;
+    private int _rulerInterval = 20;
     //Defining Tick Alignment of Rulers
-    private TickAlignment RulerTickAlignment = TickAlignment.RightAndBottom;
+    private TickAlignment _rulerTickAlignment = TickAlignment.RightAndBottom;
     //Defining Marker color of Rulers
-    private string RulerMarkerColor = "green";
+    private string _rulerMarkerColor = "green";
 }
 
 

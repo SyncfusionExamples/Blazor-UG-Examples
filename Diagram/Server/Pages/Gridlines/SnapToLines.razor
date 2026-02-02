@@ -2,20 +2,20 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes">
-    <SnapSettings Constraints="@snapConstraints"></SnapSettings>
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
+    <SnapSettings Constraints="@_snapConstraints"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Sets the snap constraints
-    private SnapConstraints snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToLines;
+    private SnapConstraints _snapConstraints = SnapConstraints.ShowLines | SnapConstraints.SnapToLines;
     //Intialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node();
         diagramNode.OffsetX = 100;
         diagramNode.OffsetY = 100;
@@ -23,6 +23,6 @@
         diagramNode.Height = 100;
         diagramNode.Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" };
         diagramNode.ID = "node1";
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 }
