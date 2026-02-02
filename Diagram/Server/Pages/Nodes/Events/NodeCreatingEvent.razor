@@ -2,16 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" NodeCreating="OnNodeCreating" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" NodeCreating="OnNodeCreating" />
 
 @code
 {
     // Define the node collection.
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         //  A node is created and stored in node collection.
         Node node = new Node()
         {
@@ -28,7 +28,7 @@
             }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     public void OnNodeCreating(IDiagramObject obj)

@@ -4,19 +4,19 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Drag" OnClick="@OnDrag" />
-<SfDiagramComponent @ref="@Diagram" Height="600px" Nodes="@nodes" />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes" />
 
 @code
 {
     // Reference of the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     // To define node collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
-        // A node is created and stored in nodes collection.
+        _nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in _nodes collection.
         Node node = new Node()
         {
             // Position of the node
@@ -28,12 +28,12 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnDrag()
     {
         // Drag the node
-        Diagram.Drag(Diagram.Nodes[0], 10, 10);
+        _diagram.Drag(_diagram.Nodes[0], 10, 10);
     }
 }

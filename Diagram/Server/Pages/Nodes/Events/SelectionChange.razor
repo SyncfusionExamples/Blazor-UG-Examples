@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionChanging="OnSelectionChanging" SelectionChanged="OnSelectionChanged" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SelectionChanging="OnSelectionChanging" SelectionChanged="OnSelectionChanged" />
 
 @code
 {
     // To define node collection.
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
-        // A node is created and stored in nodes collection.
+        _nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in _nodes collection.
         Node node = new Node()
         {
             // Position of the node.
@@ -29,7 +29,7 @@
             }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     // Event to notify the selection changing event before selecting/unselecting the diagram elements.
