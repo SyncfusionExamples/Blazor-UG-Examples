@@ -3,22 +3,22 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="DisableUndoRedo" OnClick="@DisableUndoRedo1" />
-<SfButton Content="EnableUndoRedo" OnClick="@EnableUndoRedo" />
+<SfButton Content="DisableUndoRedo" OnClick="@OnDisableUndoRedo" />
+<SfButton Content="EnableUndoRedo" OnClick="@OnEnableUndoRedo" />
 
 @* Initialize Diagram *@
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private string EventValue = string.Empty;
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private string _eventValue = string.Empty;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
 
         // A node is created and stored in the nodes collection.
         Node node = new Node()
@@ -33,18 +33,18 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
-    private void DisableUndoRedo1()
+    private void OnDisableUndoRedo()
     {
-        diagram.HistoryManager.CanRedo = false;
-        diagram.HistoryManager.CanUndo = false;
+        _diagram.HistoryManager.CanRedo = false;
+        _diagram.HistoryManager.CanUndo = false;
     }
 
-    private void EnableUndoRedo()
+    private void OnEnableUndoRedo()
     {
-        diagram.HistoryManager.CanRedo = false;
-        diagram.HistoryManager.CanUndo = false;
+        _diagram.HistoryManager.CanRedo = true;
+        _diagram.HistoryManager.CanUndo = true;
     }
 }

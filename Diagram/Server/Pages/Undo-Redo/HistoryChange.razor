@@ -3,18 +3,18 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent @ref="@diagram" Height="600px" HistoryChanged="@Onhistorychange">
+<SfDiagramComponent @ref="@_diagram" Height="600px" HistoryChanged="@OnHistoryChange">
 </SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent diagram;
+    // Reference the diagram.
+    private SfDiagramComponent _diagram;
 
-    //Onhistory change event
-    private void Onhistorychange(HistoryChangedEventArgs args)
+    // History change event.
+    private void OnHistoryChange(HistoryChangedEventArgs args)
     {
-        //causes of history change
-        HistoryChangedAction ActionTrigger = args.ActionTrigger;
+        // Causes of history change.
+        HistoryChangedAction actionTrigger = args.ActionTrigger;
     }
 }

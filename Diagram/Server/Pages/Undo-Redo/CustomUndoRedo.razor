@@ -6,19 +6,19 @@
 <SfButton Content="CustomEntry" OnClick="@OnCustomEntry" />
 
 @* Initialize Diagram *@
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
-    <DiagramHistoryManager Undo="@onCustomUndo" Redo="@onCustomRedo" />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
+    <DiagramHistoryManager Undo="@OnCustomUndo" Redo="@OnCustomRedo" />
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private string EventValue = string.Empty;
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private string _eventValue = string.Empty;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -32,26 +32,26 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnCustomEntry()
     {
         HistoryEntry entry = new HistoryEntry();
-        entry.UndoObject = diagram.Nodes[0];
-        diagram.AddHistoryEntry(entry);
+        entry.UndoObject = _diagram.Nodes[0];
+        _diagram.AddHistoryEntry(entry);
     }
 
-    private void onCustomUndo(HistoryEntryBase entry)
+    private void OnCustomUndo(HistoryEntryBase entry)
     {
         (entry.RedoObject) = entry.UndoObject.Clone() as Node;
         (entry.UndoObject as Node).AdditionalInfo[(entry.UndoObject as Node).ID] = "Start";
-        EventValue += "UndoObject:" + (entry.UndoObject as Node).AdditionalInfo[(entry.UndoObject as Node).ID];
+        _eventValue += "UndoObject:" + (entry.UndoObject as Node).AdditionalInfo[(entry.UndoObject as Node).ID];
     }
 
-    private void onCustomRedo(HistoryEntryBase entry)
+    private void OnCustomRedo(HistoryEntryBase entry)
     {
-        EventValue += "RedoObject:" + (entry.RedoObject as Node).AdditionalInfo[(entry.RedoObject as Node).ID];
+        _eventValue += "RedoObject:" + (entry.RedoObject as Node).AdditionalInfo[(entry.RedoObject as Node).ID];
         Node current = entry.UndoObject.Clone() as Node;
         (entry.UndoObject as Node).AdditionalInfo[(entry.UndoObject as Node).ID] = "Description";
         entry.RedoObject = current;
