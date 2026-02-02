@@ -4,12 +4,12 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="UpdateStyle" OnClick="@UpdateStyle" />
-<SfDiagramComponent @ref="@Diagram" Height="600px" Nodes="@nodes" />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@nodes" />
 
 @code
 {
     // Reference of the diagram.
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     // Defines diagram's node collection.
     private DiagramObjectCollection<Node> nodes;
 
@@ -48,10 +48,10 @@
     private void UpdateStyle()
     {
         // Change the style of the annotation.
-        Diagram.BeginUpdate();
-        Diagram.Nodes[0].Annotations[0].Style.Bold = false;
-        Diagram.Nodes[0].Annotations[0].Style.TextDecoration = TextDecoration.None;
-        Diagram.Nodes[0].Annotations[0].Style.Color = "Red";
-        Diagram.EndUpdateAsync();
+        _diagram.BeginUpdate();
+        _diagram.Nodes[0].Annotations[0].Style.Bold = false;
+        _diagram.Nodes[0].Annotations[0].Style.TextDecoration = TextDecoration.None;
+        _diagram.Nodes[0].Annotations[0].Style.Color = "Red";
+        _diagram.EndUpdateAsync();
     }
 }

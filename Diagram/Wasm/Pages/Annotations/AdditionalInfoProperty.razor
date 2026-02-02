@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // Create a dictionary to store additional information for the annotation.
-        Dictionary<string, object> AnnotationInfo = new Dictionary<string, object>();
-        AnnotationInfo.Add("author", "John Doe");
-        AnnotationInfo.Add("modifiedDate", DateTime.Now);
+        Dictionary<string, object> _annotationInfo = new Dictionary<string, object>();
+        _annotationInfo.Add("author", "John Doe");
+        _annotationInfo.Add("modifiedDate", DateTime.Now);
         // A node with an annotation containing additional information.
         Node node = new Node()
         {
@@ -32,11 +32,11 @@
                 new ShapeAnnotation
                 {
                     Content = "Annotated Node",
-                    AdditionalInfo = AnnotationInfo
+                    AdditionalInfo = _annotationInfo
                 }
             }
         };
         // Add the node to the collection.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
