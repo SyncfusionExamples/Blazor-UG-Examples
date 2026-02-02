@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" Nodes="@_nodes" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes;
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node = new Node()
         {
@@ -31,7 +31,7 @@
             MaxWidth = 200,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
 
