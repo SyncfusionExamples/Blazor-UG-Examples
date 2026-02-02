@@ -5,18 +5,18 @@
 
 <SfButton Content="AddConnector" OnClick="@AddConnector" />
 
-<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px" />
+<SfDiagramComponent @ref="_diagram" Nodes="@_nodes" Height="600px" />
 
 @code
 {
-    //Reference to diagram
-    private SfDiagramComponent diagram;
-    //Defines diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    // Reference to diagram
+    private SfDiagramComponent _diagram;
+    // Defines diagram's nodes collection
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "group",
@@ -37,15 +37,15 @@
             },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void AddConnector()
     {
         //To draw an object once, activate draw once
-        diagram.InteractionController = DiagramInteractions.DrawOnce;
+        _diagram.InteractionController = DiagramInteractions.DrawOnce;
         //Initialize the drawing object to draw the connectors
-        diagram.DrawingObject = new Connector()
+        _diagram.DrawingObject = new Connector()
         {
             ID = "connector1",
             Type = ConnectorSegmentType.Straight,

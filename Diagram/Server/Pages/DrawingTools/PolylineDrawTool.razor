@@ -4,20 +4,20 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Polyline" OnClick="@Polyline" />
-<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px">
+<SfDiagramComponent @ref="_diagram" Nodes="@_nodes" Height="600px">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    //Reference to diagram
-    private SfDiagramComponent diagram;
-    //Defines diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    // Reference to diagram
+    private SfDiagramComponent _diagram;
+    // Defines diagram's nodes collection
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "group",
@@ -38,15 +38,15 @@
             },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
     
     private void Polyline()
     {
         //Draw an object once and activate the draw once.
-        diagram.InteractionController = DiagramInteractions.DrawOnce;
+        _diagram.InteractionController = DiagramInteractions.DrawOnce;
         //Initialize the drawing object to draw the polyline connector.
-        diagram.DrawingObject = new Connector()
+        _diagram.DrawingObject = new Connector()
         {
             ID = "connector1",
             Type = ConnectorSegmentType.Polyline,            
