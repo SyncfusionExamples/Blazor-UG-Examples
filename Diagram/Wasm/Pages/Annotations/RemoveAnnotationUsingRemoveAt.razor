@@ -4,18 +4,18 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Removelabel" OnClick="@RemoveLabel" />
-<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" Nodes="@_nodes" />
 
 @code
 {
     // Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Defines diagram's node collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             Width = 100,
@@ -28,12 +28,12 @@
         {
             new ShapeAnnotation {ID="label", Content = "Annotation" },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     // Method to remove labels at runtime
     private void RemoveLabel()
     {
-        (diagram.Nodes[0].Annotations as DiagramObjectCollection<ShapeAnnotation>).RemoveAt(0);
+        (_diagram.Nodes[0].Annotations as DiagramObjectCollection<ShapeAnnotation>).RemoveAt(0);
     }
 }

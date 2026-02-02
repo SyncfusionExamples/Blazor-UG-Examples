@@ -4,18 +4,18 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Updatelabel" OnClick="@UpdateLabel" />
-<SfDiagramComponent Height="600px" @ref="@diagram" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" Nodes="@_nodes" />
 
 @code
 {
     // Reference to diagram.
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Defines diagram's node collection.
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             Width = 100,
@@ -28,12 +28,12 @@
             OffsetY = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     // Method to update the annotation at runtime.
     private void UpdateLabel()
     {
-        diagram.Nodes[0].Annotations[0].Content = "Updated Annotation";
+        _diagram.Nodes[0].Annotations[0].Content = "Updated Annotation";
     }
 }
