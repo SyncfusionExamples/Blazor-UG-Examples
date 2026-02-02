@@ -3,14 +3,14 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection">
+<SfDiagramComponent Height="600px" Nodes="@_nodeCollection">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Initialize node collection with node
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>()
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>()
     {
          // Creates a path node
         new Node()

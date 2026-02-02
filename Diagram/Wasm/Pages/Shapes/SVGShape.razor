@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
     <DiagramTemplates>
         <NodeTemplate>
@@ -26,7 +26,7 @@
 @code
 {
     //Initialize node collection with node
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -42,6 +42,6 @@
             //Sets type of the shape as Native
             Shape = new Shape() { Type = NodeShapes.SVG },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
