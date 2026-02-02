@@ -7,11 +7,11 @@
 
 <div class="content-wrapper">
     <div class="col-lg-9 control-section" style="border-right: 1px solid #D7D7D7;height: 640px">
-            <div class="sb-mobile-diagram">
-            <SfDiagramComponent @ref="_diagram" Width="100%" Height="700px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
-                <ScrollSettings @bind-ScrollLimit="@_scrollLimit"></ScrollSettings>
-                <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource"> </DataSourceSettings>
-                <Layout @bind-Type="@_type" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-Orientation="@_orientationType" @bind-VerticalSpacing="@_verticalSpacing" FlowchartLayoutSettings="@_flowchartSettings">
+        <div class="sb-mobile-diagram">
+            <SfDiagramComponent @ref="Diagram" Width="100%" Height="700px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
+                <ScrollSettings @bind-ScrollLimit="@scrollLimit"></ScrollSettings>
+                <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
+                <Layout @bind-Type="@Type" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-Orientation="@OrientationType" @bind-VerticalSpacing="@VerticalSpacing" FlowchartLayoutSettings="@flowchartSettings">
 
                 </Layout>
                 <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
@@ -35,7 +35,7 @@
                         <div style="display: table-cell; vertical-align: middle">Orientation</div>
                     </div>
                     <div class="textboxstyle" style="padding-left:10px">
-                        <SfDropDownList @ref="@_expandDropDown" TValue="string" @bind-Value="@_orientation" TItem="Orientationvalue" Width="100%" DataSource="@_orientationOptions">
+                        <SfDropDownList @ref="@expandDropDown" TValue="string" @bind-Value="@orientation" TItem="Orientationvalue" Width="100%" DataSource="@Orientation">
                             <DropDownListEvents TValue="string" TItem="Orientationvalue" ValueChange="OrientationTypeChange"></DropDownListEvents>
                             <DropDownListFieldSettings Text="Value" Value="Text"></DropDownListFieldSettings>
                         </SfDropDownList>
@@ -46,7 +46,7 @@
                         <div style="display: table-cell; vertical-align: middle">Yes branch direction</div>
                     </div>
                     <div class="textboxstyle" style="padding-left:10px">
-                        <SfDropDownList @ref="@_expandDropDown1" TValue="string" @bind-Value="@_yesBranchDirection" TItem="BranchDirectionvalue" Width="100%" DataSource="@_branchDirection1">
+                        <SfDropDownList @ref="@expandDropDown1" TValue="string" @bind-Value="@yesBranchDirection" TItem="BranchDirectionvalue" Width="100%" DataSource="@BranchDirection1">
                             <DropDownListEvents TValue="string" TItem="BranchDirectionvalue" ValueChange="YesBranchDirectionChange"></DropDownListEvents>
                             <DropDownListFieldSettings Text="Value" Value="Text"></DropDownListFieldSettings>
                         </SfDropDownList>
@@ -57,7 +57,7 @@
                         <div style="display: table-cell; vertical-align: middle">No branch direction</div>
                     </div>
                     <div class="textboxstyle" style="padding-left:10px">
-                        <SfDropDownList @ref="@_expandDropDown2" TValue="string" @bind-Value="@_noBranchDirection" TItem="BranchDirectionvalue1" Width="100%" DataSource="@_branchDirection2">
+                        <SfDropDownList @ref="@expandDropDown2" TValue="string" @bind-Value="@noBranchDirection" TItem="BranchDirectionvalue1" Width="100%" DataSource="@BranchDirection2">
                             <DropDownListEvents TValue="string" TItem="BranchDirectionvalue1" ValueChange="NoBranchDirectionChange"></DropDownListEvents>
                             <DropDownListFieldSettings Text="Value" Value="Text"></DropDownListFieldSettings>
                         </SfDropDownList>
@@ -68,7 +68,7 @@
                         <div style="display: table-cell; vertical-align: middle">Horizontal spacing</div>
                     </div>
                     <div class="textboxstyle" style="padding-left:10px">
-                        <SfNumericTextBox TValue="int" Width="100%" @bind-Value="@_horizontalSpacing" Min="30" Max="1000" Step="10" Format="n0">
+                        <SfNumericTextBox TValue="int" Width="100%" @bind-Value="@HorizontalSpacing" Min="30" Max="1000" Step="10" Format="n0">
                             <NumericTextBoxEvents TValue="int" ValueChange="OnHorizontalSpacingChange"></NumericTextBoxEvents>
                         </SfNumericTextBox>
                     </div>
@@ -78,7 +78,7 @@
                         <div style="display: table-cell; vertical-align: middle">Vertical spacing</div>
                     </div>
                     <div class="textboxstyle" style="padding-left:10px">
-                        <SfNumericTextBox TValue="int" Width="100%" @bind-Value="@_verticalSpacing" Min="30" Max="1000" Step="10" Format="n0">
+                        <SfNumericTextBox TValue="int" Width="100%" @bind-Value="@VerticalSpacing" Min="30" Max="1000" Step="10" Format="n0">
                             <NumericTextBoxEvents TValue="int" ValueChange="OnVerticalSpacingChange"></NumericTextBoxEvents>
                         </SfNumericTextBox>
                     </div>
@@ -91,28 +91,28 @@
 @code
 {
     //Initialize flowchart layout settings.
-    private FlowchartLayoutSettings _flowchartSettings = new FlowchartLayoutSettings()
+    private FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
     {
         YesBranchDirection = BranchDirection.LeftInFlow,
         NoBranchDirection = BranchDirection.RightInFlow
     };
-    private ScrollLimitMode _scrollLimit { get; set; } = ScrollLimitMode.Diagram;
-    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private ScrollLimitMode scrollLimit { get; set; } = ScrollLimitMode.Diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
     //Initialize diagram component.
-    private SfDiagramComponent? _diagram;
-    private int? _hValue { get; set; } = 60;
-    private int? _vValue { get; set; } = 60;
-    private LayoutType _type = LayoutType.Flowchart;
-    private LayoutOrientation _orientationType = LayoutOrientation.TopToBottom;
-    private int _horizontalSpacing = 50;
-    private int _verticalSpacing = 50;
-    private string _orientation = "Vertical";
-    private SfDropDownList<string, Orientationvalue> _expandDropDown;
-    private SfDropDownList<string, BranchDirectionvalue> _expandDropDown1;
-    private SfDropDownList<string, BranchDirectionvalue1> _expandDropDown2;
-    private string _yesBranchDirection = "left";
-    private string _noBranchDirection = "right";
+    private SfDiagramComponent Diagram;
+    private int? HValue { get; set; } = 60;
+    private int? VValue { get; set; } = 60;
+    private LayoutType Type = LayoutType.Flowchart;
+    private LayoutOrientation OrientationType = LayoutOrientation.TopToBottom;
+    private int HorizontalSpacing = 50;
+    private int VerticalSpacing = 50;
+    private string orientation = "Vertical";
+    private SfDropDownList<string, Orientationvalue> expandDropDown;
+    private SfDropDownList<string, BranchDirectionvalue> expandDropDown1;
+    private SfDropDownList<string, BranchDirectionvalue1> expandDropDown2;
+    private string yesBranchDirection = "left";
+    private string noBranchDirection = "right";
 
     public class Orientationvalue
     {
@@ -120,10 +120,10 @@
         public string Value { get; set; }
     }
 
-    private List<Orientationvalue> _orientationOptions = new List<Orientationvalue>()
+    private List<Orientationvalue> Orientation = new List<Orientationvalue>()
     {
-        new Orientationvalue  { Text ="Horizontal",  Value= "Horizontal" },
-        new Orientationvalue  { Text = "Vertical", Value = "Vertical" },
+         new Orientationvalue  { Text ="Horizontal",  Value= "Horizontal" },
+         new Orientationvalue  { Text = "Vertical", Value = "Vertical" },
     };
 
     public class BranchDirectionvalue
@@ -138,27 +138,27 @@
         public string Value { get; set; }
     }
 
-    private List<BranchDirectionvalue> _branchDirection1 = new List<BranchDirectionvalue>()
+    private List<BranchDirectionvalue> BranchDirection1 = new List<BranchDirectionvalue>()
     {
-        new BranchDirectionvalue  { Text ="same",  Value= "Same as flow" },
-        new BranchDirectionvalue  { Text = "left", Value = "Left in flow" },
-        new BranchDirectionvalue  { Text = "right", Value = "Right in flow" },
+         new BranchDirectionvalue  { Text ="same",  Value= "Same as flow" },
+         new BranchDirectionvalue  { Text = "left", Value = "Left in flow" },
+         new BranchDirectionvalue  { Text = "right", Value = "Right in flow" },
     };
 
-    private List<BranchDirectionvalue1> _branchDirection2 = new List<BranchDirectionvalue1>()
+    private List<BranchDirectionvalue1> BranchDirection2 = new List<BranchDirectionvalue1>()
     {
-        new BranchDirectionvalue1  { Text ="same",  Value= "Same as flow" },
-        new BranchDirectionvalue1  { Text = "left", Value = "Left in flow" },
-        new BranchDirectionvalue1  { Text = "right", Value = "Right in flow" },
+         new BranchDirectionvalue1  { Text ="same",  Value= "Same as flow" },
+         new BranchDirectionvalue1  { Text = "left", Value = "Left in flow" },
+         new BranchDirectionvalue1  { Text = "right", Value = "Right in flow" },
     };
 
     private void OnDataLoaded(object obj)
     {
-        for (int i = 0; i < _diagram.Connectors.Count; i++)
+        for (int i = 0; i < Diagram.Connectors.Count; i++)
         {
-            Connector connector = _diagram.Connectors[i];
-            Node node = _diagram.GetObject(connector.TargetID) as Node;
-            Node srcNode = _diagram.GetObject(connector.SourceID) as Node;
+            Connector connector = Diagram.Connectors[i];
+            Node node = Diagram.GetObject(connector.TargetID) as Node;
+            Node srcNode = Diagram.GetObject(connector.SourceID) as Node;
 			if (node.Data != null && node.Data is ItemInfo itemInfo)
 			{
 				if (itemInfo.Label != null && itemInfo.Label.Count > 0)
@@ -218,7 +218,7 @@
     }
 
     //Initialize data source collection.
-    private List<ItemInfo> _dataSource = new List<ItemInfo>()
+    public List<ItemInfo> DataSource = new List<ItemInfo>()
     {
         new ItemInfo()
         {
@@ -317,22 +317,22 @@
 
     private void OrientationTypeChange(ChangeEventArgs<string, Orientationvalue> args)
     {
-        _orientationType = args.ItemData.Value == "Vertical" ? LayoutOrientation.TopToBottom : LayoutOrientation.LeftToRight;
+        OrientationType = args.ItemData.Value == "Vertical" ? LayoutOrientation.TopToBottom : LayoutOrientation.LeftToRight;
     }
 
     private void YesBranchDirectionChange(ChangeEventArgs<string, BranchDirectionvalue> args)
     {
         if (args.ItemData.Text == "same")
         {
-            _flowchartSettings.YesBranchDirection = BranchDirection.SameAsFlow;
+            flowchartSettings.YesBranchDirection = BranchDirection.SameAsFlow;
         }
         if (args.ItemData.Text == "left")
         {
-            _flowchartSettings.YesBranchDirection = BranchDirection.LeftInFlow;
+            flowchartSettings.YesBranchDirection = BranchDirection.LeftInFlow;
         }
         if (args.ItemData.Text == "right")
         {
-            _flowchartSettings.YesBranchDirection = BranchDirection.RightInFlow;
+            flowchartSettings.YesBranchDirection = BranchDirection.RightInFlow;
         }
     }
 
@@ -340,28 +340,28 @@
     {
         if (args.ItemData.Text == "same")
         {
-            _flowchartSettings.NoBranchDirection = BranchDirection.SameAsFlow;
+            flowchartSettings.NoBranchDirection = BranchDirection.SameAsFlow;
         }
         if (args.ItemData.Text == "left")
         {
-            _flowchartSettings.NoBranchDirection = BranchDirection.LeftInFlow;
+            flowchartSettings.NoBranchDirection = BranchDirection.LeftInFlow;
         }
         if (args.ItemData.Text == "right")
         {
-            _flowchartSettings.NoBranchDirection = BranchDirection.RightInFlow;
+            flowchartSettings.NoBranchDirection = BranchDirection.RightInFlow;
         }
     }
 
     private void OnHorizontalSpacingChange(Syncfusion.Blazor.Inputs.ChangeEventArgs<int> args)
     {
         int val = Convert.ToInt32(args.Value);
-        _horizontalSpacing = val;
+        HorizontalSpacing = val;
     }
 
     private void OnVerticalSpacingChange(Syncfusion.Blazor.Inputs.ChangeEventArgs<int> args)
     {
         int val = Convert.ToInt32(args.Value);
-        _verticalSpacing = val;
+        VerticalSpacing = val;
     }
 
 }

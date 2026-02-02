@@ -2,9 +2,9 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="_diagram" Width="100%" Height="700px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource"> </DataSourceSettings>
-<Layout Type="LayoutType.Flowchart" HorizontalSpacing="50" Orientation="LayoutOrientation.TopToBottom" VerticalSpacing="50" FlowchartLayoutSettings="@_flowchartSettings">
+<SfDiagramComponent @ref="Diagram" Width="100%" Height="700px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
+    <Layout Type="LayoutType.Flowchart" HorizontalSpacing="50" Orientation="LayoutOrientation.TopToBottom" VerticalSpacing="50" FlowchartLayoutSettings="@flowchartSettings">
     </Layout>
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
@@ -12,9 +12,9 @@
 @code
 {
     //Initialize diagram component.
-    private SfDiagramComponent? _diagram;
+    private SfDiagramComponent Diagram;
     //Initialize flowchart layout settings.
-    private FlowchartLayoutSettings _flowchartSettings = new FlowchartLayoutSettings()
+    private FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
     {
         YesBranchValues = new List<string> { "Accept", "Yes" },
         NoBranchValues = new List<string> { "Reject", "No" },
@@ -22,11 +22,11 @@
 
     private void OnDataLoaded(object obj)
     {
-        for (int i = 0; i < _diagram.Connectors.Count; i++)
+        for (int i = 0; i < Diagram.Connectors.Count; i++)
         {
-            Connector connector = _diagram.Connectors[i];
-            Node node = _diagram.GetObject(connector.TargetID) as Node;
-            Node srcNode = _diagram.GetObject(connector.SourceID) as Node;
+            Connector connector = Diagram.Connectors[i];
+            Node node = Diagram.GetObject(connector.TargetID) as Node;
+            Node srcNode = Diagram.GetObject(connector.SourceID) as Node;
 			if (node.Data != null && node.Data is ItemInfo itemInfo)
 			{
 				if (itemInfo.Label != null && itemInfo.Label.Count > 0)
@@ -85,7 +85,7 @@
         }
     }
     //Initialize data source collection.
-    private List<ItemInfo> _dataSource = new List<ItemInfo>()
+    public List<ItemInfo> DataSource = new List<ItemInfo>()
     {
             new ItemInfo()
             {
