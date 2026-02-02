@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" DrawingObject="DrawingObject"/>
+<SfDiagramComponent Height="600px" Nodes="@_nodes" DrawingObject="_drawingObject"/>
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
-    private IDiagramObject DrawingObject;
+    private DiagramObjectCollection<Node> _nodes;
+    private IDiagramObject _drawingObject;
     
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // Nodes are created and stored in nodes array.
         Node node1 = new Node()
         {
@@ -40,7 +40,7 @@
                 }
             },
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             // Position of the node.
@@ -67,8 +67,8 @@
                 }
             },
         };
-        nodes.Add(node2);
-        DrawingObject = new Connector()
+        _nodes.Add(node2);
+        _drawingObject = new Connector()
         {
             ID = "connector1",
             Type = ConnectorSegmentType.Bezier,
