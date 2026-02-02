@@ -3,16 +3,16 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     // Initialize the diagram's nodes collection.
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             // Position of the node.
@@ -29,6 +29,6 @@
                 ActivityType = BpmnActivityType.Task
             },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
