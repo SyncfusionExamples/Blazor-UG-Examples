@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Connectors="@connectors">
+<SfDiagramComponent Height="600px" Connectors="@_connectors">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>    
 </SfDiagramComponent>
 
 @code
 {
     //Define diagram's connector collection
-    private DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
         // A connector is created and stored in connectors collection.
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
 
         // Create an orthogonal connector
         Connector connector = new Connector()
@@ -51,6 +51,6 @@
                     StrokeWidth = 2
             }
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }
