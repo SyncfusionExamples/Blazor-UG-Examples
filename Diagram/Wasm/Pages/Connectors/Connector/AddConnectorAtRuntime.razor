@@ -4,28 +4,28 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Add Connector" OnClick="@AddConnector" />
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
 
 @code
 {
     //Defines diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
             TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
             Type = ConnectorSegmentType.Straight
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 
     private void AddConnector()
     {
-        Connector NewConnector = new Connector()
+        Connector newConnector = new Connector()
         {
             ID = "connector2",
             SourcePoint = new DiagramPoint() { X = 300, Y = 300 },
@@ -33,6 +33,6 @@
             Type = ConnectorSegmentType.Straight
         };
         //Add the connector at the runtime.
-        connectors.Add(NewConnector);
+        _connectors.Add(newConnector);
     }
 }

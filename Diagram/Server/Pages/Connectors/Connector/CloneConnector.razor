@@ -6,34 +6,34 @@
 @inject IJSRuntime js
 
 <SfButton Content="Clone Connector" OnClick="@CloneConnectors" />
-<SfDiagramComponent @ref="diagram" Width="50%" Height="500px" @bind-Connectors="@Connectors"></SfDiagramComponent>
+<SfDiagramComponent @ref="_diagram" Width="50%" Height="500px" @bind-Connectors="@_connectors"></SfDiagramComponent>
 
 @functions
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         Connector connector1 = new Connector() { ID = "connector1", SourcePoint = new DiagramPoint() { X = 100, Y = 10 }, TargetPoint = new DiagramPoint() { X = 200, Y = 100 }, Type = ConnectorSegmentType.Straight };
-        Connectors.Add(connector1);
+        _connectors.Add(connector1);
     }
 
     private async Task CloneConnectors()
     {
-        Connector connector = Connectors[0].Clone() as Connector;
+        Connector connector = _connectors[0].Clone() as Connector;
         connector.ID = RandomId();
         connector.SourcePoint = new DiagramPoint { X = 100, Y = 100 };
         connector.TargetPoint = new DiagramPoint { X = 200, Y = 100 };
-        await diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { connector });
+        await _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { connector });
     }
 
-    internal string RandomId()
+    private string RandomId()
     {
         Random random = new Random();
-        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+        const string Chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
 #pragma warning disable CA5394 // Do not use insecure randomness
-        return new string(Enumerable.Repeat(chars, 5)
+        return new string(Enumerable.Repeat(Chars, 5)
           .Select(s => s[random.Next(s.Length)]).ToArray());
 #pragma warning restore CA5394 // Do not use insecure randomness
     }

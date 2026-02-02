@@ -3,18 +3,18 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.Internal
 
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors" ConnectorSegmentThumb="@connectorSegmentThumb" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" ConnectorSegmentThumb="@_connectorSegmentThumb" />
 
 @code
 {
     //Define the diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     //Define the segment shape
-    private SegmentThumbSettings connectorSegmentThumb = new SegmentThumbSettings() { Shape = SegmentThumbShapes.Rectangle };
+    private SegmentThumbSettings _connectorSegmentThumb = new SegmentThumbSettings() { Shape = SegmentThumbShapes.Rectangle };
 
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "Connector",
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb | ConnectorConstraints.InheritSegmentThumbShape,
@@ -29,6 +29,6 @@
                 }
             },
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 }

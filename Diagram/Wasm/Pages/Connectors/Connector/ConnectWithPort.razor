@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Nodes="@nodes" Connectors="@connectors" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes" Connectors="@_connectors" />
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>()
+        _nodes = new DiagramObjectCollection<Node>()
         {
             new Node()
             {
@@ -57,7 +57,7 @@
                 Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
             }
         };
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "connector1",
             //Source node id of the connector.
@@ -84,6 +84,6 @@
             // Type of the connector.
             Type = ConnectorSegmentType.Straight,
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 }

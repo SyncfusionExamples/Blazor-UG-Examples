@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@connectors">
-    <SnapSettings Constraints="@snapConstraints"></SnapSettings>
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors">
+    <SnapSettings Constraints="@_snapConstraints"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private SnapConstraints snapConstraints = SnapConstraints.None;
+    private SnapConstraints _snapConstraints  = SnapConstraints.None;
     //Defines diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors  = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "connector1",
             // Set the source and target point of the connector.
@@ -23,6 +23,6 @@
             // Type of the connector segments.
             Type = ConnectorSegmentType.Straight
         };
-        connectors.Add(Connector);
+        _connectors .Add(connector);
     }
 }
