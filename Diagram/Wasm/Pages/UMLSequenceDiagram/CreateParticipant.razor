@@ -1,14 +1,14 @@
 ﻿@page "/CreateParticipant"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Height="600px" Model="@DiagramModel">
+<SfDiagramComponent @ref="_diagram" Height="600px" Model="@_diagramModel">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private UmlSequenceDiagramModel DiagramModel;
+    private SfDiagramComponent _diagram;
+    private UmlSequenceDiagramModel _diagramModel;
 
     protected override void OnInitialized()
     {
@@ -31,7 +31,7 @@
         };
 
         // Initialize the UML sequence diagram model
-        DiagramModel = new UmlSequenceDiagramModel()
+        _diagramModel = new UmlSequenceDiagramModel()
         {
             Participants = participants
         };

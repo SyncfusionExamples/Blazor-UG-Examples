@@ -1,14 +1,14 @@
 ﻿@page "/SpaceBetweenParticipants"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Height="600px" Model="@DiagramModel">
+<SfDiagramComponent @ref="_diagram" Height="600px" Model="@_diagramModel">
     <SnapSettings Constraints="SnapConstraints.None" />
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private UmlSequenceDiagramModel DiagramModel;
+    private SfDiagramComponent _diagram;
+    private UmlSequenceDiagramModel _diagramModel;
 
     protected override void OnInitialized()
     {
@@ -97,7 +97,7 @@
         };
 
         // Initialize UML Sequence Diagram model
-        DiagramModel = new UmlSequenceDiagramModel()
+        _diagramModel = new UmlSequenceDiagramModel()
         {
             SpaceBetweenParticipants = 200,
             Participants = participants,

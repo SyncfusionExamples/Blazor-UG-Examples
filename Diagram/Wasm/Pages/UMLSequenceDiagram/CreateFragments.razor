@@ -1,14 +1,14 @@
 ﻿@page "/CreateFragments"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Height="700px" Model="@DiagramModel">
+<SfDiagramComponent @ref="_diagram" Height="700px" Model="@_diagramModel">
     <SnapSettings Constraints="SnapConstraints.None" />
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private UmlSequenceDiagramModel DiagramModel;
+    private SfDiagramComponent _diagram;
+    private UmlSequenceDiagramModel _diagramModel;
 
     protected override void OnInitialized()
     {
@@ -85,7 +85,7 @@
         };
 
         // Assign model
-        DiagramModel = new UmlSequenceDiagramModel()
+        _diagramModel = new UmlSequenceDiagramModel()
         {
             SpaceBetweenParticipants = 300,
             Participants = participants,
