@@ -2,8 +2,8 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <Layout Type="LayoutType.HierarchicalTree" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" Connectors="@_connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <Layout Type="LayoutType.HierarchicalTree" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-VerticalSpacing="@_verticalSpacing">
     </Layout>
     <SnapSettings>
         <HorizontalGridLines LineColor="white" LineDashArray="2,2">
@@ -15,12 +15,12 @@
 
 @code 
 {
-    private int left = 40;
-    private int top = 50;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    private int HorizontalSpacing = 40;
-    private int VerticalSpacing = 40;
+    private int _left = 40;
+    private int _top = 50;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private int _horizontalSpacing = 40;
+    private int _verticalSpacing = 40;
 
     private void OnNodeCreating(IDiagramObject obj)
     {
@@ -40,17 +40,17 @@
     protected override void OnInitialized()
     {
         //Initializing node and connectors.
-        nodes = new DiagramObjectCollection<Node>()
+        _nodes = new DiagramObjectCollection<Node>()
         {
-            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Steve-Ceo" } } },
-            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Kevin-Manager" } } },
-            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Peter-Manager" } } },
-            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Jim-CSE" } } },
-            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Martin-CSE" } } },
-            new Node() { ID="node6", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "John-Manager" } } },
-            new Node() { ID="node7", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Mary-CSE" } } },
+            new Node() { ID = "node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Steve-Ceo" } } },
+            new Node() { ID = "node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Kevin-Manager" } } },
+            new Node() { ID = "node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Peter-Manager" } } },
+            new Node() { ID = "node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Jim-CSE" } } },
+            new Node() { ID = "node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Martin-CSE" } } },
+            new Node() { ID = "node6", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "John-Manager" } } },
+            new Node() { ID = "node7", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Mary-CSE" } } },
         };
-        connectors = new DiagramObjectCollection<Connector>()
+        _connectors = new DiagramObjectCollection<Connector>()
         {
             new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node2" },
             new Connector() { ID = "connector2", SourceID = "node1", TargetID = "node3" },
