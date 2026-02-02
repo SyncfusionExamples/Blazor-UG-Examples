@@ -3,35 +3,35 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.DropDowns
 
-<SfDropDownList TItem="FlipOption" TValue="string" DataSource="@FlipDirections" Placeholder="Flip">
+<SfDropDownList TItem="FlipOption" TValue="string" DataSource="@_flipDirections" Placeholder="Flip">
     <DropDownListEvents TItem="FlipOption" TValue="string" ValueChange="@FlipDirectionChange" />
     <DropDownListFieldSettings Text="Name" Value="Value"></DropDownListFieldSettings>
 </SfDropDownList>
 
-<SfDropDownList TItem="FlipOption" TValue="string" DataSource="@FlipModes" Placeholder="Flip">
+<SfDropDownList TItem="FlipOption" TValue="string" DataSource="@_flipModes" Placeholder="Flip">
     <DropDownListEvents TItem="FlipOption" TValue="string" ValueChange="@FlipModeChange" />
     <DropDownListFieldSettings Text="Name" Value="Value"></DropDownListFieldSettings>
 </SfDropDownList>
 
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="1000px" Nodes="@NodeCollection" Connectors="@connectors">
+<SfDiagramComponent @ref="@_diagram" Width="1000px" Height="1000px" Nodes="@_nodes" Connectors="@_connectors">
     <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    //Initialize the diagram's connector collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    //Reference the diagram
-    private SfDiagramComponent diagram;
-    //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection;
-     public class FlipOption
+    // Initialize the diagram's connector collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    // Reference the diagram.
+    private SfDiagramComponent _diagram;
+    // Define diagram's nodes collection.
+    private DiagramObjectCollection<Node> _nodes;
+     private class FlipOption
      {
          public string Name { get; set; } 
          public string Value { get; set; } // Bound value
      }
 
-     List<FlipOption> FlipDirections = new()
+     private List<FlipOption> _flipDirections = new List<FlipOption>()
      {
          new FlipOption { Name = "None", Value = "None" },
          new FlipOption { Name = "Horizontal", Value = "Horizontal" },
@@ -39,7 +39,7 @@
          new FlipOption { Name = "Both", Value = "Both" }
      };
 
-     List<FlipOption> FlipModes = new()
+     private List<FlipOption> _flipModes = new List<FlipOption>()
      {
          new FlipOption { Name = "None", Value = "None" },
          new FlipOption { Name = "Content", Value = "Content" },
@@ -125,7 +125,7 @@
                 }
             },
         };
-        NodeCollection = new DiagramObjectCollection<Node>() { node3, node4 };
+        _nodes = new DiagramObjectCollection<Node>() { node3, node4 };
         NodeGroup groupNode = new NodeGroup()
         {
             ID = "group",
@@ -150,41 +150,41 @@
                 }
             },
         };
-        NodeCollection.Add(groupNode);
+        _nodes.Add(groupNode);
     }
 
-    // This method applys flipDirection to the selected node's
+    // This method applies FlipDirection to the selected nodes.
     private void FlipDirectionChange(ChangeEventArgs<string, FlipOption> args)
      {
-         diagram.StartGroupAction();
+         _diagram.StartGroupAction();
 
-         if (diagram.SelectionSettings.Nodes.Count > 0)
+         if (_diagram.SelectionSettings.Nodes.Count > 0)
          {
-             for (int i = 0; i < diagram.SelectionSettings.Nodes.Count; i++)
+             for (int i = 0; i < _diagram.SelectionSettings.Nodes.Count; i++)
              {
-                 diagram.SelectionSettings.Nodes[i].Flip = (FlipDirection)Enum.Parse(typeof(FlipDirection), args.Value.ToString());
+                 _diagram.SelectionSettings.Nodes[i].Flip = (FlipDirection)Enum.Parse(typeof(FlipDirection), args.Value.ToString());
              }
          }
-         for (int i = 0; i < diagram.SelectionSettings.Connectors.Count; i++)
+         for (int i = 0; i < _diagram.SelectionSettings.Connectors.Count; i++)
          {
-             diagram.SelectionSettings.Connectors[i].Flip = (FlipDirection)Enum.Parse(typeof(FlipDirection), args.Value.ToString());
+             _diagram.SelectionSettings.Connectors[i].Flip = (FlipDirection)Enum.Parse(typeof(FlipDirection), args.Value.ToString());
          }
-         diagram.EndGroupAction();
+         _diagram.EndGroupAction();
      }
 
-     //This method apply's diagramFLipMode to the selected node's
+     // This method applies DiagramFlipMode to the selected nodes.
     private void FlipModeChange(ChangeEventArgs<string, FlipOption> args)
      {
-         diagram.StartGroupAction();
+         _diagram.StartGroupAction();
 
-         if (diagram.SelectionSettings.Nodes.Count > 0)
+         if (_diagram.SelectionSettings.Nodes.Count > 0)
          {
-             for (int i = 0; i < diagram.SelectionSettings.Nodes.Count; i++)
+             for (int i = 0; i < _diagram.SelectionSettings.Nodes.Count; i++)
              {
-                 diagram.SelectionSettings.Nodes[i].FlipMode = (DiagramFlipMode)Enum.Parse(typeof(DiagramFlipMode), args.Value.ToString());
+                 _diagram.SelectionSettings.Nodes[i].FlipMode = (DiagramFlipMode)Enum.Parse(typeof(DiagramFlipMode), args.Value.ToString());
              }
          }
 
-         diagram.EndGroupAction();
+         _diagram.EndGroupAction();
      }
 }
