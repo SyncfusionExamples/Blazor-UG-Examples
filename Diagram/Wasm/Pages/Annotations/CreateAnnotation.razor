@@ -2,18 +2,18 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" Connectors="@_connectors" />
 
 @code
 {
     // Defines diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> _connectors;
     // Defines diagram's node collection.
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             Width = 100,
@@ -27,7 +27,7 @@
                 new ShapeAnnotation { Content = "Node" }
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
         connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
         {
@@ -41,6 +41,6 @@
                 new PathAnnotation { Content = "Connector" }
             }
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }
