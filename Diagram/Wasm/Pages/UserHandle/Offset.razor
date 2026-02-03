@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
     <SnapSettings>
         <HorizontalGridLines LineColor="White" LineDashArray="2,2" />
         <VerticalGridLines LineColor="White" LineDashArray="2,2" />
@@ -11,13 +11,13 @@
 
 @code
 {
-    // Defines diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    // Defines diagram's nodes collection.
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        //Creating the userhandle for cloning the objects
-        nodes = new DiagramObjectCollection<Node>();
+        //Creating the userhandle for cloning the objects.
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node()
         {
             OffsetX = 250,
@@ -41,6 +41,6 @@
                 },
             }
         };
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 }

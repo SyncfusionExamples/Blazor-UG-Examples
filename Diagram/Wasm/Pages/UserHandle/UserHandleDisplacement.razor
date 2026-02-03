@@ -2,17 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Connectors="@connectors" SelectionSettings="@SelectedModel">
+<SfDiagramComponent Height="600px" Connectors="@_connectors" SelectionSettings="@_selectedModel">
 </SfDiagramComponent>
 
 @code
 {
     //Intialize diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     // Defines diagram's SelectionSettings.
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
-    
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
     protected override void OnInitialized()
     {
         //Creating the userhandle for cloning the objects.
@@ -36,15 +35,15 @@
             VisibleTarget = VisibleTarget.Connector,
         };
         //Add user handle to the collection.
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
-        SelectedModel = new DiagramSelectionSettings()
+        _selectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for selected model.
             Constraints = SelectorConstraints.All,
-            UserHandles = this.UserHandles,
+            UserHandles = _userHandles,
 
         };
         Connector connector = new Connector()
@@ -54,6 +53,6 @@
             Type = ConnectorSegmentType.Orthogonal,
             Style = new ShapeStyle() { StrokeColor = "#6495ED" },
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }

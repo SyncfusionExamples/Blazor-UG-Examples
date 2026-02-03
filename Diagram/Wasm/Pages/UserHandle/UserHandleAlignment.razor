@@ -2,24 +2,24 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SelectionSettings="@_selectedModel">
 </SfDiagramComponent>
 
 @code
 {
     //Initialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     // Defines diagram's SelectionSettings.
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
-    
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
+
     protected override void OnInitialized()
     {
         CreateUserHandle();
         CreateSelectionSettings();
         CreateNode();
     }
-    
+
     private void CreateUserHandle()
     {
         //Creating the userhandle for cloning the objects.
@@ -42,22 +42,22 @@
             VisibleTarget = VisibleTarget.Node,
         };
         //Add user handle to the collection.
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
     }
-    
+
     private void CreateSelectionSettings()
     {
-        SelectedModel = new DiagramSelectionSettings()
+        _selectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for selected model.
             Constraints = SelectorConstraints.All,
-            UserHandles = this.UserHandles,
+            UserHandles = _userHandles,
         };
     }
-    
+
     private void CreateNode()
     {
         Node node = new Node()
@@ -68,7 +68,7 @@
             OffsetY = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
 }

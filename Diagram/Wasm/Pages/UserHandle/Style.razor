@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SelectionSettings="@_selectedModel">
     <SnapSettings>
         <HorizontalGridLines LineColor="White" LineDashArray="2,2" />
         <VerticalGridLines LineColor="White" LineDashArray="2,2" />
@@ -12,10 +12,10 @@
 @code
 {
     // Defines diagram's nodes collection.
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     // Defines diagram's SelectionSettings.
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
 
     protected override void OnInitialized()
     {
@@ -46,17 +46,17 @@
             BorderWidth = 3,
         };
         //Add user handle to the collection.
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
-        SelectedModel = new DiagramSelectionSettings()
+        _selectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for selected model.
             Constraints = SelectorConstraints.UserHandle,
-            UserHandles = this.UserHandles
+            UserHandles = _userHandles
         };
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node()
         {
             ID = "node1",
@@ -67,6 +67,6 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
         };
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 }

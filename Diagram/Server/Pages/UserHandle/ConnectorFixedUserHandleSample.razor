@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Connectors="@connectors">
+<SfDiagramComponent Height="600px" Connectors="@_connectors">
     <SnapSettings>
         <HorizontalGridLines LineColor="White" LineDashArray="2,2" />
         <VerticalGridLines LineColor="White" LineDashArray="2,2" />
@@ -11,11 +11,11 @@
 
 @code
 {
-    //Intialize diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
+        _connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
         {
             SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
@@ -38,6 +38,6 @@
                 }
             },
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }

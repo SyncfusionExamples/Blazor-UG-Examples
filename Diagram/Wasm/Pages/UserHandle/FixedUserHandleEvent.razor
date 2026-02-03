@@ -2,28 +2,28 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" FixedUserHandleClick="Changed" Nodes="@nodes" @ref="diagram">
+<SfDiagramComponent Height="600px"
+                    FixedUserHandleClick="Changed" Nodes="@_nodes" @ref="_diagram">
 </SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent diagram;
-    //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
 
-    //FixedHandle event
-    private void Changed(FixedUserHandleClickEventArgs args)
+    public void Changed(FixedUserHandleClickEventArgs args)
     {
         if ((args.Element as Node).ID == "node1" && args.FixedUserHandle.ID == "user1")
         {
-            diagram.Copy();
-            diagram.Paste();
+            _diagram.Copy();
+            _diagram.Paste();
         }
     }
-    
+
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
     protected override void OnInitialized()
     {
+        _nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
         {
             OffsetX = 250,
@@ -48,6 +48,6 @@
                 },
             }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
     }
 }

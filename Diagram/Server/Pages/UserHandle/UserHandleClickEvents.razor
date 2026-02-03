@@ -4,52 +4,54 @@
 @using Syncfusion.Blazor.Diagram
 
 <div>
-    <SfDiagramComponent @ref="Diagram" Height="500px" Nodes="@nodes" Connectors="@connectors" SelectionSettings="@SelectedModel"
+    <SfDiagramComponent @ref="_diagram" Height="500px"
+                        Nodes="@_nodes"
+                        Connectors="@_connectors"
+                        SelectionSettings="@_selectedModel"
                         GetCustomTool="GetCustomTool">
-        <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
     </SfDiagramComponent>
 </div>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private DiagramObjectCollection<Node> nodes { get; set; }
-    private DiagramObjectCollection<Connector> connectors { get; set; }
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes { get; set; }
+    private DiagramObjectCollection<Connector> _connectors { get; set; }
     // Defines diagram's SelectionSettings.
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
-        connectors = new DiagramObjectCollection<Connector>();
+        _nodes = new DiagramObjectCollection<Node>();
+        _connectors = new DiagramObjectCollection<Connector>();
         InitDiagramModel();
     }
 
-    public InteractionControllerBase GetCustomTool(DiagramElementAction action, string id)
+    private InteractionControllerBase GetCustomTool(DiagramElementAction action, string id)
     {
-        return id == "clone" ? new CloneTool(Diagram) : new DeleteTool(Diagram);
+        return id == "clone" ? new CloneTool(_diagram) : new DeleteTool(_diagram);
     }
 
-    public class DeleteTool : InteractionControllerBase
+    private class DeleteTool : InteractionControllerBase
     {
-        private SfDiagramComponent diagram;
-        public DeleteTool(SfDiagramComponent diagram) : base(diagram) { this.diagram = diagram; }
+        private SfDiagramComponent _diagram;
+        public DeleteTool(SfDiagramComponent diagram) : base(diagram) { _diagram = diagram; }
         public override void OnMouseUp(DiagramMouseEventArgs args)
         {
-            diagram.Delete();
+            _diagram.Delete();
             base.OnMouseUp(args);
         }
     }
 
-    public class CloneTool : DragController
+    private class CloneTool : DragController
     {
-        private SfDiagramComponent diagram;
-        public CloneTool(SfDiagramComponent diagram) : base(diagram) { this.diagram = diagram; }
+        private SfDiagramComponent _diagram;
+        public CloneTool(SfDiagramComponent diagram) : base(diagram) { _diagram = diagram; }
         public override void OnMouseDown(DiagramMouseEventArgs args)
         {
-            diagram.Copy();
-            diagram.Paste();
+            _diagram.Copy();
+            _diagram.Paste();
             base.OnMouseDown(args);
         }
     }
@@ -69,7 +71,7 @@
                 new ShapeAnnotation() { Content = "Node" }
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
 
         Connector connector = new Connector()
         {
@@ -82,8 +84,7 @@
                 new PathAnnotation(){ Content = "Connector" }
             }
         };
-        connectors.Add(connector);
-
+        _connectors.Add(connector);
         UserHandle cloneHandle = new UserHandle()
         {
             Name = "clone",
@@ -93,7 +94,6 @@
             Visible = true,
             VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector
         };
-
         UserHandle deleteHandle = new UserHandle()
         {
             Name = "delete",
@@ -103,17 +103,16 @@
             VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector,
             Visible = true
         };
-
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle, deleteHandle
         };
-
-        SelectedModel = new DiagramSelectionSettings()
+        _selectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for selected model.
             Constraints = SelectorConstraints.UserHandle,
-            UserHandles = this.UserHandles
+
+            UserHandles = _userHandles
         };
     }
 }

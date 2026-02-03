@@ -4,7 +4,7 @@
 @using System.Collections.ObjectModel
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent @ref="@Diagram" Width="1200px" Height="600px" Nodes="@nodes" GetCustomTool="@tools" GetCustomCursor="@cursor" Connectors="@connectors" SelectionSettings="@SelectedModel">
+<SfDiagramComponent @ref="_diagram" Width="1200px" Height="600px" Nodes="@_nodes" GetCustomTool="@Tools" GetCustomCursor="@Cursor" Connectors="@_connectors" SelectionSettings="@_selectedModel">
 </SfDiagramComponent>
 
 <SfButton Content="VisibilityNode" OnClick="@VisibilityNode" />
@@ -14,17 +14,17 @@
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private NodeGroup groupNode = new NodeGroup();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private NodeGroup _groupNode = new NodeGroup();
     //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     //Intialize diagram's selectionsettings
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
     //Intialize diagram's userhandle
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
-    public string cursor(DiagramElementAction action, bool active, string handle)
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
+    public string Cursor(DiagramElementAction action, bool active, string handle)
     {
         string cursors = null;
         if (handle == "changeCursor")
@@ -33,87 +33,87 @@
         }
         return cursors;
     }
-    public InteractionControllerBase tools(DiagramElementAction action, string id)
+    public InteractionControllerBase Tools(DiagramElementAction action, string id)
     {
         InteractionControllerBase tool = null;
         if (id == "clone")
         {
-            tool = new CloneTool(Diagram);
+            tool = new CloneTool(_diagram);
         }
         else if (id == "nodeDelete")
         {
-            tool = new AddDeleteTool(Diagram);
+            tool = new AddDeleteTool(_diagram);
         }
         return tool;
     }
     public class AddDeleteTool : DragController
     {
-        SfDiagramComponent sfDiagram;
-        public AddDeleteTool(SfDiagramComponent Diagram) : base(Diagram)
+        private SfDiagramComponent _diagram;
+        public AddDeleteTool(SfDiagramComponent diagram) : base(diagram)
         {
-            sfDiagram = Diagram;
+            _diagram = diagram;
         }
         public override void OnMouseUp(DiagramMouseEventArgs args)
         {
-            bool GroupAction = false;
-            sfDiagram.BeginUpdate();
-            if (sfDiagram.SelectionSettings.Nodes.Count > 1 || sfDiagram.SelectionSettings.Connectors.Count > 1 ||
-                ((sfDiagram.SelectionSettings.Nodes.Count + sfDiagram.SelectionSettings.Connectors.Count) > 1))
+            bool groupAction = false;
+            _diagram.BeginUpdate();
+            if (_diagram.SelectionSettings.Nodes.Count > 1 || _diagram.SelectionSettings.Connectors.Count > 1 ||
+                ((_diagram.SelectionSettings.Nodes.Count + _diagram.SelectionSettings.Connectors.Count) > 1))
             {
-                GroupAction = true;
+                groupAction = true;
             }
-            if (GroupAction)
+            if (groupAction)
             {
-                sfDiagram.StartGroupAction();
+                _diagram.StartGroupAction();
             }
-            if (sfDiagram.SelectionSettings.Nodes.Count != 0)
+            if (_diagram.SelectionSettings.Nodes.Count != 0)
             {
-                for (var i = sfDiagram.SelectionSettings.Nodes.Count - 1; i >= 0; i--)
+                for (var i = _diagram.SelectionSettings.Nodes.Count - 1; i >= 0; i--)
                 {
-                    Node deleteNode = sfDiagram.SelectionSettings.Nodes[i];
-                    sfDiagram.Nodes.Remove(deleteNode);
+                    Node deleteNode = _diagram.SelectionSettings.Nodes[i];
+                    _diagram.Nodes.Remove(deleteNode);
                 }
             }
-            if (sfDiagram.SelectionSettings.Connectors.Count != 0)
+            if (_diagram.SelectionSettings.Connectors.Count != 0)
             {
-                for (var i = sfDiagram.SelectionSettings.Connectors.Count - 1; i >= 0; i--)
+                for (var i = _diagram.SelectionSettings.Connectors.Count - 1; i >= 0; i--)
                 {
-                    Connector deleteConnector = sfDiagram.SelectionSettings.Connectors[i];
-                    sfDiagram.Connectors.Remove(deleteConnector);
+                    Connector deleteConnector = _diagram.SelectionSettings.Connectors[i];
+                    _diagram.Connectors.Remove(deleteConnector);
                 }
             }
-            if (GroupAction)
+            if (groupAction)
             {
-                sfDiagram.EndGroupAction();
+                _diagram.EndGroupAction();
             }
-            _ = sfDiagram.EndUpdateAsync();
+            _ = _diagram.EndUpdateAsync();
             base.OnMouseUp(args);
             this.InAction = true;
         }
     }
     public class CloneTool : DragController
     {
-        SfDiagramComponent sfDiagram;
-        public CloneTool(SfDiagramComponent Diagram) : base(Diagram)
+        private SfDiagramComponent _diagram;
+        public CloneTool(SfDiagramComponent diagram) : base(diagram)
         {
-            sfDiagram = Diagram;
+            _diagram = diagram;
         }
         public override void OnMouseDown(DiagramMouseEventArgs args)
         {
             NodeBase newObject;
-            if (sfDiagram.SelectionSettings.Nodes.Count > 0)
+            if (_diagram.SelectionSettings.Nodes.Count > 0)
             {
-                newObject = (sfDiagram.SelectionSettings.Nodes[0]).Clone() as Node;
+                newObject = (_diagram.SelectionSettings.Nodes[0]).Clone() as Node;
             }
             else
             {
-                newObject = (sfDiagram.SelectionSettings.Connectors[0]).Clone() as Connector;
+                newObject = (_diagram.SelectionSettings.Connectors[0]).Clone() as Connector;
             }
-            newObject.ID += sfDiagram.Nodes.Count.ToString();
-            sfDiagram.Copy();
-            sfDiagram.Paste();
-            ObservableCollection<IDiagramObject> obj = new ObservableCollection<IDiagramObject>() { sfDiagram.Nodes[sfDiagram.Nodes.Count - 1] as IDiagramObject };
-            sfDiagram.Select(obj);
+            newObject.ID += _diagram.Nodes.Count.ToString();
+            _diagram.Copy();
+            _diagram.Paste();
+            ObservableCollection<IDiagramObject> obj = new ObservableCollection<IDiagramObject>() { _diagram.Nodes[_diagram.Nodes.Count - 1] as IDiagramObject };
+            _diagram.Select(obj);
             base.OnMouseDown(args);
             this.InAction = true;
         }
@@ -152,7 +152,7 @@
         {
             Name = "changeCursor",
             Offset = 0.5,
-            ImageUrl = "https://www.w3schools.com/images/w3schools_green.jpg",
+            Source = "https://www.w3schools.com/images/w3schools_green.jpg",
             Visible = true,
             Side = Direction.Bottom,
             Margin = new DiagramThickness { Top = 0, Bottom = 0, Left = 0, Right = 0 },
@@ -162,13 +162,13 @@
             BackgroundColor = "green",
             BorderWidth = 3,
         };
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle,nodeDelete,changeCursor
         };
-        SelectedModel.UserHandles = UserHandles;
-        nodes = new DiagramObjectCollection<Node>();
-        Node DiagramNode = new Node()
+        _selectedModel.UserHandles = _userHandles;
+        _nodes = new DiagramObjectCollection<Node>();
+        Node diagramNode = new Node()
         {
             ID = "node1",
             OffsetX = 100,
@@ -178,50 +178,48 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "black" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
         };
-        connectors = new DiagramObjectCollection<Connector>();
-        Connector Connector1 = new Connector()
+        _connectors = new DiagramObjectCollection<Connector>();
+        Connector connector1 = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint() { X = 250, Y = 250 },
             TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
             Annotations = new DiagramObjectCollection<PathAnnotation>()
             {
-                new PathAnnotation()
-                {
-                    ID = "connector1",
-                    Offset = 0,
-                    Visibility = true,
-                    Style = new TextStyle(){ Color ="red", FontSize =12, TextAlign = TextAlign.Right,
-                    },
-                }
-            },  
+                    new PathAnnotation()
+                    {
+                        ID = "connector1",
+                        Offset = 0,
+                        Visibility = true,
+                        Style = new TextStyle(){ Color ="red", FontSize =12, TextAlign = TextAlign.Right,
+                        },
+                    }
+            },
             Type = ConnectorSegmentType.Bezier
         };
-        nodes.Add(DiagramNode);
-        connectors.Add(Connector1);
+        _nodes.Add(diagramNode);
+        _connectors.Add(connector1);
     }
-
     //Method to sepcifies the userhandle is visible for node
-    private void VisibilityNode()
+    public void VisibilityNode()
     {
-        foreach (UserHandle userHandle in UserHandles)
+        foreach (UserHandle userHandle in _userHandles)
         {
             userHandle.VisibleTarget = VisibleTarget.Node;
         }
     }
-
     //Method to sepcifies the userhandle is visible for connector
-    private void VisibilityConnector()
+    public void VisibilityConnector()
     {
-        foreach (UserHandle userHandle in UserHandles)
+        foreach (UserHandle userHandle in _userHandles)
         {
             userHandle.VisibleTarget = VisibleTarget.Connector;
         }
     }
     //Method to sepcifies the userhandle is visible for connector and node
-    private void VisibilityBoth()
+    public void VisibilityBoth()
     {
-        foreach (UserHandle userHandle in UserHandles)
+        foreach (UserHandle userHandle in _userHandles)
         {
             userHandle.VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector;
         }
