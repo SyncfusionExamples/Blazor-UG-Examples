@@ -1,10 +1,9 @@
-﻿@page "/BezierSegmentShape"
+﻿@page "/BezierSegmentShape1"
 
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.Internal
 
 <SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors"></SfDiagramComponent>
-
 @code
 {
     //Define the diagram's connector collection.
@@ -19,26 +18,12 @@
             TargetPoint = new DiagramPoint() { X = 300, Y = 300 },
             SourceDecorator = new DecoratorSettings() { Shape = DecoratorShape.Diamond },
             Segments = new DiagramObjectCollection<ConnectorSegment>()
-            {
-                new BezierSegment()
                 {
-                    Type = ConnectorSegmentType.Bezier, 
-                    Point = new DiagramPoint()
-                    {
-                        X = 200, 
-                        Y = 100
-                    }
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 200, Y = 100}
+                ,
                 },
-                new BezierSegment()
-                {
-                    Type = ConnectorSegmentType.Bezier, 
-                    Point = new DiagramPoint()
-                    {
-                        X = 260, 
-                        Y = 150
-                    }
-                }
-            },
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 260, Y = 150}}
+                },
             Type = ConnectorSegmentType.Bezier,
             BezierConnectorSettings = new BezierConnectorSettings()
             {
