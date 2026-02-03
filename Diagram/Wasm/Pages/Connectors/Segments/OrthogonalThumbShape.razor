@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors">
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Connectors="@_connectors">
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "Connector2",
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
@@ -21,6 +21,6 @@
             TargetPoint = new DiagramPoint { X = 500, Y = 200 },
             SegmentThumbSettings = new SegmentThumbSettings() { Shape = SegmentThumbShapes.IndentedArrow }
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 }

@@ -2,20 +2,20 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors">
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Connectors="@_connectors">
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's node collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
         // Enable the segment editing.
-        Connector Connector = new Connector()
+        Connector connector = new Connector()
         {
             ID = "Connector2",
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb,
@@ -23,6 +23,6 @@
             SourcePoint = new DiagramPoint { X = 400, Y = 100 },
             TargetPoint = new DiagramPoint { X = 500, Y = 200 }
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 }
