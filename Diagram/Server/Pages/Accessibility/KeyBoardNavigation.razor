@@ -230,20 +230,20 @@
         <div id="diagramEventsControlSection" class="content-wrapper" style="background: white">
             @*Hidden:Lines*@
             <div class="sb-mobile-palette-bar">
-                <div id="palette-icon" style="float: right;" role="button" @onclick="ShowHideSymbolPalette" class="e-ddb-icons1 e-toggle-palette"></div>
+                <div id="palette-icon" style="float: right;" role="button" @onclick="ShowHideSymbolPaletteAsync" class="e-ddb-icons1 e-toggle-palette"></div>
             </div>
             @*End:Hidden*@
             @*End:Hidden*@
             <div id="palette-space" class="sb-mobile-palette">
-                <SfSymbolPaletteComponent @ref="@PaletteInstance" Height="700px" SymbolDragPreviewSize="@SymbolPreview" Palettes="@palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+                <SfSymbolPaletteComponent @ref="@_paletteInstance" Height="700px" SymbolDragPreviewSize="@_symbolPreview" Palettes="@_palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@_symbolMargin">
                 </SfSymbolPaletteComponent>
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                <SfDiagramComponent @ref="@Diagram" Connectors="@connectors" SelectionChanged="@OnSelectionChanged" Height="687px" GetCustomTool="@GetCustomTool" Nodes="@nodes" SelectionSettings="@selectionSettings" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating" DragDrop="DragDropEvent">
+                <SfDiagramComponent @ref="@_diagram" Connectors="@_connectors" SelectionChanged="@OnSelectionChanged" Height="687px" GetCustomTool="@GetCustomTool" Nodes="@_nodes" SelectionSettings="@_selectionSettings" NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating" DragDrop="DragDropEvent">
                     <SnapSettings>
-                        <HorizontalGridLines LineColor="#e0e0e0 " LineIntervals="@GridLineIntervals">
+                        <HorizontalGridLines LineColor="#e0e0e0 " LineIntervals="@_gridLineIntervals">
                         </HorizontalGridLines>
-                        <VerticalGridLines LineColor="#e0e0e0" LineIntervals="@GridLineIntervals">
+                        <VerticalGridLines LineColor="#e0e0e0" LineIntervals="@_gridLineIntervals">
                         </VerticalGridLines>
                     </SnapSettings>
                     <ContextMenuSettings Show = "true"></ContextMenuSettings>
@@ -479,27 +479,27 @@
 
 @code
 {
-    private int connectorCount = 0;
-    private DiagramSelectionSettings selectionSettings = new DiagramSelectionSettings();
-    private DiagramSize SymbolPreview;
-    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-    private SfDiagramComponent Diagram;
-    private SfSymbolPaletteComponent PaletteInstance;
-    private DiagramObjectCollection<UserHandle> handles = new DiagramObjectCollection<UserHandle>();
+    private int _connectorCount = 0;
+    private DiagramSelectionSettings _selectionSettings = new DiagramSelectionSettings();
+    private DiagramSize _symbolPreview;
+    private SymbolMargin _symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SfDiagramComponent _diagram;
+    private SfSymbolPaletteComponent _paletteInstance;
+    private DiagramObjectCollection<UserHandle> _handles = new DiagramObjectCollection<UserHandle>();
     //Defines Diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Defines Diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     //Define palettes collection
-    private DiagramObjectCollection<Palette> palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> flowShapeSymbols = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _flowShapeSymbols = new DiagramObjectCollection<NodeBase>();
     // Defines interval values for GridLines
-    private double[] GridLineIntervals { get; set; }
+    private double[] _gridLineIntervals { get; set; }
     // Defines palette's connector collection
-    private DiagramObjectCollection<NodeBase> connectorSymbols = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _connectorSymbols = new DiagramObjectCollection<NodeBase>();
     [Inject]
-    protected IJSRuntime jsRuntime { get; set; }
+    protected IJSRuntime _jsRuntime { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -508,9 +508,9 @@
         {
             UpdateHandle();
         }
-        PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>
+        _paletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>
         {
-            Diagram
+            _diagram
         };
     }
 
@@ -532,17 +532,17 @@
     {
         if (args.NewValue.Count>0 && args.NewValue[0] is Node)
         {
-            Diagram.SelectionSettings.Constraints = Diagram.SelectionSettings.Constraints | SelectorConstraints.UserHandle;
+            _diagram.SelectionSettings.Constraints = _diagram.SelectionSettings.Constraints | SelectorConstraints.UserHandle;
         }
         else if(args.NewValue.Count>0)
         {
-            Diagram.SelectionSettings.Constraints = Diagram.SelectionSettings.Constraints & ~SelectorConstraints.UserHandle;
+            _diagram.SelectionSettings.Constraints = _diagram.SelectionSettings.Constraints & ~SelectorConstraints.UserHandle;
         }
     }
 
     private void OnCreated()
     {
-        Diagram.Select(new ObservableCollection<IDiagramObject>() { Diagram.Nodes[0] });
+        _diagram.Select(new ObservableCollection<IDiagramObject>() { _diagram.Nodes[0] });
         FitOptions options = new FitOptions() { Mode = FitMode.Both, Region = DiagramRegion.Content };
     }
 
@@ -552,65 +552,65 @@
         InteractionControllerBase tool = null;
         if (id == "Draw")
         {
-            tool = new DrawTool(Diagram);
+            tool = new DrawTool(_diagram);
         }
         else
         {
-            tool = new AddDeleteTool(Diagram);
+            tool = new AddDeleteTool(_diagram);
         }
         return tool;
     }
 
     // Custom tool to delete the node.
-    public class AddDeleteTool : InteractionControllerBase
+    private class AddDeleteTool : InteractionControllerBase
     {
-        SfDiagramComponent sfDiagram;
-        Node deleteObject = null;
-        public AddDeleteTool(SfDiagramComponent Diagram) : base(Diagram)
+        SfDiagramComponent _sfDiagram;
+        Node _deleteObject = null;
+        public AddDeleteTool(SfDiagramComponent diagram) : base(diagram)
         {
-            sfDiagram = Diagram;
+            _sfDiagram = diagram;
         }
         public override void OnMouseDown(DiagramMouseEventArgs args)
         {
-            if (sfDiagram.SelectionSettings.Nodes.Count>0 && ((sfDiagram.SelectionSettings.Nodes[0]) is Node))
+            if (_sfDiagram.SelectionSettings.Nodes.Count>0 && ((_sfDiagram.SelectionSettings.Nodes[0]) is Node))
             {
-                deleteObject = (sfDiagram.SelectionSettings.Nodes[0]) as Node;
+                _deleteObject = (_sfDiagram.SelectionSettings.Nodes[0]) as Node;
             }
             base.OnMouseDown(args);
         }
         public override void OnMouseUp(DiagramMouseEventArgs args)
         {
-            if (deleteObject != null)
+            if (_deleteObject != null)
             {
-                sfDiagram.StartGroupAction();
-                sfDiagram.BeginUpdate();
-                sfDiagram.Nodes.Remove(deleteObject);
-                _ = sfDiagram.EndUpdateAsync();
-                sfDiagram.EndGroupAction();
+                _sfDiagram.StartGroupAction();
+                _sfDiagram.BeginUpdate();
+                _sfDiagram.Nodes.Remove(_deleteObject);
+                _ = _sfDiagram.EndUpdateAsync();
+                _sfDiagram.EndGroupAction();
             }
             base.OnMouseUp(args);
             this.InAction = true;
         }
     }
 
-    public class DrawTool : ConnectorDrawingController
+    private class DrawTool : ConnectorDrawingController
     {
-        SfDiagramComponent sfDiagram;
-        Connector newConnector = null;
-        public DrawTool(SfDiagramComponent Diagram):base(Diagram, DiagramElementAction.ConnectorSourceEnd)
+        SfDiagramComponent _sfDiagram;
+        Connector _newConnector = null;
+        public DrawTool(SfDiagramComponent diagram):base(diagram, DiagramElementAction.ConnectorSourceEnd)
         {
-            sfDiagram = Diagram;
-            newConnector = new Connector()
+            _sfDiagram = diagram;
+            _newConnector = new Connector()
             {
                 ID = "OrthogonalConnector",
-                SourceID = sfDiagram.SelectionSettings.Nodes[0].ID,
+                SourceID = _sfDiagram.SelectionSettings.Nodes[0].ID,
                 Type = ConnectorSegmentType.Orthogonal,
             };
             @*Hidden:Lines*@
             #pragma warning disable BL0005
             @*End:Hidden*@
-            Diagram.InteractionController = DiagramInteractions.DrawOnce;            
-            Diagram.DrawingObject = newConnector;
+            _sfDiagram.InteractionController = DiagramInteractions.DrawOnce;            
+            _sfDiagram.DrawingObject = _newConnector;
             @*Hidden:Lines*@
             #pragma warning restore BL0005
             @*End:Hidden*@
@@ -627,7 +627,7 @@
 
     protected override void OnInitialized()
     {
-        GridLineIntervals = new double[]
+        _gridLineIntervals = new double[]
         {
             1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75
         };
@@ -666,13 +666,13 @@
     // Create Nodes and Connectors for the Palette.
     private void InitPaletteModel()
     {
-        palettes = new DiagramObjectCollection<Palette>();
-        SymbolPreview = new DiagramSize
+        _palettes = new DiagramObjectCollection<Palette>();
+        _symbolPreview = new DiagramSize
         {
             Width = 100,
             Height = 100
         };
-        flowShapeSymbols = new DiagramObjectCollection<NodeBase>();
+        _flowShapeSymbols = new DiagramObjectCollection<NodeBase>();
         CreatePaletteNode(NodeFlowShapes.Terminator, "Terminator");
         CreatePaletteNode(NodeFlowShapes.Process, "Process");
         CreatePaletteNode(NodeFlowShapes.Decision, "Decision");
@@ -694,20 +694,20 @@
         CreatePaletteNode(NodeFlowShapes.Card, "Card");
         CreatePaletteNode(NodeFlowShapes.Delay, "Delay");
 
-        connectorSymbols = new DiagramObjectCollection<NodeBase>();
+        _connectorSymbols = new DiagramObjectCollection<NodeBase>();
         CreatePaletteConnector("Orthogonal With Arrow", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
         CreatePaletteConnector("Orthogonal", ConnectorSegmentType.Orthogonal, DecoratorShape.None);
         CreatePaletteConnector("Straight With Arrow", ConnectorSegmentType.Straight, DecoratorShape.Arrow);
         CreatePaletteConnector("Straight", ConnectorSegmentType.Straight, DecoratorShape.None);
         CreatePaletteConnector("Bezier", ConnectorSegmentType.Bezier, DecoratorShape.None);
 
-        palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
             @*Hidden:Lines*@
             #pragma warning disable BL0005
             @*End:Hidden*@
-            new Palette() {Symbols = flowShapeSymbols, Title = "Flow Shapes", ID = "Flow Shapes", IconCss = "e-ddb-icons e-flow"},
-            new Palette() {Symbols = connectorSymbols, Title = "Connectors", IsExpanded = true, IconCss = "e-ddb-icons e-connector"},
+            new Palette() {Symbols = _flowShapeSymbols, Title = "Flow Shapes", ID = "Flow Shapes", IconCss = "e-ddb-icons e-flow"},
+            new Palette() {Symbols = _connectorSymbols, Title = "Connectors", IsExpanded = true, IconCss = "e-ddb-icons e-connector"},
             @*Hidden:Lines*@
             #pragma warning restore BL0005
             @*End:Hidden*@
@@ -776,7 +776,7 @@
         double ratio = 100 / oldWidth;
         diagramNode.Width = 100;
         diagramNode.Height *= ratio;
-        flowShapeSymbols.Add(diagramNode);
+        _flowShapeSymbols.Add(diagramNode);
     }
 
     // used to create a Port.
@@ -819,7 +819,7 @@
     {
         Connector diagramConnector = new Connector()
         {
-            ID = string.Format("connector{0}", ++connectorCount),
+            ID = string.Format("connector{0}", ++_connectorCount),
             SourceID = sourceId,
             TargetID = targetId,
             SourcePortID = sport,
@@ -844,7 +844,7 @@
             diagramConnector.Annotations = new DiagramObjectCollection<PathAnnotation>() { annotation };
         }
         diagramConnector.Type = ConnectorSegmentType.Orthogonal;
-        connectors.Add(diagramConnector);
+        _connectors.Add(diagramConnector);
     }
 
     // Method is used to create a node for the diagram.
@@ -872,7 +872,7 @@
                 }
             }
         };
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 
     // Method is used to create a Connector for the palette.
@@ -905,16 +905,16 @@
             };
             diagramConnector.Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip;
         }
-        connectorSymbols.Add(diagramConnector);
+        _connectorSymbols.Add(diagramConnector);
     }
 
     private void UpdateHandle()
     {
         UserHandle deleteHandle = AddHandle("Delete", "delete", Direction.Bottom, 0.5);
         UserHandle drawHandle = AddHandle("Draw", "draw", Direction.Right,0.5);
-        handles.Add(deleteHandle);
-        handles.Add(drawHandle);
-        selectionSettings.UserHandles = handles;
+        _handles.Add(deleteHandle);
+        _handles.Add(drawHandle);
+        _selectionSettings.UserHandles = _handles;
     }
 
     private UserHandle AddHandle(string name, string path, Direction direction, double offset)
@@ -938,71 +938,71 @@
         return handle;
     }
 
-    private async Task ShowHideSymbolPalette()
+    private async Task ShowHideSymbolPaletteAsync()
     {
-        await jsRuntime.InvokeAsync<object>("openPalette");
+        await _jsRuntime.InvokeAsync<object>("openPalette");
 
     }
 
     @*Hidden:Lines*@
     public void Dispose()
     {
-        if (SymbolPreview != null)
+        if (_symbolPreview != null)
         {
-            SymbolPreview = null;
+            _symbolPreview = null;
         }
-        if (SymbolMargin != null)
+        if (_symbolMargin != null)
         {
-            SymbolMargin = null;
+            _symbolMargin = null;
         }
-        Diagram = null;
-        PaletteInstance = null;
-        if (nodes != null)
+        _diagram = null;
+        _paletteInstance = null;
+        if (_nodes != null)
         {
-            nodes.Clear();
-            nodes = null;
+            _nodes.Clear();
+            _nodes = null;
         }
-        if (connectors != null)
+        if (_connectors != null)
         {
-            connectors.Clear();
-            connectors = null;
+            _connectors.Clear();
+            _connectors = null;
         }
     #pragma warning disable BL0005
-        if (palettes != null)
+        if (_palettes != null)
         {
-            for (int i = 0; i < palettes.Count; i++)
+            for (int i = 0; i < _palettes.Count; i++)
             {
-                palettes[i].ID = null;
-                palettes[i].Title = null;
-                palettes[i].IconCss = null;
-                if (palettes[i].Symbols != null)
+                _palettes[i].ID = null;
+                _palettes[i].Title = null;
+                _palettes[i].IconCss = null;
+                if (_palettes[i].Symbols != null)
                 {
-                    for (int j = 0; j < palettes[i].Symbols.Count; j++)
+                    for (int j = 0; j < _palettes[i].Symbols.Count; j++)
                     {
-                        palettes[i].Symbols[j] = null;
+                        _palettes[i].Symbols[j] = null;
                     }
-                    palettes[i].Symbols.Clear();
-                    palettes[i].Symbols = null;
+                    _palettes[i].Symbols.Clear();
+                    _palettes[i].Symbols = null;
                 }
             }
-            palettes.Clear();
-            palettes = null;
+            _palettes.Clear();
+            _palettes = null;
         }
     #pragma warning restore BL0005
-        if (flowShapeSymbols != null)
+        if (_flowShapeSymbols != null)
         {
-            flowShapeSymbols.Clear();
-            flowShapeSymbols = null;
+            _flowShapeSymbols.Clear();
+            _flowShapeSymbols = null;
         }
-        if (GridLineIntervals != null)
+        if (_gridLineIntervals != null)
         {
-            Array.Clear(GridLineIntervals, 0, GridLineIntervals.Length);
-            GridLineIntervals = null;
+            Array.Clear(_gridLineIntervals, 0, _gridLineIntervals.Length);
+            _gridLineIntervals = null;
         }
-        if (connectorSymbols != null)
+        if (_connectorSymbols != null)
         {
-            connectorSymbols.Clear();
-            connectorSymbols = null;
+            _connectorSymbols.Clear();
+            _connectorSymbols = null;
         }
     }
 }
