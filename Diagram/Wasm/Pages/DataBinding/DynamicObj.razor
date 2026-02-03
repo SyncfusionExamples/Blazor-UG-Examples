@@ -4,15 +4,15 @@
 @using System.Dynamic
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@Diagram" Height="499px" InteractionController="DiagramInteractions.ZoomPan" ConnectorCreating="@ConnectorDefaults"
+<SfDiagramComponent @ref="@_Diagram" Height="499px" InteractionController="DiagramInteractions.ZoomPan" ConnectorCreating="@ConnectorDefaults"
                     NodeCreating="@NodeDefaults">
     <DataSourceSettings ID="Name" ParentID="Category" DataSource="DataSource" />
-    <Layout @bind-Type="type"
-            @bind-HorizontalSpacing="@HorizontalSpacing"
-            @bind-Orientation="@orientation"
-            @bind-VerticalSpacing="@VerticalSpacing"
-            @bind-HorizontalAlignment="@horizontalAlignment"
-            @bind-VerticalAlignment="@verticalAlignment"
+    <Layout @bind-Type="_type"
+            @bind-HorizontalSpacing="@_horizontalSpacing"
+            @bind-Orientation="@_orientation"
+            @bind-VerticalSpacing="@_verticalSpacing"
+            @bind-HorizontalAlignment="@_horizontalAlignment"
+            @bind-VerticalAlignment="@_verticalAlignment"
             GetLayoutInfo="GetLayoutInfo">
         <LayoutMargin Top="50" Bottom="50" Right="50" Left="50" />
     </Layout>
@@ -20,15 +20,15 @@
 
 @code
 {
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _Diagram;
     // Specify the layout type.
-    private LayoutType type = LayoutType.HierarchicalTree;
+    private LayoutType _type = LayoutType.HierarchicalTree;
     // Specify the orientation of the layout.
-    private LayoutOrientation orientation = LayoutOrientation.TopToBottom;
-    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
-    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
-    private int HorizontalSpacing = 30;
-    private int VerticalSpacing = 30;
+    private LayoutOrientation _orientation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment _verticalAlignment = VerticalAlignment.Auto;
+    private int _horizontalSpacing = 30;
+    private int _verticalSpacing = 30;
     private List<HierarchicalDetails> DataSource { get; set; }
     private List<HierarchicalDetails> ExpandoData = new List<HierarchicalDetails>();
 

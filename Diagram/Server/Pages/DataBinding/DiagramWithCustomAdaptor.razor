@@ -11,13 +11,13 @@
                 <button class="btn btn-primary" @onclick="Read">Read</button>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary" @onclick="Update">Update</button>
+                <button class="btn btn-primary" @onclick="UpdateAsync">Update</button>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary" @onclick="Insert">Insert</button>
+                <button class="btn btn-primary" @onclick="InsertAsync">Insert</button>
             </div>
             <div class="col-md-3">
-                <button class="btn btn-primary" @onclick="Delete">Delete</button>
+                <button class="btn btn-primary" @onclick="DeleteAsync">Delete</button>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
 <div class="row" id="diagram">
     <div class="col-md-10">
         <div id="diagram-space" class="content-wrapper">
-            <SfDiagramComponent ID="diagramControl" @ref="@diagram" Width="100%" Height="690px" ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
+            <SfDiagramComponent ID="diagramControl" @ref="@_diagram" Width="100%" Height="690px" ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
                 <DataSourceSettings ID="EmployeeID" ParentID="ReportsTo">
                     <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
                 </DataSourceSettings>
@@ -38,10 +38,10 @@
 
 @functions
 {
-    private SfDiagramComponent? diagram;
-    private static List<EmployeeDetails> employeeDetails { get; set; }
-    private static List<EmployeeDetails> Details { get; set; } = new List<EmployeeDetails>();
-    private Layout LayoutValue = new Layout() { };
+    private SfDiagramComponent? _diagram;
+    private static List<EmployeeDetails> _employeeDetails { get; set; }
+    private static List<EmployeeDetails> _details { get; set; } = new List<EmployeeDetails>();
+    private Layout _layoutValue = new Layout() { };
     
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
     {
@@ -86,8 +86,8 @@
 
     protected override void OnInitialized()
     {
-        Details = new List<EmployeeDetails>();
-        employeeDetails = new List<EmployeeDetails>() {
+        _details = new List<EmployeeDetails>();
+        _employeeDetails = new List<EmployeeDetails>() {
             new EmployeeDetails { EmployeeID = "1", FirstName = "Andrew", Designation = "CEO", Country = "England", ReportsTo = "", Color = "Red" },
             new EmployeeDetails { EmployeeID = "2", FirstName = "Nancy", Designation = "Product Manager", Country = "USA", ReportsTo = "1", Color = "Blue" },
             new EmployeeDetails { EmployeeID = "3", FirstName = "Janet", Designation = "Product Manager", Country = "USA", ReportsTo = "1", Color = "Blue" },
@@ -116,7 +116,7 @@
         // Performs data Read operation
         public override object Read(DataManagerRequest dm, string key = null)
         {
-            IEnumerable<EmployeeDetails> DataSource = employeeDetails;
+            IEnumerable<EmployeeDetails> DataSource = _employeeDetails;
             if (dm.Search != null && dm.Search.Count > 0)
             {
                 // Searching
@@ -148,21 +148,21 @@
         // Performs Insert operation
         public override object Insert(DataManager dm, object value, string key)
         {
-            employeeDetails.Insert(employeeDetails.Count, value as EmployeeDetails);
+            _employeeDetails.Insert(_employeeDetails.Count, value as EmployeeDetails);
             return value;
         }
 
         // Performs Remove operation
         public override object Remove(DataManager dm, object value, string keyField, string key)
         {
-            employeeDetails.Remove(employeeDetails.Where(or => or.EmployeeID == value.ToString()).FirstOrDefault());
+            _employeeDetails.Remove(_employeeDetails.Where(or => or.EmployeeID == value.ToString()).FirstOrDefault());
             return value;
         }
 
         // Performs Update operation
         public override object Update(DataManager dm, object value, string keyField, string key)
         {
-            var data = employeeDetails.Where(or => or.EmployeeID == (value as EmployeeDetails).EmployeeID).FirstOrDefault();
+            var data = _employeeDetails.Where(or => or.EmployeeID == (value as EmployeeDetails).EmployeeID).FirstOrDefault();
             if (data != null)
             {
                 data.EmployeeID = (value as EmployeeDetails).EmployeeID;
@@ -179,17 +179,17 @@
 
     private void Read()
     {
-        Details = new List<EmployeeDetails>();
-        Details = diagram.ReadDataAsync().Result as List<EmployeeDetails>;
+        _details = new List<EmployeeDetails>();
+       _details = _diagram.ReadDataAsync().Result as List<EmployeeDetails>;
     }
 
-    private async void Update()
+    private async void UpdateAsync()
     {
         EmployeeDetails employeeDetails = new EmployeeDetails { EmployeeID = "1", FirstName = "AndrewSimonds", Designation = "CEO", Country = "Australia", ReportsTo = "", Color = "Red" };
-        await diagram.UpdateDataAsync("EmployeeID", employeeDetails);
+        await _diagram.UpdateDataAsync("EmployeeID", employeeDetails);
     }
 
-    private async void Insert()
+    private async void InsertAsync()
     {
         EmployeeDetails employeeDetails = new EmployeeDetails()
         {
@@ -200,12 +200,12 @@
             ReportsTo = "6",
             Color = "Purple"
         };
-        await diagram.InsertDataAsync(employeeDetails);
+        await _diagram.InsertDataAsync(employeeDetails);
 
     }
 
-    private async void Delete()
+    private async void DeleteAsync()
     {
-        await diagram.DeleteDataAsync("EmployeeID", "6");
+        await _diagram.DeleteDataAsync("EmployeeID", "6");
     }
 }

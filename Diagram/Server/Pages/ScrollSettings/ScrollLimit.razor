@@ -3,10 +3,10 @@
 
 
 <SfDiagramComponent Height="600px">
-    <ScrollSettings @bind-ScrollLimit="@scrollLimit"></ScrollSettings>
+    <ScrollSettings @bind-ScrollLimit="@_scrollLimit"></ScrollSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private ScrollLimitMode scrollLimit { get; set; } = ScrollLimitMode.Infinity;
+    private ScrollLimitMode _scrollLimit { get; set; } = ScrollLimitMode.Infinity;
 }

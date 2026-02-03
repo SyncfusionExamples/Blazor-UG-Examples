@@ -1,25 +1,24 @@
 ﻿@page "/ScrollStatus"
 @using Syncfusion.Blazor.Diagram
-@using Syncfusion.Blazor.Diagram
 
-<input type="button" value="ScrollStatus" @onclick="updateScrollValues"/>
+<input type="button" value="ScrollStatus" @onclick="UpdateScrollValues" />
 <SfDiagramComponent Height="600px">
     @* Sets the ScrollSettings for the diagram *@
-    <ScrollSettings HorizontalOffset="@horizontalOffset" VerticalOffset="@verticalOffset">
+    <ScrollSettings HorizontalOffset="@_horizontalOffset" VerticalOffset="@_verticalOffset">
     </ScrollSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Define horizontaloffset value
-    private double horizontalOffset { get; set; } = 100;
+    private double _horizontalOffset { get; set; } = 100;
     //Define verticalOffset value
-    private double verticalOffset { get; set; } = 100;
+    private double _verticalOffset { get; set; } = 100;
     //Update scrollvalues
-    private void updateScrollValues()
+    private void UpdateScrollValues()
     {
         //Update scroll settings.
-        verticalOffset = 400;
-        horizontalOffset = 200;
+        _verticalOffset = 400;
+        _horizontalOffset = 200;
     }
 }

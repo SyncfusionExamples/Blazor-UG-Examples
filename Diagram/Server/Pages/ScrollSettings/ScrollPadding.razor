@@ -2,23 +2,23 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="diagram" Height="500px" Width="500px" Nodes="@nodes" GetCustomTool="@GetCustomTool" SelectionSettings="@selectionSettings">
+<SfDiagramComponent @ref="_diagram" Height="500px" Width="500px" Nodes="@_nodes" GetCustomTool="@GetCustomTool" SelectionSettings="@_selectionSettings">
     @* Sets the ScrollSettings for the diagram *@
-    <ScrollSettings ScrollPadding="@ScrollBorder">
+    <ScrollSettings ScrollPadding="@_scrollBorder">
     </ScrollSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramMargin ScrollBorder = new DiagramMargin() { Left = 100, Right = 100, Top = 100, Bottom = 100 };
-    private DiagramObjectCollection<Node> nodes;
-    private DiagramSelectionSettings selectionSettings = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> handles = new DiagramObjectCollection<UserHandle>();
+    private SfDiagramComponent _diagram;
+    private DiagramMargin _scrollBorder = new DiagramMargin() { Left = 100, Right = 100, Top = 100, Bottom = 100 };
+    private DiagramObjectCollection<Node> _nodes;
+    private DiagramSelectionSettings _selectionSettings = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _handles = new DiagramObjectCollection<UserHandle>();
     
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -36,7 +36,7 @@
             }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -52,9 +52,9 @@
     {
         UserHandle deleteHandle = AddHandle("Delete", "delete", Direction.Bottom, 0.5);
         UserHandle drawHandle = AddHandle("Draw", "draw", Direction.Right, 0.5);
-        handles.Add(deleteHandle);
-        handles.Add(drawHandle);
-        selectionSettings.UserHandles = handles;
+        _handles.Add(deleteHandle);
+        _handles.Add(drawHandle);
+        _selectionSettings.UserHandles = _handles;
     }
 
     private UserHandle AddHandle(string name, string path, Direction direction, double offset)
@@ -78,16 +78,16 @@
         return handle;
     }
 
-    public InteractionControllerBase GetCustomTool(DiagramElementAction action, string id)
+    private InteractionControllerBase GetCustomTool(DiagramElementAction action, string id)
     {
         InteractionControllerBase tool = null;
         if (id == "Draw")
         {
-            tool = new DrawTool(diagram);
+            tool = new DrawTool(_diagram);
         }
         else
         {
-            tool = new AddDeleteTool(diagram);
+            tool = new AddDeleteTool(_diagram);
         }
         return tool;
     }

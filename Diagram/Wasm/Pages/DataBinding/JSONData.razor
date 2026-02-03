@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Data
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" NodeCreating="NodeDefaults" SetNodeTemplate="SetTemplate">
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" NodeCreating="NodeDefaults" SetNodeTemplate="SetTemplate">
     <DataSourceSettings ID="Name" ParentID="Category">
         <SfDataManager Json="DataSource" Adaptor="Syncfusion.Blazor.Adaptors.JsonAdaptor"></SfDataManager>
     </DataSourceSettings>
@@ -12,10 +12,10 @@
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private float x = 100;
-    private float y = 100;
-    Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
+    private SfDiagramComponent _diagram;
+    private float _x = 100;
+    private float _y = 100;
+    private Query _query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
 
     // Create the hierarchical details with needed properties.
     public class HierarchicalDetails
@@ -39,9 +39,9 @@
     private void NodeDefaults(IDiagramObject obj)
     {
         Node node = obj as Node;
-        node.OffsetX = x;
-        node.OffsetY = y;
-        x += 100;
+        node.OffsetX = _x;
+        node.OffsetY = _y;
+        _x += 100;
         HierarchicalDetails hierarchicalData = node.Data as HierarchicalDetails;
         node.Style.Fill = hierarchicalData.FillColor;
         node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()

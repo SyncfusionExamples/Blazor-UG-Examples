@@ -1,22 +1,18 @@
 ﻿@page "/AutoScrollPadding"
 
 @using Syncfusion.Blazor.Diagram
-
-<SfDiagramComponent Height="600px" Width="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Width="600px" Nodes="@_nodes">
     @* Sets the ScrollSettings for the diagram *@
-    <ScrollSettings EnableAutoScroll=true AutoScrollPadding="@autoScrollBorder" @bind-ScrollLimit="@scrollLimit">
+    <ScrollSettings EnableAutoScroll=true AutoScrollPadding="@_autoScrollBorder">
     </ScrollSettings>
 </SfDiagramComponent>
-
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
-    private ScrollLimitMode scrollLimit { get; set; } = ScrollLimitMode.Infinity;
-    private DiagramMargin autoScrollBorder = new DiagramMargin() { Left = 30, Right = 30, Top = 30, Bottom = 30 };
-    
+    private DiagramObjectCollection<Node> _nodes;
+    private DiagramMargin _autoScrollBorder = new DiagramMargin() { Left = 30, Right = 30, Top = 30, Bottom = 30 };
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -34,6 +30,6 @@
             }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
