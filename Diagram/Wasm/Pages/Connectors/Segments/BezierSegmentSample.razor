@@ -1,0 +1,54 @@
+﻿@page "/BezierSegment"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors">
+</SfDiagramComponent>
+
+@code
+{
+     //Defines diagram's connector collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+       Connector connector1 = new Connector()
+        {
+            ID = "Connector1",
+            Type = ConnectorSegmentType.Bezier,
+            SourcePoint = new DiagramPoint { X = 500, Y = 200 },
+            TargetPoint = new DiagramPoint { X = 600, Y = 300 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>
+            {
+                new BezierSegment() 
+                {
+                    Type = ConnectorSegmentType.Bezier,
+                    //Defines the point1 and point2 for the bezier connector.
+                    Point1 = new DiagramPoint { X = 500, Y = 100 },
+                    Point2 = new DiagramPoint { X = 600, Y = 200 }
+                }
+            }
+        };
+        //Add the connector into connectors's collection.
+        _connectors.Add(connector1);
+         Connector connector2 = new Connector()
+         {
+            ID = "Connector2",
+            Type = ConnectorSegmentType.Bezier,
+            SourcePoint = new DiagramPoint { X = 200, Y = 100 },
+            TargetPoint = new DiagramPoint { X = 300, Y = 200 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>
+            {
+                new BezierSegment()
+                {
+                    Type = ConnectorSegmentType.Bezier,
+                    //Defines the Vector1 and Vector2 for the bezier connector.
+                    Vector1 = new Vector(){Distance = 100 ,Angle = 90 },
+                    Vector2 = new Vector(){Distance = 45 ,Angle = 45 }
+                }
+            }
+        };
+        //Add the connector into connectors's collection.
+        _connectors.Add(connector2);
+    }
+}

@@ -1,0 +1,29 @@
+﻿@page "/ControlPointsVisibilitySample"
+
+@using Syncfusion.Blazor.Diagram
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors"></SfDiagramComponent>
+@code {
+    //Define the diagram's connector collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    protected override void OnInitialized()
+    {
+        Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 700, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 1000, Y = 400 },
+            Segments = new DiagramObjectCollection<ConnectorSegment>()
+            {
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 750, Y = 250}},
+                new BezierSegment(){Type = ConnectorSegmentType.Bezier, Point = new DiagramPoint(){X = 900, Y = 350}}
+            },
+            Type = ConnectorSegmentType.Bezier,
+            BezierConnectorSettings = new BezierConnectorSettings()
+            {
+                //Define the visibility of the control points.
+                ControlPointsVisibility = ControlPointsVisibility.Intermediate
+            },
+        };
+        _connectors.Add(connector1);
+    }
+}
