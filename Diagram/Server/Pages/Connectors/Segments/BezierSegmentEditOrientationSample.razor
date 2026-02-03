@@ -1,0 +1,69 @@
+﻿@page "/BezierSegmentEditOrientationSample"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" Connectors="@_connectors"></SfDiagramComponent>
+
+@code {
+    //Define the diagram's connector collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    //Define the diagram's node collection.
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
+    protected override void OnInitialized()
+    {
+        _nodes.Add(
+            new Node()
+            {
+                ID = "node1",
+                OffsetX = 300,
+                OffsetY = 100,
+                Width = 100,
+                Height = 100,
+                Ports = new DiagramObjectCollection<PointPort>()
+                    {
+                    new PointPort()
+                    {
+                        ID="Port1",
+                        Visibility = PortVisibility.Visible,
+                        Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+                    },
+                    }
+            });
+        _nodes.Add(new Node()
+        {
+            ID = "node2",
+            OffsetX = 300,
+            OffsetY = 350,
+            Width = 100,
+            Height = 100,
+            Ports = new DiagramObjectCollection<PointPort>()
+                {
+                    new PointPort()
+                    {
+                        ID="Port1",
+                        Visibility = PortVisibility.Visible,
+                        Offset = new DiagramPoint() { X = 0, Y = 0.5 },
+                    },
+                }
+        });
+        Connector connector1 = new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            SourcePortID = "Port1",
+            TargetPortID = "Port1",
+            Type = ConnectorSegmentType.Bezier,
+            BezierConnectorSettings = new BezierConnectorSettings()
+            {
+                //Define the smoothness for a bezier connector.
+                Smoothness = BezierSmoothness.SymmetricAngle,
+                //Define the orientation of the segment editing controls.
+                SegmentEditOrientation = BezierSegmentEditOrientation.FreeForm
+            },
+            Constraints = ConnectorConstraints.Default | ConnectorConstraints.DragSegmentThumb
+        };
+        _connectors.Add(connector1);
+    }
+}
