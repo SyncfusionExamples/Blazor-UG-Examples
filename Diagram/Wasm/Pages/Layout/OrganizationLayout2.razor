@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <DataSourceSettings ID="Id" ParentID="Team" DataSource="@DataSource"></DataSourceSettings>
+    <DataSourceSettings ID="Id" ParentID="Team" DataSource="@_dataSource"></DataSourceSettings>
     <SnapSettings>
         <HorizontalGridLines LineColor="white" LineDashArray="2,2">
         </HorizontalGridLines>
@@ -18,8 +18,8 @@
 @code
 {
     //Initializing layout.
-    private int HorizontalSpacing = 40;
-    private int VerticalSpacing = 50;
+    private int _horizontalSpacing = 40;
+    private int _verticalSpacing = 50;
 
     //To configure every subtree of the organizational chart.
     private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
@@ -47,7 +47,7 @@
         connectors.TargetDecorator = new DecoratorSettings
         {
             Shape = DecoratorShape.None,
-            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED", }
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
     }
 
@@ -58,12 +58,12 @@
         public string Role { get; set; }
     }
 
-    public object DataSource = new List<object>()
+    private object _dataSource = new List<object>()
     {
-        new OrgChartDataModel() { Id= "1", Role= "General Manager" },
-        new OrgChartDataModel() { Id= "2", Role= "Human Resource Manager", Team= "1" },
-        new OrgChartDataModel() { Id= "3", Role= "Design Manager", Team= "1" },
-        new OrgChartDataModel() { Id= "4", Role= "Operation Manager", Team= "1" },
-        new OrgChartDataModel() { Id= "5", Role= "Marketing Manager", Team= "1" }
+        new OrgChartDataModel() { Id = "1", Role = "General Manager" },
+        new OrgChartDataModel() { Id = "2", Role = "Human Resource Manager", Team = "1" },
+        new OrgChartDataModel() { Id = "3", Role = "Design Manager", Team = "1" },
+        new OrgChartDataModel() { Id = "4", Role = "Operation Manager", Team = "1" },
+        new OrgChartDataModel() { Id = "5", Role = "Marketing Manager", Team = "1" }
     };
 }

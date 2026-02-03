@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 
 <SfDiagramComponent Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@DataSource"></DataSourceSettings>
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource"></DataSourceSettings>
     <Layout Type="LayoutType.MindMap" GetBranch="@GetBranch">
         <LayoutMargin Top="20" Left="20"></LayoutMargin>
     </Layout>
@@ -47,7 +47,7 @@
         connectors.Style = new TextStyle() { StrokeColor = "#6495ED", StrokeWidth = 2 };
         connectors.TargetDecorator = new DecoratorSettings
         {
-            Shape = DecoratorShape.None,
+            Shape = DecoratorShape.None
         };
     }
 
@@ -60,18 +60,18 @@
         public string Fill { get; set; }
     }
 
-    public object DataSource = new List<object>()
+    private object _dataSource = new List<object>()
     {
-        new MindMapDetails() { Id= "1",Label="Creativity", ParentId =""},
-        new MindMapDetails() { Id= "2",  Label="Brainstorming", ParentId ="1"},
-        new MindMapDetails() { Id= "3",  Label="Complementing", ParentId ="1"},
-        new MindMapDetails() { Id= "4",  Label="Sessions", ParentId ="2"},
-        new MindMapDetails() { Id= "5",  Label="Complementing", ParentId ="2"},
-        new MindMapDetails() { Id= "6", Label= "Local", ParentId ="3"},
-        new MindMapDetails() { Id= "7", Label= "Remote", ParentId ="3"},
-        new MindMapDetails() { Id= "8", Label= "Individual", ParentId ="3"},
-        new MindMapDetails() { Id= "9", Label= "Teams", ParentId ="3"},
-        new MindMapDetails() { Id= "10", Label= "Ideas", ParentId ="5"},
-        new MindMapDetails() { Id= "11", Label= "Engagement", ParentId ="5"},
+        new MindMapDetails() { Id = "1", Label = "Creativity", ParentId = "" },
+        new MindMapDetails() { Id = "2", Label = "Brainstorming", ParentId = "1" },
+        new MindMapDetails() { Id = "3", Label = "Complementing", ParentId = "1" },
+        new MindMapDetails() { Id = "4", Label = "Sessions", ParentId = "2" },
+        new MindMapDetails() { Id = "5", Label = "Complementing", ParentId = "2" },
+        new MindMapDetails() { Id = "6", Label = "Local", ParentId = "3" },
+        new MindMapDetails() { Id = "7", Label = "Remote", ParentId = "3" },
+        new MindMapDetails() { Id = "8", Label = "Individual", ParentId = "3" },
+        new MindMapDetails() { Id = "9", Label = "Teams", ParentId = "3" },
+        new MindMapDetails() { Id = "10", Label = "Ideas", ParentId = "5" },
+        new MindMapDetails() { Id = "11", Label = "Engagement", ParentId = "5" }
     };
 }

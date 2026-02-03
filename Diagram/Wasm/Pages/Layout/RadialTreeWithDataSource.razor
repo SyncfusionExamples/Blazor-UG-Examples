@@ -15,8 +15,8 @@
 
 <div id="diagram-space">
     <br />
-    <SfDiagramComponent @ref="diagram" Width="100%" Height="800px" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
-        <DataSourceSettings DataSource="RadialSource" ID="Id" ParentID="ReportingPerson"></DataSourceSettings>
+    <SfDiagramComponent @ref="_diagram" Width="100%" Height="800px" NodeCreating="@NodeCreating" ConnectorCreating="@ConnectorCreating">
+        <DataSourceSettings DataSource="@_radialSource" ID="Id" ParentID="ReportingPerson"></DataSourceSettings>
         <Layout Type="LayoutType.RadialTree" HorizontalSpacing="30" VerticalSpacing="30">
 
         </Layout>
@@ -27,7 +27,7 @@
 @code
 {
 
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent? _diagram;
     
     public class RadialTreeDetails
     {
@@ -41,10 +41,10 @@
     {
         //Console.WriteLine("Created - "+DateTime.Now.ToString("yyyy-MM-dd HH: mm:ss.fff"));
         FitOptions options = new FitOptions() { Mode = FitMode.Both, Region = DiagramRegion.Content };
-        diagram.FitToPage(options);
+        _diagram?.FitToPage(options);
     }
 
-    public List<RadialTreeDetails> RadialSource = new List<RadialTreeDetails>()
+    private List<RadialTreeDetails> _radialSource = new List<RadialTreeDetails>()
     {
         new RadialTreeDetails()   { Id = "parent", Name = "Maria Anders", Designation = "Managing Director" },
         new RadialTreeDetails()   { Id = "1", Name = "Ana Trujillo", Designation = "Project Manager",
