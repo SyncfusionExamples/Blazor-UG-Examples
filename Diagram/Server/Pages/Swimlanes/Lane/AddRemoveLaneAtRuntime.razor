@@ -5,12 +5,12 @@
 
 <SfButton Content="Add Lane" OnClick="@AddLane" />
 <SfButton Content="Remove Lane" OnClick="@RemoveLane" />
-<SfDiagramComponent Height="600px" Swimlanes="@SwimlaneCollections" NodeCreating="@OnNodeCreating" />
+<SfDiagramComponent Height="600px" Swimlanes="@_swimlaneCollections" NodeCreating="@OnNodeCreating" />
 
 @code
 {
     //Define diagram's swimlane collection
-    private DiagramObjectCollection<Swimlane> SwimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> _swimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     protected override void OnInitialized()
     {
@@ -43,7 +43,7 @@
             }
         };
         // Add swimlane
-        SwimlaneCollections.Add(swimlane);
+        _swimlaneCollections.Add(swimlane);
     }
 
     private void AddLane()
@@ -58,18 +58,18 @@
                 Style = new TextStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" }
             }
         };
-        SwimlaneCollections[0].Lanes.Add(newLane);
+        _swimlaneCollections[0].Lanes.Add(newLane);
     }
 
     private void RemoveLane()
     {
-        Lane lane = SwimlaneCollections[0].Lanes[^1];
-        SwimlaneCollections[0].Lanes.Remove(lane);
+        Lane lane = _swimlaneCollections[0].Lanes[^1];
+        _swimlaneCollections[0].Lanes.Remove(lane);
     }
 
-    private void OnNodeCreating(IDiagramObject obj)
+    private void OnNodeCreating(IDiagramObject diagramObject)
     {
-        if (obj is Swimlane swimlane)
+        if (diagramObject is Swimlane swimlane)
         {
             swimlane.Header.Style = new TextStyle()
             {
