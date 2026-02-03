@@ -6,18 +6,18 @@
 
 <SfButton Content="CustomEntry" OnClick="@OnCustomEntry" />
 
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
-    <DiagramHistoryManager StackLimit="@stackLimit" />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
+    <DiagramHistoryManager StackLimit="@_stackLimit" />
 </SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent diagram;
-    //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private string EventValue = string.Empty;
-    private int stackLimit = 3;
+    // Reference to the diagram.
+    private SfDiagramComponent _diagram;
+    // Initialize diagram's nodes collection.
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private string _eventValue = string.Empty;
+    private int _stackLimit = 3;
 
     protected override void OnInitialized()
     {
@@ -37,14 +37,14 @@
             AdditionalInfo = NodeInfo
         };
         // Add node
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnCustomEntry()
     {
         HistoryEntry entry = new HistoryEntry();
-        entry.UndoObject = diagram.Nodes[0];
-        diagram.AddHistoryEntry(entry);
+        entry.UndoObject = _diagram.Nodes[0];
+        _diagram.AddHistoryEntry(entry);
     }
 
 }

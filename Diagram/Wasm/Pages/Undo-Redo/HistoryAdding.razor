@@ -3,18 +3,18 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
     <DiagramHistoryManager HistoryAdding="@OnHistoryAdding" />
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -28,7 +28,7 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnHistoryAdding(HistoryAddingEventArgs entry)

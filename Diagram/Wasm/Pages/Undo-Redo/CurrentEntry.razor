@@ -6,18 +6,18 @@
 <SfButton Content="GetCurrentEntry" OnClick="@GetCurrentEntry" />
 
 @* Initialize Diagram *@
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
 </SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    // Reference to the diagram.
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -31,11 +31,11 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void GetCurrentEntry()
     {
-        Console.WriteLine(diagram.HistoryManager.CurrentEntry);
+        Console.WriteLine(_diagram.HistoryManager.CurrentEntry);
     }
 }
