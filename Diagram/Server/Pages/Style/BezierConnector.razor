@@ -2,7 +2,7 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Width="1000px"  Height="500px" Connectors="@connectors" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
 
 <style>
     .e-diagram-bezier-handle {
@@ -14,7 +14,7 @@
 @code
 {
     //Defines diagram's connector collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     protected override void OnInitialized()
     {
         Connector Connector = new Connector()
@@ -28,6 +28,6 @@
             },
             TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
         };
-        connectors.Add(Connector);
+        _connectors.Add(Connector);
     }
 }
