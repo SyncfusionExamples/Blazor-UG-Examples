@@ -1,0 +1,245 @@
+﻿@page "/ForceDirectedTreeLayout"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="_diagramComponent" Height="690px" Width="100%" @bind-Nodes="@_nodes" @bind-Connectors="@_connectors" Created="@OnCreated">
+    <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
+    <Layout Type="LayoutType.ForceDirectedTree" @bind-ForceDirectedTreeLayoutSettings="@_layoutSettings"></Layout>
+</SfDiagramComponent>
+
+@code {
+    private SfDiagramComponent _diagramComponent;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    private ForceDirectedTreeLayoutSettings _layoutSettings = new ForceDirectedTreeLayoutSettings
+    {
+        ConnectorLength = 120,
+        MaximumIteration = 1500,
+        RepulsionStrength = 20000,
+        AttractionStrength = 0.8
+    };
+
+    private int _departmentsUnderCeo = 4;
+    private int _managersPerDepartment = 4;
+    private int _teamsPerManager = 6;
+    
+    protected override void OnInitialized()
+    {
+        InitializeDiagram();
+    }
+
+    private void InitializeDiagram()
+    {
+        List<OrganizationItem> organizationData = GetCompanyOrganizationData();
+        PopulateDiagramFromOrganizationData(organizationData);
+    }
+
+    private void PopulateDiagramFromOrganizationData(IEnumerable<OrganizationItem> organizationItems)
+    {
+        Dictionary<string, OrganizationItem> itemsById = organizationItems.ToDictionary(item => item.Id);
+        foreach (OrganizationItem item in organizationItems)
+        {
+            Node node = CreateOrganizationNode(item);
+            _nodes!.Add(node);
+            if (!string.IsNullOrEmpty(item.ParentId) && itemsById.ContainsKey(item.ParentId))
+            {
+                _connectors!.Add(CreateNodeConnector(item.ParentId, item.Id));
+            }
+        }
+    }
+
+    private void OnCreated()
+    {
+        FitOptions options = new FitOptions() { Mode = FitMode.Both, Region = DiagramRegion.Content };
+        _diagramComponent.FitToPage(options);
+    }
+
+    private Node CreateOrganizationNode(OrganizationItem item)
+    {
+        ShapeStyle nodeStyle = new ShapeStyle { Fill = "orange", StrokeWidth = 2, StrokeColor = "#8c8c8c" };
+        double nodeWidth = 35;
+        double nodeHeight = 35;
+        Shape nodeShape = new BasicShape() { Shape = NodeBasicShapes.Ellipse };
+        switch (item.Level)
+        {
+            case OrganizationLevel.Header:
+                nodeStyle.Fill = "#f39c12";
+                nodeWidth = nodeHeight = 140;
+                nodeShape = new BasicShape { Shape = NodeBasicShapes.Ellipse };
+                break;
+            case OrganizationLevel.Department:
+                nodeStyle.Fill = "#27ae60";
+                nodeWidth = nodeHeight = 120;
+                nodeShape = new BasicShape { Shape = NodeBasicShapes.Ellipse };
+                break;
+            case OrganizationLevel.Manager:
+                nodeStyle.Fill = "#2980b9";
+                nodeShape = new BasicShape { Shape = NodeBasicShapes.Ellipse };
+                nodeWidth = nodeHeight = 100;
+                break;
+            case OrganizationLevel.Team:
+                nodeStyle.Fill = "#f39c12";
+                nodeShape = new BasicShape { Shape = NodeBasicShapes.Ellipse };
+                nodeWidth = nodeHeight = 80;
+                break;
+        }
+        return new Node
+        {
+            ID = item.Id,
+            Width = nodeWidth,
+            Height = nodeHeight,
+            Shape = nodeShape,
+            Annotations = new DiagramObjectCollection<ShapeAnnotation>
+            {
+                new ShapeAnnotation
+                {
+                    ID = $"{item.Id}_label",
+                    Content = item.Name,
+                    Style = new TextStyle() { FontSize = 18, Bold = true, Color = "white" }
+                }
+            },
+            Style = nodeStyle
+        };
+    }
+
+    private Connector CreateNodeConnector(string sourceNodeId, string targetNodeId)
+    {
+        return new Connector
+        {
+            ID = $"{sourceNodeId}_{targetNodeId}",
+            SourceID = sourceNodeId,
+            TargetID = targetNodeId,
+            Type = ConnectorSegmentType.Straight
+        };
+    }
+
+    public enum OrganizationLevel
+    {
+        Header,
+        Department,
+        Manager,
+        Team
+    }
+
+    public class OrganizationItem
+    {
+        public string Id { get; set; } = "";
+        public string? ParentId { get; set; }
+        public string Name { get; set; } = "";
+        public OrganizationLevel Level { get; set; }
+    }
+
+    private static List<OrganizationItem> BuildOrganizationData(int departmentCount, int managersPerDepartment, int teamsPerManager)
+    {
+        List<OrganizationItem> organizationData = new List<OrganizationItem>
+        {
+            new OrganizationItem { Id = "departments", ParentId = null, Name = "Departments", Level = OrganizationLevel.Header }
+        };
+        // Create departments
+        for (int departmentIndex = 1; departmentIndex <= departmentCount; departmentIndex++)
+        {
+            string departmentId = $"dept_{departmentIndex}";
+            organizationData.Add(new OrganizationItem { Id = departmentId, ParentId = "departments", Name = $"Department {departmentIndex}", Level = OrganizationLevel.Department });
+            // Create managers for each department
+            for (int managerIndex = 1; managerIndex <= managersPerDepartment; managerIndex++)
+            {
+                string managerId = $"{departmentId}_mgr_{managerIndex}";
+                organizationData.Add(new OrganizationItem { Id = managerId, ParentId = departmentId, Name = $"Manager {departmentIndex}.{managerIndex}", Level = OrganizationLevel.Manager });
+                // Create teams for each manager
+                for (int teamIndex = 1; teamIndex <= teamsPerManager; teamIndex++)
+                {
+                    string teamId = $"{managerId}_team_{teamIndex}";
+                    organizationData.Add(new OrganizationItem
+                    {
+                        Id = teamId,
+                        ParentId = managerId,
+                        Name = $"Team {departmentIndex}.{managerIndex}.{teamIndex}",
+                        Level = OrganizationLevel.Team
+                    });
+                }
+            }
+        }
+        return organizationData;
+    }
+
+    // Realistic software company hierarchy: 1 CEO with 4 departments, each with managers and their respective teams
+    private static List<OrganizationItem> GetCompanyOrganizationData()
+    {
+        List<OrganizationItem> companyData = new List<OrganizationItem>();
+        // CEO level
+        companyData.Add(new OrganizationItem { Id = "departments", ParentId = null, Name = "Departments", Level = OrganizationLevel.Header });
+        // Department level (Level 2)
+        List<OrganizationItem> departmentList = new List<OrganizationItem>
+        {
+            new OrganizationItem { Id = "uxTeam", ParentId = "departments", Name = "UX Team", Level = OrganizationLevel.Department },
+            new OrganizationItem { Id = "devTeam", ParentId = "departments", Name = "Development Team", Level = OrganizationLevel.Department },
+            new OrganizationItem { Id = "salesTeam", ParentId = "departments", Name = "Sales Team", Level = OrganizationLevel.Department },
+            new OrganizationItem { Id = "hrTeam", ParentId = "departments", Name = "HR Team", Level = OrganizationLevel.Department }
+        };
+        foreach (OrganizationItem department in departmentList)
+            companyData.Add(department);
+        // Managers per department (Level 3) - 4 managers per department
+        Dictionary<string, (string id, string name)[]> managersByDepartment = new Dictionary<string, (string id, string name)[]>
+        {
+            ["uxTeam"] = new[]
+            {
+                ("mgr1", "Manager-1"),
+                ("mgr2", "Manager-2"),
+            },
+            ["devTeam"] = new[]
+            {
+                ("po1", "PO-1"),
+                ("po2", "PO-2"),
+                ("po3", "PO-3"),
+                ("po4", "PO-4"),
+            },
+            ["salesTeam"] = new[]
+            {
+                ("agm1", "AGM-1"),
+                ("agm2", "AGM-2"),
+            },
+            ["hrTeam"] = new[]
+            {
+                ("hr_mgr", "Manager"),
+            },
+        };
+        foreach (string departmentKey in managersByDepartment.Keys)
+        {
+            foreach ((string id, string name) manager in managersByDepartment[departmentKey])
+                companyData.Add(new OrganizationItem { Id = manager.id, ParentId = departmentKey, Name = manager.name, Level = OrganizationLevel.Manager });
+        }
+        // Teams per manager (Level 4) - Variable count based on requirements
+        Dictionary<string, int> teamCountByManagerId = new Dictionary<string, int>
+        {
+            ["mgr1"] = 3,
+            ["mgr2"] = 3,
+            ["po1"] = 4,
+            ["po2"] = 4,
+            ["po3"] = 4,
+            ["po4"] = 4,
+            ["agm1"] = 3,
+            ["agm2"] = 3,
+            ["hr_mgr"] = 2,
+        };
+        foreach (string departmentKey in managersByDepartment.Keys)
+        {
+            foreach ((string managerId, string managerName) manager in managersByDepartment[departmentKey])
+            {
+                int teamCount = teamCountByManagerId.ContainsKey(manager.managerId) ? teamCountByManagerId[manager.managerId] : 0;
+                for (int teamIndex = 1; teamIndex <= teamCount; teamIndex++)
+                {
+                    string teamId = $"{manager.managerId}_t{teamIndex}";
+                    companyData.Add(new OrganizationItem
+                    {
+                        Id = teamId,
+                        ParentId = manager.managerId,
+                        Name = $"Team-{teamIndex}",
+                        Level = OrganizationLevel.Team
+                    });
+                }
+            }
+        }
+        return companyData;
+    }
+}
