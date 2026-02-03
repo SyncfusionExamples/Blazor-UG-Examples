@@ -1,0 +1,105 @@
+﻿@page "/Export"
+
+@using Syncfusion.PdfExport;
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+@inject IJSRuntime JS;
+
+<SfButton Content="ExportPDF" OnClick="@ExportPDFAsync" />
+<SfButton Content="ExportPng" OnClick="@ExportPngAsync" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" />
+
+@code
+{
+    //Reference the diagram
+    SfDiagramComponent _diagram;
+
+    private async void ExportPDFAsync()
+    {
+        DiagramExportSettings _print = new DiagramExportSettings();
+        _print.Region = DiagramPrintExportRegion.PageSettings;
+        _print.PageWidth = 500;
+        _print.PageHeight = 800;
+        _print.Orientation = PageOrientation.Portrait;
+        _print.FitToPage = true;
+        _print.Margin = new DiagramThickness() { Left = 30, Top = 20, Right = 10, Bottom = 10 };
+        _print.ClipBounds = new DiagramRect() { X = 200, Y = 200, Width = 200, Height = 200 };
+        //To export the diagram into base64
+        var _images = await _diagram.ExportAsync(DiagramExportFormat.PNG, _print);
+        var _pdforientation = PageOrientation.Portrait == PageOrientation.Landscape ? PdfPageOrientation.Landscape : PdfPageOrientation.Portrait;
+        await ExportToPdfAsync("diagram", _pdforientation, true, _images);        
+    }
+    //
+    private async Task<string> ExportToPdfAsync(string fileName, PdfPageOrientation orientation, bool allowDownload, string[] images)
+    {
+        PdfDocument _document = new PdfDocument();
+        _document.PageSettings.Orientation = orientation;
+        _document.PageSettings.Margins = new PdfMargins() { Left = 0, Right = 0, Top = 0, Bottom = 0 };
+        string _base64String;
+        var _dict = images;
+        for (int i = 0; i < _dict.Count(); i++)
+        {
+            _base64String = _dict[i];
+            using (MemoryStream _initialStream = new MemoryStream(Convert.FromBase64String(_base64String.Split("base64,")[1])))
+            {
+                Stream _stream = _initialStream as Stream;
+                PdfPage _page = _document.Pages.Add();
+                PdfGraphics _graphics = _page.Graphics;
+                #pragma warning disable CA2000
+                PdfBitmap _image = new PdfBitmap(_stream);
+                #pragma warning restore CA2000
+                _graphics.DrawImage(_image, 0, 0);
+            }
+        }
+        using (MemoryStream _memoryStream = new MemoryStream())
+        {
+            _document.Save(_memoryStream);
+            _memoryStream.Position = 0;
+            _base64String = Convert.ToBase64String(_memoryStream.ToArray());
+            if (allowDownload)
+            {
+                await JSRuntimeExtensions.InvokeAsync<string>(JS, "downloadPdf", new object[] { _base64String, fileName });
+                _base64String = string.Empty;
+            }
+            else
+            {
+                _base64String = "data:application/pdf;base64," + _base64String;
+            }
+            _document.Dispose();
+        }
+        return _base64String;
+    }
+}
+<script>
+// Javascript methods to download file
+function downloadPdf(base64String, fileName) {
+    var _sliceSize = 512;
+    var _byteCharacters = atob(base64String);
+    var _byteArrays = [];
+    for (var offset = 0; offset < _byteCharacters.length; offset += _sliceSize)
+    {
+        var _slice = _byteCharacters.slice(offset, offset + _sliceSize);
+        var _byteNumbers = new Array(slice.length);
+        for (var i = 0; i < _slice.length; i++)
+        {
+            _byteNumbers[i] = _slice.charCodeAt(i);
+        }
+        var _byteArray = new Uint8Array(_byteNumbers);
+        _byteArrays.push(_byteArray);
+    }
+    var _blob = new Blob(_byteArrays,
+        {
+            type: 'application/pdf'
+        }
+    );
+    var _blobUrl = window.URL.createObjectURL(_blob);
+    this.triggerDownload("PDF", fileName, _blobUrl);
+}
+triggerDownload: function triggerDownload(type, fileName, url)
+{
+    var _anchorElement = document.createElement('a');
+    _anchorElement.download = fileName + '.' + type.toLocaleLowerCase();
+    _anchorElement.href = url;
+    _anchorElement.click();
+}
+</script>
