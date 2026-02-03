@@ -1,17 +1,22 @@
-﻿@page "/LaneChildren"
+﻿@page "/AllowDragWithinSwimlane"
 
 @using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent Height="600px" Swimlanes="@_swimlaneCollections" NodeCreating="@OnNodeCreating" />
+<SfButton Content="AllowDrag" OnClick="@AllowDrag" />
+<SfDiagramComponent @ref="_diagram" Height="600px" Swimlanes="@_swimlaneCollections" NodeCreating="@OnNodeCreating" >
+    <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
+</SfDiagramComponent>
 
 @code
 {
-    //Define diagram's swimlane collection
+    // Define diagram's swimlane collection
     private DiagramObjectCollection<Swimlane> _swimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private SfDiagramComponent _diagram;
 
     protected override void OnInitialized()
     {
-        // A swimlane is created and stored in the swimlanes collection.
+        // A swimlane is created and stored in the swimlanes collection
         Swimlane swimlane = new Swimlane()
         {
             Header = new SwimlaneHeader()
@@ -31,14 +36,20 @@
                 new Lane()
                 {
                     Height = 100,
-                    Header = new SwimlaneHeader(){
+                    Header = new SwimlaneHeader()
+                    {
                         Width = 30,
                         Annotation = new ShapeAnnotation(){ Content = "Consumer" }
                     },
                     Children = new DiagramObjectCollection<Node>()
                     {
-                        new Node(){Height = 50, Width = 50, LaneOffsetX = 100, LaneOffsetY = 30},
-                        new Node(){Height = 50, Width = 50, LaneOffsetX = 250, LaneOffsetY = 30},
+                        new Node()
+                        {
+                            Height = 50, 
+                            Width = 100,
+                            LaneOffsetX = 250, 
+                            LaneOffsetY = 30
+                        },
                     }
                 },
             }
@@ -56,22 +67,27 @@
                 Fill = "#5b9bd5",
                 StrokeColor = "#5b9bd5"
             };
-            foreach (Phase phase in swimlane.Phases)
-            {
-                phase.Style = new ShapeStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
-            }
             foreach (Lane lane in swimlane.Lanes)
             {
                 lane.Header.Style = new TextStyle() { Fill = "#5b9bd5", StrokeColor = "#5b9bd5" };
             }
         }
-        else if (diagramObject is Node node)
+    }
+
+    private void AllowDrag()
+    {
+        if (_diagram.SelectionSettings.Nodes.Count > 0)
         {
-            node.Style = new ShapeStyle()
+            var node = _diagram.SelectionSettings.Nodes[0];
+            if (node.Constraints.HasFlag(NodeConstraints.AllowDragWithinSwimlane))
             {
-                Fill = "#5b9bd5",
-                StrokeColor = "#5b9bd5"
-            };
+                node.Constraints &= ~NodeConstraints.AllowDragWithinSwimlane;
+
+            }
+            else
+            {
+                node.Constraints |= NodeConstraints.AllowDragWithinSwimlane;
+            }
         }
     }
 }
