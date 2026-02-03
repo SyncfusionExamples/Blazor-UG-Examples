@@ -13,7 +13,7 @@
 </style>
 
 <div id="diagram-space">
-     <SfDiagramComponent @ref="diagram" Width="600px" Height="600px" Nodes="nodes" Connectors="connectors" GetCustomCursor="@cursor">    
+     <SfDiagramComponent @ref="_diagram" Width="600px" Height="600px" Nodes="_nodes" Connectors="_connectors" GetCustomCursor="@Cursor">    
         <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
     </SfDiagramComponent>
 </div>
@@ -22,11 +22,11 @@
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -68,14 +68,14 @@
             },
             Type = ConnectorSegmentType.Straight,
         };
-        connectors.Add(Connector);
-        nodes.Add(node);
-        nodes.Add(node2);
+        _connectors.Add(Connector);
+        _nodes.Add(node);
+        _nodes.Add(node2);
 
     }
 
     //Method to getcustomcursor method
-    private string cursor(DiagramElementAction action, bool active, string handle)
+    private string Cursor(DiagramElementAction action, bool active, string handle)
     {
         string cursors = null;
         if (action == DiagramElementAction.Select)

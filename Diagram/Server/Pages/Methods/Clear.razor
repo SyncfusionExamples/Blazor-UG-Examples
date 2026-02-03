@@ -4,20 +4,20 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Clear" OnClick="@ClearMethod" />
-<SfDiagramComponent @ref="diagram" Width="500px" Height="500px" @bind-Nodes="@Nodes" @bind-Connectors="@Connectors"></SfDiagramComponent>
+<SfDiagramComponent @ref="_diagram" Width="500px" Height="500px" @bind-Nodes="@_nodes" @bind-Connectors="@_connectors"></SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
-        Nodes.Add(new Node()
+        _nodes.Add(new Node()
         {
             ID = "node1",
             OffsetX = 100,
@@ -26,7 +26,7 @@
             Height = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         });
-        Nodes.Add(new Node()
+        _nodes.Add(new Node()
         {
             ID = "node2",
             OffsetX = 270,
@@ -34,7 +34,7 @@
             Width = 50,
             Height = 50,
         });
-        Nodes.Add(new Node()
+        _nodes.Add(new Node()
         {
             ID = "node3",
             OffsetX = 330,
@@ -42,13 +42,13 @@
             Width = 50,
             Height = 50,
         });
-        Nodes.Add(new NodeGroup()
+        _nodes.Add(new NodeGroup()
         {
             ID = "group",
             Children = new string[] { "node2", "node3" },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
         });
-        Connectors.Add(new Connector()
+        _connectors.Add(new Connector()
         {
             SourceID = "node1",
             TargetID = "group",
@@ -59,6 +59,6 @@
 
     private void ClearMethod()
     {
-        diagram.Clear();
+        _diagram.Clear();
     }
 }

@@ -4,18 +4,18 @@
 @using System.Collections.ObjectModel
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 
-<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" DragStart="DragStart" />
-<SfSymbolPaletteComponent @ref="PaletteInstance" Height="600px" Palettes="@Palettes" SymbolHeight="40" GetSymbolInfo="GetSymbolInfo" SymbolWidth="40" >
-</SfSymbolPaletteComponent >
+<SfDiagramComponent @ref="@_diagram" Width="100%" Height="700px" Nodes="_nodes" DragStart="DragStart" />
+<SfSymbolPaletteComponent @ref="_paletteInstance" Height="600px" Palettes="@_palettes" SymbolHeight="40" GetSymbolInfo="GetSymbolInfo" SymbolWidth="40">
+</SfSymbolPaletteComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-	private SfSymbolPaletteComponent PaletteInstance;
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-    private DiagramObjectCollection<NodeBase> TNodes = new DiagramObjectCollection<NodeBase>();
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    
+    private SfDiagramComponent _diagram;
+    private SfSymbolPaletteComponent _paletteInstance;
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> _tNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
         SymbolInfo SymbolInfo = new SymbolInfo();
@@ -25,23 +25,23 @@
 
     protected override void OnInitialized()
     {
-        TNodes = new DiagramObjectCollection<NodeBase>();
+        _tNodes = new DiagramObjectCollection<NodeBase>();
         Node TNode2 = new Node()
-        { 
-            ID = "node1", 
-            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
-        };
-        TNodes.Add(TNode2);
-        Palettes = new DiagramObjectCollection<Palette>()
         {
-            new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
+            ID = "node1",
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision }
+        };
+        _tNodes.Add(TNode2);
+        _palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols =_tNodes,Title="Flow Shapes",ID="Flow Shapes" },
         };
     }
 
-	protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
-        PaletteInstance.Targets.Add(Diagram);
+        _paletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        _paletteInstance.Targets.Add(_diagram);
     }
 
     //Notify the drag start event.

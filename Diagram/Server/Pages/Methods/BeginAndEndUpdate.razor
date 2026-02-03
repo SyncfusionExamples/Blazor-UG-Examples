@@ -3,20 +3,20 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent @ref="diagram" Width="600px" Height="600px" Nodes="nodes" Connectors="connectors">
+<SfDiagramComponent @ref="_diagram" Width="600px" Height="600px" Nodes="_nodes" Connectors="_connectors">
     <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
-<SfButton Content="PropertyUpdate" OnClick="@PropertyUpdate" />
+<SfButton Content="PropertyUpdate" OnClick="@PropertyUpdateAsync" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -58,16 +58,16 @@
             },
             Type = ConnectorSegmentType.Straight,
         };
-        connectors.Add(Connector);
-        nodes.Add(node);
-        nodes.Add(node2);
+        _connectors.Add(Connector);
+        _nodes.Add(node);
+        _nodes.Add(node2);
     }
 
-    private async void PropertyUpdate()
+    private async void PropertyUpdateAsync()
     {
-        diagram.BeginUpdate();
-        diagram.Nodes[0].Height = 150;
-        diagram.Nodes[0].Width = 150;
-        await diagram.EndUpdateAsync();
+        _diagram.BeginUpdate();
+        _diagram.Nodes[0].Height = 150;
+        _diagram.Nodes[0].Width = 150;
+        await _diagram.EndUpdateAsync();
     }
 }
