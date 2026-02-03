@@ -2,14 +2,14 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Connectors="@connectors" @ref="diagram" Height="600px" InteractionController="@tool" />
+<SfDiagramComponent Connectors="@_connectors" @ref="_diagram" Height="600px" InteractionController="@_tool" />
 
 @code
 {
-    //Reference to diagram.
-    private SfDiagramComponent diagram;
-    //Enable the multiple tools.
-    private DiagramInteractions tool = DiagramInteractions.DrawOnce | DiagramInteractions.ZoomPan;
-    //Defines diagram's connectors collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    // Reference to diagram.
+    private SfDiagramComponent _diagram;
+    // Enable the multiple tools.
+    private DiagramInteractions _tool = DiagramInteractions.DrawOnce | DiagramInteractions.ZoomPan;
+    // Defines diagram's connectors collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 }
