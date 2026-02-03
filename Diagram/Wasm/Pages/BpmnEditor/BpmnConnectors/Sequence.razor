@@ -3,16 +3,16 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize Diagram *@
-<SfDiagramComponent Height="600px" Connectors="@connectors" />
+<SfDiagramComponent Height="600px" Connectors="@_connectors" />
 
 @code
 {
     // Create connector and store it in the connector collection.
-    private DiagramObjectCollection<Connector> connectors;
+    private DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
         {
             // Unique Id of the connector.
@@ -26,6 +26,6 @@
                 Flow = BpmnFlowType.SequenceFlow,
             }
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }
