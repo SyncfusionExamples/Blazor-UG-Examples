@@ -6,8 +6,8 @@
 <div class="control-section">
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="100">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="200px"
+                                      Palettes="@_palettes" SymbolHeight="60" SymbolWidth="100">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -15,14 +15,14 @@
 
 @code
 {
-    //Reference the symbolpalette
-    private SfSymbolPaletteComponent symbolpalette;
-    //Define palattes collection
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Reference the symbolpalette
+    private SfSymbolPaletteComponent _symbolPalette;
+    // Define palattes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
     // Defines palette's connector collection
-    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteConnectors = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -31,11 +31,11 @@
 
     private void InitPaletteModel()
     {
-        PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+        _paletteConnectors = new DiagramObjectCollection<NodeBase>();
         CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-            new Palette(){Symbols =PaletteConnectors,Title="Connectors" ,IsExpanded = true},
+            new Palette(){ Symbols = _paletteConnectors, Title = "Connectors" ,IsExpanded = true },
         };
     }
 
@@ -56,6 +56,6 @@
             }
         };
 
-        PaletteConnectors.Add(connector);
+        _paletteConnectors.Add(connector);
     }
 }

@@ -133,13 +133,13 @@
             <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
         </div>
         <div id="palette-space" class="sb-mobile-palette">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px" SymbolDragPreviewSize="@Preview"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="200px" SymbolDragPreviewSize="@_preview"
+                                      Palettes="@_palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
         <div id="diagram-space" class="sb-mobile-diagram">
             <div class="content-wrapper" style="border: 1px solid #D7D7D7">
-                <SfDiagramComponent @ref="@diagram" Height="700px" Connectors="@connectors" Nodes="@nodes">
+                <SfDiagramComponent @ref="@_diagram" Height="700px" Connectors="@_connectors" Nodes="@_nodes">
                 </SfDiagramComponent>
             </div>
         </div>
@@ -148,20 +148,27 @@
 
 @code
 {
-    //Define symbolpreview
-    private DiagramSize Preview;
-    //Define SymbolMargin
-    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-    //Reference the diagram
-    private SfDiagramComponent diagram;
-    //Reference the symbol palette
-    private SfSymbolPaletteComponent symbolpalette;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    //Define palattes collection
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    // Define symbol preview
+    private DiagramSize _preview;
+
+    // Define symbol margin
+    private SymbolMargin _symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+
+    // Reference the diagram
+    private SfDiagramComponent _diagram;
+
+    // Reference the symbol palette
+    private SfSymbolPaletteComponent _symbolPalette;
+
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    // Define palettes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -170,25 +177,25 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        symbolpalette.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
-        symbolpalette.Targets.Add(diagram);
+        _symbolPalette.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        _symbolPalette.Targets.Add(_diagram);
     }
 
     private void InitPaletteModel()
     {
-        Preview = new DiagramSize();
-        Preview.Width = 100;
-        Preview.Height = 100;
+        _preview = new DiagramSize();
+        _preview.Width = 100;
+        _preview.Height = 100;
 
         CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
 
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+            new Palette() { Symbols = _paletteNodes, Title = "Basic Shapes", ID = "Basic Shapes" },
         };
     }
 
-    //Method to create palette node
+    // Method to create palette node
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
@@ -197,7 +204,8 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        PaletteNodes.Add(node);
+
+        _paletteNodes.Add(node);
     }
 
 }

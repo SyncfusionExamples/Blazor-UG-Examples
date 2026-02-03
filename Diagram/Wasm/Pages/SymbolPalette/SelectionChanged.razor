@@ -7,8 +7,8 @@
 <div class="control-section">
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
-                                      Palettes="@Palettes" SymbolHeight="@symbolwidth" SymbolWidth="@symbolheight" SymbolMargin="@SymbolMargin" SelectionChanged="SelectionChangedMethod">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="200px"
+                                      Palettes="@_palettes" SymbolHeight="@_symbolHeight" SymbolWidth="@_symbolWidth" SymbolMargin="@_symbolMargin" SelectionChanged="SelectionChangedMethod">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -16,18 +16,23 @@
 
 @code
 {
-    //Define symbolpreview
-    private DiagramSize SymbolPreview;
-    //Define symbolmargin
-    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-    private double symbolwidth = 60;
-    private double symbolheight = 60;
-    //Reference the symbolpalette
-    private SfSymbolPaletteComponent symbolpalette;
-    //Define palattes collection
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Define symbol preview
+    private DiagramSize _symbolPreview;
+
+    // Define symbol margin
+    private SymbolMargin _symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+
+    private double _symbolWidth = 60;
+    private double _symbolHeight = 60;
+
+    // Reference the symbol palette
+    private SfSymbolPaletteComponent _symbolPalette;
+
+    // Define palettes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -54,23 +59,24 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Diamond },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        PaletteNodes.Add(node1);
-        PaletteNodes.Add(node2);
-        PaletteNodes.Add(node3);
+        _paletteNodes.Add(node1);
+        _paletteNodes.Add(node2);
+        _paletteNodes.Add(node3);
 
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+            new Palette() { Symbols = _paletteNodes, Title = "Basic Shapes", ID = "Basic Shapes" },
         };
     }
 
     private void SelectionChangedMethod(PaletteSelectionChangedEventArgs args)
     {
-        if(args.OldValue.Contains("Rectangle"))
+        if (args.OldValue.Contains("Rectangle"))
         {
             // Actions to be performed
         }
-        if(args.NewValue.Contains("Ellipse"))
+
+        if (args.NewValue.Contains("Ellipse"))
         {
             // Actions to be performed
         }

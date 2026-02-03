@@ -4,13 +4,13 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initializes the symbol palette *@
-<SfSymbolPaletteComponent @ref="SymbolPalette" Height="600px" SymbolHeight="80" SymbolWidth="80" Palettes="@palettes">
+<SfSymbolPaletteComponent @ref="_symbolPalette" Height="600px" SymbolHeight="80" SymbolWidth="80" Palettes="@_palettes">
 </SfSymbolPaletteComponent>
 
 @code
 {
-    //Reference the symbol palette
-    private SfSymbolPaletteComponent SymbolPalette;
-    //Initialize the palettes collection
-    private DiagramObjectCollection<Palette> palettes = new DiagramObjectCollection<Palette>();
+    // Reference the symbol palette
+    private SfSymbolPaletteComponent _symbolPalette;
+    // Initialize the palettes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
 }

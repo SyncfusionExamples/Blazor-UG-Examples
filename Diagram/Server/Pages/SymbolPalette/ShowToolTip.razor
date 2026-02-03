@@ -8,37 +8,39 @@
 <div style="display:flex;gap:20px;">
     <div style="width:20%">
         <div>
-            <SfCheckBox @bind-Checked="showTooltip" Label="Show Symbol ID as Tooltip" TChecked="bool">
+            <SfCheckBox @bind-Checked="@_showTooltip" Label="Show Symbol ID as Tooltip" TChecked="bool">
             </SfCheckBox>
         </div>
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="symbolPalette" Height="1000px" Width="300px" GetSymbolInfo="GetSymbolInfo" Palettes="Palettes" SymbolHeight="60" 
-                                      SymbolWidth="60" SymbolMargin="symbolMargin">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="1000px" Width="300px" GetSymbolInfo="GetSymbolInfo" Palettes="@_palettes" SymbolHeight="60" 
+                                      SymbolWidth="60" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
     <div>
-        <SfDiagramComponent @ref="diagram" Height="1000px" Width="1000px" />
+        <SfDiagramComponent @ref="@_diagram" Height="1000px" Width="1000px" />
     </div>
 </div>
 
 @code
 {
     // Controls tooltip visibility for symbols at runtime.
-    private bool showTooltip = false;
-    private SfSymbolPaletteComponent? symbolPalette;
-    private SfDiagramComponent? diagram;
-    private SymbolMargin symbolMargin = new SymbolMargin()
+    private bool _showTooltip = false;
+    private SfSymbolPaletteComponent? _symbolPalette;
+    private SfDiagramComponent? _diagram;
+
+    private SymbolMargin _symbolMargin = new SymbolMargin()
     {
         Left = 15,
         Right = 15,
         Top = 15,
         Bottom = 15
     };
-    private DiagramObjectCollection<Palette> Palettes { get; set; } = new DiagramObjectCollection<Palette>();
-    private DiagramObjectCollection<NodeBase> FlowShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
-    private DiagramObjectCollection<NodeBase> BasicShapesPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
-    private DiagramObjectCollection<NodeBase> ConnectorsPalette { get; set; } = new DiagramObjectCollection<NodeBase>();
+
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> _flowShapesPalette = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _basicShapesPalette = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _connectorsPalette = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -48,10 +50,10 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender && symbolPalette != null && diagram != null)
+        if (firstRender && _symbolPalette != null && _diagram != null)
         {
             // Set diagram as drag-drop target for symbol palette.
-            symbolPalette.Targets = new DiagramObjectCollection<SfDiagramComponent> { diagram };
+            _symbolPalette.Targets = new DiagramObjectCollection<SfDiagramComponent> { _diagram };
         }
     }
 
@@ -59,7 +61,7 @@
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
         // Enable/disable tooltip display based on user preference at runtime.
-        return new SymbolInfo { ShowTooltip = showTooltip };
+        return new SymbolInfo { ShowTooltip = _showTooltip };
     }
 
     private void InitPaletteModel()
@@ -83,11 +85,11 @@
         AddConnector("StraightOpp", ConnectorSegmentType.Straight, DecoratorShape.None, 3);
 
         // Create palette collection with all shape categories.
-        Palettes = new DiagramObjectCollection<Palette>
+        _palettes = new DiagramObjectCollection<Palette>
         {
-            new Palette { Symbols = FlowShapesPalette, Title = "Flow Shapes", ID = "FlowShapes", IsExpanded = true },
-            new Palette { Symbols = BasicShapesPalette, Title = "Basic Shapes", ID = "BasicShapes", IsExpanded = true },
-            new Palette { Symbols = ConnectorsPalette, Title = "Connectors", ID = "Connectors", IsExpanded = true }
+            new Palette { Symbols = _flowShapesPalette, Title = "Flow Shapes", ID = "FlowShapes", IsExpanded = true },
+            new Palette { Symbols = _basicShapesPalette, Title = "Basic Shapes", ID = "BasicShapes", IsExpanded = true },
+            new Palette { Symbols = _connectorsPalette, Title = "Connectors", ID = "Connectors", IsExpanded = true }
         };
     }
 
@@ -112,7 +114,7 @@
                 Position = Position.RightCenter 
             };
         }  
-        FlowShapesPalette.Add(node);
+        _flowShapesPalette.Add(node);
     }
 
     private void AddBasicShape(NodeBasicShapes shapeType, string id, int index)
@@ -141,7 +143,7 @@
                 Position = Position.RightCenter 
             };
         }
-        BasicShapesPalette.Add(node);
+        _basicShapesPalette.Add(node);
     }
 
     private void AddConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape, int index)
@@ -170,6 +172,6 @@
                 ShowTipPointer = true 
             };
         }
-        ConnectorsPalette.Add(connector);
+        _connectorsPalette.Add(connector);
     }
 }

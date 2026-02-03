@@ -13,8 +13,8 @@
     </div>
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="200px"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="200px"
+                                      Palettes="@_palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -22,16 +22,20 @@
 
 @code
 {
-    //Define symbolpreview
-    private DiagramSize SymbolPreview;
-    //Define symbol margin
-    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
-    //Reference the symbol palette
-    private SfSymbolPaletteComponent symbolpalette;
-    //Define palattes collection
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    // Define symbol preview
+    private DiagramSize _symbolPreview;
+
+    // Define symbol margin
+    private SymbolMargin _symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+
+    // Reference the symbol palette
+    private SfSymbolPaletteComponent _symbolPalette;
+
+    // Define palettes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -46,11 +50,11 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        PaletteNodes.Add(node);
+        _paletteNodes.Add(node);
 
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+            new Palette() { Symbols = _paletteNodes, Title = "Basic Shapes", ID = "Basic Shapes" },
         };
     }
 
@@ -62,13 +66,13 @@
             ID = "Star",
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Star }
         };
-        symbolpalette.AddPaletteItem("Basic Shapes", Star, false);
+        _symbolPalette.AddPaletteItem("Basic Shapes", Star, false);
     }
 
     //Method to update heading
     private void UpdateHeading1()
     {
-        symbolpalette.RemovePaletteItem("Basic Shapes", "Star");
+        _symbolPalette.RemovePaletteItem("Basic Shapes", "Star");
     }
 
     //Method to update heading
@@ -83,12 +87,12 @@
         {
                 new Palette(){Symbols =newNodes,Title="FlowShapes",ID="FlowShapes" },
             };
-        symbolpalette.AddPalettes(newPalettes);
+        _symbolPalette.AddPalettes(newPalettes);
     }
 
     private void UpdateHeading3()
     {
-        symbolpalette.RemovePalettes("FlowShapes");
+        _symbolPalette.RemovePalettes("FlowShapes");
     }
 }
 

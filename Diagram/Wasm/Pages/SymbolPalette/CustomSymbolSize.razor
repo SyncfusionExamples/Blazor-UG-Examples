@@ -1,21 +1,24 @@
-﻿@page "/SelectionChanged"
+﻿@page "/CustomSymbolSize"
 
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 @using Syncfusion.Blazor.Buttons
 
 <div class="control-section">
+    <div class="properties">
+        <SfButton Content="UpdateSize" OnClick="@UpdateSize" />
+
+    </div>
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
             <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="200px"
-                                      Palettes="@_palettes" SymbolHeight="@_symbolHeight" SymbolWidth="@_symbolWidth" SymbolMargin="@_symbolMargin" SelectionChanged="SelectionChangedMethod">
+                                      Palettes="@_palettes" SymbolHeight="@_symbolWidth" SymbolWidth="@_symbolHeight" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
 </div>
 
-@code
-{
+@code {
     // Define symbol preview
     private DiagramSize _symbolPreview;
 
@@ -47,18 +50,21 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
+
         Node node2 = new Node()
         {
             ID = "Ellipse",
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
+
         Node node3 = new Node()
         {
             ID = "Diamond",
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Diamond },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
+
         _paletteNodes.Add(node1);
         _paletteNodes.Add(node2);
         _paletteNodes.Add(node3);
@@ -69,17 +75,11 @@
         };
     }
 
-    private void SelectionChangedMethod(PaletteSelectionChangedEventArgs args)
+    // Method to update symbol width and symbol height
+    private void UpdateSize()
     {
-        if (args.OldValue.Contains("Rectangle"))
-        {
-            // Actions to be performed
-        }
-
-        if (args.NewValue.Contains("Ellipse"))
-        {
-            // Actions to be performed
-        }
+        _symbolWidth = 80;
+        _symbolHeight = 80;
     }
 }
 

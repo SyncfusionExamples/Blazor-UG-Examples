@@ -3,20 +3,21 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Diagram.SymbolPalette
 
-<SfSymbolPaletteComponent Width="100%" Height="700px" EnableChunkMessages="true" Palettes="@palettes" SymbolHeight="@symbolHeight" SymbolWidth="@symbolWidth" SymbolDragPreviewSize="@symbolDragPreviewSize" />
+<SfSymbolPaletteComponent Width="100%" Height="700px" EnableChunkMessages="true" Palettes="@_palettes" SymbolHeight="@_symbolHeight" SymbolWidth="@_symbolWidth" SymbolDragPreviewSize="@_symbolDragPreviewSize" />
 
 @code
 {
-    private DiagramSize symbolDragPreviewSize;
-    private DiagramObjectCollection<Palette> palettes;
-    private double symbolHeight = 75;
-    private double symbolWidth = 75;
+    private DiagramSize _symbolDragPreviewSize;
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+    private double _symbolHeight = 75;
+    private double _symbolWidth = 75;
 
     protected override void OnInitialized()
     {
-        symbolDragPreviewSize = new DiagramSize();
-        symbolDragPreviewSize.Width = 80;
-        symbolDragPreviewSize.Height = 80;
+        _symbolDragPreviewSize = new DiagramSize();
+        _symbolDragPreviewSize.Width = 80;
+        _symbolDragPreviewSize.Height = 80;
+
         InitializeFloorPlannerPalettes();
     }
 
@@ -415,9 +416,9 @@
         Palette DiningRoom = new Palette() { Symbols = DiningRoomSymbols, Title = "Dining Room", ID = "DiningRoom", IconCss = "e-ddb-icons e-flow" };
         Palette Kitchen = new Palette() { Symbols = KitchenSymbols, Title = "Kitchen", ID = "Kitchen", IconCss = "e-ddb-icons e-flow" };
         
-        palettes = new DiagramObjectCollection<Palette>();
-        palettes.Add(Door);
-        palettes.Add(DiningRoom);
-        palettes.Add(Kitchen);
+        _palettes = new DiagramObjectCollection<Palette>();
+        _palettes.Add(Door);
+        _palettes.Add(DiningRoom);
+        _palettes.Add(Kitchen);
     }
 }
