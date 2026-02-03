@@ -3,16 +3,17 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="Diagram" Width="100%" Height="900px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="DataSource"> </DataSourceSettings>
-    <Layout @bind-Type="@Type" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-Orientation="@OrientationType" @bind-VerticalSpacing="@VerticalSpacing" FlowchartLayoutSettings="@flowchartSettings">
+<SfDiagramComponent @ref="_diagram" Width="100%" Height="900px" ConnectorCreating="@OnConnectorCreating" NodeCreating="@OnNodeCreating" DataLoaded="@OnDataLoaded">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource"> </DataSourceSettings>
+    <Layout @bind-Type="@_type" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-Orientation="@_orientationType" @bind-VerticalSpacing="@_verticalSpacing" FlowchartLayoutSettings="@_flowchartSettings">
     </Layout>
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    FlowchartLayoutSettings flowchartSettings = new FlowchartLayoutSettings()
+    private SfDiagramComponent? _diagram;
+    private FlowchartLayoutSettings _flowchartSettings = new FlowchartLayoutSettings()
     {
         //Set the decision yes branch direction
         YesBranchDirection = BranchDirection.LeftInFlow,
@@ -23,21 +24,20 @@
         //Set the custom no branch values
         NoBranchValues = new List<string> { "No", "New" },
     };
-    private SfDiagramComponent Diagram;
-    private int? HValue { get; set; } = 60;
-    private int? VValue { get; set; } = 40;
-    private LayoutType Type = LayoutType.Flowchart;
-    private LayoutOrientation OrientationType = LayoutOrientation.TopToBottom;
-    private int HorizontalSpacing = 50;
-    private int VerticalSpacing = 50;
-    
+    private int? _hValue { get; set; } = 60;
+    private int? _vValue { get; set; } = 40;
+    private LayoutType _type = LayoutType.Flowchart;
+    private LayoutOrientation _orientationType = LayoutOrientation.TopToBottom;
+    private int _horizontalSpacing = 50;
+    private int _verticalSpacing = 50;
+
     private void OnDataLoaded(object obj)
     {
-        for (int i = 0; i < Diagram.Connectors.Count; i++)
+        for (int i = 0; i < _diagram.Connectors.Count; i++)
         {
-            Connector connector = Diagram.Connectors[i];
-            Node node = Diagram.GetObject(connector.TargetID) as Node;
-            Node srcNode = Diagram.GetObject(connector.SourceID) as Node;
+            Connector connector = _diagram.Connectors[i];
+            Node node = _diagram.GetObject(connector.TargetID) as Node;
+            Node srcNode = _diagram.GetObject(connector.SourceID) as Node;
             if (node.Data != null && node.Data is NodeInfo NodeInfo)
             {
                 if (NodeInfo.LineText != null && NodeInfo.LineText.Count > 0)
@@ -93,7 +93,7 @@
         }
     }
 
-    public List<NodeInfo> DataSource = new List<NodeInfo>()
+    private List<NodeInfo> _dataSource = new List<NodeInfo>()
     {
         new NodeInfo() { Id = "1", Description = "Start", Shape = "StartOrEnd", Width = 100, Height = 30, Color = "#8E44CC" },
         new NodeInfo() { Id = "2", Description = "Open Gmail site in browser", ParentId = new List<string> { "1" }, Shape = "Rectangle", Width = 120, Height = 50, Color = "#1759B7" },
@@ -121,5 +121,54 @@
         public double Width { get; set; }
         public double Height { get; set; }
         public string Color { get; set; }
+    }
+    
+    private void OrientationTypeChange(ChangeEventArgs<string, Orientationvalue> args)
+    {
+        _orientationType = args.ItemData.Value == "Vertical" ? LayoutOrientation.TopToBottom : LayoutOrientation.LeftToRight;
+    }
+
+    private void YesBranchDirectionChange(ChangeEventArgs<string, BranchDirectionvalue> args)
+    {
+        if (args.ItemData.Text == "same")
+        {
+            _flowchartSettings.YesBranchDirection = BranchDirection.SameAsFlow;
+        }
+        if (args.ItemData.Text == "left")
+        {
+            _flowchartSettings.YesBranchDirection = BranchDirection.LeftInFlow;
+        }
+        if (args.ItemData.Text == "right")
+        {
+            _flowchartSettings.YesBranchDirection = BranchDirection.RightInFlow;
+        }
+    }
+
+    private void NoBranchDirectionChange(ChangeEventArgs<string, BranchDirectionvalue1> args)
+    {
+        if (args.ItemData.Text == "same")
+        {
+            _flowchartSettings.NoBranchDirection = BranchDirection.SameAsFlow;
+        }
+        if (args.ItemData.Text == "left")
+        {
+            _flowchartSettings.NoBranchDirection = BranchDirection.LeftInFlow;
+        }
+        if (args.ItemData.Text == "right")
+        {
+            _flowchartSettings.NoBranchDirection = BranchDirection.RightInFlow;
+        }
+    }
+
+    private void OnHorizontalSpacingChange(Syncfusion.Blazor.Inputs.ChangeEventArgs<int> args)
+    {
+        int val = Convert.ToInt32(args.Value);
+        _horizontalSpacing = val;
+    }
+
+    private void OnVerticalSpacingChange(Syncfusion.Blazor.Inputs.ChangeEventArgs<int> args)
+    {
+        int val = Convert.ToInt32(args.Value);
+        _verticalSpacing = val;
     }
 }
