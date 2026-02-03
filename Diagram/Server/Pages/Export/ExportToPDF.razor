@@ -70,3 +70,36 @@
         return _base64String;
     }
 }
+<script>
+// Javascript methods to download file
+function downloadPdf(base64String, fileName) {
+    var _sliceSize = 512;
+    var _byteCharacters = atob(base64String);
+    var _byteArrays = [];
+    for (var offset = 0; offset < _byteCharacters.length; offset += _sliceSize)
+    {
+        var _slice = _byteCharacters.slice(offset, offset + _sliceSize);
+        var _byteNumbers = new Array(slice.length);
+        for (var i = 0; i < _slice.length; i++)
+        {
+            _byteNumbers[i] = _slice.charCodeAt(i);
+        }
+        var _byteArray = new Uint8Array(_byteNumbers);
+        _byteArrays.push(_byteArray);
+    }
+    var _blob = new Blob(_byteArrays,
+        {
+            type: 'application/pdf'
+        }
+    );
+    var _blobUrl = window.URL.createObjectURL(_blob);
+    this.triggerDownload("PDF", fileName, _blobUrl);
+}
+triggerDownload: function triggerDownload(type, fileName, url)
+{
+    var _anchorElement = document.createElement('a');
+    _anchorElement.download = fileName + '.' + type.toLocaleLowerCase();
+    _anchorElement.href = url;
+    _anchorElement.click();
+}
+</script>
