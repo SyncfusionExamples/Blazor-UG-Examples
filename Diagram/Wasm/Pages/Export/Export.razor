@@ -3,24 +3,24 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="ExportBase64" OnClick="@ExportBase64" />
-<SfButton Content="ExportPng" OnClick="@ExportPng" />
-<SfDiagramComponent Height="600px" @ref="@diagram" />
+<SfButton Content="ExportPng" OnClick="@ExportPngAsync" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" />
 
 @code
 {
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
 
     //To export the diagram as base64 string.
-    private async Task ExportBase64()
+    private async Task ExportBase64Async()
     {
-        DiagramExportSettings export = new DiagramExportSettings();
-        string[] base64 = await diagram.ExportAsync(DiagramExportFormat.PNG, export);
+        DiagramExportSettings _export = new DiagramExportSettings();
+        string[] _base64 = await _diagram.ExportAsync(DiagramExportFormat.PNG, _export);
     }
 
     //To export the diagram as png.
-    private async Task ExportPng()
+    private async Task ExportPngAsync()
     {
-        DiagramExportSettings export = new DiagramExportSettings();
-        await diagram.ExportAsync("diagram", DiagramExportFormat.PNG, export);
+        DiagramExportSettings _export = new DiagramExportSettings();
+        await _diagram.ExportAsync("diagram", DiagramExportFormat.PNG, _export);
     }
 }

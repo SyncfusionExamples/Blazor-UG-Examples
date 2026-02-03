@@ -2,24 +2,24 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="Export" OnClick="@Export" />
-<SfDiagramComponent Height="600px" @ref="@diagram">
+<SfButton Content="Export" OnClick="@ExportAsync" />
+<SfDiagramComponent Height="600px" @ref="@_diagram">
     <PageSettings Height="1000" Width="800"></PageSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
 
-    private async Task Export()
+    private async Task ExportAsync()
     {
-        DiagramExportSettings export = new DiagramExportSettings();
-        export.Region = DiagramPrintExportRegion.PageSettings;
-        export.PageWidth = 816;
-        export.PageHeight = 1054;
-        export.Margin = new DiagramThickness() { Left = 10, Top = 10, Right = 10, Bottom = 10 };
+        DiagramExportSettings _export = new DiagramExportSettings();
+        _export.Region = DiagramPrintExportRegion.PageSettings;
+        _export.PageWidth = 816;
+        _export.PageHeight = 1054;
+        _export.Margin = new DiagramThickness() { Left = 10, Top = 10, Right = 10, Bottom = 10 };
         //To export the diagram
-        await diagram.ExportAsync("diagram", DiagramExportFormat.PNG, export);
+        await _diagram.ExportAsync("diagram", DiagramExportFormat.PNG, _export);
     }
 }
