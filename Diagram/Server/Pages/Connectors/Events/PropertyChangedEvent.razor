@@ -2,17 +2,21 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@diagram" Width="100%" Height="700px" Connectors="@connectors" PropertyChanged="OnNodePropertyChanged" />
+<SfDiagramComponent @ref="_diagram"
+                    Width="100%"
+                    Height="700px"
+                    Connectors="@_connectors"
+                    PropertyChanged="OnNodePropertyChanged">
+</SfDiagramComponent>
 
 @code 
 {
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Defines diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        var connector = new Connector()
         {
             ID = "connector1",
             // Set the source and target point of the connector.
@@ -21,9 +25,8 @@
             // Type of the connector segments.
             Type = ConnectorSegmentType.Straight
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
-
     // Method to handle Property Changed event
     private void OnNodePropertyChanged(PropertyChangedEventArgs args)
     {

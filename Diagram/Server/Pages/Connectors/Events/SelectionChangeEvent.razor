@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" SelectionChanging="@SelectionChanging" SelectionChanged="@SelectionChanged" 
-                    Height="500px" Connectors="@connectors" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" SelectionChanging="@OnSelectionChanging" SelectionChanged="@OnSelectionChanged" Height="500px" Connectors="@_connectors">
+</SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent Diagram;
+    //Reference the diagram.
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's connector collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
-        Connector Connector = new Connector()
+        var connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint()
@@ -44,19 +44,19 @@
                 StrokeWidth = 1
             },
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 
-    // Event to notify the selection changing event before select/unselect the diagram elements
-    private void SelectionChanging(SelectionChangingEventArgs args)
+    // To notify the selection changing event before selecting/unselecting the diagram elements.
+    private void OnSelectionChanging(SelectionChangingEventArgs args)
     {
-        //sets true to cancel the selection.
+        //Sets true to cancel the selection.
         args.Cancel = true;
     }
 
-    // Event to notify the selection changed event after select/unselect the diagram elements.
-    private void SelectionChanged(SelectionChangedEventArgs arg)
+    // To notify the selection is changed in the diagram.
+    private void OnSelectionChanged(SelectionChangedEventArgs arg)
     {
-        //Action to be performed
+        //Action to be performed.
     }
 }
