@@ -5,14 +5,14 @@
 
 <SfButton Content="NudgeLeft" OnClick="@NudgeLeft" />
 
-<SfDiagramComponent @ref="diagram" Nodes="@nodes" Height="600px" />
+<SfDiagramComponent @ref="_diagram" Nodes="@_nodes" Height="600px" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Initialize diagram's node collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -24,12 +24,12 @@
             OffsetX = 100,
             OffsetY = 100,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void NudgeLeft()
     {
         //Repositions the selected objects by 50 towards left direction.
-        diagram.Nudge(Direction.Left, 50);
+        _diagram.Nudge(Direction.Left, 50);
     }
 }

@@ -5,13 +5,13 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="bringForward" OnClick="@bringForward" />
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" @bind-Nodes="@nodes">
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" @bind-Nodes="@_nodes">
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
     private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
 
@@ -27,7 +27,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -38,7 +38,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Cylinder },
             Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -49,12 +49,12 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
             Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#ffff" },
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
     }
 
     private void bringForward()
     {
-        diagram.Select(new ObservableCollection<IDiagramObject>() { diagram.Nodes[1] });
-        diagram.BringForward();
+        _diagram.Select(new ObservableCollection<IDiagramObject>() { _diagram.Nodes[1] });
+        _diagram.BringForward();
     }
 }

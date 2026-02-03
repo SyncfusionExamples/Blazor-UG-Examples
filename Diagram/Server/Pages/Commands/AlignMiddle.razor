@@ -4,14 +4,14 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Middle" OnClick="@OnAlignMiddle" />
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" Nodes="@nodes"  />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes"  />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Initialize diagram's node collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -24,7 +24,7 @@
             OffsetY = 100,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -34,7 +34,7 @@
             OffsetY = 300,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -44,12 +44,12 @@
             OffsetY = 500,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
     }
 
     //Method to align selected objects at the middle of selection boundary.
     private void OnAlignMiddle()
     {
-        diagram.SetAlign(AlignmentOptions.Middle);
+        _diagram.SetAlign(AlignmentOptions.Middle);
     }
 }

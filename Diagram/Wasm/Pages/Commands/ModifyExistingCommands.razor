@@ -2,10 +2,10 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes">
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes">
     @* Initializing the custom commands *@
     <CommandManager>
-        <CommandManager Commands="@commands" Execute="@CommandExecute" CanExecute="@canexe">
+        <CommandManager Commands="@_commands" Execute="@CommandExecute" CanExecute="@canexe">
         </CommandManager>
     </CommandManager>
 </SfDiagramComponent>
@@ -13,10 +13,10 @@
 @code
 {
     // Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Defines diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<KeyboardCommand> commands = new DiagramObjectCollection<KeyboardCommand>()
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<KeyboardCommand> _commands = new DiagramObjectCollection<KeyboardCommand>()
     {
         new KeyboardCommand()
         {
@@ -45,7 +45,7 @@
                 new ShapeAnnotation() { Content = "Node" }
             }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -59,7 +59,7 @@
                 new ShapeAnnotation() { Content = "Node1" }
             }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
     }
 
     private void canexe(CommandKeyArgs args)
@@ -79,7 +79,7 @@
         if (args.Gesture.Modifiers == ModifierKeys.Control && args.Gesture.Key == DiagramKeys.C)
         {
             //Modify the existing copy command to cut command
-            diagram.Cut();
+            _diagram.Cut();
         }
     }
 }

@@ -2,14 +2,14 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection" PositionChanging="OnPositionChanging"
+<SfDiagramComponent Height="600px" Nodes="@_nodeCollection" PositionChanging="OnPositionChanging"
                     PositionChanged="OnPositionChanged">
 </SfDiagramComponent>
 
 @code
 {
     //Intialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -21,7 +21,7 @@
             Width = 100,
             ID = "node4",
         };
-        NodeCollection.Add(node4);
+        _nodeCollection.Add(node4);
     }
 
     //Event to notify while dragging the elements in the diagram.

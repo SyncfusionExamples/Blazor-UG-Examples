@@ -6,18 +6,17 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Clone" OnClick="@Clone" />
-<SfDiagramComponent @ref="diagram" Width="50%" Height="800px" @bind-Connectors="@Connectors" @bind-Nodes="NodeCollection"></SfDiagramComponent>
+<SfDiagramComponent @ref="_diagram" Width="50%" Height="800px" @bind-Connectors="@_connectors" @bind-Nodes="_nodeCollection"></SfDiagramComponent>
 
 @functions
 {
-    private double offsetX = 0;
-    private double offsetY = 0;
-    private double opacity = 0;
-    private string ID = "diagram";
-    private SfDiagramComponent diagram;
-    private string Height { get; set; } = "700px";
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private double _offsetX = 0;
+    private double _offsetY = 0;
+    private double _opacity = 0;
+    private string _id = "diagram";
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {
@@ -36,7 +35,7 @@
                 },
             },
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -52,7 +51,7 @@
                 },
             },
         };
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
         {
             ID = "group1",
@@ -65,7 +64,7 @@
                 }
             },
         };
-        NodeCollection.Add(group1);
+        _nodeCollection.Add(group1);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -81,14 +80,14 @@
                 },
             },
         };
-        NodeCollection.Add(node3);
+        _nodeCollection.Add(node3);
         Connector connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint() { X = 250, Y = 250 },
             TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
         };
-        Connectors.Add(connector);
+        _connectors.Add(connector);
         NodeGroup group2 = new NodeGroup()
         {
             ID = "group2",
@@ -101,15 +100,15 @@
                 }
             },
         };
-        NodeCollection.Add(group2);
+        _nodeCollection.Add(group2);
     }
 
     private void Clone()
     {
-        diagram.StartGroupAction();
-        if (diagram.SelectionSettings.Nodes.Count > 0)
+        _diagram.StartGroupAction();
+        if (_diagram.SelectionSettings.Nodes.Count > 0)
         {
-            NodeBase NodeObj = diagram.SelectionSettings.Nodes[0] as NodeBase;
+            NodeBase NodeObj = _diagram.SelectionSettings.Nodes[0] as NodeBase;
             if (NodeObj is NodeGroup gNode)
             {
                 CloneGroup(gNode, false);
@@ -119,16 +118,16 @@
                 CloneNode(node, false);
             }
         }
-        if (diagram.SelectionSettings.Connectors.Count > 0)
+        if (_diagram.SelectionSettings.Connectors.Count > 0)
         {
-            NodeBase ConnectorObj = diagram.SelectionSettings.Connectors[0] as NodeBase;
+            NodeBase ConnectorObj = _diagram.SelectionSettings.Connectors[0] as NodeBase;
             if (ConnectorObj is Connector connectorObj)
             {
                 CloneConnector(connectorObj, false);
             }
         }
-        diagram.ClearSelection();
-        diagram.EndGroupAction();
+        _diagram.ClearSelection();
+        _diagram.EndGroupAction();
     }
 
     private string CloneGroup(NodeGroup gNode, bool isChild)
@@ -163,13 +162,13 @@
             groupNode.OffsetX += 25;
             groupNode.OffsetY += 25;
         }
-         _ = diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { groupNode });
+         _ = _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { groupNode });
         return groupNode.ID;
     }
 
     private string CloneNode(Node node, bool isChild)
     {
-        diagram.StartGroupAction();
+        _diagram.StartGroupAction();
         Node nodeChild = node.Clone() as Node;
         nodeChild.ID = RandomId();
         if (!isChild)
@@ -177,14 +176,14 @@
             nodeChild.OffsetX += 25;
             nodeChild.OffsetY += 25;
         }
-         _ = diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { nodeChild });
-        diagram.EndGroupAction();
+         _ = _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { nodeChild });
+        _diagram.EndGroupAction();
         return nodeChild.ID;
     }
 
     private string CloneConnector(Connector connector, bool isChild)
     {
-        diagram.StartGroupAction();
+        _diagram.StartGroupAction();
         Connector connectorChild = connector.Clone() as Connector;
         connectorChild.ID = RandomId();
         if (!isChild)
@@ -192,12 +191,12 @@
             connectorChild.SourcePoint = new DiagramPoint() { X = connectorChild.SourcePoint.X + 25, Y = connectorChild.SourcePoint.Y + 25 };
             connectorChild.TargetPoint = new DiagramPoint() { X = connectorChild.TargetPoint.X + 25, Y = connectorChild.TargetPoint.Y + 25 };
         }
-         _ = diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { connectorChild });
-        diagram.EndGroupAction();
+         _ = _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { connectorChild });
+        _diagram.EndGroupAction();
         return connectorChild.ID;
     }
 
-    internal string RandomId()
+    private string RandomId()
     {
         Random random = new Random();
         const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";

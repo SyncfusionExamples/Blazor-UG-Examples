@@ -4,16 +4,16 @@
 @using SelectionChangedEventArgs = Syncfusion.Blazor.Diagram.SelectionChangedEventArgs 
 
 <SfButton Content="GetSelectionInfo" OnClick="GetSelectionInfo"></SfButton>
-<SfDiagramComponent @ref="diagram" Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection" SelectionChanged="OnSelectionChanged">
+<SfDiagramComponent @ref="_diagram" Height="600px" Nodes="@_nodeCollection" Connectors="@_connectorCollection" SelectionChanged="OnSelectionChanged">
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initailize the diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connector collection
-    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectorCollection = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {
@@ -25,7 +25,7 @@
             Width = 100,
             ID = "node1",
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
         Connector connector1 = new Connector()
         {
             ID = "connector1",
@@ -33,20 +33,20 @@
             TargetPoint = new DiagramPoint() { X = 400, Y = 300 },
             Type = ConnectorSegmentType.Orthogonal
         };
-        ConnectorCollection.Add(connector1);
+        _connectorCollection.Add(connector1);
     }
 
     //Event to notify selection changing event after selected the nodes/conenctors in diagram.
     private void OnSelectionChanged(SelectionChangedEventArgs args)
     {
-        if (diagram.SelectionSettings.Nodes.Count > 0)
+        if (_diagram.SelectionSettings.Nodes.Count > 0)
         {
-            Node selectedNode = diagram.SelectionSettings.Nodes[0];
+            Node selectedNode = _diagram.SelectionSettings.Nodes[0];
             //Here you can modified the selected node.
         }
-        if (diagram.SelectionSettings.Connectors.Count > 0)
+        if (_diagram.SelectionSettings.Connectors.Count > 0)
         {
-            Connector selectedConnector = diagram.SelectionSettings.Connectors[0];
+            Connector selectedConnector = _diagram.SelectionSettings.Connectors[0];
             //Here you can modified the selected connector.
         }
     }
@@ -55,7 +55,7 @@
     private void GetSelectionInfo()
     {
         // Get selected nodes
-        foreach (Node node in diagram.SelectionSettings.Nodes)
+        foreach (Node node in _diagram.SelectionSettings.Nodes)
         {
             Console.WriteLine($"Selected Node ID: {node.ID}");
             Console.WriteLine($"Node OffsetX: {node.OffsetX}");
@@ -66,7 +66,7 @@
         }
 
         // Get selected connectors
-        foreach (Connector connector in diagram.SelectionSettings.Connectors)
+        foreach (Connector connector in _diagram.SelectionSettings.Connectors)
         {
             Console.WriteLine($"Selected Connector ID: {connector.ID}");
             Console.WriteLine($"Connector SourcePoint: X={connector.SourcePoint.X}, Y={connector.SourcePoint.Y}");
@@ -74,11 +74,11 @@
         }
 
         // Get selection bounds information
-        Console.WriteLine($"Selection OffsetX: {diagram.SelectionSettings.OffsetX}");
-        Console.WriteLine($"Selection OffsetY: {diagram.SelectionSettings.OffsetY}");
-        Console.WriteLine($"Selection Width: {diagram.SelectionSettings.Width}");
-        Console.WriteLine($"Selection Height: {diagram.SelectionSettings.Height}");
-        Console.WriteLine($"Selection Rotation: {diagram.SelectionSettings.RotationAngle}");
-        Console.WriteLine($"Selection Pivot: {diagram.SelectionSettings.Pivot}");
+        Console.WriteLine($"Selection OffsetX: {_diagram.SelectionSettings.OffsetX}");
+        Console.WriteLine($"Selection OffsetY: {_diagram.SelectionSettings.OffsetY}");
+        Console.WriteLine($"Selection Width: {_diagram.SelectionSettings.Width}");
+        Console.WriteLine($"Selection Height: {_diagram.SelectionSettings.Height}");
+        Console.WriteLine($"Selection Rotation: {_diagram.SelectionSettings.RotationAngle}");
+        Console.WriteLine($"Selection Pivot: {_diagram.SelectionSettings.Pivot}");
     }
 }

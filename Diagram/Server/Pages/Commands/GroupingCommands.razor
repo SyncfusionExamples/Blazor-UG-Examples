@@ -7,14 +7,14 @@
 <SfButton Content="Ungroup" OnClick="@OnUngroup" />
 <SfButton Content="SelectAll" OnClick="@OnSelectAll" />
 
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes"  />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes"  />
 
 @code
 {
     //Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Initialize diagram's node collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
    
     protected override void OnInitialized()
     {
@@ -28,7 +28,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -39,24 +39,24 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
     }
 
     // Method to group the selected nodes and connectors.
     private void OnGroup()
     {
-        diagram.Group();
+        _diagram.Group();
     }
 
     // Method to ungroup the selected nodes and connectors.
     private void OnUngroup()
     {
-        diagram.Ungroup();
+        _diagram.Ungroup();
     }
 
     // Method to select all objects.
     private void OnSelectAll()
     {
-        diagram.SelectAll();
+        _diagram.SelectAll();
     }
 }

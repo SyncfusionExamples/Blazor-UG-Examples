@@ -2,16 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection" Connectors="@Connectors" ConnectionChanging="OnConnectionChanging"
+<SfDiagramComponent Height="600px" Nodes="@_nodeCollection" Connectors="@_connectors" ConnectionChanging="OnConnectionChanging"
                     ConnectionChanged="OnConnectionChanged">
 </SfDiagramComponent>
 
 @code
 {
     //Initailize the diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     
     protected override void OnInitialized()
     {
@@ -23,7 +23,7 @@
             Width = 100,
             ID = "node1",
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
 
         Node node2 = new Node()
         {
@@ -33,7 +33,7 @@
             Width = 100,
             ID = "node2",
         };
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node2);
 
         Connector Connector = new Connector()
         {
@@ -58,7 +58,7 @@
             // Type of the connector
             Type = ConnectorSegmentType.Straight,
         };
-        Connectors.Add(Connector);
+        _connectors.Add(Connector);
     }
 
     //Event to notify while creating the connection between the nodes in the diagram.

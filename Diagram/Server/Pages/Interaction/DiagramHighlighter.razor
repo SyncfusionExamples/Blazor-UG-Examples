@@ -13,15 +13,15 @@
     }
 </style>
 
-<SfDiagramComponent @ref="diagram" ID="diagram" Width="800px" Height="800px" Nodes="nodes">
+<SfDiagramComponent @ref="_diagram" ID="diagram" Width="800px" Height="800px" Nodes="_nodes">
     <SnapSettings Constraints="SnapConstraints.None"> </SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -38,7 +38,7 @@
                 Shape = NodeBasicShapes.Diamond,
             },
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             OffsetX = 480,
@@ -52,7 +52,7 @@
                 Shape = NodeBasicShapes.Diamond,
             },
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
 
         Node node3 = new Node()
         {
@@ -67,7 +67,7 @@
                 Shape = NodeBasicShapes.Diamond,
             },
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
 
         Node node4 = new Node()
         {
@@ -82,7 +82,7 @@
                 Shape = NodeBasicShapes.Diamond,
             },
         };
-        nodes.Add(node4);
+        _nodes.Add(node4);
 
         Node node5 = new Node()
         {
@@ -97,6 +97,6 @@
                 Shape = NodeBasicShapes.Diamond,
             },
         };
-        nodes.Add(node5);
+        _nodes.Add(node5);
     }
 }

@@ -5,17 +5,17 @@
 
 <SfButton Content="CanZoomIn" @onclick="CanZoom" />
 <div class="col-lg-9 control-section" style="border-right: 1px solid #D7D7D7">
-    <SfDiagramComponent @ref="@diagram" Height="700px" Width="800px" Nodes="@nodes" Connectors="@connectors" />
+    <SfDiagramComponent @ref="@_diagram" Height="700px" Width="800px" Nodes="@_nodes" Connectors="@_connectors" />
 </div>
 
 @code
 {
 
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
-    FitOptions Options = new FitOptions()
+    private FitOptions _options = new FitOptions()
     {
         Mode = FitMode.Height,
         Region = DiagramRegion.Content,
@@ -37,7 +37,7 @@
                 StrokeColor = "white"
             }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -51,7 +51,7 @@
                 StrokeColor = "white"
             }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -65,7 +65,7 @@
                 StrokeColor = "white"
             }
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
         Connector connector1 = new Connector()
         {
             ID = "connector1",
@@ -73,7 +73,7 @@
             TargetID = "node2",
             Type = ConnectorSegmentType.Straight
         };
-        connectors.Add(connector1);
+        _connectors.Add(connector1);
         Connector connector2 = new Connector()
         {
             ID = "connector2",
@@ -81,12 +81,12 @@
             TargetID = "node3",
             Type = ConnectorSegmentType.Straight
         };
-        connectors.Add(connector2);
+        _connectors.Add(connector2);
     }
 
     private void CanZoom()
     {
-        diagram.FitToPage(Options);
+        _diagram.FitToPage(_options);
     }
 }
 
