@@ -2,13 +2,13 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@selectedItems" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SelectionSettings="@_selectedItems" />
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
     
-    private DiagramSelectionSettings selectedItems = new DiagramSelectionSettings()
+    private DiagramSelectionSettings _selectedItems = new DiagramSelectionSettings()
     {
         Constraints = SelectorConstraints.All & ~SelectorConstraints.Rotate
     };
@@ -16,7 +16,7 @@
     protected override void OnInitialized()
     {
         //Initialize the NodeCollection.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -26,6 +26,6 @@
             OffsetX = 100,
             OffsetY = 100,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

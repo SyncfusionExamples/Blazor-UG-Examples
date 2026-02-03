@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
     @* Initialize the pagesettings with boundary constraints *@
     <PageSettings Width="600" Height="500" BoundaryConstraints="BoundaryConstraints.Page" />
 </SfDiagramComponent>
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //Initialize the NodeCollection.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -23,6 +23,6 @@
             OffsetX = 100,
             OffsetY = 100,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
