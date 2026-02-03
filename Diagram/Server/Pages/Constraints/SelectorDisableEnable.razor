@@ -1,0 +1,50 @@
+@page "/selectordisable"
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Popups
+<p>Selector Constraints</p>
+<input type="checkbox" value="Tooltip" @onchange="@constraintschange" />Tooltip
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" SelectionSettings="@_selection" />
+@code
+{
+    private DiagramObjectCollection<Node> _nodes;
+    private bool _selector = true;
+    private DiagramSelectionSettings _selection = new DiagramSelectionSettings()
+    {
+        Constraints = SelectorConstraints.All
+    };
+    protected override void OnInitialized()
+    {
+        _nodes = new DiagramObjectCollection<Node>();
+        Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            },
+            Tooltip = new DiagramTooltip() { Content = "NodeTooltip" },
+            Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
+        };
+        _nodes.Add(node);
+    }
+    private void constraintschange(Microsoft.AspNetCore.Components.ChangeEventArgs e)
+    {
+        bool isChecked = e.Value is bool b && b;
+
+        if (isChecked)
+        {
+            _selection.Constraints |= SelectorConstraints.Tooltip;
+            _selector = true;
+        }
+        else
+        {
+            _selection.Constraints &= ~SelectorConstraints.Tooltip;
+            _selector = false;
+        }
+    }
+}

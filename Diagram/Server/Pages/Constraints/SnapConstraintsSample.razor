@@ -2,19 +2,19 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes">
+<SfDiagramComponent Height="600px" Nodes="@_nodes">
     @* Initialize the snapsettings with constraints *@
     <SnapSettings Constraints="SnapConstraints.ShowHorizontalLines" />
 </SfDiagramComponent>
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //Initialize the NodeCollection.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -23,6 +23,6 @@
             OffsetX = 100,
             OffsetY = 100,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }
