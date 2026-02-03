@@ -2,8 +2,8 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <Layout Type="LayoutType.ComplexHierarchicalTree" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-VerticalSpacing="@VerticalSpacing">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" Connectors="@_connectors" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <Layout Type="LayoutType.ComplexHierarchicalTree" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-VerticalSpacing="@_verticalSpacing">
     </Layout>
     <SnapSettings>
         <HorizontalGridLines LineColor="white" LineDashArray="2,2">
@@ -17,11 +17,11 @@
 {
 
     //Initailize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initailize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    private int HorizontalSpacing = 40;
-    private int VerticalSpacing = 40;
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private int _horizontalSpacing = 40;
+    private int _verticalSpacing = 40;
 
     //Method to set node's default properties
     private void OnNodeCreating(IDiagramObject obj)
@@ -47,20 +47,20 @@
     protected override void OnInitialized()
     {
         //Initializing node and connectors.
-        nodes = new DiagramObjectCollection<Node>()
+        _nodes = new DiagramObjectCollection<Node>()
         {
-            new Node() { ID="node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node1"} } },
-            new Node() { ID="node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node2"} } },
-            new Node() { ID="node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node3"} } },
-            new Node() { ID="node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node4"} } },
-            new Node() { ID="node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation{Content="node5"} } },
+            new Node() { ID = "node1", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "node1" } } },
+            new Node() { ID = "node2", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "node2" } } },
+            new Node() { ID = "node3", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "node3" } } },
+            new Node() { ID = "node4", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "node4" } } },
+            new Node() { ID = "node5", Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "node5" } } },
         };
-        connectors = new DiagramObjectCollection<Connector>()
+        _connectors = new DiagramObjectCollection<Connector>()
         {
-            new Connector() { ID="connector1", SourceID="node1", TargetID="node4" },
-            new Connector() { ID="connector2", SourceID="node2", TargetID="node4" },
-            new Connector() { ID="connector3", SourceID="node3", TargetID="node4" },
-            new Connector() { ID="connector4", SourceID="node4", TargetID="node5" },
+            new Connector() { ID = "connector1", SourceID = "node1", TargetID = "node4" },
+            new Connector() { ID = "connector2", SourceID = "node2", TargetID = "node4" },
+            new Connector() { ID = "connector3", SourceID = "node3", TargetID = "node4" },
+            new Connector() { ID = "connector4", SourceID = "node4", TargetID = "node5" },
         };
     }
 }
