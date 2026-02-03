@@ -5,16 +5,16 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Connector Content" OnClick="@ContentChange" />
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
 
 @code
 {
-    private DiagramObjectCollection<Connector> connector;
+    private DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
-        connector = new DiagramObjectCollection<Connector>();
-        Connector connectors = new Connector()
+        _connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
         {
             ID = "Connector1",
             SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
@@ -22,12 +22,12 @@
             Tooltip = new DiagramTooltip() { Content = "ConnectorTooltip" },
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
         };
-        connector.Add(connectors);
+        _connectors.Add(connector);
     }
 
     //Change Content at run time.
     private void ContentChange()
     {
-        connector[0].Tooltip.Content = "UpdateTooltipContent";
+        _connectors[0].Tooltip.Content = "UpdateTooltipContent";
     }
 }

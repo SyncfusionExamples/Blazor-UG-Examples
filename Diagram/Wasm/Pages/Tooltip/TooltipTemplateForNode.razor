@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes">
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes">
     <DiagramTemplates>
         <TooltipTemplate>
             @{
@@ -19,12 +19,12 @@
 @code
 {
     //Define diagram's nodes collection
-    DiagramObjectCollection<Node> nodes;
+    DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -40,6 +40,6 @@
             Tooltip = new DiagramTooltip(),
             Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

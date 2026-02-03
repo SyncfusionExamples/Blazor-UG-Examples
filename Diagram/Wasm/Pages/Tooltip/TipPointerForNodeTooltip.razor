@@ -5,17 +5,17 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Node TipPointer" OnClick="@TipPointerChange" />
-<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -32,12 +32,12 @@
             Tooltip = new DiagramTooltip() { Content = "NodeTooltip", ShowTipPointer = true },
             Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Change TipPointer at run time.
     private void TipPointerChange()
     {
-        nodes[0].Tooltip.ShowTipPointer = false;
+        _nodes[0].Tooltip.ShowTipPointer = false;
     }
 }

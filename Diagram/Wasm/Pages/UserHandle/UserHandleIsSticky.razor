@@ -2,14 +2,14 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" SelectionSettings="@SelectedModel">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" SelectionSettings="@_selectedModel">
 </SfDiagramComponent>
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
     
     protected override void OnInitialized()
     {
@@ -23,12 +23,12 @@
             Margin = new DiagramThickness() { Top = 0, Bottom = 0, Left = 0, Right = 0 },
             Tooltip = new DiagramTooltip() { Content = "CloneNode", IsSticky = true }
         };
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
-        SelectedModel.UserHandles = UserHandles;
-        nodes = new DiagramObjectCollection<Node>();
+        _selectedModel.UserHandles = _userHandles;
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node()
         {
             ID = "node1",
@@ -39,6 +39,6 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
         };
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
     }
 }

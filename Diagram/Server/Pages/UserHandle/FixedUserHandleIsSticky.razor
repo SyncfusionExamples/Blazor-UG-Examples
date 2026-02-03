@@ -2,15 +2,15 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node1 = new Node()
         {
             OffsetX = 250,
@@ -33,6 +33,6 @@
                 },
             }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
     }
 }
