@@ -5,14 +5,14 @@
 @inject IJSRuntime js
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="CloneGroup" OnClick="@CloneGroup" />
-<SfDiagramComponent @ref="diagram" Width="50%" Height="500px" @bind-Nodes="NodeCollection"></SfDiagramComponent>
+<SfButton Content="CloneGroup" OnClick="@CloneGroupAsync" />
+<SfDiagramComponent @ref="_diagram" Width="50%" Height="500px" @bind-Nodes="_nodeCollection"></SfDiagramComponent>
 
 @functions
 {
 
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -24,7 +24,7 @@
             Width = 100,
             ID = "node1",
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
 
         Node node2 = new Node()
         {
@@ -34,7 +34,7 @@
             Width = 100,
             ID = "node2",      
         };
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
         {
             ID = "group1",
@@ -49,22 +49,22 @@
                 }
             },
         };
-        NodeCollection.Add(group1);
+        _nodeCollection.Add(group1);
     }
 
-    private async Task CloneGroup()
+    private async Task CloneGroupAsync()
     {
-        Node node2 = NodeCollection[0].Clone() as Node;
+        Node node2 = _nodeCollection[0].Clone() as Node;
         node2.ID = RandomId();
-        Node node3 = NodeCollection[1].Clone() as Node;
+        Node node3 = _nodeCollection[1].Clone() as Node;
         node3.ID = RandomId();
-        Node node4 = NodeCollection[2].Clone() as Node;
+        Node node4 = _nodeCollection[2].Clone() as Node;
         node4.ID = RandomId();
         string[] array = { node2.ID, node3.ID };
         (node4 as NodeGroup).Children = array;
         node4.OffsetX += 25;
         node4.OffsetY += 25;
-        await diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { node2, node3, node4 });
+        await _diagram.AddDiagramElementsAsync(new DiagramObjectCollection<NodeBase>() { node2, node3, node4 });
     }
 
     internal string RandomId()

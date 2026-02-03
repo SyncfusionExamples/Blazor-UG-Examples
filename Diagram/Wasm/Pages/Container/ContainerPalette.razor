@@ -6,8 +6,8 @@
 <div class="control-section">
     <div style="width:254px;">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@symbolpalette" Height="300px" Width="250px"
-                                      Palettes="@Palettes" SymbolHeight="100" SymbolWidth="100" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="300px" Width="250px"
+                                      Palettes="@_palettes" SymbolHeight="100" SymbolWidth="100" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -15,13 +15,13 @@
 
 @code
 {
-    private SfSymbolPaletteComponent symbolpalette;
+    private SfSymbolPaletteComponent _symbolPalette;
     //Define symbol margin.
-    private SymbolMargin SymbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
+    private SymbolMargin _symbolMargin = new SymbolMargin { Left = 15, Right = 15, Top = 15, Bottom = 15 };
     //Define palattes collection.
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's container-shape collection.
-    private DiagramObjectCollection<NodeBase> ContainerNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _containerNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -30,9 +30,9 @@
 
     private void InitPaletteModel()
     {
-        Palettes = new DiagramObjectCollection<Palette>();
+        _palettes = new DiagramObjectCollection<Palette>();
 
-        ContainerNodes = new DiagramObjectCollection<NodeBase>();
+        _containerNodes = new DiagramObjectCollection<NodeBase>();
 
         // Create container with header
         Container container = new Container()
@@ -68,15 +68,15 @@
             Style = new ShapeStyle() { Fill = "CornflowerBlue" }
         };
 
-        ContainerNodes = new DiagramObjectCollection<NodeBase>()
+        _containerNodes = new DiagramObjectCollection<NodeBase>()
         {
             container,
             containerWithoutHeader,
         };
 
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-            new Palette(){Symbols =ContainerNodes,Title="Container Shapes",ID="ContainerShapes" },
+            new Palette(){Symbols =_containerNodes,Title="Container Shapes",ID="ContainerShapes" },
         };
     }
 }
