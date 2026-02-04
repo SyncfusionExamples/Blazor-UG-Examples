@@ -1,0 +1,76 @@
+﻿:host {
+    display: block;
+    padding: 1rem;
+}
+
+/* STATUS */
+.status-text {
+    font-weight: 600;
+    font-size: 0.92rem;
+}
+
+.status-ticket-id {
+    color: #4097ee;
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.status-ticket-id::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    height: 3px;
+    background-color: #94a8e1;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.status-ticket-id:hover {
+    color: #2d26c6;
+    cursor: pointer;
+}
+
+.status-ticket-id:hover::before {
+    transform: scaleX(1);
+}
+
+/* CATEGORY CHIP */
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 1rem;
+    min-height: 1.8rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1;
+    white-space: nowrap;
+    background-color: var(--chip-color, #4b5563);
+}
+
+    .chip.category-sale {
+        --chip-color: #509b18;
+    }
+
+    .chip.category-topup {
+        --chip-color: #d975ea;
+    }
+
+    .chip.category-refund {
+        --chip-color: #56638A;
+    }
+
+/*Tax Amount*/
+.amnt-positive {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.amnt-negative {
+    color: #ef4444;
+    font-weight: 600;
+}

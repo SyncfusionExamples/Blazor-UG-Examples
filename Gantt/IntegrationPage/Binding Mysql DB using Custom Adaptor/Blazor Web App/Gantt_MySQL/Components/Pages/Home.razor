@@ -1,0 +1,132 @@
+@page "/"
+@rendermode InteractiveServer
+
+@using System.Collections
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.DropDowns
+@using Gantt_MySQL.Data
+
+@inject TaskRepository TaskService
+
+<SfGantt TValue="TaskDataModel" Height="500px" Width="100%" AllowSorting="true" AllowFiltering="true" EnableContextMenu="true"
+         Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel" })">
+
+    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+
+    <GanttTaskFields Id="TaskId" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Progress="Progress" Duration="Duration" ParentID="ParentId">
+    </GanttTaskFields>
+
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" Mode="Syncfusion.Blazor.Gantt.EditMode.Auto"></GanttEditSettings>
+
+    <GanttColumns>
+        <GanttColumn Field=@nameof(TaskDataModel.TaskId) HeaderText="Task ID" IsPrimaryKey="true" Width="150" />
+        <GanttColumn Field=@nameof(TaskDataModel.TaskName) HeaderText="Task Name" Width="220" />
+        <GanttColumn Field=@nameof(TaskDataModel.StartDate) HeaderText="Start Date" Width="170" />
+        <GanttColumn Field=@nameof(TaskDataModel.EndDate) HeaderText="End Date" Width="170" />
+        <GanttColumn Field=@nameof(TaskDataModel.Duration) HeaderText="Duration" Width="130" />
+        <GanttColumn Field=@nameof(TaskDataModel.Progress) HeaderText="Progress" Width="120" />
+    </GanttColumns>
+
+</SfGantt>
+@code {
+    private CustomAdaptor? _customAdaptor;
+
+    protected override void OnInitialized()
+    {
+        _customAdaptor = new CustomAdaptor { TaskService = TaskService };
+    }
+
+    /// <summary>
+    /// CustomAdaptor to handle Gantt data operations with MySQL using EF Core
+    /// </summary>
+    public class CustomAdaptor : DataAdaptor
+    {
+        public static TaskRepository? _taskService { get; set; }
+
+        public TaskRepository? TaskService
+        {
+            get => _taskService;
+            set => _taskService = value;
+        }
+
+        public override async Task<object> ReadAsync(DataManagerRequest dm, string? key = null)
+        {
+            IEnumerable<TaskDataModel> dataSource = await _taskService!.GetTasksAsync();
+
+            // Search
+            if (dm.Search != null && dm.Search.Count > 0)
+                dataSource = DataOperations.PerformSearching(dataSource, dm.Search);
+
+            // Sort
+            if (dm.Sorted != null && dm.Sorted.Count > 0)
+                dataSource = DataOperations.PerformSorting(dataSource, dm.Sorted);
+
+            int count = dataSource.Cast<TaskDataModel>().Count();
+
+            // Paging
+            if (dm.Skip != 0) dataSource = DataOperations.PerformSkip(dataSource, dm.Skip);
+            if (dm.Take != 0) dataSource = DataOperations.PerformTake(dataSource, dm.Take);
+
+            return dm.RequiresCounts
+                ? new DataResult() { Result = dataSource, Count = count }
+                : (object)dataSource;
+        }
+
+        public override async Task<object> UpdateAsync(DataManager dm, object value, string? keyField, string key)
+        {
+            await _taskService!.UpdateTaskAsync(value as TaskDataModel);
+            return value;
+        }
+
+        public override async Task<object> RemoveAsync(DataManager dm, object value, string? keyField, string key)
+        {
+            int? taskId = value switch
+            {
+                int i => i,
+                long l => (int)l,
+                string s when int.TryParse(s, out var id) => id,
+                TaskDataModel t => t.TaskId,
+                _ => null
+            };
+
+            await _taskService!.RemoveTaskAsync(taskId);
+            return value;
+        }
+
+
+        public override async Task<object> BatchUpdateAsync(DataManager dm, object changedRecords, object addedRecords, object deletedRecords, string? keyField, string key, int? dropIndex)
+        {
+            if (changedRecords is IEnumerable<TaskDataModel> changed)
+            {
+                foreach (var record in changed)
+                {
+                    // Debug (optional)
+                    Console.WriteLine($"UPDATE TaskId={record.TaskId}, ParentId={record.ParentId}");
+                    await _taskService!.UpdateTaskAsync(record);
+                }
+            }
+
+            if (addedRecords is IEnumerable<TaskDataModel> added)
+            {
+                foreach (var record in added)
+                {
+                    // Debug (optional)
+                    Console.WriteLine($"INSERT TaskId={record.TaskId}, ParentId={record.ParentId}");
+
+                    record.TaskId = 0; // identity insert
+                    await _taskService!.AddTaskAsync(record);
+                }
+            }
+
+            if (deletedRecords is IEnumerable<TaskDataModel> deleted)
+            {
+                foreach (var record in deleted)
+                    await _taskService!.RemoveTaskAsync(record.TaskId);
+            }
+
+            return key;
+        }
+
+    }
+}
