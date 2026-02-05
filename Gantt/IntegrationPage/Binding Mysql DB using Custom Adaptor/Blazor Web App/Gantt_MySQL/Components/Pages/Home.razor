@@ -4,7 +4,6 @@
 @using System.Collections
 @using Syncfusion.Blazor.Data
 @using Syncfusion.Blazor.Gantt
-@using Syncfusion.Blazor.DropDowns
 @using Gantt_MySQL.Data
 
 @inject TaskRepository TaskService
@@ -42,7 +41,7 @@
     /// </summary>
     public class CustomAdaptor : DataAdaptor
     {
-        public static TaskRepository? _taskService { get; set; }
+        private static TaskRepository? _taskService { get; set; }
 
         public TaskRepository? TaskService
         {

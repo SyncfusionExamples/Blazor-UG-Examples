@@ -49,7 +49,7 @@ This repository demonstrates a production-ready pattern for binding **MySQL Serv
     EndDate DATETIME,
     ParentId INT NULL,
     Duration VARCHAR(10) NOT NULL,   
-    Progress DECIMAL(18, 2) NOT NULL    
+    Progress INT NOT NULL    
    );
    ```
 
@@ -64,6 +64,7 @@ This repository demonstrates a production-ready pattern for binding **MySQL Serv
      "AllowedHosts": "*"
    }
    ```
+   Replace `ganttdb` with your actual database name in the connection string.
 
 4. **Restore packages and build**
    ```bash
@@ -113,19 +114,19 @@ The connection string in `appsettings.json` contains the following components:
 
 ## Common Tasks
 
-### Add a Transaction
+### Add a Task
 1. Click the **Add** button in the toolbar
 2. Fill in the Dialog fields
 3. Click **Save** to persist the record to the database
 
-### Edit a Transaction
-1. Select a row in the gantt
+### Edit a Task
+1. Select a row in the Gantt
 2. Click the **Edit** button in the toolbar
 3. Modify the required fields
-4. Click **Update** to save changes
+4. Click **Save** to save changes
 
-### Delete a Transaction
-1. Select a row in the gantt
+### Delete a Task
+1. Select a row in the Gantt
 2. Click the **Delete** button in the toolbar
 3. Confirm the deletion in the dialog
 

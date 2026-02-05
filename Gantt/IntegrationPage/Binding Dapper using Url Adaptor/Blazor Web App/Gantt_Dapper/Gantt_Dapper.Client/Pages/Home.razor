@@ -1,0 +1,47 @@
+﻿@page "/"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor
+
+<SfGantt TValue="TaskData" Height="600px" AllowFiltering="true" AllowSorting="true" TreeColumnIndex="1" EnableContextMenu="true" 
+         Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })">
+
+    <SfDataManager Url="https://localhost:7237/api/Gantt"
+                   InsertUrl="https://localhost:7237/api/Gantt/Insert"
+                   UpdateUrl="https://localhost:7237/api/Gantt/Update"
+                   RemoveUrl="https://localhost:7237/api/Gantt/Delete"
+                   Adaptor="Adaptors.UrlAdaptor">
+    </SfDataManager>
+
+    <GanttTaskFields Id="TaskId" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentId">
+    </GanttTaskFields>
+
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" />
+
+    <GanttColumns>
+        <GanttColumn Field="TaskId" HeaderText="Task ID" Width="150" IsPrimaryKey="true"></GanttColumn>
+        <GanttColumn Field="TaskName" HeaderText="Task Name" Width="250"></GanttColumn>
+        <GanttColumn Field="StartDate" HeaderText="Start Date" Format="d" Width="130"></GanttColumn>
+        <GanttColumn Field="EndDate" HeaderText="End Date" Format="d" Width="130"></GanttColumn>
+        <GanttColumn Field="Duration" HeaderText="Duration" Width="110"></GanttColumn>
+        <GanttColumn Field="Progress" HeaderText="Progress" Width="110"></GanttColumn>
+    </GanttColumns>
+
+</SfGantt>
+
+@code {
+    
+    // Keep same model names used in controller response (TaskData)
+    public class TaskData
+    {
+        public int? TaskId { get; set; }
+        public string? TaskName { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public int? ParentId { get; set; }
+        public int? Duration { get; set; }
+        public int Progress { get; set; }
+    }
+}

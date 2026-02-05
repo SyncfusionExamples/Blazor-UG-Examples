@@ -8,7 +8,6 @@
         public DateTime? EndDate { get; set; }
         public int? ParentId { get; set; }
         public string? Duration { get; set; }    
-        public decimal Progress { get; set; }            
-
+        public int Progress { get; set; }
     }
 }
