@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+        <a href="https://www.syncfusion.com/blazor-components/" target="_blank">Blazor Components</a>
+        <a href="https://blazor.syncfusion.com/documentation/" target="_blank">User Guide</a>
+        <a href="http://blazor.syncfusion.com/" target="_blank">View Demos</a> 
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

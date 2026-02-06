@@ -1,0 +1,45 @@
+@page "/t1"
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfButton Content="Add Aggregate Types" CssClass="e-primary" OnClick="AddAggregateTypes"></SfButton>
+<SfPivotView TValue="ProductDetails" ShowGroupingBar="true" AggregateTypes="@aggregateType">
+    <PivotViewDataSourceSettings DataSource="@dataSource">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Units Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+</SfPivotView>
+
+@code {
+    public List<AggregateTypes> aggregateType = new List<AggregateTypes> {
+        AggregateTypes.DistinctCount,
+        AggregateTypes.Avg,
+        AggregateTypes.Product
+    };
+    public List<ProductDetails> dataSource { get; set; }
+    protected override void OnInitialized()
+    {
+        this.dataSource = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    public void AddAggregateTypes()
+    {
+        aggregateType.Add(AggregateTypes.Count);
+        aggregateType.Add(AggregateTypes.Max);
+        aggregateType.Add(AggregateTypes.Min);
+    }
+}
