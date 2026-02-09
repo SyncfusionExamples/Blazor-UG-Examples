@@ -1,9 +1,9 @@
-@page "/pivot-table/aggregation-in-ValueField"
+@page "/label-filtering"
 @using Syncfusion.Blazor.PivotView
 @using BlazorDemos.Pages.PivotView.PivotTable
 
-<SfPivotView TValue="ProductDetails">
-    <PivotViewDataSourceSettings DataSource="@data">
+<SfPivotView TValue="ProductDetails" ShowGroupingBar="true" ShowFieldList="true">
+    <PivotViewDataSourceSettings DataSource="@data" AllowLabelFilter="true">
         <PivotViewColumns>
             <PivotViewColumn Name="Year"></PivotViewColumn>
             <PivotViewColumn Name="Quarter"></PivotViewColumn>
@@ -13,12 +13,11 @@
             <PivotViewRow Name="Products"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
-            <PivotViewValue Name="Sold" Caption="Unit Sold" Type="SummaryTypes.DifferenceFrom" BaseField="Country"
-                            BaseItem="France"></PivotViewValue>
-            <PivotViewValue Name="Amount" Caption="Sold Amount" Type=SummaryTypes.Min></PivotViewValue>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
         <PivotViewFormatSettings>
-            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Amount" Format="C0"></PivotViewFormatSetting>
         </PivotViewFormatSettings>
     </PivotViewDataSourceSettings>
 </SfPivotView>

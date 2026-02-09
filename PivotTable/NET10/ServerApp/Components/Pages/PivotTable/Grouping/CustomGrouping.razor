@@ -1,29 +1,27 @@
-@page "/pivot-table/aggregation-in-ValueField"
+@page "/custom-grouping"
 @using Syncfusion.Blazor.PivotView
 @using BlazorDemos.Pages.PivotView.PivotTable
 
-<SfPivotView TValue="ProductDetails">
+<SfPivotView TValue="ProductDetails" ShowGroupingBar="true" AllowGrouping="true">
     <PivotViewDataSourceSettings DataSource="@data">
         <PivotViewColumns>
-            <PivotViewColumn Name="Year"></PivotViewColumn>
-            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+            <PivotViewColumn Name="Product_ID" Caption="Product ID"></PivotViewColumn>
         </PivotViewColumns>
         <PivotViewRows>
-            <PivotViewRow Name="Country"></PivotViewRow>
             <PivotViewRow Name="Products"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
-            <PivotViewValue Name="Sold" Caption="Unit Sold" Type="SummaryTypes.DifferenceFrom" BaseField="Country"
-                            BaseItem="France"></PivotViewValue>
-            <PivotViewValue Name="Amount" Caption="Sold Amount" Type=SummaryTypes.Min></PivotViewValue>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
         <PivotViewFormatSettings>
-            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Product_ID" Format="N0" UseGrouping=true></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
         </PivotViewFormatSettings>
     </PivotViewDataSourceSettings>
 </SfPivotView>
 
-@code {
+@code{
     public List<ProductDetails> data { get; set; }
     protected override void OnInitialized()
     {

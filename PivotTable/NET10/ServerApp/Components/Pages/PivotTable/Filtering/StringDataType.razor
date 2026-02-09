@@ -1,9 +1,8 @@
-@page "/pivot-table/aggregation-in-ValueField"
+@page "/string-data-type-filtering"
 @using Syncfusion.Blazor.PivotView
 @using BlazorDemos.Pages.PivotView.PivotTable
-
 <SfPivotView TValue="ProductDetails">
-    <PivotViewDataSourceSettings DataSource="@data">
+    <PivotViewDataSourceSettings DataSource="@data" AllowLabelFilter="true">
         <PivotViewColumns>
             <PivotViewColumn Name="Year"></PivotViewColumn>
             <PivotViewColumn Name="Quarter"></PivotViewColumn>
@@ -13,13 +12,17 @@
             <PivotViewRow Name="Products"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
-            <PivotViewValue Name="Sold" Caption="Unit Sold" Type="SummaryTypes.DifferenceFrom" BaseField="Country"
-                            BaseItem="France"></PivotViewValue>
-            <PivotViewValue Name="Amount" Caption="Sold Amount" Type=SummaryTypes.Min></PivotViewValue>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
         <PivotViewFormatSettings>
             <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
         </PivotViewFormatSettings>
+        <PivotViewFilterSettings>
+            <PivotViewFilterSetting Name="Country" Type=FilterType.Label Condition=Operators.Contains
+                                    Value1="United">
+            </PivotViewFilterSetting>
+        </PivotViewFilterSettings>
     </PivotViewDataSourceSettings>
 </SfPivotView>
 

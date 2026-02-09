@@ -1,8 +1,8 @@
-@page "/pivot-table/aggregation-in-ValueField"
+@page "/drill-through-in-table"
 @using Syncfusion.Blazor.PivotView
 @using BlazorDemos.Pages.PivotView.PivotTable
 
-<SfPivotView TValue="ProductDetails">
+<SfPivotView TValue="ProductDetails" AllowDrillThrough="true">
     <PivotViewDataSourceSettings DataSource="@data">
         <PivotViewColumns>
             <PivotViewColumn Name="Year"></PivotViewColumn>
@@ -13,9 +13,7 @@
             <PivotViewRow Name="Products"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
-            <PivotViewValue Name="Sold" Caption="Unit Sold" Type="SummaryTypes.DifferenceFrom" BaseField="Country"
-                            BaseItem="France"></PivotViewValue>
-            <PivotViewValue Name="Amount" Caption="Sold Amount" Type=SummaryTypes.Min></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
         <PivotViewFormatSettings>
             <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
