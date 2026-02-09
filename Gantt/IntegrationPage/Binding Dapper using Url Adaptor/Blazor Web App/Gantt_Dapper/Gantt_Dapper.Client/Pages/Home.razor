@@ -8,17 +8,17 @@
 <SfGantt TValue="TaskData" Height="600px" AllowFiltering="true" AllowSorting="true" TreeColumnIndex="1" EnableContextMenu="true" 
          Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })">
 
-    <SfDataManager Url="https://localhost:7237/api/Gantt"
-                   InsertUrl="https://localhost:7237/api/Gantt/Insert"
-                   UpdateUrl="https://localhost:7237/api/Gantt/Update"
-                   RemoveUrl="https://localhost:7237/api/Gantt/Delete"
+    <SfDataManager Url="/api/Gantt"
+                   InsertUrl="/api/Gantt/Insert"
+                   UpdateUrl="/api/Gantt/Update"
+                   RemoveUrl="/api/Gantt/Delete"
                    Adaptor="Adaptors.UrlAdaptor">
     </SfDataManager>
 
     <GanttTaskFields Id="TaskId" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentId">
     </GanttTaskFields>
 
-    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" />
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowTaskbarEditing="true" AllowDeleting="true" />
 
     <GanttColumns>
         <GanttColumn Field="TaskId" HeaderText="Task ID" Width="150" IsPrimaryKey="true"></GanttColumn>
@@ -42,6 +42,6 @@
         public DateTime? EndDate { get; set; }
         public int? ParentId { get; set; }
         public int? Duration { get; set; }
-        public int Progress { get; set; }
+        public int? Progress { get; set; }
     }
 }
