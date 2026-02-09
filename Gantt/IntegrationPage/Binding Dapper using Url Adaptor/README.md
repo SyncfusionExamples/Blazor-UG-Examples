@@ -1,4 +1,4 @@
-# Blazor Gantt with MySQL and Entity Framework Core
+# Blazor Gantt with MS SQL and Dapper
 
 ## Project Overview
 
