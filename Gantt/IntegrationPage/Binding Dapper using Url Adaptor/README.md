@@ -15,10 +15,9 @@ This repository demonstrates a straightforward pattern for binding  **MS SQL Ser
 
 | Component | Version | Purpose |
 |-----------|---------|---------|
-| Visual Studio 2022 | 17.0 or later | Development IDE with Blazor workload |
-| .NET SDK | net8.0 or compatible | Runtime and build tools |
+| Visual Studio 2026 | 18.1.0 or later | Development IDE with Blazor workload |
+| .NET SDK | net10.0 or compatible | Runtime and build tools |
 | [SQL Server Management Studio](https://learn.microsoft.com/en-us/ssms/install/install?redirectedfrom=MSDN) | Latest | Core framework for database operations |
-| [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools) | 9.0.0 or later | Tools for managing database migrations |
 | [Dapper](https://www.nuget.org/packages/Dapper) | 2.1.66 or latest | Lightweight data mapper |
 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) | 6.1.4 or Latest | SQL Server client driver |
 | [Syncfusion.Blazor.Gantt](https://www.nuget.org/packages/Syncfusion.Blazor.Gantt) | 32.1.25 or Latest | Gantt and UI components |
@@ -53,8 +52,7 @@ This repository demonstrates a straightforward pattern for binding  **MS SQL Ser
 
 3. **Update the connection string**
    
-   Replace connected database's connectionstring in GanttController.cs file in Controllers folder of Gantt_Dapper.
-   
+   Replace connected database's connectionstring in GanttController.cs file in Controllers folder of Gantt_Dapper.   
 
 4. **Restore packages and build**
    ```bash
@@ -92,7 +90,7 @@ This repository demonstrates a straightforward pattern for binding  **MS SQL Ser
 1. Select a row in the gantt
 2. Click the **Edit** button in the toolbar
 3. Modify the required fields
-4. Click **Update** to save changes
+4. Click **Save** to save changes
 
 ### Delete a Task
 1. Select a row in the gantt

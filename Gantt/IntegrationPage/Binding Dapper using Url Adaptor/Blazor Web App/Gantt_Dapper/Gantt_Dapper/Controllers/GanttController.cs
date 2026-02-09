@@ -156,7 +156,7 @@ namespace Gantt_Dapper.Controllers
             public DateTime? EndDate { get; set; }
             public int? ParentId { get; set; }
             public int? Duration { get; set; }
-            public decimal? Progress { get; set; }
+            public int Progress { get; set; }
         }
 
         // Use System.Text.Json attributes (works by default in modern ASP.NET Core)
