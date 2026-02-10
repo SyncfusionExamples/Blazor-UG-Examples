@@ -1,0 +1,54 @@
+﻿@page "/AutoScroll"
+
+@using Syncfusion.Blazor.Diagram
+<SfDiagramComponent Height="400px" Width="400px" Nodes="@_nodes" Connectors="@_connectors">
+    @* Sets the ScrollSettings for the diagram *@
+    <ScrollSettings EnableAutoScroll=true @bind-ScrollLimit="@_scrollLimit">
+    </ScrollSettings>
+</SfDiagramComponent>
+@code
+{
+    ScrollLimitMode _scrollLimit { get; set; } = ScrollLimitMode.Infinity;
+    //Defines diagram's node collection.
+    DiagramObjectCollection<Node> _nodes;
+    //Defines diagram's connector collection.
+    DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        _nodes = new DiagramObjectCollection<Node>();
+        // A node is created and stored in the nodes collection.
+        Node node = new Node()
+        {
+            ID = "node1",
+            // Position of the node.
+            OffsetX = 250,
+            OffsetY = 250,
+            // Size of the node.
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            }
+        };
+        // Add node.
+        _nodes.Add(node);
+        Connector Connector = new Connector()
+        {
+            ID = "connector1",
+            // Set the source and target point of the connector.
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 100, Y = 200 },
+            // Type of the connector segments.
+            Type = ConnectorSegmentType.Straight,
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "#6495ED",
+                StrokeWidth = 1
+            },
+        };
+        _connectors.Add(Connector);
+    }
+}

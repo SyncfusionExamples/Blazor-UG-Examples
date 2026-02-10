@@ -1,0 +1,171 @@
+﻿@page "/ExpandoObject"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent @ref="@_diagram" 
+                    Height="499px"
+                    InteractionController="DiagramInteractions.ZoomPan" 
+                    ConnectorCreating="@ConnectorDefaults" 
+                    NodeCreating="@NodeDefaults">
+    <DataSourceSettings ID="Name" ParentID="Category" DataSource="DataSource"/>
+    <Layout @bind-Type="_type" 
+            @bind-HorizontalSpacing="@_horizontalSpacing" 
+            @bind-Orientation="@_orientation" 
+            @bind-VerticalSpacing="@_verticalSpacing" 
+            @bind-HorizontalAlignment="@_horizontalAlignment" 
+            @bind-VerticalAlignment="@_verticalAlignment" 
+            GetLayoutInfo="GetLayoutInfo">
+        <LayoutMargin Top="50" Bottom="50" Right="50" Left="50"/>
+    </Layout>
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent _diagram;
+    // Specify the layout type.
+    private LayoutType _type = LayoutType.HierarchicalTree;
+    // Specify the orientation of the layout.
+    private LayoutOrientation _orientation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment _verticalAlignment = VerticalAlignment.Auto;
+    private int _horizontalSpacing = 30;
+    private int _verticalSpacing = 30;
+    public List<ExpandoObject> DataSource { get; set; }
+    public List<ExpandoObject> ExpandoData = new List<ExpandoObject>();
+    public class ExpandoObject
+    {   
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public string FillColor { get; set; }
+    }
+    // Defines the connector's default values.
+    private void ConnectorDefaults(IDiagramObject connector)
+    {
+        (connector as Connector).Type = ConnectorSegmentType.Orthogonal;
+        (connector as Connector).TargetDecorator.Shape = DecoratorShape.None;
+        (connector as Connector).Style = new ShapeStyle() { StrokeColor = "#6d6d6d" };
+        (connector as Connector).Constraints = 0;
+        (connector as Connector).CornerRadius = 5;
+    }
+
+    // Create the layout info.
+    private TreeInfo GetLayoutInfo(IDiagramObject obj, TreeInfo options)
+    {
+        // Enable the sub-tree.
+        options.EnableSubTree = true;
+        // Specify the subtree orientation.
+        options.Orientation = Orientation.Horizontal;
+        return options;
+    }
+
+    // Defines the node's default values.
+    private void NodeDefaults(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+        if (node.Data is System.Text.Json.JsonElement)
+        {
+            node.Data = System.Text.Json.JsonSerializer.Deserialize<ExpandoObject>(node.Data.ToString());
+        }
+        dynamic hierarchicalData = node.Data as ExpandoObject;
+        node.Style = new ShapeStyle() { Fill = "#659be5", StrokeColor = "none", StrokeWidth = 2, };
+        node.BackgroundColor = "#659be5";
+        node.Width = 150;
+        node.Height = 50;
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+            new ShapeAnnotation()
+            {
+                Content = hierarchicalData.Name,
+                Style =new TextStyle(){Color = "white"}
+            }
+        };     
+    }
+
+    protected override void OnInitialized()
+    {
+        this.DataSource = GetData();
+    }
+    
+    public List<ExpandoObject> GetData()
+    {
+        ExpandoData.Clear();
+        dynamic Member1 = new ExpandoObject();
+
+        Member1.Name = "Diagram";
+        Member1.Category = "";
+        Member1.FillColor = "#71AF17";
+        ExpandoData.Add(Member1);
+
+        dynamic Member2 = new ExpandoObject();
+
+        Member2.Name = "Layout";
+        Member2.Category = "Diagram";
+        Member2.FillColor = "#659be5";
+        ExpandoData.Add(Member2);
+
+        dynamic Member3 = new ExpandoObject();
+
+        Member3.Name = "Tree layout";
+        Member3.Category = "Layout";
+        Member3.FillColor = "#659be5";
+        ExpandoData.Add(Member3);
+
+        dynamic Member7 = new ExpandoObject();
+
+        Member7.Name = "Organizational chart";
+        Member7.Category = "Layout";
+        Member7.FillColor = "#659be5";
+        ExpandoData.Add(Member7);
+
+        dynamic Member8 = new ExpandoObject();
+
+        Member8.Name = "Hierarchical tree";
+        Member8.Category = "Tree layout";
+        Member8.FillColor = "#659be5";
+        ExpandoData.Add(Member8);
+
+        dynamic Member14 = new ExpandoObject();
+
+        Member14.Name = "Radial tree";
+        Member14.Category = "Tree layout";
+        Member14.FillColor = "#659be5";
+        ExpandoData.Add(Member14);
+
+        dynamic Member9 = new ExpandoObject();
+
+        Member9.Name = "Mind map";
+        Member9.Category = "Hierarchical tree";
+        Member9.FillColor = "#659be5";
+        ExpandoData.Add(Member9);
+
+        dynamic Member10 = new ExpandoObject();
+
+        Member10.Name = "Family tree";
+        Member10.Category = "Hierarchical tree";
+        Member10.FillColor = "#659be5";
+        ExpandoData.Add(Member10);
+
+        dynamic Member4 = new ExpandoObject();
+
+        Member4.Name = "Management";
+        Member4.Category = "Organizational chart";
+        Member4.FillColor = "#659be5";
+        ExpandoData.Add(Member4);
+
+        dynamic Member11 = new ExpandoObject();
+
+        Member11.Name = "Human resources";
+        Member11.Category = "Management";
+        Member11.FillColor = "#659be5";
+        ExpandoData.Add(Member11);
+
+        dynamic Member12 = new ExpandoObject();
+
+        Member12.Name = "University";
+        Member12.Category = "Management";
+        Member12.FillColor = "#659be5";
+        ExpandoData.Add(Member12);
+
+        return ExpandoData;
+    }
+}

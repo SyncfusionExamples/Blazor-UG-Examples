@@ -1,0 +1,154 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Data
+@using System.Collections.ObjectModel
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Read">Read</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Update">Update</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Insert">Insert</button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" @onclick="Delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper" style="width:100%">
+    <div>
+        <SfDiagramComponent @ref="@diagram" Height="400px"
+                            NodeCreating="OnNodeCreating" ConnectorCreating="OnConnectorCreating">
+            <DataSourceSettings Id="OrderID" ParentId="CustomerID">
+                <SfDataManager Url="https://localhost:7131/graphql" GraphQLAdaptorOptions=@adaptorOptions Adaptor="Adaptors.GraphQLAdaptor"></SfDataManager>
+            </DataSourceSettings>
+            <Layout HorizontalSpacing="40" VerticalSpacing="40" Type="LayoutType.HierarchicalTree"></Layout>
+        </SfDiagramComponent>
+    </div>
+</div>
+@code{
+    public SfDiagramComponent diagram;
+    private float x = 100;
+    private float y = 100;
+    private GraphQLAdaptorOptions adaptorOptions { get; set; } = new GraphQLAdaptorOptions
+    {
+        Query = @"
+        query ordersData($dataManager: DataManagerRequestInput!){
+            ordersData(dataManager: $dataManager) {
+                count, result { OrderID, CustomerID, EmployeeID, } , aggregates
+            }
+        }",
+        Mutation = new GraphQLMutation
+        {
+            Insert = @"
+            mutation create($record: OrderInput!, $index: Int!, $action: String!, $additionalParameters: Any) {
+              createOrder(order: $record, index: $index, action: $action, additionalParameters: $additionalParameters) {
+                OrderID, CustomerID, EmployeeID
+              }
+            }",
+            Update = @"
+            mutation update($record: OrderInput!, $action: String!, $primaryColumnName: String! , $primaryColumnValue: Int!, $additionalParameters: Any) {
+              updateOrder(order: $record, action: $action, primaryColumnName: $primaryColumnName, primaryColumnValue: $primaryColumnValue, additionalParameters: $additionalParameters) {
+                OrderID, CustomerID, EmployeeID
+              }
+            }",
+            Delete = @"
+            mutation delete($primaryColumnValue: Int!, $action: String!, $primaryColumnName: String!, $additionalParameters: Any) {
+              deleteOrder(primaryColumnValue: $primaryColumnValue, action: $action, primaryColumnName: $primaryColumnName, additionalParameters: $additionalParameters) {
+                OrderID, CustomerID, EmployeeID
+              }
+            }"
+        },
+        ResolverName = "OrdersData"
+    };
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public string EmployeeID { get; set; }
+
+    }
+    private void OnNodeCreating(IDiagramObject obj)
+    {
+        Node node = obj as Node;
+
+        node.Width = 80;
+        node.Height = 45;
+        node.Shape = new BasicShape() { Type = Syncfusion.Blazor.Diagram.NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle };
+        node.Style = new ShapeStyle() { StrokeWidth = 0, Fill = "#2084c4" };
+        Dictionary<string, object> data = node.Data as Dictionary<string, object>;
+        string content = "";
+        if (data != null)
+        {
+            foreach (var kvp in data)
+            {
+                if (kvp.Key == "EmployeeID")
+                {
+                    content = kvp.Value.ToString();
+                }
+            }
+        }
+        node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
+        {
+                // Annotation is created and stored in Annotations collection of Node.
+                new ShapeAnnotation
+                {
+                    Content = content,
+                    Style = new TextStyle()
+                    {
+                        Color = "White",
+                        Bold = true,
+                        FontSize = 12,
+                        FontFamily = "TimesNewRoman"
+                    }
+                }
+            };
+
+    }
+    @*End:Hidden*@
+    private void OnConnectorCreating(IDiagramObject obj)
+    {
+        Connector connector = obj as Connector;
+        connector.Style.StrokeColor = "#048785";
+        connector.Type = ConnectorSegmentType.Orthogonal;
+        connector.TargetDecorator.Shape = DecoratorShape.None;
+        connector.SourceDecorator.Shape = DecoratorShape.None;
+        connector.Style = new ShapeStyle() { StrokeColor = "#3A4857", Fill = "#3A4857" };
+    }
+
+    //CRUD operations
+    //To fetch data from the remote service
+    public async void Read()
+    {
+        var data = await diagram.ReadDataAsync();
+    }
+    //To update data in the remote service
+    public async void Update()
+    {
+        Order employeeDetails = new Order() { OrderID = 9, EmployeeID = "Craft updated", CustomerID = "5" };
+
+        await diagram.UpdateDataAsync("OrderID", employeeDetails);
+    }
+    //To push data to the remote service
+    public async void Insert()
+    {
+        Order employeeDetails = new Order() { OrderID = 10, EmployeeID = "Craft new ", CustomerID = "5" };
+        await diagram.InsertDataAsync(employeeDetails);
+    }
+    //To delete data in the remote service
+    public async void Delete()
+    {
+        await diagram.DeleteDataAsync("OrderID", 5);
+    }
+}
+

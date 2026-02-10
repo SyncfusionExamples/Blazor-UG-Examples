@@ -15,9 +15,9 @@
 
 @code
 {
-    private SfDiagramComponent Diagrams;
-    private float x = 100;
-    private float y = 100;
+    private SfDiagramComponent _diagrams;
+    private float _x = 100;
+    private float _y = 100;
 
     public class Employee {
         public int? EmployeeID { get; set; }
@@ -25,17 +25,17 @@
         public int? ReportsTo { get; set; }
     }
 
-    private Query Query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
+    private Query _query = new Query().Select(new List<string>() { "EmployeeID", "ReportsTo", "FirstName" }).Take(9);
 
     private void OnNodeCreating(IDiagramObject obj) {
         Node node = obj as Node;
-        node.OffsetX = x;
-        node.OffsetY = y;
+        node.OffsetX = _x;
+        node.OffsetY = _y;
         node.Width = 80;
         node.Height = 40;
         node.Shape = new BasicShape() { Type = Syncfusion.Blazor.Diagram.NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle, CornerRadius = 8 };
         node.Style = new ShapeStyle() { StrokeWidth = 0, Fill = "" };
-        x += 100;
+        _x += 100;
 
         Dictionary<string, object> data = node.Data as Dictionary<string, object>;
         node.Annotations = new DiagramObjectCollection<ShapeAnnotation>() {
