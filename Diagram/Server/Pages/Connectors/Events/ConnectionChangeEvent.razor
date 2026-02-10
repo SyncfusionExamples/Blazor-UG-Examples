@@ -2,32 +2,32 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="Diagram" Width="1000px" ConnectionChanging="@OnConnectionChanging" ConnectionChanged="@OnConnectionChange"
-                    Height="500px" Connectors="@connectors" Nodes="@nodes" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" ConnectionChanging="@OnConnectionChanging" ConnectionChanged="@OnConnectionChange" Height="500px" Connectors="@_connectors" Nodes="@_nodes">
+</SfDiagramComponent>
 
 @code
 {
-    //Reference the diagram
-    private SfDiagramComponent Diagram;
-    //Intialize the diagram connector's collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    //Intialize the diagram node's collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    //Reference the diagram.
+    private SfDiagramComponent _diagram;
+    //Initialize the diagram's connectors collection
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    //Initialize the diagram's nodes collection
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>()
-        {
-            new Node()
-            {
+        _nodes = new DiagramObjectCollection<Node>()
+       {
+          new Node()
+          {
             OffsetX = 100,
             OffsetY = 100,
             Height = 50,
             Width = 100,
             ID = "node1",
-            },
+          },
         };
-        Connector Connector = new Connector()
+        var connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint()
@@ -53,7 +53,7 @@
                 StrokeWidth = 1
             },
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 
     // To notify the connection changing event before the connection change.

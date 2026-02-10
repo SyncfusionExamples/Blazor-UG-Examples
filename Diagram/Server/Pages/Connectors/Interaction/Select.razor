@@ -6,21 +6,21 @@
 
 <SfButton Content="Select" OnClick="@OnSelect" />
 <SfButton Content="UnSelect" OnClick="@UnSelect" />
-
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" Connectors="@connectors" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Connectors="@_connectors">
+</SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Intialize the diagram's connector collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
     protected override void OnInitialized()
     {
-        Dictionary<string, object> ConnectorInfo = new Dictionary<string, object>();
-        ConnectorInfo.Add("connectorInfo", "Central Connector");
-        Connector Connector = new Connector()
+        var connectorInfo = new Dictionary<string, object>();
+        connectorInfo.Add("connectorInfo", "Central Connector");
+        var connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint()
@@ -49,20 +49,20 @@
                 StrokeColor = "#6495ED",
                 StrokeWidth = 1
             },
-            AdditionalInfo = ConnectorInfo
+            AdditionalInfo = connectorInfo
         };
-        connectors.Add(Connector);
+        _connectors.Add(connector);
     }
 
     private void OnSelect()
     {
-        // Select the Connector
-        Diagram.Select(new ObservableCollection<IDiagramObject> { Diagram.GetObject(Diagram.Connectors[0].ID) as IDiagramObject });
+        // Select the Connector.
+        _diagram.Select(new ObservableCollection<IDiagramObject> { _diagram.GetObject(_diagram.Connectors[0].ID) as IDiagramObject });
     }
 
     private void UnSelect()
     {
-        // clear selection in the diagram
-        Diagram.ClearSelection();
+        // Clear selection in the diagram.
+        _diagram.ClearSelection();
     }
 }
