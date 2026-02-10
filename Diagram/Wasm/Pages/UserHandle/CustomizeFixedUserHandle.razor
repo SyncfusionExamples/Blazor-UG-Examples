@@ -2,80 +2,69 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection" Connectors="@ConnectorCollection">
+<SfDiagramComponent @ref="_diagram" Height="600px" Nodes="@_nodes" Connectors="@_connectors">
     <DiagramTemplates>
         <FixedUserHandleTemplate>
-            @{
-				if ((context as FixedUserHandle).ID == "user2" || (context as FixedUserHandle).ID == "user3")
-                {
-                    <div id="button" style="height: 100%; width: 100%;">
-                        <input type="button" value="Button1" @onclick="OnChange" />
-					</div>
-				}    
+            @if ((context as FixedUserHandle).ID == "user1" || (context as FixedUserHandle).ID == "user2")
+            {
+                <div id="button" style="height: 100%; width: 100%;">
+                    <input type="button" value="Button1" />
+                </div>
             }
         </FixedUserHandleTemplate>
     </DiagramTemplates>
 </SfDiagramComponent>
-
 @code
 {
-    //Defines diagram's connector collection
-    private DiagramObjectCollection<Connector> ConnectorCollection = new DiagramObjectCollection<Connector>();
-    //Defines diagram's node collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     protected override void OnInitialized()
     {
-        NodeCollection = new DiagramObjectCollection<Node>();
-        Node node = new Node()
+        Node node1 = new Node()
         {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
             Width = 100,
             Height = 100,
-            OffsetX = 100,
-            OffsetY = 100,
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" },
             // A fixed user handle is created and stored in fixed user handle collection of Node.
             FixedUserHandles = new DiagramObjectCollection<NodeFixedUserHandle>()
             {
                 new NodeFixedUserHandle()
                 {
-                    ID = "user2",
+                    ID = "user1",
                     Height = 30,
                     Width = 30,
                     Visibility = true,
                     Padding = new DiagramThickness() { Bottom = 1, Left = 1, Right = 1, Top = 1 },
-                    Margin = new DiagramThickness() { Left = 30 }, Offset = new DiagramPoint() { X = 1 , Y = 0 },
-                }, 
+                    Margin = new DiagramThickness() { Left = 30 }, Offset = new DiagramPoint() { X = 1 , Y = 0 }
+                },
             }
         };
-        NodeCollection.Add(node);
-        ConnectorCollection = new DiagramObjectCollection<Connector>();
-        Connector connector = new Connector()
+        _nodes.Add(node1);
+        Connector connector = new Connector
         {
-            SourcePoint = new DiagramPoint() { X = 300, Y = 40 },
-            TargetPoint = new DiagramPoint() { X = 400, Y = 160 },
+            ID = "connector1",
             Type = ConnectorSegmentType.Orthogonal,
-            Style = new ShapeStyle() { StrokeColor = "#6495ED" },
+            SourcePoint = new DiagramPoint() { X = 600, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 800, Y = 400 },
             // A fixed user handle is created and stored in fixed user handle collection of Connector.
-            FixedUserHandles = new DiagramObjectCollection<ConnectorFixedUserHandle>()
-            {
-                new ConnectorFixedUserHandle()
+            FixedUserHandles = new DiagramObjectCollection<ConnectorFixedUserHandle>() 
+            { 
+                new ConnectorFixedUserHandle() 
                 {
-                    ID="user3",
+                    ID="user2",
                     Offset = 1,
                     Alignment = FixedUserHandleAlignment.After,
                     Displacement = new DiagramPoint() { X = 10},
                     Padding = new DiagramThickness() { Bottom = 1, Left = 1, Right = 1, Top = 1 },
                     Width = 30,
                     Height = 30,
-                },
+                }
             }
         };
-        ConnectorCollection.Add(connector);
-    }
-
-    private void OnChange()
-    {
-        NodeCollection[0].Style = new ShapeStyle() { Fill = "Green" };
+        _connectors.Add(connector);
     }
 }

@@ -1,7 +1,8 @@
-﻿@page "/CustomizeUserHandle"
+﻿@page "/CustomizeUserHandleTemplate"
+
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent @ref="@Diagram" Width="1200px" Height="600px" Nodes="@nodes" Connectors="@connectors" SelectionSettings="@SelectedModel">
+<SfDiagramComponent @ref="_diagram" Width="1200px" Height="600px" Nodes="@_nodes" Connectors="@_connectors" SelectionSettings="@_selectedModel">
     <DiagramTemplates>
         <UserHandleTemplate>
             @{
@@ -12,20 +13,19 @@
                     </div>
 
                 }
-             }
+            }
         </UserHandleTemplate>
     </DiagramTemplates>
 </SfDiagramComponent>
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     // Defines diagram's SelectionSettings.
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
-    
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
     protected override void OnInitialized()
     {
         //Creating the userhandle for cloning the objects.
@@ -40,17 +40,17 @@
             VisibleTarget = VisibleTarget.Node | VisibleTarget.Connector
         };
         //Add user handle to the collection.
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle
         };
-        SelectedModel = new DiagramSelectionSettings()
+        _selectedModel = new DiagramSelectionSettings()
         {
             //Enable userhandle for the selected model.
             Constraints = SelectorConstraints.UserHandle,
-            UserHandles = this.UserHandles
+            UserHandles = _userHandles
         };
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node diagramNode = new Node()
         {
             ID = "node1",
@@ -61,7 +61,7 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "none" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
         };
-        nodes.Add(diagramNode);
+        _nodes.Add(diagramNode);
 
         Connector connector1 = new Connector()
         {
@@ -70,6 +70,6 @@
             TargetPoint = new DiagramPoint() { X = 750, Y = 270 },
             Type = ConnectorSegmentType.Orthogonal
         };
-        connectors.Add(connector1);
+        _connectors.Add(connector1);
     }
 }
