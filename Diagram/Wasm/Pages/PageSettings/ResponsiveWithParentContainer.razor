@@ -4,19 +4,19 @@
 @using System.Collections.ObjectModel
 
 <div style="width:700px; height:700px;">
-    <SfDiagramComponent @ref="@diagram" Width="100%" Height="100%" Nodes="nodes"></SfDiagramComponent>
+    <SfDiagramComponent @ref="@_diagram" Width="100%" Height="100%" Nodes="_nodes"></SfDiagramComponent>
 </div>
 
 @code
 {
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     
     protected override void OnInitialized()
     {
-        nodes.Add(new Node()
+        _nodes.Add(new Node()
         {
             ID = "node1",
             OffsetX = 100,
