@@ -3,24 +3,24 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@Diagram" Width="1200px" Height="600px" Nodes="@nodes" GetCustomTool="@tools" GetCustomCursor="@cursor" Connectors="@connectors" SelectionSettings="@SelectedModel">
+<SfDiagramComponent @ref="@_diagram" Width="1200px" Height="600px" Nodes="@_nodes" GetCustomTool="@Tools" GetCustomCursor="@Cursor" Connectors="@_connectors" SelectionSettings="@_selectedModel">
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     private NodeGroup groupNode = new NodeGroup();
     //Intialize diagram's nodes collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     //Intialize diagram's selectionsettings
-    private DiagramSelectionSettings SelectedModel = new DiagramSelectionSettings();
+    private DiagramSelectionSettings _selectedModel = new DiagramSelectionSettings();
     //Intialize diagram's userhandle
-    private DiagramObjectCollection<UserHandle> UserHandles = new DiagramObjectCollection<UserHandle>();
+    private DiagramObjectCollection<UserHandle> _userHandles = new DiagramObjectCollection<UserHandle>();
     
-    public string cursor(DiagramElementAction action, bool active, string handle)
+    private string Cursor(DiagramElementAction action, bool active, string handle)
     {
         string cursors = null;
         if (handle == "changeCursor")
@@ -30,16 +30,16 @@
         return cursors;
     }
 
-    public InteractionControllerBase tools(DiagramElementAction action, string id)
+    private InteractionControllerBase Tools(DiagramElementAction action, string id)
     {
         InteractionControllerBase tool = null;
         if (id == "clone")
         {
-            tool = new CloneTool(Diagram);
+            tool = new CloneTool(_diagram);
         }
         else if (id == "nodeDelete")
         {
-            tool = new AddDeleteTool(Diagram);
+            tool = new AddDeleteTool(_diagram);
         }
         return tool;
     }
@@ -161,12 +161,12 @@
             BackgroundColor = "green",
             BorderWidth = 3,
         };
-        UserHandles = new DiagramObjectCollection<UserHandle>()
+        _userHandles = new DiagramObjectCollection<UserHandle>()
         {
             cloneHandle,nodeDelete,changeCursor
         };
-        SelectedModel.UserHandles = UserHandles;
-        nodes = new DiagramObjectCollection<Node>();
+        _selectedModel.UserHandles = _userHandles;
+        _nodes = new DiagramObjectCollection<Node>();
         Node DiagramNode = new Node()
         {
             ID = "node1",
@@ -177,7 +177,7 @@
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "black" },
             Annotations = new DiagramObjectCollection<ShapeAnnotation>() { new ShapeAnnotation { Content = "Node" } }
         };
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
         Connector Connector1 = new Connector()
         {
             ID = "connector1",
@@ -196,7 +196,7 @@
             },
             Type = ConnectorSegmentType.Bezier
         };
-        nodes.Add(DiagramNode);
-        connectors.Add(Connector1);
+        _nodes.Add(DiagramNode);
+        _connectors.Add(Connector1);
     }
 }

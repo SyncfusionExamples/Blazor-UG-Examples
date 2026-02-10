@@ -3,14 +3,14 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize the diagram with nodes *@
-<SfDiagramComponent Height="500px" @ref="diagram" Nodes="@nodes" />
+<SfDiagramComponent Height="500px" @ref="_diagram" Nodes="@_nodes" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -19,9 +19,9 @@
         NodeGroup groupnode = new NodeGroup();
         // Grouping node 1 and node 2 into a single group
         groupnode.Children = new string[] { "node1", "node2" };
-        nodes.Add(node1);
-        nodes.Add(node2);
-        nodes.Add(groupnode);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
+        _nodes.Add(groupnode);
     }
 
     //Method to crate node
@@ -59,9 +59,9 @@
         if (firstRender)
         {
             await Task.Delay(500);
-            diagram.SelectAll();
+            _diagram.SelectAll();
             // Ungroup the selected group into nodes
-            diagram.Ungroup();
+            _diagram.Ungroup();
         }
     }
 }

@@ -4,23 +4,23 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Delete" OnClick="@DeleteMethod" />
-<SfButton Content="DeletewithArgument" OnClick="@DeletewithArgument" />
+<SfButton Content="DeletewithArgument" OnClick="@DeleteWithArgument" />
 
-<SfDiagramComponent @ref="diagram" Width="500px" Height="500px" @bind-Nodes="@Nodes" @bind-Connectors="@Connectors">
+<SfDiagramComponent @ref="_diagram" Width="500px" Height="500px" @bind-Nodes="@_nodes" @bind-Connectors="@_connectors">
     <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
     //Initialize the diagram's nodebase collection
-    private DiagramObjectCollection<NodeBase> DiagramElements = new DiagramObjectCollection<NodeBase>();
-    
+    private DiagramObjectCollection<NodeBase> _diagramElements = new DiagramObjectCollection<NodeBase>();
+
     protected override void OnInitialized()
     {
         Node node1 = new Node()
@@ -36,7 +36,7 @@
                 StrokeColor = "white"
             }
         };
-        Nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -50,7 +50,7 @@
                 StrokeColor = "white"
             }
         };
-        Nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -64,7 +64,7 @@
                 StrokeColor = "white"
             }
         };
-        Nodes.Add(node3);
+        _nodes.Add(node3);
 
         Connector connector1 = new Connector()
         {
@@ -73,7 +73,7 @@
             TargetID = "node2",
             Type = ConnectorSegmentType.Straight,
         };
-        Connectors.Add(connector1);
+        _connectors.Add(connector1);
         Connector connector2 = new Connector()
         {
             ID = "connector2",
@@ -81,24 +81,24 @@
             TargetID = "node3",
             Type = ConnectorSegmentType.Straight,
         };
-        Connectors.Add(connector2);
+        _connectors.Add(connector2);
         NodeGroup groupNode = new NodeGroup();
         groupNode.Children = new string[] { "node2", "node3" };
-        Nodes.Add(groupNode);
+        _nodes.Add(groupNode);
     }
 
     //Deletes DiagramElements with null parameter
     private void DeleteMethod()
     {
-        diagram.Delete();
+        _diagram.Delete();
     }
 
     //Deletes DiagramElements with parameter
-    private void DeletewithArgument()
+    private void DeleteWithArgument()
     {
-        DiagramElements.Add(diagram.Nodes[0]);
-        DiagramElements.Add(diagram.Nodes[1]);
-        diagram.Delete(DiagramElements);
+        _diagramElements.Add(_diagram.Nodes[0]);
+        _diagramElements.Add(_diagram.Nodes[1]);
+        _diagram.Delete(_diagramElements);
     }
 
 }

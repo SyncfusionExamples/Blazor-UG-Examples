@@ -3,15 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="AddDiagramElementMethod" OnClick="@AddDiagramElementMethod" />
-<SfDiagramComponent @ref="Diagram" Width="1000px" Height="500px" />
+<SfButton Content="AddDiagramElementMethod" OnClick="@AddDiagramElementMethodAsync" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
 
-    private async void AddDiagramElementMethod()
+    private async void AddDiagramElementMethodAsync()
     {
         Node node1 = new Node()
         {
@@ -84,10 +84,10 @@
             // Type of the connector
             Type = ConnectorSegmentType.Straight,
         };
-        DiagramObjectCollection<NodeBase> NodeCollection = new DiagramObjectCollection<NodeBase>();
-        NodeCollection.Add(node1);
-        NodeCollection.Add(node2);
-        NodeCollection.Add(Connector);
-        await Diagram.AddDiagramElementsAsync(NodeCollection);
+        DiagramObjectCollection<NodeBase> nodeCollection = new DiagramObjectCollection<NodeBase>();
+        nodeCollection.Add(node1);
+        nodeCollection.Add(node2);
+        nodeCollection.Add(Connector);
+        await _diagram.AddDiagramElementsAsync(nodeCollection);
     }
 }

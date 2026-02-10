@@ -3,18 +3,18 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent @ref="Diagram" Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@DataSource"></DataSourceSettings>
+<SfDiagramComponent @ref="_diagram" Height="600px" NodeCreating="@OnNodeCreating" ConnectorCreating="@OnConnectorCreating">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource"></DataSourceSettings>
     <Layout Type="LayoutType.MindMap">
         <LayoutMargin Top="20" Left="20"></LayoutMargin>
     </Layout>
 </SfDiagramComponent>
-<SfButton Content="RefreshDataSource" OnClick="@RefreshDataSource" />
+<SfButton Content="RefreshDataSource" OnClick="@RefreshDataSourceAsync" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     
     //Creates nodes with some default values.
     private void OnNodeCreating(IDiagramObject obj)
@@ -34,9 +34,9 @@
         connectors.Type = ConnectorSegmentType.Bezier;
         connectors.Style = new ShapeStyle() { StrokeColor = "#6495ED", StrokeWidth = 2 };
         connectors.TargetDecorator = new DecoratorSettings
-            {
-                Shape = DecoratorShape.None,
-            };
+        {
+            Shape = DecoratorShape.None,
+        };
     }
 
     public class MindMapDetails
@@ -48,7 +48,7 @@
         public string Fill { get; set; }
     }
 
-    public object DataSource = new List<object>()
+    public object _dataSource = new List<object>()
     {
         new MindMapDetails() { Id= "1",Label="Creativity", ParentId ="", Branch = "Root"},
         new MindMapDetails() { Id= "2",  Label="Brainstorming", ParentId ="1", Branch = "Right" },
@@ -63,9 +63,9 @@
         new MindMapDetails() { Id= "11", Label= "Engagement", ParentId ="5", Branch = "subRight" },
     };
 
-    private async void RefreshDataSource()
+    private async void RefreshDataSourceAsync()
     {
-        DataSource = new List<object>()
+        _dataSource = new List<object>()
         {
             new MindMapDetails() { Id= "1",Label="Creativity", ParentId ="", Branch = "Root"},
             new MindMapDetails() { Id= "2",  Label="Brainstorming", ParentId ="1", Branch = "Right" },
@@ -73,6 +73,6 @@
             new MindMapDetails() { Id= "4",  Label="Sessions", ParentId ="2", Branch = "subRight" },
             new MindMapDetails() { Id= "5",  Label="Complementing", ParentId ="2", Branch = "subRight" },
         };
-        await Diagram.RefreshDataSourceAsync();
+        await _diagram.RefreshDataSourceAsync();
     }
 }

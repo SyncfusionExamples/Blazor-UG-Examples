@@ -3,15 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" KeyUp="@OnKeyUp" />
+<SfDiagramComponent @ref="@_diagram" Width="100%" Height="700px" Nodes="_nodes" KeyUp="@OnKeyUp" />
 
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
     protected override void OnInitialized()
     {
         Node node = new Node()
@@ -21,7 +21,7 @@
             Width = 100,
             Height = 100
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     private void OnKeyUp(KeyEventArgs args)

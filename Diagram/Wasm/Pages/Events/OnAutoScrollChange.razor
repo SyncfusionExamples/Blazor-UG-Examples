@@ -1,23 +1,23 @@
 ﻿@page "/OnAutoScrollChange"
 
 @using Syncfusion.Blazor.Diagram
-<SfDiagramComponent Height="400px" Width="400px" Nodes="@nodes" Connectors="@connectors" OnAutoScrollChange="AutoScrollChange">
+<SfDiagramComponent Height="400px" Width="400px" Nodes="@_nodes" Connectors="@_connectors" OnAutoScrollChange="AutoScrollChange">
     @* Sets the ScrollSettings for the diagram *@
-    <ScrollSettings EnableAutoScroll=true AutoScrollPadding="@autoScrollBorder" @bind-ScrollLimit="@ScrollLimit">
+    <ScrollSettings EnableAutoScroll=true AutoScrollPadding="@_autoScrollBorder" @bind-ScrollLimit="@_scrollLimit">
     </ScrollSettings>
 </SfDiagramComponent>
 
 @code
 {
-    private ScrollLimitMode ScrollLimit { get; set; } = ScrollLimitMode.Infinity;
-    private DiagramObjectCollection<Node> nodes;
+    private ScrollLimitMode _scrollLimit { get; set; } = ScrollLimitMode.Infinity;
+    private DiagramObjectCollection<Node> _nodes;
     //Defines diagram's connector collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    private DiagramMargin autoScrollBorder = new DiagramMargin() { Left = 30, Right = 30, Top = 30, Bottom = 30 };
-    
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private DiagramMargin _autoScrollBorder = new DiagramMargin() { Left = 30, Right = 30, Top = 30, Bottom = 30 };
+
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in the nodes collection.
         Node node = new Node()
         {
@@ -35,7 +35,7 @@
             }
         };
         // Add node.
-        nodes.Add(node);
+        _nodes.Add(node);
         Connector Connector = new Connector()
         {
             ID = "connector1",
@@ -50,7 +50,7 @@
                 StrokeWidth = 1
             },
         };
-        connectors.Add(Connector);
+        _connectors.Add(Connector);
     }
 
     private void AutoScrollChange(AutoScrollChangeEventArgs args)

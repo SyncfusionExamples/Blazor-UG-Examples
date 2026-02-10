@@ -2,12 +2,12 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" EnableChunkMessages="true"/>
+<SfDiagramComponent Height="600px" Nodes="@_nodes" EnableChunkMessages="true"/>
 
 @code
 {
     //Initialize the Nodes Collection.
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
 
     protected override void OnInitialized()
     {
@@ -32,7 +32,7 @@
                 offsetX = 100;
                 offsetY = offsetY + 200;
             }
-            nodes.Add(node);
+            _nodes.Add(node);
         }
     }
 }

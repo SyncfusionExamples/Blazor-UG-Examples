@@ -14,7 +14,7 @@
 </style>
 
 <div id="diagram-space">
-    <SfDiagramComponent @ref="diagram" Width="600px" Height="600px" Nodes="nodes" Connectors="connectors">
+    <SfDiagramComponent @ref="_diagram" Width="600px" Height="600px" Nodes="_nodes" Connectors="_connectors">
         <SnapSettings Constraints="@SnapConstraints.None"></SnapSettings>
     </SfDiagramComponent>
 </div>
@@ -27,11 +27,11 @@
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     //Initialize the diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     //Initialize the diagram's connectors collection
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -73,21 +73,21 @@
             },
             Type = ConnectorSegmentType.Straight,
         };
-        connectors.Add(Connector);
-        nodes.Add(node);
-        nodes.Add(node2);
+        _connectors.Add(Connector);
+        _nodes.Add(node);
+        _nodes.Add(node2);
 
     }
 
     //Method to zoom the diagram
     private void Zoom()
     {
-        diagram.Zoom(1.2, new DiagramPoint { X = 100, Y = 100 });
+        _diagram.Zoom(1.2, new DiagramPoint { X = 100, Y = 100 });
     }
 
     //Method to pan the diagram
     private void Pan()
     {
-        diagram.Pan(100, 200, new DiagramPoint { X = 100, Y = 100 });
+        _diagram.Pan(100, 200, new DiagramPoint { X = 100, Y = 100 });
     }
 }

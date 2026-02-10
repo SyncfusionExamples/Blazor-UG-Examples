@@ -140,29 +140,29 @@
     <div style="width: 100%">
         <div id="palette-space" class="sb-mobile-palette">
 
-            <SfSymbolPaletteComponent @ref="@PaletteInstance" Height="600px" Palettes="@Palettes" SymbolDiagramPreviewSize="diagramPreview" SymbolDragPreviewSize="@SymbolPreview" SymbolHeight="40" GetSymbolInfo="GetSymbolInfo" SymbolWidth="40">
+            <SfSymbolPaletteComponent @ref="@_paletteInstance" Height="600px" Palettes="@_palettes" SymbolDiagramPreviewSize="_diagramPreview" SymbolDragPreviewSize="@_symbolPreview" SymbolHeight="40" GetSymbolInfo="GetSymbolInfo" SymbolWidth="40">
             </SfSymbolPaletteComponent>
-            </div>
-            <div id="diagram-space" class="sb-mobile-diagram">
-                <div class="content-wrapper" style="border: 1px solid #D7D7D7">
-                    <SfDiagramComponent @ref="@Diagram" Width="100%" Height="700px" Nodes="nodes" DragLeave="OnDragLeave" />
-                </div>
-            </div>
-            @*Hidden:Lines*@
         </div>
+        <div id="diagram-space" class="sb-mobile-diagram">
+            <div class="content-wrapper" style="border: 1px solid #D7D7D7">
+                <SfDiagramComponent @ref="@_diagram" Width="100%" Height="700px" Nodes="_nodes" DragLeave="OnDragLeave" />
+            </div>
+        </div>
+        @*Hidden:Lines*@
     </div>
+</div>
 
 
 @code
 {
-    private SfDiagramComponent Diagram;
-    private DiagramSize SymbolPreview;
-    private DiagramSize diagramPreview;
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
-    private DiagramObjectCollection<NodeBase> TNodes = new DiagramObjectCollection<NodeBase>();
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private SfSymbolPaletteComponent PaletteInstance;
-    
+    private SfDiagramComponent _diagram;
+    private DiagramSize _symbolPreview;
+    private DiagramSize _diagramPreview;
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<NodeBase> _tNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private SfSymbolPaletteComponent _paletteInstance;
+
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
         SymbolInfo SymbolInfo = new SymbolInfo();
@@ -172,34 +172,34 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        PaletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
-        PaletteInstance.Targets.Add(Diagram);
+        _paletteInstance.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        _paletteInstance.Targets.Add(_diagram);
     }
 
     protected override void OnInitialized()
     {
-        SymbolPreview = new DiagramSize();
-        SymbolPreview.Width = 80;
-        SymbolPreview.Height = 80;
-        diagramPreview = new DiagramSize()
+        _symbolPreview = new DiagramSize();
+        _symbolPreview.Width = 80;
+        _symbolPreview.Height = 80;
+        _diagramPreview = new DiagramSize()
         {
             Width = 50,
             Height = 50
         };
-        TNodes = new DiagramObjectCollection<NodeBase>();
+        _tNodes = new DiagramObjectCollection<NodeBase>();
         Node TNode2 = new Node()
-        { 
-            ID = "node1", 
-            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision } 
-        };
-        TNodes.Add(TNode2);
-        Palettes = new DiagramObjectCollection<Palette>()
         {
-        new Palette(){Symbols =TNodes,Title="Flow Shapes",ID="Flow Shapes" },
+            ID = "node1",
+            Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = NodeFlowShapes.Decision }
+        };
+        _tNodes.Add(TNode2);
+        _palettes = new DiagramObjectCollection<Palette>()
+        {
+            new Palette(){Symbols =_tNodes,Title="Flow Shapes",ID="Flow Shapes" },
         };
     }
 
-     // Notify the DragLeave event.
+    // Notify the DragLeave event.
     private void OnDragLeave(DragLeaveEventArgs args)
     {
         //Action to be performed.
