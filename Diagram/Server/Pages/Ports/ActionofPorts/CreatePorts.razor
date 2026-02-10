@@ -2,17 +2,17 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         // A node is created and stored in nodes collection.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             // Position of the node
@@ -29,6 +29,6 @@
                 new PointPort(){Style=new ShapeStyle(){ Fill="gray" }, Offset= new DiagramPoint(){X=0.5,Y=0.5}, Visibility = PortVisibility.Visible}
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

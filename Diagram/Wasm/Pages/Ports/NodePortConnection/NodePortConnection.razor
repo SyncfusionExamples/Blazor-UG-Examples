@@ -1,15 +1,15 @@
 ﻿@page "/NodePortConnection"
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" Connectors="@connectors">
+<SfDiagramComponent Height="600px" Nodes="@_nodes" Connectors="@_connectors">
     <SnapSettings Constraints="SnapConstraints.None"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
     // Initialize node and connector collections
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
     {
@@ -65,8 +65,8 @@
             Style = new ShapeStyle() { StrokeColor = "#6495ED", StrokeWidth = 2 }
         };
 
-        nodes.Add(node1);
-        nodes.Add(node2);
-        connectors.Add(connector1);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
+        _connectors.Add(connector1);
     }
 }
