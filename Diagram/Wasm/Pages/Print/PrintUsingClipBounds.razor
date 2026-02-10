@@ -2,14 +2,14 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="Print" OnClick="@OnPrint" />
-<SfDiagramComponent Height="600px" @ref="@diagram" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
-    <PageSettings MultiplePage="true" Width="@width" Height="@height" Orientation="@orientation" ShowPageBreaks="@showPageBreak">
-        <PageMargin Left="@left" Right="@right" Top="@top" Bottom="@bottom"></PageMargin>
+<SfButton Content="Print" OnClick="@OnPrintAsync" />
+<SfDiagramComponent Height="600px" @ref="@_diagram" NodeCreating="NodeCreating" ConnectorCreating="ConnectorCreating">
+    <PageSettings MultiplePage="true" Width="@_width" Height="@_height" Orientation="@_pageOrientation" ShowPageBreaks="@_showPageBreak">
+        <PageMargin Left="@_left" Right="@_right" Top="@_top" Bottom="@_bottom"></PageMargin>
     </PageSettings>
-    <DataSourceSettings DataSource="DataSource" ID="Id" ParentID="Manager"></DataSourceSettings>
-    <Layout @bind-Type="type" @bind-HorizontalSpacing="@HorizontalSpacing" @bind-FixedNode="@FixedNode" @bind-Orientation="@oreintation" @bind-VerticalSpacing="@VerticalSpacing" @bind-HorizontalAlignment="@horizontalAlignment" @bind-VerticalAlignment="@verticalAlignment">
-        <LayoutMargin @bind-Top="@lTop" @bind-Bottom="@lBottom" @bind-Right="@lRight" @bind-Left="@lLeft"></LayoutMargin>
+    <DataSourceSettings DataSource="@_dataSource" ID="Id" ParentID="Manager"></DataSourceSettings>
+    <Layout @bind-Type="@_layoutType" @bind-HorizontalSpacing="@_horizontalSpacing" @bind-FixedNode="@_fixedNode" @bind-Orientation="@_layoutOrientation" @bind-VerticalSpacing="@_verticalSpacing" @bind-HorizontalAlignment="@_horizontalAlignment" @bind-VerticalAlignment="@_verticalAlignment">
+        <LayoutMargin @bind-Top="@_layoutTop" @bind-Bottom="@_layoutBottom" @bind-Right="@_layoutRight" @bind-Left="@_layoutLeft"></LayoutMargin>
     </Layout>
     <SnapSettings></SnapSettings>
 </SfDiagramComponent>
@@ -17,41 +17,41 @@
 @code
 {
     //Reference the diagram
-    private SfDiagramComponent diagram;
-    private double left = 10;
-    private double top = 10;
-    private double right = 10;
-    private double bottom = 10;
-    private double width = 410;
-    private double height = 550;
-    private bool multiplePage = true;
-    private bool showPageBreak = true;
-    private DiagramPrintExportRegion region = DiagramPrintExportRegion.ClipBounds;
-    private PageOrientation orientation = PageOrientation.Landscape;
-    private double lTop = 50;
-    private double lBottom = 50;
-    private double lRight = 50;
-    private double lLeft = 50;
-    private LayoutType type = LayoutType.OrganizationalChart;
-    private LayoutOrientation oreintation = LayoutOrientation.TopToBottom;
-    private HorizontalAlignment horizontalAlignment = HorizontalAlignment.Auto;
-    private VerticalAlignment verticalAlignment = VerticalAlignment.Auto;
-    private int HorizontalSpacing = 30;
-    private int VerticalSpacing = 30;
-    private string FixedNode = null;
+    private SfDiagramComponent _diagram;
+    private double _left = 10;
+    private double _top = 10;
+    private double _right = 10;
+    private double _bottom = 10;
+    private double _width = 410;
+    private double _height = 550;
+    private bool _multiplePage = true;
+    private bool _showPageBreak = true;
+    private DiagramPrintExportRegion _region = DiagramPrintExportRegion.ClipBounds;
+    private PageOrientation _pageOrientation = PageOrientation.Landscape;
+    private double _layoutTop = 50;
+    private double _layoutBottom = 50;
+    private double _layoutRight = 50;
+    private double _layoutLeft = 50;
+    private LayoutType _layoutType = LayoutType.OrganizationalChart;
+    private LayoutOrientation _layoutOrientation = LayoutOrientation.TopToBottom;
+    private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Auto;
+    private VerticalAlignment _verticalAlignment = VerticalAlignment.Auto;
+    private int _horizontalSpacing = 30;
+    private int _verticalSpacing = 30;
+    private string _fixedNode = null;
     
     //Method to prin the diagram
-    private async Task OnPrint()
+    private async Task OnPrintAsync()
     {
         DiagramPrintSettings print = new DiagramPrintSettings();
         print.ClipBounds = new DiagramRect() { Height = 300, Width = 500, X = 300, Y = 200 };
-        print.Region = region;
-        print.FitToPage = multiplePage;
-        print.Orientation = orientation;
-        await diagram.PrintAsync(print);
+        print.Region = _region;
+        print.FitToPage = _multiplePage;
+        print.Orientation = _pageOrientation;
+        await _diagram.PrintAsync(print);
     }
 
-    public class HierarchicalDetails
+    private class HierarchicalDetails
     {
         public string Id { get; set; }
         public string Role { get; set; }
@@ -60,28 +60,27 @@
         public string Color { get; set; }
     }
 
-    public List<HierarchicalDetails> DataSource = new List<HierarchicalDetails>()
+    private List<HierarchicalDetails> _dataSource = new List<HierarchicalDetails>()
     {
-            new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
-            new HierarchicalDetails()   { Id= "1", Role= "General Manager", Manager= "parent", ChartType= "right", Color= "#71AF17" },
-            new HierarchicalDetails()   { Id= "11", Role= "Assistant Manager", Manager= "1", Color= "#71AF17" },
-            new HierarchicalDetails()   { Id= "2", Role= "Human Resource Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
-            new HierarchicalDetails()   { Id= "3", Role= "Trainers", Manager= "2", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "4", Role= "Recruiting Team", Manager= "2", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "5", Role= "Finance Asst. Manager", Manager= "2", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "6", Role= "Design Manager", Manager= "1",ChartType= "right", Color= "#1859B7" },
-            new HierarchicalDetails()   { Id= "7", Role= "Design Supervisor", Manager= "6", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "8", Role= "Development Supervisor", Manager= "6", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "9", Role= "Drafting Supervisor", Manager= "6", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "10", Role= "Operation Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
-            new HierarchicalDetails()   { Id= "11", Role= "Statistic Department", Manager= "10", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "12", Role= "Logistic Department", Manager= "10", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "16", Role= "Marketing Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
-            new HierarchicalDetails()   { Id= "17", Role= "Oversea sales Manager", Manager= "16", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "18", Role= "Petroleum Manager", Manager= "16", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "20", Role= "Service Dept. Manager", Manager= "16", Color= "#2E95D8" },
-            new HierarchicalDetails()   { Id= "21", Role= "Quality Department", Manager= "16", Color= "#2E95D8" }
-
+        new HierarchicalDetails()   { Id= "parent", Role= "Board", Color= "#71AF17" },
+        new HierarchicalDetails()   { Id= "1", Role= "General Manager", Manager= "parent", ChartType= "right", Color= "#71AF17" },
+        new HierarchicalDetails()   { Id= "11", Role= "Assistant Manager", Manager= "1", Color= "#71AF17" },
+        new HierarchicalDetails()   { Id= "2", Role= "Human Resource Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+        new HierarchicalDetails()   { Id= "3", Role= "Trainers", Manager= "2", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "4", Role= "Recruiting Team", Manager= "2", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "5", Role= "Finance Asst. Manager", Manager= "2", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "6", Role= "Design Manager", Manager= "1",ChartType= "right", Color= "#1859B7" },
+        new HierarchicalDetails()   { Id= "7", Role= "Design Supervisor", Manager= "6", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "8", Role= "Development Supervisor", Manager= "6", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "9", Role= "Drafting Supervisor", Manager= "6", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "10", Role= "Operation Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+        new HierarchicalDetails()   { Id= "11", Role= "Statistic Department", Manager= "10", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "12", Role= "Logistic Department", Manager= "10", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "16", Role= "Marketing Manager", Manager= "1", ChartType= "right", Color= "#1859B7" },
+        new HierarchicalDetails()   { Id= "17", Role= "Oversea sales Manager", Manager= "16", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "18", Role= "Petroleum Manager", Manager= "16", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "20", Role= "Service Dept. Manager", Manager= "16", Color= "#2E95D8" },
+        new HierarchicalDetails()   { Id= "21", Role= "Quality Department", Manager= "16", Color= "#2E95D8" }
     };
 
     private void NodeCreating(IDiagramObject obj)

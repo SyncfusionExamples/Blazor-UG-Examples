@@ -2,38 +2,38 @@
 @using Syncfusion.Blazor.Diagram
 @using Syncfusion.Blazor.Buttons
 
-<SfButton Content="Print" OnClick="@OnPrint" />
-<SfDiagramComponent Height="600px" @ref="@diagram">
-    <PageSettings MultiplePage="true" Width="@width" Height="@height" Orientation="@orientation" ShowPageBreaks="@showPageBreak">
-        <PageMargin Left="@left" Right="@right" Top="@top" Bottom="@bottom"></PageMargin>
+<SfButton Content="Print" OnClick="@OnPrintAsync" />
+<SfDiagramComponent Height="600px" @ref="@_diagram">
+    <PageSettings MultiplePage="true" Width="@_width" Height="@_height" Orientation="@_pageOrientation" ShowPageBreaks="@_showPageBreak">
+        <PageMargin Left="@_left" Right="@_right" Top="@_top" Bottom="@_bottom"></PageMargin>
     </PageSettings>
 </SfDiagramComponent>
 
 @code
 { 
     //Reference the diagram
-    private SfDiagramComponent diagram;
-    private double left = 10;
-    private double top = 10;
-    private double right = 10;
-    private double bottom = 10;
-    private double width = 410;
-    private double height = 550;
-    private bool multiplePage = true;
-    private bool showPageBreak = true;
-    private DiagramPrintExportRegion region = DiagramPrintExportRegion.PageSettings;
-    private PageOrientation orientation = PageOrientation.Portrait;
+    private SfDiagramComponent _diagram;
+    private double _left = 10;
+    private double _top = 10;
+    private double _right = 10;
+    private double _bottom = 10;
+    private double _width = 410;
+    private double _height = 550;
+    private bool _multiplePage = true;
+    private bool _showPageBreak = true;
+    private DiagramPrintExportRegion _region = DiagramPrintExportRegion.PageSettings;
+    private PageOrientation _pageOrientation = PageOrientation.Portrait;
     
     //Method to prin the diagram
-    private async Task OnPrint()
+    private async Task OnPrintAsync()
     {
         DiagramPrintSettings print = new DiagramPrintSettings();
-        print.PageWidth = width;
-        print.PageHeight = height;
-        print.Region = region;
-        print.FitToPage = multiplePage;
-        print.Orientation = orientation;
-        print.Margin = new DiagramThickness() { Left = left, Top = top, Right = right, Bottom = bottom };
-        await diagram.PrintAsync(print);
+        print.PageWidth = _width;
+        print.PageHeight = _height;
+        print.Region = _region;
+        print.FitToPage = _multiplePage;
+        print.Orientation = _pageOrientation;
+        print.Margin = new DiagramThickness() { Left = _left, Top = _top, Right = _right, Bottom = _bottom };
+        await _diagram.PrintAsync(print);
     }
 }
