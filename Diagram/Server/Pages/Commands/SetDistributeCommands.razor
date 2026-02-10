@@ -12,12 +12,12 @@
 <SfButton Content="DistributeBottomToTop" OnClick="@OnDistributeBottomToTop" />
 <SfButton Content="DistributeRightToLeft" OnClick="@OnDistributeRightToLeft" />
 
-<SfDiagramComponent @ref="diagram" Width="1000px" Height="500px" Nodes="@nodes" Connectors="@Connectors" />
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes" Connectors="@_connectors" />
 
 @code
 {
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
 
     protected override void OnInitialized()
@@ -31,7 +31,7 @@
             OffsetY = 100,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -41,7 +41,7 @@
             OffsetY = 200,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -51,54 +51,54 @@
             OffsetY = 300,
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
     }
 
     private void OnDistributeLeft()
     {
         //Distributes the objects based on the distance between the left sides of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Left);
+        _diagram.SetDistribute(DistributeOptions.Left);
     }
 
     private void OnDistributeRight()
     {
         //Distributes the objects based on the distance between the right sides of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Right);
+        _diagram.SetDistribute(DistributeOptions.Right);
     }
 
     private void OnDistributeTop()
     {
         //Distributes the objects based on the distance between the top sides of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Top);
+        _diagram.SetDistribute(DistributeOptions.Top);
     }
 
     private void OnDistributeBottom()
     {
         //Distributes the objects based on the distance between the bottom sides of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Bottom);
+        _diagram.SetDistribute(DistributeOptions.Bottom);
     }
 
     private void OnDistributeMiddle()
     {
         //Distributes the objects based on the distance between vertical centers of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Middle);
+        _diagram.SetDistribute(DistributeOptions.Middle);
     }
 
     private void OnDistributeCenter()
     {
         //Distributes the objects based on the distance between the centers of the adjacent objects.
-        diagram.SetDistribute(DistributeOptions.Center);
+        _diagram.SetDistribute(DistributeOptions.Center);
     }
 
     private void OnDistributeBottomToTop()
     {
         //Distributes the objects based on the distance between bottom and top sides of adjacent objects.
-        diagram.SetDistribute(DistributeOptions.BottomToTop);
+        _diagram.SetDistribute(DistributeOptions.BottomToTop);
     }
 
     private void OnDistributeRightToLeft()
     {
         //Distributes the objects based on the distance between right and left sides of adjacent objects.
-        diagram.SetDistribute(DistributeOptions.RightToLeft);
+        _diagram.SetDistribute(DistributeOptions.RightToLeft);
     }
 }

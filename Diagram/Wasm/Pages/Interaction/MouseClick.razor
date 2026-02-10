@@ -2,16 +2,16 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@nodes" Click='@OnClick' />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" Click='@OnClick' />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         // A node is created and stored in nodes array.
         Node node = new Node()
         {
@@ -24,7 +24,7 @@
             // Add node
             Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeDashArray = "5,5", StrokeColor = "red", StrokeWidth = 2 },
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Event to notify when a mouse button is clicked on the diagram.

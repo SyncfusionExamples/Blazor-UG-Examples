@@ -7,14 +7,14 @@
 <SfButton Content="SameWidth" OnClick="@OnSameWidth" />
 <SfButton Content="SameHeight" OnClick="@OnSameHeight" />
 
-<SfDiagramComponent @ref="@diagram" Height="600px" Nodes="@nodes"  />
+<SfDiagramComponent @ref="@_diagram" Height="600px" Nodes="@_nodes"  />
 
 @code
 {
     //Reference to diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     // Initialize diagram's node collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -28,7 +28,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
-        nodes.Add(node1);
+        _nodes.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -39,7 +39,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
-        nodes.Add(node2);
+        _nodes.Add(node2);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -50,24 +50,24 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" }
         };
-        nodes.Add(node3);
+        _nodes.Add(node3);
     }
 
     //Method to scales the selected objects both vertically and horizontally.
     private void OnSameSize()
     {
-        diagram.SetSameSize(SizingMode.Both);
+        _diagram.SetSameSize(SizingMode.Both);
     }
 
     //Method to scales the width of selected objects.
     private void OnSameWidth()
     {
-        diagram.SetSameSize(SizingMode.Width);
+        _diagram.SetSameSize(SizingMode.Width);
     }
 
     //Method to scales the height of selected objects.
     private void OnSameHeight()
     {
-        diagram.SetSameSize(SizingMode.Height);
+        _diagram.SetSameSize(SizingMode.Height);
     }
 }

@@ -5,20 +5,20 @@
 @inject IJSRuntime js
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent @ref="diagram" Width="50%" Height="800px" SelectionSettings="@select" @bind-Connectors="@Connectors" @bind-Nodes="NodeCollection"></SfDiagramComponent>
+<SfDiagramComponent @ref="_diagram" Width="50%" Height="800px" SelectionSettings="@_select" @bind-Connectors="@_connectors" @bind-Nodes="_nodeCollection"></SfDiagramComponent>
 
 @functions
 {
 
-    private string ID = "diagram";
-    private SfDiagramComponent diagram;
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
-    private DiagramObjectCollection<Connector> Connectors = new DiagramObjectCollection<Connector>();
-    private DiagramSelectionSettings select;
+    private string _id = "diagram";
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private DiagramSelectionSettings _select;
     
     protected override void OnInitialized()
     {
-        select = new DiagramSelectionSettings() { RubberBandSelectionMode = RubberBandSelectionMode.CompleteIntersect };
+        _select = new DiagramSelectionSettings() { RubberBandSelectionMode = RubberBandSelectionMode.CompleteIntersect };
         Node node1 = new Node()
         {
             ID = "node1",
@@ -34,7 +34,7 @@
                 },
             },
         };
-        NodeCollection.Add(node1);
+        _nodeCollection.Add(node1);
         Node node2 = new Node()
         {
             ID = "node2",
@@ -50,7 +50,7 @@
                 },
             },
         };
-        NodeCollection.Add(node2);
+        _nodeCollection.Add(node2);
         NodeGroup group1 = new NodeGroup()
         {
             ID = "group1",
@@ -63,7 +63,7 @@
                 }
             },
         };
-        NodeCollection.Add(group1);
+        _nodeCollection.Add(group1);
         Node node3 = new Node()
         {
             ID = "node3",
@@ -79,13 +79,13 @@
                 },
             },
         };
-        NodeCollection.Add(node3);
+        _nodeCollection.Add(node3);
         Connector connector = new Connector()
         {
             ID = "connector1",
             SourcePoint = new DiagramPoint() { X = 250, Y = 250 },
             TargetPoint = new DiagramPoint() { X = 350, Y = 350 },
         };
-        Connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }

@@ -2,14 +2,14 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Nodes="@NodeCollection" RotationChanging="OnRotationChanging"
+<SfDiagramComponent Height="600px" Nodes="@_nodeCollection" RotationChanging="OnRotationChanging"
                     RotationChanged="OnRotationChanged">
 </SfDiagramComponent>
 
 @code
 {
     //Initailize the diagram's nodes collection
-    private DiagramObjectCollection<Node> NodeCollection = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Node> _nodeCollection = new DiagramObjectCollection<Node>();
     
     protected override void OnInitialized()
     {
@@ -21,7 +21,7 @@
             Width = 100,
             ID = "node",
         };
-        NodeCollection.Add(node);
+        _nodeCollection.Add(node);
     }
 
     //Event to notify while rotating the elements in the diagram.
