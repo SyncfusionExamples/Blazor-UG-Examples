@@ -134,13 +134,13 @@
             <div id="palette-icon" style="float: right;" role="button" class="e-ddb-icons1 e-toggle-palette"></div>
         </div>
         <div id="palette-space" class="sb-mobile-palette">
-            <SfSymbolPaletteComponent @ref="@SymbolPalette" Height="700px"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@_symbolPalette" Height="700px"
+                                      Palettes="@_palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
         <div id="diagram-space" class="sb-mobile-diagram">
             <div class="content-wrapper" style="border: 1px solid #D7D7D7">
-                <SfDiagramComponent @ref="@diagram" Height="700px" Connectors="@connectors" Nodes="@nodes" DragDrop="DragDrop">
+                <SfDiagramComponent @ref="@_diagram" Height="700px" Connectors="@_connectors" Nodes="@_nodes" DragDrop="DragDrop">
                 </SfDiagramComponent>
             </div>
         </div>
@@ -149,32 +149,40 @@
 
 @code
 {
-    private SymbolMargin SymbolMargin = new SymbolMargin
+    private SymbolMargin _symbolMargin = new SymbolMargin
     {
         Left = 15,
         Right = 15,
         Top = 15,
         Bottom = 15
     };
-    private SfDiagramComponent diagram;
-    private SfSymbolPaletteComponent SymbolPalette;
-    //Define nodes collection.
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    //Define connectors collection.
-    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
-    //Define palettes collection.
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    private SfDiagramComponent _diagram;
+
+    private SfSymbolPaletteComponent _symbolPalette;
+
+    // Define nodes collection.
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+
+    // Define connectors collection.
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    // Define palettes collection.
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+
     // Defines palette's flow-shape collection.
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
+
     // Defines palette's group collection.
-    private DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteGroup = new DiagramObjectCollection<NodeBase>();
+
     // Defines palette's connector collection.
-    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteConnectors = new DiagramObjectCollection<NodeBase>();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        SymbolPalette.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
-        SymbolPalette.Targets.Add(diagram);
+        _symbolPalette.Targets = new DiagramObjectCollection<SfDiagramComponent>() { };
+        _symbolPalette.Targets.Add(_diagram);
     }
 
     protected override void OnInitialized()
@@ -187,11 +195,12 @@
         CreatePaletteNode(NodeFlowShapes.Terminator, "Terminator");
         CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
         CreatePaletteGroup();
-        Palettes = new DiagramObjectCollection<Palette>()
+
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-            new Palette(){Symbols = PaletteNodes,Title = "Flow Shapes", ID = "Flow Shapes" },
-            new Palette(){Symbols = PaletteConnectors,Title = "Connectors", IsExpanded = true},
-            new Palette(){Symbols = PaletteGroup,Title = "Group Shapes", IsExpanded = true}
+            new Palette() { Symbols = _paletteNodes, Title = "Flow Shapes", ID = "Flow Shapes" },
+            new Palette() { Symbols = _paletteConnectors, Title = "Connectors", IsExpanded = true },
+            new Palette() { Symbols = _paletteGroup, Title = "Group Shapes", IsExpanded = true }
         };
     }
 
@@ -210,7 +219,8 @@
             },
             Constraints = NodeConstraints.Default | NodeConstraints.Tooltip
         };
-        PaletteNodes.Add(node);
+
+        _paletteNodes.Add(node);
     }
 
     private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
@@ -235,7 +245,8 @@
             },
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip
         };
-        PaletteConnectors.Add(connector);
+
+        _paletteConnectors.Add(connector);
     }
 
     private void CreatePaletteGroup()
@@ -250,6 +261,7 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
             Style = new ShapeStyle() { Fill = "#6495ed" },
         };
+
         Node node2 = new Node()
         {
             ID = "node2",
@@ -260,14 +272,17 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
             Style = new ShapeStyle() { Fill = "#6495ed" },
         };
-        PaletteGroup.Add(node1);
-        PaletteGroup.Add(node2);
+
+        _paletteGroup.Add(node1);
+        _paletteGroup.Add(node2);
+
         NodeGroup group = new NodeGroup()
         {
             ID = "group1",
             Children = new string[] { "node1", "node2" }
         };
-        PaletteGroup.Add(group);
+
+        _paletteGroup.Add(group);
     }
 
     private void DragDrop(DropEventArgs args)

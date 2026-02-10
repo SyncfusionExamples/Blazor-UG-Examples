@@ -13,24 +13,28 @@
     </div>
 </div>
 
-@code 
+@code
 {
-    //Define symbolpreview
-    private DiagramSize SymbolPreview;
-    //Define SymbolMargin
-    private SymbolMargin SymbolMargin = new SymbolMargin
+    // Define symbol preview
+    private DiagramSize _symbolPreview;
+
+    // Define symbol margin
+    private SymbolMargin _symbolMargin = new SymbolMargin
     {
         Left = 15,
         Right = 15,
         Top = 15,
         Bottom = 15
     };
-    //Reference the symbolpalette
-    private SfSymbolPaletteComponent symbolpalette;
-    //Define palattes collection
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+
+    // Reference the symbol palette
+    private SfSymbolPaletteComponent _symbolPalette;
+
+    // Define palettes collection
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+
     // Defines palette's flow-shape collection
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -39,18 +43,18 @@
 
     private void InitPaletteModel()
     {
-        Palettes = new DiagramObjectCollection<Palette>();
+        _palettes = new DiagramObjectCollection<Palette>();
 
-        PaletteNodes = new DiagramObjectCollection<NodeBase>();
+        _paletteNodes = new DiagramObjectCollection<NodeBase>();
         CreatePaletteNode(NodeBasicShapes.Rectangle, "Rectangle");
 
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-           new Palette(){Symbols =PaletteNodes,Title="Basic Shapes",ID="Basic Shapes" },
+            new Palette() { Symbols = _paletteNodes, Title = "Basic Shapes", ID = "Basic Shapes" },
         };
     }
 
-    //Method to create palette node
+    // Method to create palette node
     private void CreatePaletteNode(NodeBasicShapes basicShape, string id)
     {
         Node node = new Node()
@@ -59,17 +63,17 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = basicShape },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        PaletteNodes.Add(node);
+
+        _paletteNodes.Add(node);
     }
 
-    //Method to getsymbolinfo
+    // Method to get symbol info
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
-        SymbolInfo SymbolInfo = new SymbolInfo();
-        //SymbolInfo.Fit = true;
-        string text = null;
-        text = (symbol as Node).ID;
-        SymbolInfo.Description = new SymbolDescription() { Text = text };
-        return SymbolInfo;
+        SymbolInfo symbolInfo = new SymbolInfo();
+        // symbolInfo.Fit = true;
+        string text = (symbol as Node).ID;
+        symbolInfo.Description = new SymbolDescription() { Text = text };
+        return symbolInfo;
     }
 }

@@ -207,25 +207,25 @@
             @*End:Hidden*@
             @*End:Hidden*@
             <div id="palette-space" class="sb-mobile-palette">
-                <SfSymbolPaletteComponent @ref="@palette"
+                <SfSymbolPaletteComponent @ref="@_palette"
                                           Width="100%"
                                           Height="700px"
                                           ShowSearchTextBox="true"
-                                          Palettes="@palettes"
-                                          PaletteExpandMode="@paletteExpandMode"
-                                          SymbolHeight="@symbolHeight"
-                                          SymbolWidth="@symbolWidth"
+                                          Palettes="@_palettes"
+                                          PaletteExpandMode="@_paletteExpandMode"
+                                          SymbolHeight="@_symbolHeight"
+                                          SymbolWidth="@_symbolWidth"
                                           GetSymbolInfo="GetSymbolInfo"
-                                          SymbolDragPreviewSize="@symbolDragPreviewSize"
+                                          SymbolDragPreviewSize="@_symbolDragPreviewSize"
                                           AllowDrag="true">
                 </SfSymbolPaletteComponent>
             </div>
             <div id="diagram-space" class="sb-mobile-diagram">
-                <SfDiagramComponent @ref="@Diagram" Connectors="@diagramConnectors" Nodes="@nodes" Height="700px">
+                <SfDiagramComponent @ref="@_diagram" Connectors="@_diagramConnectors" Nodes="@_nodes" Height="700px">
                     <SnapSettings>
-                        <HorizontalGridLines LineColor="#e0e0e0 " LineIntervals="@GridLineIntervals">
+                    <HorizontalGridLines LineColor="#e0e0e0 " LineIntervals="@_gridLineIntervals">
                         </HorizontalGridLines>
-                        <VerticalGridLines LineColor="#e0e0e0" LineIntervals="@GridLineIntervals">
+                        <VerticalGridLines LineColor="#e0e0e0" LineIntervals="@_gridLineIntervals">
                         </VerticalGridLines>
                     </SnapSettings>
                 </SfDiagramComponent>
@@ -239,162 +239,156 @@
 @code
 {
     @*Hidden:Lines*@
-    private int? index { get; set; } = 1;
-    private int? sizeChangeValue { get; set; } = 75;
-    private bool icon = true;
-    private bool text = true;
-    private bool animation = true;
-    private bool animationCheckbox = true;
+    private int? _index { get; set; } = 1;
+    private int? _sizeChangeValue { get; set; } = 75;
+    private bool _icon = true;
+    private bool _text = true;
+    private bool _animation = true;
+    private bool _animationCheckbox = true;
     @*End:Hidden*@
-    private DiagramSize symbolDragPreviewSize;
-    private SymbolExpandMode paletteExpandMode = SymbolExpandMode.Multiple;
-    private SymbolInfo SymbolInfo = new SymbolInfo();
-    private SfDiagramComponent Diagram;
-    private SfSymbolPaletteComponent palette;
-    private DiagramObjectCollection<Palette> palettes;
-    private double symbolHeight = 75;
-    private double symbolWidth = 75;
-    private DiagramObjectCollection<NodeBase> basicShapes { get; set; }
-    private DiagramObjectCollection<NodeBase> connectors { get; set; }
-    private DiagramObjectCollection<NodeBase> flowShapes { get; set; }
+
+    private DiagramSize _symbolDragPreviewSize;
+    private SymbolExpandMode _paletteExpandMode = SymbolExpandMode.Multiple;
+    private SymbolInfo _symbolInfo = new SymbolInfo();
+    private SfDiagramComponent _diagram;
+    private SfSymbolPaletteComponent _palette;
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
+    private double _symbolHeight = 75;
+    private double _symbolWidth = 75;
+    private DiagramObjectCollection<NodeBase> _basicShapes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _connectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _flowShapes = new DiagramObjectCollection<NodeBase>();
+
     // Defines interval values for GridLines
-    private double[] GridLineIntervals { get; set; }
-    //Defines Diagram's Nodes collection
-    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
-    //Defines Diagram's Connectors collection
-    private DiagramObjectCollection<Connector> diagramConnectors = new DiagramObjectCollection<Connector>();
+    private double[] _gridLineIntervals { get; set; }
+
+    // Defines Diagram's Nodes collection
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    // Defines Diagram's Connectors collection
+    private DiagramObjectCollection<Connector> _diagramConnectors = new DiagramObjectCollection<Connector>();
+
     [Inject]
-    protected IJSRuntime jsRuntime { get; set; }
-    @*Hidden:Lines*@
-    @*End:Hidden*@
+    protected IJSRuntime _jsRuntime { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
-        palette.Targets = new DiagramObjectCollection<SfDiagramComponent>
+        _palette.Targets = new DiagramObjectCollection<SfDiagramComponent>
         {
-            Diagram
+            _diagram
         };
     }
 
     protected override void OnInitialized()
     {
-        
-        symbolDragPreviewSize = new DiagramSize();
-        symbolDragPreviewSize.Width = 80;
-        symbolDragPreviewSize.Height = 80;
-        GridLineIntervals = new double[] { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75 };
-        InitializePalatte();
+        _symbolDragPreviewSize = new DiagramSize();
+        _symbolDragPreviewSize.Width = 80;
+        _symbolDragPreviewSize.Height = 80;
+
+        _gridLineIntervals = new double[] { 1, 9, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75, 0.25, 9.75 };
+        InitializePalette();
     }
 
-    private void InitializePalatte()
+    private void InitializePalette()
     {
-        palettes = new DiagramObjectCollection<Palette>();
+        _palettes = new DiagramObjectCollection<Palette>();
 
         // palette which contains basic shape nodes
-        basicShapes = new DiagramObjectCollection<NodeBase>
+        _basicShapes = new DiagramObjectCollection<NodeBase>
         {
-            CreateBasicNode("Rectangle",NodeBasicShapes.Rectangle),
-            CreateBasicNode("Ellipse",NodeBasicShapes.Ellipse),
-            CreateBasicNode("Diamond",NodeBasicShapes.Diamond),
-            CreateBasicNode("Triangle",NodeBasicShapes.Triangle),
-            CreateBasicNode("Hexagon",NodeBasicShapes.Hexagon),
-            CreateBasicNode("Pentagon",NodeBasicShapes.Pentagon),
-            CreateBasicNode("Cylinder",NodeBasicShapes.Cylinder),
-            CreateBasicNode("Star",NodeBasicShapes.Star),
-            CreateBasicNode("Octagon",NodeBasicShapes.Octagon),
-            CreateBasicNode("Plus",NodeBasicShapes.Plus),
-            CreateBasicNode("Heptagon",NodeBasicShapes.Heptagon),
+            CreateBasicNode("Rectangle", NodeBasicShapes.Rectangle),
+            CreateBasicNode("Ellipse", NodeBasicShapes.Ellipse),
+            CreateBasicNode("Diamond", NodeBasicShapes.Diamond),
+            CreateBasicNode("Triangle", NodeBasicShapes.Triangle),
+            CreateBasicNode("Hexagon", NodeBasicShapes.Hexagon),
+            CreateBasicNode("Pentagon", NodeBasicShapes.Pentagon),
+            CreateBasicNode("Cylinder", NodeBasicShapes.Cylinder),
+            CreateBasicNode("Star", NodeBasicShapes.Star),
+            CreateBasicNode("Octagon", NodeBasicShapes.Octagon),
+            CreateBasicNode("Plus", NodeBasicShapes.Plus),
+            CreateBasicNode("Heptagon", NodeBasicShapes.Heptagon),
         };
 
         // palette which contains connectors
-        connectors = new DiagramObjectCollection<NodeBase>()
+        _connectors = new DiagramObjectCollection<NodeBase>
         {
-            CreateConnector("link1",ConnectorSegmentType.Orthogonal,DecoratorShape.Arrow),
-            CreateConnector("link2",ConnectorSegmentType.Orthogonal,DecoratorShape.None),
-            CreateConnector("link3",ConnectorSegmentType.Straight,DecoratorShape.Arrow),
-            CreateConnector("link4",ConnectorSegmentType.Straight,DecoratorShape.None),
-            CreateConnector("link5",ConnectorSegmentType.Bezier,DecoratorShape.None),
-            CreateConnector("link6",ConnectorSegmentType.Bezier, DecoratorShape.Arrow)
-            
+            CreateConnector("link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow),
+            CreateConnector("link2", ConnectorSegmentType.Orthogonal, DecoratorShape.None),
+            CreateConnector("link3", ConnectorSegmentType.Straight, DecoratorShape.Arrow),
+            CreateConnector("link4", ConnectorSegmentType.Straight, DecoratorShape.None),
+            CreateConnector("link5", ConnectorSegmentType.Bezier, DecoratorShape.None),
+            CreateConnector("link6", ConnectorSegmentType.Bezier, DecoratorShape.Arrow)
         };
 
         // palette which contains flow shape nodes
-        flowShapes = new DiagramObjectCollection<NodeBase>()
+        _flowShapes = new DiagramObjectCollection<NodeBase>
         {
-            CreateFlowNode("Terminator",NodeFlowShapes.Terminator),
-            CreateFlowNode("Process",NodeFlowShapes.Process),
-            CreateFlowNode("Sort",NodeFlowShapes.Sort),
-            CreateFlowNode("Document",NodeFlowShapes.Document),
-            CreateFlowNode("Display",NodeFlowShapes.Display),
-            CreateFlowNode("PaperTap",NodeFlowShapes.PaperTap),
-            CreateFlowNode("Delay",NodeFlowShapes.Delay),
-            CreateFlowNode("Data",NodeFlowShapes.Data),
-            CreateFlowNode("Card",NodeFlowShapes.Card),
-            CreateFlowNode("Collate",NodeFlowShapes.Collate),
-            CreateFlowNode("Decision",NodeFlowShapes.Decision),
+            CreateFlowNode("Terminator", NodeFlowShapes.Terminator),
+            CreateFlowNode("Process", NodeFlowShapes.Process),
+            CreateFlowNode("Sort", NodeFlowShapes.Sort),
+            CreateFlowNode("Document", NodeFlowShapes.Document),
+            CreateFlowNode("Display", NodeFlowShapes.Display),
+            CreateFlowNode("PaperTap", NodeFlowShapes.PaperTap),
+            CreateFlowNode("Delay", NodeFlowShapes.Delay),
+            CreateFlowNode("Data", NodeFlowShapes.Data),
+            CreateFlowNode("Card", NodeFlowShapes.Card),
+            CreateFlowNode("Collate", NodeFlowShapes.Collate),
+            CreateFlowNode("Decision", NodeFlowShapes.Decision),
         };
 
         #pragma warning disable BL0005
-        palettes.Add(
-           new Palette()
-           {
-               ID = "BasicShape",
-               IsExpanded = true,
-               Symbols = basicShapes,
-               Title = "Basic Shapes",
-               IconCss = "e-ddb-icons e-basic"
-           }
-        );
-        palettes.Add(
-            new Palette()
-            {
-                ID = "FlowShape",
-                IsExpanded = true,
-                Symbols = flowShapes,
-                Title = "Flow Shapes",
-                IconCss = "e-ddb-icons e-flow"
-            }
-        );
-        palettes.Add(
-            new Palette()
-            {
-                ID = "Connectors",
-                IsExpanded = true,
-                Symbols = connectors,
-                Title = "Connectors",
-                IconCss = "e-ddb-icons e-connector"
-            }
-        );
+        _palettes.Add(new Palette()
+        {
+            ID = "BasicShape",
+            IsExpanded = true,
+            Symbols = _basicShapes,
+            Title = "Basic Shapes",
+            IconCss = "e-ddb-icons e-basic"
+        });
+
+        _palettes.Add(new Palette()
+        {
+            ID = "FlowShape",
+            IsExpanded = true,
+            Symbols = _flowShapes,
+            Title = "Flow Shapes",
+            IconCss = "e-ddb-icons e-flow"
+        });
+
+        _palettes.Add(new Palette()
+        {
+            ID = "Connectors",
+            IsExpanded = true,
+            Symbols = _connectors,
+            Title = "Connectors",
+            IconCss = "e-ddb-icons e-connector"
+        });
         #pragma warning restore BL0005
     }
 
     private SymbolInfo GetSymbolInfo(IDiagramObject symbol)
     {
+        SymbolInfo symbolInfo = new SymbolInfo();
         string description = symbol is Node ? (symbol as Node).ID : (symbol as Connector).ID;
-        if (text)
+
+        if (_text)
         {
-            SymbolInfo.Description = new SymbolDescription()
+            symbolInfo.Description = new SymbolDescription()
             {
                 Text = description,
-                Style = new TextStyle()
-                {
-                    TextOverflow = TextOverflow.Wrap
-                },
+                Style = new TextStyle() { TextOverflow = TextOverflow.Wrap }
             };
         }
         else
         {
-            SymbolInfo.Description = new SymbolDescription() 
-            { 
-                Text = "",
-                Style = new TextStyle()
-                {
-                    TextOverflow = TextOverflow.Wrap
-                },
+            symbolInfo.Description = new SymbolDescription()
+            {
+                Text = string.Empty,
+                Style = new TextStyle() { TextOverflow = TextOverflow.Wrap }
             };
         }
-        return SymbolInfo;
+
+        return symbolInfo;
     }
 
     // Method to create basic shape node
@@ -403,14 +397,11 @@
         Node node = new Node()
         {
             ID = id,
-            Shape = new BasicShape()
-            {
-                Type = shapes.Basic,
-                Shape = type
-            },
-            SearchTags = new List<string>() {"Basic" },
+            Shape = new BasicShape() { Type = shapes.Basic, Shape = type },
+            SearchTags = new List<string>() { "Basic" },
             Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" }
         };
+
         return node;
     }
 
@@ -420,14 +411,11 @@
         Node node = new Node()
         {
             ID = id,
-            Shape = new FlowShape()
-            {
-                Type = shapes.Flow,
-                Shape = type
-            },
-            SearchTags = new List<string>() {"flow" },
+            Shape = new FlowShape() { Type = shapes.Flow, Shape = type },
+            SearchTags = new List<string>() { "flow" },
             Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" }
         };
+
         return node;
     }
 
@@ -438,16 +426,13 @@
         {
             ID = id,
             Type = type,
-            SearchTags = new List<string>() {"connector" },
+            SearchTags = new List<string>() { "connector" },
             SourcePoint = new DiagramPoint() { X = 0, Y = 0 },
             TargetPoint = new DiagramPoint() { X = 40, Y = 40 },
-            TargetDecorator = new DecoratorSettings()
-            {
-                Shape = shape,
-                Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }
-            },
+            TargetDecorator = new DecoratorSettings() { Shape = shape, Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" } },
             Style = new ShapeStyle() { StrokeWidth = 2, StrokeColor = "#757575" }
         };
+
         return connector;
     }
 }
