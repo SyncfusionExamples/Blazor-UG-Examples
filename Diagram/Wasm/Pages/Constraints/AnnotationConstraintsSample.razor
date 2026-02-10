@@ -3,16 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize the diagram with NodeCollection *@
-<SfDiagramComponent Height="600px" Nodes="@nodes" />
+<SfDiagramComponent Height="600px" Nodes="@_nodes" />
 
 @code
 {
-    private DiagramObjectCollection<Node> nodes;
-
+private DiagramObjectCollection<Node> _nodes;
     protected override void OnInitialized()
     {
         //Initialize the NodeCollection.
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -40,6 +39,6 @@
                 },
             }
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 }

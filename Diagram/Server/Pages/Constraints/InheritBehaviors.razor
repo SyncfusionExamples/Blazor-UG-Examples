@@ -3,17 +3,17 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize the diagram with constraints *@
-<SfDiagramComponent Height="600px" Connectors="@connectors" Constraints="@diagramConstraints" />
+<SfDiagramComponent Height="600px" Connectors="@_connectors" Constraints="@_diagramConstraints" />
 
 @code
 {
     //Sets the diagram constraints
-    private DiagramConstraints diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Bridging;
-    private DiagramObjectCollection<Connector> connectors;
+    private DiagramConstraints _diagramConstraints = DiagramConstraints.Default | DiagramConstraints.Bridging;
+private DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
         {
             ID = "connector1",
@@ -28,7 +28,7 @@
             SourcePoint = new DiagramPoint() { X = 200, Y = 100 },
             TargetPoint = new DiagramPoint() { X = 100, Y = 200 },
         };
-        connectors.Add(connector);
-        connectors.Add(connector1);
+        _connectors.Add(connector);
+        _connectors.Add(connector1);
     }
 }

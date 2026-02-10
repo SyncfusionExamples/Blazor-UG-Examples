@@ -3,16 +3,15 @@
 @using Syncfusion.Blazor.Diagram
 
 @* Initialize the diagram with connectors *@
-<SfDiagramComponent Height="600px" Connectors="@connectors" />
+<SfDiagramComponent Height="600px" Connectors="@_connectors" />
 
 @code
 {
-    private DiagramObjectCollection<Connector> connectors;
-
+    private DiagramObjectCollection<Connector> _connectors;
     protected override void OnInitialized()
     {
         //Initialize the connector collection
-        connectors = new DiagramObjectCollection<Connector>();
+        _connectors = new DiagramObjectCollection<Connector>();
         Connector connector = new Connector()
         {
             ID = "connector1",
@@ -22,6 +21,6 @@
             //sets the ConnectorConstraints...
             Constraints = ConnectorConstraints.Default & ~ConnectorConstraints.Select
         };
-        connectors.Add(connector);
+        _connectors.Add(connector);
     }
 }

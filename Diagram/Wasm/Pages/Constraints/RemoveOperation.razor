@@ -2,11 +2,11 @@
 
 @using Syncfusion.Blazor.Diagram
 
-<SfDiagramComponent Height="600px" Constraints="@diagramConstraint" />
+<SfDiagramComponent Height="600px" Constraints="@_diagramConstraint" />
 
 @code
 {
     //To removing zoom and panning constraints from the default contraints
     //It has disabled zoom and panning funcationality for the diagram.
-    private DiagramConstraints diagramConstraint = DiagramConstraints.Default & ~(DiagramConstraints.Zoom | DiagramConstraints.Pan);
+    private DiagramConstraints _diagramConstraint = DiagramConstraints.Default & ~(DiagramConstraints.Zoom | DiagramConstraints.Pan);
 }
