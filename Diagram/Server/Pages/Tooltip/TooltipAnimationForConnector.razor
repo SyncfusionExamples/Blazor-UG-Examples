@@ -5,18 +5,18 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Connector Animation" OnClick="@AnimationChange" />
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
 
 @code
 {
     //Define diagram's connectors collection
-    private DiagramObjectCollection<Connector> connector;
+    private DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
         //Initialize diagram's connectors collection
-        connector = new DiagramObjectCollection<Connector>();
-        Connector connectors = new Connector()
+        _connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
         {
             ID = "Connector1",
             SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
@@ -32,13 +32,13 @@
             },
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
         };
-        connector.Add(connectors);
+        _connectors.Add(connector);
     }
 
     //Change the Animation at run time.
     private void AnimationChange()
     {
-        connector[0].Tooltip.AnimationSettings = new AnimationModel()
+        _connectors[0].Tooltip.AnimationSettings = new AnimationModel()
         {
             Open = new TooltipAnimationSettings() { Effect = Effect.ZoomIn, Duration = 500 },
             Close = new TooltipAnimationSettings() { Effect = Effect.ZoomOut, Duration = 500 }

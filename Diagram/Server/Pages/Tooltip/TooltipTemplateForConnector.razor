@@ -3,7 +3,7 @@
 @using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Buttons
 
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="connector">
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors">
     <DiagramTemplates>
         <TooltipTemplate>
             @{
@@ -18,14 +18,14 @@
 @code
 {
     //Define diagram's connectors collection
-    DiagramObjectCollection<Connector> connector;
+    DiagramObjectCollection<Connector> _connectors;
 
     protected override void OnInitialized()
     {
         //Intialize diagram's connectors collection
 
-        connector = new DiagramObjectCollection<Connector>();
-        Connector connectors = new Connector()
+        _connectors = new DiagramObjectCollection<Connector>();
+        Connector connector = new Connector()
         {
             ID = "Connector1",
             SourcePoint = new DiagramPoint() { X = 500, Y = 500 },
@@ -33,6 +33,6 @@
             Tooltip = new DiagramTooltip(),
             Constraints = ConnectorConstraints.Default | ConnectorConstraints.Tooltip,
         };
-        connector.Add(connectors);
+        _connectors.Add(connector);
     }
 }

@@ -5,17 +5,17 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Node Animation" OnClick="@AnimationChange" />
-<SfDiagramComponent Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
 
     protected override void OnInitialized()
     {
         //Initialize the diagram's nodes collection
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -39,13 +39,13 @@
             },
             Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
         };
-        nodes.Add(node);
+        _nodes.Add(node);
     }
 
     //Change the Animation at run time.
     private void AnimationChange()
     {
-        nodes[0].Tooltip.AnimationSettings = new AnimationModel()
+        _nodes[0].Tooltip.AnimationSettings = new AnimationModel()
         {
             Open = new TooltipAnimationSettings() { Effect = Effect.FadeZoomIn, Duration = 100 },
             Close = new TooltipAnimationSettings() { Effect = Effect.FadeZoomOut, Duration = 50 }

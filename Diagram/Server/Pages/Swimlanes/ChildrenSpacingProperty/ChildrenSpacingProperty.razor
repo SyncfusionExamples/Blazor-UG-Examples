@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor.Diagram
 
 <!-- Diagram component rendering a swimlane layout -->
-<SfDiagramComponent Height="600px" Width="90%" Swimlanes="@swimlaneCollections">
+<SfDiagramComponent Height="600px" Width="90%" Swimlanes="@_swimlaneCollections">
 </SfDiagramComponent>
 
 @code
@@ -12,7 +12,7 @@
     /// <summary>
     /// Collection of swimlanes used in the SfDiagramComponent.
     /// </summary>
-    private DiagramObjectCollection<Swimlane> swimlaneCollections = new DiagramObjectCollection<Swimlane>();
+    private DiagramObjectCollection<Swimlane> _swimlaneCollections = new DiagramObjectCollection<Swimlane>();
 
     /// <summary>
     /// Initializes the swimlane, phases, lanes, and child nodes for the diagram.
@@ -40,7 +40,7 @@
         };
 
         // Create swimlane structure
-        swimlaneCollections = new DiagramObjectCollection<Swimlane>()
+        _swimlaneCollections = new DiagramObjectCollection<Swimlane>()
         {
             new Swimlane()
             {

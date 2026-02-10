@@ -6,19 +6,19 @@
 
 <SfButton Content="Show CustomTooltip" OnClick="@show" />
 <SfButton Content="Hide CustomTooltip" OnClick="@hide" />
-<SfDiagramComponent @ref="@diagram" Width="1000px" Height="500px" Nodes="@nodes" />
+<SfDiagramComponent @ref="@_diagram" Width="1000px" Height="500px" Nodes="@_nodes" />
 
 @code
 {
     //Define diagram's nodes collection
-    private DiagramObjectCollection<Node> nodes;
+    private DiagramObjectCollection<Node> _nodes;
     //Reference the diagram
-    private SfDiagramComponent diagram;
+    private SfDiagramComponent _diagram;
     
     protected override void OnInitialized()
     {
         //Intialize diagram's nodes collection
-        nodes = new DiagramObjectCollection<Node>();
+        _nodes = new DiagramObjectCollection<Node>();
         Node node = new Node()
         {
             ID = "node1",
@@ -79,21 +79,21 @@
             Tooltip = new DiagramTooltip() { Content = "Click", OpensOn = "Click" },
             Constraints = NodeConstraints.Default | NodeConstraints.Tooltip,
         };
-        nodes.Add(node);
-        nodes.Add(node1);
-        nodes.Add(node2);
-        nodes.Add(node3);
+        _nodes.Add(node);
+        _nodes.Add(node1);
+        _nodes.Add(node2);
+        _nodes.Add(node3);
     }
 
     //Method to show tooltip
     private async void show()
     {
-        await diagram.ShowTooltipAsync(diagram.Nodes[2] as NodeBase);
+        await _diagram.ShowTooltipAsync(_diagram.Nodes[2] as NodeBase);
     }
 
     //Method to hide tooltip
     private async void hide()
     {
-        await diagram.HideTooltipAsync(diagram.Nodes[2] as NodeBase);
+        await _diagram.HideTooltipAsync(_diagram.Nodes[2] as NodeBase);
     }
 }
