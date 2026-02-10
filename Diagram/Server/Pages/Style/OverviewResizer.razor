@@ -4,7 +4,7 @@
 @using Syncfusion.Blazor.Diagram.Overview
 @using System.Collections.ObjectModel
 
-<SfDiagramComponent @ref="@Diagram" ID="element" Width="100%" Height="500px"  ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
+<SfDiagramComponent @ref="@_diagram" ID="element" Width="100%" Height="500px" ConnectorCreating="@ConnectorCreating" NodeCreating="@NodeCreating">
     <DataSourceSettings ID="Name" ParentID="Category" DataSource="DataSource"></DataSourceSettings>
     <Layout Type="LayoutType.HierarchicalTree" HorizontalSpacing="30" Orientation="LayoutOrientation.TopToBottom" VerticalSpacing="30" HorizontalAlignment="HorizontalAlignment.Auto" VerticalAlignment="VerticalAlignment.Auto" GetLayoutInfo="GetLayoutInfo">
         <LayoutMargin Top="50" Bottom="50" Right="50" Left="50"></LayoutMargin>
@@ -21,7 +21,7 @@
 
 @code
 {
-    private SfDiagramComponent Diagram;
+    private SfDiagramComponent _diagram;
     
     private void ConnectorCreating(IDiagramObject connector)
     {

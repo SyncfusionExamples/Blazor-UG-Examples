@@ -7,8 +7,8 @@
 <div class="control-section">
     <div style="width:20%">
         <div id="palette-space" class="sb-mobile-palette" style="border: 2px solid #b200ff">
-            <SfSymbolPaletteComponent @ref="@Palette" Height="500px" Width="200px"
-                                      Palettes="@Palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@SymbolMargin">
+            <SfSymbolPaletteComponent @ref="@_palette" Height="500px" Width="200px"
+                                      Palettes="@_palettes" SymbolHeight="60" SymbolWidth="60" SymbolMargin="@_symbolMargin">
             </SfSymbolPaletteComponent>
         </div>
     </div>
@@ -22,22 +22,22 @@
 
 @code
 {
-    private SymbolMargin SymbolMargin = new SymbolMargin
+    private SymbolMargin _symbolMargin = new SymbolMargin
     {
         Left = 15,
         Right = 15,
         Top = 15,
         Bottom = 15
     };
-    private SfSymbolPaletteComponent Palette;
+    private SfSymbolPaletteComponent _palette;
     //Define palettes collection.
-    private DiagramObjectCollection<Palette> Palettes = new DiagramObjectCollection<Palette>();
+    private DiagramObjectCollection<Palette> _palettes = new DiagramObjectCollection<Palette>();
     // Defines palette's flow-shape collection.
-    private DiagramObjectCollection<NodeBase> PaletteNodes = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteNodes = new DiagramObjectCollection<NodeBase>();
     // Defines palette's group collection.
-    private DiagramObjectCollection<NodeBase> PaletteGroup = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteGroup = new DiagramObjectCollection<NodeBase>();
     // Defines palette's connector collection.
-    private DiagramObjectCollection<NodeBase> PaletteConnectors = new DiagramObjectCollection<NodeBase>();
+    private DiagramObjectCollection<NodeBase> _paletteConnectors = new DiagramObjectCollection<NodeBase>();
 
     protected override void OnInitialized()
     {
@@ -49,11 +49,11 @@
         CreatePaletteNode(NodeFlowShapes.Terminator, "Terminator");
         CreatePaletteConnector("Link1", ConnectorSegmentType.Orthogonal, DecoratorShape.Arrow);
         CreatePaletteGroup();
-        Palettes = new DiagramObjectCollection<Palette>()
+        _palettes = new DiagramObjectCollection<Palette>()
         {
-            new Palette(){Symbols = PaletteNodes,Title = "Flow Shapes", ID = "Flow Shapes" },
-            new Palette(){Symbols = PaletteConnectors,Title = "Connectors", IsExpanded = true},
-            new Palette(){Symbols = PaletteGroup,Title = "Group Shapes", IsExpanded = true}
+            new Palette(){Symbols = _paletteNodes,Title = "Flow Shapes", ID = "Flow Shapes" },
+            new Palette(){Symbols = _paletteConnectors,Title = "Connectors", IsExpanded = true},
+            new Palette(){Symbols = _paletteGroup,Title = "Group Shapes", IsExpanded = true}
         };
     }
 
@@ -65,7 +65,7 @@
             Shape = new FlowShape() { Type = NodeShapes.Flow, Shape = flowShape },
             Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
         };
-        PaletteNodes.Add(node);
+        _paletteNodes.Add(node);
     }
 
     private void CreatePaletteConnector(string id, ConnectorSegmentType type, DecoratorShape decoratorShape)
@@ -83,7 +83,7 @@
                 Style = new ShapeStyle() { StrokeColor = "#757575", Fill = "#757575" }
             }
         };
-        PaletteConnectors.Add(connector);
+        _paletteConnectors.Add(connector);
     }
 
     private void CreatePaletteGroup()
@@ -108,13 +108,13 @@
             Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse },
             Style = new ShapeStyle() { Fill = "#6495ed" },
         };
-        PaletteGroup.Add(node1);
-        PaletteGroup.Add(node2);
+        _paletteGroup.Add(node1);
+        _paletteGroup.Add(node2);
         NodeGroup group = new NodeGroup()
         {
             ID = "group1",
             Children = new string[] { "node1", "node2" }
         };
-        PaletteGroup.Add(group);
+        _paletteGroup.Add(group);
     }
 }
