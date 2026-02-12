@@ -1,0 +1,20 @@
+﻿@page "/MarkdownEditor/CustomKeyConfiguration"
+
+<PageTitle>Custom key configuration</PageTitle>
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor KeyConfigure="@KeyConfig" Value="@MarkdownValue">
+  
+</SfRichTextEditor>
+
+@code {
+    
+    private string MarkdownValue = "The sample is configured with customized markdown syntax using the [RichTextEditorMarkdownOptions](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.RichTextEditor.RichTextEditorMarkdownOptions.html).\n    Type the content and click the toolbar item to view customized markdown syntax.\n    + To make a phrase bold, you need to add two underscores before and after the phrase (e.g., __this text is bold__).";
+
+    private ShortcutKeys KeyConfig = new ShortcutKeys()
+    {
+        Bold = "ctrl+1",
+        Italic = "ctrl+2"
+    };
+}
