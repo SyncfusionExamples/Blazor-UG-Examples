@@ -1,0 +1,40 @@
+@page "/pivotTable/aggregation/on-action-complete"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowFieldList="true" ShowGroupingBar="true">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewEvents TValue="ProductDetails" OnActionComplete="ActionComplete"></PivotViewEvents>
+</SfPivotView>
+
+@code {
+    private List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    public void ActionComplete(PivotActionCompleteEventArgs<ProductDetails> args)
+    {
+        if (args.ActionName == "Field aggregated")
+        {
+            // Triggers when the aggregation type is applied.
+        }
+    }
+}

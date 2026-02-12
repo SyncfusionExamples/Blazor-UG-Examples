@@ -1,0 +1,32 @@
+@page "/value-filtering"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowFieldList="true">
+    <PivotViewDataSourceSettings DataSource="@data" AllowValueFilter="true">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C0"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+</SfPivotView>
+
+@code {
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

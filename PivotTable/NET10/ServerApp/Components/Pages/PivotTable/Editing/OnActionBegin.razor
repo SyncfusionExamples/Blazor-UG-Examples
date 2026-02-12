@@ -1,0 +1,43 @@
+@page "/editing/action-begin-event"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowFieldList="true" ShowGroupingBar="true">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewCellEditSettings AllowAdding="true" AllowDeleting="true" AllowEditing="true" Mode=EditMode.Dialog>
+    </PivotViewCellEditSettings>
+    <PivotViewEvents TValue="ProductDetails" OnActionBegin="ActionBegin"></PivotViewEvents>
+</SfPivotView>
+
+@code {
+    private List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    // Triggers when the UI action begins.
+    public void ActionBegin(PivotActionBeginEventArgs args)
+    {
+        if (args.ActionName == "Add new record" || args.ActionName == "Save edited records")
+        {
+            args.Cancel = true;
+        }
+    }
+}

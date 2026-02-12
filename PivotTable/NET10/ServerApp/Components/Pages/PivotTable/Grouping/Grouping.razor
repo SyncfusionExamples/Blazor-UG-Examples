@@ -1,0 +1,32 @@
+@page "/grouping"
+@using Syncfusion.Blazor.PivotView
+ @using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowGroupingBar="true" AllowGrouping="true">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Product_ID" Caption="Product ID"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Date" Caption="Date"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Date" Type="FormatType.DateTime" Format="dd/MM/yyyy-hh:mm"></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Product_ID" Format="N" UseGrouping=true></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+</SfPivotView>
+
+@code{
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

@@ -1,0 +1,32 @@
+@page "/load-members-on-level-number"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" Width="800" Height="350" ShowGroupingBar="true">
+    <PivotViewDataSourceSettings TValue="ProductDetails" ProviderType="ProviderType.SSAS"
+                                 Catalog="Adventure Works DW 2008 SE" Cube="Adventure Works" Url="https://bi.syncfusion.com/olap/msmdpump.dll"
+                                 LocaleIdentifier="1033" EnableSorting="true">
+        <PivotViewColumns>
+            <PivotViewColumn Name="[Product].[Product Categories]" Caption="Product Category"></PivotViewColumn>
+            <PivotViewColumn Name="[Measures]" Caption="Measure"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="[Customer].[Customer Geography]" Caption="Customer Geography"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="[Measures].[Customer Count]" Caption="Customer Count"></PivotViewValue>
+            <PivotViewValue Name="[Measures].[Internet Sales Amount]" Caption="Internet Sales Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFilterSettings>
+            <PivotViewFilterSetting Name="[Customer].[Customer Geography]" Type=FilterType.Exclude
+                                   Items="@(new string[] { "[Customer].[Customer Geography].[State-Province].&[NSW]&[AU]" })"
+                                    LevelCount="2"></PivotViewFilterSetting>
+        </PivotViewFilterSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewGridSettings ColumnWidth="160"></PivotViewGridSettings>
+</SfPivotView>
+<style>
+    .e-pivotview {
+        min-height: 200px;
+    }
+</style>

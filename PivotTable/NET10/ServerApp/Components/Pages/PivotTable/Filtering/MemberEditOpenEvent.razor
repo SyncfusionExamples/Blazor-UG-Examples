@@ -1,0 +1,48 @@
+@page "/member-editor-open-event"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowGroupingBar="true" >
+        <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewEvents TValue="ProductDetails" MemberEditorOpen="memberEditorOpen"></PivotViewEvents>
+</SfPivotView>
+
+@code{
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    public void memberEditorOpen(MemberEditorOpenEventArgs args) {
+        if (args.FieldName == "Country")
+        {
+            List<TreeDataInfo> updatedItems = new List<TreeDataInfo>();
+            for (int i = 0; i < args.FieldMembers.Count; i++)
+            {
+                TreeDataInfo member = args.FieldMembers[i];
+                if (member.Id == "France" || member.Id == "Germany")
+                {
+                    updatedItems.Add(member);
+                }
+            }
+            args.FieldMembers = updatedItems;
+        }
+    }
+}

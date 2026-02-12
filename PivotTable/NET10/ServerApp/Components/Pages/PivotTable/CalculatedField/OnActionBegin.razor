@@ -1,0 +1,48 @@
+@page "/calculated-field-action-begin"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ShowFieldList="true" AllowCalculatedField="true">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+            <PivotViewValue Name="Total" Caption="Total Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Total" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+        <PivotViewCalculatedFieldSettings>
+            <PivotViewCalculatedFieldSetting Name="Total" Formula="@totalPrice">
+            </PivotViewCalculatedFieldSetting>
+        </PivotViewCalculatedFieldSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewEvents TValue="ProductDetails" OnActionBegin="ActionBegin"></PivotViewEvents>
+</SfPivotView>
+
+@code {
+    private string totalPrice = "\"" + "Round(" + "\"" + "Sum(Amount)" + "\"" + ") > Abs(" + "\"" + "Sum(Sold)" + "\"" + ") ? Min(" + "\"" + "Sum(Amount)" + "\"" + "," + "\"" + "Sum(Sold)" + "\"" + ") : Sqrt(" + "\"" + "Sum(Sold)" + "\"" + ")";
+    private List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    // Triggers when the UI action begins.
+    public void ActionBegin(PivotActionBeginEventArgs args)
+    {
+        if (args.ActionName == "Open calculated field dialog")
+        {
+            args.Cancel = true;
+        }
+    }
+}
