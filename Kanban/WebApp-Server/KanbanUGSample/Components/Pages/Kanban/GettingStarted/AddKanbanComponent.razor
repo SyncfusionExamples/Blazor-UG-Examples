@@ -1,0 +1,25 @@
+﻿@page "/Kanban/GettingStarted/AddKanbanComponent"
+
+<PageTitle>Add Syncfusion Blazor Kanban component</PageTitle>
+
+@using Syncfusion.Blazor.Kanban
+
+<SfKanban TValue="TasksModel">
+    <KanbanColumns>
+        <KanbanColumn HeaderText="To Do" KeyField="@(new List<string>() {"Open"})"></KanbanColumn>
+        <KanbanColumn HeaderText="In Progress" KeyField="@(new List<string>() {"InProgress"})"></KanbanColumn>
+        <KanbanColumn HeaderText="Testing" KeyField="@(new List<string>() {"Testing"})"></KanbanColumn>
+        <KanbanColumn HeaderText="Done" KeyField="@(new List<string>() {"Close"})"></KanbanColumn>
+    </KanbanColumns>
+</SfKanban>
+
+@code {
+    public class TasksModel
+    {
+        public string Id { get; set; }
+        public string Title { get; set; }
+        public string Status { get; set; }
+        public string Summary { get; set; }
+    }
+}
+
