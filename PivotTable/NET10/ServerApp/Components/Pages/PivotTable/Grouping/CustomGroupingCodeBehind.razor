@@ -1,31 +1,34 @@
-@page "/number-grouping2"
+@page "/custom-grouping-codebehind"
 @using Syncfusion.Blazor.PivotView
 @using BlazorDemos.Pages.PivotView.PivotTable
 
 <SfPivotView TValue="ProductDetails" ShowGroupingBar="true" AllowGrouping="true">
     <PivotViewDataSourceSettings DataSource="@data">
         <PivotViewColumns>
-            <PivotViewColumn Name="Products" Caption="Products"></PivotViewColumn>
+            <PivotViewColumn Name="Product_ID" Caption="Product ID"></PivotViewColumn>
         </PivotViewColumns>
         <PivotViewRows>
-            <PivotViewRow Name="Product_ID" Caption="Product ID"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
             <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
             <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
         <PivotViewFormatSettings>
-            <PivotViewFormatSetting Name="Product_ID" Format="N" UseGrouping=true></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Product_ID" Format="N0" UseGrouping=true></PivotViewFormatSetting>
             <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
         </PivotViewFormatSettings>
         <PivotViewGroupSettings>
-            <PivotViewGroupSetting Name="Product_ID" Type=GroupType.Number RangeInterval=2 StartingAt="1004"
-                                   EndingAt="1008"></PivotViewGroupSetting>
+            <PivotViewGroupSetting Name="Products" Caption="Product catergory" Type=GroupType.Custom>
+                <PivotViewCustomGroups>
+                    <PivotViewCustomGroup GroupName="Clothings" Items="@(new string[] { "Gloves", "Jerseys", "Shorts" })"></PivotViewCustomGroup>
+                </PivotViewCustomGroups>
+            </PivotViewGroupSetting>
         </PivotViewGroupSettings>
     </PivotViewDataSourceSettings>
 </SfPivotView>
 
-@code {
+@code{
     public List<ProductDetails> data { get; set; }
     protected override void OnInitialized()
     {

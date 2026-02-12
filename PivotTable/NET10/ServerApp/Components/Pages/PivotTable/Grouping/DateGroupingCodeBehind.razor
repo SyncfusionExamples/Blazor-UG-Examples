@@ -1,24 +1,30 @@
-@page "/grouping-basic"
+@page "/date-grouping-codebehind"
 @using Syncfusion.Blazor.PivotView
- @using BlazorDemos.Pages.PivotView.PivotTable
+@using BlazorDemos.Pages.PivotView.PivotTable
 
 <SfPivotView TValue="ProductDetails" ShowGroupingBar="true" AllowGrouping="true">
     <PivotViewDataSourceSettings DataSource="@data">
         <PivotViewColumns>
-            <PivotViewColumn Name="Product_ID" Caption="Product ID"></PivotViewColumn>
+            <PivotViewColumn Name="Product_Categories" Caption="Product Categories"></PivotViewColumn>
         </PivotViewColumns>
         <PivotViewRows>
-            <PivotViewRow Name="Date" Caption="Date"></PivotViewRow>
+            <PivotViewRow Name="Date"></PivotViewRow>
         </PivotViewRows>
         <PivotViewValues>
             <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
             <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
         </PivotViewValues>
+            <PivotViewFilters>
+            <PivotViewFilter Name="Products"></PivotViewFilter>
+            <PivotViewFilter Name="Product_ID" Caption="Product ID"></PivotViewFilter>
+        </PivotViewFilters>
         <PivotViewFormatSettings>
-            <PivotViewFormatSetting Name="Date" Type="FormatType.DateTime" Format="dd/MM/yyyy-hh:mm"></PivotViewFormatSetting>
-            <PivotViewFormatSetting Name="Product_ID" Format="N" UseGrouping=true></PivotViewFormatSetting>
+            <PivotViewFormatSetting Name="Date" Type="Syncfusion.Blazor.PivotView.FormatType.DateTime" Format="dd/MM/yyyy-hh:mm a"></PivotViewFormatSetting>
             <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
         </PivotViewFormatSettings>
+        <PivotViewGroupSettings>
+            <PivotViewGroupSetting Name="Date" Type=GroupType.Date GroupInterval="new List<DateGroup> { DateGroup.Years, DateGroup.Months }" StartingAt="2015-07-01" EndingAt="2017-07-31"></PivotViewGroupSetting>
+        </PivotViewGroupSettings>
     </PivotViewDataSourceSettings>
 </SfPivotView>
 
