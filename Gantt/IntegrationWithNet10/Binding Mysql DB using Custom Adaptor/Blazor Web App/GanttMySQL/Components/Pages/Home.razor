@@ -8,7 +8,7 @@
 
 @inject TaskRepository TaskService
 
-<SfGantt TValue="TaskDataModel" Height="500px" Width="100%" AllowSorting="true" AllowFiltering="true" EnableContextMenu="true" 
+<SfGantt TValue="TaskDataModel" Height="500px" Width="100%" AllowSorting="true" AllowFiltering="true" 
          Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })">
 
     <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
@@ -72,6 +72,16 @@
             // Search
             if (dm.Search != null && dm.Search.Count > 0)
                 dataSource = DataOperations.PerformSearching(dataSource, dm.Search);
+
+            if (dm.Where != null && dm.Where.Count > 0)
+            {
+                // Filtering
+                if (dm.Where[0].Field != null && dm.Where[0].Field == nameof(TaskDataModel.ParentId)) { }
+                else
+                {
+                    dataSource = DataOperations.PerformFiltering(dataSource, dm.Where, dm.Where[0].Operator);
+                }
+            }
 
             // Sort
             if (dm.Sorted != null && dm.Sorted.Count > 0)

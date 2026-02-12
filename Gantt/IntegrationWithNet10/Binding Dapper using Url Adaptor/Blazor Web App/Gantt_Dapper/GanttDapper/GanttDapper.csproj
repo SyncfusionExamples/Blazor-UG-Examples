@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\..\..\..\Blazor-UG-Examples\Gantt\IntegrationPage\Binding Dapper using Url Adaptor\Blazor Web App\Gantt_Dapper\Gantt_Dapper.Client\GanttDapper.Client.csproj" />
+    <ProjectReference Include="..\GanttDapper.Client\GanttDapper.Client.csproj" />
   </ItemGroup>
 
 </Project>
