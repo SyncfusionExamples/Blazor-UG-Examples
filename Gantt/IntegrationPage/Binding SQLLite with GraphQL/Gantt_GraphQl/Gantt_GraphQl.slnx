@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Gantt_GraphQl/Gantt_GraphQl.Client/Gantt_GraphQl.Client.csproj" />
+  <Project Path="Gantt_GraphQl/Gantt_GraphQl/Gantt_GraphQl.csproj" />
+</Solution>
