@@ -1,0 +1,43 @@
+@page "/pivot-chart-print"
+@using Syncfusion.Blazor.PivotView
+@using Syncfusion.Blazor.Buttons
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfButton OnClick="OnPrintChart" Content="Print Chart"></SfButton>
+<SfPivotView TValue="ProductDetails" @ref="@pivot" ShowFieldList="true">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Country"></PivotViewColumn>
+            <PivotViewColumn Name="Products"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Year"></PivotViewRow>
+            <PivotViewRow Name="Quarter"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotChartSettings Title="Sales Analysis">
+        <PivotChartSeries Type=ChartSeriesType.Column></PivotChartSeries>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code {
+    SfPivotView<ProductDetails> pivot;
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    public void OnPrintChart()
+    {
+        this.pivot.PrintChart();
+    }
+}

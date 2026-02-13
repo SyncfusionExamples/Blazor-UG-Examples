@@ -1,0 +1,55 @@
+@page "/Standalone-fieldlist"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" ID="pivotview"  @ref="pivotView" Height="530">
+    <PivotViewEvents TValue="ProductDetails" EnginePopulated="pivotenginepopulated"></PivotViewEvents>
+</SfPivotView>
+<SfPivotFieldList TValue="ProductDetails" ID="fieldlist" @ref="fieldList" RenderMode="Mode.Fixed" >
+    <PivotFieldListDataSourceSettings DataSource="@data" EnableSorting=true>
+        <PivotFieldListColumns>
+            <PivotFieldListColumn Name="Year"></PivotFieldListColumn>
+            <PivotFieldListColumn Name="Quarter"></PivotFieldListColumn>
+        </PivotFieldListColumns>
+        <PivotFieldListRows>
+            <PivotFieldListRow Name="Country"></PivotFieldListRow>
+            <PivotFieldListRow Name="Products"></PivotFieldListRow>
+        </PivotFieldListRows>
+        <PivotFieldListValues>
+            <PivotFieldListValue Name="Sold" Caption="Unit Sold"></PivotFieldListValue>
+            <PivotFieldListValue Name="Amount" Caption="Sold Amount"></PivotFieldListValue>
+        </PivotFieldListValues>
+    </PivotFieldListDataSourceSettings>
+    <PivotFieldListEvents TValue="ProductDetails" EnginePopulated="enginepopulated"></PivotFieldListEvents>
+</SfPivotFieldList>
+<style>
+    #fieldlist {
+        width: 42%;
+        height: 100%;
+        float: right;
+    }
+
+    #pivotview {
+        width: 57%;
+        height: 530px;
+        float: left;
+    }
+</style>
+@code{
+    SfPivotFieldList<ProductDetails> fieldList;
+    SfPivotView<ProductDetails> pivotView;
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData();
+    }
+
+    public void pivotenginepopulated(EnginePopulatedEventArgs args)
+    {
+        this.fieldList.UpdateAsync(this.pivotView);
+    }
+    public void enginepopulated(EnginePopulatedEventArgs args)
+    {
+        this.fieldList.UpdateViewAsync(this.pivotView);
+    }
+}

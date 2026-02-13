@@ -1,0 +1,42 @@
+@page "/pivot-chart-zooming-and-panning"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails">
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Country"></PivotViewColumn>
+            <PivotViewColumn Name="Products"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Year"></PivotViewRow>
+            <PivotViewRow Name="Quarter"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+        </PivotViewValues>
+    </PivotViewDataSourceSettings>
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotChartSettings Title="Sales Analysis">
+        <PivotChartSeries Type=ChartSeriesType.Column></PivotChartSeries>
+        <PivotChartZoomSettings ToolbarItems=@toolbar EnableDeferredZooming="true" EnableMouseWheelZooming="true"
+                                EnablePinchZooming="true" EnableSelectionZooming="true">
+        </PivotChartZoomSettings>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code {
+    public List<PivotChartToolbarItems> toolbar = new List<PivotChartToolbarItems> {
+        PivotChartToolbarItems.Zoom,
+        PivotChartToolbarItems.ZoomIn,
+        PivotChartToolbarItems.ZoomOut,
+        PivotChartToolbarItems.Pan,
+        PivotChartToolbarItems.Reset
+    };
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

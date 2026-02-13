@@ -1,0 +1,56 @@
+@page "/pivot-chart-marker-data-label"
+@using Syncfusion.Blazor.PivotView
+@using Syncfusion.Blazor.Charts
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" Width="100%">
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotChartSettings Title="Sales Analysis">
+        <PivotChartSeries Type="Syncfusion.Blazor.PivotView.ChartSeriesType.Column">
+            <PivotChartPrimaryYAxis>
+                <PivotChartPrimaryYAxisBorder Width="0"></PivotChartPrimaryYAxisBorder>
+            </PivotChartPrimaryYAxis>
+            <PivotChartMarkerSettings>
+                <PivotChartMarkerDataLabel Visible="true" Fill="white" Position="Syncfusion.Blazor.PivotView.LabelPosition.Auto" Rx="5" Ry="5">
+                    <Template>
+                        @{
+                            var data = context as ChartDataPointInfo;
+                        }
+                        <table>
+                            <tr>
+                                <td align="center" style="background-color: #C1272D; font-size: 12px; color: whitesmoke; font-weight: bold; padding: 5px"> @data.X :</td>
+                                <td align="center" style="background-color: #C1272D; font-size: 12px; color: whitesmoke; font-weight: bold; padding: 5px"> @data.Y</td>
+                            </tr>
+                        </table>
+                    </Template>
+                </PivotChartMarkerDataLabel>
+            </PivotChartMarkerSettings>
+        </PivotChartSeries>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code
+{
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}
