@@ -1,0 +1,42 @@
+@page "/pivot-chart-connector-style"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails">
+    <PivotViewDataSourceSettings DataSource="@data" ExpandAll=false EnableSorting=true>
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Products"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Quarter"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Amount" Caption="Sales Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotChartSettings Title="Sales Analysis" EnableSmartLabels="true">
+        <PivotChartSeries Type="@ChartType">
+            <PivotChartDataLabel Position="@Position">
+                <PivotChartConnectorStyle Color="#f4429e" Length="50px" Width="2" DashArray="5,3">
+                </PivotChartConnectorStyle>
+            </PivotChartDataLabel>
+        </PivotChartSeries>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code{
+    public ChartSeriesType ChartType = ChartSeriesType.Funnel;
+    public PivotChartLabelPosition Position = PivotChartLabelPosition.Outside;
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

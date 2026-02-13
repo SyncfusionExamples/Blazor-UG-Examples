@@ -1,0 +1,49 @@
+@page "/pivot-chart-marker-data-label"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails" Width="800px" Height="450px">
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Country"></PivotViewColumn>
+            <PivotViewColumn Name="Products"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Year"></PivotViewRow>
+            <PivotViewRow Name="Quarter"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Sold" Caption="Unit Sold"></PivotViewValue>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotChartSettings Title="Sales Analysis">
+        <PivotChartSeries Type="ChartSeriesType.Column">
+            <PivotChartMarkerSettings>
+                <PivotChartMarkerDataLabel Visible="true" Fill="white"
+                                           Position="Syncfusion.Blazor.PivotView.LabelPosition.Auto" Rx="5" Ry="5">
+                    <PivotChartMarkerDataLabelBorder Width="2" Color="red"></PivotChartMarkerDataLabelBorder>
+                    <PivotChartMarkerDataLabelFont Size="12px"></PivotChartMarkerDataLabelFont>
+                    <PivotChartMarkerDataLabelMargin Top="5" Bottom="5" Right="5" Left="5">
+                    </PivotChartMarkerDataLabelMargin>
+                </PivotChartMarkerDataLabel>
+            </PivotChartMarkerSettings>
+        </PivotChartSeries>
+        <PivotChartPrimaryYAxis>
+            <PivotChartPrimaryYAxisBorder Width="0"></PivotChartPrimaryYAxisBorder>
+        </PivotChartPrimaryYAxis>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code {
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

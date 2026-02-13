@@ -1,0 +1,53 @@
+@page "/pivot-chart-data-label-template"
+@using Syncfusion.Blazor.PivotView
+@using Syncfusion.Blazor.Charts
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotView TValue="ProductDetails">
+    <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+    <PivotViewDataSourceSettings DataSource="@data">
+        <PivotViewColumns>
+            <PivotViewColumn Name="Year"></PivotViewColumn>
+            <PivotViewColumn Name="Quarter"></PivotViewColumn>
+        </PivotViewColumns>
+        <PivotViewRows>
+            <PivotViewRow Name="Country"></PivotViewRow>
+            <PivotViewRow Name="Products"></PivotViewRow>
+        </PivotViewRows>
+        <PivotViewValues>
+            <PivotViewValue Name="Amount" Caption="Sold Amount"></PivotViewValue>
+        </PivotViewValues>
+        <PivotViewFormatSettings>
+            <PivotViewFormatSetting Name="Amount" Format="C"></PivotViewFormatSetting>
+        </PivotViewFormatSettings>
+    </PivotViewDataSourceSettings>
+    <PivotChartSettings Title="Sales Analysis">
+        <PivotChartSeries Type="Syncfusion.Blazor.PivotView.ChartSeriesType.Pie">
+            <PivotChartPrimaryYAxis>
+                <PivotChartPrimaryYAxisBorder Width="0"></PivotChartPrimaryYAxisBorder>
+            </PivotChartPrimaryYAxis>
+            <PivotChartDataLabel Visible=true Position="PivotChartLabelPosition.Outside">
+                <Template>
+                    @{
+                        var data = context as AccumulationChartDataPointInfo;
+                    }
+                    <table>
+                        <tr>
+                            <td align="center" style="background-color: #C1272D; font-size: 14px; color: whitesmoke; font-weight: bold; padding: 5px">@data.X : @data.Y</td>
+                        </tr>
+                    </table>
+                </Template>
+            </PivotChartDataLabel>
+        </PivotChartSeries>
+    </PivotChartSettings>
+</SfPivotView>
+
+@code
+{
+    public List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData().ToList();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+}

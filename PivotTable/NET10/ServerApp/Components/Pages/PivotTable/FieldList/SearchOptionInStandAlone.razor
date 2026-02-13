@@ -1,0 +1,36 @@
+@page "/Standalone-fieldlist-search-option"
+@using Syncfusion.Blazor.PivotView
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<SfPivotFieldList TValue="ProductDetails" ID="fieldlist" @ref="fieldList" ShowFieldSearch="true" RenderMode="Mode.Fixed" >
+    <PivotFieldListDataSourceSettings DataSource="@data" EnableSorting=true>
+        <PivotFieldListColumns>
+            <PivotFieldListColumn Name="Year"></PivotFieldListColumn>
+            <PivotFieldListColumn Name="Quarter"></PivotFieldListColumn>
+        </PivotFieldListColumns>
+        <PivotFieldListRows>
+            <PivotFieldListRow Name="Country"></PivotFieldListRow>
+            <PivotFieldListRow Name="Products"></PivotFieldListRow>
+        </PivotFieldListRows>
+        <PivotFieldListValues>
+            <PivotFieldListValue Name="Sold" Caption="Unit Sold"></PivotFieldListValue>
+            <PivotFieldListValue Name="Amount" Caption="Sold Amount"></PivotFieldListValue>
+        </PivotFieldListValues>
+    </PivotFieldListDataSourceSettings>
+</SfPivotFieldList>
+<style>
+    #fieldlist {
+        width: 42%;
+        height: 100%;
+        float: right;
+    }
+</style>
+@code{
+    private SfPivotFieldList<ProductDetails> fieldList;
+    private List<ProductDetails> data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.data = ProductDetails.GetProductData();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }   
+}

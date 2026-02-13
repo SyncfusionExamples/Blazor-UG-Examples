@@ -1,0 +1,79 @@
+@page "/pivot-chart-accumulation-charts"
+@using Syncfusion.Blazor.PivotView
+@using Syncfusion.Blazor.DropDowns
+@using BlazorDemos.Pages.PivotView.PivotTable
+
+<div class="control-section">
+    <div id="dropdown-control" style="margin-bottom:5px;">
+        <table style="width: 350px;">
+            <tbody>
+                <tr style="height: 50px">
+                    <td>
+                        <div>
+                            <b>Chart Type:</b>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <SfDropDownList TValue="ChartSeriesType" TItem="DropDownData" DataSource="@ChartTypes" @bind-Value="@ChartType">
+                                <DropDownListFieldSettings Text="Name" Value="Value"></DropDownListFieldSettings>
+                            </SfDropDownList>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content-wrapper">
+        <SfPivotView TValue="ProductDetails" ShowFieldList=true>
+            <PivotViewDataSourceSettings DataSource="@Data" ExpandAll=false EnableSorting=true>
+                <PivotViewColumns>
+                    <PivotViewColumn Name="Country"></PivotViewColumn>
+                    <PivotViewColumn Name="Products"></PivotViewColumn>
+                </PivotViewColumns>
+                <PivotViewRows>
+                    <PivotViewRow Name="Year"></PivotViewRow>
+                    <PivotViewRow Name="Order_Source" Caption="Order Source"></PivotViewRow>
+                </PivotViewRows>
+                <PivotViewValues>
+                    <PivotViewValue Name="Amount" Caption="Sales Amount"></PivotViewValue>
+                </PivotViewValues>
+                <PivotViewDrilledMembers>
+                    <PivotViewDrilledMember Name="Year" Items="@DrilledMembers"></PivotViewDrilledMember>
+                </PivotViewDrilledMembers>
+                <PivotViewFormatSettings>
+                    <PivotViewFormatSetting Name="Amount" Format="C" UseGrouping=true></PivotViewFormatSetting>
+                </PivotViewFormatSettings>
+            </PivotViewDataSourceSettings>
+            <PivotViewDisplayOption View=View.Chart></PivotViewDisplayOption>
+            <PivotChartSettings Title="Sales Analysis">
+                <PivotChartSeries Type="@ChartType"></PivotChartSeries>
+                <PivotChartPrimaryYAxis>
+                    <PivotChartPrimaryYAxisBorder Width="0"></PivotChartPrimaryYAxisBorder>
+                </PivotChartPrimaryYAxis>
+            </PivotChartSettings>
+        </SfPivotView>
+    </div>
+</div>
+
+@code{
+    public ChartSeriesType ChartType = ChartSeriesType.Pie;
+    public string[] DrilledMembers = new string[] { "FY 2015" };
+    public List<ProductDetails> Data { get; set; }
+    protected override void OnInitialized()
+    {
+        this.Data = ProductDetails.GetProductData();
+        //Bind the data source collection here. Refer "Assigning sample data to the pivot table" section in getting started for more details.
+    }
+    List<DropDownData> ChartTypes = new List<DropDownData>() {
+        new DropDownData { Name = "Pie", Value = ChartSeriesType.Pie },
+        new DropDownData { Name = "Doughnut", Value = ChartSeriesType.Doughnut },
+        new DropDownData { Name = "Funnel", Value = ChartSeriesType.Funnel },
+        new DropDownData { Name = "Pyramid", Value = ChartSeriesType.Pyramid }
+    };
+    public class DropDownData
+    {
+        public string Name { get; set; }
+        public ChartSeriesType Value { get; set; }
+    }
+}
