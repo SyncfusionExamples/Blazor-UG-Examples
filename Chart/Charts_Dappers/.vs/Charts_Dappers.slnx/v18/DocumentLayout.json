@@ -1,0 +1,221 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Dapper Model\\Charts_Dappers\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\services\\dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\services\\dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\data\\cities.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\data\\cities.db||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\services\\cityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\services\\cityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\services\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\services\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\charts_dappers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\charts_dappers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|d:\\dapper model\\charts_dappers\\charts_dappers\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{48494B11-F509-476C-AAD6-3437E4515892}|Charts_Dappers\\Charts_Dappers.csproj|solutionrelative:charts_dappers\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "cities.db",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Data\\cities.db",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Data\\cities.db",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Data\\cities.db",
+              "RelativeToolTip": "Charts_Dappers\\Data\\cities.db",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAICSURBVDhPrZXNa9JhAIAfx6iZBM7EpWBTpzMdW6tZsA5F0K1T3QZBHwuCgsFYTiaYRFGE7NAH0aAoYtCl/8EOoRteNkhL13TiRqMlBFux\u002BfupXRL09Wfp6Dm9H8/7wHt5XxV/mPJ5M1C2VOaNUa3IJc6HQqEFcYdyuayqjKd8t8p37t6vFRQIBvyo1eofmz\u002B3zyhF28SFZrh8ZVS7X9MR9nq9g\u002BLeroIHjaaG0V0F\u002BUu0vVarZXV9g\u002BRyDrfDgtGgA0Cr1RIM\u002BKs1bXsbYaCTRsFf2zssflqmsFNgc2uLxFKadDaHw2ZmfGJS1AkG/NrKWPHK8VSGbxt5SqUingEXxaJMdvUrubV1Ua1DMTjosiPLMnaLGeshE05bN7Is0e9yiGodisF4Ko0kFYgnv7CUzrKYSCFJEu8jMVGtQzFo7NJjNOiRJInwh3mKsoxB38nw0BFRrUMx2KXXcXp4iAGXg469e3A7bZw9dZJMLsdNX4CFj3G\u002B5/PiMWgUrNBtNjFy4RzOHitPXrzm\u002BatZ\u002BnrtPHo2w8zLN6IO/wpW43b00Ndr58boJfpdh\u002Bl12EQFWgkmPieZj8WYfvyUSHSOSDQqKtBK8OrFEcauXyManWNyfIx7wduiAq0E9Qd0eI4d5d3bWU4c96DR7BMVaCXYLP89WPViT2RA1cQXoER55cHDaSvAb9pFqY18f9aRAAAAAElFTkSuQmCC",
+              "WhenOpened": "2026-02-12T07:29:52.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Components\\Pages\\Counter.razor",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "Charts_Dappers\\Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T06:47:54.35Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DbConnectionFactory.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\DbConnectionFactory.cs",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Services\\DbConnectionFactory.cs",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\DbConnectionFactory.cs",
+              "RelativeToolTip": "Charts_Dappers\\Services\\DbConnectionFactory.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAIwD8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T06:44:41.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CityRepository.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\CityRepository.cs",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Services\\CityRepository.cs",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\CityRepository.cs",
+              "RelativeToolTip": "Charts_Dappers\\Services\\CityRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T06:44:35.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\City.cs",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Services\\City.cs",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Services\\City.cs",
+              "RelativeToolTip": "Charts_Dappers\\Services\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T06:44:25.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Charts_Dappers\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T06:43:20.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Components\\App.razor",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\App.razor",
+              "RelativeToolTip": "Charts_Dappers\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T06:43:11.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Program.cs",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Program.cs",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Program.cs",
+              "RelativeToolTip": "Charts_Dappers\\Program.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T06:42:01.893Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Charts_Dappers",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Charts_Dappers.csproj",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Charts_Dappers.csproj",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Charts_Dappers.csproj",
+              "RelativeToolTip": "Charts_Dappers\\Charts_Dappers.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-12T06:41:31.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Charts_Dappers\\Components\\_Imports.razor",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\Components\\_Imports.razor",
+              "RelativeToolTip": "Charts_Dappers\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T06:57:05.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\appsettings.json",
+              "RelativeDocumentMoniker": "Charts_Dappers\\appsettings.json",
+              "ToolTip": "D:\\Dapper Model\\Charts_Dappers\\Charts_Dappers\\appsettings.json",
+              "RelativeToolTip": "Charts_Dappers\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-12T06:57:15.059Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
