@@ -1,0 +1,182 @@
+@page "/" 
+@rendermode InteractiveServer
+
+@using System.Collections
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Gantt
+@using GanttMySql.Data
+
+@inject TaskRepository TaskService
+
+<SfGantt TValue="TaskDataModel" Height="500px" Width="100%" AllowSorting="true" AllowFiltering="true" 
+         Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Update", "Cancel", "Search" })">
+
+    <SfDataManager AdaptorInstance="@typeof(CustomAdaptor)" Adaptor="Adaptors.CustomAdaptor"></SfDataManager>
+
+    <GanttTaskFields Id="TaskId" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Progress="Progress" Duration="Duration" ParentID="ParentId" Dependency="Predecessor">
+    </GanttTaskFields>
+
+    <GanttEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" AllowTaskbarEditing="true" Mode="Syncfusion.Blazor.Gantt.EditMode.Auto"></GanttEditSettings>
+
+    <GanttColumns>
+        <GanttColumn Field=@nameof(TaskDataModel.TaskId) HeaderText="Task ID" IsPrimaryKey="true" Width="150" />
+        <GanttColumn Field=@nameof(TaskDataModel.TaskName) HeaderText="Task Name" Width="220" />
+        <GanttColumn Field=@nameof(TaskDataModel.StartDate) HeaderText="Start Date" Width="170" />
+        <GanttColumn Field=@nameof(TaskDataModel.EndDate) HeaderText="End Date" Width="170" />
+        <GanttColumn Field=@nameof(TaskDataModel.Duration) HeaderText="Duration" Width="130" />
+        <GanttColumn Field=@nameof(TaskDataModel.Predecessor) HeaderText="Predecessor" Width="130" />
+        <GanttColumn Field=@nameof(TaskDataModel.Progress) HeaderText="Progress" Width="120" />
+    </GanttColumns>
+
+</SfGantt>
+@code {
+    private CustomAdaptor? _customAdaptor;
+
+    /// <summary>
+    /// Initializes the component and sets up the custom adaptor with the injected TaskService.
+    /// </summary>
+    protected override void OnInitialized()
+    {
+        _customAdaptor = new CustomAdaptor { TaskService = TaskService };
+    }
+
+    /// <summary>
+    /// Custom DataAdaptor to handle Gantt data operations with MySQL using EF Core.
+    /// Bridges Syncfusion DataManager requests to the repository.
+    /// </summary>
+    public class CustomAdaptor : DataAdaptor
+    {
+        private static TaskRepository? _taskService { get; set; }
+
+        /// <summary>
+        /// Task repository instance used to fulfill data operations.
+        /// </summary>
+        public TaskRepository? TaskService
+        {
+            get => _taskService;
+            set => _taskService = value;
+        }
+
+        /// <summary>
+        /// Reads data according to DataManagerRequest (search, sort, paging).
+        /// </summary>
+        /// <param name="dm">The DataManagerRequest containing query, paging, sorting, and search criteria.</param>
+        /// <param name="key">Optional key value for single-record reads.</param>
+        /// <returns>
+        /// Returns either a <see cref="DataResult"/> (when counts are requested) or the IEnumerable of tasks as an object.
+        /// </returns>
+        public override async Task<object> ReadAsync(DataManagerRequest dm, string? key = null)
+        {
+            IEnumerable<TaskDataModel> dataSource = await _taskService!.GetTasksAsync();
+
+            // Search
+            if (dm.Search != null && dm.Search.Count > 0)
+                dataSource = DataOperations.PerformSearching(dataSource, dm.Search);
+
+            if (dm.Where != null && dm.Where.Count > 0)
+            {
+                // Filtering
+                if (dm.Where[0].Field != null && dm.Where[0].Field == nameof(TaskDataModel.ParentId)) { }
+                else
+                {
+                    dataSource = DataOperations.PerformFiltering(dataSource, dm.Where, dm.Where[0].Operator);
+                }
+            }
+
+            // Sort
+            if (dm.Sorted != null && dm.Sorted.Count > 0)
+                dataSource = DataOperations.PerformSorting(dataSource, dm.Sorted);
+
+            int count = dataSource.Cast<TaskDataModel>().Count();
+
+            // Paging
+            if (dm.Skip != 0) dataSource = DataOperations.PerformSkip(dataSource, dm.Skip);
+            if (dm.Take != 0) dataSource = DataOperations.PerformTake(dataSource, dm.Take);
+
+            return dm.RequiresCounts
+                ? new DataResult() { Result = dataSource, Count = count }
+                : (object)dataSource;
+        }
+
+        /// <summary>
+        /// Updates a task record using the repository.
+        /// </summary>
+        /// <param name="dm">The DataManager instance (framework-provided).</param>
+        /// <param name="value">The updated object (expected <see cref="TaskDataModel"/>).</param>
+        /// <param name="keyField">Optional key field name.</param>
+        /// <param name="key">Key value identifying the record.</param>
+        /// <returns>The updated object.</returns>
+        public override async Task<object> UpdateAsync(DataManager dm, object value, string? keyField, string key)
+        {
+            await _taskService!.UpdateTaskAsync(value as TaskDataModel);
+            return value;
+        }
+
+        /// <summary>
+        /// Removes a task record using the repository.
+        /// </summary>
+        /// <param name="dm">The DataManager instance (framework-provided).</param>
+        /// <param name="value">The object representing the record to remove (various types supported).</param>
+        /// <param name="keyField">Optional key field name.</param>
+        /// <param name="key">Key value identifying the record.</param>
+        /// <returns>The removed object.</returns>
+        public override async Task<object> RemoveAsync(DataManager dm, object value, string? keyField, string key)
+        {
+            int? taskId = value switch
+            {
+                int i => i,
+                long l => (int)l,
+                string s when int.TryParse(s, out var id) => id,
+                TaskDataModel t => t.TaskId,
+                _ => null
+            };
+
+            await _taskService!.RemoveTaskAsync(taskId);
+            return value;
+        }
+
+        /// <summary>
+        /// Applies batch changes: updates, inserts, and deletes using the repository.
+        /// </summary>
+        /// <param name="dm">The DataManager instance (framework-provided).</param>
+        /// <param name="changedRecords">Records that were modified.</param>
+        /// <param name="addedRecords">Records that were added.</param>
+        /// <param name="deletedRecords">Records that were deleted.</param>
+        /// <param name="keyField">Optional key field name.</param>
+        /// <param name="key">Key value used by the batch operation.</param>
+        /// <param name="dropIndex">Optional drop index for drag-and-drop operations.</param>
+        /// <returns>A task that yields the batch operation key or result.</returns>
+        public override async Task<object> BatchUpdateAsync(DataManager dm, object changedRecords, object addedRecords, object deletedRecords, string? keyField, string key, int? dropIndex)
+        {
+            if (changedRecords is IEnumerable<TaskDataModel> changed)
+            {
+                foreach (var record in changed)
+                {
+                    // Debug (optional)
+                    Console.WriteLine($"UPDATE TaskId={record.TaskId}, ParentId={record.ParentId}");
+                    await _taskService!.UpdateTaskAsync(record);
+                }
+            }
+
+            if (addedRecords is IEnumerable<TaskDataModel> added)
+            {
+                foreach (var record in added)
+                {
+                    // Debug (optional)
+                    Console.WriteLine($"INSERT TaskId={record.TaskId}, ParentId={record.ParentId}");
+
+                    record.TaskId = 0; // identity insert
+                    await _taskService!.AddTaskAsync(record);
+                }
+            }
+
+            if (deletedRecords is IEnumerable<TaskDataModel> deleted)
+            {
+                foreach (var record in deleted)
+                    await _taskService!.RemoveTaskAsync(record.TaskId);
+            }
+
+            return key;
+        }
+    }
+}
