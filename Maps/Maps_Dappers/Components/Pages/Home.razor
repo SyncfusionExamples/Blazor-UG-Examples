@@ -1,0 +1,31 @@
+﻿@page "/"
+
+@rendermode InteractiveServer
+@using Syncfusion.Blazor.Maps
+@using Maps_Dappers.Services
+@inject ICityRepository Repo
+
+<SfMaps>
+    <MapsZoomSettings Enable="true">
+    </MapsZoomSettings>
+    <MapsLayers>
+        <MapsLayer ShapeData='new { dataOptions = "https://cdn.syncfusion.com/maps/map-data/world-map.json" }' TValue="string" AnimationDuration="2000">
+            <MapsMarkerSettings>
+                <MapsMarker DataSource="@cities" Visible="true" Height="25" Width="25" TValue="City" EnableDrag="true" AnimationDuration="0" >
+                    <MapsMarkerTooltipSettings Visible="true" ValuePath="Name"></MapsMarkerTooltipSettings>
+                </MapsMarker>
+            </MapsMarkerSettings>
+            <MapsShapeSettings Fill="lightgray"></MapsShapeSettings>
+        </MapsLayer>
+    </MapsLayers>
+</SfMaps>
+
+@code {
+
+    private IEnumerable<City>? cities;
+    private City newCity = new();
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await Repo.GetAllAsync();
+    }
+}
