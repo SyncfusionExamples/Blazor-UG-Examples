@@ -1,0 +1,286 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.client\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|solutionrelative:gantt_graphql\\gantt_graphql.client\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.client\\services\\graphqlclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|solutionrelative:gantt_graphql\\gantt_graphql.client\\services\\graphqlclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\graphql\\datarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\graphql\\datarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\graphql\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\graphql\\mutation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\graphql\\ganttquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\graphql\\ganttquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\components\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|solutionrelative:gantt_graphql\\gantt_graphql.client\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|solutionrelative:gantt_graphql\\gantt_graphql.client\\_imports.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\graphql\\taskinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\graphql\\taskinput.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\model\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\model\\taskentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{280F5D70-5D7E-346A-45CA-1785ABF6B6F1}|Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj|solutionrelative:gantt_graphql\\gantt_graphql\\gantt_graphql.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|d:\\source\\blazor-ug-examples\\gantt\\integrationpage\\binding sqllite with graphql\\gantt_graphql\\gantt_graphql\\gantt_graphql.client\\gantt_graphql.client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{DAF6E8DE-18E2-94EA-F1FC-4001EFB0F37B}|Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj|solutionrelative:gantt_graphql\\gantt_graphql.client\\gantt_graphql.client.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DataRequest.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\DataRequest.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\DataRequest.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\DataRequest.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\DataRequest.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwBkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T05:05:37.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Program.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Program.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Program.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Program.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:47:45.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Pages\\Counter.razor",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Pages\\Counter.razor",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T04:53:39.719Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Program.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Program.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Program.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:53:11.712Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Mutation.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\Mutation.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\Mutation.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\Mutation.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\Mutation.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAAwEEAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:46:47.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GanttQuery.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\GanttQuery.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\GanttQuery.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\GanttQuery.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\GanttQuery.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAuwFMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:45:58.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T08:21:50.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GraphQLClient.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Services\\GraphQLClient.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Services\\GraphQLClient.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Services\\GraphQLClient.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Services\\GraphQLClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:52:20.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\_Imports.razor",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl.Client\\_Imports.razor",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\_Imports.razor",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl.Client\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T07:48:31.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Imports.razor",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\_Imports.razor",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\_Imports.razor",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\_Imports.razor",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\_Imports.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T07:48:44.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\App.razor",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Components\\App.razor",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-06T07:48:48.751Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "TaskEntity.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Model\\TaskEntity.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Model\\TaskEntity.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Model\\TaskEntity.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Model\\TaskEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T04:42:34.373Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\appsettings.json",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\appsettings.json",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\appsettings.json",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-06T04:49:55.584Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TaskInput.cs",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\TaskInput.cs",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\TaskInput.cs",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\TaskInput.cs",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\GraphQl\\TaskInput.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-06T05:10:56.08Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Gantt_GraphQl.Client.csproj",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl.Client\\Gantt_GraphQl.Client.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-06T04:21:57.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Gantt_GraphQl.csproj",
+              "DocumentMoniker": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj",
+              "RelativeDocumentMoniker": "Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj",
+              "ToolTip": "D:\\Source\\Blazor-UG-Examples\\Gantt\\IntegrationPage\\Binding SQLLite with GraphQL\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj",
+              "RelativeToolTip": "Gantt_GraphQl\\Gantt_GraphQl\\Gantt_GraphQl.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-06T04:21:51.607Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
