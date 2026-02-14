@@ -1,0 +1,44 @@
+﻿@page "/AppBar/MediaQuery"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-menu"></SfButton>
+        <SfButton CssClass="e-inherit" Content="Home"></SfButton>
+        <SfButton CssClass="e-inherit" Content="About"></SfButton>
+        <SfButton CssClass="e-inherit" Content="Products"></SfButton>
+        <SfButton CssClass="e-inherit" Content="Contacts"></SfButton>
+        <AppBarSpacer></AppBarSpacer>
+        <AppBarSeparator></AppBarSeparator>
+        <SfButton CssClass="e-inherit" Content="Login"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-btn.e-inherit {
+        margin: 0 3px;
+    }
+
+    @@media screen and (max-width: 1024px) {
+        .control-container .e-appbar {
+            flex-flow: row wrap;
+            height: auto;
+            gap: 8px;
+        }
+
+        .control-container {
+            width: 350px;
+        }
+    }
+
+    @@media screen and (max-width: 480px) {
+        .control-container {
+            width: 200px;
+            margin: 0 2px;
+        }
+    }
+</style>

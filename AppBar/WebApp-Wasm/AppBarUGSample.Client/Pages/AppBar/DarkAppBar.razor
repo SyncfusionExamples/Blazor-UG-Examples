@@ -1,0 +1,26 @@
+﻿@page "/AppBar/Dark"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br />
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Dark">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-menu"></SfButton>
+        <AppBarSpacer></AppBarSpacer>
+        <SfButton CssClass="e-inherit" Content="FREE TRIAL"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container {
+        height: 300px;
+        margin: 0 auto;
+        width: 500px;
+    }
+
+        .control-container .e-btn.e-inherit {
+            margin: 0 3px;
+        }
+</style>
