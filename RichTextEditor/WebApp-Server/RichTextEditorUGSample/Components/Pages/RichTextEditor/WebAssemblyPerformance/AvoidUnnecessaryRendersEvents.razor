@@ -1,0 +1,22 @@
+﻿<h5>Avoid Unnecessary Component Renders After Rich Text Editor Events</h5>
+
+@page "/RichTextEditor/WebAssemblyPerformance/AvoidUnnecessaryRendersEvents"
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor @ref="rteObj">
+    <RichTextEditorEvents OnToolbarClick="@ToolbarClick"/>
+</SfRichTextEditor>
+<div>
+    <span>@((MarkupString)Output)</span>
+</div>
+    
+@code {
+    SfRichTextEditor rteObj;
+    private string Output = "";
+    private void ToolbarClick(ToolbarClickEventArgs args)
+    {
+        rteObj.PreventRender();
+        this.Output = this.Output + "<span><b>OnToolbarClick</b> event called<hr></span>";
+    }
+}

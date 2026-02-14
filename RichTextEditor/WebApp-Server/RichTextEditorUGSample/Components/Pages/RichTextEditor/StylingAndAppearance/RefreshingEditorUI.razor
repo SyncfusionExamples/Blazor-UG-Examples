@@ -1,0 +1,34 @@
+﻿<h5>Refreshing the editor UI</h5>
+
+@page "/RichTextEditor/StylingAndAppearance/RefreshingEditorUI"
+
+@using Syncfusion.Blazor.RichTextEditor
+@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+
+<SfButton @onclick="@OpenDialog">Open Dialog</SfButton>
+<SfDialog @ref="DialogObj" Width="450px" ShowCloseIcon="true">
+    <DialogEvents Opened="@DialogOpen"></DialogEvents>
+    <DialogTemplates>
+        <Header>
+            <div>Dialog Header</div>
+        </Header>
+        <Content>
+            <SfRichTextEditor @ref="RteObj">
+            </SfRichTextEditor>
+        </Content>
+    </DialogTemplates>
+</SfDialog>
+
+@code {
+    SfDialog DialogObj;
+    SfRichTextEditor RteObj;
+    private void OpenDialog()
+    {
+        this.DialogObj.ShowAsync();
+    }
+    private void DialogOpen()
+    {
+        this.RteObj.RefreshUIAsync();
+    }
+}

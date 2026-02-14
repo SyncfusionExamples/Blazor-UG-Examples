@@ -1,0 +1,92 @@
+﻿<h5>Adding custom slash menu items</h5>
+
+@page "/RichTextEditor/SmartEditing/SlashCommands/AddingCustomSlashMenuItems"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<div class="control-section" id="slashmenuEditor">
+    <SfRichTextEditor @ref="richTextEditorObj" Placeholder="@editorPlaceholder">
+        <RichTextEditorToolbarSettings Items="@tools" />
+        <RichTextEditorEvents SlashMenuItemSelecting="OnSlashMenuItemSelect" />
+        <RichTextEditorSlashMenuSettings Enable="true" Items="@slashmenuItems" />
+    </SfRichTextEditor>
+</div>
+@code
+{
+    private SfRichTextEditor richTextEditorObj;
+    private string editorPlaceholder = "Type \"/\" and choose format";
+    private string meetingNotes = @"<p><strong>Meeting Notes</strong></p><table class=""e-rte-table"" style=""width: 100%; min-width: 0px; height: 150px;""> <tbody> <tr style=""height: 20%;""> <td style=""width: 50%;""><strong>Attendees</strong></td> <td style=""width: 50%;""><br></td> </tr> <tr style=""height: 20%;""> <td style=""width: 50%;""><strong>Date & Time</strong></td> <td style=""width: 50%;""><br></td> </tr> <tr style=""height: 20%;""> <td style=""width: 50%;""><strong>Agenda</strong></td> <td style=""width: 50%;""><br></td> </tr> <tr style=""height: 20%;""> <td style=""width: 50%;""><strong>Discussed Items</strong></td> <td style=""width: 50%;""><br></td> </tr> <tr style=""height: 20%;""> <td style=""width: 50%;""><strong>Action Items</strong></td> <td style=""width: 50%;""><br></td> </tr> </tbody> </table>";
+    private string signature = "<p><br></p><p>Warm regards,</p><p>John Doe<br>Event Coordinator<br>ABC Company</p>";
+    private List<ToolbarItemModel> tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.Bold },
+        new ToolbarItemModel() { Command = ToolbarCommand.Italic },
+        new ToolbarItemModel() { Command = ToolbarCommand.Underline },
+        new ToolbarItemModel() { Command = ToolbarCommand.StrikeThrough },
+        new ToolbarItemModel() { Command = ToolbarCommand.SuperScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.SubScript },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontName },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontSize },
+        new ToolbarItemModel() { Command = ToolbarCommand.FontColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.BackgroundColor },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.LowerCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.UpperCase },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Formats },
+        new ToolbarItemModel() { Command = ToolbarCommand.Alignments },
+        new ToolbarItemModel() { Command = ToolbarCommand.Blockquote },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.NumberFormatList },
+        new ToolbarItemModel() { Command = ToolbarCommand.BulletFormatList },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Outdent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Indent },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateLink },
+        new ToolbarItemModel() { Command = ToolbarCommand.Image },
+        new ToolbarItemModel() { Command = ToolbarCommand.Video },
+        new ToolbarItemModel() { Command = ToolbarCommand.Audio },
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable },
+        new ToolbarItemModel() { Command = ToolbarCommand.CodeBlock },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.ClearFormat },
+        new ToolbarItemModel() { Command = ToolbarCommand.SourceCode },
+        new ToolbarItemModel() { Command = ToolbarCommand.Separator },
+        new ToolbarItemModel() { Command = ToolbarCommand.Undo },
+        new ToolbarItemModel() { Command = ToolbarCommand.Redo }
+    };
+    private List<SlashMenuItemModel> slashmenuItems = new List<SlashMenuItemModel>()
+    {
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Paragraph},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading1},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading2},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading3},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Heading4},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.OrderedList},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.UnorderedList},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Blockquote},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.CodeBlock},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Image},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Audio},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Video},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Link},
+        new SlashMenuItemModel() {Command = SlashMenuCommand.Table},
+        new SlashMenuItemModel() { Text="Meeting Notes", GroupBy = "Custom" , IconCss = "e-icons e-description", Description= "Insert a meeting note template." },
+        new SlashMenuItemModel() { Text="Signature", GroupBy= "Custom" , IconCss = "e-icons e-signature", Description= "Insert a signature template." }
+    };
+    public async Task OnSlashMenuItemSelect(SlashMenuSelectEventArgs args)
+    {
+        if (args.ItemData.Text == "Meeting Notes")
+        {
+            await richTextEditorObj.ExecuteCommandAsync(CommandName.InsertHTML, meetingNotes);
+        }
+        else if (args.ItemData.Text == "Signature")
+        {
+            await richTextEditorObj.ExecuteCommandAsync(CommandName.InsertHTML, signature);
+        }
+    }
+}
+

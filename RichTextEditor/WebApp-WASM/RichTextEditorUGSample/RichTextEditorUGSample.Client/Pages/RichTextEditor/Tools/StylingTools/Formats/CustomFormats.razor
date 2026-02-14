@@ -1,0 +1,27 @@
+﻿<h5>Custom Font Size</h5>
+
+@page "/RichTextEditor/Tools/StylingTools/Formats/CustomFormats"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor CssClass="customClass">
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <RichTextEditorFontSize Items="@FontSizeItems" />
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.FontSize },
+    };
+    private List<DropDownItemModel> FontSizeItems = new List<DropDownItemModel>()
+    {
+        new DropDownItemModel() { Text = "8 pt", Value = "8pt" },
+        new DropDownItemModel() { Text = "10 pt", Value = "10pt" },
+        new DropDownItemModel() { Text = "12 pt", Value = "12pt" },
+        new DropDownItemModel() { Text = "14 pt", Value = "14pt" },
+        new DropDownItemModel() { Text = "42 pt", Value = "42pt" }
+    };
+}

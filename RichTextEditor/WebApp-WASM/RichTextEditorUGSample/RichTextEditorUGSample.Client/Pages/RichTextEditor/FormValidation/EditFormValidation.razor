@@ -1,0 +1,32 @@
+﻿<h5>Edit Form Validation</h5>
+@page "/RichTextEditor/FormValidation/EditFormValidation"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+@using System.ComponentModel.DataAnnotations;
+
+<div class="control-section">
+    <div class="content-container">
+        <div id="content" class="box-form" style="margin: 0 auto; max-width:750px; padding:25px">
+            <EditForm Model="@Model">
+                <DataAnnotationsValidator />
+                <SfRichTextEditor ShowCharCount="true" MaxLength="100" Placeholder="Type something..." @bind-Value="@Model.Description" />
+                <ValidationMessage For="@(() => Model.Description)" />
+                <div class="btn-grp">
+                    <button class="samplebtn e-control e-btn" type="reset" data-ripple="true">Reset</button>
+                    <button class="samplebtn e-control e-btn" type="submit" data-ripple="true">Submit</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code{
+    private class FormModel
+    {
+        [Required]
+        [MinLength(20, ErrorMessage = "Please enter at least 20 characters.")]
+        public string Description { get; set; }
+    }
+    private FormModel Model = new FormModel();
+}

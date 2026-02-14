@@ -1,0 +1,16 @@
+﻿@page "/RichTextEditor/ValueBinding/Valuebinding"
+
+<h5>Value Binding</h5>
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor @bind-Value="@Value" />
+
+<br />
+
+<textarea rows="5" cols="60" @bind="@Value" />
+
+@code {
+    private string Value { get; set; } = "<p>Syncfusion RichTextEditor</p>";
+}

@@ -1,0 +1,18 @@
+﻿<h5>Insert Table</h5>
+
+@page "/RichTextEditor/Tools/TableManipulation/InsertTable"
+
+@rendermode InteractiveWebAssembly
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor ShowCharCount="true">
+    <RichTextEditorToolbarSettings Items="@Tools" />
+    <p>The Rich Text Editor component is the WYSIWYG ('what you see is what you get') editor that provides the best user experience to create and update content. Users can format their content using standard toolbar commands.</p>
+</SfRichTextEditor>
+
+@code {
+    private List<ToolbarItemModel> Tools = new List<ToolbarItemModel>()
+    {
+        new ToolbarItemModel() { Command = ToolbarCommand.CreateTable }
+    };
+}
