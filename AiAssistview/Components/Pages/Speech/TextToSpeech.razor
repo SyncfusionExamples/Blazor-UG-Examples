@@ -2,7 +2,7 @@
 @rendermode InteractiveServer
 
 @using Syncfusion.Blazor.InteractiveChat
-@using AssistView_OpenAI.Components.Services
+@using AIAssistview.Components.Services
 @using Syncfusion.Blazor.Navigations
 @inject AzureOpenAIService OpenAIService
 @inject IJSRuntime JSRuntime
@@ -42,7 +42,7 @@
     private string audioTooltip = "Read Aloud";
     private bool IsSpeaking = false;
     // If component class name isn’t Home (file is not Home.razor), update DotNetObjectReference to match the actual component type.
-    private DotNetObjectReference<Home>? dotNetRef;
+    private DotNetObjectReference<TextToSpeech>? dotNetRef;
 
     protected override void OnInitialized()
     {
@@ -159,7 +159,7 @@
     gap: 10px;
     text-align: center;
 }
-@media only screen and (max-width: 750px) {
+@@media only screen and (max-width: 750px) {
     .integration-texttospeech-section {
         width: 100%;
     }
