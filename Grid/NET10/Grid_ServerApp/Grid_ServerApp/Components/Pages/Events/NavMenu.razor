@@ -1,0 +1,182 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">UGSamples</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Dummy Grid
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="actionBegin">
+                <span class="oi oi-plus" aria-hidden="true"></span> actionBegin
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="actionComplete">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> actionComplete
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="actionFailure">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> actionFailure
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dataBound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> dataBound
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="detailDataBound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> detailDataBound
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="onBeginEdit">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> onBeginEdit
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnBatchAdd">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnBatchAdd
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnBatchSave">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnBatchSave
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnBatchDelete">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnBatchDelete
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnPdfExport">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnPdfExport
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Created">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Created
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="dBound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> dBound
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Destroyed">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Destroyed
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="HeaderCellInfo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> HeaderCellInfo
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnLoad">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnLoad
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="QueryCellInfo">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> QueryCellInfo
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnResizeStart">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnResizeStart
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ResizeStopped">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ResizeStopped
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RowDataBound">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> RowDataBound
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RowDeselected">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> RowDeselected
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RowSelected">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> RowSelected
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="RowSelecting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> RowSelecting
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CellSelecting">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> CellSelecting
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CellSelected">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> CellSelected
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnCellEdit">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnCellEdit
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnCellSave">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnCellSave
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CellSaved">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> CellSaved
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OnToolbarClick">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OnToolbarClick
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="CommandClicked">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> CommandClicked
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ColumnMenuItemClicked">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ColumnMenuItemClicked
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ContextMenuItemClicked">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ContextMenuItemClicked
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

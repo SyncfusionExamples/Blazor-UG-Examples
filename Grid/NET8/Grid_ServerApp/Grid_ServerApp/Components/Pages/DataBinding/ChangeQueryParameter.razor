@@ -1,0 +1,37 @@
+﻿@page "/ChangeQueryParameter"
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Grids
+
+<DataBindingNavigation></DataBindingNavigation>
+
+<SfButton Content="Modify query data" OnClick="BtnClick"></SfButton>
+<SfGrid TValue="Order" @ref="GridObj" AllowPaging="true" Query="@QueryData">
+    <GridPageSettings PageSize="10"></GridPageSettings>
+    <SfDataManager Url="https://services.odata.org/V4/Northwind/Northwind.svc/Orders/" Adaptor="Adaptors.ODataV4Adaptor">
+    </SfDataManager>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" IsPrimaryKey="true" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer Name" Width="150"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" TextAlign="TextAlign.Right" Width="120"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public SfGrid<Order> GridObj;
+    private Query QueryData = new Query().Where("CustomerID", "equal", "VINET");
+    private Query UpdatedQueryData = new Query().Where("CustomerID", "equal", "HANAR");
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public double? Freight { get; set; }
+    }
+    public void BtnClick()
+    {
+        QueryData = UpdatedQueryData;
+    }
+}

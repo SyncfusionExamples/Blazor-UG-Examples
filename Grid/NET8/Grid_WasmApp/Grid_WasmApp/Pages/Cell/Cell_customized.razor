@@ -1,0 +1,75 @@
+﻿@page "/cellcustomization"
+
+@using Syncfusion.Blazor.Grids
+
+    <CellNavigation></CellNavigation>
+
+<SfGrid DataSource="@Orders" AllowSelection="false" EnableHover="false" Height="315">
+    <GridEvents QueryCellInfo="CustomizeCell" TValue="Order"></GridEvents>
+    <GridColumns>
+        <GridColumn Field=@nameof(Order.OrderID) HeaderText="Order ID" TextAlign="TextAlign.Right" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(Order.CustomerID) HeaderText="Customer ID" Width="120"></GridColumn>
+        <GridColumn Field=@nameof(Order.OrderDate) HeaderText="Order Date" Format="d" Type="ColumnType.Date" Width="140"></GridColumn>
+        <GridColumn Field=@nameof(Order.Freight) HeaderText="Freight" Format="C2" Width="100"></GridColumn>
+        <GridColumn Field=@nameof(Order.ShipCity) HeaderText="Ship City" Width="100"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code{
+    public List<Order> Orders { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Orders = Enumerable.Range(1, 75).Select(x => new Order()
+        {
+            OrderID = 1000 + x,
+            CustomerID = (new string[] { "ALFKI", "ANANTR", "ANTON", "BLONP", "BOLID" })[new Random().Next(5)],
+            ShipCity = (new string[] { "Seattle", "Tacoma", "Redmond", "Kirkland", "London" })[new Random().Next(5)],
+            OrderDate = DateTime.Now.AddDays(-x),
+            Freight = 6.2 * x,
+        }).ToList();
+    }
+
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public double? Freight { get; set; }
+        public string ShipCity { get; set; }
+    }
+
+    public void CustomizeCell(QueryCellInfoEventArgs<Order> args)
+    {
+        if (args.Column.Field == "Freight")
+        {
+            if (args.Data.Freight < 30)
+            {
+                args.Cell.AddClass(new string[] { "below-30" });
+            }
+            else if (args.Data.Freight < 80)
+            {
+                args.Cell.AddClass(new string[] { "below-80" });
+            }
+            else
+            {
+                args.Cell.AddClass(new string[] { "above-80" });
+            }
+        }
+    }
+}
+
+<style>
+
+    .below-30 {
+        background-color: orangered;
+    }
+
+    .below-80 {
+        background-color: yellow;
+    }
+
+    .above-80 {
+        background-color: greenyellow
+    }
+</style>
