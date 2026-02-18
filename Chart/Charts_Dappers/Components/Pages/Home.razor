@@ -1,0 +1,24 @@
+﻿@page "/"
+
+@rendermode InteractiveServer
+@using Syncfusion.Blazor.Charts
+@using Charts_Dappers.Services
+@inject ICityRepository Repo
+
+<SfChart Title="Snapchart Social Media Users">
+    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category"></ChartPrimaryXAxis>
+    <ChartSeriesCollection>
+        <ChartSeries DataSource="@cities" XName="Name" YName="SnapChartValues" Type="ChartSeriesType.Column"></ChartSeries>
+    </ChartSeriesCollection>
+    <ChartTooltipSettings Enable="true" Format="${point.x} : ${point.y}M users"></ChartTooltipSettings>
+</SfChart>
+
+@code {
+
+    private IEnumerable<City>? cities;
+    private City newCity = new();
+    protected override async Task OnInitializedAsync()
+    {
+        cities = await Repo.GetAllAsync();
+    }
+}
