@@ -61,7 +61,7 @@ This repository demonstrates a production-ready pattern for binding **GraphQL** 
    ```json
    {
      "ConnectionStrings": {
-         "GanttDb": "Data Source=D:\\GanttGraphQL\\GanttDB.db"
+         "GanttDb": "Data Source=D:..\\GanttDB.db"
       },
      "AllowedHosts": "*"
    }

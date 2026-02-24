@@ -78,7 +78,7 @@ namespace GanttGraphQL.Models
         /// </returns>
         public bool DeleteTask([ID][GraphQLName("key")] int key, [GraphQLType(typeof(AnyType))] IDictionary<string, object> additionalParameters, [Service] GanttDbContext db)
         {
-            TaskDataModel record = db.Tasks.FirstOrDefault(t => t.TaskID == key);
+            TaskDataModel? record = db.Tasks.FirstOrDefault(t => t.TaskID == key);
             if (record == null) return false;
 
             db.Tasks.Remove(record);
@@ -105,7 +105,7 @@ namespace GanttGraphQL.Models
             {
                 foreach (TaskDataModel task in changed)
                 {
-                    TaskDataModel record = db.Tasks.FirstOrDefault(t => t.TaskID == task.TaskID);
+                    TaskDataModel? record = db.Tasks.FirstOrDefault(t => t.TaskID == task.TaskID);
                     if (record != null)
                     {
                         record.TaskName = string.IsNullOrWhiteSpace(task.TaskName) ? record.TaskName : task.TaskName!;
@@ -124,7 +124,7 @@ namespace GanttGraphQL.Models
             {
                 foreach (TaskDataModel task in added)
                 {
-                    TaskDataModel record = new TaskDataModel
+                    TaskDataModel? record = new TaskDataModel
                     {
                         // TaskID is assumed to be identity; do not set it
                         TaskName = string.IsNullOrWhiteSpace(task.TaskName) ? "New Task" : task.TaskName!,
@@ -144,7 +144,7 @@ namespace GanttGraphQL.Models
             {
                 foreach (TaskDataModel task in deleted)
                 {
-                    TaskDataModel record = db.Tasks.FirstOrDefault(t => t.TaskID == task.TaskID);
+                    TaskDataModel? record = db.Tasks.FirstOrDefault(t => t.TaskID == task.TaskID);
                     if (record != null)
                     {
                         db.Tasks.Remove(record);
