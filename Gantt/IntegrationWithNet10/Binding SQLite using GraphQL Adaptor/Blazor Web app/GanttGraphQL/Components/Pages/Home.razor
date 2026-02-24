@@ -1,0 +1,195 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Gantt
+@using GanttGraphQL.Models
+
+<SfGantt TValue="TaskDataModel"
+         Height="560px"
+         Width="100%"
+         AllowFiltering="true"
+         AllowSorting="true"
+         TreeColumnIndex="1"
+         EnableContextMenu="true"
+         Toolbar="@ToolbarItems">
+
+    <SfDataManager Url="https://localhost:7000/graphql"
+                   Adaptor="Adaptors.GraphQLAdaptor"
+                   GraphQLAdaptorOptions="@AdaptorOptions">
+    </SfDataManager>
+
+    <GanttTaskFields Id="@nameof(TaskDataModel.TaskID)" Name="@nameof(TaskDataModel.TaskName)" StartDate="@nameof(TaskDataModel.StartDate)"
+                     EndDate="@nameof(TaskDataModel.EndDate)" Duration="@nameof(TaskDataModel.Duration)" Progress="@nameof(TaskDataModel.Progress)"
+                     Dependency="@nameof(TaskDataModel.Predecessor)" ParentID="@nameof(TaskDataModel.ParentID)">
+    </GanttTaskFields>
+
+    <GanttColumns>
+        <GanttColumn Field="@nameof(TaskDataModel.TaskID)" HeaderText="Task ID" IsPrimaryKey="true" Width="110"></GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.TaskName)" HeaderText="Task Name" Width="240"></GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.StartDate)" HeaderText="Start Date" Format="d" Width="140"></GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.EndDate)" HeaderText="End Date" Format="d" Width="140"></GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.Duration)" HeaderText="Duration" Width="130"></GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.Progress)" HeaderText="Progress" Width="130">
+            <Template>
+                @{
+                    var taskRecord = context as TaskDataModel;
+                    if (taskRecord == null) return;
+
+                    string progressText = $"{taskRecord.Progress}%";
+                }
+                <div class="e-progress-custom">
+                    <div class="e-progress-outer">
+                        <div class="e-progress-bar" style="width:@(taskRecord.Progress)%;">
+                        </div>
+                    </div>
+                    <div class="e-progress-inner">
+                        <span>@progressText</span>
+                    </div>
+                </div>
+            </Template>
+        </GanttColumn>
+        <GanttColumn Field="@nameof(TaskDataModel.Predecessor)" HeaderText="Predecessor" Width="200">
+
+            <Template>
+                @{
+                    var task = context as TaskDataModel;
+                    var value = task?.Predecessor;
+
+                    if (!string.IsNullOrWhiteSpace(value))
+                    {
+                        <div class="e-dependencies">@value</div>
+                        ;
+                    }
+                    else
+                    {
+                        <div> - </div>
+                        ;
+                    }
+                }
+            </Template>
+        </GanttColumn>
+    </GanttColumns>
+    <GanttEditSettings AllowEditing="true" AllowTaskbarEditing="true" AllowAdding="true" AllowDeleting="true" />
+</SfGantt>
+@code {
+
+    public List<object> ToolbarItems = new() { "Add", "Edit", "Update", "Delete", "Search" };
+
+    // GraphQL adaptor configuration: ResolverName must match your server method (PascalCase)
+    // and the query must select count + result with the fields the Gantt needs.
+    private Syncfusion.Blazor.Data.GraphQLAdaptorOptions AdaptorOptions => new()
+    {
+        ResolverName = "TaskData",
+        Query = @"
+      query TaskData($dataManager: DataManagerRequestInput!) {
+        taskData(dataManager: $dataManager) {
+          count
+          result {
+            taskID
+            taskName
+            startDate
+            endDate
+            duration
+            progress
+            predecessor
+            parentID
+          }
+        }
+      }",
+        
+        Mutation = new Syncfusion.Blazor.Data.GraphQLMutation
+        {
+            // INSERT  (matches InsertTask parameters)
+            Insert = @"
+          mutation create($record: TaskDataModelInput!, $index: Int!, $action: String!, $additionalParameters: Any) {
+            createTask(record: $record, index: $index, action: $action, additionalParameters: $additionalParameters) {
+              taskID
+			  taskName
+			  startDate
+			  endDate
+			  duration
+			  progress
+			  predecessor
+			  parentID
+            }
+          }",
+            Update = @"mutation update($record: TaskDataModelInput!, $action: String!, $primaryColumnName: String!, $primaryColumnValue: Int!, $additionalParameters: Any) {
+                updateTask(record: $record, action: $action, primaryColumnName: $primaryColumnName, primaryColumnValue: $primaryColumnValue, additionalParameters: $additionalParameters) {
+                    taskID taskName startDate endDate duration progress predecessor parentID
+                }
+            }",
+
+            // DELETE  (matches DeleteTask parameters)
+            Delete = @"mutation delete($primaryColumnValue: ID!, $additionalParameters: Any) {
+            deleteTask(key: $primaryColumnValue, additionalParameters: $additionalParameters)
+          }",
+            Batch = @"mutation batch($changed: [TaskDataModelInput!], $added: [TaskDataModelInput!], $deleted: [TaskDataModelInput!], $action: String!, $primaryColumnName: String!, $additionalParameters: Any, $dropIndex: Int) {
+                batchUpdate(changed: $changed, added: $added, deleted: $deleted, action: $action, primaryColumnName: $primaryColumnName, additionalParameters: $additionalParameters, dropIndex: $dropIndex) {
+                    taskID
+			        taskName
+			        startDate
+			        endDate
+			        duration
+			        progress
+			        predecessor
+			        parentID
+                }
+            }"
+        }
+    };
+}
+
+<style>
+    .e-progress-custom {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .e-progress-outer {
+        width: 120px;
+        height: 8px;
+        border-radius: 4px;
+        background: #e0e0e0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .e-progress-bar {
+        height: 100%;
+        background: #3b82f6;
+    }
+
+    .e-progress-inner span {
+        font-size: 12px;
+    }
+
+    /* Keep visibility when row selected */
+    .e-row.e-active .e-progress-outer,
+    .e-row.e-selectionbackground .e-progress-outer {
+        background: #cfcfcf;
+    }
+
+    .e-row.e-active .e-progress-bar,
+    .e-row.e-selectionbackground .e-progress-bar {
+        background: #2563eb;
+    }
+
+    .e-dependencies {
+        border-radius: 4px;
+        padding: 2px 8px;
+        width: fit-content;
+        border: 1px solid #b8b8b8;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 auto;
+    }
+
+    .e-row.e-active .e-dependencies,
+    .e-row.e-selectionbackground .e-dependencies {
+        background: #e5e7eb;
+    }
+
+</style>
