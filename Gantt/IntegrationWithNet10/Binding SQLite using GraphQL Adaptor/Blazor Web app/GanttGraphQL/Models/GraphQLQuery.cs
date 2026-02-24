@@ -46,16 +46,16 @@ namespace GanttGraphQL.Models
                 query = DataOperations.PerformSearching(query, dm.Search);
             }
 
-            // 2) Filtering
-            if (dm.Where is { Count: > 0 })
+            // Filtering
+            if (dm.Where != null && dm.Where.Count > 0)
             {
-                // Base condition "and"/"or" (default to "and" if missing)
-                string? baseCondition = dm.Where[0].Condition ?? dm.Where[0].Operator;
-                if (string.IsNullOrWhiteSpace(baseCondition)) baseCondition = "and";
-
-                query = DataOperations.PerformFiltering(query, dm.Where, baseCondition);
+                if (dm.Where[0].Field != null && dm.Where[0].Field == nameof(TaskDataModel.ParentID)) { }
+                else
+                {
+                    query = DataOperations.PerformFiltering(query, dm.Where, dm.Where[0].Operator);
+                }
             }
-
+           
             // 3) Sorting (multi-column supported)
             if (dm.Sorted is { Count: > 0 })
             {
