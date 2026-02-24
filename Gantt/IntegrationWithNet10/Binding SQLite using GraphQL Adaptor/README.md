@@ -1,8 +1,8 @@
-# Blazor Gantt with SQLite and GraphQL Adaptor
+# Blazor Gantt Chart with SQLite and GraphQL Adaptor
 
 ## Project Overview
 
-This repository demonstrates a production-ready pattern for binding **GraphQL** data to **Syncfusion Blazor Gantt** using **Hot Chocolate GraphQL Server**. The sample application provides complete CRUD (Create, Read, Update, Delete) operations, filtering, sorting, Searching and hierarchical parent/child support. The implementation follows industry best practices using GraphQL queries, mutations, resolvers, and a GraphQL adaptor for seamless Gantt Chart functionality.
+This repository demonstrates a production-ready pattern for binding **GraphQL** data to **Syncfusion Blazor Gantt Chart** using **Hot Chocolate GraphQL Server**. The sample application provides complete CRUD (Create, Read, Update, Delete) operations, filtering, sorting, searching and hierarchical parent/child support. The implementation follows industry best practices using GraphQL queries, mutations, resolvers, and a GraphQL adaptor for seamless Gantt Chart functionality.
 
 ## Key Features
 
@@ -223,4 +223,3 @@ The `GraphQLAdaptorOptions` in `Home.razor` defines how the Gantt Chart communic
 - Change the port numbers in `launchSettings.json` to available ports
 - Or identify the process using the port: `Get-Process | Where-Object {$_.Handles -gt 500} | Select-Object Name, Id`
 - Update the Gantt Chart connection URL to match the new port
-
