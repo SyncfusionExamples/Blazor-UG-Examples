@@ -49,7 +49,6 @@ namespace Charts_Dappers.Services
                 ('United Kingdom', 18),
                 ('Mexico', 16),
                 ('Japan', 31),
-                ('Mexico', 26),
                 ('Brazil', 13),
                 ('Germany', 11),
                 ('Russia', 8),
