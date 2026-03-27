@@ -1,0 +1,35 @@
+﻿@page "/Kanban/DataBinding/BindingRemoteData/WebAPI"
+
+<PageTitle>Binding with Web API services</PageTitle>
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Kanban
+
+<SfKanban TValue="TasksModel" KeyField="Status" AllowDragAndDrop="false">
+    <SfDataManager Url="https://blazor.syncfusion.com/services/production/api/Kanban" Adaptor="@Syncfusion.Blazor.Adaptors.WebApiAdaptor"></SfDataManager>
+    <KanbanColumns>
+        @foreach (ColumnModel item in columnData)
+        {
+            <KanbanColumn HeaderText="@item.HeaderText" KeyField="@item.KeyField"></KanbanColumn>
+        }
+    </KanbanColumns>
+    <KanbanCardSettings HeaderField="Id" ContentField="Summary"></KanbanCardSettings>
+    <KanbanEvents TValue="TasksModel" DialogOpen="@((args) => { args.Cancel = true; })"></KanbanEvents>
+</SfKanban>
+
+@code {
+    public class TasksModel
+    {
+        public int Id { get; set; }
+        public string Status { get; set; }
+        public string Assignee { get; set; }
+        public string Summary { get; set; }
+    }
+
+    private List<ColumnModel> columnData = new List<ColumnModel>() {
+        new ColumnModel(){ HeaderText= "To Do", KeyField= new List<string>() { "Open" } },
+        new ColumnModel(){ HeaderText= "In Progress", KeyField= new List<string>() { "InProgress" } },
+        new ColumnModel(){ HeaderText= "Testing", KeyField= new List<string>() { "Testing" } },
+        new ColumnModel(){ HeaderText= "Done", KeyField=new List<string>() { "Close" } }
+    };
+}

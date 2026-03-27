@@ -1,0 +1,34 @@
+﻿@page "/Kanban/DataBinding/BindingRemoteData/ODatav4Services"
+
+<PageTitle>Binding with OData v4 services</PageTitle>
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.Kanban
+
+<SfKanban TValue="Order" KeyField="ShipCountry" AllowDragAndDrop="false">
+    <SfDataManager Url="https://services.odata.org/V4/Northwind/Northwind.svc/Orders/" Adaptor="@Syncfusion.Blazor.Adaptors.ODataV4Adaptor"></SfDataManager>
+    <KanbanColumns>
+        @foreach (ColumnModel item in columnData)
+        {
+            <KanbanColumn HeaderText="@item.HeaderText" KeyField="@item.KeyField"></KanbanColumn>
+        }
+    </KanbanColumns>
+    <KanbanCardSettings HeaderField="OrderID" ContentField="ShipName"></KanbanCardSettings>
+    <KanbanEvents TValue="Order" DialogOpen="@((args)=> { args.Cancel = true; })"></KanbanEvents>
+</SfKanban>
+
+
+@code {
+    public class Order
+    {
+        public int? OrderID { get; set; }
+        public string ShipName { get; set; }
+        public string ShipCountry { get; set; }
+    }
+    private List<ColumnModel> columnData = new List<ColumnModel>() {
+        new ColumnModel(){ HeaderText= "Denmark", KeyField= new List<string>() { "Denmark" } },
+        new ColumnModel(){ HeaderText= "Brazil", KeyField= new List<string>() { "Brazil" } },
+        new ColumnModel(){ HeaderText= "Switzerland", KeyField= new List<string>() { "Switzerland" } },
+        new ColumnModel(){ HeaderText= "Germany", KeyField=new List<string>() { "Germany" } }
+    };
+}
