@@ -1,0 +1,53 @@
+@page "/refreshdataasync"
+
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+
+<div>
+    <button @onclick="ClickHandler">Refresh</button>
+</div>
+
+<div>
+    <SfMultiSelect TValue="int?[]" @ref="Ddlinstance" TItem="OrderDetails1" Placeholder="e.g. Australia" AllowFiltering="true" ShowDropDownIcon="true" PopupHeight="800px">
+        <MultiSelectEvents TValue="int?[]" TItem="OrderDetails1" Filtering="@Filter"></MultiSelectEvents>
+        <SfDataManager Url="@url" @ref="Datainstance" Adaptor="Adaptors.ODataV4Adaptor" CrossDomain=true></SfDataManager>
+        <MultiSelectFieldSettings Text="CustomerID" Value="OrderID"></MultiSelectFieldSettings>
+    </SfMultiSelect>
+</div>
+
+@code {
+    public string url { get; set; } = "https://services.odata.org/V4/Northwind/Northwind.svc/Orders/?$top=5";
+
+    DataManager Datainstance { get; set; }
+
+    SfMultiSelect<int?[], OrderDetails1> Ddlinstance { get; set; }
+
+    async Task ClickHandler()
+    {
+        Datainstance.Url = "https://services.odata.org/V4/Northwind/Northwind.svc/Orders/?$top=8";
+        await Ddlinstance.RefreshDataAsync();
+    }
+
+    async Task Filter(FilteringEventArgs args)
+    {
+        args.PreventDefaultAction = true;
+        Datainstance.Url = "https://services.odata.org/V4/Northwind/Northwind.svc/Orders/?$top=8";
+        await Ddlinstance.RefreshDataAsync();
+    }
+
+    public class OrderDetails1
+    {
+        public int? OrderID { get; set; }
+        public string CustomerID { get; set; }
+        public int? EmployeeID { get; set; }
+        public double? Freight { get; set; }
+        public string ShipCity { get; set; }
+        public bool Verified { get; set; }
+        public DateTime? OrderDate { get; set; }
+        public string ShipName { get; set; }
+        public string ShipCountry { get; set; }
+        public DateTime? ShippedDate { get; set; }
+        public string ShipAddress { get; set; }
+    }
+}

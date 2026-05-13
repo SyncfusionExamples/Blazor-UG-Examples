@@ -1,0 +1,17 @@
+@page "/customvalue"
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]"
+               TItem="string"
+               DataSource="@Countries"
+               AllowCustomValue="true"
+               Placeholder="Select or enter a country">
+</SfMultiSelect>
+
+@code {
+    private List<string> Countries = new List<string>
+    {
+        "United States", "United Kingdom", "Germany", "France", "Japan", "Australia"
+    };
+}

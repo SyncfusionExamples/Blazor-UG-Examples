@@ -1,0 +1,41 @@
+@page "/popupsettings"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]" TItem="Countries" Placeholder="e.g. Australia" DataSource="@Country" AllowResize="true">
+    <MultiSelectFieldSettings Text="Name" Value="Code"></MultiSelectFieldSettings>
+</SfMultiSelect>
+
+@code{
+
+    public class Countries
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+
+    private List<Countries> Country = new List<Countries>
+    {
+        new Countries() { Name = "Australia", Code = "AU" },
+        new Countries() { Name = "Bermuda", Code = "BM" },
+        new Countries() { Name = "Canada", Code = "CA" },
+        new Countries() { Name = "Cameroon", Code = "CM" },
+        new Countries() { Name = "Denmark", Code = "DK" },
+        new Countries() { Name = "France", Code = "FR" },
+        new Countries() { Name = "Finland", Code = "FI" },
+        new Countries() { Name = "Germany", Code = "DE" },
+        new Countries() { Name = "Greenland", Code = "GL" },
+        new Countries() { Name = "Hong Kong", Code = "HK" },
+        new Countries() { Name = "India", Code = "IN" },
+        new Countries() { Name = "Italy", Code = "IT" },
+        new Countries() { Name = "Japan", Code = "JP" },
+        new Countries() { Name = "Mexico", Code = "MX" },
+        new Countries() { Name = "Norway", Code = "NO" },
+        new Countries() { Name = "Poland", Code = "PL" },
+        new Countries() { Name = "Switzerland", Code = "CH" },
+        new Countries() { Name = "United Kingdom", Code = "GB" },
+        new Countries() { Name = "United States", Code = "US" }
+    };
+}

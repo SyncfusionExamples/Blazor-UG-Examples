@@ -1,0 +1,44 @@
+@page "/formvalidation"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+@using System.ComponentModel.DataAnnotations
+
+<EditForm Model="@model" OnValidSubmit="handleSubmit"> 
+    <DataAnnotationsValidator></DataAnnotationsValidator> 
+    <ValidationSummary></ValidationSummary> 
+    <SfMultiSelect TValue="string[]" TItem="Countries" Placeholder="e.g. Australia" Width="300px" @bind-Value="@model.ValueObj" DataSource="@Country"> 
+        <MultiSelectFieldSettings Value="Name"></MultiSelectFieldSettings>
+    </SfMultiSelect>
+    <ValidationMessage For="()=>model.ValueObj"></ValidationMessage>        
+    <button type="submit">submit</button>
+</EditForm>
+
+
+@code {
+    private Countries model = new Countries();
+    
+    public class Countries
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+
+        [Required(ErrorMessage = "The Country field is required.")]
+        public string[] ValueObj { get; set; }
+    }
+
+    List<Countries> Country = new List<Countries>
+    {
+        new Countries() { Name = "Australia", Code = "AU" },
+        new Countries() { Name = "Bermuda", Code = "BM" },
+        new Countries() { Name = "Canada", Code = "CA" },
+        new Countries() { Name = "Cameroon", Code = "CM" },
+    };
+    
+    private void handleSubmit()
+    {
+        Console.WriteLine($"Form submitted with values: {string.Join(", ", model.ValueObj ?? Array.Empty<string>())}");
+    }
+}

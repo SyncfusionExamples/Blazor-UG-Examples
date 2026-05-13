@@ -1,0 +1,29 @@
+@page "/sorting"
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]" TItem="GameFields" PopupHeight="230px" Width="300px" SortOrder="SortOrder.Descending" Placeholder="Select a game" DataSource="@Games">
+    <MultiSelectFieldSettings Text="Text" Value="ID" />
+</SfMultiSelect>
+
+@code {
+    public class GameFields
+    {
+        public string ID { get; set; }
+        public string Text { get; set; }
+    }
+    
+    public List<GameFields> Games = new List<GameFields>()
+    {
+        new GameFields(){ ID= "Game1", Text= "Rugby" },
+        new GameFields(){ ID= "Game2", Text= "Snooker" },
+        new GameFields(){ ID= "Game3", Text= "Basketball" },
+        new GameFields(){ ID= "Game4", Text= "Cricket" },
+        new GameFields(){ ID= "Game5", Text= "Football" },
+        new GameFields(){ ID= "Game6", Text= "Tennis" },
+        new GameFields(){ ID= "Game7", Text= "Hockey" },
+        new GameFields(){ ID= "Game8", Text= "American Football"},
+        new GameFields(){ ID= "Game9", Text= "Badminton" },
+        new GameFields(){ ID= "Game10",Text= "Golf"}
+    };
+}

@@ -1,0 +1,36 @@
+@page "/events"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]" TItem="GameData" DataSource="@Games" Placeholder="Select games">
+    <MultiSelectFieldSettings Text="Name" Value="Code" />
+    <MultiSelectEvents TValue="string[]" TItem="GameData"
+        ValueChange="OnValueChange"
+        Created="OnCreated"
+        Destroyed="OnDestroyed" />
+</SfMultiSelect>
+
+@code {
+    public class GameData
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
+
+    private List<GameData> Games = new List<GameData>
+    {
+        new GameData { Name = "Cricket", Code = "CKT" },
+        new GameData { Name = "Football", Code = "FBL" },
+        new GameData { Name = "Basketball", Code = "BBL" }
+    };
+
+    private void OnValueChange(MultiSelectChangeEventArgs<string[]> args)
+    {
+        Console.WriteLine($"New values: {string.Join(", ", args.Value ?? Array.Empty<string>())}");
+    }
+
+    private void OnCreated(object args) => Console.WriteLine("MultiSelect created.");
+    private void OnDestroyed(object args) => Console.WriteLine("MultiSelect destroyed.");
+}

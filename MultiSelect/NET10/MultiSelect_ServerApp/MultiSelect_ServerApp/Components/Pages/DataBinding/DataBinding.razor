@@ -1,0 +1,34 @@
+@page "/databinding"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+
+@foreach (var SelectedValue in MultiVal)
+{
+    <p>MultiSelect value is:<strong>@SelectedValue</strong></p>
+}
+
+<SfMultiSelect Placeholder="e.g. Australia" @bind-Value="@MultiVal" DataSource="@Countries">
+    <MultiSelectFieldSettings Value="Name"></MultiSelectFieldSettings>
+</SfMultiSelect>
+
+@code {
+
+   public string[] MultiVal { get; set; } = new string[] { };
+
+    public class Country
+    {
+        public string Name { get; set; }
+
+        public string Code { get; set; }
+    }
+
+    List<Country> Countries = new List<Country>
+    {
+        new Country() { Name = "Australia", Code = "AU" },
+        new Country() { Name = "Bermuda", Code = "BM" },
+        new Country() { Name = "Canada", Code = "CA" },
+        new Country() { Name = "Cameroon", Code = "CM" },
+    };
+}

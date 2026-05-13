@@ -1,0 +1,36 @@
+@page "/template"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.Data
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor
+
+<SfMultiSelect TValue="string[]" TItem="EmployeeData" Placeholder="Select a employee" Query="@Query">
+    <MultiSelectTemplates TItem="EmployeeData">
+        <ItemTemplate>
+            <span><span class='name'>@((context as EmployeeData).FirstName)</span><span class='destination'>@((context as EmployeeData).Designation)</span></span>
+        </ItemTemplate>
+        <ValueTemplate>
+            <span>@((context as EmployeeData).FirstName) - @((context as EmployeeData).Designation)</span>
+        </ValueTemplate>
+    </MultiSelectTemplates>
+    <SfDataManager Url="https://ej2services.syncfusion.com/production/web-services/api/Employees" Adaptor="Adaptors.WebApiAdaptor" CrossDomain=true></SfDataManager>
+    <MultiSelectFieldSettings Text="FirstName" Value="Designation"></MultiSelectFieldSettings>
+</SfMultiSelect>
+
+@code {
+    public class EmployeeData
+    {
+        public string FirstName { get; set; }
+        public string Designation { get; set; }
+    }
+    public Query Query = new Query();
+}
+
+<style>
+    .destination {
+        right: 15px;
+        position: absolute;
+    }
+</style>

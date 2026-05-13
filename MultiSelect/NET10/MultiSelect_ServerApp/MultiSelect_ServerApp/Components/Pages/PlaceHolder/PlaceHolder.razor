@@ -1,0 +1,12 @@
+@page "/placeholder"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]" TItem="string" Placeholder="Select a game" DataSource="@data" Width="300px">
+</SfMultiSelect>
+
+@code {
+    List<string> data = new List<string> { "Cricket", "Badminton", "Football" };
+}

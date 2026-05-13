@@ -1,0 +1,47 @@
+@page "/multicolumnmultiselect"
+
+@rendermode InteractiveServer
+
+@using Syncfusion.Blazor.DropDowns
+
+<SfMultiSelect TValue="string[]" TItem="EmployeeData" Placeholder="Select an employee" CssClass="e-multi-column" DataSource="@Data" PopupHeight="300px" Width="350px">
+    <MultiSelectTemplates TItem="EmployeeData">
+        <ItemTemplate>
+            <table><tbody><tr><td class="e-text-center column-width">@((context as EmployeeData).unit_id)</td><td>@((context as EmployeeData).unit_name)</td><td>@((context as EmployeeData).create_date)</td></tr> </tbody></table>
+        </ItemTemplate>
+        <ValueTemplate>
+            <span>@((context as EmployeeData).unit_name)-@((context as EmployeeData).create_date) </span>
+        </ValueTemplate>
+    </MultiSelectTemplates>
+    <MultiSelectFieldSettings Text="unit_name" Value="unit_id" />
+</SfMultiSelect>
+
+@code{
+
+    public class EmployeeData
+    {
+        public string unit_name { get; set; }
+        public string unit_id { get; set; }
+        public string create_date { get; set; }
+        public string Country { get; set; }
+    }
+    
+    List<EmployeeData> Data = new List<EmployeeData>
+    {
+        new EmployeeData() { unit_name = "Andrew Fuller", unit_id = "1", create_date = "Nov 12", Country = "England"  },
+        new EmployeeData() { unit_name = "Anne Dodsworth", unit_id = "2", create_date = "Feb 16", Country = "USA" },
+        new EmployeeData() { unit_name = "Janet Leverling", unit_id = "3", create_date = "Jun 11", Country = "USA" },
+        new EmployeeData() { unit_name = "Laura Callahan", unit_id = "4", create_date = "Mar 03", Country = "USA" },
+        new EmployeeData() { unit_name = "Margaret Peacock", unit_id = "5", create_date = "Aug 19", Country = "USA" },
+        new EmployeeData() { unit_name = "Michael Suyama", unit_id = "6", create_date = "Apr 29", Country = "USA"  },
+        new EmployeeData() { unit_name = "Nancy Davolio", unit_id = "7", create_date = "Dec 02", Country = "USA" },
+        new EmployeeData() { unit_name = "Robert King", unit_id = "8", create_date = "Sep 27 ", Country = "England"  },
+        new EmployeeData() { unit_name = "Steven Buchanan", unit_id = "9", create_date = "Jan 10", Country = "England" }
+    };
+}
+
+<style>
+    .column-width {
+        width: 75px;
+    }
+</style>
