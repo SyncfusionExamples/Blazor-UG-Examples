@@ -1,0 +1,29 @@
+﻿@page "/MarkdownEditor/CustomizingMarkdownSyntax"
+
+<PageTitle>Customizing Markdown Syntax in Blazor Markdown Editor Component</PageTitle>
+
+@using Syncfusion.Blazor.RichTextEditor
+
+<SfRichTextEditor Height="250px" EditorMode="EditorMode.Markdown" Value="@MarkdownValue">
+    <RichTextEditorMarkdownOptions ListSyntax="@ListSyntax" FormatSyntax="@FormatSyntax" SelectionSyntax="@SelectionSyntax" />
+</SfRichTextEditor>
+
+@code {
+
+    private string MarkdownValue = "The sample is configured with customized markdown syntax using the [RichTextEditorMarkdownOptions](https://help.syncfusion.com/cr/blazor/Syncfusion.Blazor.RichTextEditor.RichTextEditorMarkdownOptions.html).\n    Type the content and click the toolbar item to view customized markdown syntax.\n    + To make a phrase bold, you need to add two underscores before and after the phrase (e.g., __this text is bold__).";
+
+    private Dictionary<string, string> ListSyntax { get; set; } = new Dictionary<string, string>()
+    {
+        { "UL", "+ " }
+    };
+    private Dictionary<string, string> FormatSyntax { get; set; } = new Dictionary<string, string>()
+    {
+        { "Blockquote", "> " }
+    };
+
+    private Dictionary<string, string> SelectionSyntax { get; set; } = new Dictionary<string, string>()
+    {
+        { "Bold", "__" },
+        { "Italic", "_" }
+    };
+}
