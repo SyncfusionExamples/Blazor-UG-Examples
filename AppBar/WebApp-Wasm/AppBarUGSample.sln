@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBarUGSample", "AppBarUGSample\AppBarUGSample.csproj", "{326EBD77-B98E-4AE4-8E96-2F77C3F7210B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppBarUGSample.Client", "AppBarUGSample.Client\AppBarUGSample.Client.csproj", "{B98807F5-A9F7-49A5-A2B9-20009F33FA6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{326EBD77-B98E-4AE4-8E96-2F77C3F7210B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326EBD77-B98E-4AE4-8E96-2F77C3F7210B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326EBD77-B98E-4AE4-8E96-2F77C3F7210B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326EBD77-B98E-4AE4-8E96-2F77C3F7210B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98807F5-A9F7-49A5-A2B9-20009F33FA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98807F5-A9F7-49A5-A2B9-20009F33FA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98807F5-A9F7-49A5-A2B9-20009F33FA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98807F5-A9F7-49A5-A2B9-20009F33FA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D71F581E-61C1-4F6F-9C37-742ACDEF5ADD}
+	EndGlobalSection
+EndGlobal

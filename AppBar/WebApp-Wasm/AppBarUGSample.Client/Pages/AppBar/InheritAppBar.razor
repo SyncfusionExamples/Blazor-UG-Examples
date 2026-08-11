@@ -1,0 +1,26 @@
+﻿@page "/AppBar/Inherit"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Inherit">
+        <a href="https://www.syncfusion.com/blazor-components" target="_blank" rel="noopener" role="link" aria-label="Syncfusion blazor components">
+            <div class="syncfusion-logo"></div>
+        </a>
+        <AppBarSpacer></AppBarSpacer>
+        <SfButton IsPrimary=true Content="FREE TRIAL"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .syncfusion-logo {
+        background: url(https://cdn.syncfusion.com/blazor/images/demos/syncfusion-logo.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 150px;
+    }
+</style>

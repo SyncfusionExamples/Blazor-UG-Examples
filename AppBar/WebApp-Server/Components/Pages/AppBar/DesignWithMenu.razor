@@ -1,0 +1,54 @@
+﻿@page "/AppBar/Menu"
+@rendermode InteractiveAuto
+
+@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor.Buttons
+<SizeRoute></SizeRoute>
+<br/>
+<div class="control-container">
+    <SfAppBar ColorMode="AppBarColor.Primary">
+        <SfButton CssClass="e-inherit" IconCss="e-icons e-menu"></SfButton>
+        <SfMenu CssClass="e-inherit" TValue="MenuItem">
+            <MenuItems>
+                <MenuItem Text="Company">
+                    <MenuItems>
+                        <MenuItem Text="About Us"></MenuItem>
+                        <MenuItem Text="Customers"></MenuItem>
+                        <MenuItem Text="Blog"></MenuItem>
+                        <MenuItem Text="Careers"></MenuItem>
+                    </MenuItems>
+                </MenuItem>
+            </MenuItems>
+        </SfMenu>
+        <SfMenu CssClass="e-inherit" TValue="MenuItem">
+            <MenuItems>
+                <MenuItem Text="Products">
+                    <MenuItems>
+                        <MenuItem Text="Developer"></MenuItem>
+                        <MenuItem Text="Analytics"></MenuItem>
+                        <MenuItem Text="Reporting"></MenuItem>
+                        <MenuItem Text="Help Desk"></MenuItem>
+                    </MenuItems>
+                </MenuItem>
+            </MenuItems>
+        </SfMenu>
+        <SfMenu CssClass="e-inherit" TValue="MenuItem">
+            <MenuItems>
+                <MenuItem Text="About Us"></MenuItem>
+            </MenuItems>
+        </SfMenu>
+        <SfMenu CssClass="e-inherit" TValue="MenuItem">
+            <MenuItems>
+                <MenuItem Text="Carrers"></MenuItem>
+            </MenuItems>
+        </SfMenu>
+        <AppBarSpacer></AppBarSpacer>
+        <SfButton CssClass="e-inherit" Content="Login"></SfButton>
+    </SfAppBar>
+</div>
+
+<style>
+    .control-container .e-btn.e-inherit {
+        margin: 0 3px;
+    }
+</style>
