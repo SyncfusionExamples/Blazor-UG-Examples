@@ -1,0 +1,172 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Dapper Model\\Maps_Dappers\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\components\\pages\\counter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\components\\app.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\services\\dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\services\\dbconnectionfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\services\\cityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\services\\cityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\services\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\services\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\maps_dappers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\maps_dappers.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|d:\\dapper model\\maps_dappers\\maps_dappers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C710F520-BB11-4868-81D0-5FEE79B5F4B1}|Maps_Dappers\\Maps_Dappers.csproj|solutionrelative:maps_dappers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Counter.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\Pages\\Counter.razor",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Components\\Pages\\Counter.razor",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\Pages\\Counter.razor",
+              "RelativeToolTip": "Maps_Dappers\\Components\\Pages\\Counter.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T07:15:30.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Home.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Components\\Pages\\Home.razor",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "Maps_Dappers\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T07:14:04.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.razor",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\App.razor",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Components\\App.razor",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Components\\App.razor",
+              "RelativeToolTip": "Maps_Dappers\\Components\\App.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-12T07:13:39.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DbConnectionFactory.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\DbConnectionFactory.cs",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Services\\DbConnectionFactory.cs",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\DbConnectionFactory.cs",
+              "RelativeToolTip": "Maps_Dappers\\Services\\DbConnectionFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T07:13:31.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CityRepository.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\CityRepository.cs",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Services\\CityRepository.cs",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\CityRepository.cs",
+              "RelativeToolTip": "Maps_Dappers\\Services\\CityRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T07:13:26.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\City.cs",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Services\\City.cs",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Services\\City.cs",
+              "RelativeToolTip": "Maps_Dappers\\Services\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T07:13:16.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Maps_Dappers",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Maps_Dappers.csproj",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Maps_Dappers.csproj",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Maps_Dappers.csproj",
+              "RelativeToolTip": "Maps_Dappers\\Maps_Dappers.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-12T07:12:32.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Program.cs",
+              "RelativeDocumentMoniker": "Maps_Dappers\\Program.cs",
+              "ToolTip": "D:\\Dapper Model\\Maps_Dappers\\Maps_Dappers\\Program.cs",
+              "RelativeToolTip": "Maps_Dappers\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-12T07:11:29.869Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
