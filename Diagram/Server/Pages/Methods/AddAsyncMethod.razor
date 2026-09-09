@@ -1,0 +1,59 @@
+﻿@page "/AddAsyncMethod"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Add Port and Annotation" OnClick="@AddPortAndAnnotationAsync" />
+
+<SfDiagramComponent @ref="_diagram" Width="900px" Height="500px" Nodes="@_nodes" Connectors="@_connectors">
+</SfDiagramComponent>
+
+@code
+{
+    // Reference the diagram.
+    private SfDiagramComponent _diagram;
+
+    // Initialize the nodes and connectors collections.
+    private DiagramObjectCollection<Node> _nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        Node node = new Node()
+        {
+            ID = "node1",
+            OffsetX = 300,
+            OffsetY = 200,
+            Width = 120,
+            Height = 60,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "#6495ED" },
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+        };
+
+        _nodes.Add(node);
+    }
+
+    private async Task AddPortAndAnnotationAsync()
+    {
+        Node node = _diagram.Nodes[0];
+
+        await node.Ports.AddAsync(new PointPort()
+        {
+            ID = "port1",
+            Offset = new DiagramPoint() { X = 1, Y = 0.5 },
+            Visibility = PortVisibility.Visible,
+            Height = 10,
+            Width = 10,
+            Style = new ShapeStyle() { Fill = "#FFFFFF", StrokeColor = "#1F3A93" },
+            Shape = PortShapes.Custom,
+            // Sets the PathData for port.
+            PathData = "M540.3643,137.9336L546.7973,159.7016L570.3633,159.7296L550.7723,171.9366L558.9053,194.9966L540.3643,179.4996L521.8223,194.9966L529.9553,171.9366L510.3633,159.7296L533.9313,159.7016L540.3643,137.9336z"
+        });
+
+        await node.Annotations.AddAsync(new ShapeAnnotation()
+        {
+            Content = "Node 1",
+            Offset = new DiagramPoint() { X = 0.5, Y = 0.5 }
+        });
+    }
+}

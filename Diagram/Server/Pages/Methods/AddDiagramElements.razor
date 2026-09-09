@@ -84,10 +84,42 @@
             // Type of the connector
             Type = ConnectorSegmentType.Straight,
         };
+        Swimlane swimlane = new Swimlane()
+        {
+            ID = "swimlane1",
+            OffsetX = 650,
+            OffsetY = 200,
+            Height = 150,
+            Width = 450,
+            Header = new SwimlaneHeader()
+            {
+                Annotation = new ShapeAnnotation() { Content = "Sales Process" },
+                Height = 50,
+            },
+            Lanes = new DiagramObjectCollection<Lane>()
+            {
+                new Lane()
+                {
+                    ID = "lane1",
+                    Height = 100,
+                    Header = new SwimlaneHeader()
+                    {
+                        Width = 30,
+                        Annotation = new ShapeAnnotation() { Content = "Consumer" }
+                    },
+                    Children = new DiagramObjectCollection<Node>()
+                    {
+                        new Node(){Height = 50, Width = 50, LaneOffsetX = 100, LaneOffsetY = 30},
+                        new Node(){Height = 50, Width = 50, LaneOffsetX = 250, LaneOffsetY = 30},
+                    }
+                }
+            }
+        };
         DiagramObjectCollection<NodeBase> nodeCollection = new DiagramObjectCollection<NodeBase>();
         nodeCollection.Add(node1);
         nodeCollection.Add(node2);
         nodeCollection.Add(Connector);
+        nodeCollection.Add(swimlane);
         await _diagram.AddDiagramElementsAsync(nodeCollection);
     }
 }
