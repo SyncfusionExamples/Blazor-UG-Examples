@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains Syncfusion Blazor User Guide (UG) examples that correspond to the Syncfusion Blazor documentation. The repository is organized into component-specific folders, with each folder containing sample projects that demonstrate documented features and usage scenarios. These examples provide runnable source code that can be used to understand component configuration, implementation patterns, and documented functionality within the Syncfusion Blazor component library.
+This repository contains [Syncfusion Blazor](https://www.syncfusion.com/blazor-components) User Guide (UG) examples that correspond to the Syncfusion Blazor documentation. The repository is organized into component-specific folders, with each folder containing sample projects that demonstrate documented features and usage scenarios. These examples provide runnable source code that can be used to understand component configuration, implementation patterns, and documented functionality within the Syncfusion Blazor component library.
 
 ## Key Features
 
