@@ -256,7 +256,7 @@
         node.Height = 100; node.Width = 100;
         node.Style.Fill = "#BB9AB1";
         
-        if (!IsLoading)
+        if (!_isLoading)
         {
             node.Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse };
             node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()
