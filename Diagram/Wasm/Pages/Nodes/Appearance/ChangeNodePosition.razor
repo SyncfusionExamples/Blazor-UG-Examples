@@ -1,0 +1,33 @@
+﻿@page "/ChangeNodePosition"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Change Node Position" OnClick="@ChangeNodePositions" />
+<SfDiagramComponent @ref="_diagram" Height="600px" Nodes="@_nodes" />
+
+@code
+{
+    private SfDiagramComponent _diagram;
+    private DiagramObjectCollection<Node> _nodes;
+
+    protected override void OnInitialized()
+    {
+        _nodes = new DiagramObjectCollection<Node>();
+        _nodes.Add(new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        });
+    }
+
+    private void ChangeNodePositions()
+    {
+        _diagram.Nodes[0].OffsetX = 400;
+        _diagram.Nodes[0].OffsetY = 300;
+    }
+}

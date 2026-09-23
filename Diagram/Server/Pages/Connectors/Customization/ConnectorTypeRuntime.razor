@@ -1,0 +1,120 @@
+﻿@page "/ConnectorTypeRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.DropDowns
+
+<div style="width:250px; margin-bottom:10px;">
+    <SfDropDownList TValue="string"
+                    TItem="ConnectorTypeItem"
+                    DataSource="@ConnectorTypes"
+                    @bind-Value="@SelectedType"
+                    Placeholder="Select Connector Type">
+
+        <DropDownListFieldSettings Text="Text" Value="Value">
+        </DropDownListFieldSettings>
+
+        <DropDownListEvents TValue="string"
+                            TItem="ConnectorTypeItem"
+                            ValueChange="OnConnectorTypeChanged">
+        </DropDownListEvents>
+
+    </SfDropDownList>
+</div>
+
+<SfDiagramComponent @ref="Diagram"
+                    Width="700px"
+                    Height="500px"
+                    Connectors="@Connectors">
+</SfDiagramComponent>
+
+@code {
+
+    private SfDiagramComponent Diagram;
+
+    private string SelectedType = "Straight";
+
+    private DiagramObjectCollection<Connector> Connectors =
+        new DiagramObjectCollection<Connector>();
+
+    private List<ConnectorTypeItem> ConnectorTypes =
+        new()
+        {
+            new ConnectorTypeItem
+            {
+                Text = "Straight",
+                Value = "Straight"
+            },
+
+            new ConnectorTypeItem
+            {
+                Text = "Orthogonal",
+                Value = "Orthogonal"
+            },
+
+            new ConnectorTypeItem
+            {
+                Text = "Bezier",
+                Value = "Bezier"
+            }
+        };
+
+    protected override void OnInitialized()
+    {
+        Connectors.Add(new Connector()
+        {
+            ID = "connector1",
+
+            SourcePoint = new DiagramPoint()
+            {
+                X = 100,
+                Y = 100
+            },
+            TargetPoint = new DiagramPoint()
+            {
+                X = 400,
+                Y = 300
+            },
+            Type = ConnectorSegmentType.Straight,
+            Style = new ShapeStyle()
+            {
+                StrokeColor = "#6495ED",
+                StrokeWidth = 2
+            }
+        });
+    }
+
+    private async Task OnConnectorTypeChanged(ChangeEventArgs<string, ConnectorTypeItem> args)
+    {
+        Diagram.BeginUpdate();
+
+        switch (args.Value)
+        {
+            case "Straight":
+
+                Diagram.Connectors[0].Type =
+                    ConnectorSegmentType.Straight;
+                break;
+
+            case "Orthogonal":
+
+                Diagram.Connectors[0].Type =
+                    ConnectorSegmentType.Orthogonal;
+                break;
+
+            case "Bezier":
+
+                Diagram.Connectors[0].Type =
+                    ConnectorSegmentType.Bezier;
+                break;
+        }
+
+        await Diagram.EndUpdateAsync();
+    }
+
+    public class ConnectorTypeItem
+    {
+        public string Text { get; set; } = string.Empty;
+
+        public string Value { get; set; } = string.Empty;
+    }
+}

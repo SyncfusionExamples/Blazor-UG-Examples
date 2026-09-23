@@ -1,0 +1,92 @@
+﻿@page "/ReconnectConnectorEndpoints"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<div>
+    <SfButton Content="Reconnect Source" OnClick="ReconnectSource"></SfButton>
+    <SfButton Content="Reconnect Target" OnClick="ReconnectTarget"></SfButton>
+</div>
+
+<SfDiagramComponent @ref="diagram" Width="900px" Height="500px" Nodes="@nodes" Connectors="@connectors">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent? diagram;
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        nodes.Add(new Node()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 50,
+            OffsetX = 150,
+            OffsetY = 150,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        });
+
+        nodes.Add(new Node()
+        {
+            ID = "node2",
+            Width = 100,
+            Height = 50,
+            OffsetX = 300,
+            OffsetY = 150,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        });
+
+        nodes.Add(new Node()
+        {
+            ID = "node3",
+            Width = 100,
+            Height = 50,
+            OffsetX = 150,
+            OffsetY = 300,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        });
+
+        nodes.Add(new Node()
+        {
+            ID = "node4",
+            Width = 100,
+            Height = 50,
+            OffsetX = 300,
+            OffsetY = 300,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle }
+        });
+
+        connectors.Add(new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            Type = ConnectorSegmentType.Orthogonal,
+            TargetDecorator = new DecoratorSettings()
+            {
+                Shape = DecoratorShape.Arrow,
+                Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" }
+            },
+            Style = new ShapeStyle() { StrokeColor = "#6BA5D7", StrokeWidth = 2 }
+        });
+    }
+
+    private void ReconnectSource()
+    {
+        if (diagram is not null && diagram.Connectors.Count > 0)
+        {
+            diagram.Connectors[0].SourceID = "node3";
+        }
+    }
+
+    private void ReconnectTarget()
+    {
+        if (diagram is not null && diagram.Connectors.Count > 0)
+        {
+            diagram.Connectors[0].TargetID = "node4";
+        }
+    }
+}

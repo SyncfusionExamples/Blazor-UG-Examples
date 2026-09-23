@@ -1,0 +1,49 @@
+﻿@page "/RemoveNodeById"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Remove Node by ID" OnClick="@RemoveById" />
+
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes" />
+
+@code
+{
+    // Defines diagram's node collection
+    private DiagramObjectCollection<Node> _nodes;
+    private SfDiagramComponent _diagram;
+
+    protected override void OnInitialized()
+    {
+        _nodes = new DiagramObjectCollection<Node>();
+        _nodes.Add(new Node()
+        {
+            ID = "node1",
+            OffsetX = 250,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        });
+        _nodes.Add(new Node()
+        {
+            ID = "node2",
+            OffsetX = 450,
+            OffsetY = 250,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#FFB74D", StrokeColor = "white" }
+        });
+    }
+
+    private void RemoveById()
+    {
+        string nodeId = "node2";
+        Node node = _nodes.FirstOrDefault(n => n.ID == nodeId);
+
+        if (node != null)
+        {
+            _nodes.Remove(node);
+        }
+    }
+}

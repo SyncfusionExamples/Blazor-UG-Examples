@@ -1,0 +1,38 @@
+﻿@page "/AddMultipleConnectorAtRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Add Multiple Connectors" OnClick="@AddMultipleConnectors" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
+
+@code
+{
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+    private int _count = 1;
+
+    protected override void OnInitialized()
+    {
+        _connectors.Add(new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 100 },
+            Type = ConnectorSegmentType.Straight
+        });
+    }
+
+    private void AddMultipleConnectors()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            _connectors.Add(new Connector()
+            {
+                ID = "connector" + ++_count,
+                SourcePoint = new DiagramPoint() { X = 100 + (i * 180), Y = 250 },
+                TargetPoint = new DiagramPoint() { X = 220 + (i * 180), Y = 250 },
+                Type = ConnectorSegmentType.Straight
+            });
+        }
+    }
+}

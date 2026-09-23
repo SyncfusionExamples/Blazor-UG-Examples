@@ -1,0 +1,46 @@
+﻿@page "/ConnectorBetweenExistingNodes"
+
+@using Syncfusion.Blazor.Diagram
+
+<SfDiagramComponent Width="900px" Height="500px" Nodes="@nodes" Connectors="@connectors">
+</SfDiagramComponent>
+
+@code
+{
+    private DiagramObjectCollection<Node> nodes = new DiagramObjectCollection<Node>();
+    private DiagramObjectCollection<Connector> connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        nodes.Add(new Node()
+        {
+            ID = "node1",
+            Width = 100,
+            Height = 50,
+            OffsetX = 150,
+            OffsetY = 150,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" }
+        });
+
+        nodes.Add(new Node()
+        {
+            ID = "node2",
+            Width = 100,
+            Height = 50,
+            OffsetX = 400,
+            OffsetY = 250,
+            Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Rectangle },
+            Style = new ShapeStyle() { Fill = "#6BA5D7", StrokeColor = "#6BA5D7" }
+        });
+
+        connectors.Add(new Connector()
+        {
+            ID = "connector1",
+            SourceID = "node1",
+            TargetID = "node2",
+            Type = ConnectorSegmentType.Orthogonal,
+            Style = new ShapeStyle() { StrokeColor = "#6BA5D7", StrokeWidth = 2 }
+        });
+    }
+}

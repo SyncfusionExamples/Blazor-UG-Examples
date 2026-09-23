@@ -1,0 +1,55 @@
+﻿@page "/AddMultipleNodeAtRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<div>
+    <SfButton Content="Add Multiple Nodes"
+              OnClick="@AddMultipleNodes" />
+</div>
+
+<SfDiagramComponent Height="500px" Width="700px" Nodes="@_nodes" />
+
+@code
+{
+    private DiagramObjectCollection<Node> _nodes = new();
+
+    private int _count = 1;
+
+    protected override void OnInitialized()
+    {
+        _nodes.Add(new Node()
+        {
+            ID = "node1",
+            OffsetX = 150,
+            OffsetY = 150,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle()
+            {
+                Fill = "#6495ED",
+                StrokeColor = "white"
+            }
+        });
+    }
+
+    private void AddMultipleNodes()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            _nodes.Add(new Node()
+            {
+                ID = "node" + ++_count,
+                OffsetX = 300 + (i * 150),
+                OffsetY = 250,
+                Width = 100,
+                Height = 100,
+                Style = new ShapeStyle()
+                {
+                    Fill = "#6495ED",
+                    StrokeColor = "white"
+                }
+            });
+        }
+    }
+}

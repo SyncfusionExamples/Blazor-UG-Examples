@@ -4,17 +4,18 @@
 @using Syncfusion.Blazor.Buttons
 
 <SfButton Content="Remove Connector" OnClick="@RemoveConnector" />
-<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors">
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Connectors="@_connectors">
     <SnapSettings Constraints="@_snapConstraints"></SnapSettings>
 </SfDiagramComponent>
 
 @code
 {
-    //Defines snap consttraints
+    // Defines snap consttraints
     private SnapConstraints _snapConstraints = SnapConstraints.None;
-    //Defines diagram's connector collection
+    // Defines diagram's connector collection
     private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
-    
+    private SfDiagramComponent _diagram;
+
     protected override void OnInitialized()
     {
         Connector connector = new Connector()
@@ -38,7 +39,10 @@
 
     private void RemoveConnector()
     {
-        // Remove connector at runtime
-        _connectors.Remove(_connectors[0]);
+        // Remove selected connector at runtime
+        if (_diagram.SelectionSettings.Connectors.Count > 0)
+        {
+            _connectors.Remove(_diagram.SelectionSettings.Connectors[0]);
+        }
     }
 }
