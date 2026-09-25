@@ -30,7 +30,7 @@
     private LayoutOrientation _oreintation = LayoutOrientation.TopToBottom;
     private HorizontalAlignment _horizontalAlignment = HorizontalAlignment.Auto;
     private VerticalAlignment _verticalAlignment = VerticalAlignment.Auto;
-    private int _vorizontalSpacing = 30;
+    private int _horizontalSpacing = 30;
     private int _verticalSpacing = 30;
     private string _data = string.Empty;
     private bool _isLoading = false;
@@ -256,7 +256,7 @@
         node.Height = 100; node.Width = 100;
         node.Style.Fill = "#BB9AB1";
         
-        if (!IsLoading)
+        if (!_isLoading)
         {
             node.Shape = new BasicShape() { Type = NodeShapes.Basic, Shape = NodeBasicShapes.Ellipse };
             node.Annotations = new DiagramObjectCollection<ShapeAnnotation>()

@@ -1,0 +1,86 @@
+﻿@page "/BpmnShapeRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.DropDowns
+
+<div style="width:260px; margin-bottom:12px;">
+    <SfDropDownList TValue="string" TItem="BpmnShapeItem" DataSource="@ShapeItems" @bind-Value="@SelectedShape" Placeholder="Select BPMN Shape">
+        <DropDownListFieldSettings Text="Text" Value="Value"></DropDownListFieldSettings>
+        <DropDownListEvents TValue="string" TItem="BpmnShapeItem" ValueChange="OnShapeChanged"></DropDownListEvents>
+    </SfDropDownList>
+</div>
+
+<SfDiagramComponent @ref="Diagram" Width="900px" Height="500px" Nodes="@Nodes">
+</SfDiagramComponent>
+
+@code
+{
+    private SfDiagramComponent? Diagram;
+    private string SelectedShape = "Event";
+    private DiagramObjectCollection<Node> Nodes = new DiagramObjectCollection<Node>();
+
+    private List<BpmnShapeItem> ShapeItems = new()
+    {
+        new BpmnShapeItem { Text = "Event", Value = "Event" },
+        new BpmnShapeItem { Text = "Activity", Value = "Activity" },
+        new BpmnShapeItem { Text = "Gateway", Value = "Gateway" },
+        new BpmnShapeItem { Text = "Sub Process", Value = "SubProcess" },
+        new BpmnShapeItem { Text = "Activity - User Task", Value = "ActivityUser" },
+        new BpmnShapeItem { Text = "Gateway - Exclusive", Value = "GatewayExclusive" }
+    };
+
+    protected override void OnInitialized()
+    {
+        Nodes.Add(new Node()
+        {
+            ID = "bpmnNode1",
+            Width = 110,
+            Height = 70,
+            OffsetX = 250,
+            OffsetY = 180,
+            Shape = new BpmnEvent()
+            {
+                EventType = BpmnEventType.Start
+            }
+        });
+    }
+
+    private async Task OnShapeChanged(ChangeEventArgs<string, BpmnShapeItem> args)
+    {
+        Diagram.BeginUpdate();
+
+        switch (args.Value)
+        {
+            case "Event":
+                Diagram.Nodes[0].Shape = new BpmnEvent() { EventType = BpmnEventType.Start };
+                break;
+            case "Activity":
+                Diagram.Nodes[0].Shape = new BpmnActivity() { ActivityType = BpmnActivityType.Task };
+                break;
+            case "Gateway":
+                Diagram.Nodes[0].Shape = new BpmnGateway() { GatewayType = BpmnGatewayType.None };
+                break;
+            case "SubProcess":
+                Diagram.Nodes[0].Shape = new BpmnExpandedSubProcess();
+                break;
+            case "ActivityUser":
+                Diagram.Nodes[0].Shape = new BpmnActivity()
+                {
+                    ActivityType = BpmnActivityType.Task,
+                    TaskType = BpmnTaskType.User
+                };
+                break;
+            case "GatewayExclusive":
+                Diagram.Nodes[0].Shape = new BpmnGateway() { GatewayType = BpmnGatewayType.Exclusive };
+                break;
+        }
+
+        await Diagram.EndUpdateAsync();
+    }
+
+    public class BpmnShapeItem
+    {
+        public string Text { get; set; } = string.Empty;
+        public string Value { get; set; } = string.Empty;
+    }
+}

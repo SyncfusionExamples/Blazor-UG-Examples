@@ -7,7 +7,7 @@
         <HorizontalRuler></HorizontalRuler>
         <VerticalRuler></VerticalRuler>
     </RulerSettings>
-    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@_dataSource">
+    <DataSourceSettings ID="Id" ParentID="ParentId" DataSource="@DataSource">
     </DataSourceSettings>
         <Layout Type="LayoutType.MindMap" @bind-Orientation="@_selectedOrientation" GetBranch="GetBranch" HorizontalSpacing="50">
         <LayoutMargin Top="20" Left="20"></LayoutMargin>
@@ -51,7 +51,7 @@
     // Method triggered by button click at runtime to set diagram orientation to vertical.
     private void ChangeLayoutOrientation()
     {
-       _diagram?.Layout.Orientation = LayoutOrientation.Vertical;
+       _diagram.Layout.Orientation = LayoutOrientation.Vertical;
     }
 
     private void OnNodeCreating(IDiagramObject obj)

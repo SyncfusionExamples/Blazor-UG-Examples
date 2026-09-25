@@ -137,22 +137,22 @@
         List<string> child = new List<string>();
         foreach (string childID in groupNode.Children)
         {
-            for (int i = 0; i < diagram.Nodes.Count; i++)
+            for (int i = 0; i < _diagram.Nodes.Count; i++)
             {
-                if (childID == diagram.Nodes[i].ID && diagram.Nodes[i] is NodeGroup nodeGroup)
+                if (childID == _diagram.Nodes[i].ID && _diagram.Nodes[i] is NodeGroup nodeGroup)
                 {
                     child.Add(CloneGroup(nodeGroup, true));
                 }
-                else if (childID == diagram.Nodes[i].ID)
+                else if (childID == _diagram.Nodes[i].ID)
                 {
-                    child.Add(CloneNode(diagram.Nodes[i], true));
+                    child.Add(CloneNode(_diagram.Nodes[i], true));
                 }
             }
-            for (int i = 0; i < diagram.Connectors.Count; i++)
+            for (int i = 0; i < _diagram.Connectors.Count; i++)
             {
-                if (childID == diagram.Connectors[i].ID)
+                if (childID == _diagram.Connectors[i].ID)
                 {
-                    child.Add(CloneConnector(diagram.Connectors[i], true));
+                    child.Add(CloneConnector(_diagram.Connectors[i], true));
                 }
             }
         }

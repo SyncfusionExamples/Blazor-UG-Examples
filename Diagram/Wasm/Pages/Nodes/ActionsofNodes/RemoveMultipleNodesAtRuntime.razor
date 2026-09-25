@@ -1,0 +1,64 @@
+﻿@page "/RemoveMultipleNodesAtRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Remove Multiple Nodes" OnClick="@RemoveMultipleNodes" />
+
+<SfDiagramComponent @ref="_diagram" Width="1000px" Height="500px" Nodes="@_nodes" />
+
+@code
+{
+    // Defines diagram's node collection
+    private DiagramObjectCollection<Node> _nodes;
+    private SfDiagramComponent _diagram;
+
+    protected override void OnInitialized()
+    {
+        _nodes = new DiagramObjectCollection<Node>();
+
+        _nodes.Add(new Node()
+        {
+            ID = "node1",
+            OffsetX = 150,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#6495ED", StrokeColor = "white" }
+        });
+
+        _nodes.Add(new Node()
+        {
+            ID = "node2",
+            OffsetX = 300,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#FFB74D", StrokeColor = "white" }
+        });
+
+        _nodes.Add(new Node()
+        {
+            ID = "node3",
+            OffsetX = 450,
+            OffsetY = 200,
+            Width = 100,
+            Height = 100,
+            Style = new ShapeStyle() { Fill = "#4DB6AC", StrokeColor = "white" }
+        });
+    }
+
+    private void RemoveMultipleNodes()
+    {
+        string[] nodeIds = { "node2", "node3" };
+
+        foreach (string nodeId in nodeIds)
+        {
+            Node node = _nodes.FirstOrDefault(n => n.ID == nodeId);
+            if (node != null)
+            {
+                _nodes.Remove(node);
+            }
+        }
+    }
+}

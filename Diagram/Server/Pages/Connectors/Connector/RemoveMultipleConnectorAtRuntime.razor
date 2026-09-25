@@ -1,0 +1,53 @@
+﻿@page "/RemoveMultipleConnectorAtRuntime"
+
+@using Syncfusion.Blazor.Diagram
+@using Syncfusion.Blazor.Buttons
+
+<SfButton Content="Remove Multiple Connectors" OnClick="@RemoveMultipleConnectors" />
+<SfDiagramComponent Width="1000px" Height="500px" Connectors="@_connectors" />
+
+@code
+{
+    private DiagramObjectCollection<Connector> _connectors = new DiagramObjectCollection<Connector>();
+
+    protected override void OnInitialized()
+    {
+        _connectors.Add(new Connector()
+        {
+            ID = "connector1",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 100 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 100 },
+            Type = ConnectorSegmentType.Straight
+        });
+
+        _connectors.Add(new Connector()
+        {
+            ID = "connector2",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 200 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 200 },
+            Type = ConnectorSegmentType.Straight
+        });
+
+        _connectors.Add(new Connector()
+        {
+            ID = "connector3",
+            SourcePoint = new DiagramPoint() { X = 100, Y = 300 },
+            TargetPoint = new DiagramPoint() { X = 200, Y = 300 },
+            Type = ConnectorSegmentType.Straight
+        });
+    }
+
+    private void RemoveMultipleConnectors()
+    {
+        string[] connectorIds = { "connector2", "connector3" };
+
+        foreach (string connectorId in connectorIds)
+        {
+            Connector connector = _connectors.FirstOrDefault(c => c.ID == connectorId);
+            if (connector != null)
+            {
+                _connectors.Remove(connector);
+            }
+        }
+    }
+}
